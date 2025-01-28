@@ -2847,7 +2847,7 @@ M \cong (\bigoplus_{\mathfrak{p} \in \mathcal{P}} \bigoplus_{i = 1}^{N_\mathfrak
 \end{proof}
 
 \begin{observation}
-Пусть \(B \coloneqq A[X]/(P(X))\), где \(A\) --- ассоциативное коммутативное унитальное кольцо, а \(P(X) \in A[X]\) --- унитарный многочлен. Пусть \(x \in B\) --- это образ \(X \in A[X]\).
+Пусть \(B \coloneqq A[X]/(P(X))\), где \(A\) --- ассоциативное коммутативное унитальное кольцо, а \(P(X) \in A[X]\) --- унитальный многочлен. Пусть \(x \in B\) --- это образ \(X \in A[X]\).
 Очевидно, что множество \(\{x^i \in B \mid 0 \leq i < \deg(P(X))\}\) является \(A\)-базисом \(B\).
 Идеал многочленов в \(A[X]\), зануляющих оператор
 \(x : B \to B\), \(f \mapsto xf\),
@@ -2874,7 +2874,7 @@ M \cong (\bigoplus_{\mathfrak{p} \in \mathcal{P}} \bigoplus_{i = 1}^{N_\mathfrak
 \end{theorem}
 
 \begin{proof}
-Из теоремы Гамильтона\namedash{}Кэли следует, что существует унитарный многочлен \(P(X) = \sum_{i=0}^n a_i X^i \in A[X]\) минимальной степени \(n \in \N_1\),
+Из теоремы Гамильтона\namedash{}Кэли следует, что существует унитальный многочлен \(P(X) = \sum_{i=0}^n a_i X^i \in A[X]\) минимальной степени \(n \in \N_1\),
 такой что \(P(\iota) = 0\).
 %Воспользовавшись тем, что на \(\iota\) можно сокращать слева, легко заметить, что \(a_0 \neq 0\).
 Так как на \(\iota\) можно сокращать слева, то \(a_0 \neq 0\).
@@ -3475,8 +3475,13 @@ R
 \end{observation}
 
 \begin{remark}
-Первая формула наблюдения~\ref{obs:BCH_truncated} --- это усечённая форма формулы Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа.
+Первая формула наблюдения~\ref{obs:BCH_truncated} --- это усечённая форма формулы Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа\namedash{}Дынкина, полная версия которой формулируется и доказывается в разделе~\ref{sec:BKHD}.
 \end{remark}
+
+%\begin{remark}
+%Текст~\cite{Mueger_BCHD} содержит формулировку и несколько доказательств формулы Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа\namedash{}Дынкина.
+%В частности, в \cite[][раздел 6]{Mueger_BCHD} изложена версия стандартного алгебраического доказательства формулы БКХД <<методом Картье>>, которая не использует теоремы Пуанкаре\namedash{}Биркгофа\namedash{}Витта.
+%\end{remark}
 
 \begin{corollary}
 Пусть \(R\) --- ассоциативное унитальное кольцо, а \(x, y \in R\) --- его элементы, такие что \(x^2 = y^2 = xyx = yxy = 0\). Тогда, в понятном смысле, выполняется равенство \(e^x e^y e^{-x} e^{-y} = e^{xy - yx}\).
@@ -5490,6 +5495,245 @@ n \cdot (1 + \lVert n \rVert + \cdots + {\lVert n \rVert}^{\lfloor \frac{\ln(m)}
 \end{proof}
 
 
+\section{Формула Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа\namedash{}Дынкина}
+\label{sec:BKHD}
+
+\subsection{Предисловие}
+
+Практически весь материал этого раздела позаимствован из раздела~6 текста~\cite{Mueger_BCHD}, который содержит несколько доказательств теоремы Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа и её уточнений.
+
+\subsection{Критерии Фридрихса и Дынкина\namedash{}Шпехта\namedash{}Уивера}
+
+%\begin{definition}
+%Пусть \(K\) --- поле, а \(I\) --- множество.
+%Определим \(K\)\=/линейные отображения \(D, R : K \la X_i \smid i \in I \ra \rrarrow K \la X_i \smid i \in I \ra\) на мономах следующим образом:
+%\(D(X_{i_1} \dots{} X_{i_n}) = n X_{i_1} \dots{} X_{i_n}\) для любого отображения \(j \mapsto i_j : \{1, \dots{}, n\} \to I\), где \(n \in \N_0\),
+%\(R(1) = 0\), \(R(X_i) = X_i\) для любого \(i \in I\),
+%\(R(X_{i_1} \dots{} X_{i_n}) = [X_{i_1}, [X_{i_2}, [ \dots{}, [X_{i_{n-1}}, X_{i_n}]] \dots{} ]\) для любого отображения \(j \mapsto i_j : \{1, \dots{}, n\} \to I\), где \(n \in \N_2\).
+%\end{definition}
+
+\begin{definition}
+Пусть \(K\) --- поле, а \(\mc{X}\) --- множество.
+Определим \(K\)\=/линейные отображения \(D, R : K \la \mc{X} \ra \rrarrow K \la \mc{X} \ra\) на мономах следующим образом:
+\(D(X_1 \cdots{} X_n) = n X_1 \cdots{} X_n\) для любых \(X_1, \dots{}, X_n \in \mc{X}\), где \(n \geq 0\),
+\(R(1) = 0\), \(R(X) = X\) для любого \(X \in \mc{X}\),
+\(R(X_1 \cdots{} X_n) = [X_1, [X_2, \dots{}, [X_{n-1}, X_n]] \dots{} ]\) для любых \(X_1, \dots{}, X_n \in \mc{X}\), где \(n \geq 2\).
+\end{definition}
+
+\begin{lemma}
+Пусть \(K\) --- поле, \(\mc{X}\) --- множество, а \((K \la \mc{X} \ra, \mu, \eta, \delta, \varepsilon, S)\) --- это \(K \la \mc{X} \ra\) со стандартной структурой алгебры Хопфа.
+Тогда
+\begin{equation}
+\mu \circ (D \otimes S) \circ \delta = R.%
+\label{eq:D_S_conv}
+\end{equation}
+%Иначе говоря, свёртка \(D\) и \(S\) равна \(R\).
+\end{lemma}
+
+\begin{proof}
+Достаточно проверить формулу~\eqref{eq:D_S_conv} на мономах. Равенство
+\((\mu \circ (D \otimes S) \circ \delta)(1) = R(1)\)
+%и
+%\((\mu \circ (D \otimes S) \circ \delta)(X) = R(X)\), где \(X \in \mc{X}\),
+проверяется непосредственно.
+Пусть \(X_1, \dots{}, X_n \in \mc{X}\), где \(n \geq 1\).
+Тогда
+\begin{gather*}
+(\mu \circ (D \otimes S) \circ \delta)
+(X_1 \cdots{} X_n)
+=
+\\
+=
+\sum_{(c_1, \dots{}, c_n) \in \{0,1\}^n}
+(-1)^{\sum_{i=1}^n (1 - c_i)}
+(\sum_{i=1}^n c_i)
+X_1^{c_1} \cdots{} X_n^{c_n} X_n^{1 - c_n} \cdots{} X_1^{1 - c_1}
+=
+\\
+=
+\sum_{(c_1, \dots{}, c_n) \in \{0,1\}^n}
+(-1)^{\sum_{i=1}^n (1 - c_i)}
+(\sum_{i=1}^n c_i)
+X_1^{c_1} \cdots{} X_{n-1}^{c_{n-1}} X_n X_{n-1}^{1 - c_{n-1}} \cdots{} X_1^{1 - c_1}
+=
+\\
+=
+\sum_{(c_1, \dots{}, c_{n-1}) \in \{0,1\}^{n-1}}
+(-1)^{\sum_{i=1}^{n-1} (1 - c_i)}
+X_1^{c_1} \cdots{} X_{n-1}^{c_{n-1}} X_n X_{n-1}^{1 - c_{n-1}} \cdots{} X_1^{1 - c_1}
+=
+\\
+%=
+%[X_1, [X_2, [ \dots{}, [X_{n-1}, X_n]] \dots{} ]
+=
+R(X_1 \cdots{} X_n).
+\qedhere
+\end{gather*}
+\end{proof}
+
+\begin{theorem}[\scshape Критерии Фридрихса и Дынкина\namedash{}Шпехта\namedash{}Уивера]
+Пусть \(K\) --- поле, характеристика которого равна нулю,
+\(\mc{X}\) --- множество,
+\((K \la \mc{X} \ra, \mu, \eta, \delta, \varepsilon, S)\)
+--- это \(K \la \mc{X} \ra\) со стандартной структурой алгебры Хопфа,
+а \(f\) --- элемент \(K \la \mc{X} \ra\).%
+\label{thm:FriDynSpeWev}
+Тогда следующие условия эквивалентны:
+\begin{enumerate}[
+	font=\upshape,
+	label=\asbuk*),
+	ref=\asbuk*,
+	]
+
+\item \label{itm:FriDynSpeWev1}
+Многочлен \(f\) является \(K\)\=/линейной комбинацией кратных коммутаторов элементов \(\mc{X}\);
+
+\item \label{itm:FriDynSpeWev2}
+Выполняется равенство \(\delta(f) = f \otimes 1 + 1 \otimes f\) (критерий Фридрихса);
+
+\item \label{itm:FriDynSpeWev3}
+Выполняются равенства \(\varepsilon(f) = 0\) и \(R(f) = D(f)\) (критерий Дынкина\namedash{}Шпехта\namedash{}Уивера).
+
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Импликация (\ref{itm:FriDynSpeWev3})~\({\implies}\)~(\ref{itm:FriDynSpeWev1}) очевидна, а импликация (\ref{itm:FriDynSpeWev1})~\({\implies}\)~(\ref{itm:FriDynSpeWev2}) следует из классической формулы \([g \otimes 1 + 1 \otimes g, h \otimes 1 + 1 \otimes h] = [g, h] \otimes 1 + 1 \otimes [g, h]\), где \(g, h \in K \la \mc{X} \ra\), --- множество \(\{d \in K \la \mc{X} \ra \mid \delta(d) = d \otimes 1 + 1 \otimes d\}\) является подалгеброй Ли в \(K \la \mc{X} \ra\).
+Осталось доказать импликацию (\ref{itm:FriDynSpeWev2})~\({\implies}\)~(\ref{itm:FriDynSpeWev3}).
+Пусть \(f\) удовлетворяет условию~(\ref{itm:FriDynSpeWev2}).
+Применяя отображение \(\varepsilon \otimes \Id\) к обеим сторонам равенства \(\delta(f) = f \otimes 1 + 1 \otimes f\) получаем равенство \(f = \varepsilon(f) 1 + \varepsilon(1) f = \varepsilon(f) + f\), откуда следует, что \(\varepsilon(f) = 0\).
+Подставив выражение \(\delta(f) = f \otimes 1 + 1 \otimes f\) в формулу~\eqref{eq:D_S_conv}, получаем, что \(D(f) = D(f) S(1) + D(1) S(F) = R(f)\).
+\end{proof}
+
+\subsection{Теорема Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа}
+
+\begin{definition}[\scshape Ряд Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа]
+Следующий формальный ряд называется \emph{рядом Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа}:
+\begin{equation}
+	\begin{gathered}
+		\log(e^X e^Y) =
+		\sum_{k=1}^{\infty}
+		\frac{(-1)^{k-1}}{k}
+		\Bigl(\sum_{m, n = 0}^{\infty}
+		\frac{X^m Y^n}{m! n!} - 1\Bigr)^k
+		=
+		\\
+		=
+		\sum_{k=1}^{\infty}
+		\sum_{m_1 + n_1 > 0}
+		\cdots{}
+		\sum_{m_k + n_k > 0}
+		\frac{(-1)^{k-1}}{k}
+		\frac%
+		{X^{m_1} Y^{n_1} \cdots{} X^{m_k} Y^{n_k}}%
+		{m_1! n_1! \cdots{} m_k! n_k!}
+		\in \Q \llangle X, Y \rrangle.%
+		\label{eq:BakCamHauSeries}
+	\end{gathered}
+\end{equation}
+\end{definition}
+
+\begin{theorem}[\scshape Теорема Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа]
+Все однородные компоненты ряда Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа, то есть ряда \(\log(e^X e^Y) \in \Q \llangle X, Y \rrangle\), представляются в виде \(\Q\)\=/линейных комбинаций кратных коммутаторов переменных \(X\) и \(Y\).
+\end{theorem}
+
+\begin{proof}[Набросок доказательства]
+Гомоморфизм
+\(
+	\delta :
+	\Q \langle X, Y \rangle
+	\to
+	\Q \langle X, Y \rangle^{\otimes_{\Q} 2}
+%	\Q \langle X, Y \rangle
+%	\otimes_{\Q}
+%	\Q \langle X, Y \rangle
+	\cong
+	\Q \langle X_1, Y_1 \rangle
+	   \langle X_2, Y_2 \rangle
+\),
+переводящий \(X\) в \(X \otimes 1 + 1 \otimes X\), а \(Y\) в \(Y \otimes 1 + 1 \otimes Y\),
+имеет единственное продолжение до непрерывного в стандартной топологии на формальных рядах отображения
+\(
+	\delta :
+	\Q \llangle X, Y \rrangle
+	\to
+	\Q \llangle X_1, Y_1 \rrangle
+	   \llangle X_2, Y_2 \rrangle
+	\cong
+	\prod_{m, n = 0}^{\infty}
+	(\Q \langle X, Y \rangle_m
+	 \otimes_{\Q}
+	 \Q \langle X, Y \rangle_n)
+	\supset
+	\Q \llangle X, Y \rrangle^{\otimes_{\Q} 2}
+\).
+%где нижними индексами обозначены однородные компоненты соответствующей степени.
+Осталось заметить, что экспонента задаёт биекцию между элементами \(f \in \Q \llangle X, Y \rrangle\) с постоянным членом \(0\), удовлетворяющими условию \(\delta(f) = f \otimes 1 + 1 \otimes f\), и элементами \(g \in \Q \llangle X, Y \rrangle\) с постоянным членом \(1\), удовлетворяющими условию \(\delta(g) = g \otimes g\), а потом использовать теорему~\ref{thm:FriDynSpeWev},
+а точнее, критерий Фридрихса.
+\end{proof}
+
+\subsection{Формула Дынкина для ряда БКХ}
+
+\begin{definition}[\scshape Идемпотент Дынкина]
+Пусть \(K\) --- поле характеристики ноль,
+а \(\mc{X}\) --- конечное множество.
+Тогда \emph{идемпотентом Дынкина} называется \(K\)\=/линейное и непрерывное в стандартной топологии на \(K \llangle \mc{X} \rrangle\) отображение \(P : K \llangle \mc{X} \rrangle \to K \llangle \mc{X} \rrangle\), такое что
+\(P(X_1 \cdots{} X_n) = \frac{1}{n} R(X_1 \cdots{} X_n)\) для любых \(X_1, \dots{}, X_n \in \mc{X}\), где \(n \geq 1\), а \(P(1) = 0\).
+\end{definition}
+
+\begin{observation}
+Пусть \(K\) --- поле характеристики ноль,
+а \(\mc{X}\) --- конечное множество.
+Тогда идемпотент Дынкина \(P : K \llangle \mc{X} \rrangle \to K \llangle \mc{X} \rrangle\) идемпотентен, то есть \(P \circ P = P\),
+а образ \(P\) совпадает с рядами, все однородные компоненты которых представляются в виде \(K\)\=/линейных комбинаций кратных коммутаторов элементов \(\mc{X}\).
+\end{observation}
+
+\begin{theorem}[\scshape Формула Дынкина]
+В кольце \(\Q \llangle X, Y \rrangle\) выполняется следующее соотношение, которое называется \emph{формулой Дынкина для ряда Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа}, или же \emph{формулой Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа\namedash{}Дынкина}:
+\begin{equation}
+	\begin{gathered}
+		\log(e^X e^Y) =
+		\sum_{k=1}^{\infty}
+		\sum_{m_1 + n_1 > 0}
+		\cdots{}
+		\sum_{m_k + n_k > 0}
+		\frac%
+		{
+			(-1)^{k - 1}
+		}
+		{
+			k
+			\sum_{i = 1}^k (m_i + n_i)
+			%m_1! n_1! \dots{} m_k! n_k!
+			\prod_{j = 1}^k m_j! n_j!
+		}
+		\times
+		\\
+		\times
+		%[X, [\dots{}, [X,
+		%[Y, [\dots{}, [Y,
+		%[\dots{}
+		%[X, [\dots{}, [X,
+		%[Y, [\dots{}, [Y,
+		%[\dots{}]
+		%\dots{}].%
+		[\underbrace{X, [X, \dots{}, [X}_{m_1},
+		[\underbrace{Y, [Y, \dots{}, [Y}_{n_1},
+		\dots{},
+		[\underbrace{X, [X, \dots{}, [X}_{m_k},
+		[\underbrace{Y, [Y, \dots{}, Y}_{n_k}]]
+		\dots{}
+		]].%
+		\label{eq:BKHD_formula}
+	\end{gathered}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Применим идемпотент Дынкина к формуле~\eqref{eq:BakCamHauSeries}.
+\end{proof}
+
+
 
 
 \part{Сгруппированные тексты}
@@ -7456,7 +7700,7 @@ f^{(r+1)}(0)
 %\end{theorem}
 %
 %\begin{proof}
-%Из теоремы Гамильтона\namedash{}Кэли следует, что существует унитарный многочлен \(P(X) = \sum_{i=0}^n a_i X^i \in A[X]\) минимальной степени \(n \in \N_1\), такой что \(P(\iota) = 0\). Воспользовавшись тем, что на \(\iota\) можно сокращать слева, легко заметить, что \(a_0 \neq 0\). Возьмём \(a \coloneqq -a_0\). Тогда \(av = \sum_{i=1}^n a_i \iota^i(v) \in \iota(M)\) для любого \(v \in M\). 
+%Из теоремы Гамильтона\namedash{}Кэли следует, что существует унитальный многочлен \(P(X) = \sum_{i=0}^n a_i X^i \in A[X]\) минимальной степени \(n \in \N_1\), такой что \(P(\iota) = 0\). Воспользовавшись тем, что на \(\iota\) можно сокращать слева, легко заметить, что \(a_0 \neq 0\). Возьмём \(a \coloneqq -a_0\). Тогда \(av = \sum_{i=1}^n a_i \iota^i(v) \in \iota(M)\) для любого \(v \in M\). 
 %\end{proof}
 %
 %\begin{corollary}
@@ -8739,7 +8983,7 @@ K^{\times G} \to K[\rtimes G]
 \subsection{Расширения Галуа как максимально симметричные расширения}
 
 %\begin{convention}[\scshape Минимальные многочлены]
-%В этом подразделе считается, что минимальные многочлены элементов расширений полей унитарны, то есть имеют старший коэффициент \(1\).
+%В этом подразделе считается, что минимальные многочлены элементов расширений полей унитальны, то есть имеют старший коэффициент \(1\).
 %\end{convention}
 
 \begin{lemma}
@@ -8888,11 +9132,11 @@ K \otimes_{E_0} E_1 \otimes_{E_1} \cdots{} \otimes_{E_{n-1}} E_n
 %\end{theorem}
 %
 %\begin{proof}
-%Так как \([K : k] < \infty\), то \(K\) как \(k\)-алгебра порождено конечным множеством \(S \subset K\). Пусть \(\mc{P} \subset k[X]\) --- множество унитарных минимальных многочленов над \(k\) элементов \(S\). Тогда \(K\) является полем разложения сепарабельного многочлена \(\prod_{P(X) \in \mc{P}} P(X) \in k[X]\).
+%Так как \([K : k] < \infty\), то \(K\) как \(k\)-алгебра порождено конечным множеством \(S \subset K\). Пусть \(\mc{P} \subset k[X]\) --- множество унитальных минимальных многочленов над \(k\) элементов \(S\). Тогда \(K\) является полем разложения сепарабельного многочлена \(\prod_{P(X) \in \mc{P}} P(X) \in k[X]\).
 %\end{proof}
 
 \begin{observation}
-Пусть \(E/k\) --- конечное сепарабельное расширение полей, \(\mc{P} \subset k[X]\) --- множество унитарных минимальных многочленов над \(k\) элементов какого-то фиксированного базиса \(E\) над \(k\),
+Пусть \(E/k\) --- конечное сепарабельное расширение полей, \(\mc{P} \subset k[X]\) --- множество унитальных минимальных многочленов над \(k\) элементов какого-то фиксированного базиса \(E\) над \(k\),
 а \(K\) --- поле разложения над \(E\) сепарабельного многочлена \(\prod_{P \in \mc{P}} P\).
 Тогда \(K\) является наименьшим расширением \(E\), таким что \(K/k\) --- расширение Галуа.
 \end{observation}
@@ -9037,7 +9281,7 @@ K \otimes_{E_0} E_1 \otimes_{E_1} \cdots{} \otimes_{E_{n-1}} E_n
 Элемент \(b \in B\) называется \emph{целым} над \(A\), если
 порождённая им подалгебра \(A[b] \subset B\) конечна над \(A\),
 или, эквивалентно,
-\(b\) является корнем унитарного многочлена с коэффициентами в \(A\), то есть
+\(b\) является корнем унитального многочлена с коэффициентами в \(A\), то есть
 \(b^n = \sum_{i=0}^{n-1} a_i b^i\) для какого-то \(n \in \N_1\) и каких-то \(a_i \in A\), где \(0 \leq i \leq n-1\).
 \end{definition}
 
