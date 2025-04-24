@@ -8903,18 +8903,20 @@ f^{(r+1)}(0)
 
 \subsection{Изоморфизм диагонализации}
 
-\begin{observation} \label{obs:FieldPowProj}
-Пусть \(K\) --- поле, а \(I\) --- конечное множество.
+\begin{observation}
+Пусть \(K\) --- поле, а \(I\) --- конечное множество.%
+\label{obs:FieldPowProj}
 Тогда
 гомоморфизмы \(K\)-алгебр \(K^{\times I} \to K\)
 --- это в точности проекции на сомножители.
 \end{observation}
 
-\begin{theorem} \label{thm:GalIsoOne}
+\begin{theorem}
 Пусть \(A\) --- конечномерная ассоциативная коммутативная унитальная алгебра над полем \(k\),
-а \(\theta : K \otimes_k A \xrightarrow{\sim} K^{\times I}\) --- её диагонализация над расширением полей \(K/k\).
+а \(\theta : K \otimes_k A \xrightarrow{\sim} K^{\times I}\) --- её диагонализация над расширением полей \(K/k\).%
+\label{thm:GalIsoOne}
 Тогда существует единственная перенумерация \(I \xrightarrow{\sim} S \coloneqq \Hom_{k\ring}(A,K)\), которая переводит в \(\theta\) гомоморфизм
-\(K\)-ал\-ге\-бр \(K \otimes_k A \xrightarrow{\sim} K^{\times S}\), индуцированный \(\barprod_{\varphi \in S} \varphi : A \to K^{\times S}\).
+\(K\)\=/алгебр \(K \otimes_k A \xrightarrow{\sim} K^{\times S}\), индуцированный гомоморфизмом \(k\)\=/алгебр \(\barprod_{\varphi \in S} \varphi : A \to K^{\times S}\), \(a \mapsto (\varphi(a))_{\varphi \in S}\).
 \end{theorem}
 
 \begin{proof}
@@ -8930,8 +8932,14 @@ I \xrightarrow{\sim} \Hom_{K\ring}(K^{\times I}, K) \xrightarrow{\sim} \Hom_{K\r
 %С другой стороны, по наблюдению~\ref{obs:FieldPowProj}, гомоморфизмы \(K\)-алгебр \(K^{\times I} \to K\) --- это в точности проекции на сомножители.
 %\end{proof}
 
+\begin{observation}
+В обозначениях теоремы~\ref{thm:GalIsoOne} группа \(G \coloneqq \Aut_{k\ring}(K)\) действует на \(K \otimes_k A\) через левый сомножитель. Помимо этого действия \(G\) на \(S\) и \(K\) индуцируют действие \(G\) на \(K^{\times S} = \map(S, K)\) сопряжением.%
+\label{obs:DiagEquivar}
+Изоморфизм диагонализации \(K \otimes_k A \xrightarrow{\sim} K^{\times S}\) эквивариантен относительно этих действий.
+\end{observation}
+
 \begin{theorem}
-Пусть \(K/k\) --- конечное расширение Галуа, \(G\) --- его группа Галуа, а \(K[\rtimes G]\) --- скрученное групповое кольцо.
+Пусть \(K/k\) --- конечное расширение Галуа, \(G\) --- его группа Галуа, а \(K[\rtimes G]\) --- скрученное групповое кольцо.%
 \label{thm:GalIsoTwo}
 Тогда гомоморфизм \(K[\rtimes G]\)-би\-мо\-ду\-лей
 \(\alpha \otimes \beta \mapsto \alpha (\sum_{g \in G} g) \beta : K \otimes_k K \to K[\rtimes G]\)
@@ -9164,6 +9172,50 @@ K \otimes_{E_0} E_1 \otimes_{E_1} \cdots{} \otimes_{E_{n-1}} E_n
 а \(K\) --- поле разложения над \(E\) сепарабельного многочлена \(\prod_{P \in \mc{P}} P\).
 Тогда \(K\) является наименьшим расширением \(E\), таким что \(K/k\) --- расширение Галуа.
 \end{observation}
+
+\subsection{Эквивалентность категорий}
+
+\begin{theorem}
+Пусть \(K/k\) --- конечное расширение Галуа,
+\(G\) --- его группа Галуа,
+\(\mc{S}\) --- категория конечных \(G\)\=/множеств,
+\(\mc{A}\) --- категория конечномерных ассоциативных коммутативных унитальных \(k\)\=/алгебр, диагонализуемых над \(K\).
+Тогда функторы
+\(\mf{S} : \mc{A} \to \mc{S}^o\),
+\(A \mapsto \Hom_{k\ring}(A, K)\)
+и
+\(\mf{A} : \mc{S}^o \to \mc{A}\),
+\(S \mapsto \Hom_{G\sets}(S, K)\)
+корректно определены и
+вместе с очевидными естественными преобразованиями
+\(\eta : \Id_{\mc{A}} \to \mf{A} \circ \mf{S}\)
+и
+\(\varepsilon : \mf{S} \circ \mf{A} \to \Id_{\mc{S}^o}\)
+задают эквивалентность категорий.
+\end{theorem}
+
+\begin{proof}[Доказательство (из двух частей)]
+~\begin{proofdescription}
+
+\item[Часть 1.]
+Пусть \(S \in \Ob(\mc{\mc{S}})\). Нам нужно доказать, что \(k\)\=/алгебра \(\mf{A}(S)\) диагонализуема над \(K\) и гомоморфизм \(\varepsilon_S\) биективен.
+По аддитивности можно предположить, что действие \(G\) на \(S\) транзитивно. Выберем точку \(s \in S\). Пусть \(H \coloneqq \op{Stab}_G(s)\). Тогда \(S\) отождествляется с \(G/H\), а \(\mf{A}(S)\) отождествляется с \(K^H\) с помощью гомоморфизма вычисления в точке \(s\).
+С другой стороны, любой гомоморфизм \(k\)\=/алгебр \(K^H \to K\) продолжается до гомоморфизма \(K \to K\), причём для любых двух гомоморфизмов \(\sigma, \tau \in G\) условие \(\sigma|_{K^H} = \tau|_{K^H}\) эквивалентно условию \(\sigma H = \tau H\).
+
+\item[Часть 2.]
+Пусть \(A \in \Ob(\mc{A})\). Нам нужно доказать, что гомоморфизм \(\eta_A\) биективен.
+Для этого надо рассмотреть изоморфизм \(G\)\=/множеств
+\(
+K \otimes_k A \xrightarrow{\sim}
+K^{\times \Hom_{k\ring}(A, K)} =
+\map(\Hom_{k\ring}(A, K), K)
+\)
+из наблюдения~\ref{obs:DiagEquivar}
+и перейти к \(G\)\=/инвариантам.
+\qedhere
+
+\end{proofdescription}
+\end{proof}
 
 \subsection{Теорема о нормальном базисе}
 
