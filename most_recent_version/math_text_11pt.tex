@@ -8966,33 +8966,53 @@ K^{\times G} \to K[\rtimes G]
 Если \(G\) --- группа, действующая на множестве \(X\), то \(X^G \coloneqq \{x \in X \mid g(x)=x\ \tn{для любого}\ g \in G\}\).
 \end{notation}
 
-\begin{lemma} \label{lem:GalFix}
-Пусть \(K/k\) --- конечное расширение Галуа, а \(G\) --- его группа Галуа. Тогда \(K^G = k\).
+%\begin{lemma} \label{lem:GalFix}
+%Пусть \(K/k\) --- конечное расширение Галуа, а \(G\) --- его группа Галуа. Тогда \(K^G = k\).
+%\end{lemma}
+
+%\begin{proof}
+%Изоморфизм диагонализации \(K \otimes_k K \xrightarrow{\sim} K^{\times G}\)
+%переводит \(\alpha \otimes 1\) в \((\alpha)_{g \in G}\), а \(1 \otimes \alpha\) в \((\t*[^g]{\alpha}{})_{g \in G}\) для любого \(\alpha \in K\),
+%откуда следует, что
+%\(K^G = \Ker(\alpha \mapsto \alpha \otimes 1 - 1 \otimes \alpha : K \to K \otimes_k K) = k\).
+%\end{proof}
+
+%\begin{lemma} \label{lem:GalSubgr}
+%Пусть \(K/k\) --- конечное расширение Галуа, \(G\) --- его группа Галуа, а \(H \varsubsetneq G\) --- собственная подгруппа \(G\). Тогда \(K^G \varsubsetneq K^H\).
+%\end{lemma}
+
+%\begin{proof}
+%Если \(K^H = K^G = k\),
+%то \((K \otimes_k K)^{\{1\} \times H} \cong K \otimes_k K^H \cong K \otimes_k k\).
+%Но множество инвариантов действия \(H^o\) правым умножением на \(K[\rtimes G]\) содержит \(K \cdot{} (\sum_{h \in H} h) \not\subset K \cdot{} (\sum_{g \in G} g)\) --- противоречие.
+%\end{proof}
+
+\begin{lemma}
+Пусть \(K/k\) --- конечное расширение Галуа, \(G\) --- его группа Галуа, а \(H \subset G\) --- её подгруппа.%
+\label{lem:GalSubgrFix}
+Тогда \(K^H = k\) тогда и только тогда, когда \(H = G\).
 \end{lemma}
 
 \begin{proof}
-Изоморфизм диагонализации \(K \otimes_k K \xrightarrow{\sim} K^{\times G}\)
-переводит \(\alpha \otimes 1\) в \((\alpha)_{g \in G}\), а \(1 \otimes \alpha\) в \((\t*[^g]{\alpha}{})_{g \in G}\) для любого \(\alpha \in K\),
-откуда следует, что
-\(K^G = \Ker(\alpha \mapsto \alpha \otimes 1 - 1 \otimes \alpha : K \to K \otimes_k K) = k\).
-\end{proof}
-
-\begin{lemma} \label{lem:GalSubgr}
-Пусть \(K/k\) --- конечное расширение Галуа, \(G\) --- его группа Галуа, а \(H \varsubsetneq G\) --- собственная подгруппа \(G\). Тогда \(K^G \varsubsetneq K^H\).
-\end{lemma}
-
-\begin{proof}
-Если \(K^H = K^G = k\),
-то \((K \otimes_k K)^{\{1\} \times H} \cong K \otimes_k K^H \cong K \otimes_k k\).
-Но множество инвариантов действия \(H^o\) правым умножением на \(K[\rtimes G]\) содержит \(K \cdot{} (\sum_{h \in H} h) \not\subset K \cdot{} (\sum_{g \in G} g)\) --- противоречие.
+Практически очевидно из следующей цепочки изоморфизмов:
+\(
+K \otimes_k (K^H)
+\cong
+(K \otimes_k K)^{\{1\} \times H}
+\cong
+(K^{\times G})^{\{1\} \times H}
+\cong
+K^{\times (G/H)}
+\).
 \end{proof}
 
 \begin{convention}
-Пусть \(K/k\) --- расширение полей. Условимся, что структура \(K\)-алгебры на кольце \(K \otimes_k K\) по умолчанию будет задаваться гомоморфизмом \(\alpha \mapsto \alpha \otimes 1 : K \to K \otimes_k K\).
+Пусть \(K/k\) --- расширение полей. Условимся, что структура \(K\)\=/алгебры на кольце \(K \otimes_k K\) по умолчанию будет задаваться гомоморфизмом \(\alpha \mapsto \alpha \otimes 1 : K \to K \otimes_k K\).
 \end{convention}
 
-\begin{theorem} \label{thm:GalUpperSubext}
-Пусть \(k \subset E \subset K\) --- последовательность вложенных полей, причём \(K/k\) --- конечное расширение Галуа.
+\begin{theorem}
+Пусть \(k \subset E \subset K\) --- последовательность вложенных полей, причём \(K/k\) --- конечное расширение Галуа.%
+\label{thm:GalUpperSubext}
 Тогда \(K/E\) --- конечное расширение Галуа.
 \end{theorem}
 
@@ -9009,7 +9029,9 @@ K^{\times G} \to K[\rtimes G]
 \end{theorem}
 
 \begin{proof}[Набросок доказательства]
-Утверждение тривиальным образом следует из теоремы~\ref{thm:GalUpperSubext}, леммы~\ref{lem:GalFix} и леммы~\ref{lem:GalSubgr}.
+Утверждение тривиальным образом следует из теоремы~\ref{thm:GalUpperSubext}
+%леммы~\ref{lem:GalFix} и леммы~\ref{lem:GalSubgr}.
+и леммы~\ref{lem:GalSubgrFix}.
 \end{proof}
 
 \subsection{Расширения Галуа как максимально симметричные расширения}
