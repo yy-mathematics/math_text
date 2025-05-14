@@ -87,17 +87,97 @@
 
 %Любые куски отсюда разрешается копировать куда угодно и изменять как угодно, если это не помешает их дальнейшему распространению.
 
-Данное произведение объявляется общественным достоянием с помощью лицензии
+Формально данное произведение лицензировано с помощью лицензии
 %\textenglish{\texttt{CC0 1.0 Universal}}.
 \textenglish{Creative Commons <<\texttt{CC0 1.0 Universal}>>},
-текст которой доступен по ссылке
+текст которой доступен по следующей ссылке:
 \url{https://creativecommons.org/publicdomain/zero/1.0/legalcode.en} (дата обр.\ 07.01.2025).
-Значки: \cczero.
+Вот соответствующие значки: \cczero.
+Иначе говоря, оно объявляется общественным достоянием.
 
 \subsection{Обратная связь}
 
 Связаться с автором можно по электронной почте
 \href{mailto:yymath@yandex.ru}{\nolinkurl{yymath@yandex.ru}}.
+
+
+\section{Буквы в математических формулах}
+
+\subsection{Греческие буквы}
+
+Для справки приведём таблицу из греческих букв, используемых в математическом режиме \(\TeX\)-а.
+Вместо некоторых прописных греческих букв используются соответствующие латинские.
+\begin{center}
+\begin{tabular}{ c c c c c c }
+\(A\,\alpha\) & \(B\,\beta\) & \(\Gamma\,\gamma\) & \(\Delta\,\delta\) & \(E\,\epsilon\,\varepsilon\) & \(Z\,\zeta\) \\
+\(H\,\eta\) & \(\Theta\,\theta\,\vartheta\) & \(I\,\iota\) & \(K\,\kappa\) & \(\Lambda\,\lambda\) & \(M\,\mu\) \\
+\(N\,\nu\) & \(\Xi\,\xi\) & \(O\,o\) & \(\Pi\,\pi\,\varpi\) & \(P\,\rho\,\varrho\) & \(\Sigma\,\sigma\,\varsigma\) \\
+\(T\,\tau\) & \(\Upsilon\,\upsilon\) & \(\Phi\,\phi\,\varphi\) & \(X\,\chi\) & \(\Psi\,\psi\) & \(\Omega\,\omega\)
+\end{tabular}
+\end{center}
+Заметим, что строчная буква \texttt{дзета}, то есть \textzeta, чем-то похожа на английскую <<\textenglish{z}>>, что позволяет отличать её от буквы \texttt{кси}, то есть \textxi, а строчная буква \texttt{мю}, то есть \textmu, --- на кириллическую <<м>>, что позволяет отличать её от буквы \texttt{эта}, то есть \texteta.
+
+\subsection{Готические буквы}
+
+Для справки приведём таблицу из английских букв, набранных математической фрактурой.
+\begin{center}
+\begin{tabular}{ c c c c c c c c c c c c c }
+\(\mathfrak{A}\) &
+\(\mathfrak{B}\) &
+\(\mathfrak{C}\) &
+\(\mathfrak{D}\) &
+\(\mathfrak{E}\) &
+\(\mathfrak{F}\) &
+\(\mathfrak{G}\) &
+\(\mathfrak{H}\) &
+\(\mathfrak{I}\) &
+\(\mathfrak{J}\) &
+\(\mathfrak{K}\) &
+\(\mathfrak{L}\) &
+\(\mathfrak{M}\) \\
+\(\mathfrak{a}\) &
+\(\mathfrak{b}\) &
+\(\mathfrak{c}\) &
+\(\mathfrak{d}\) &
+\(\mathfrak{e}\) &
+\(\mathfrak{f}\) &
+\(\mathfrak{g}\) &
+\(\mathfrak{h}\) &
+\(\mathfrak{i}\) &
+\(\mathfrak{j}\) &
+\(\mathfrak{k}\) &
+\(\mathfrak{l}\) &
+\(\mathfrak{m}\) \\[\medskipamount]
+\(\mathfrak{N}\) &
+\(\mathfrak{O}\) &
+\(\mathfrak{P}\) &
+\(\mathfrak{Q}\) &
+\(\mathfrak{R}\) &
+\(\mathfrak{S}\) &
+\(\mathfrak{T}\) &
+\(\mathfrak{U}\) &
+\(\mathfrak{V}\) &
+\(\mathfrak{W}\) &
+\(\mathfrak{X}\) &
+\(\mathfrak{Y}\) &
+\(\mathfrak{Z}\) \\
+\(\mathfrak{n}\) &
+\(\mathfrak{o}\) &
+\(\mathfrak{p}\) &
+\(\mathfrak{q}\) &
+\(\mathfrak{r}\) &
+\(\mathfrak{s}\) &
+\(\mathfrak{t}\) &
+\(\mathfrak{u}\) &
+\(\mathfrak{v}\) &
+\(\mathfrak{w}\) &
+\(\mathfrak{x}\) &
+\(\mathfrak{y}\) &
+\(\mathfrak{z}\)
+\end{tabular}
+\end{center}
+Обратите внимание на то, что буквы \(\mathfrak{I}\) и \(\mathfrak{J}\), а также \(\mathfrak{B}\) и \(\mathfrak{P}\) похожи друг на друга.
+%Такой шрифт часто используется, например, для обозначения идеалов в кольцах.
 
 
 \section{Глобальные обозначения, соглашения и определения}
@@ -384,20 +464,6 @@ The \((\phantom{x}, \phantom{x})\) operation then turned out to be fundamental i
 Иногда их ещё называют \emph{приведёнными} многочленами, но эта практика, на мой вкус, плохо согласована с использованием фразы <<неприводимый многочлен>> в её обычном значении.%
 \footnote{Троица \texttt{приведённый}, \texttt{неприводимый} и \texttt{приводимый} возникает и в теории схем.}
 \end{convention}
-
-
-\section{Греческий алфавит}
-
-Для справки приведём таблицу из греческих букв, используемых в математическом режиме \(\TeX\)-а.
-\begin{center}
-\begin{tabular}{ c c c c c c }
-\(A\,\alpha\) & \(B\,\beta\) & \(\Gamma\,\gamma\) & \(\Delta\,\delta\) & \(E\,\epsilon\,\varepsilon\) & \(Z\,\zeta\) \\
-\(H\,\eta\) & \(\Theta\,\theta\,\vartheta\) & \(I\,\iota\) & \(K\,\kappa\) & \(\Lambda\,\lambda\) & \(M\,\mu\) \\
-\(N\,\nu\) & \(\Xi\,\xi\) & \(O\,o\) & \(\Pi\,\pi\,\varpi\) & \(P\,\rho\,\varrho\) & \(\Sigma\,\sigma\,\varsigma\) \\
-\(T\,\tau\) & \(\Upsilon\,\upsilon\) & \(\Phi\,\phi\,\varphi\) & \(X\,\chi\) & \(\Psi\,\psi\) & \(\Omega\,\omega\)
-\end{tabular}
-\end{center}
-Можно заметить, что строчная буква \texttt{дзета} реально чем-то похожа на английскую <<\textenglish{z}>>, а строчная буква \texttt{мю} --- на кириллическую <<м>>.
 
 
 
