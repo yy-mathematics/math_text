@@ -114,7 +114,7 @@
 \(P\,\rho\,\varrho\) & \(\Sigma\,\sigma\,\varsigma\) & \(T\,\tau\) & \(\Upsilon\,\upsilon\) & \(\Phi\,\phi\,\varphi\) & \(X\,\chi\) & \(\Psi\,\psi\) & \(\Omega\,\omega\)
 \end{tabular}
 \end{center}
-Заметим, что строчная буква \texttt{дзета}, то есть \textzeta, чем-то похожа на английскую <<\textenglish{z}>>, что позволяет отличать её от буквы \texttt{кси}, то есть \textxi, а строчная буква \texttt{мю}, то есть \textmu, --- на кириллическую <<м>>, что позволяет отличать её от буквы \texttt{эта}, то есть \texteta.
+Заметим, что строчная буква \texttt{дзета} (i.e.\ \textzeta), чем-то похожа на английскую <<\textenglish{z}>>, что позволяет отличать её от буквы \texttt{кси} (i.e.\ \textxi), а строчная буква \texttt{мю} (i.e.\ \textmu) --- на кириллическую <<м>>, что позволяет отличать её от буквы \texttt{эта} (i.e.\ \texteta).
 
 \subsection{Готические буквы}
 
@@ -175,7 +175,8 @@
 \(\mathfrak{z}\)
 \end{tabular}
 \end{center}
-Обратите внимание на то, что буквы \(\mathfrak{I}\) и \(\mathfrak{J}\), а также \(\mathfrak{B}\) и \(\mathfrak{P}\) похожи друг на друга.
+Обратите внимание на то, что в таблице много пар похожих глифов, например, \(\mathfrak{I}\) и \(\mathfrak{J}\), \(\mathfrak{B}\) и \(\mathfrak{P}\), \(\mathfrak{r}\) и \(\mathfrak{x}\).
+%Обратите внимание на то, что буквы \(\mathfrak{I}\) и \(\mathfrak{J}\), а также \(\mathfrak{B}\) и \(\mathfrak{P}\) похожи друг на друга.
 %Такой шрифт часто используется, например, для обозначения идеалов в кольцах.
 
 
@@ -5405,24 +5406,32 @@ n \cdot (1 + \lVert n \rVert + \cdots + {\lVert n \rVert}^{\lfloor \frac{\ln(m)}
 
 \subsection{Определение категории}
 
-\begin{notation}
-<<Полугруппа*>> --- это \rusquoted{полугруппа}, совокупность элементов которой не подразумевается малой, то есть не подразумевается множеством. Обозначения <<отображение*>> и <<категория*>> имеют аналогичный смысл.
-\end{notation}
+\begin{convention}[\scshape Groß]
+<<Groß\-/полугруппа>> --- это \rusquoted{полугруппа}, совокупность элементов которой не подразумевается малой, то есть не подразумевается множеством.%
+\label{con:Gross}
+Записи <<groß\-/отображение>>, <<groß\-/категория>> и <<groß\-/множество>> имеют аналогичный смысл.
+\end{convention}
 
-\begin{definition}
+\begin{remark}
+Соглашение~\ref{con:Gross} основано на терминологии из лекций Д.\ Терешкина по теории категорий в НМУ \cite[23:10]{Tereshkin_Cat_2024}.
+\end{remark}
+
+\begin{definition}[\scshape Ein]
+Пусть \(\mc{C}\) --- мультипликативная groß\-/полугруппа с нулём.%
 \label{def:SemigroupEin}
-Пусть \(\mc{C}\) --- мультипликативная полугруппа* с нулём. Определим
+Тогда определим groß\-/множество
 %\footnote{<<Ein>> от немецкого <<einheit>>.}
-\(\op{Ein}(\mc{C}) \coloneqq \{e \in \mc{C} \setminus \{0\} \mid ex, xe \in \{0, x\}\ \text{для любого \(x \in \mc{C}\)}\}\).
+\[\op{Ein}(\mc{C}) \coloneqq \{e \in \mc{C} \setminus \{0\} \mid ex, xe \in \{0, x\}\ \text{для любого \(x \in \mc{C}\)}\}.\]
 \end{definition}
 
 \begin{remark}
 Обозначение <<Ein>> в определении~\ref{def:SemigroupEin} происходит от немецкого слова <<einheit>>.
+Оно не является общепринятым, но я не знаю общепринятого обозначения.
 \end{remark}
 
-\begin{definition}[\scshape Категория*]
+\begin{definition}[\scshape Groß\-/категория]
 \label{def:CategorySemigroup}
-Мультипликативная полугруппа* с нулём \(\mc{C}\) называется \emph{категорией*}, если
+Мультипликативная groß\-/полугруппа с нулём \(\mc{C}\) называется \emph{groß\-/категорией}, если
 для всех \(x, y, z \in \mc{C}\) из того, что \(xy, yz \neq 0\) следует, что \(xyz \neq 0\),
 %\(xy, yz \neq 0 \implies xyz \neq 0\) для всех \(x, y, z \in \mc{C}\)
 и для любого \(x \in \mc{C} \setminus \{0\}\) существуют \(e', e'' \in \op{Ein}(\mc{C})\), такие что \(e' x, x e'' \neq 0\).
@@ -5430,20 +5439,22 @@ n \cdot (1 + \lVert n \rVert + \cdots + {\lVert n \rVert}^{\lfloor \frac{\ln(m)}
 
 \subsection{Области и кообласти}
 
-\begin{theorem}
+\begin{theorem}[\scshape Единственность (ко)области]
+Пусть \(\mc{C}\) --- мультипликативная groß\-/полугруппа с нулем, \(x \in \mc{C} \setminus \{0\}\), \(e, e' \in \op{Ein}(\mc{C})\) и \(ex, e'x \neq 0\).%
 \label{thm:EinUnique}
-Пусть \(\mc{C}\) --- мультипликативная полугруппа* с нулем, \(x \in \mc{C} \setminus \{0\}\), \(e, e' \in \op{Ein}(\mc{C})\) и \(ex, e'x \neq 0\). Тогда \(e = e'\).
+Тогда \(e = e'\).
 \end{theorem}
 
 \begin{proof}
 Понятно, что раз \(ex, e'x \neq 0\), то \(ex = e'x = x\). Тогда \(e'ex = e'x = x \neq 0\). Отсюда следует, что \(e'e \neq 0\), а из этого, в свою очередь, следует, что \(e = e'e = e'\).
 \end{proof}
 
-\begin{definition}[\scshape Область и кообласть]
+\begin{definition}[\scshape Отображение (ко)области]
+Пусть \(\mc{C}\) --- groß\-/категория.%
 \label{def:SourceTarget}
-Пусть \(\mc{C}\) --- категория*. Оп\-ре\-де\-лим
+Оп\-ре\-де\-лим
 %\footnote{Буквы <<\textenglish{s}>> и <<\textenglish{t}>> --- это первые буквы английских слов <<\textenglish{source}>> и <<\textenglish{target}>>.}
-отображения* \(s,t : \mc{C} \setminus \{0\} \rrarrow \op{Ein}(\mc{C})\) следующими свойствами: \(x s(x), t(x) x \neq 0\) для любого \(x \in \mc{C} \setminus \{0\}\).
+groß\-/отображения \(s,t : \mc{C} \setminus \{0\} \rrarrow \op{Ein}(\mc{C})\) следующими свойствами: \(x s(x), t(x) x \neq 0\) для любого \(x \in \mc{C} \setminus \{0\}\).
 \end{definition}
 
 \begin{remark}
@@ -5451,11 +5462,11 @@ n \cdot (1 + \lVert n \rVert + \cdots + {\lVert n \rVert}^{\lfloor \frac{\ln(m)}
 \end{remark}
 
 \begin{remark}
-Буквы <<\textenglish{s}>> и <<\textenglish{t}>>, которыми обозначаются отображения* области и кообласти в определении~\ref{def:SourceTarget}, --- это первые буквы английских слов <<\textenglish{source}>> и <<\textenglish{target}>>.
+Буквы <<\textenglish{s}>> и <<\textenglish{t}>>, которыми обозначаются groß\-/отображения области и кообласти в определении~\ref{def:SourceTarget}, --- это первые буквы английских слов <<\textenglish{source}>> и <<\textenglish{target}>>.
 \end{remark}
 
-\begin{theorem}
-Пусть \(\mc{C}\) --- категория*, а \(x, y \in \mc{C} \setminus \{0\}\). Тогда условие \(xy \neq 0\) эквивалентно условию \(t(y) = s(x)\), причём если \(xy \neq 0\), то \(s(xy) = s(y)\) и \(t(xy) = t(x)\).
+\begin{theorem}[\scshape (Ко)области и композиция]
+Пусть \(\mc{C}\) --- groß\-/категория, а \(x, y \in \mc{C} \setminus \{0\}\). Тогда условие \(xy \neq 0\) эквивалентно условию \(t(y) = s(x)\), причём если \(xy \neq 0\), то \(s(xy) = s(y)\) и \(t(xy) = t(x)\).
 \end{theorem}
 
 \begin{proof}
@@ -5466,14 +5477,14 @@ n \cdot (1 + \lVert n \rVert + \cdots + {\lVert n \rVert}^{\lfloor \frac{\ln(m)}
 \end{proof}
 
 \begin{observation}
-Пусть \(\mc{C}\) --- категория*, а \(e \in \op{Ein}(\mc{C})\). Тогда выполняются равенства \(e = e s(e) = s(e)\) и \(e = t(e) e = t(e)\).
+Пусть \(\mc{C}\) --- groß\-/категория, а \(e \in \op{Ein}(\mc{C})\). Тогда выполняются равенства \(e = e s(e) = s(e)\) и \(e = t(e) e = t(e)\).
 \end{observation}
 
 \subsection{Общие замечания}
 
 Доказанного в этом разделе достаточно, чтобы заметить эквивалентность определения~\ref{def:CategorySemigroup} и стандартного определения категории через совокупность объектов и совокупность морфизмов.
 Вне этого раздела, как правило, будет использоваться стандартное определение категории.
-Причём, несмотря на то, что определение~\ref{def:CategorySemigroup} является, по сути, определением <<большой>> категории или <<метакатегории>>, обычно в этом тексте будет подразумеваться, что совокупность морфизмов между любыми двумя объектами категории образует множество.
+Причём, несмотря на то, что определение~\ref{def:CategorySemigroup} является, по сути, определением <<метакатегории>>, которая не обязана быть локально малой, обычно в этом тексте будет подразумеваться, что совокупность морфизмов между любыми двумя объектами категории образует множество.
 
 
 \section{Разложения Брюа и Гаусса}
