@@ -6404,47 +6404,82 @@ r' (r'' - l'') +
 \end{theorem}
 
 \begin{proof}
-Сначала сделаем два наблюдения.
-Во-первых, для любого \(y \in E\) решения уравнения \(\varphi(x) = y\) совпадают с фиксированными точками отображения \(\psi_y : E \to E\), \(x \mapsto \varphi(x) + x - y\).
-Во-вторых,
-без потери общности
-можно предположить, что
-\(D(\varphi)_0 = -\Id\),
-заменив \(\varphi\) на \((-(D(\varphi)_0)^{\circ(-1)}) \circ \varphi\).
-Тогда \(D(\psi_y)_0 = 0\) для всех \(y \in E\).
+Во-первых, заметим, что для любого \(y \in E\) множество \(\varphi^{-1}(y)\) совпадает с множеством фиксированных точек отображения \(T_{-y} \circ \hat{\varphi} : E \to E\), где \(T_{-y} : E \to E\), \(x \mapsto x - y\), а \(\hat{\varphi} \coloneqq \varphi + \Id_E\).
 
-Теперь зафиксируем два вещественных числа
-\(\varepsilon, \rho > 0\), таких что \(\varepsilon + \rho = 1\).
-Так как \(D(\psi_0)_0 = 0\),
-а отображение
-\(x \mapsto D(\psi_0)_x \mapsto \lVert D(\psi_0)_x \rVert : E \to \Hom_{\R\tn{-}\mr{mod}}(E,E) \to \R\)
-непрерывно в нуле, то 
-мы можем найти вещественное число \(R > 0\), такое что
-для любого \(x \in E\), удовлетворяющего условию \(|x| \leq R\), выполняется неравенство \(\lVert D(\psi_0)_x \rVert \leq \varepsilon\),
-экививалентное неравенству \(\lVert D(\psi_y)_x \rVert \leq \varepsilon\) для произвольного \(y \in E\).
+Во-вторых, заметим, что без потери общности можно предположить, что \(D(\varphi)_0 = -\Id\), то есть \(D(\hat{\varphi})_0 = 0\), заменив \(\varphi\) на композицию \(\varphi\) и линейного автоморфизма \(E\).
+
+Теперь зафиксируем два числа
+\(\varepsilon, \rho \in \R_{>0}\), таких что \(\varepsilon + \rho = 1\).
+Так как отображение
+\(x \mapsto D(\hat{\varphi})_x \mapsto \lVert D(\hat{\varphi})_x \rVert : E \to \Hom_{\R\tn{-}\mr{mod}}(E,E) \to \R\)
+непрерывно в нуле
+и \(\lVert D(\hat{\varphi})_0 \rVert = \lVert 0 \rVert = 0\),
+то существует \(R \in \R_{>0}\), такое что
+\(\lVert D(\hat{\varphi})_x \rVert \leq \varepsilon\)
+для любого \(x \in \overline{B}_R(0)\).
 
 Согласно неравенству Лагранжа (теорема \ref{thm:LagrIneq})
-для любого \(y \in E\)
-растяжение ограничения \(\psi_y\)
-на замкнутый шар \(\{x \in E \mid |x| \leq R\}\)
+растяжение отображения \(\hat{\varphi}|_{\overline{B}_R(0)}\)
 не превосходит \(\varepsilon\).
-В частности, \(|\psi_0(x)| \leq \varepsilon R\) для всех \(x \in E\), таких что \(|x| \leq R\),
-и \(|\psi_y(x)| = |\psi_0(x) + y| < R\)
-для всех \(x,y \in E\), таких что \(|x| \leq R\)
-и \(|y| < \rho R\).
+В частности, \(\hat{\varphi}(\overline{B}_R(0)) \subset \overline{B}_{\varepsilon R}(0)\)
+и \(T_{-y} (\hat{\varphi} (\overline{B}_R(0))) \subset B_R(0)\)
+для всех \(y \in B_{\rho R}(x)\).
 
-Зафиксируем произвольный \(y \in E\), такой что \(|y| < \rho R\), и применим теорему Банаха о фиксированной точке к
-отображению \(x \mapsto \psi_y(x) : \{x \in E \mid |x| \leq R\} \to \{x \in E \mid |x| \leq R\}\).
-Мы получим, что существует единственная точка \(x \in E\), такая что \(|x| \leq R\) и \(\varphi(x) = y\),
-причём \(|x| = |\psi_y(x)| < R\).
+Зафиксируем произвольный \(y \in B_{\rho R}(x)\) и применим теорему Банаха о фиксированной точке к
+отображению \(x \mapsto T_{-y}(\hat{\varphi}(x)) : \overline{B}_R(0) \to \overline{B}_R(0)\).
+Мы получим, что существует единственная точка \(x \in \overline{B}_R(0)\) такая что \(\varphi(x) = y\),
+причём \(x = T_{-y}(\hat{\varphi}(x)) \in B_R(0)\).
+
+%Осталось положить
+%\(U \coloneqq B_R(0) \cap \varphi^{-1}(B_{\rho R}(0))\).
 Множество
-\(U \coloneqq \{x \in E \mid |x| < R\} \cap \varphi^{-1}(\{y \in E \mid |y| < \rho R\})\),
-для которого \(\varphi(U) = \{y \in E \mid |y| < \rho R\}\),
-подходит условию теоремы.
-%\(V \coloneqq \{y \in E \mid |y| < \rho R\}\)
-%и
-%\(U \coloneqq \{x \in E \mid |x| < R\} \cap \varphi^{-1}(V)\).
+\(U \coloneqq B_R(0) \cap \varphi^{-1}(B_{\rho R}(0))\),
+для которого \(\varphi(U) = B_{\rho R}(0)\),
+удовлетворяет условию теоремы.
 \end{proof}
+
+%\begin{proof}
+%Сначала сделаем два наблюдения.
+%Во-первых, для любого \(y \in E\) решения уравнения \(\varphi(x) = y\) совпадают с фиксированными точками отображения \(\psi_y : E \to E\), \(x \mapsto \varphi(x) + x - y\).
+%Во-вторых,
+%без потери общности
+%можно предположить, что
+%\(D(\varphi)_0 = -\Id\),
+%заменив \(\varphi\) на \((-(D(\varphi)_0)^{\circ(-1)}) \circ \varphi\).
+%Тогда \(D(\psi_y)_0 = 0\) для всех \(y \in E\).
+%
+%Теперь зафиксируем два вещественных числа
+%\(\varepsilon, \rho > 0\), таких что \(\varepsilon + \rho = 1\).
+%Так как \(D(\psi_0)_0 = 0\),
+%а отображение
+%\(x \mapsto D(\psi_0)_x \mapsto \lVert D(\psi_0)_x \rVert : E \to \Hom_{\R\tn{-}\mr{mod}}(E,E) \to \R\)
+%непрерывно в нуле, то 
+%мы можем найти вещественное число \(R > 0\), такое что
+%для любого \(x \in E\), удовлетворяющего условию \(|x| \leq R\), выполняется неравенство \(\lVert D(\psi_0)_x \rVert \leq \varepsilon\),
+%экививалентное неравенству \(\lVert D(\psi_y)_x \rVert \leq \varepsilon\) для произвольного \(y \in E\).
+%
+%Согласно неравенству Лагранжа (теорема \ref{thm:LagrIneq})
+%для любого \(y \in E\)
+%растяжение ограничения \(\psi_y\)
+%на замкнутый шар \(\{x \in E \mid |x| \leq R\}\)
+%не превосходит \(\varepsilon\).
+%В частности, \(|\psi_0(x)| \leq \varepsilon R\) для всех \(x \in E\), таких что \(|x| \leq R\),
+%и \(|\psi_y(x)| = |\psi_0(x) + y| < R\)
+%для всех \(x,y \in E\), таких что \(|x| \leq R\)
+%и \(|y| < \rho R\).
+%
+%Зафиксируем произвольный \(y \in E\), такой что \(|y| < \rho R\), и применим теорему Банаха о фиксированной точке к
+%отображению \(x \mapsto \psi_y(x) : \{x \in E \mid |x| \leq R\} \to \{x \in E \mid |x| \leq R\}\).
+%Мы получим, что существует единственная точка \(x \in E\), такая что \(|x| \leq R\) и \(\varphi(x) = y\),
+%причём \(|x| = |\psi_y(x)| < R\).
+%Множество
+%\(U \coloneqq \{x \in E \mid |x| < R\} \cap \varphi^{-1}(\{y \in E \mid |y| < \rho R\})\),
+%для которого \(\varphi(U) = \{y \in E \mid |y| < \rho R\}\),
+%подходит условию теоремы.
+%%\(V \coloneqq \{y \in E \mid |y| < \rho R\}\)
+%%и
+%%\(U \coloneqq \{x \in E \mid |x| < R\} \cap \varphi^{-1}(V)\).
+%\end{proof}
 
 
 \section{Равенство смешанных производных}
