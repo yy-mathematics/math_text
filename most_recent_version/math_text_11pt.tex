@@ -814,91 +814,6 @@ a \wedge b \wedge d(c) =
 \end{observation}
 
 
-\section[Тождества с сопряжением и мультипликативными коммутаторами][Тождества с сопряжением и мульт.\ коммутаторами]{Тождества с сопряжением и мультипликативными коммутаторами}
-
-Данный раздел представляет собой небольшую <<шпаргалку>>, содержащую стандартные тождества с сопряжением и мультипликативными коммутаторами и их выводы.
-Мы используем правонормированные коммутаторы.
-В тождествах с левонормированными коммутаторами
-надо использовать сопряжение слева, а не справа,
-а также группировать кратные коммутаторы влево:
-$[[\;,\;],\;]$, а не вправо: $[\;,[\;,\;]]$.
-\begin{gather*}
-	a^b \coloneqq b^{-1}ab,\
-	[a,b] \coloneqq a^{-1}b^{-1}ab,\
-    ab = ba^b,\
-    a[a,b] = a^b,\
-    ba[a,b]=ab,\
-    \\
-    a^{bc} = (a^b)^c,\
-    (ab)^c = a^cb^c,\
-    [a,b]^{-1} = [b,a],\ 
-    [a,b]^g = [a^g,b^g].
-\end{gather*}
-\begin{gather*}
-    a[a,bc] =
-    a^{bc} =
-    (a^b)^c =
-    (a[a,b])^c =
-    a^c [a,b]^c =
-    a[a,c][a,b]^c
-    \implies
-    \\
-    \implies
-    [a,bc] =
-    [a,c][a,b]^c.
-    \\
-    \text{Обращением получаем:}\
-    [bc,a] =
-    [b,a]^c [c,a].
-    \\
-    \text{Подставив}\ 
-    b=c^{-1},\ 
-    \text{получаем:}\
-    [c,a] =
-    [a,c^{-1}]^c.
-\end{gather*}
-\begin{gather*}
-    a(bc)[bc,a] =
-    (bc)a\ 
-    (\text{цикл}\ (a,b,c))
-    \implies
-    \\
-    \implies
-    abc[bc,a][ca,b][ab,c] = abc
-    \implies
-    [bc,a][ca,b][ab,c] = 1.
-\end{gather*}
-\begin{gather*}
-    a^b[a^b,[b,c]] =
-    (a^b)^{[b,c]} =
-    a^{b[b,c]} =
-    a^{b^c},
-    \\
-    X \coloneqq
-    [a^b,[b,c]] =
-    [a^b,[c,b^{-1}]^b] =
-    [a,[c,b^{-1}]]^b,
-    \\
-    bca^b X =
-    bca^{b^c} =
-    cb^ca^{b^c} =
-    cab^c\ 
-    (\text{цикл}\ (a,b,c))
-    \\
-    \Downarrow
-    \\
-    [a^b,[b,c]]
-    [b^c,[c,a]]
-    [c^a,[a,b]] = 1\ 
-    \text{(тождество Холла)},
-    \\
-    [a,[c,b^{-1}]]^b
-    [b,[a,c^{-1}]]^c
-    [c,[b,a^{-1}]]^a = 1\ 
-    \text{(тождество Холла\namedash{}Витта)}.
-\end{gather*}
-
-
 \section{Дуальность Стоуна}
 
 \subsection{Теорема Стоуна}
@@ -3442,214 +3357,6 @@ M / (rm = mr \mid r \in R,\ m \in M),
 \end{remark}
 
 
-\section{Тождества в алгебрах Ли и Йордана}
-
-\begin{notation}
-Пусть \(R\) --- кольцо.
-Введём обозначения \(a* : R \to R\), \(x \mapsto ax\) и \(*a : R \to R\), \(x \mapsto xa\), где \(a \in R\).
-\end{notation}
-
-\begin{observation}
-Пусть \(R\) --- кольцо.
-Заметим, что \(d \in \End_{\Z\tn{-}\mr{mod}}(R)\) является дифференцированием \(R\) тогда и только тогда, когда диаграмма~\eqref{eq:DiffCommSquare}, где \(\mathrm{mult}\) --- это отображение умножения в \(R\), коммутативна.
-\begin{equation} \label{eq:DiffCommSquare}
-\begin{tikzcd}
-R \otimes_{\Z} R \arrow{r}{\mathrm{mult}} \arrow{d}[']{d \otimes 1 + 1 \otimes d} & R \arrow{d}{d} \\%
-R \otimes_{\Z} R \arrow{r}{\mathrm{mult}}& R
-\end{tikzcd}
-\end{equation}
-Введём обозначения \(\lambda(a) \coloneqq a \otimes 1\) и \(\rho(a) \coloneqq 1 \otimes a\), где \(a \in \End_{\Z\tn{-}\mr{mod}}(R)\).
-Тогда \eqref{eq:LeibnizJacobiCheck} --- это, по сути, проверка того, что коммутатор дифференцирований является дифференцированием.
-\begin{equation} \label{eq:LeibnizJacobiCheck}
-[\lambda(a) + \rho(a), \lambda(b) + \rho(b)]
-=
-[\lambda(a), \lambda(b)] + [\rho(a), \rho(b)]
-=
-\lambda([a,b]) + \rho([a,b])
-\end{equation}
-\end{observation}
-
-\begin{observation}
-Пусть \(R\) --- ассоциативное кольцо.
-Введём обозначения \(\lambda(a) \coloneqq a*\) и \(\rho(a) \coloneqq *(-a)\), где \(a \in R\).
-Тогда \eqref{eq:LeibnizJacobiCheck} --- это проверка того, что коммутатор в \(R\) удовлетворяет тождеству Якоби\namedash{}Лейбница.
-\end{observation}
-
-\begin{observation}
-Пусть \(R\) --- ассоциативное кольцо.
-Тогда антикоммутатор в \(R\), то есть йорданово умножение \((a, b) \mapsto a \circ b \coloneqq ab + ba : R \times R \to R\), удовлетворяет йорданову тождеству, потому что если \(a \in R\) и \(b \in R\) коммутируют,
-то \(a* + *a\) и \(b* + *b\) тоже коммутируют.
-\end{observation}
-
-\begin{observation}
-Пусть \(R\) --- кольцо.
-То, что \(d \in \End_{\Z\tn{-}\mr{mod}}(R)\) является дифференцированием \(R\),
-эквивалентно тому, что \([d, a*]=(da)*\)
-для любого \(a \in R\).
-\end{observation}
-
-\begin{remark}
-Например, в алгебре Вейля, то есть алгебре дифференциальных операторов с полиномиальными коэффициентами, выполняется соотношение \([\6 / \6 x, x] = 1\), невозможное для конечных матриц в характеристике \(0\), в чём можно убедиться, взяв след.
-\end{remark}
-
-\begin{observation}
-Обычно \(e^{a \otimes 1 + 1 \otimes a} = e^a \otimes e^a\) и \(e^{a* - *a} = e^a* \circ *e^{-a}\), когда эти выражения имеют смысл.
-\end{observation}
-
-\begin{observation}%[\scshape Инвариантность формы Киллинга]
-Форма Киллинга --- это след произведения. Взяв след от тождества
-\([a,bc]=[a,b]c+b[a,c]\), получаем её инвариантность.
-\end{observation}
-
-\begin{observation}
-Если (\ref{eq:gr_lie_act_ten},~слева) --- коммутативная диаграмма модулей над ассоциативным коммутативным унитальным кольцом \(A\), то (\ref{eq:gr_lie_act_ten},~справа) --- тоже.
-\begin{equation}
-\label{eq:gr_lie_act_ten}
-\begin{tikzcd}
-V \ar{r}{d'} \ar[swap]{d}{g} &
-V \ar{d}{g} &
-&
-V \otimes_A V \ar{rr}{d' \otimes 1 + 1 \otimes d'} \ar[swap]{d}{g \otimes g} &
-&
-V \otimes_A V \ar{d}{g \otimes g}
-\\
-V \ar{r}{d} &
-V &
-&
-V \otimes_A V \ar{rr}{d \otimes 1 + 1 \otimes d} &
-&
-V \otimes_A V
-\end{tikzcd}
-\end{equation}
-\end{observation}
-
-\begin{observation}
-Пусть \(R\) --- алгебра над ассоциативным коммутативным унитальным кольцом \(A\), отображение \(d : R \to R\) --- дифференцирование \(R\) над \(A\), а \(a\) и \(b\) --- элементы \(A\).
-Тогда мы имеем коммутативную диаграмму \eqref{eq:diff_scal_binom}, где \(\mathrm{mult}\) --- это отображение умножения в \(R\), которая делает очевидной формулу \eqref{eq:diff_scal_binom_form}, где \(x,y \in R\), а \(n \in \N_0\).
-\begin{equation}
-\label{eq:diff_scal_binom}
-\begin{tikzcd}[column sep = 7.5em]
-R \otimes_A R \ar[swap]{d}{\mathrm{mult}} \ar{r}{(d-a) \otimes 1 + 1 \otimes (d-b)} &
-R \otimes_A R \ar{d}{\mathrm{mult}}
-\\
-R \ar{r}{d - (a + b)} &
-R
-\end{tikzcd}
-\end{equation}
-\begin{equation}
-\label{eq:diff_scal_binom_form}
-(d - (a + b))^n (xy) =
-\sum_{i=0}^n \binom{n}{i} ((d - a)^{n-i} (x)) ((d - b)^i (y))
-\end{equation}
-\end{observation}
-
-\begin{observation}
-Пусть \(A \coloneqq K[X]/(X^p - 1)\), где \(K\) --- поле характеристики \(p \neq 0\), а \(x \in A\) --- образ \(X \in K[X]\).
-Тогда у нас есть два \(K\)-ли\-ней\-ных отображения:
-\(x : A \to A\), \(f \mapsto xf\) и
-\(\6 / \6 x : A \to A\), \(f \mapsto \6 f / \6 x\).
-Так как \([\6 / \6 x, x] = 1\), то
-\([x \6 / \6 x, x] = [x,x] \6 / \6 x + x [\6 / \6 x, x] = x\),
-поэтому \(x\) и \(x \6 / \6 x\) порождают двумерную разрешимую подалгебру Ли в \(\End_{K\textnormal{-}\mathrm{mod}}(A)\).
-Множество \(\{x^n \mid 0 \leq n < p\} \subset A\) --- является собственным базисом для \(x \6 / \6 x\) с попарно различными собственными значениями, но в нём нет собственных векторов для \(x : A \to A\).
-Следовательно, у эндоморфизмов \(x\) и \(x \6 / \6 x\) нет общего собственного вектора.
-\end{observation}
-
-\begin{observation} \label{obs:BCH_truncated}
-Пусть \(R \coloneqq \Q\langle X, Y \rangle / (P \in \Q\langle X, Y \rangle \mid \deg(P) \geq 3)\) --- алгебра усечённых многочленов от двух не коммутирующих переменных, а \(x, y \in R\) --- образы \(X, Y \in \Q\langle X, Y \rangle\).
-Тогда, в понятном смысле, выполняются равенства \(e^x e^y = e^{x + y + (1/2)(xy - yx)}\) и \(e^x e^y e^{-x} e^{-y} = e^{xy - yx}\).
-\end{observation}
-
-\begin{remark}
-Первая формула наблюдения~\ref{obs:BCH_truncated} --- это усечённая форма формулы Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа\namedash{}Дынкина, полная версия которой формулируется и доказывается в разделе~\ref{sec:BKHD}.
-\end{remark}
-
-%\begin{remark}
-%Текст~\cite{Mueger_BCHD} содержит формулировку и несколько доказательств формулы Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа\namedash{}Дынкина.
-%В частности, в \cite[][раздел 6]{Mueger_BCHD} изложена версия стандартного алгебраического доказательства формулы БКХД <<методом Картье>>, которая не использует теоремы Пуанкаре\namedash{}Биркгофа\namedash{}Витта.
-%\end{remark}
-
-\begin{corollary}
-Пусть \(R\) --- ассоциативное унитальное кольцо, а \(x, y \in R\) --- его элементы, такие что \(x^2 = y^2 = xyx = yxy = 0\). Тогда, в понятном смысле, выполняется равенство \(e^x e^y e^{-x} e^{-y} = e^{xy - yx}\).
-\end{corollary}
-
-%\begin{remark}
-%Можно взять \(x = x' \varepsilon_1\) и \(y = y' \varepsilon_2\), где
-%\(\varepsilon_1\) и \(\varepsilon_2\)
-%--- центральные элементы, такие что
-%\(\varepsilon_1^2 = \varepsilon_2^2 = 0\).
-%Ещё можно взять \(x = v_x u_x\) и \(y = v_y u_y\),
-%где \(u_x v_x = u_y v_y = u_x v_y = 0\).
-%Если
-%\(u_x\) и \(u_y\) --- строки,
-%а \(v_x\) и \(v_y\) --- столбцы,
-%то отсюда получается коммутационная формула для трансвекций.
-%\end{remark}
-
-\begin{example}
-Пусть \(R\) --- ассоциативное унитальное кольцо, \(a_1, a_2 \in R\), а \(\varepsilon_1, \varepsilon_2 \in R[E_1, E_2] / (E_1^2, E_2^2)\) --- образы \(E_1\) и \(E_2\) соответственно.
-Тогда \(e^{x_1} e^{x_2} e^{-x_1} e^{-x_2} = e^{x_1 x_2 - x_2 x_1}\), где \(x_1 \coloneqq a_1 \varepsilon_1\), \(x_2 \coloneqq a_2 \varepsilon_2\).
-\end{example}
-
-\begin{example}
-Пусть \(R\) --- ассоциативное унитальное кольцо,
-\(I\) --- конечное множество,
-\(u_1, u_2 \in \Mat_{\pt, I}(R)\) --- две строки,
-а \(v_1, v_2 \in \Mat_{I, \pt}(R)\) --- два столбца,
-причём \(u_1 v_1 = u_2 v_2 = u_1 v_2 = 0\).%
-\label{exa:TransvCommForm}
-Тогда \(e^{x_1} e^{x_2} e^{-x_1} e^{-x_2} = e^{x_1 x_2 - x_2 x_1}\), где \(x_1 \coloneqq v_1 u_1\), \(x_2 \coloneqq v_2 u_2\).
-\end{example}
-
-\begin{remark}
-Формула из примера~\ref{exa:TransvCommForm} называется коммутационной формулой для трансвекций.
-\end{remark}
-
-\begin{observation}
-Пусть \(V\) --- конечномерное векторное пространство над полем \(K\). Пусть \(s : V \xrightarrow{\sim} V^{\vee}\) --- невырожденная билинейная форма, \(x : V \to V\) --- линейное отображение, \(x^{\vee} : V^{\vee} \to V^{\vee}\) --- двойственное отображение.
-\label{obs:tr_lie_bilin}
-Форма \(s\) ли-инварантна относительно \(x\) тогда и только тогда, когда
-\(s x + x^{\vee} s = 0\),
-то есть
-\(sxs^{-1} = -x^{\vee}\). Взяв след, получаем
-%следующее равенство:
-равенство
-\(
-\tr(x) = \tr(sxs^{-1}) = \tr(-x^{\vee}) = -\tr(x)
-\), то есть \(2\tr(x) = 0\).
-\end{observation}
-
-
-\begin{observation}
-Пусть \(p \in \N_1\) --- простое число, а \(X, Y \in \F_p[X,Y]\) --- коммутирующие переменные.%
-\label{obs:FrobEndCor}
-Тогда \((X - Y)(X - Y)^{p-1} = (X - Y)^p = X^p - Y^p = (X - Y)(X^{p-1} + X^{p-2}Y + \cdots{} + XY^{p-2} + Y^{p-1})\),
-откуда следует, что \((X - Y)^{p-1} = X^{p-1} + X^{p-2}Y + \cdots{} + XY^{p-2} + Y^{p-1}\).
-\end{observation}
-
-\begin{observation}
-Пусть \(p \in \N_1\) --- простое число, \(R\) --- ассоциативная унитальная \(\F_p\)\=/алгебра, \(x\) --- элемент \(R\), а \(D : R \to R\) --- дифференцирование кольца \(R\).%
-\label{obs:DiffAndAdInCharP}
-Тогда, применив наблюдение~\ref{obs:FrobEndCor}, получаем формулу \(\op{ad}(x)^{p-1}(D(x)) = (x* - *x)^{p-1}(D(x)) = D(x^p)\), где \(\op{ad}(x) = [x, -]\).
-\end{observation}
-
-\begin{observation}
-Пусть \(p \in \N_1\) --- простое число, а \(X, Y, T \in \F_p\langle X, Y \rangle [T]\) --- переменные.
-Тогда, продифференцировав тождество~\eqref{eq:RestrLie1} по \(T\), согласно наблюдению~\ref{obs:DiffAndAdInCharP}, получаем тождество~\eqref{eq:RestrLie2}.
-\begin{equation}
-(XT + Y)^p = X^p T^p + s_{p-1}(X, Y) T^{p-1} + \cdots{} + s_1(X, Y) T + Y^p%
-\label{eq:RestrLie1}%
-\end{equation}
-\begin{multline}
-%\op{ad}(XT + Y)^{p-1}(X) =
-[\underbrace{XT + Y, [XT + Y, [XT + Y, \dots{}, [XT + Y}_{p-1}, X]]] \dots{} ] =%
-\\
-= (p - 1) s_{p - 1}(X, Y) T^{p - 2} + \cdots{} + 2 s_2(X, Y) T + s_1(X, Y)%
-\label{eq:RestrLie2}
-\end{multline}
-\end{observation}
-
-
 \section{Коммутативная локализация}
 
 \subsection{Локализация коммутативного моноида}
@@ -5243,79 +4950,6 @@ Z \times
 \chapter{Относительно новые тексты}
 
 
-\section{Полные метрические пространства}
-
-\begin{observation} \label{obs:SeqLimDist}
-Пусть \(X\) --- метрическое пространство, \((a_i)_{i \in I}\) и \((b_j)_{j \in J}\) --- две сходящиеся последовательности в \(X\). Тогда выполняется равенство
-%\(\od(\lim ((a_i)_{i \in I}), \lim ((b_j)_{j \in J})) = \lim ((\od(a_i, b_j))_{(i,j) \in I \times J})\).
-\(\od(\lim (a_i \mid i \in I), \lim (b_j \mid j \in J)) = \lim (\od(a_i, b_j) \mid (i,j) \in I \times J)\).
-%\(\od(\lim_{i \to \infty} (a_i), \lim_{j \to \infty} (b_j)) = \lim_{(i,j) \to \infty} (\od(a_i, b_j))\).
-\end{observation}
-
-\begin{theorem}[\scshape Характеризации метрической полноты]
-Пусть \(X\) --- метрическое пространство.%
-\label{thm:ComplMetrSpace}
-Тогда следующие условия эквивалентны:
-\begin{enumerate}[
-	font=\upshape,
-	label=\asbuk*),
-	ref=\asbuk*,
-	]
-	
-\item \label{itm:ComplMetrSpaceOne} Любая последовательность Коши в \(X\) сходится;
-
-\item \label{itm:ComplMetrSpaceTwo} Для любой пары \((Y,Y')\) из метрического пространства \(Y\) и его плотного подмножества \(Y' \subset Y\) любое равномерно непрерывное отображение \(f' : Y' \to X\) продолжается до непрерывного отображения \(f : Y \to X\).
-
-\end{enumerate}
-\end{theorem}
-
-\begin{proof}[Доказательство (из двух частей)]
-~\begin{proofdescription}
-
-\item[Часть (\ref{itm:ComplMetrSpaceOne}) \(\Rightarrow\) (\ref{itm:ComplMetrSpaceTwo}).]
-Пусть \(y \in Y\). Выберем сходящуюся к \(y\) в \(Y\) последовательность \(s : I \to Y'\).
-Заметим, что \(s\) является последовательностью Коши, а потому \(f' \circ s\) --- тоже.
-Определим \(f(y)\) как предел \(f' \circ s\).
-Пусть \(r : J \to Y'\) --- другая сходящаяся к \(y\) в \(Y\) последовательность.
-Тогда \(s \barsqcup r : I \sqcup J \to Y'\) --- последовательность Коши, а потому \(f' \circ (s \barsqcup r)\) --- тоже, а потому пределы \(f' \circ s\) и \(f' \circ r\) равны и отображение \(f\) определено корректно.
-Непрерывность \(f\) следует из наблюдения~\ref{thm:ComplMetrSpace}.
-
-\item[Часть (\ref{itm:ComplMetrSpaceTwo}) \(\Rightarrow\) (\ref{itm:ComplMetrSpaceOne}).]
-Обозначим образ вложения \(n \mapsto 2^{-n} : \N_0 \to [0,1]\) через \(N'\), а замыкание \(N'\) в \([0,1]\) --- через \(N\).
-Тогда последовательности \(\N_0 \to X\) естественно биективны отображениям \(N' \to X\), а пределы последовательностей задаются непрерывными продолжениями этих отображений на \(N\).
-Осталось заметить, что последовательность \(\N_0 \to X\) является последовательностью Коши тогда и только тогда, когда соответствующее отображение \(N' \to X\) равномерно непрерывно.
-\qedhere
-
-\end{proofdescription}
-\end{proof}
-
-\begin{definition}[\scshape Полное метрическое пространство]
-Метрическое пространство \(X\) называется \emph{метрически полным} или просто \emph{полным}, если оно удовлетворяет эквивалентным условиям теоремы~\ref{thm:ComplMetrSpace}.
-\end{definition}
-
-\begin{definition}[\scshape Пополнение метрического пространства]
-\emph{Пополнением} метрического пространства \(X\) называется полное метрическое пространство \(Y\), снабжённое изометрическим вложением \(X \to Y\) с плотным образом.
-\end{definition}
-
-\begin{remark}
-Из теоремы~\ref{thm:ComplMetrSpace} следует, что между любыми двумя пополнениями метрического пространства \(X\) существует единственная изометрия, тождественная на \(X\).
-\end{remark}
-
-\begin{definition}[\scshape Вложение Куратовского]
-Пусть \(X\) --- метрическое пространство, а \(F\) --- пространство непрерывных функций из \(X\) в \(\R\) с \(\sup\)-расстоянием.
-Тогда изометрическое вложение
-\(
-x \mapsto \od_X(x,-) :
-X \to \{f \in F \mid \od_F(f,\od_X(x',-)) < \infty\ \tn{для всех}\ x' \in X\}
-\)
-называется \emph{вложением Куратовского}.
-\end{definition}
-
-\begin{observation}
-Замыкание образа вложения Куратовского метрического пространства является его метрическим пополнением.
-\end{observation}
-
-
 \section{Теорема Островского}
 
 \begin{theorem}[\scshape Теорема Островского]
@@ -5588,246 +5222,6 @@ groß\-/отображения \(s,t : \mc{C} \setminus \{0\} \rrarrow \op{Ein}(
 Иначе говоря, \(G = W U^{-} B\).
 Осталось, воспользовавшись наблюдением~\ref{obs:MatrixLeviDecomp}, перенести диагональную компоненту \(B\) налево:
 \(W U^{-} B = W U^{-} T U = W T U^{-} U = N U^{-} U\), где \(T \coloneqq \op{T}_n(K)\).
-\end{proof}
-
-
-\section{Формула Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа\namedash{}Дынкина}
-\label{sec:BKHD}
-
-\subsection{Предисловие}
-
-Практически весь материал этого раздела позаимствован из раздела~6 текста~\cite{Mueger_BCHD}, который содержит несколько доказательств теоремы Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа и её уточнений.
-Я узнал об этом тексте из учебника по алгебрам Ли и группам Ли П.\ Этингофа \cite[\textenglish{Remark~14.8}]{EtingofLie_2024}.
-
-\subsection{Критерии Фридрихса и Дынкина\namedash{}Шпехта\namedash{}Уивера}
-
-%\begin{definition}
-%Пусть \(K\) --- поле, а \(I\) --- множество.
-%Определим \(K\)\=/линейные отображения \(D, R : K \la X_i \smid i \in I \ra \rrarrow K \la X_i \smid i \in I \ra\) на мономах следующим образом:
-%\(D(X_{i_1} \dots{} X_{i_n}) = n X_{i_1} \dots{} X_{i_n}\) для любого отображения \(j \mapsto i_j : \{1, \dots{}, n\} \to I\), где \(n \in \N_0\),
-%\(R(1) = 0\), \(R(X_i) = X_i\) для любого \(i \in I\),
-%\(R(X_{i_1} \dots{} X_{i_n}) = [X_{i_1}, [X_{i_2}, [ \dots{}, [X_{i_{n-1}}, X_{i_n}]] \dots{} ]\) для любого отображения \(j \mapsto i_j : \{1, \dots{}, n\} \to I\), где \(n \in \N_2\).
-%\end{definition}
-
-\begin{definition}
-Пусть \(K\) --- поле, а \(\mc{X}\) --- множество.
-Определим \(K\)\=/линейные отображения \(D, R : K \la \mc{X} \ra \rrarrow K \la \mc{X} \ra\) на мономах следующим образом:
-\(D(X_1 \cdots{} X_n) = n X_1 \cdots{} X_n\) для любых \(X_1, \dots{}, X_n \in \mc{X}\), где \(n \geq 0\),
-\(R(1) = 0\), \(R(X) = X\) для любого \(X \in \mc{X}\),
-\(R(X_1 \cdots{} X_n) = [X_1, [X_2, \dots{}, [X_{n-1}, X_n]] \dots{} ]\) для любых \(X_1, \dots{}, X_n \in \mc{X}\), где \(n \geq 2\).
-\end{definition}
-
-\begin{lemma}
-Пусть \(K\) --- поле, \(\mc{X}\) --- множество, а \((K \la \mc{X} \ra, \mu, \eta, \delta, \varepsilon, S)\) --- это \(K \la \mc{X} \ra\) со стандартной структурой алгебры Хопфа.
-Тогда
-\begin{equation}
-\mu \circ (D \otimes S) \circ \delta = R.%
-\label{eq:D_S_conv}
-\end{equation}
-%Иначе говоря, свёртка \(D\) и \(S\) равна \(R\).
-\end{lemma}
-
-\begin{proof}
-Достаточно проверить формулу~\eqref{eq:D_S_conv} на мономах. Равенство
-\((\mu \circ (D \otimes S) \circ \delta)(1) = R(1)\)
-%и
-%\((\mu \circ (D \otimes S) \circ \delta)(X) = R(X)\), где \(X \in \mc{X}\),
-проверяется непосредственно.
-Пусть \(X_1, \dots{}, X_n \in \mc{X}\), где \(n \geq 1\).
-Тогда
-\begin{gather*}
-(\mu \circ (D \otimes S) \circ \delta)
-(X_1 \cdots{} X_n)
-=
-\\
-=
-\sum_{(c_1, \dots{}, c_n) \in \{0,1\}^n}
-(-1)^{\sum_{i=1}^n (1 - c_i)}
-(\sum_{i=1}^n c_i)
-X_1^{c_1} \cdots{} X_n^{c_n} X_n^{1 - c_n} \cdots{} X_1^{1 - c_1}
-=
-\\
-=
-\sum_{(c_1, \dots{}, c_n) \in \{0,1\}^n}
-(-1)^{\sum_{i=1}^n (1 - c_i)}
-(\sum_{i=1}^n c_i)
-X_1^{c_1} \cdots{} X_{n-1}^{c_{n-1}} X_n X_{n-1}^{1 - c_{n-1}} \cdots{} X_1^{1 - c_1}
-=
-\\
-=
-\sum_{(c_1, \dots{}, c_{n-1}) \in \{0,1\}^{n-1}}
-(-1)^{\sum_{i=1}^{n-1} (1 - c_i)}
-X_1^{c_1} \cdots{} X_{n-1}^{c_{n-1}} X_n X_{n-1}^{1 - c_{n-1}} \cdots{} X_1^{1 - c_1}
-=
-\\
-%=
-%[X_1, [X_2, [ \dots{}, [X_{n-1}, X_n]] \dots{} ]
-=
-R(X_1 \cdots{} X_n).
-\qedhere
-\end{gather*}
-\end{proof}
-
-\begin{theorem}[\scshape Критерии Фридрихса и Дынкина\namedash{}Шпехта\namedash{}Уивера]
-Пусть \(K\) --- поле, характеристика которого равна нулю,
-\(\mc{X}\) --- множество,
-\((K \la \mc{X} \ra, \mu, \eta, \delta, \varepsilon, S)\)
---- это \(K \la \mc{X} \ra\) со стандартной структурой алгебры Хопфа,
-а \(f\) --- элемент \(K \la \mc{X} \ra\).%
-\label{thm:FriDynSpeWev}
-Тогда следующие условия эквивалентны:
-\begin{enumerate}[
-	font=\upshape,
-	label=\asbuk*),
-	ref=\asbuk*,
-	]
-
-\item \label{itm:FriDynSpeWev1}
-Многочлен \(f\) является \(K\)\=/линейной комбинацией кратных коммутаторов элементов \(\mc{X}\);
-
-\item \label{itm:FriDynSpeWev2}
-Выполняется равенство \(\delta(f) = f \otimes 1 + 1 \otimes f\) (критерий Фридрихса);
-
-\item \label{itm:FriDynSpeWev3}
-Выполняются равенства \(\varepsilon(f) = 0\) и \(R(f) = D(f)\) (критерий Дынкина\namedash{}Шпехта\namedash{}Уивера).
-
-\end{enumerate}
-\end{theorem}
-
-\begin{proof}
-Импликация (\ref{itm:FriDynSpeWev3})~\({\implies}\)~(\ref{itm:FriDynSpeWev1}) очевидна, а импликация (\ref{itm:FriDynSpeWev1})~\({\implies}\)~(\ref{itm:FriDynSpeWev2}) следует из классической формулы \([g \otimes 1 + 1 \otimes g, h \otimes 1 + 1 \otimes h] = [g, h] \otimes 1 + 1 \otimes [g, h]\), где \(g, h \in K \la \mc{X} \ra\), --- множество \(\{d \in K \la \mc{X} \ra \mid \delta(d) = d \otimes 1 + 1 \otimes d\}\) является подалгеброй Ли в \(K \la \mc{X} \ra\).
-Осталось доказать импликацию (\ref{itm:FriDynSpeWev2})~\({\implies}\)~(\ref{itm:FriDynSpeWev3}).
-Пусть \(f\) удовлетворяет условию~(\ref{itm:FriDynSpeWev2}).
-Применяя отображение \(\varepsilon \otimes \Id\) к обеим сторонам равенства \(\delta(f) = f \otimes 1 + 1 \otimes f\) получаем равенство \(f = \varepsilon(f) 1 + \varepsilon(1) f = \varepsilon(f) + f\), откуда следует, что \(\varepsilon(f) = 0\).
-Подставив выражение \(\delta(f) = f \otimes 1 + 1 \otimes f\) в формулу~\eqref{eq:D_S_conv}, получаем, что \(D(f) = D(f) S(1) + D(1) S(F) = R(f)\).
-\end{proof}
-
-\subsection{Теорема Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа}
-
-\begin{definition}[\scshape Ряд Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа]
-Следующий формальный ряд называется \emph{рядом Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа}:
-\begin{equation}
-	\begin{gathered}
-		\log(e^X e^Y) =
-		\sum_{k=1}^{\infty}
-		\frac{(-1)^{k-1}}{k}
-		\Bigl(\sum_{m, n = 0}^{\infty}
-		\frac{X^m Y^n}{m! n!} - 1\Bigr)^k
-		=
-		\\
-		=
-		\sum_{k=1}^{\infty}
-		\sum_{m_1 + n_1 > 0}
-		\cdots{}
-		\sum_{m_k + n_k > 0}
-		\frac{(-1)^{k-1}}{k}
-		\frac%
-		{X^{m_1} Y^{n_1} \cdots{} X^{m_k} Y^{n_k}}%
-		{m_1! n_1! \cdots{} m_k! n_k!}
-		\in \Q \llangle X, Y \rrangle.%
-		\label{eq:BakCamHauSeries}
-	\end{gathered}
-\end{equation}
-\end{definition}
-
-\begin{theorem}[\scshape Теорема Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа]
-Все однородные компоненты ряда Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа, то есть ряда \(\log(e^X e^Y) \in \Q \llangle X, Y \rrangle\), представляются в виде \(\Q\)\=/линейных комбинаций кратных коммутаторов переменных \(X\) и \(Y\).
-\end{theorem}
-
-\begin{proof}[Набросок доказательства]
-Гомоморфизм
-\(
-	\delta :
-	\Q \langle X, Y \rangle
-	\to
-	\Q \langle X, Y \rangle^{\otimes_{\Q} 2}
-%	\Q \langle X, Y \rangle
-%	\otimes_{\Q}
-%	\Q \langle X, Y \rangle
-	\cong
-	\Q \langle X_1, Y_1 \rangle
-	   \langle X_2, Y_2 \rangle
-\),
-переводящий \(X\) в \(X \otimes 1 + 1 \otimes X\), а \(Y\) в \(Y \otimes 1 + 1 \otimes Y\),
-имеет единственное продолжение до непрерывного в стандартной топологии на формальных рядах отображения
-\(
-	\delta :
-	\Q \llangle X, Y \rrangle
-	\to
-	\Q \llangle X_1, Y_1 \rrangle
-	   \llangle X_2, Y_2 \rrangle
-	\cong
-	\prod_{m, n = 0}^{\infty}
-	(\Q \langle X, Y \rangle_m
-	 \otimes_{\Q}
-	 \Q \langle X, Y \rangle_n)
-	\supset
-	\Q \llangle X, Y \rrangle^{\otimes_{\Q} 2}
-\).
-%где нижними индексами обозначены однородные компоненты соответствующей степени.
-Осталось заметить, что экспонента задаёт биекцию между элементами \(f \in \Q \llangle X, Y \rrangle\) с постоянным членом \(0\), удовлетворяющими условию \(\delta(f) = f \otimes 1 + 1 \otimes f\), и элементами \(g \in \Q \llangle X, Y \rrangle\) с постоянным членом \(1\), удовлетворяющими условию \(\delta(g) = g \otimes g\), а потом использовать теорему~\ref{thm:FriDynSpeWev},
-а точнее, критерий Фридрихса.
-\end{proof}
-
-\subsection{Формула Дынкина для ряда БКХ}
-
-\begin{definition}[\scshape Идемпотент Дынкина]
-Пусть \(K\) --- поле характеристики ноль,
-а \(\mc{X}\) --- конечное множество.
-Тогда \emph{идемпотентом Дынкина} называется \(K\)\=/линейное и непрерывное в стандартной топологии на \(K \llangle \mc{X} \rrangle\) отображение \(P : K \llangle \mc{X} \rrangle \to K \llangle \mc{X} \rrangle\), такое что
-\(P(X_1 \cdots{} X_n) = \frac{1}{n} R(X_1 \cdots{} X_n)\) для любых \(X_1, \dots{}, X_n \in \mc{X}\), где \(n \geq 1\), а \(P(1) = 0\).
-\end{definition}
-
-\begin{observation}
-Пусть \(K\) --- поле характеристики ноль,
-а \(\mc{X}\) --- конечное множество.
-Тогда идемпотент Дынкина \(P : K \llangle \mc{X} \rrangle \to K \llangle \mc{X} \rrangle\) идемпотентен, то есть \(P \circ P = P\),
-а образ \(P\) совпадает с рядами, все однородные компоненты которых представляются в виде \(K\)\=/линейных комбинаций кратных коммутаторов элементов \(\mc{X}\).
-\end{observation}
-
-\begin{theorem}[\scshape Формула Дынкина]
-В кольце \(\Q \llangle X, Y \rrangle\) выполняется следующее соотношение, которое называется \emph{формулой Дынкина для ряда Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа}, или же \emph{формулой Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа\namedash{}Дынкина}:
-\begin{equation}
-	\begin{gathered}
-		\log(e^X e^Y) =
-		\sum_{k=1}^{\infty}
-		\sum_{m_1 + n_1 > 0}
-		\cdots{}
-		\sum_{m_k + n_k > 0}
-		\frac%
-		{
-			(-1)^{k - 1}
-		}
-		{
-			k
-			\sum_{i = 1}^k (m_i + n_i)
-			%m_1! n_1! \dots{} m_k! n_k!
-			\prod_{j = 1}^k m_j! n_j!
-		}
-		\times
-		\\
-		\times
-		%[X, [\dots{}, [X,
-		%[Y, [\dots{}, [Y,
-		%[\dots{}
-		%[X, [\dots{}, [X,
-		%[Y, [\dots{}, [Y,
-		%[\dots{}]
-		%\dots{}].%
-		[\underbrace{X, [X, \dots{}, [X}_{m_1},
-		[\underbrace{Y, [Y, \dots{}, [Y}_{n_1},
-		\dots{},
-		[\underbrace{X, [X, \dots{}, [X}_{m_k},
-		[\underbrace{Y, [Y, \dots{}, Y}_{n_k}]]
-		\dots{}
-		]].%
-		\label{eq:BKHD_formula}
-	\end{gathered}
-\end{equation}
-\end{theorem}
-
-\begin{proof}
-Применим идемпотент Дынкина к формуле~\eqref{eq:BakCamHauSeries}.
 \end{proof}
 
 
@@ -6312,7 +5706,117 @@ r' (r'' - l'') +
 %\end{corollary}
 
 
-\chapter{Дифференциальное исчисление}
+
+\chapter{Базовые свойства метрических пространств}
+
+
+\section{Лемма Лебега о покрытии}
+
+\begin{theorem}[\scshape Лемма Лебега о покрытии]
+Если \(M\) --- компактное метрическое пространство, а \(\mc{U} \subset \op{Open}(M)\) --- его открытое покрытие,%
+\label{thm:LebesgueCovering}
+то существует число \(R \in \R_{>0}\) такое что любой открытый шар в \(M\) радиуса меньше \(R\) содержится в каком-то элементе \(\mc{U}\).
+\end{theorem}
+
+\begin{proof}
+Рассмотрим функцию \(f : M \to \R\), сопоставляющую точке \(x \in M\) супремум радиусов открытых шаров с центром в \(x\), содержащихся в каком-то элементе \(\mc{U}\).
+Так как функция \(f\) непрерывна, а пространство \(M\) компактно, то в какой-то точке \(M\) функция \(f\) принимает своё наименьшее значение, которое не может быть нулевым.
+\end{proof}
+
+\begin{theorem}[\scshape Теорема Кантора\namedash{}Гейне]
+Пусть \(\varphi : M \to M'\) --- непрерывное отображение из компактного метрического пространства \(M\) в метрическое пространство \(M'\).%
+\label{thm:HeineCantor}
+Тогда \(\varphi\) равномерно непрерывно.
+\end{theorem}
+
+\begin{proof}[Первое доказательство]
+Рассмотрим покрытие пространства \(M\) прообразами всех открытых шаров в \(M'\) и применим к нему лемму Лебега о покрытии
+(теорему~\ref{thm:LebesgueCovering}).
+\end{proof}
+
+\begin{proof}[Второе доказательство]
+Для любого числа \(\varepsilon \in \R_{>0}\)
+множество
+\(
+X \coloneqq
+\{(x, y) \in M \times M \mid \od_{M'}(\varphi(x),\varphi(y)) \geq \varepsilon\}
+=
+({\od_{M'}} \circ (\varphi \times \varphi))^{-1}([\varepsilon, \infty))
+\)
+компактно как замкнутое подмножество компактного пространства \(M \times M\), а потому непрерывная функция \({\od_M}|_X\) принимает на \(X\) своё наименьшее значение, которое не может быть нулевым.
+\end{proof}
+
+
+\section{Полные метрические пространства}
+
+\begin{observation} \label{obs:SeqLimDist}
+Пусть \(X\) --- метрическое пространство, \((a_i)_{i \in I}\) и \((b_j)_{j \in J}\) --- две сходящиеся последовательности в \(X\). Тогда выполняется равенство
+%\(\od(\lim ((a_i)_{i \in I}), \lim ((b_j)_{j \in J})) = \lim ((\od(a_i, b_j))_{(i,j) \in I \times J})\).
+\(\od(\lim (a_i \mid i \in I), \lim (b_j \mid j \in J)) = \lim (\od(a_i, b_j) \mid (i,j) \in I \times J)\).
+%\(\od(\lim_{i \to \infty} (a_i), \lim_{j \to \infty} (b_j)) = \lim_{(i,j) \to \infty} (\od(a_i, b_j))\).
+\end{observation}
+
+\begin{theorem}[\scshape Характеризации метрической полноты]
+Пусть \(X\) --- метрическое пространство.%
+\label{thm:ComplMetrSpace}
+Тогда следующие условия эквивалентны:
+\begin{enumerate}[
+	font=\upshape,
+	label=\asbuk*),
+	ref=\asbuk*,
+	]
+	
+\item \label{itm:ComplMetrSpaceOne} Любая последовательность Коши в \(X\) сходится;
+
+\item \label{itm:ComplMetrSpaceTwo} Для любой пары \((Y,Y')\) из метрического пространства \(Y\) и его плотного подмножества \(Y' \subset Y\) любое равномерно непрерывное отображение \(f' : Y' \to X\) продолжается до непрерывного отображения \(f : Y \to X\).
+
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}[Доказательство (из двух частей)]
+~\begin{proofdescription}
+
+\item[Часть (\ref{itm:ComplMetrSpaceOne}) \(\Rightarrow\) (\ref{itm:ComplMetrSpaceTwo}).]
+Пусть \(y \in Y\). Выберем сходящуюся к \(y\) в \(Y\) последовательность \(s : I \to Y'\).
+Заметим, что \(s\) является последовательностью Коши, а потому \(f' \circ s\) --- тоже.
+Определим \(f(y)\) как предел \(f' \circ s\).
+Пусть \(r : J \to Y'\) --- другая сходящаяся к \(y\) в \(Y\) последовательность.
+Тогда \(s \barsqcup r : I \sqcup J \to Y'\) --- последовательность Коши, а потому \(f' \circ (s \barsqcup r)\) --- тоже, а потому пределы \(f' \circ s\) и \(f' \circ r\) равны и отображение \(f\) определено корректно.
+Непрерывность \(f\) следует из наблюдения~\ref{thm:ComplMetrSpace}.
+
+\item[Часть (\ref{itm:ComplMetrSpaceTwo}) \(\Rightarrow\) (\ref{itm:ComplMetrSpaceOne}).]
+Обозначим образ вложения \(n \mapsto 2^{-n} : \N_0 \to [0,1]\) через \(N'\), а замыкание \(N'\) в \([0,1]\) --- через \(N\).
+Тогда последовательности \(\N_0 \to X\) естественно биективны отображениям \(N' \to X\), а пределы последовательностей задаются непрерывными продолжениями этих отображений на \(N\).
+Осталось заметить, что последовательность \(\N_0 \to X\) является последовательностью Коши тогда и только тогда, когда соответствующее отображение \(N' \to X\) равномерно непрерывно.
+\qedhere
+
+\end{proofdescription}
+\end{proof}
+
+\begin{definition}[\scshape Полное метрическое пространство]
+Метрическое пространство \(X\) называется \emph{метрически полным} или просто \emph{полным}, если оно удовлетворяет эквивалентным условиям теоремы~\ref{thm:ComplMetrSpace}.
+\end{definition}
+
+\begin{definition}[\scshape Пополнение метрического пространства]
+\emph{Пополнением} метрического пространства \(X\) называется полное метрическое пространство \(Y\), снабжённое изометрическим вложением \(X \to Y\) с плотным образом.
+\end{definition}
+
+\begin{remark}
+Из теоремы~\ref{thm:ComplMetrSpace} следует, что между любыми двумя пополнениями метрического пространства \(X\) существует единственная изометрия, тождественная на \(X\).
+\end{remark}
+
+\begin{definition}[\scshape Вложение Куратовского]
+Пусть \(X\) --- метрическое пространство, а \(F\) --- пространство непрерывных функций из \(X\) в \(\R\) с \(\sup\)\=/расстоянием.
+Тогда \emph{вложением Куратовского} называется изометрическое вложение
+\[
+x \mapsto \od_X(x,-) :
+X \to \{f \in F \mid \od_F(f,\od_X(y,-)) < \infty\ \tn{для всех}\ y \in X\}.
+\]
+\end{definition}
+
+\begin{observation}
+Замыкание образа вложения Куратовского метрического пространства является его метрическим пополнением.
+\end{observation}
 
 
 \section{Теорема Банаха о фиксированной точке}
@@ -6371,21 +5875,75 @@ r' (r'' - l'') +
 \end{proof}
 
 
-\section{Теорема об обратной функции}
 
-%\begin{convention}
-%Пусть \(E\) --- евклидово пространство. Длину \(v \in E\) будем обозначать через \(|v|\), а стандартной нормой линейного отображения \(A : E \to E\), обозначаемой \(\lVert A \rVert\), будем считать его растяжение.
-%\end{convention}
+\chapter{Дифференциальное исчисление}
+
+
+\section{Теорема о среднем значении}
+
+\begin{theorem}[\scshape Теорема Ролля о среднем]
+Пусть \(f : [0,1] \to \R\) --- непрерывная функция, дифференцируемая на интервале \((0,1)\), такая что \(f(0) = 0\) и \(f(1) = 0\).%
+\label{thm:RolleMean}
+Тогда существует точка \(x \in (0,1)\), такая что \(f'(x) = 0\).
+\end{theorem}
+
+%\begin{proof}[Набросок доказательства]
+%Так как отрезок \([0,1]\) компактен, то
+%\(\Im(f) = [y_\mr{min}, y_\mr{max}]\)
+%для каких-то \(y_\mr{min} \leq 0 \leq y_\mr{max}\).
+%Если \(y_\mr{min} = 0 = y_\mr{max}\), то \(f = 0\) и утверждение теоремы очевидно.
+%В противно случае в качестве \(x\) можно взять любой элемент непустого множества \((f^{-1}(y_\mr{min}) \cup f^{-1}(y_\mr{max})) \cap (0, 1)\).
+%\end{proof}
+
+%\begin{proof}[Набросок доказательства]
+%Так как отрезок \([0,1]\) компактен, то
+%\(y_\mr{max} \coloneqq \sup_{t \in [0,1]}(f(t)) \in \R\),
+%\(y_\mr{min} \coloneqq \inf_{t \in [0,1]}(f(t)) \in \R\),
+%\(X_\mr{max} \coloneqq f^{-1}(y_\mr{max}) \neq \varnothing\),
+%\(X_\mr{min} \coloneqq f^{-1}(y_\mr{min}) \neq \varnothing\).
+%Более того \(X \coloneqq (X_\mr{max} \cup X_\mr{min}) \cap (0,1) \neq \varnothing\), иначе \(f = 0\) и \(X = (0,1)\) --- противоречие.
+%В качестве \(x\) можно взять любой элемент \(X\).
+%\end{proof}
+
+\begin{proof}[Набросок доказательства]
+Случай \(f = 0\) тривиален, рассмотрим случай \(f \neq 0\).
+Так как отрезок \([0,1]\) компактен, то на нём существует точка, в которой \(f\) принимает наибольшее значение, и точка, в которой \(f\) принимает наименьшее значение.
+Так как \(f \neq 0\), то по крайней мере одна из этих точек лежит в интервале \((0,1)\).
+Нетрудно убедиться, что её можно взять в качестве \(x\).
+\end{proof}
+
+\begin{theorem}[\scshape Теорема Коши о среднем]
+Пусть \(\gamma : [0,1] \to \R^2\) --- непрерывное отображение, дифференцируемое на интервале \((0,1)\), такое что \(\gamma'(t) \neq 0\) для любого \(t \in (0,1)\).%
+\label{thm:CauchyMean}
+Тогда существует точка \(x \in (0,1)\), такая что вектор \(\gamma(1) - \gamma(0)\) является кратным \(\gamma'(x)\).
+\end{theorem}
+
+\begin{proof}
+Применим теорему Ролля о среднем (теорему~\ref{thm:RolleMean}) к композиции отображения \(\gamma\) с ортогональной проекцией \(\R^2\) на прямую, ортогональную вектору \(\gamma(1) - \gamma(0)\).
+\end{proof}
+
+\begin{corollary}[\scshape Теорема Лагранжа о среднем]
+Пусть \(f : [0,1] \to \R\) --- непрерывная функция, дифференцируемая на интервале \((0,1)\).%
+\label{cor:LagrangeMean}
+Тогда существует точка \(x \in (0,1)\), такая что \(f'(x) = f(1) - f(0)\).
+\end{corollary}
 
 \begin{theorem}[\scshape Неравенство Лагранжа]
-\label{thm:LagrIneq}
-Пусть \(E\) --- евклидово пространство, а \(\gamma : [0,1] \to E\) --- непрерывное отображение, дифференцируемое на интервале \((0,1)\).
+Пусть \(E\) --- евклидово пространство, а \(\gamma : [0,1] \to E\) --- непрерывное отображение, дифференцируемое на интервале \((0,1)\).%
+\seclabel{thm:LagrIneq}
 Тогда существует точка \(x \in (0,1)\), такая что \(|\gamma(1) - \gamma(0)| \leq \lVert D(\gamma)_x \rVert\).
 \end{theorem}
 
 \begin{proof}[Набросок доказательства]
 Пусть \(L\) --- это прямая, проходящая через \(\gamma(0)\) и \(\gamma(1)\), а \(\pi : E \to L\) --- это ортогональная проекция на \(L\). Так как дифференциалы \(\pi\) во всех точках имеют норму не больше \(1\), то замена \(\gamma\) на \(\pi \circ \gamma\) сводит доказательство теоремы к случаю одномерного \(E\), где она следует из классической теоремы Лагранжа о среднем.
 \end{proof}
+
+
+\section{Теорема об обратной функции}
+
+%\begin{convention}
+%Пусть \(E\) --- евклидово пространство. Длину \(v \in E\) будем обозначать через \(|v|\), а стандартной нормой линейного отображения \(A : E \to E\), обозначаемой \(\lVert A \rVert\), будем считать его растяжение.
+%\end{convention}
 
 %\begin{theorem}
 %Пусть \(E\) --- это евклидово пространство,
@@ -6418,7 +5976,7 @@ r' (r'' - l'') +
 \(\lVert D(\hat{\varphi})_x \rVert \leq \varepsilon\)
 для любого \(x \in \overline{B}_R(0)\).
 
-Согласно неравенству Лагранжа (теорема \ref{thm:LagrIneq})
+Согласно неравенству Лагранжа (теорема~\secref{thm:LagrIneq})
 растяжение отображения \(\hat{\varphi}|_{\overline{B}_R(0)}\)
 не превосходит \(\varepsilon\).
 В частности, \(\hat{\varphi}(\overline{B}_R(0)) \subset \overline{B}_{\varepsilon R}(0)\)
@@ -8840,6 +8398,547 @@ f^{(r+1)}(0)
 \begin{remark}
 Между прочим, заметим, что доказательство теоремы~\ref{thm:KrullSchmidtUnique} становится особенно простым, если предположить, что модуль \(M\) полупрост --- отпадает необходимость в леммах \ref{lem:FittingLemma} и \ref{lem:LocNilAb}.
 \end{remark}
+
+
+
+\chapter{Некоторые некоммутативные тождества}
+
+
+\section[Тождества с сопряжением и мультипликативными коммутаторами][Тождества с сопряжением и мульт.\ коммутаторами]{Тождества с сопряжением и мультипликативными коммутаторами}
+
+Данный подраздел представляет собой небольшую <<шпаргалку>>, содержащую стандартные тождества с сопряжением и мультипликативными коммутаторами и их выводы.
+Мы используем правонормированные коммутаторы.
+В тождествах с левонормированными коммутаторами
+надо использовать сопряжение слева, а не справа,
+а также группировать кратные коммутаторы влево:
+$[[\;,\;],\;]$, а не вправо: $[\;,[\;,\;]]$.
+\begin{gather*}
+	a^b \coloneqq b^{-1}ab,\
+	[a,b] \coloneqq a^{-1}b^{-1}ab,\
+    ab = ba^b,\
+    a[a,b] = a^b,\
+    ba[a,b]=ab,\
+    \\
+    a^{bc} = (a^b)^c,\
+    (ab)^c = a^cb^c,\
+    [a,b]^{-1} = [b,a],\ 
+    [a,b]^g = [a^g,b^g].
+\end{gather*}
+\begin{gather*}
+    a[a,bc] =
+    a^{bc} =
+    (a^b)^c =
+    (a[a,b])^c =
+    a^c [a,b]^c =
+    a[a,c][a,b]^c
+    \implies
+    \\
+    \implies
+    [a,bc] =
+    [a,c][a,b]^c.
+    \\
+    \text{Обращением получаем:}\
+    [bc,a] =
+    [b,a]^c [c,a].
+    \\
+    \text{Подставив}\ 
+    b=c^{-1},\ 
+    \text{получаем:}\
+    [c,a] =
+    [a,c^{-1}]^c.
+\end{gather*}
+\begin{gather*}
+    a(bc)[bc,a] =
+    (bc)a\ 
+    (\text{цикл}\ (a,b,c))
+    \implies
+    \\
+    \implies
+    abc[bc,a][ca,b][ab,c] = abc
+    \implies
+    [bc,a][ca,b][ab,c] = 1.
+\end{gather*}
+\begin{gather*}
+    a^b[a^b,[b,c]] =
+    (a^b)^{[b,c]} =
+    a^{b[b,c]} =
+    a^{b^c},
+    \\
+    X \coloneqq
+    [a^b,[b,c]] =
+    [a^b,[c,b^{-1}]^b] =
+    [a,[c,b^{-1}]]^b,
+    \\
+    bca^b X =
+    bca^{b^c} =
+    cb^ca^{b^c} =
+    cab^c\ 
+    (\text{цикл}\ (a,b,c))
+    \\
+    \Downarrow
+    \\
+    [a^b,[b,c]]
+    [b^c,[c,a]]
+    [c^a,[a,b]] = 1\ 
+    \text{(тождество Холла)},
+    \\
+    [a,[c,b^{-1}]]^b
+    [b,[a,c^{-1}]]^c
+    [c,[b,a^{-1}]]^a = 1\ 
+    \text{(тождество Холла\namedash{}Витта)}.
+\end{gather*}
+
+
+\section{Тождества в алгебрах Ли и Йордана}
+
+\begin{notation}
+Пусть \(R\) --- кольцо.
+Введём обозначения \(a* : R \to R\), \(x \mapsto ax\) и \(*a : R \to R\), \(x \mapsto xa\), где \(a \in R\).
+\end{notation}
+
+\begin{observation}
+Пусть \(R\) --- кольцо.
+Заметим, что \(d \in \End_{\Z\tn{-}\mr{mod}}(R)\) является дифференцированием \(R\) тогда и только тогда, когда диаграмма~\eqref{eq:DiffCommSquare}, где \(\mathrm{mult}\) --- это отображение умножения в \(R\), коммутативна.
+\begin{equation} \label{eq:DiffCommSquare}
+\begin{tikzcd}
+R \otimes_{\Z} R \arrow{r}{\mathrm{mult}} \arrow{d}[']{d \otimes 1 + 1 \otimes d} & R \arrow{d}{d} \\%
+R \otimes_{\Z} R \arrow{r}{\mathrm{mult}}& R
+\end{tikzcd}
+\end{equation}
+Введём обозначения \(\lambda(a) \coloneqq a \otimes 1\) и \(\rho(a) \coloneqq 1 \otimes a\), где \(a \in \End_{\Z\tn{-}\mr{mod}}(R)\).
+Тогда \eqref{eq:LeibnizJacobiCheck} --- это, по сути, проверка того, что коммутатор дифференцирований является дифференцированием.
+\begin{equation} \label{eq:LeibnizJacobiCheck}
+[\lambda(a) + \rho(a), \lambda(b) + \rho(b)]
+=
+[\lambda(a), \lambda(b)] + [\rho(a), \rho(b)]
+=
+\lambda([a,b]) + \rho([a,b])
+\end{equation}
+\end{observation}
+
+\begin{observation}
+Пусть \(R\) --- ассоциативное кольцо.
+Введём обозначения \(\lambda(a) \coloneqq a*\) и \(\rho(a) \coloneqq *(-a)\), где \(a \in R\).
+Тогда \eqref{eq:LeibnizJacobiCheck} --- это проверка того, что коммутатор в \(R\) удовлетворяет тождеству Якоби\namedash{}Лейбница.
+\end{observation}
+
+\begin{observation}
+Пусть \(R\) --- ассоциативное кольцо.
+Тогда антикоммутатор в \(R\), то есть йорданово умножение \((a, b) \mapsto a \circ b \coloneqq ab + ba : R \times R \to R\), удовлетворяет йорданову тождеству, потому что если \(a \in R\) и \(b \in R\) коммутируют,
+то \(a* + *a\) и \(b* + *b\) тоже коммутируют.
+\end{observation}
+
+\begin{observation}
+Пусть \(R\) --- кольцо.
+То, что \(d \in \End_{\Z\tn{-}\mr{mod}}(R)\) является дифференцированием \(R\),
+эквивалентно тому, что \([d, a*]=(da)*\)
+для любого \(a \in R\).
+\end{observation}
+
+\begin{remark}
+Например, в алгебре Вейля, то есть алгебре дифференциальных операторов с полиномиальными коэффициентами, выполняется соотношение \([\6 / \6 x, x] = 1\), невозможное для конечных матриц в характеристике \(0\), в чём можно убедиться, взяв след.
+\end{remark}
+
+\begin{observation}
+Обычно \(e^{a \otimes 1 + 1 \otimes a} = e^a \otimes e^a\) и \(e^{a* - *a} = e^a* \circ *e^{-a}\), когда эти выражения имеют смысл.
+\end{observation}
+
+\begin{observation}%[\scshape Инвариантность формы Киллинга]
+Форма Киллинга --- это след произведения. Взяв след от тождества
+\([a,bc]=[a,b]c+b[a,c]\), получаем её инвариантность.
+\end{observation}
+
+\begin{observation}
+Если (\ref{eq:gr_lie_act_ten},~слева) --- коммутативная диаграмма модулей над ассоциативным коммутативным унитальным кольцом \(A\), то (\ref{eq:gr_lie_act_ten},~справа) --- тоже.
+\begin{equation}
+\label{eq:gr_lie_act_ten}
+\begin{tikzcd}
+V \ar{r}{d'} \ar[swap]{d}{g} &
+V \ar{d}{g} &
+&
+V \otimes_A V \ar{rr}{d' \otimes 1 + 1 \otimes d'} \ar[swap]{d}{g \otimes g} &
+&
+V \otimes_A V \ar{d}{g \otimes g}
+\\
+V \ar{r}{d} &
+V &
+&
+V \otimes_A V \ar{rr}{d \otimes 1 + 1 \otimes d} &
+&
+V \otimes_A V
+\end{tikzcd}
+\end{equation}
+\end{observation}
+
+\begin{observation}
+Пусть \(R\) --- алгебра над ассоциативным коммутативным унитальным кольцом \(A\), отображение \(d : R \to R\) --- дифференцирование \(R\) над \(A\), а \(a\) и \(b\) --- элементы \(A\).
+Тогда мы имеем коммутативную диаграмму \eqref{eq:diff_scal_binom}, где \(\mathrm{mult}\) --- это отображение умножения в \(R\), которая делает очевидной формулу \eqref{eq:diff_scal_binom_form}, где \(x,y \in R\), а \(n \in \N_0\).
+\begin{equation}
+\label{eq:diff_scal_binom}
+\begin{tikzcd}[column sep = 7.5em]
+R \otimes_A R \ar[swap]{d}{\mathrm{mult}} \ar{r}{(d-a) \otimes 1 + 1 \otimes (d-b)} &
+R \otimes_A R \ar{d}{\mathrm{mult}}
+\\
+R \ar{r}{d - (a + b)} &
+R
+\end{tikzcd}
+\end{equation}
+\begin{equation}
+\label{eq:diff_scal_binom_form}
+(d - (a + b))^n (xy) =
+\sum_{i=0}^n \binom{n}{i} ((d - a)^{n-i} (x)) ((d - b)^i (y))
+\end{equation}
+\end{observation}
+
+\begin{observation}
+Пусть \(A \coloneqq K[X]/(X^p - 1)\), где \(K\) --- поле характеристики \(p \neq 0\), а \(x \in A\) --- образ \(X \in K[X]\).
+Тогда у нас есть два \(K\)-ли\-ней\-ных отображения:
+\(x : A \to A\), \(f \mapsto xf\) и
+\(\6 / \6 x : A \to A\), \(f \mapsto \6 f / \6 x\).
+Так как \([\6 / \6 x, x] = 1\), то
+\([x \6 / \6 x, x] = [x,x] \6 / \6 x + x [\6 / \6 x, x] = x\),
+поэтому \(x\) и \(x \6 / \6 x\) порождают двумерную разрешимую подалгебру Ли в \(\End_{K\textnormal{-}\mathrm{mod}}(A)\).
+Множество \(\{x^n \mid 0 \leq n < p\} \subset A\) --- является собственным базисом для \(x \6 / \6 x\) с попарно различными собственными значениями, но в нём нет собственных векторов для \(x : A \to A\).
+Следовательно, у эндоморфизмов \(x\) и \(x \6 / \6 x\) нет общего собственного вектора.
+\end{observation}
+
+\begin{observation} \label{obs:BCH_truncated}
+Пусть \(R \coloneqq \Q\langle X, Y \rangle / (P \in \Q\langle X, Y \rangle \mid \deg(P) \geq 3)\) --- алгебра усечённых многочленов от двух не коммутирующих переменных, а \(x, y \in R\) --- образы \(X, Y \in \Q\langle X, Y \rangle\).
+Тогда, в понятном смысле, выполняются равенства \(e^x e^y = e^{x + y + (1/2)(xy - yx)}\) и \(e^x e^y e^{-x} e^{-y} = e^{xy - yx}\).
+\end{observation}
+
+\begin{remark}
+Первая формула наблюдения~\ref{obs:BCH_truncated} --- это усечённая форма формулы Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа\namedash{}Дынкина, полная версия которой формулируется и доказывается в разделе~\ref{sec:BKHD}.
+\end{remark}
+
+%\begin{remark}
+%Текст~\cite{Mueger_BCHD} содержит формулировку и несколько доказательств формулы Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа\namedash{}Дынкина.
+%В частности, в \cite[][раздел 6]{Mueger_BCHD} изложена версия стандартного алгебраического доказательства формулы БКХД <<методом Картье>>, которая не использует теоремы Пуанкаре\namedash{}Биркгофа\namedash{}Витта.
+%\end{remark}
+
+\begin{corollary}
+Пусть \(R\) --- ассоциативное унитальное кольцо, а \(x, y \in R\) --- его элементы, такие что \(x^2 = y^2 = xyx = yxy = 0\). Тогда, в понятном смысле, выполняется равенство \(e^x e^y e^{-x} e^{-y} = e^{xy - yx}\).
+\end{corollary}
+
+%\begin{remark}
+%Можно взять \(x = x' \varepsilon_1\) и \(y = y' \varepsilon_2\), где
+%\(\varepsilon_1\) и \(\varepsilon_2\)
+%--- центральные элементы, такие что
+%\(\varepsilon_1^2 = \varepsilon_2^2 = 0\).
+%Ещё можно взять \(x = v_x u_x\) и \(y = v_y u_y\),
+%где \(u_x v_x = u_y v_y = u_x v_y = 0\).
+%Если
+%\(u_x\) и \(u_y\) --- строки,
+%а \(v_x\) и \(v_y\) --- столбцы,
+%то отсюда получается коммутационная формула для трансвекций.
+%\end{remark}
+
+\begin{example}
+Пусть \(R\) --- ассоциативное унитальное кольцо, \(a_1, a_2 \in R\), а \(\varepsilon_1, \varepsilon_2 \in R[E_1, E_2] / (E_1^2, E_2^2)\) --- образы \(E_1\) и \(E_2\) соответственно.
+Тогда \(e^{x_1} e^{x_2} e^{-x_1} e^{-x_2} = e^{x_1 x_2 - x_2 x_1}\), где \(x_1 \coloneqq a_1 \varepsilon_1\), \(x_2 \coloneqq a_2 \varepsilon_2\).
+\end{example}
+
+\begin{example}
+Пусть \(R\) --- ассоциативное унитальное кольцо,
+\(I\) --- конечное множество,
+\(u_1, u_2 \in \Mat_{\pt, I}(R)\) --- две строки,
+а \(v_1, v_2 \in \Mat_{I, \pt}(R)\) --- два столбца,
+причём \(u_1 v_1 = u_2 v_2 = u_1 v_2 = 0\).%
+\label{exa:TransvCommForm}
+Тогда \(e^{x_1} e^{x_2} e^{-x_1} e^{-x_2} = e^{x_1 x_2 - x_2 x_1}\), где \(x_1 \coloneqq v_1 u_1\), \(x_2 \coloneqq v_2 u_2\).
+\end{example}
+
+\begin{remark}
+Формула из примера~\ref{exa:TransvCommForm} называется коммутационной формулой для трансвекций.
+\end{remark}
+
+\begin{observation}
+Пусть \(V\) --- конечномерное векторное пространство над полем \(K\). Пусть \(s : V \xrightarrow{\sim} V^{\vee}\) --- невырожденная билинейная форма, \(x : V \to V\) --- линейное отображение, \(x^{\vee} : V^{\vee} \to V^{\vee}\) --- двойственное отображение.
+\label{obs:tr_lie_bilin}
+Форма \(s\) ли-инварантна относительно \(x\) тогда и только тогда, когда
+\(s x + x^{\vee} s = 0\),
+то есть
+\(sxs^{-1} = -x^{\vee}\). Взяв след, получаем
+%следующее равенство:
+равенство
+\(
+\tr(x) = \tr(sxs^{-1}) = \tr(-x^{\vee}) = -\tr(x)
+\), то есть \(2\tr(x) = 0\).
+\end{observation}
+
+
+\begin{observation}
+Пусть \(p \in \N_1\) --- простое число, а \(X, Y \in \F_p[X,Y]\) --- коммутирующие переменные.%
+\label{obs:FrobEndCor}
+Тогда \((X - Y)(X - Y)^{p-1} = (X - Y)^p = X^p - Y^p = (X - Y)(X^{p-1} + X^{p-2}Y + \cdots{} + XY^{p-2} + Y^{p-1})\),
+откуда следует, что \((X - Y)^{p-1} = X^{p-1} + X^{p-2}Y + \cdots{} + XY^{p-2} + Y^{p-1}\).
+\end{observation}
+
+\begin{observation}
+Пусть \(p \in \N_1\) --- простое число, \(R\) --- ассоциативная унитальная \(\F_p\)\=/алгебра, \(x\) --- элемент \(R\), а \(D : R \to R\) --- дифференцирование кольца \(R\).%
+\label{obs:DiffAndAdInCharP}
+Тогда, применив наблюдение~\ref{obs:FrobEndCor}, получаем формулу \(\op{ad}(x)^{p-1}(D(x)) = (x* - *x)^{p-1}(D(x)) = D(x^p)\), где \(\op{ad}(x) = [x, -]\).
+\end{observation}
+
+\begin{observation}
+Пусть \(p \in \N_1\) --- простое число, а \(X, Y, T \in \F_p\langle X, Y \rangle [T]\) --- переменные.
+Тогда, продифференцировав тождество~\eqref{eq:RestrLie1} по \(T\), согласно наблюдению~\ref{obs:DiffAndAdInCharP}, получаем тождество~\eqref{eq:RestrLie2}.
+\begin{equation}
+(XT + Y)^p = X^p T^p + s_{p-1}(X, Y) T^{p-1} + \cdots{} + s_1(X, Y) T + Y^p%
+\label{eq:RestrLie1}%
+\end{equation}
+\begin{multline}
+%\op{ad}(XT + Y)^{p-1}(X) =
+[\underbrace{XT + Y, [XT + Y, [XT + Y, \dots{}, [XT + Y}_{p-1}, X]]] \dots{} ] =%
+\\
+= (p - 1) s_{p - 1}(X, Y) T^{p - 2} + \cdots{} + 2 s_2(X, Y) T + s_1(X, Y)%
+\label{eq:RestrLie2}
+\end{multline}
+\end{observation}
+
+
+\section{Формула Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа\namedash{}Дынкина}
+\label{sec:BKHD}
+
+\subsection{Предисловие}
+
+Практически весь материал этого раздела позаимствован из раздела~6 текста~\cite{Mueger_BCHD}, который содержит несколько доказательств теоремы Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа и её уточнений.
+Я узнал об этом тексте из учебника по алгебрам Ли и группам Ли П.\ Этингофа \cite[\textenglish{Remark~14.8}]{EtingofLie_2024}.
+
+\subsection{Критерии Фридрихса и Дынкина\namedash{}Шпехта\namedash{}Уивера}
+
+%\begin{definition}
+%Пусть \(K\) --- поле, а \(I\) --- множество.
+%Определим \(K\)\=/линейные отображения \(D, R : K \la X_i \smid i \in I \ra \rrarrow K \la X_i \smid i \in I \ra\) на мономах следующим образом:
+%\(D(X_{i_1} \dots{} X_{i_n}) = n X_{i_1} \dots{} X_{i_n}\) для любого отображения \(j \mapsto i_j : \{1, \dots{}, n\} \to I\), где \(n \in \N_0\),
+%\(R(1) = 0\), \(R(X_i) = X_i\) для любого \(i \in I\),
+%\(R(X_{i_1} \dots{} X_{i_n}) = [X_{i_1}, [X_{i_2}, [ \dots{}, [X_{i_{n-1}}, X_{i_n}]] \dots{} ]\) для любого отображения \(j \mapsto i_j : \{1, \dots{}, n\} \to I\), где \(n \in \N_2\).
+%\end{definition}
+
+\begin{definition}
+Пусть \(K\) --- поле, а \(\mc{X}\) --- множество.
+Определим \(K\)\=/линейные отображения \(D, R : K \la \mc{X} \ra \rrarrow K \la \mc{X} \ra\) на мономах следующим образом:
+\(D(X_1 \cdots{} X_n) = n X_1 \cdots{} X_n\) для любых \(X_1, \dots{}, X_n \in \mc{X}\), где \(n \geq 0\),
+\(R(1) = 0\), \(R(X) = X\) для любого \(X \in \mc{X}\),
+\(R(X_1 \cdots{} X_n) = [X_1, [X_2, \dots{}, [X_{n-1}, X_n]] \dots{} ]\) для любых \(X_1, \dots{}, X_n \in \mc{X}\), где \(n \geq 2\).
+\end{definition}
+
+\begin{lemma}
+Пусть \(K\) --- поле, \(\mc{X}\) --- множество, а \((K \la \mc{X} \ra, \mu, \eta, \delta, \varepsilon, S)\) --- это \(K \la \mc{X} \ra\) со стандартной структурой алгебры Хопфа.
+Тогда
+\begin{equation}
+\mu \circ (D \otimes S) \circ \delta = R.%
+\label{eq:D_S_conv}
+\end{equation}
+%Иначе говоря, свёртка \(D\) и \(S\) равна \(R\).
+\end{lemma}
+
+\begin{proof}
+Достаточно проверить формулу~\eqref{eq:D_S_conv} на мономах. Равенство
+\((\mu \circ (D \otimes S) \circ \delta)(1) = R(1)\)
+%и
+%\((\mu \circ (D \otimes S) \circ \delta)(X) = R(X)\), где \(X \in \mc{X}\),
+проверяется непосредственно.
+Пусть \(X_1, \dots{}, X_n \in \mc{X}\), где \(n \geq 1\).
+Тогда
+\begin{gather*}
+(\mu \circ (D \otimes S) \circ \delta)
+(X_1 \cdots{} X_n)
+=
+%\displaybreak[0]
+\\
+=
+\sum_{(c_1, \dots{}, c_n) \in \{0,1\}^n}
+(-1)^{\sum_{i=1}^n (1 - c_i)}
+(\sum_{i=1}^n c_i)
+X_1^{c_1} \cdots{} X_n^{c_n} X_n^{1 - c_n} \cdots{} X_1^{1 - c_1}
+=
+%\displaybreak[0]
+\\
+=
+\sum_{(c_1, \dots{}, c_n) \in \{0,1\}^n}
+(-1)^{\sum_{i=1}^n (1 - c_i)}
+(\sum_{i=1}^n c_i)
+X_1^{c_1} \cdots{} X_{n-1}^{c_{n-1}} X_n X_{n-1}^{1 - c_{n-1}} \cdots{} X_1^{1 - c_1}
+=
+%\displaybreak[0]
+\\
+=
+\sum_{(c_1, \dots{}, c_{n-1}) \in \{0,1\}^{n-1}}
+(-1)^{\sum_{i=1}^{n-1} (1 - c_i)}
+X_1^{c_1} \cdots{} X_{n-1}^{c_{n-1}} X_n X_{n-1}^{1 - c_{n-1}} \cdots{} X_1^{1 - c_1}
+=
+%\displaybreak[0]
+\\
+%=
+%[X_1, [X_2, [ \dots{}, [X_{n-1}, X_n]] \dots{} ]
+=
+R(X_1 \cdots{} X_n).
+\qedhere
+\end{gather*}
+\end{proof}
+
+\begin{theorem}[\scshape Критерии Фридрихса и Дынкина\namedash{}Шпехта\namedash{}Уивера]
+Пусть \(K\) --- поле, характеристика которого равна нулю,
+\(\mc{X}\) --- множество,
+\((K \la \mc{X} \ra, \mu, \eta, \delta, \varepsilon, S)\)
+--- это \(K \la \mc{X} \ra\) со стандартной структурой алгебры Хопфа,
+а \(f\) --- элемент \(K \la \mc{X} \ra\).%
+\label{thm:FriDynSpeWev}
+Тогда следующие условия эквивалентны:
+\begin{enumerate}[
+	font=\upshape,
+	label=\asbuk*),
+	ref=\asbuk*,
+	]
+
+\item \label{itm:FriDynSpeWev1}
+Многочлен \(f\) является \(K\)\=/линейной комбинацией кратных коммутаторов элементов \(\mc{X}\);
+
+\item \label{itm:FriDynSpeWev2}
+Выполняется равенство \(\delta(f) = f \otimes 1 + 1 \otimes f\) (критерий Фридрихса);
+
+\item \label{itm:FriDynSpeWev3}
+Выполняются равенства \(\varepsilon(f) = 0\) и \(R(f) = D(f)\) (критерий Дынкина\namedash{}Шпехта\namedash{}Уивера).
+
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Импликация (\ref{itm:FriDynSpeWev3})~\({\implies}\)~(\ref{itm:FriDynSpeWev1}) очевидна, а импликация (\ref{itm:FriDynSpeWev1})~\({\implies}\)~(\ref{itm:FriDynSpeWev2}) следует из классической формулы \([g \otimes 1 + 1 \otimes g, h \otimes 1 + 1 \otimes h] = [g, h] \otimes 1 + 1 \otimes [g, h]\), где \(g, h \in K \la \mc{X} \ra\), --- множество \(\{d \in K \la \mc{X} \ra \mid \delta(d) = d \otimes 1 + 1 \otimes d\}\) является подалгеброй Ли в \(K \la \mc{X} \ra\).
+Осталось доказать импликацию (\ref{itm:FriDynSpeWev2})~\({\implies}\)~(\ref{itm:FriDynSpeWev3}).
+Пусть \(f\) удовлетворяет условию~(\ref{itm:FriDynSpeWev2}).
+Применяя отображение \(\varepsilon \otimes \Id\) к обеим сторонам равенства \(\delta(f) = f \otimes 1 + 1 \otimes f\) получаем равенство \(f = \varepsilon(f) 1 + \varepsilon(1) f = \varepsilon(f) + f\), откуда следует, что \(\varepsilon(f) = 0\).
+Подставив выражение \(\delta(f) = f \otimes 1 + 1 \otimes f\) в формулу~\eqref{eq:D_S_conv}, получаем, что \(D(f) = D(f) S(1) + D(1) S(F) = R(f)\).
+\end{proof}
+
+\subsection{Теорема Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа}
+
+\begin{definition}[\scshape Ряд Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа]
+Следующий формальный ряд называется \emph{рядом Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа}:
+\begin{equation}
+	\begin{gathered}
+		\log(e^X e^Y) =
+		\sum_{k=1}^{\infty}
+		\frac{(-1)^{k-1}}{k}
+		\Bigl(\sum_{m, n = 0}^{\infty}
+		\frac{X^m Y^n}{m! n!} - 1\Bigr)^k
+		=
+		\\
+		=
+		\sum_{k=1}^{\infty}
+		\sum_{m_1 + n_1 > 0}
+		\cdots{}
+		\sum_{m_k + n_k > 0}
+		\frac{(-1)^{k-1}}{k}
+		\frac%
+		{X^{m_1} Y^{n_1} \cdots{} X^{m_k} Y^{n_k}}%
+		{m_1! n_1! \cdots{} m_k! n_k!}
+		\in \Q \llangle X, Y \rrangle.%
+		\label{eq:BakCamHauSeries}
+	\end{gathered}
+\end{equation}
+\end{definition}
+
+\begin{theorem}[\scshape Теорема Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа]
+Все однородные компоненты ряда Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа, то есть ряда \(\log(e^X e^Y) \in \Q \llangle X, Y \rrangle\), представляются в виде \(\Q\)\=/линейных комбинаций кратных коммутаторов переменных \(X\) и \(Y\).
+\end{theorem}
+
+\begin{proof}[Набросок доказательства]
+Гомоморфизм
+\(
+	\delta :
+	\Q \langle X, Y \rangle
+	\to
+	\Q \langle X, Y \rangle^{\otimes_{\Q} 2}
+%	\Q \langle X, Y \rangle
+%	\otimes_{\Q}
+%	\Q \langle X, Y \rangle
+	\cong
+	\Q \langle X_1, Y_1 \rangle
+	   \langle X_2, Y_2 \rangle
+\),
+переводящий \(X\) в \(X \otimes 1 + 1 \otimes X\), а \(Y\) в \(Y \otimes 1 + 1 \otimes Y\),
+имеет единственное продолжение до непрерывного в стандартной топологии на формальных рядах отображения
+\(
+	\delta :
+	\Q \llangle X, Y \rrangle
+	\to
+	\Q \llangle X_1, Y_1 \rrangle
+	   \llangle X_2, Y_2 \rrangle
+	\cong
+	\prod_{m, n = 0}^{\infty}
+	(\Q \langle X, Y \rangle_m
+	 \otimes_{\Q}
+	 \Q \langle X, Y \rangle_n)
+	\supset
+	\Q \llangle X, Y \rrangle^{\otimes_{\Q} 2}
+\).
+%где нижними индексами обозначены однородные компоненты соответствующей степени.
+Осталось заметить, что экспонента задаёт биекцию между элементами \(f \in \Q \llangle X, Y \rrangle\) с постоянным членом \(0\), удовлетворяющими условию \(\delta(f) = f \otimes 1 + 1 \otimes f\), и элементами \(g \in \Q \llangle X, Y \rrangle\) с постоянным членом \(1\), удовлетворяющими условию \(\delta(g) = g \otimes g\), а потом использовать теорему~\ref{thm:FriDynSpeWev},
+а точнее, критерий Фридрихса.
+\end{proof}
+
+\subsection{Формула Дынкина для ряда БКХ}
+
+\begin{definition}[\scshape Идемпотент Дынкина]
+Пусть \(K\) --- поле характеристики ноль,
+а \(\mc{X}\) --- конечное множество.
+Тогда \emph{идемпотентом Дынкина} называется \(K\)\=/линейное и непрерывное в стандартной топологии на \(K \llangle \mc{X} \rrangle\) отображение \(P : K \llangle \mc{X} \rrangle \to K \llangle \mc{X} \rrangle\), такое что
+\(P(X_1 \cdots{} X_n) = \frac{1}{n} R(X_1 \cdots{} X_n)\) для любых \(X_1, \dots{}, X_n \in \mc{X}\), где \(n \geq 1\), а \(P(1) = 0\).
+\end{definition}
+
+\begin{observation}
+Пусть \(K\) --- поле характеристики ноль,
+а \(\mc{X}\) --- конечное множество.
+Тогда идемпотент Дынкина \(P : K \llangle \mc{X} \rrangle \to K \llangle \mc{X} \rrangle\) идемпотентен, то есть \(P \circ P = P\),
+а образ \(P\) совпадает с рядами, все однородные компоненты которых представляются в виде \(K\)\=/линейных комбинаций кратных коммутаторов элементов \(\mc{X}\).
+\end{observation}
+
+\begin{theorem}[\scshape Формула Дынкина]
+В кольце \(\Q \llangle X, Y \rrangle\) выполняется следующее соотношение, которое называется \emph{формулой Дынкина для ряда Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа}, или же \emph{формулой Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа\namedash{}Дынкина}:
+\begin{equation}
+	\begin{gathered}
+		\log(e^X e^Y) =
+		\sum_{k=1}^{\infty}
+		\sum_{m_1 + n_1 > 0}
+		\cdots{}
+		\sum_{m_k + n_k > 0}
+		\frac%
+		{
+			(-1)^{k - 1}
+		}
+		{
+			k
+			\sum_{i = 1}^k (m_i + n_i)
+			%m_1! n_1! \dots{} m_k! n_k!
+			\prod_{j = 1}^k m_j! n_j!
+		}
+		\times
+		\\
+		\times
+		%[X, [\dots{}, [X,
+		%[Y, [\dots{}, [Y,
+		%[\dots{}
+		%[X, [\dots{}, [X,
+		%[Y, [\dots{}, [Y,
+		%[\dots{}]
+		%\dots{}].%
+		[\underbrace{X, [X, \dots{}, [X}_{m_1},
+		[\underbrace{Y, [Y, \dots{}, [Y}_{n_1},
+		\dots{},
+		[\underbrace{X, [X, \dots{}, [X}_{m_k},
+		[\underbrace{Y, [Y, \dots{}, Y}_{n_k}]]
+		\dots{}
+		]].%
+		\label{eq:BKHD_formula}
+	\end{gathered}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Применим идемпотент Дынкина к формуле~\eqref{eq:BakCamHauSeries}.
+\end{proof}
 
 
 
