@@ -5267,6 +5267,29 @@ groß\-/отображения \(s,t : \mc{C} \setminus \{0\} \rrarrow \op{Ein}(
 \end{remark}
 
 
+\section{Алгоритм RSA}
+
+\begin{observation}[\scshape Теорема RSA]
+Пусть \(\mc{P}\) --- конечное множество простых чисел,
+\(n \coloneqq \prod_{p \in \mc{P}} p\) --- их произведение,
+\(\lambda(n)\) --- экспонента группы \((\Z / n\Z)^{\times}\),
+а \(s \in \N_0\) --- число, такое что \(s \equiv 1 \pmod{\lambda(n)}\).%
+\label{obs:ExponentRSA}
+%Тогда отображение \(x \mapsto x^s : \Z / n\Z \to \Z / n\Z\) тождественное.
+Тогда \(x^s = x\) для любого \(x \in \Z / n\Z \cong \prod_{p \in \mc{P}} \Z / p\Z\).
+\end{observation}
+
+\begin{remark}
+Если, в обозначениях наблюдения~\ref{obs:ExponentRSA}, два числа \(e, d \in \N_0\) удовлетворяют соотношению \(ed \equiv s \equiv 1 \pmod{\lambda(n)}\),
+то отображения
+\(x \mapsto x^e : \Z / n\Z \rlarrow \Z / n\Z : x^d \mapsfrom x\)
+являются взаимно обратными биекциями,
+но по \(n\) и \(e\) в общем случае довольно трудно вычислить \([d] \in \Z / \lambda(n) \Z\).
+Это обстоятельство лежит в основе \emph{алгоритма RSA}:
+первое отображение зашифровывает сообщения, а второе их расшифровывает.
+\end{remark}
+
+
 
 
 
