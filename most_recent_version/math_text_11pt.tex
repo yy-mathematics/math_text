@@ -2670,7 +2670,7 @@ L \otimes_K L
 где \(\alpha\) --- стандартное отождествление,
 изоморфизм \(\beta\) индуцирован изоморфизмом \(x \mapsto b(x,-) : L \xrightarrow{\sim} L^{\vee}\),
 а отображение \(\gamma\) переводит \(x \otimes y\) в \(\rho(x)\rho(y)\) для любых \(x, y \in L\).
-Тогда элемент \(\Omega_{\rho} \coloneqq \gamma(\beta^{-1}(\alpha^{-1}(\Id_L)))\) называется \emph{элементом Казимира} представления \(\rho\).
+Элемент \(\Omega_{\rho} \coloneqq \gamma(\beta^{-1}(\alpha^{-1}(\Id_L)))\) называется \emph{элементом Казимира} представления \(\rho\).
 \end{definition}
 
 \begin{observation}[\scshape Инвариантность элемента Казимира]
@@ -2686,6 +2686,23 @@ L \otimes_K L
 Это абстрактная тавтология --- надо воспользоваться тем, что след элемента \(\End_{K\module}(L)\) задаётся спариванием в \(L \otimes_K L^{\vee}\).
 В частности, \(\tr(\Omega_{\rho}) = \dim_K(L)\).
 \end{observation}
+
+
+\section{Целые в квадратичных полях}
+
+\begin{theorem}
+Пусть \(d \in \mathbb{Z}\) --- бесквадратное целое число, а
+\(
+\mathcal{O}_{\mathbb{Q}[\sqrt{d}]} \coloneqq \{a+b\sqrt{d} \in \mathbb{Q}[\sqrt{d}] \mid a,b \in \Q,\ 2a \in \mathbb{Z},\ a^2-{b^2}d \in \mathbb{Z} \}
+\).
+Тогда если \(d \equiv 2,3 \pmod{4}\), то \(\mathcal{O}_{\mathbb{Q}[\sqrt{d}]} = \mathbb{Z}[\sqrt{d}]\), а если \(d \equiv 1 \pmod{4}\), то \(\mathcal{O}_{\mathbb{Q}[\sqrt{d}]} = \mathbb{Z}[\frac{1+\sqrt{d}}{2}]\).
+\end{theorem}
+
+\begin{proof}
+Пусть \(a, b \in \mathbb{Q}\) --- числа, такие что \(2a, a^2-{b^2}d \in \mathbb{Z}\).
+Так как \(a^2-{b^2}d \in \mathbb{Z}\), то \(4a^2-4{b^2}d \in \mathbb{Z}\), откуда, так как \(2a \in \mathbb{Z}\), следует, что \(4{b^2}d \in \mathbb{Z}\), откуда следует, что \(2b \in \mathbb{Z}\), так как \(d\) бесквадратное.
+Осталось рассмотреть условие \(4(a^2-{b^2}d) = (2a)^2 - (2b)^2 d \equiv 0 \pmod{4}\).
+\end{proof}
 
 
 
