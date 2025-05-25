@@ -2705,6 +2705,34 @@ L \otimes_K L
 \end{proof}
 
 
+\section{Категорные треугольные тождества}
+
+Пусть \(F : \mc{C} \rlarrow \mc{E} : G\) --- пара сопряжённых функторов, таких что \(F\) --- левый сопряжённый, \(G\) --- правый сопряжённый, а \(\eta : \Id_{\mc{C}} \to GF\) и \(\varepsilon : FG \to \Id_{\mc{E}}\) --- единица и коединица сопряжения.
+Тогда биекции сопряжения в терминах единиц и коединиц описываются так:
+\begin{equation*}
+(f : X \to G(Y)) \mapsto \varepsilon_Y \circ F(f),
+\quad
+(g : F(X) \to Y) \mapsto G(g) \circ \eta_X, 
+\end{equation*}
+где \(f \in \Ar(\mc{C})\), \(g \in \Ar(\mc{E})\).
+Естественность этих отображений эквивалентна естественности \(\eta\) и \(\varepsilon\) соответственно.
+На \(F(f)\) и \(G(g)\) биекции сопряжения действуют так:
+\begin{equation*}
+F(f) \mapsto G(F(f)) \circ \eta_X = \eta_{G(Y)} \circ f,
+\quad
+G(g) \mapsto \varepsilon_Y \circ F(G(g)) = g \circ \varepsilon_{F(X)},
+\end{equation*}
+где равенства являются следствиями естественности единицы и коединицы соответственно.
+Поэтому, записывая условие взаимной обратности полученных отображений, воспользовавшись естественностью биекций сопряжения, мы получаем два условия:
+\begin{equation*}
+G(\varepsilon_Y) \circ \eta_{G(Y)} \circ f = f,
+\quad
+g \circ \varepsilon_{F(X)} \circ F(\eta_X) = g,
+\end{equation*}
+то есть \(G \varepsilon \circ \eta G = \Id_G\) и \(\varepsilon F \circ F \eta = \Id_F\).
+Эти условия типа <<композиция единицы и коединицы тождественная>> называются \emph{треугольными тождествами}.
+
+
 
 \chapter{Подкорректированные старые тексты}
 
@@ -11562,6 +11590,17 @@ V \to \Coker(\Sigma_{C_p} : (V^{\otimes [p]_\Lambda})_{C_p} \to (V^{\otimes [p]_
 \((\mu_X : \Hom_{\mc{C}}(X,G) \times \Hom_{\mc{C}}(X,G) \to \Hom_{\mc{C}}(X,G))_{X \in \Ob(\mc{C})}\),
 которое превращает каждое из множеств \(\Hom_{\mc{C}}(X, G)\) в группу.
 \end{definition}
+
+\begin{observation}[\scshape Обратный Мура\namedash{}Пенроуза]
+Пусть \(x : V \rlarrow U : y\) --- гомоморфизмы \(\Z\)\=/модулей, такие что \(xyx=x\) и \(yxy=y\).
+Тогда \(yxyx=yx\) и \(xyxy=xy\), то есть \(xy\) и \(yx\) --- проекторы.
+При этом, так как \(xyx=x\), то \(\Ker(yx) \subset \Ker(x)\), а потому \(\Ker(yx) = \Ker(x)\).
+Аналогично, \(\Image(yx) = \Image(y)\), и всё то же с заменой \(x \leftrightarrow y\).
+Отсюда получаем разложения \(V = \Ker(x) \oplus \Image(y)\) и \(U = \Ker(y) \oplus \Image(x)\),
+и взаимно обратные изоморфизмы
+\(v \mapsto x(v) : \Image(y) \rlarrow \Image(x) : y(u) \mapsfrom u\).
+Если \(V\) и \(U\) --- это модули над \(\R\) или \(\C\) с невырожденными скалярными произведениями, то \(x\) однозначно определяет \(y\), для которого описанные разложения ортогональны. Это и есть <<обратный Мура\namedash{}Пенроуза>>.
+\end{observation}
 
 
 
