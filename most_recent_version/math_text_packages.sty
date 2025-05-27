@@ -379,6 +379,18 @@ labelsep=period,]%
 \end{description}%
 }
 
+% Доказательство из нескольких частей
+
+\newenvironment{proofparts}[1][\proofname]%
+{%
+\begin{proof}[#1]
+~\begin{proofdescription}
+}%
+{%
+\end{proofdescription}
+\end{proof}%
+}
+
 %-------------------
 
 % Изменение стиля нумерации уравнений
