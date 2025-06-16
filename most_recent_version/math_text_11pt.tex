@@ -5507,12 +5507,8 @@ groß\-/отображения \(s,t : \mc{C} \setminus \{0\} \rrarrow \op{Ein}(
 
 \end{proofparts}
 
-%\begin{remark}
-%Я не знаю почему, но \(a_{-1}\) и \(b_{-1}\), обозначающие полуоси орбиты со знаками, для точки в поле с \(U(r) =  \pm r^{-1}\) совпадают с соответствующими \(E_2\) и \(M_2\) для точки в поле с \(U(r) = \pm r^2 / 2\).
-%\end{remark}
-
 \begin{remark}
-Я не знаю почему, но большая и малая полуоси орбиты в поле с \(U(r) =  \pm r^{-1}\) совпадают с энергией и кинетическим моментом соответственно соответствующей орбиты в поле с \(U(r) = \pm r^2 / 2\).
+Почему-то большая и малая полуоси орбиты в поле с \(U(r) =  \pm r^{-1}\) совпадают с энергией и кинетическим моментом соответственно соответствующей орбиты в поле с \(U(r) = \pm r^2 / 2\).
 \end{remark}
 
 \begin{corollary}
@@ -6265,15 +6261,22 @@ X \to \{f \in F \mid \od_F(f,\od_X(y,-)) < \infty\ \tn{для всех}\ y \in X
 Тогда существует точка \(x \in (0,1)\), такая что \(f'(x) = f(1) - f(0)\).
 \end{corollary}
 
-\begin{theorem}[\scshape Неравенство Лагранжа]
-Пусть \(E\) --- евклидово пространство, а \(\gamma : [0,1] \to E\) --- непрерывное отображение, дифференцируемое на интервале \((0,1)\).%
-\seclabel{thm:LagrIneq}
-Тогда существует точка \(x \in (0,1)\), такая что \(|\gamma(1) - \gamma(0)| \leq \lVert D(\gamma)_x \rVert\).
+\begin{theorem}[\scshape Многомерная теорема Лагранжа]
+Пусть \(E\) --- евклидово пространство, \(\gamma : [0,1] \to E\) --- непрерывное отображение, дифференцируемое на интервале \((0,1)\),
+а \(v \coloneqq \gamma(1) - \gamma(0)\).%
+\seclabel{thm:LagrangeMeanMultidim}
+%Тогда существует точка \(x \in (0,1)\), такая что \(|\gamma(1) - \gamma(0)| \leq \lVert D(\gamma)_x \rVert\).
+Тогда существует точка \(x \in (0,1)\), такая что \(\lvert v \rvert = \gamma'(x) \cdot \frac{v}{\lvert v \rvert} \leq \lvert \gamma'(x) \rvert\).
 \end{theorem}
 
-\begin{proof}[Набросок доказательства]
-Пусть \(L\) --- это прямая, проходящая через \(\gamma(0)\) и \(\gamma(1)\), а \(\pi : E \to L\) --- это ортогональная проекция на \(L\). Так как дифференциалы \(\pi\) во всех точках имеют норму не больше \(1\), то замена \(\gamma\) на \(\pi \circ \gamma\) сводит доказательство теоремы к случаю одномерного \(E\), где она следует из классической теоремы Лагранжа о среднем.
+\begin{proof}
+Применим теорему Лагранжа о среднем к функции
+\(t \mapsto (\gamma(t) - \gamma(0)) \cdot \frac{v}{\lvert v \rvert} : [0,1] \to \R\).
 \end{proof}
+
+%\begin{proof}[Набросок доказательства]
+%Пусть \(L\) --- это прямая, проходящая через \(\gamma(0)\) и \(\gamma(1)\), а \(\pi : E \to L\) --- это ортогональная проекция на \(L\). Так как дифференциалы \(\pi\) во всех точках имеют норму не больше \(1\), то замена \(\gamma\) на \(\pi \circ \gamma\) сводит доказательство теоремы к случаю одномерного \(E\), где она следует из классической теоремы Лагранжа о среднем.
+%\end{proof}
 
 
 \section{Теорема об обратной функции}
@@ -6313,7 +6316,7 @@ X \to \{f \in F \mid \od_F(f,\od_X(y,-)) < \infty\ \tn{для всех}\ y \in X
 \(\lVert D(\hat{\varphi})_x \rVert \leq \varepsilon\)
 для любого \(x \in \overline{B}_R(0)\).
 
-Согласно неравенству Лагранжа (теорема~\secref{thm:LagrIneq})
+Согласно многомерной теореме Лагранжа (теорема~\secref{thm:LagrangeMeanMultidim})
 растяжение отображения \(\hat{\varphi}|_{\overline{B}_R(0)}\)
 не превосходит \(\varepsilon\).
 В частности, \(\hat{\varphi}(\overline{B}_R(0)) \subset \overline{B}_{\varepsilon R}(0)\)
@@ -9489,7 +9492,9 @@ R(X_1 \cdots{} X_n).
 а \(\theta : K \otimes_k A \xrightarrow{\sim} K^{\times I}\) --- её диагонализация над расширением полей \(K/k\).%
 \label{thm:GalIsoOne}
 Тогда существует единственная перенумерация \(I \xrightarrow{\sim} S \coloneqq \Hom_{k\ring}(A,K)\), которая переводит в \(\theta\) гомоморфизм
-\(K\)\=/алгебр \(K \otimes_k A \xrightarrow{\sim} K^{\times S}\), индуцированный гомоморфизмом \(k\)\=/алгебр \(\barprod_{\varphi \in S} \varphi : A \to K^{\times S}\), \(a \mapsto (\varphi(a))_{\varphi \in S}\).
+\(K\)\=/алгебр
+\(\alpha \otimes a \mapsto (\alpha \varphi(a))_{\varphi \in S} : K \otimes_k A \xrightarrow{\sim} K^{\times S}\).
+%\(K \otimes_k A \xrightarrow{\sim} K^{\times S}\), индуцированный гомоморфизмом \(k\)\=/алгебр \(\barprod_{\varphi \in S} \varphi : A \to K^{\times S}\), \(a \mapsto (\varphi(a))_{\varphi \in S}\).
 \end{theorem}
 
 \begin{proof}
