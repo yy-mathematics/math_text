@@ -6301,16 +6301,16 @@ X \to \{f \in F \mid \od_F(f,\od_X(y,-)) < \infty\ \tn{для всех}\ y \in X
 \end{corollary}
 
 \begin{theorem}[\scshape Многомерная теорема Лагранжа]
-Пусть \(E\) --- евклидово пространство, \(\gamma : [0,1] \to E\) --- непрерывное отображение, дифференцируемое на интервале \((0,1)\),
-а \(v \coloneqq \gamma(1) - \gamma(0)\).%
+Пусть \(E\) --- евклидово пространство, а \(\gamma : [0,1] \to E\) --- непрерывное отображение, дифференцируемое на интервале \((0,1)\),
+такое что \(u \coloneqq \gamma(1) - \gamma(0) \neq 0\).%
 \seclabel{thm:LagrangeMeanMultidim}
 %Тогда существует точка \(x \in (0,1)\), такая что \(|\gamma(1) - \gamma(0)| \leq \lVert D(\gamma)_x \rVert\).
-Тогда существует точка \(x \in (0,1)\), такая что \(\lvert v \rvert = \gamma'(x) \cdot \frac{v}{\lvert v \rvert} \leq \lvert \gamma'(x) \rvert\).
+Тогда существует точка \(x \in (0,1)\), такая что \(\lvert u \rvert = \gamma'(x) \cdot \frac{u}{\lvert u \rvert} \leq \lvert \gamma'(x) \rvert\).
 \end{theorem}
 
 \begin{proof}
-Применим теорему Лагранжа о среднем к функции
-\(t \mapsto (\gamma(t) - \gamma(0)) \cdot \frac{v}{\lvert v \rvert} : [0,1] \to \R\).
+Применим классическую теорему Лагранжа о среднем (следствие~\ref{cor:LagrangeMean}) к функции
+\(t \mapsto (\gamma(t) - \gamma(0)) \cdot \frac{u}{\lvert u \rvert} : [0,1] \to \R\).
 \end{proof}
 
 %\begin{proof}[Набросок доказательства]
