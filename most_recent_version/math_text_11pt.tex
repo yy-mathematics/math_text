@@ -6290,14 +6290,19 @@ X \to \{f \in F \mid \od_F(f,\od_X(y,-)) < \infty\ \tn{для всех}\ y \in X
 \end{theorem}
 
 \begin{proof}
-Применим теорему Ролля о среднем (теорему~\ref{thm:RolleMean}) к композиции отображения \(\gamma\) с ортогональной проекцией \(\R^2\) на прямую, ортогональную вектору \(\gamma(1) - \gamma(0)\).
+Применим теорему Ролля о среднем (теорема~\ref{thm:RolleMean}) к композиции отображения \(\gamma\) с ортогональной проекцией \(\R^2\) на прямую, ортогональную вектору \(\gamma(1) - \gamma(0)\).
 \end{proof}
 
-\begin{corollary}[\scshape Теорема Лагранжа о среднем]
+\begin{theorem}[\scshape Теорема Лагранжа о среднем]
 Пусть \(f : [0,1] \to \R\) --- непрерывная функция, дифференцируемая на интервале \((0,1)\).%
-\label{cor:LagrangeMean}
+\label{thm:LagrangeMean}
 Тогда существует точка \(x \in (0,1)\), такая что \(f'(x) = f(1) - f(0)\).
-\end{corollary}
+\end{theorem}
+
+\begin{proof}
+Применим теорему Коши о среднем (теорема~\ref{thm:CauchyMean}) к отображению
+\(t \mapsto (t, f(t)) : [0,1] \to \R^2\).
+\end{proof}
 
 \begin{theorem}[\scshape Многомерная теорема Лагранжа]
 Пусть \(E\) --- евклидово пространство, а \(\gamma : [0,1] \to E\) --- непрерывное отображение, дифференцируемое на интервале \((0,1)\),
@@ -6308,7 +6313,7 @@ X \to \{f \in F \mid \od_F(f,\od_X(y,-)) < \infty\ \tn{для всех}\ y \in X
 \end{theorem}
 
 \begin{proof}
-Применим классическую теорему Лагранжа о среднем (следствие~\ref{cor:LagrangeMean}) к функции
+Применим классическую теорему Лагранжа о среднем (теорема~\ref{thm:LagrangeMean}) к функции
 \(t \mapsto (\gamma(t) - \gamma(0)) \cdot \frac{u}{\lvert u \rvert} : [0,1] \to \R\).
 \end{proof}
 
