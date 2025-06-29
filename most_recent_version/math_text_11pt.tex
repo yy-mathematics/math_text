@@ -2705,41 +2705,6 @@ L \otimes_K L
 \end{proof}
 
 
-\section{Категорные треугольные тождества}
-
-Пусть \(F : \mc{C} \rlarrow \mc{E} : G\) --- пара сопряжённых функторов, таких что \(F\) --- левый сопряжённый, \(G\) --- правый сопряжённый, а \(\eta : \Id_{\mc{C}} \to GF\) и \(\varepsilon : FG \to \Id_{\mc{E}}\) --- единица и коединица сопряжения.
-Тогда биекции сопряжения в терминах единиц и коединиц описываются так:
-\begin{equation*}
-(f : X \to G(Y)) \mapsto \varepsilon_Y \circ F(f),
-\quad
-(g : F(X) \to Y) \mapsto G(g) \circ \eta_X, 
-\end{equation*}
-%\begin{equation*}
-%f \mapsto \varepsilon_Y \circ F(f) :
-%\Hom_{\mc{C}}(X, G(Y))
-%\rlarrow
-%\Hom_{\mc{E}}(F(X), Y)
-%: G(g) \circ \eta_X \mapsfrom g,
-%\end{equation*}
-где \(X \in \Ob(\mc{C})\), \(Y \in \Ob(\mc{E})\), \(f \in \Ar(\mc{C})\), \(g \in \Ar(\mc{E})\).
-Естественность этих отображений эквивалентна естественности \(\varepsilon\) и \(\eta\) соответственно.
-На \(F(f)\) и \(G(g)\) биекции сопряжения действуют так:
-\begin{equation*}
-F(f) \mapsto G(F(f)) \circ \eta_X = \eta_{G(Y)} \circ f,
-\quad
-G(g) \mapsto \varepsilon_Y \circ F(G(g)) = g \circ \varepsilon_{F(X)},
-\end{equation*}
-где равенства являются следствиями естественности единицы и коединицы соответственно.
-Поэтому, записывая условие взаимной обратности полученных отображений, воспользовавшись естественностью биекций сопряжения, мы получаем два условия:
-\begin{equation*}
-G(\varepsilon_Y) \circ \eta_{G(Y)} \circ f = f,
-\quad
-g \circ \varepsilon_{F(X)} \circ F(\eta_X) = g,
-\end{equation*}
-то есть \(G \varepsilon \circ \eta G = \Id_G\) и \(\varepsilon F \circ F \eta = \Id_F\).
-Эти условия типа <<композиция единицы и коединицы тождественная>> называются \emph{треугольными тождествами}.
-
-
 
 \chapter{Подкорректированные старые тексты}
 
@@ -5125,119 +5090,6 @@ n \cdot (1 + \lVert n \rVert + \cdots + {\lVert n \rVert}^{\lfloor \frac{\ln(m)}
 \end{proof}
 
 
-\section{Категории как полугруппы}
-
-\subsection{Мультипликативные полугруппы с нулём}
-
-\begin{definition}[\scshape Бинар]
-Множество \(X\), снабжённое отображением \((x,y) \mapsto xy : X \times X \to X\) называется \emph{бинаром} в мультипликативной записи или \emph{мультипликативным бинаром}.
-\end{definition}
-
-\begin{definition}[\scshape Нулевой элемент]
-Пусть \(X\) --- мультипликативный бинар.
-\label{def:MultSemigrZero}
-Тогда элемент \(z \in X\) называется \emph{поглощающим элементом} (англ.\ \emph{\textenglish{absorbing element}}), \emph{нулевым элементом} или просто \emph{нулём}, если \(xz = z = zx\) для любого \(x \in X\).
-\end{definition}
-
-\begin{theorem}[\scshape Единственность нуля]
-Пусть \(X\) --- мультипликативный бинар, а \(z, z' \in X\) --- два нулевых элемента. Тогда \(z = z'\).
-\end{theorem}
-
-\begin{proof}
-Из определения~\ref{def:MultSemigrZero} следует, что \(z = zz' = z'\).
-\end{proof}
-
-\begin{notation}
-Нулевой элемент в мультипликативном бинаре часто обозначается символом \(0\).
-\end{notation}
-
-\begin{definition}[\scshape Полугруппа]
-Мультипликативный бинар \(X\) называется мультипликативной \emph{полугруппой}, если для любых \(x,y,z \in X\) выполняется равенство \(x(yz) = (xy)z\).
-\end{definition}
-
-\subsection{Определение категории}
-
-\begin{convention}[\scshape Groß]
-<<Groß\-/полугруппа>> --- это \rusquoted{полугруппа}, совокупность элементов которой не подразумевается малой, то есть не подразумевается множеством.%
-\label{con:Gross}
-Записи <<groß\-/отображение>>, <<groß\-/категория>> и <<groß\-/множество>> имеют аналогичный смысл.
-\end{convention}
-
-\begin{remark}
-Соглашение~\ref{con:Gross} основано на терминологии из лекций Д.\ Терешкина по теории категорий в НМУ \cite[23:10]{Tereshkin_Cat_2024}.
-\end{remark}
-
-\begin{definition}[\scshape Ein]
-Пусть \(\mc{C}\) --- мультипликативная groß\-/полугруппа с нулём.%
-\label{def:SemigroupEin}
-Тогда определим groß\-/множество
-%\footnote{<<Ein>> от немецкого <<einheit>>.}
-\[\op{Ein}(\mc{C}) \coloneqq \{e \in \mc{C} \setminus \{0\} \mid ex, xe \in \{0, x\}\ \text{для любого \(x \in \mc{C}\)}\}.\]
-\end{definition}
-
-\begin{remark}
-Обозначение <<Ein>> в определении~\ref{def:SemigroupEin} происходит от немецкого слова <<einheit>>.
-Оно не является общепринятым, но я не знаю общепринятого обозначения.
-\end{remark}
-
-\begin{definition}[\scshape Groß\-/категория]
-\label{def:CategorySemigroup}
-Мультипликативная groß\-/полугруппа с нулём \(\mc{C}\) называется \emph{groß\-/категорией}, если
-для всех \(x, y, z \in \mc{C}\) из того, что \(xy, yz \neq 0\) следует, что \(xyz \neq 0\),
-%\(xy, yz \neq 0 \implies xyz \neq 0\) для всех \(x, y, z \in \mc{C}\)
-и для любого \(x \in \mc{C} \setminus \{0\}\) существуют \(e', e'' \in \op{Ein}(\mc{C})\), такие что \(e' x, x e'' \neq 0\).
-\end{definition}
-
-\subsection{Области и кообласти}
-
-\begin{theorem}[\scshape Единственность (ко)области]
-Пусть \(\mc{C}\) --- мультипликативная groß\-/полугруппа с нулем, \(x \in \mc{C} \setminus \{0\}\), \(e, e' \in \op{Ein}(\mc{C})\) и \(ex, e'x \neq 0\).%
-\label{thm:EinUnique}
-Тогда \(e = e'\).
-\end{theorem}
-
-\begin{proof}
-Понятно, что раз \(ex, e'x \neq 0\), то \(ex = e'x = x\). Тогда \(e'ex = e'x = x \neq 0\). Отсюда следует, что \(e'e \neq 0\), а из этого, в свою очередь, следует, что \(e = e'e = e'\).
-\end{proof}
-
-\begin{definition}[\scshape Отображение (ко)области]
-Пусть \(\mc{C}\) --- groß\-/категория.%
-\label{def:SourceTarget}
-Оп\-ре\-де\-лим
-%\footnote{Буквы <<\textenglish{s}>> и <<\textenglish{t}>> --- это первые буквы английских слов <<\textenglish{source}>> и <<\textenglish{target}>>.}
-groß\-/отображения \(s,t : \mc{C} \setminus \{0\} \rrarrow \op{Ein}(\mc{C})\) следующими свойствами: \(x s(x), t(x) x \neq 0\) для любого \(x \in \mc{C} \setminus \{0\}\).
-\end{definition}
-
-\begin{remark}
-Корректность определения~\ref{def:SourceTarget} следует из теоремы~\ref{thm:EinUnique}, применённой к \(\mc{C}\) и \(\mc{C}^o\), и определения~\ref{def:CategorySemigroup}. 
-\end{remark}
-
-\begin{remark}
-Буквы <<\textenglish{s}>> и <<\textenglish{t}>>, которыми обозначаются groß\-/отображения области и кообласти в определении~\ref{def:SourceTarget}, --- это первые буквы английских слов <<\textenglish{source}>> и <<\textenglish{target}>>.
-\end{remark}
-
-\begin{theorem}[\scshape (Ко)области и композиция]
-Пусть \(\mc{C}\) --- groß\-/категория, а \(x, y \in \mc{C} \setminus \{0\}\). Тогда условие \(xy \neq 0\) эквивалентно условию \(t(y) = s(x)\), причём если \(xy \neq 0\), то \(s(xy) = s(y)\) и \(t(xy) = t(x)\).
-\end{theorem}
-
-\begin{proof}
-
-Если \(xy \neq 0\), то \(xy = x s(x) y \neq 0\), поэтому \(s(x) y \neq 0\), то есть \(s(x) = t(y)\).
-Если \(e = s(x) = t(y)\), то \(x = xe \neq 0\) и \(y = ey \neq 0\), откуда, по определению~\ref{def:CategorySemigroup}, следует, что \(xey \neq 0\), а \(xey = xy\).
-Равенства \(s(xy) = s(y)\) и \(t(xy) = t(x)\) при \(xy \neq 0\) совсем очевидны.
-\end{proof}
-
-\begin{observation}
-Пусть \(\mc{C}\) --- groß\-/категория, а \(e \in \op{Ein}(\mc{C})\). Тогда выполняются равенства \(e = e s(e) = s(e)\) и \(e = t(e) e = t(e)\).
-\end{observation}
-
-\subsection{Общие замечания}
-
-Доказанного в этом разделе достаточно, чтобы заметить эквивалентность определения~\ref{def:CategorySemigroup} и стандартного определения категории через совокупность объектов и совокупность морфизмов.
-Вне этого раздела, как правило, будет использоваться стандартное определение категории.
-Причём, несмотря на то, что определение~\ref{def:CategorySemigroup} является, по сути, определением <<метакатегории>>, которая не обязана быть локально малой, обычно в этом тексте будет подразумеваться, что совокупность морфизмов между любыми двумя объектами категории образует множество.
-
-
 \section{Разложения Брюа и Гаусса}
 
 \subsection{Стандартные подгруппы в общей линейной группе}
@@ -5632,63 +5484,6 @@ groß\-/отображения \(s,t : \mc{C} \setminus \{0\} \rrarrow \op{Ein}(
 Это обстоятельство лежит в основе \emph{алгоритма RSA}:
 первое отображение зашифровывает сообщения, а второе их расшифровывает.
 \end{remark}
-
-
-\section{Общая теорема о сопряжённом функторе}
-
-\begin{definition}[\scshape Слабо начальный объект]
-Пусть \(\mc{C}\) --- категория, а \(X \in \Ob(\mc{C})\) --- её объект.
-Тогда \(X\) называется \emph{слабо начальным}, если для любого \(Y \in \Ob(\mc{C})\) множество \(\Hom_{\mc{C}}(X, Y)\) не пустое.
-\end{definition}
-
-\begin{definition}[\scshape Слабо конечный объект]
-Слабо конечный объект категории --- это слабо начальный объект противоположной категории.
-\end{definition}
-
-\begin{observation}
-Пусть \(\mc{C}\) --- категория, а \(X \in \Ob(\mc{C})\) --- слабо начальный объект.%
-\label{obs:WeakInitAndInit}
-Тогда предел диаграммы, составленной из всех морфизмов в \(\mc{C}\) с областью \(X\) является пределом функтора \(\Id_{\mc{C}}\).
-\end{observation}
-
-\begin{observation}
-Пусть \(\mc{C}\) --- категория.%
-\label{obs:InitLimOfId}
-Тогда начальный объект в \(\mc{C}\) --- это то же самое, что предел функтора \(\Id_{\mc{C}}\).
-\end{observation}
-
-\begin{theorem}
-Пусть \(\mc{C}\) --- категория, в которой есть малые пределы, а \(S \subset \Ob(\mc{C})\) --- множество объектов, такое что в любой объект \(\mc{C}\) есть стрелка из какого-то элемента \(S\).%
-\label{thm:FreydInitObj}
-Тогда в \(\mc{C}\) есть начальный объект.
-\end{theorem}
-
-\begin{proofparts}[Доказательство (из двух частей).]
-
-\item[Часть 1.]
-Пусть \(X\) --- произведение элементов \(S\). Тогда \(X\) --- слабо начальный объект в \(\mc{C}\).
-Докажем, что для любых двух морфизмов \(\alpha, \beta : X \to Y\), где \(Y \in \Ob(\mc{C})\), существует эндоморфизм \(\gamma : X \to X\), такой что \(\alpha \circ \gamma = \beta \circ \gamma\).
-Пусть \(\epsilon : Z \to X\), где \(Z \in \Ob(\mc{C})\), --- уравнитель \(\alpha\) и \(\beta\). Возьмём в качестве \(\gamma\) композицию произвольной стрелки \(X \to Z\) и \(\epsilon\).
-
-\item[Часть 2.]
-Пусть \(O\) --- уравнитель всех эндоморфизмов \(X\).
-Из части~1 доказательства теоремы~\ref{thm:FreydInitObj} выводится, что \(O\) является пределом диаграммы, составленной из всех морфизмов в \(\mc{C}\) с областью \(X\).
-Согласно наблюдениям~\ref{obs:WeakInitAndInit} и \ref{obs:InitLimOfId} отсюда следует, что \(O\) --- начальный объект в \(\mc{C}\).
-\qedhere
-
-\end{proofparts}
-
-\begin{theorem}[\scshape Общая теорема о сопряжённом функторе]
-Пусть \(G\) --- сохраняющий пределы функтор из полной категории \(\mc{E}\) в категорию \(\mc{C}\),
-такой что для любого \(X \in \Ob(\mc{C})\) существует множество \(S \subset \Ob(X \lsqdiv^G \mc{E})\), такое что в любой объект категории \(X \lsqdiv^G \mc{E}\) есть стрелка из какого-то элемента \(S\).
-Тогда у \(G\) есть левый сопряжённый.
-\end{theorem}
-
-\begin{proof}
-Заметим, что для любого объекта \(X \in \Ob(\mc{C})\) категория \(X \lsqdiv^G \mc{E}\) полна, потому что категория \(\mc{E}\) полна, а функтор \(G\) сохраняет пределы, после чего применим к \(X \lsqdiv^G \mc{E}\) теорему~\ref{thm:FreydInitObj}.
-\end{proof}
-
-
 
 
 
@@ -10721,6 +10516,213 @@ A,
 %Для этого, согласно теореме \ref{lem:StrongNullstellensatz}, достаточно доказать, что ядро любого гомоморфизма \(\varphi: A \to k^\mr{alg}\) над \(k\) является максимальным идеалом, то есть образ \(\varphi\) является полем.
 %Так как \(k\)-ал\-геб\-ра \(k^\mr{alg}\) целостная и целая над \(k\), то её подалгебра \(\varphi(A)\) --- тоже, поэтому \(\varphi(A)\) является полем по лемме \ref{lem:hilbert_1}.
 %\end{proof}
+
+
+
+\chapter{Теория категорий}
+
+
+\section{Категории как полугруппы}
+
+\subsection{Мультипликативные полугруппы с нулём}
+
+\begin{definition}[\scshape Бинар]
+Множество \(X\), снабжённое отображением \((x,y) \mapsto xy : X \times X \to X\) называется \emph{бинаром} в мультипликативной записи или \emph{мультипликативным бинаром}.
+\end{definition}
+
+\begin{definition}[\scshape Нулевой элемент]
+Пусть \(X\) --- мультипликативный бинар.
+\label{def:MultSemigrZero}
+Тогда элемент \(z \in X\) называется \emph{поглощающим элементом} (англ.\ \emph{\textenglish{absorbing element}}), \emph{нулевым элементом} или просто \emph{нулём}, если \(xz = z = zx\) для любого \(x \in X\).
+\end{definition}
+
+\begin{theorem}[\scshape Единственность нуля]
+Пусть \(X\) --- мультипликативный бинар, а \(z, z' \in X\) --- два нулевых элемента. Тогда \(z = z'\).
+\end{theorem}
+
+\begin{proof}
+Из определения~\ref{def:MultSemigrZero} следует, что \(z = zz' = z'\).
+\end{proof}
+
+\begin{notation}
+Нулевой элемент в мультипликативном бинаре часто обозначается символом \(0\).
+\end{notation}
+
+\begin{definition}[\scshape Полугруппа]
+Мультипликативный бинар \(X\) называется мультипликативной \emph{полугруппой}, если для любых \(x,y,z \in X\) выполняется равенство \(x(yz) = (xy)z\).
+\end{definition}
+
+\subsection{Определение категории}
+
+\begin{convention}[\scshape Groß]
+<<Groß\-/полугруппа>> --- это \rusquoted{полугруппа}, совокупность элементов которой не подразумевается малой, то есть не подразумевается множеством.%
+\label{con:Gross}
+Записи <<groß\-/отображение>>, <<groß\-/категория>> и <<groß\-/множество>> имеют аналогичный смысл.
+\end{convention}
+
+\begin{remark}
+Соглашение~\ref{con:Gross} основано на терминологии, используемой в лекциях Д.~Терешкина по теории категорий в НМУ \cite[23:10 и 54:00]{Tereshkin_Cat_2024}.
+\end{remark}
+
+\begin{definition}[\scshape Ein]
+Пусть \(\mc{C}\) --- мультипликативная groß\-/полугруппа с нулём.%
+\label{def:SemigroupEin}
+Тогда определим groß\-/множество
+%\footnote{<<Ein>> от немецкого <<einheit>>.}
+\[\op{Ein}(\mc{C}) \coloneqq \{e \in \mc{C} \setminus \{0\} \mid ex, xe \in \{0, x\}\ \text{для любого \(x \in \mc{C}\)}\}.\]
+\end{definition}
+
+\begin{remark}
+Обозначение <<Ein>> в определении~\ref{def:SemigroupEin} происходит от немецкого слова <<einheit>>.
+Оно не является общепринятым, но я не знаю общепринятого обозначения.
+\end{remark}
+
+\begin{definition}[\scshape Groß\-/категория]
+\label{def:CategorySemigroup}
+Мультипликативная groß\-/полугруппа с нулём \(\mc{C}\) называется \emph{groß\-/категорией}, если
+для всех \(x, y, z \in \mc{C}\) из того, что \(xy, yz \neq 0\) следует, что \(xyz \neq 0\),
+%\(xy, yz \neq 0 \implies xyz \neq 0\) для всех \(x, y, z \in \mc{C}\)
+и для любого \(x \in \mc{C} \setminus \{0\}\) существуют \(e', e'' \in \op{Ein}(\mc{C})\), такие что \(e' x, x e'' \neq 0\).
+\end{definition}
+
+\subsection{Области и кообласти}
+
+\begin{theorem}[\scshape Единственность (ко)области]
+Пусть \(\mc{C}\) --- мультипликативная groß\-/полугруппа с нулем, \(x \in \mc{C} \setminus \{0\}\), \(e, e' \in \op{Ein}(\mc{C})\) и \(ex, e'x \neq 0\).%
+\label{thm:EinUnique}
+Тогда \(e = e'\).
+\end{theorem}
+
+\begin{proof}
+Понятно, что раз \(ex, e'x \neq 0\), то \(ex = e'x = x\). Тогда \(e'ex = e'x = x \neq 0\). Отсюда следует, что \(e'e \neq 0\), а из этого, в свою очередь, следует, что \(e = e'e = e'\).
+\end{proof}
+
+\begin{definition}[\scshape Отображение (ко)области]
+Пусть \(\mc{C}\) --- groß\-/категория.%
+\label{def:SourceTarget}
+Оп\-ре\-де\-лим
+%\footnote{Буквы <<\textenglish{s}>> и <<\textenglish{t}>> --- это первые буквы английских слов <<\textenglish{source}>> и <<\textenglish{target}>>.}
+groß\-/отображения \(s,t : \mc{C} \setminus \{0\} \rrarrow \op{Ein}(\mc{C})\) следующими свойствами: \(x s(x), t(x) x \neq 0\) для любого \(x \in \mc{C} \setminus \{0\}\).
+\end{definition}
+
+\begin{remark}
+Корректность определения~\ref{def:SourceTarget} следует из теоремы~\ref{thm:EinUnique}, применённой к \(\mc{C}\) и \(\mc{C}^o\), и определения~\ref{def:CategorySemigroup}. 
+\end{remark}
+
+\begin{remark}
+Буквы <<\textenglish{s}>> и <<\textenglish{t}>>, которыми обозначаются groß\-/отображения области и кообласти в определении~\ref{def:SourceTarget}, --- это первые буквы английских слов <<\textenglish{source}>> и <<\textenglish{target}>>.
+\end{remark}
+
+\begin{theorem}[\scshape (Ко)области и композиция]
+Пусть \(\mc{C}\) --- groß\-/категория, а \(x, y \in \mc{C} \setminus \{0\}\). Тогда условие \(xy \neq 0\) эквивалентно условию \(t(y) = s(x)\), причём если \(xy \neq 0\), то \(s(xy) = s(y)\) и \(t(xy) = t(x)\).
+\end{theorem}
+
+\begin{proof}
+
+Если \(xy \neq 0\), то \(xy = x s(x) y \neq 0\), поэтому \(s(x) y \neq 0\), то есть \(s(x) = t(y)\).
+Если \(e = s(x) = t(y)\), то \(x = xe \neq 0\) и \(y = ey \neq 0\), откуда, по определению~\ref{def:CategorySemigroup}, следует, что \(xey \neq 0\), а \(xey = xy\).
+Равенства \(s(xy) = s(y)\) и \(t(xy) = t(x)\) при \(xy \neq 0\) совсем очевидны.
+\end{proof}
+
+\begin{observation}
+Пусть \(\mc{C}\) --- groß\-/категория, а \(e \in \op{Ein}(\mc{C})\). Тогда выполняются равенства \(e = e s(e) = s(e)\) и \(e = t(e) e = t(e)\).
+\end{observation}
+
+\subsection{Общие замечания}
+
+Доказанного в этом разделе достаточно, чтобы заметить эквивалентность определения~\ref{def:CategorySemigroup} и стандартного определения категории через совокупность объектов и совокупность морфизмов.
+Вне этого раздела, как правило, будет использоваться стандартное определение категории.
+Причём, несмотря на то, что определение~\ref{def:CategorySemigroup} является, по сути, определением <<метакатегории>>, которая не обязана быть локально малой, обычно в этом тексте будет подразумеваться, что совокупность морфизмов между любыми двумя объектами категории образует множество.
+
+
+\section{Категорные треугольные тождества}
+
+Пусть \(F : \mc{C} \rlarrow \mc{E} : G\) --- пара сопряжённых функторов, таких что \(F\) --- левый сопряжённый, \(G\) --- правый сопряжённый, а \(\eta : \Id_{\mc{C}} \to GF\) и \(\varepsilon : FG \to \Id_{\mc{E}}\) --- единица и коединица сопряжения.
+Тогда биекции сопряжения в терминах единиц и коединиц описываются так:
+\begin{equation*}
+(f : X \to G(Y)) \mapsto \varepsilon_Y \circ F(f),
+\quad
+(g : F(X) \to Y) \mapsto G(g) \circ \eta_X, 
+\end{equation*}
+%\begin{equation*}
+%f \mapsto \varepsilon_Y \circ F(f) :
+%\Hom_{\mc{C}}(X, G(Y))
+%\rlarrow
+%\Hom_{\mc{E}}(F(X), Y)
+%: G(g) \circ \eta_X \mapsfrom g,
+%\end{equation*}
+где \(X \in \Ob(\mc{C})\), \(Y \in \Ob(\mc{E})\), \(f \in \Ar(\mc{C})\), \(g \in \Ar(\mc{E})\).
+Естественность этих отображений эквивалентна естественности \(\varepsilon\) и \(\eta\) соответственно.
+На \(F(f)\) и \(G(g)\) биекции сопряжения действуют так:
+\begin{equation*}
+F(f) \mapsto G(F(f)) \circ \eta_X = \eta_{G(Y)} \circ f,
+\quad
+G(g) \mapsto \varepsilon_Y \circ F(G(g)) = g \circ \varepsilon_{F(X)},
+\end{equation*}
+где равенства являются следствиями естественности единицы и коединицы соответственно.
+Поэтому, записывая условие взаимной обратности полученных отображений, воспользовавшись естественностью биекций сопряжения, мы получаем два условия:
+\begin{equation*}
+G(\varepsilon_Y) \circ \eta_{G(Y)} \circ f = f,
+\quad
+g \circ \varepsilon_{F(X)} \circ F(\eta_X) = g,
+\end{equation*}
+то есть \(G \varepsilon \circ \eta G = \Id_G\) и \(\varepsilon F \circ F \eta = \Id_F\).
+Эти условия типа <<композиция единицы и коединицы тождественная>> называются \emph{треугольными тождествами}.
+
+
+\section{Общая теорема о сопряжённом функторе}
+
+\begin{definition}[\scshape Слабо начальный объект]
+Пусть \(\mc{C}\) --- категория, а \(X \in \Ob(\mc{C})\) --- её объект.
+Тогда \(X\) называется \emph{слабо начальным}, если для любого \(Y \in \Ob(\mc{C})\) множество \(\Hom_{\mc{C}}(X, Y)\) не пустое.
+\end{definition}
+
+\begin{definition}[\scshape Слабо конечный объект]
+Слабо конечный объект категории --- это слабо начальный объект противоположной категории.
+\end{definition}
+
+\begin{observation}
+Пусть \(\mc{C}\) --- категория, а \(X \in \Ob(\mc{C})\) --- слабо начальный объект.%
+\label{obs:WeakInitAndInit}
+Тогда предел диаграммы, составленной из всех морфизмов в \(\mc{C}\) с областью \(X\) является пределом функтора \(\Id_{\mc{C}}\).
+\end{observation}
+
+\begin{observation}
+Пусть \(\mc{C}\) --- категория.%
+\label{obs:InitLimOfId}
+Тогда начальный объект в \(\mc{C}\) --- это то же самое, что предел функтора \(\Id_{\mc{C}}\).
+\end{observation}
+
+\begin{theorem}
+Пусть \(\mc{C}\) --- категория, в которой есть малые пределы, а \(S \subset \Ob(\mc{C})\) --- множество объектов, такое что в любой объект \(\mc{C}\) есть стрелка из какого-то элемента \(S\).%
+\label{thm:FreydInitObj}
+Тогда в \(\mc{C}\) есть начальный объект.
+\end{theorem}
+
+\begin{proofparts}[Доказательство (из двух частей).]
+
+\item[Часть 1.]
+Пусть \(X\) --- произведение элементов \(S\). Тогда \(X\) --- слабо начальный объект в \(\mc{C}\).
+Докажем, что для любых двух морфизмов \(\alpha, \beta : X \to Y\), где \(Y \in \Ob(\mc{C})\), существует эндоморфизм \(\gamma : X \to X\), такой что \(\alpha \circ \gamma = \beta \circ \gamma\).
+Пусть \(\epsilon : Z \to X\), где \(Z \in \Ob(\mc{C})\), --- уравнитель \(\alpha\) и \(\beta\). Возьмём в качестве \(\gamma\) композицию произвольной стрелки \(X \to Z\) и \(\epsilon\).
+
+\item[Часть 2.]
+Пусть \(O\) --- уравнитель всех эндоморфизмов \(X\).
+Из части~1 доказательства теоремы~\ref{thm:FreydInitObj} выводится, что \(O\) является пределом диаграммы, составленной из всех морфизмов в \(\mc{C}\) с областью \(X\).
+Согласно наблюдениям~\ref{obs:WeakInitAndInit} и \ref{obs:InitLimOfId} отсюда следует, что \(O\) --- начальный объект в \(\mc{C}\).
+\qedhere
+
+\end{proofparts}
+
+\begin{theorem}[\scshape Общая теорема о сопряжённом функторе]
+Пусть \(G\) --- сохраняющий пределы функтор из полной категории \(\mc{E}\) в категорию \(\mc{C}\),
+такой что для любого \(X \in \Ob(\mc{C})\) существует множество \(S \subset \Ob(X \lsqdiv^G \mc{E})\), такое что в любой объект категории \(X \lsqdiv^G \mc{E}\) есть стрелка из какого-то элемента \(S\).
+Тогда у \(G\) есть левый сопряжённый.
+\end{theorem}
+
+\begin{proof}
+Заметим, что для любого объекта \(X \in \Ob(\mc{C})\) категория \(X \lsqdiv^G \mc{E}\) полна, потому что категория \(\mc{E}\) полна, а функтор \(G\) сохраняет пределы, после чего применим к \(X \lsqdiv^G \mc{E}\) теорему~\ref{thm:FreydInitObj}.
+\end{proof}
 
 
 
