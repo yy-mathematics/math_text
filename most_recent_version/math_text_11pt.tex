@@ -10881,7 +10881,10 @@ X(\beta^o_{j,j'}, \Id_i) (x_{i, j})
 \(([x_{i(j), j}])_{j \in J}\)
 классов
 элементов \(X\),
-где \(j \mapsto i(j) : J \to I\) --- отображение множеств,
+%где \(j \mapsto i(j) : \Ob(J) \to \Ob(I)\) --- отображение,
+где
+%\((i(j))_{j \in J} \in \Ob(I)^{\times \Ob(J)}\),
+\((i(j))_{j \in J} \in I^{\times J}\),
 а \(x_{i(j), j} \in X(j, i(j))\) для всех \(j \in J\),
 а элементы
 \(\colim_I \lim_{J^o} (X)\) --- это классы
@@ -10889,12 +10892,15 @@ X(\beta^o_{j,j'}, \Id_i) (x_{i, j})
 согласованных семейств
 элементов \(X\),
 где \(i \in I\), а \(x_{i, j} \in X(j, i)\) для всех \(j \in J\).
-При этом
-\(
-\Theta([(x_{i, j})_{j \in J}])
-=
-([x_{i, j}])_{j \in J}
-\).
+Отображение
+\(\Theta\)
+переводит
+\([(x_{i, j})_{j \in J}]\) в \(([x_{i, j}])_{j \in J}\).
+%\(
+%\Theta([(x_{i, j})_{j \in J}])
+%=
+%([x_{i, j}])_{j \in J}
+%\).
 
 \item[Часть 2: Сюръективность \(\Theta\).]
 Пусть
@@ -10904,19 +10910,72 @@ X(\beta^o_{j,j'}, \Id_i) (x_{i, j})
 \(\alpha_{\beta} : i(j) \to i(\beta) \from i(j') : \alpha'_{\beta}\),
 такие что
 \(\alpha_{\beta} x_{i(j), j} \beta_{j,j'} = \alpha'_{\beta} x_{i(j'), j'}\).
-Пусть \((\gamma_{\sigma} : i(\sigma) \to e)_{\sigma \in \Ob(J) \sqcup \Ar(J)}\), где \(e \in I\), --- коконус очевидной диаграммы в категории \(I\) с семейством вершин
-\((i(\sigma))_{\sigma \in \Ob(J) \sqcup \Ar(J)}\)
-и семейством стрелок
-\((\alpha_{\beta})_{\beta \in \Ar(J)} \sqcup (\alpha'_{\beta})_{\beta \in \Ar(J)}\).
-%вместе со стрелками вида
-%\(\alpha_{\beta}\) и \(\alpha'_{\beta}\), где \(\beta \in \Ar(J)\).
+%Пусть \((\gamma_{\sigma} : i(\sigma) \to e)_{\sigma \in \Ob(J) \sqcup \Ar(J)}\), где \(e \in I\), --- коконус очевидной диаграммы в категории \(I\) с семейством вершин
+%\((i(\sigma))_{\sigma \in \Ob(J) \sqcup \Ar(J)}\)
+%и семейством стрелок
+%\((\alpha_{\beta})_{\beta \in \Ar(J)} \sqcup (\alpha'_{\beta})_{\beta \in \Ar(J)}\).
+%%вместе со стрелками вида
+%%\(\alpha_{\beta}\) и \(\alpha'_{\beta}\), где \(\beta \in \Ar(J)\).
+%Тогда
+%%выполняется включение
+%\(
+%[(\gamma_j x_{i(j), j})_{j \in J}]
+%\in
+%\Theta^{-1}(([x_{i(j), j}])_{j \in J})
+%\).
+Пусть \((\gamma_i : i \to e)_{i \in \{i(\sigma) \mid \sigma \in \Ob(J) \sqcup \Ar(J)\}}\), где \(e \in I\), --- коконус над поддиаграммой в \(I\), составленной из стрелок \(\alpha_{\beta}\) и \(\alpha'_{\beta}\) для всех \(\beta \in \Ar(J)\).
 Тогда
-%выполняется включение
 \(
-[(\gamma_j x_{i(j), j})_{j \in J}]
+[(\gamma_{i(j)} x_{i(j), j})_{j \in J}]
 \in
 \Theta^{-1}(([x_{i(j), j}])_{j \in J})
 \).
+
+%\item[Часть 3: Инъективность \(\Theta\).]
+%Пусть
+%\([(x'_{i', j})_{j \in J}]\)
+%и
+%\([(x''_{i'', j})_{j \in J}]\)
+%--- элементы
+%\(\colim_I \lim_{J^o} (X)\),
+%такие что
+%\(
+%\Theta([(x'_{i', j})_{j \in J}])
+%=
+%\Theta([(x''_{i'', j})_{j \in J}])
+%\).
+%Так как для любого \(j \in J\)
+%выполняется равенство
+%\([x'_{i',j}] = [x''_{i'',j}] \in \colim_{i \in I} X(j, i)\),
+%то существуют \(i(j) \in I\) и пара стрелок
+%\(\alpha'_j : i' \to i(j) \from i'' : \alpha''_j\),
+%такие что
+%\(
+%\alpha'_j x'_{i',j} = \alpha''_j x''_{i'',j}
+%\).
+%Пусть
+%\(
+%(\gamma_{\tau} : \tau \to e)_{\tau \in \{i', i''\}}
+%\sqcup
+%(\gamma_{\sigma} : i(\sigma) \to e)_{\sigma \in J}
+%\),
+%где \(e \in I\),
+%--- коконус очевидной диаграммы в категории \(I\) с семейством вершин
+%\((\tau)_{\tau \in \{i', i''\}} \sqcup (i(\sigma))_{\sigma \in J}\)
+%%вместе со стрелками вида \(\alpha'_j\) и \(\alpha''_j\), где \(j \in J\).
+%и семейством стрелок
+%\((\alpha'_j)_{j \in J} \sqcup (\alpha''_j)_{j \in J}\).
+%Тогда
+%\(
+%[(x'_{i', j})_{j \in J}]
+%=
+%[(\gamma_{i'} x'_{i', j})_{j \in J}]
+%=
+%[(\gamma_{i''} x''_{i'', j})_{j \in J}]
+%=
+%[(x''_{i'', j})_{j \in J}]
+%\).
+%\qedhere
 
 \item[Часть 3: Инъективность \(\Theta\).]
 Пусть
@@ -10931,28 +10990,30 @@ X(\beta^o_{j,j'}, \Id_i) (x_{i, j})
 =
 \Theta([(x''_{i'', j})_{j \in J}])
 \).
-Так как для любого \(j \in J\)
-выполняется равенство
-\([x'_{i',j}] = [x''_{i'',j}] \in \colim_{i \in I} X(j, i)\),
-то существуют \(i(j) \in I\) и пара стрелок
-\(\alpha'_j : i' \to i(j) \from i'' : \alpha''_j\),
-такие что
+Тогда семейство
 \(
-\alpha'_j x'_{i',j} = \alpha''_j x''_{i'',j}
-\).
-Пусть
-\(
-(\gamma_{\tau} : \tau \to e)_{\tau \in \{i', i''\}}
+([x'_{i', j}])_{j \in J}
 \sqcup
-(\gamma_{\sigma} : i(\sigma) \to e)_{\sigma \in J}
-\),
+([x''_{i'', j}])_{j \in J}
+\)
+можно интерпретировать как элемент
+\begin{equation*}
+\lim_{J^o \times D^o} \colim_{I}
+(
+J^o \times D^o \times I
+\xrightarrow{\Id_{J^o} \times (D^o \to \pt) \times \Id_I}
+J^o \times \pt \times I
+\xrightarrow{\sim}
+J^o \times I
+\xrightarrow{X}
+\mr{Sets}
+),
+\end{equation*}
+где \(D^o\) --- категория с множеством объектов \(\{0,1\}\), эквивалентная \(\pt\).
+Применив к этому элементу рассуждение из части~2 данного доказательства, получаем пару морфизмов
+\(\gamma_{i'} : i' \to e \from i'' : \gamma_{i''}\),
 где \(e \in I\),
---- коконус очевидной диаграммы в категории \(I\) с семейством вершин
-\((\tau)_{\tau \in \{i', i''\}} \sqcup (i(\sigma))_{\sigma \in J}\)
-%вместе со стрелками вида \(\alpha'_j\) и \(\alpha''_j\), где \(j \in J\).
-и семейством стрелок
-\((\alpha'_j)_{j \in J} \sqcup (\alpha''_j)_{j \in J}\).
-Тогда
+такую что
 \(
 [(x'_{i', j})_{j \in J}]
 =
