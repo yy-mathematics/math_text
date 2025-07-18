@@ -5500,7 +5500,15 @@ n \cdot (1 + \lVert n \rVert + \cdots + {\lVert n \rVert}^{\lfloor \frac{\ln(m)}
 %\epigraph{\textenglish{The Axiom of Choice is obviously true, the well-ordering principle obviously false, and who can tell about Zorn's lemma?}}{\textenglish{Jerry Lloyd Bona}}
 
 
+\begin{chapterintro}
+В этой главе изложены три стандартнейших результата теории множеств.
+В разделе~\ref{sec:CantorDiagArg} парадокс Рассела рассматривается как прямое следствие теоремы Кантора о несуществовании сюръекции из множества в множество его подмножеств.
+\end{chapterintro}
+
+
 \section{Диагональный аргумент Кантора}
+
+\label{sec:CantorDiagArg}
 
 \begin{notation}[\scshape Множество подмножеств]
 Множество подмножеств множества \(X\), иногда называемое \emph{булеаном} \(X\), будем обозначать символом \(2^X\) --- так же, как множество отображений из \(X\) в \(2 = \{0,1\}\).
@@ -5646,6 +5654,13 @@ n \cdot (1 + \lVert n \rVert + \cdots + {\lVert n \rVert}^{\lfloor \frac{\ln(m)}
 
 
 \chapter{Вещественные числа}
+
+
+\begin{chapterintro}
+В этой главе изложена конструкция действительных чисел с помощью сечений Дедекинда.
+Основной посыл главы состоит в том, что использование кольца формальных разностей позволяет избавиться от занудных разборов случаев, часто присутствующих в изложениях этой конструкции, и делает её не менее привлекательной, чем конструкцию через последовательности Коши.
+Помимо этого в разделе~\ref{sec:CompConnClosedInt} изложена ключевая теорема о компактности и связности отрезка \([0,1] \subset \R\).
+\end{chapterintro}
 
 
 \section{Сечения Дедекинда}
@@ -5941,6 +5956,8 @@ r' (r'' - l'') +
 
 \section{Компактность и связность отрезка}
 
+\label{sec:CompConnClosedInt}
+
 \begin{definition}[\scshape Интервал]
 Назовём подмножество \(I \subset X\) частично упорядоченного множества \(X\) \emph{интервалом}, если для любых \(x,y \in I\) и \(z \in X\), таких что \(x \leq z \leq y\), выполняется включение \(z \in I\).
 \end{definition}
@@ -6178,7 +6195,15 @@ X \to \{f \in F \mid \od_F(f,\od_X(y,-)) < \infty\ \tn{для всех}\ y \in X
 \chapter{Дифференциальное исчисление}
 
 
+\begin{chapterintro}
+В этой главе изложены базовые теоремы дифференциального исчисления,
+при этом сделана попытка изложить лемму Адамара и лемму Морса без использования понятия интеграла, что, возможно, удлиннило и несколько <<утяжелило>> соответствующие разделы~\ref{sec:HadamardLemma} и \ref{sec:MorseLemma}.
+\end{chapterintro}
+
+
 \section{Теорема о среднем значении}
+
+\label{sec:MeanValueTheorem}
 
 \begin{theorem}[\scshape Теорема Ролля о среднем]
 Пусть \(f : [0,1] \to \R\) --- непрерывная функция, дифференцируемая на интервале \((0,1)\).
@@ -6253,6 +6278,8 @@ X \to \{f \in F \mid \od_F(f,\od_X(y,-)) < \infty\ \tn{для всех}\ y \in X
 
 
 \section{Теорема об обратной функции}
+
+\label{sec:ImplicitFunctionTheorem}
 
 %\begin{convention}
 %Пусть \(E\) --- евклидово пространство. Длину \(v \in E\) будем обозначать через \(|v|\), а стандартной нормой линейного отображения \(A : E \to E\), обозначаемой \(\lVert A \rVert\), будем считать его растяжение.
@@ -6352,8 +6379,27 @@ X \to \{f \in F \mid \od_F(f,\od_X(y,-)) < \infty\ \tn{для всех}\ y \in X
 %%\(U \coloneqq \{x \in E \mid |x| < R\} \cap \varphi^{-1}(V)\).
 %\end{proof}
 
+\begin{observation}
+Пусть \(\varphi : \R^n \to \R^n\), где \(n \in \N_1\), --- биекция, такая что дифференциал \(D(\varphi)_0\) существует и биективен.%
+\label{obs:DiffInvBij}
+Тогда \(D(\varphi^{-1})_{\varphi(0)}\) существует и равен \(D(\varphi)_0^{-1}\).
+\end{observation}
+
+\begin{corollary}
+Пусть \(\varphi : \R^n \to \R^n\), где \(n \in \N_1\), --- биекция класса \(C^r\), где \(r \in \N_1\), с невырожденными дифференциалами.
+Тогда \(\varphi^{-1}\) --- тоже биекция класса \(C^r\).
+\end{corollary}
+
+\begin{proof}
+Утверждение по индукции следует из наблюдения~\ref{obs:DiffInvBij}.
+Во-первых, \(\varphi^{-1}\) имеет класс \(C^0\).
+Во-вторых, если \(\varphi^{-1}\) имеет класс \(C^s\), где \(s < r\), то отображение \(D(\varphi^{-1})_{(-)} : \R^n \to \GL_n(\R)\) представляется в виде композиции отображения \(\varphi^{-1}\) класса \(C^s\), отображения \(D(\varphi)_{(-)} : \R^n \to \GL_n(\R)\) класса \(C^{r-1}\) и отображения \((-)^{-1} : \GL_n(\R) \to \GL_n(\R)\) класса \(C^{\infty}\), а потому имеет класс \(C^s\), то есть \(\varphi^{-1}\) имеет класс \(C^{s+1}\).
+\end{proof}
+
 
 \section{Равенство смешанных производных}
+
+\label{sec:SymOfSecDer}
 
 \begin{theorem}[\scshape Равенство смешанных производных]
 Пусть \(U = U' \times U'' \subset \R^2\) --- открытая окрестность нуля, а \(f : U \to \R\) --- функция, такая что
@@ -6389,6 +6435,8 @@ X \to \{f \in F \mid \od_F(f,\od_X(y,-)) < \infty\ \tn{для всех}\ y \in X
 \end{proof}
 
 \section{Лемма Адамара}
+
+\label{sec:HadamardLemma}
 
 \begin{notation}
 Пусть \(r \geq i \geq 0\) --- целые числа. Символом \(C_r^i\) будем обозначать биноминальный коэффициент, равный \(r!/(i!(r-i)!)\).
@@ -6519,6 +6567,8 @@ f^{(r+1)}(0)
 
 
 \section{Лемма Морса}
+
+\label{sec:MorseLemma}
 
 %\begin{observation}
 %\label{obs:BilinMorKer}
