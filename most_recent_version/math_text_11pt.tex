@@ -10915,9 +10915,29 @@ Z(Q) \coloneqq
 \end{observation}
 
 \begin{remark}
-Пусть \(Q\) --- колчан.
-Тогда локализация \(Z(Q)\) по морфизмам из \(A \tensor*[^{\Id}]{\cylbinop}{_{A}^{\mr{Dom}}} O\) эквивалентна частично упорядоченной совокупности.
-Локализация \(Z(Q)\) по морфизмам из \(O \tensor*[^{\mr{Cod}}]{\cylbinop}{^{\Id}_{A}} A\) --- тоже.
+%Пусть \(Q\) --- колчан,
+%\(A \coloneqq \Ar(\overline{Q})\) и \(O \coloneqq \Ob(\overline{Q})\).
+В обозначениях определения~\ref{def:QuiverPosetZ}
+локализация \(Z(Q)\) по
+морфизмам из
+\(O \tensor*[^{\mr{Cod}}]{\cylbinop}{} A\)
+эквивалентна
+%частично упорядоченной совокупности.
+\(
+V(Q) \coloneqq
+(A \tensor*[]{\cylbinop}{^{\mr{Dom}}} O)
+\sqcup_{A}
+(A \tensor*[]{\cylbinop}{^{\mr{Cod}}} O)
+\).
+%а локализация \(Z(Q)\) по
+%\(A \tensor*[]{\cylbinop}{^{\mr{Dom}}} O\)
+%---
+%\(
+%(O \tensor*[^{\mr{Dom}}]{\cylbinop}{} A)
+%\sqcup_{A}
+%(O \tensor*[^{\mr{Cod}}]{\cylbinop}{} A)
+%\).
+Помимо этого имеем канонический изоморфизм \(Z(Q) \xrightarrow{\sim} Z(Q^o)^o\).
 \end{remark}
 
 \begin{remark}
@@ -11213,19 +11233,31 @@ X(\beta^o_{j,j'}, \Id_i) (x_{i, j})
 ([x''_{i'', j}])_{j \in J}
 \)
 можно интерпретировать как элемент
-\begin{equation*}
+%\begin{equation*}
+%\lim_{J^o \times D^o} \colim_{I}
+%(
+%J^o \times D^o \times I
+%\xrightarrow{\Id_{J^o} \times (D^o \to \pt) \times \Id_I}
+%J^o \times \pt \times I
+%\xrightarrow{\sim}
+%J^o \times I
+%\xrightarrow{X}
+%\mr{Sets}
+%),
+%\end{equation*}
+\(
 \lim_{J^o \times D^o} \colim_{I}
 (
+X \circ P :
 J^o \times D^o \times I
-\xrightarrow{\Id_{J^o} \times (D^o \to \pt) \times \Id_I}
-J^o \times \pt \times I
-\xrightarrow{\sim}
+\to
 J^o \times I
-\xrightarrow{X}
+\to
 \mr{Sets}
-),
-\end{equation*}
-где \(D^o\) --- категория с множеством объектов \(\{0,1\}\), эквивалентная \(\pt\).
+)
+\),
+где \(D^o\) --- категория с множеством объектов \(\{0,1\}\), эквивалентная \(\pt\),
+а \(P\) --- стандартная проекция.
 Применив к этому элементу рассуждение из части~2 данного доказательства, получаем пару морфизмов
 \(\gamma_{i'} : i' \to e \from i'' : \gamma_{i''}\),
 где \(e \in I\),
@@ -11248,10 +11280,17 @@ J^o \times I
 и доопределением композиции морфизмов таким образом, чтобы она была согласована с обозначениями в доказательстве теоремы~\ref{thm:FinLimFiltColimComm}.
 \end{remark}
 
+\begin{example}[\scshape Локализация модуля]
+Пусть \(A\) --- коммутативное ассоциативное унитальное кольцо, \(S \subset A\) --- мультипликативное множество, а \(M\) --- \(A\)\=/модуль.
+Тогда \(M_S\) функториально представляется как фильтрованный копредел диаграммы \(A\)\=/модулей с вершинами \(M_s \coloneqq M\) и стрелками \(r \cdot (-) : M_s \to M_{rs}\), где \(s, r \in S\).
+Поэтому функтор \(M \mapsto M_S : A\module \to A\module\) сохраняет малые копределы и конечные пределы.
+\end{example}
+
 \begin{theorem}
 Пусть \(\kappa\) --- бесконечный кардинал, а \(I\) --- малая категория, такая что для любой \(\kappa\)\=/ограниченной категории \(J^o\) и для любого функтора \(X : J^o \times I \to \mr{Sets}\) отображение перестановки копредела и предела
 \(\colim_I \lim_{J^o} (X) \to \lim_{J^o} \colim_I (X)\)
-биективно.
+биективно.%
+\label{thm:GrothendFinLimFilColimComm}
 Тогда \(I\) \(\kappa\)\=/фильтрована.
 \end{theorem}
 
@@ -11882,11 +11921,11 @@ J^o \times I
 \subsection{Определение и основные свойства цилиндра}
 
 \begin{definition}[\scshape Категорный цилиндр]
-Назовём \emph{цилиндром} диаграммы категорий и функторов
+Определим \emph{цилиндр} диаграммы категорий и функторов
 \(\mc{C} \xleftarrow{\varpi} \mc{B} \xrightarrow{\varrho} \mc{E}\)
-категорию
+с помощью следующей формулы:
 \(
-\Cyl(\mc{C} \tensor*[^{\varpi}]{\mid}{^{\varrho}_{\mc{B}}} \mc{E})
+\mc{C} \tensor*[^{\varpi}]{\cylbinop}{^{\varrho}_{\mc{B}}} \mc{E}
 \coloneqq
 ((\mc{C} \times \{0\}) \sqcup (\mc{E} \times \{1\}))
 \sqcup_{(\mc{B} \times \{0\}) \sqcup (\mc{B} \times \{1\})}
@@ -11899,24 +11938,30 @@ J^o \times I
 \end{remark}
 
 \begin{observation}
-Если \(\mc{C} \xleftarrow{\varpi} \mc{B} \xrightarrow{\varrho} \mc{E}\) --- диаграмма категорий, то её цилиндр автоматически снабжён функтором \(\Cyl(\mc{C} \tensor*[^{\varpi}]{\mid}{^{\varrho}_{\mc{B}}} \mc{E}) \to [1]\), слои которого отождествляются с \(\mc{C} \cong \mc{C} \times \{0\}\) и \(\mc{E} \cong \mc{E} \times \{1\}\) соответственно.
+Если \(\mc{C} \xleftarrow{\varpi} \mc{B} \xrightarrow{\varrho} \mc{E}\) --- диаграмма категорий, то её цилиндр автоматически снабжён функтором \(\mc{C} \tensor*[^{\varpi}]{\cylbinop}{^{\varrho}_{\mc{B}}} \mc{E} \to [1]\), слои которого отождествляются с \(\mc{C} \cong \mc{C} \times \{0\}\) и \(\mc{E} \cong \mc{E} \times \{1\}\) соответственно.
 \end{observation}
 
 \begin{observation}
 Пусть \(\mc{S} \to [1]\) --- функтор, а \(\mc{S}_0\) и \(\mc{S}_1\) --- его слои над \(0\) и \(1\) соответственно. Тогда
-\(\mc{S} \cong \Cyl(\mc{S}_0 \mid_{\mc{S}_0 \lsqdiv_{\mc{S}} \mc{S}_1} \mc{S}_1)\).
+\(\mc{S} \cong \mc{S}_0 \cylbinop_{\mc{S}_0 \lsqdiv_{\mc{S}} \mc{S}_1} \mc{S}_1\).
 \end{observation}
 
 \begin{definition}[\scshape Образующие цилиндра]
-Если \(\Cyl(\mc{C} \tensor*[^{\varpi}]{\mid}{^{\varrho}_{\mc{B}}} \mc{E})\) --- цилиндр диаграммы \(\mc{C} \xleftarrow{\varpi} \mc{B} \xrightarrow{\varrho} \mc{E}\),
-то компоненты естественного преобразования
-\(\mc{B} \times [1] \to \Cyl(\mc{C} \tensor*[^{\varpi}]{\mid}{^{\varrho}_{\mc{B}}} \mc{E})\)
-называются его \emph{образующими}.
+Пусть \(\mc{C} \tensor*[^{\varpi}]{\cylbinop}{^{\varrho}_{\mc{B}}} \mc{E}\) --- цилиндр пары функторов \(\mc{C} \xleftarrow{\varpi} \mc{B} \xrightarrow{\varrho} \mc{E}\).
+Тогда компоненты естественного преобразования
+\(\mc{B} \times [1] \to \mc{C} \tensor*[^{\varpi}]{\cylbinop}{^{\varrho}_{\mc{B}}} \mc{E}\)
+называются \emph{образующими} \(\mc{C} \tensor*[^{\varpi}]{\cylbinop}{^{\varrho}_{\mc{B}}} \mc{E}\).
 \end{definition}
+
+%\begin{observation}
+%Пусть \(F : \mc{C} \to I\) --- функтор.
+%Тогда \(\Cyl(\mc{C} \mid^F I)\) существует и любой морфизм \(\varphi : c \to i\) в \(\Cyl(\mc{C} \mid^F I)\), где \(c \in \mc{C}\), \(i \in I\), единственным образом пропускается через образующую \(\vv{F}(c) : c \to F(c)\).
+%\end{observation}
 
 \begin{observation}
 Пусть \(F : \mc{C} \to I\) --- функтор.
-Тогда \(\Cyl(\mc{C} \mid^F I)\) существует и любой морфизм \(\varphi : c \to i\) в \(\Cyl(\mc{C} \mid^F I)\), где \(c \in \mc{C}\), \(i \in I\), единственным образом пропускается через образующую \(\vv{F}(c) : c \to F(c)\).
+Тогда \(\mc{C} \cylbinop^F I\) существует и
+для любого \(c \in \Ob(\mc{C})\) соответствующая образующая \(\vv{F}(c) : c \to F(c)\) является начальным объектом в \(c \lsqdiv_{\mc{C} \cylbinop^F I} I\).
 \end{observation}
 
 \begin{observation}
@@ -11928,12 +11973,14 @@ J^o \times I
 \(\mc{C} \xleftarrow{\varpi} \mc{B} \xrightarrow{\varrho} \mc{E}\)
 в диаграмму категорий
 \(\mc{C}' \xleftarrow{\varpi'} \mc{B}' \xrightarrow{\varrho'} \mc{E}'\).
-Тогда \(\alpha\), \(\beta\) и \(\gamma\) индуцируют функтор
+Тогда \(\alpha\), \(\beta\) и \(\gamma\) индуцируют функтор между соответствующими цилиндрами:
 \(
-\Cyl(\alpha \mid_{\gamma} \beta) :
-\Cyl(\mc{C} \tensor*[^{\varpi}]{\mid}{^{\varrho}_{\mc{B}}} \mc{E})
+{\alpha \cylbinop_{\gamma} \beta} :
+{
+\mc{C} \tensor*[^{\varpi}]{\cylbinop}{^{\varrho}_{\mc{B}}} \mc{E}
 \to
-\Cyl(\mc{C}' \tensor*[^{\varpi'}]{\mid}{^{\varrho'}_{\mc{B}'}} \mc{E}')
+\mc{C}' \tensor*[^{\varpi'}]{\cylbinop}{^{\varrho'}_{\mc{B}'}} \mc{E}'
+}
 \).
 \end{observation}
 
@@ -11942,14 +11989,14 @@ J^o \times I
 В качестве иллюстрации к введённым обозначениям приведём следующий декартов квадрат:
 \begin{equation*}
 	\begin{tikzcd}[ampersand replacement=\&, column sep = 6.6em,]
-		\Cyl(\mc{C} \tensor*[]{\mid}{^{\rho}_{\mc{C}}} \mc{E})
-			\ar{r}{\Cyl(\Id \mid_{\Id} (\mc{E} \to \pt))}
-			\ar[swap]{d}{\Cyl(\rho \mid_{\rho} \Id)} \&
-		\Cyl(\mc{C} \tensor*[]{\mid}{_{\mc{C}}} \pt)
-			\ar{d}{\Cyl(\rho \mid_{\rho} \Id)} \\
-		\Cyl(\mc{E} \tensor*[]{\mid}{_{\mc{E}}} \mc{E})
-			\ar{r}{\Cyl(\Id \mid_{\Id} (\mc{E} \to \pt))} \&
-		\Cyl(\mc{E} \tensor*[]{\mid}{_{\mc{E}}} \pt)\mathrlap{.}
+		\mc{C} \tensor*[]{\cylbinop}{^{\rho}_{\mc{C}}} \mc{E}
+			\ar{r}{\Id \cylbinop_{\Id} (\mc{E} \to \pt)}
+			\ar[swap]{d}{\rho \cylbinop_{\rho} \Id} \&
+		\mc{C} \tensor*[]{\cylbinop}{_{\mc{C}}} \pt
+			\ar{d}{\rho \cylbinop_{\rho} \Id} \\
+		\mc{E} \tensor*[]{\cylbinop}{_{\mc{E}}} \mc{E}
+			\ar{r}{\Id \cylbinop_{\Id} (\mc{E} \to \pt)} \&
+		\mc{E} \tensor*[]{\cylbinop}{_{\mc{E}}} \pt\mathrlap{.}
 	\end{tikzcd}
 \end{equation*}
 \end{example}
@@ -11964,11 +12011,17 @@ J^o \times I
 \end{definition}
 
 \begin{definition}[\scshape Расслоение Гротендика]
-Функтор \(F : \mc{C} \to I\) называется \emph{расслоением Гротендика}, если класс образующих цилиндра \(\Cyl(\mc{C} \mid^F I)\) замкнут относительно пуллбэков вдоль морфизмов из \(I\).
+Функтор \(F : \mc{C} \to I\) называется \emph{расслоением Гротендика}, если класс образующих цилиндра \(\mc{C} \cylbinop^F I\) замкнут относительно пуллбэков вдоль морфизмов из \(I\).
 \end{definition}
 
+%\begin{definition}[\scshape Расслоение Стрита]
+%Функтор \(F : \mc{C} \to I\) называется \emph{расслоением Стрита} или \emph{расслоением Стрита-Гротендика}, если класс композиций образующих и изоморфизмов в \(\Cyl(\mc{C} \mid^F I)\) замкнут относительно пуллбэков вдоль морфизмов из \(I\).
+%\end{definition}
+
 \begin{definition}[\scshape Расслоение Стрита]
-Функтор \(F : \mc{C} \to I\) называется \emph{расслоением Стрита} или \emph{расслоением Стрита-Гротендика}, если класс композиций образующих и изоморфизмов в \(\Cyl(\mc{C} \mid^F I)\) замкнут относительно пуллбэков вдоль морфизмов из \(I\).
+Пусть \(\mc{C}\) и \(I\) --- категории, \(F : \mc{C} \to I\) --- функтор, а \(\mc{E} \coloneqq \mc{C} \cylbinop^F I\).
+Если класс морфизмов \(\varphi \in \Ob(\mc{C} \lsqdiv_{\mc{E}} I) \subset \Ar(\mc{E})\), таких что \(\varphi\) --- начальный объект в \(\op{Dom}(\varphi) \lsqdiv_{\mc{E}} I\), замкнут относительно пуллбэков вдоль морфизмов из \(I\),
+то \(F\) называется \emph{расслоением Стрита} или \emph{расслоением Стрита\namedash{}Гротендика}.
 \end{definition}
 
 
