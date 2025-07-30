@@ -12349,6 +12349,22 @@ J^o \times I
 Функтор \(F : \mc{C} \to I\) называется \emph{расслоением Гротендика}, если класс образующих цилиндра \(\mc{C} \cylbinop^F I\) замкнут относительно пуллбэков вдоль морфизмов из \(I\).
 \end{definition}
 
+\begin{definition}[\scshape Сильно декартов морфизм]
+Пусть \(\mc{C}\) и \(I\) --- категории, \(F : \mc{C} \to I\) --- функтор, а \(\varphi : c' \to c\) --- морфизм в \(\mc{C}\).
+Тогда \(\varphi\) называется \emph{сильно декартовым}, если коммутативный квадрат~\eqref{eq:CartesianMorphismSquare} в \(\mc{C} \cylbinop^F I\), где через \(\vv{F}(-)\) обозначаются образующие \(\mc{C} \cylbinop^F I\), декартов.
+\begin{equation}
+\begin{tikzcd}
+c' \ar{r}{\varphi} \ar[swap]{d}{\vv{F}(c')} & c \ar{d}{\vv{F}(c)} \\
+F(c') \ar{r}{F(\varphi)} & F(c)
+\end{tikzcd}%
+\label{eq:CartesianMorphismSquare}
+\end{equation}
+\end{definition}
+
+\begin{remark}
+То есть функтор \(F : \mc{C} \to I\) называется расслоением Гротендика, если для любого \(c \in \Ob(\mc{C})\) у любого морфизма в \(I\) с кобластью \(F(c)\) существует сильно декартово поднятие в \(\mc{C}\).
+\end{remark}
+
 %\begin{definition}[\scshape Расслоение Стрита]
 %Функтор \(F : \mc{C} \to I\) называется \emph{расслоением Стрита} или \emph{расслоением Стрита-Гротендика}, если класс композиций образующих и изоморфизмов в \(\Cyl(\mc{C} \mid^F I)\) замкнут относительно пуллбэков вдоль морфизмов из \(I\).
 %\end{definition}
@@ -12632,6 +12648,90 @@ M_{S_i S_j}
 Сотка приблизительно совпадает с толщиной стандартной бытовой алюминиевой фольги.
 Размер протона составляет примерно \(10^{-15}\) метра и тоже укладывается в эту схему.
 \end{observation}
+
+
+\section{Абелевы категории}
+
+\begin{definition}[\scshape Полуаддитивная категория]
+Категория, в которой конечные произведения и копроизведения существуют и коммутируют друг с другом,%
+%\label{obs:PreaddCatLim}
+\label{def:SemiaddCat}
+называется \emph{полуаддитивной категорией}.
+\end{definition}
+
+\begin{remark}
+В статье~\cite[раздел 1.3]{Kaledin_2022} полуаддитивные категории в смысле определения~\ref{def:SemiaddCat} называются преаддитивными.
+\end{remark}
+
+\begin{definition}[\scshape Нулевой объект]
+Объект в категории, который одновременно является и начальным, и конечным, называется \emph{нулевым объектом}. Категория, в которой существует нулевой объект, называется \emph{пунктированной категорией}, а морфизм, который пропускается через нулевой объект, называется \emph{нулевым морфизмом}.
+\end{definition}
+
+\begin{observation}
+Пусть \(\mc{C}\) --- полуаддитивная категория с начальным объектом \(0 \in \Ob(\mc{C})\) и конечным объектом \(1 \in \Ob(\mc{C})\).
+Тогда канонический морфизм \(0 \xrightarrow{\sim} 1\) является изоморфизмом и канонические морфизмы~\eqref{eq:SemiaddProdCoprodExchange} являются изоморфизмами для любых \(A, B \in \Ob(\mc{C})\).
+\begin{equation}
+\begin{tikzcd}[column sep=small]
+&
+(A \times 0) \sqcup (0 \times B) \ar{rr}{\sim} \ar{d}{\rotatebox[origin=c]{-90}{\(\sim\)}} &
+&
+(A \sqcup 0) \times (0 \sqcup B) \ar{d}{\rotatebox[origin=c]{-90}{\(\sim\)}} &
+A \times B \ar[swap, equal]{l}{\sim} \\
+A \sqcup B &
+(A \times 1) \sqcup (1 \times B) \ar{rr}{\sim} \ar[swap, equal]{l}{\sim} &
+&
+(A \sqcup 1) \times (1 \sqcup B)
+\end{tikzcd}%
+\label{eq:SemiaddProdCoprodExchange}
+\end{equation}
+Другими словами, \(0 \cong 1\) и стандартный морфизм
+\((\Id \bartimes 0) \barsqcup (0 \bartimes \Id) : A \sqcup B \xrightarrow{\sim} A \times B\) является изоморфизмом для любых \(A, B \in \Ob(\mc{C})\),
+где нулями обозначаются нулевые морфизмы.
+%где через \(0\) обозначаются морфизмы, пропускающиеся через \(0 \cong 1 \in \Ob(\mc{C})\).
+\end{observation}
+
+\begin{definition}[\scshape Абелева категория]
+Аддитивная категория называется \emph{абелевой}, если
+она конечно полна и кополна, и
+для любого морфизма \(X \to Y\)
+индуцированный морфизм
+\(X \sqcup_{X \times_Y X} X \to Y \times_{Y \sqcup_X Y} Y\)
+из регулярного кообраза в регулярный образ
+является изоморфизмом.
+\end{definition}
+
+
+\section{Измеримость по Каратеодори}
+
+\begin{observation}
+%Если \((X, \mu^*)\) --- множество с внешней мерой,
+%а \(\mc{A}\) --- \(\sigma\)\=/алгебра на \(X\), такая что \(\mu^*\) аддитивна на \(\mc{A}\),
+%то \(\mu^*\) \(\sigma\)\=/аддитивна на \(\mc{A}\).
+Пусть \((X, \mu^*)\) --- множество с внешней мерой,
+а \(\mc{A}\) --- \(\sigma\)\=/алгебра на \(X\).
+Тогда если \(\mu^*|_{\mc{A}}\) аддитивна, то \(\mu^*|_{\mc{A}}\) \(\sigma\)\=/аддитивна.
+\end{observation}
+
+\begin{definition}[\scshape Измеримость по Каратеодори]
+Пусть \((X, \mu^*)\) --- множество с внешней мерой.
+Тогда множество подмножеств \(X\), \emph{измеримых по Каратеодори} относительно \(\mu^*\), определяется следующим образом:
+\(
+\mc{K}(\mu^*) \coloneqq
+\{E \in 2^X \mid \mu^*(A) = \mu^*(A \cap E) + \mu^*(A \setminus E)\ \text{для всех}\ A \in 2^X\}.
+\)
+\end{definition}
+
+\begin{theorem}[\scshape Характеризация конструкции Каратеодори]
+Пусть \((X, \mu^*)\) --- множество с внешней мерой,
+%а \(\mc{A}\) --- множество подмножеств \(X\), измеримых по Каратеодори относительно \(\mu^*\).
+а \(\mc{A} \coloneqq \mc{K}(\mu^*)\).
+Тогда \(\mc{A}\) является \(\sigma\)\=/алгеброй на \(X\), такой что \(\mu^*\) аддитивна на \(\mc{A}|_S\) для любого \(S \subset X\),
+и наибольшей по включению \(\sigma\)\=/алгеброй на \(X\) с таким свойством.
+\end{theorem}
+
+\begin{proof}
+Доказательство стандартно и опущено.
+\end{proof}
 
 
 
@@ -12926,38 +13026,6 @@ V \to \Coker(\Sigma_{C_p} : (V^{\otimes [p]_\Lambda})_{C_p} \to (V^{\otimes [p]_
 
 
 \section{Не сгруппированные мелочи II}
-
-\begin{observation}[\scshape Предаддитивная категория]
-\label{obs:PreaddCatLim}
-Предаддитивная категория в смысле раздела 1.3 статьи \cite{Kaledin_2022} --- это то же самое, что категория, в которой конечные произведения и копроизведения существуют и коммутируют друг с другом.
-\end{observation}
-
-%\begin{remark}
-%Иллюстрация к наблюдению \ref{obs:PreaddCatLim}:
-%\begin{equation*}
-%\begin{tikzcd}[column sep=small]
-%&
-%(A \times 0) \sqcup (0 \times B) \ar{rr} \ar{d} &
-%&
-%(A \sqcup 0) \times (0 \sqcup B) \ar{d} &
-%A \times B \ar[swap, equal]{l}{\sim} \\
-%A \sqcup B &
-%(A \times 1) \sqcup (1 \times B) \ar{rr} \ar[swap, equal]{l}{\sim} &
-%&
-%(A \sqcup 1) \times (1 \sqcup B)\mathrlap{.}
-%\end{tikzcd}
-%\end{equation*}
-%\end{remark}
-
-\begin{definition}[\scshape Абелева категория]
-Аддитивная категория называется \emph{абелевой}, если
-она конечно полна и кополна, и
-для любого морфизма \(X \to Y\)
-индуцированный морфизм
-\(X \sqcup_{X \times_Y X} X \to Y \times_{Y \sqcup_X Y} Y\)
-из кообраза в образ
-является изоморфизмом.
-\end{definition}
 
 \begin{observation}
 Категория малых категорий содержит все малые пределы и копределы.
