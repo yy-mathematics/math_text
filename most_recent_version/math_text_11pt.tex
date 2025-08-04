@@ -2708,13 +2708,14 @@ L \otimes_K L
 
 \section{Обратный Мура\namedash{}Пенроуза}
 
-Пусть \(x : V \rlarrow U : y\) --- гомоморфизмы абелевых групп, такие что \(xyx=x\) и \(yxy=y\).
-Тогда \(yxyx=yx\) и \(xyxy=xy\), то есть \(xy\) и \(yx\) --- проекторы.
+Пусть \(V\) и \(U\) --- абелевы группы, а \(x : V \rlarrow U : y\) --- гомоморфизмы, такие что \(xyx=x\) и \(yxy=y\).
+Тогда \(yxyx=yx\) и \(xyxy=xy\), то есть \(xy\) и \(yx\) --- идемпотенты.
 При этом, так как \(xyx=x\), то \(\Ker(yx) \subset \Ker(x)\), а потому \(\Ker(yx) = \Ker(x)\).
-Аналогично, \(\Image(yx) = \Image(y)\), и всё то же с заменой \(x \leftrightarrow y\).
+Аналогично, \(\Image(yx) = \Image(y)\), и всё то же с одновременной заменой \(x\) на \(y\) и \(y\) на \(x\).
 Отсюда получаем разложения \(V = \Ker(x) \oplus \Image(y)\) и \(U = \Ker(y) \oplus \Image(x)\),
 вместе с парой взаимно обратных изоморфизмов
 \(v \mapsto x(v) : \Image(y) \rlarrow \Image(x) : y(u) \mapsfrom u\).
+
 Если \(V\) и \(U\) --- это векторные пространства над \(\R\) или \(\C\) с невырожденными скалярными произведениями, то \(x\) однозначно определяет \(y\), для которого описанные разложения ортогональны. Такой \(y\) называется <<обратным Мура\namedash{}Пенроуза>> к линейному преобразованию \(x\).
 
 
@@ -5753,6 +5754,60 @@ n \cdot (1 + \lVert n \rVert + \cdots + {\lVert n \rVert}^{\lfloor \frac{\ln(m)}
 
 \section{Измеримость по Каратеодори}
 
+\subsection{Общие определения}
+
+%\begin{notation}
+%Пусть \(X\) --- множество, а \(\kappa\) --- кардинал.
+%Тогда введём обозначение \(\Lambda^{\leq \kappa}(X) \coloneqq \{S \in 2^X \mid \card(S) \leq \kappa\}\).
+%\end{notation}
+
+%\begin{notation}
+%Пусть \(E\) и \(\mc{S}\) --- два множества.
+%Тогда введём обозначение
+%\(\op{Cov}(E, \mc{S}) \coloneqq \{\mc{C} \in 2^{\mc{S}} \mid E \subset \bigcup_{C \in \mc{C}} C\}\).
+%\end{notation}
+
+\begin{notation}[\scshape Множество покрытий]
+Пусть \(E\) и \(\mc{S}\) --- два множества, а \(\kappa\) --- кардинал.
+Тогда введём следующее обозначение для множества покрытий: \(\op{Cov}_{\leq \kappa}(E, \mc{S}) \coloneqq \{\mc{C} \in 2^{\mc{S}} \mid E \subset \bigcup_{C \in \mc{C}} C\ \text{и}\ \card(\mc{C}) \leq \kappa\}\).
+\end{notation}
+
+\begin{definition}[\scshape Порождение внешней меры]
+Пусть \(X\) --- множество, а \(f : \mc{S} \to [0, +\infty]\), где \(\mc{S} \subset 2^X\), --- функция.
+Тогда внешняя мера
+\(
+E \mapsto
+%\inf_{\mc{C} \subset \mc{S} \suchthat \card(\mc{C}) \leq \aleph_0, E \subset \bigcup_{C \in \mc{C}} C}
+%\inf_{\{\mc{C} \in \Lambda^{\leq \aleph_0}(\mc{S}) \mid E \subset \bigcup_{C \in \mc{C}} C\}}
+%\inf_{\mc{C} \in \Lambda^{\leq \aleph_0}(\mc{S}) \cap \op{Cov}(E, \mc{S})}
+\inf_{\mc{C} \in \op{Cov}_{\leq \aleph_0}(E, \mc{S})}
+\sum_{C \in \mc{C}} f(C)
+: 2^X \to [0, +\infty]
+\)
+называется \emph{внешней мерой, порождённой функцией \(f\)}.
+\end{definition}
+
+\begin{observation}
+Пусть \(X\) --- множество, \(f : \mc{S} \to [0, +\infty]\), где \(\mc{S} \subset 2^X\), --- функция, а \(\mu^* : 2^X \to [0, +\infty]\) --- внешняя мера, порождённая \(f\).
+Тогда функция \(\mu^*|_{\mc{S}}\) тоже порождает внешнюю меру \(\mu^*\).
+\end{observation}
+
+\begin{definition}[\scshape Ограничение внешней меры]
+Пусть \(X\) --- множество, \(\mu^* : 2^X \to [0, +\infty]\) --- внешняя мера на \(X\), а \(S \subset X\) --- подмножество \(X\).
+Тогда функция \(\mu^*|_{2^S} : 2^S \to [0, +\infty]\) является внешней мерой на \(S\), которая называется \emph{ограничением внешней меры} \(\mu^*\) на \(S\).
+\end{definition}
+
+\begin{definition}[\scshape Ограничение \(\sigma\)\=/алгебры]
+Пусть \(X\) --- множество, \(\mc{A} \subset 2^X\) --- \(\sigma\)\=/алгебра на \(X\), а \(S \subset X\) --- подмножество \(X\).
+Тогда множество
+%\(\mc{A}|_{S} \coloneqq \{E \in 2^S \mid \text{существует}\ A \in \mc{A},\ \text{такой что}\ E = S \cap A\}\)
+\(\mc{A}|_{S} \coloneqq \Image(A \mapsto A \cap S : \mc{A} \to 2^S)\)
+является \(\sigma\)\=/алгеброй
+на \(S\),
+которая
+называется \emph{ограничением \(\sigma\)\=/алгебры} \(\mc{A}\) на \(S\).
+\end{definition}
+
 \begin{observation}
 Пусть \((X, \mu^*)\) --- множество с внешней мерой,
 а \(\mc{A}\) --- \(\sigma\)\=/алгебра на \(X\).
@@ -5761,13 +5816,15 @@ n \cdot (1 + \lVert n \rVert + \cdots + {\lVert n \rVert}^{\lfloor \frac{\ln(m)}
 %Тогда если \(\mu^*|_{\mc{A}}\) аддитивна, то \(\mu^*|_{\mc{A}}\) \(\sigma\)\=/аддитивна.
 \end{observation}
 
+\subsection{Конструкция Каратеодори}
+
 \begin{definition}[\scshape Измеримость по Каратеодори]
 Пусть \((X, \mu^*)\) --- множество с внешней мерой.
 Тогда множество подмножеств \(X\), \emph{измеримых по Каратеодори} относительно \(\mu^*\), определяется следующим образом:
 \(
-\mc{K}(\mu^*) \coloneqq
-\{E \in 2^X \mid \mu^*(A) = \mu^*(A \cap E) + \mu^*(A \setminus E)\ \text{для всех}\ A \in 2^X\}.
-\)
+\Car(\mu^*) \coloneqq
+\{A \in 2^X \mid \mu^*(E) = \mu^*(E \cap A) + \mu^*(E \setminus A)\ \text{для всех}\ E \in 2^X\}
+\).
 \end{definition}
 
 \begin{observation}%
@@ -5775,8 +5832,8 @@ n \cdot (1 + \lVert n \rVert + \cdots + {\lVert n \rVert}^{\lfloor \frac{\ln(m)}
 [\scshape Характеризация измеримости по Каратеодори]
 Пусть \((X, \mu^*)\) --- множество с внешней мерой,
 %а \(\mc{A}\) --- множество подмножеств \(X\), измеримых по Каратеодори относительно \(\mu^*\).
-а \(\mc{A} \coloneqq \mc{K}(\mu^*)\).
-Тогда \(\mc{A}\) является \(\sigma\)\=/алгеброй на \(X\), такой что \(\mu^*\) аддитивна на \(\mc{A}|_S\) для любого \(S \subset X\),
+а \(\mc{A} \coloneqq \Car(\mu^*)\).
+Тогда \(\mc{A}\) является \(\sigma\)\=/алгеброй на \(X\), такой что \(\mu^*|_{2^S}\) аддитивна на \(\mc{A}|_S\) для любого \(S \subset X\),
 %и наибольшей по включению \(\sigma\)\=/алгеброй на \(X\) с таким свойством.
 и \(\mc{A}\) содержит любую \(\sigma\)\=/алгебру на \(X\) с таким свойством.
 \end{observation}
@@ -5784,6 +5841,15 @@ n \cdot (1 + \lVert n \rVert + \cdots + {\lVert n \rVert}^{\lfloor \frac{\ln(m)}
 %\begin{proof}
 %Доказательство стандартно и опущено.
 %\end{proof}
+
+\begin{observation}
+Пусть \((X, \mu^*)\) --- множество с внешней мерой, а \(\mc{S} \subset 2^X\) --- множество подмножеств \(X\), такое что функция \(\mu^*|_{\mc{S}}\) порождает \(\mu^*\).
+Тогда
+\(
+\Car(\mu^*) =
+\{A \in 2^X \mid \mu^*(S) = \mu^*(S \cap A) + \mu^*(S \setminus A)\ \text{для всех}\ S \in \mc{S}\}
+\).
+\end{observation}
 
 
 
