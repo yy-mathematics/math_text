@@ -1967,8 +1967,7 @@ V'' = P'' \oplus Q'' \oplus L''
 Тогда существует семейство \((m_i)_{i \in I} \in \{1,\dots{},n\}^{\times I}\), такое что \(M \simeq \bigoplus_{i \in I} D[X]/X^{m_i}\), где \(I\) --- множество.
 \end{theorem}
 
-\begin{proof}[Доказательство (из двух частей)]
-~\begin{proofdescription}
+\begin{proofparts}[Доказательство (из двух частей)]
 
 \item[Часть 1.]
 Пусть \(x : M \to M\) --- это \(D\)\=/гомоморфизм действия \(X\).
@@ -1981,8 +1980,7 @@ V'' = P'' \oplus Q'' \oplus L''
 Тогда \(M = \bigoplus_{k = 1}^n \bigoplus_{v \in \Delta_k} \bigoplus_{i = 0}^{k-1} D \cdot x^i(v)\) --- нужное разложение.
 \qedhere
 
-\end{proofdescription}
-\end{proof}
+\end{proofparts}
 
 
 \section{Изображение конфигурации Дезарга}
@@ -2427,6 +2425,158 @@ L \otimes_K L
 \(v \mapsto x(v) : \Image(y) \rlarrow \Image(x) : y(u) \mapsfrom u\).
 
 Если \(V\) и \(U\) --- это векторные пространства над \(\R\) или \(\C\) с невырожденными скалярными произведениями, то \(x\) однозначно определяет \(y\), для которого описанные разложения ортогональны. Такой \(y\) называется <<обратным Мура\namedash{}Пенроуза>> к линейному преобразованию \(x\).
+
+
+\section{Теорема Эйленберга\namedash{}Уоттса}
+
+%\begin{convention}
+%Пусть \(R\text{-}\mathrm{Ab}\) ---
+%категория (левых) \(R\)-мо\-ду\-лей,
+%\(R\text{-}\mathrm{Ab}\text{-}S\) ---
+%\((R,S)\)-би\-мо\-ду\-лей,
+%\(\op{Fun}_{rng}(\mathcal{A},\mathcal{B})\) ---
+%функторов \(\mathcal{A} \to \mathcal{B}\) кольцоидов.
+%\end{convention}
+
+%\begin{convention}
+%Категория левых \(R\)-мо\-ду\-лей
+%обозначается \(R\text{-}\mathrm{Ab}\),
+%\((R,S)\)-би\-мо\-ду\-лей ---
+%\(R\text{-}\mathrm{Ab}\text{-}S\),
+%функторов \(\mathcal{A} \to \mathcal{B}\) кольцоидов ---
+%\(\op{Fun}_{rng}(\mathcal{A},\mathcal{B})\).
+%\end{convention}
+
+%\begin{observation}
+%\label{obs:colim_iso}
+%Пусть \(E,E' : \mathcal{C} \to \mathcal{E}\) --- пара функторов, сохраняющих копредел функтора \(H : I \to \mathcal{C}\), а \(\omega = (\omega(C))_{C \in \Ob(\mathcal{C})} : E \Rightarrow E'\) --- естественное преобразование.
+%Тогда если для каждого \(i \in \Ob(I)\) морфизм \((\omega H)(i) = \omega(H(i))\) является изоморфизмом, то \(\omega(\colim(H))\) --- тоже.
+%\end{observation}
+
+\begin{observation}[\scshape (Ко)ядро как (ко)предел]
+Пусть \(f : U \to V\) --- морфизм в аддитивной категории.
+Тогда \(\Coker(f)\) по определению отождествляется с \(0 \sqcup_U^f V\), а \(\Ker(f)\) --- с \(0 \times_V^f U\), где \(0\) --- нулевой объект.
+\end{observation}
+
+%\begin{theorem}[\scshape Теорема Эйленберга-Уоттса]
+%Пусть \(R\) и \(S\) --- ассоциативные унитальные кольца.
+%Тогда между функторами
+%\[
+%\begin{tikzcd}[column sep = small, cramped]
+%\tensor[_S]{M}{_R}
+%\mapsto
+%\tensor[_S]{M}{_R} \otimes_R (-)
+%:
+%S\text{-}\mathrm{Ab}\text{-}R
+%	\arrow[shift left]{r}{} &
+%\op{Fun}_{rng} (R\text{-}\mathrm{Ab}, S\text{-}\mathrm{Ab})
+%:
+%\tensor[_S]{F}{}(\tensor[_R]{R}{_R})
+%\mapsfrom
+%F,
+%	\arrow[shift left]{l}{}
+%\end{tikzcd}
+%\]
+%где правое действие \(R\) на \(F(R)\) по функториальности индуцировано правым действием \(R\) на себе,
+%существует сопряжение, заданное единицей \(\eta\) --- изоморфизмом унитальности --- и коединицей \(\varepsilon\):
+%\[
+%\eta(M) :
+%\tensor[_S]{M}{_R}
+%\xrightarrow{\sim}
+%\tensor[_S]{M}{_R} \otimes_R \tensor[_R]{R}{_R},
+%\quad
+%(\varepsilon(F))(V) :
+%\tensor[_S]{F}{}(\tensor[_R]{R}{_R})
+%\otimes_R
+%\tensor[_R]{V}{}
+%\to
+%\tensor[_S]{F}{}(\tensor[_R]{V}{}),
+%\]
+%где \(\varepsilon\) по \(\otimes\)-\(\Hom\) сопряжению индуцировано композицией изоморфизма унитальности и действия \(F\) на \(\Hom\)-ах:
+%\[
+%\tensor[_R]{V}{}
+%\xrightarrow{\sim}
+%\tensor[_R]{{\Hom_R}}{}(\tensor[_R]{R}{_R}, \tensor[_R]{V}{})
+%\xrightarrow{f \smapsto F(f)}
+%\tensor[_R]{{\Hom_S}}{}(\tensor[_S]{F}{}(\tensor[_R]{R}{_R}), \tensor[_S]{F}{}(\tensor[_R]{V}{})).
+%\]
+%Если функтор \(F\) сохраняет малые прямые суммы и сохраняет коядра, то есть сохраняет малые копределы, то
+%\(\varepsilon(F)\) --- это изоморфизм.
+%\end{theorem}
+
+\begin{theorem}[\scshape Теорема Эйленберга\namedash{}Уоттса]
+Пусть \(R\) и \(S\) --- ассоциативные унитальные кольца,
+\(\mc{M}(S,R) \coloneqq (S \otimes_{\Z} R^o)\module\),
+а \(\mc{F}(S,R) \coloneqq \op{Fun}_{\mr{Rngd}}(R\module, S\module)\).
+Тогда определена сопряжённая пара
+\begin{gather*}
+%\begin{tikzcd}[
+%	ampersand replacement=\&,
+%	column sep = small,
+%	nodes={inner xsep=1ex},
+%%	nodes={inner ysep=0ex},
+%	cramped,
+%	]
+%\tensor[_S]{M}{_R}
+%\mapsto
+%\tensor[_S]{M}{_R} \otimes_R (-)
+%:
+%S\text{-}\mathrm{Ab}\text{-}R
+%	\arrow[shift left]{r}{} \&
+%\op{Fun}_{rng} (R\text{-}\mathrm{Ab}, S\text{-}\mathrm{Ab})
+%:
+%\tensor[_S]{F}{}(\tensor[_R]{R}{_R})
+%\mapsfrom
+%F,
+%	\arrow[shift left]{l}{}
+%\end{tikzcd}
+\tensor[_S]{M}{_R}
+\mapsto
+\tensor[_S]{M}{_R} \otimes_R (-)
+:
+\mc{M}(S,R) \rlarrow \mc{F}(S,R)
+:
+\tensor[_S]{F}{}(\tensor[_R]{R}{_R})
+\mapsfrom
+F,
+\\
+\eta(M) :
+\tensor[_S]{M}{_R}
+\xrightarrow{\sim}
+\tensor[_S]{M}{_R} \otimes_R \tensor[_R]{R}{_R},
+\;
+(\varepsilon(F))(V) :
+\tensor[_S]{F}{}(\tensor[_R]{R}{_R})
+\otimes_R
+\tensor[_R]{V}{}
+\to
+\tensor[_S]{F}{}(\tensor[_R]{V}{}),
+\end{gather*}
+где правое действие \(R\) на \(F(R)\) по функториальности индуцировано правым действием \(R\) на себе, единица \(\eta\) --- это изоморфизм унитальности, а коединица \(\varepsilon\) по \(\otimes\)-\(\Hom\) сопряжению индуцирована композицией изоморфизма унитальности и действия \(F\) на \(\Hom\)-ах:
+\[
+\tensor[_R]{V}{}
+\xrightarrow{\sim}
+\tensor[_R]{{\Hom_R}}{}(\tensor[_R]{R}{_R}, \tensor[_R]{V}{})
+\xrightarrow{f \mapsto F(f)}
+\tensor[_R]{{\Hom_S}}{}(\tensor[_S]{F}{}(\tensor[_R]{R}{_R}), \tensor[_S]{F}{}(\tensor[_R]{V}{})).
+\]
+Если функтор \(F\) сохраняет малые прямые суммы и сохраняет коядра, то есть сохраняет малые копределы, то
+\(\varepsilon(F)\) --- это изоморфизм.
+\end{theorem}
+
+\begin{proofparts}[Доказательство (из трёх частей)]
+
+\item[Часть 1.]
+Заметим, что гомоморфизм \((\varepsilon(F))(R) : F(R) \otimes_R R \to F(R)\) --- это просто изоморфизм унитальности.
+
+\item[Часть 2.]
+Если функтор \(F\) сохраняет малые прямые суммы, то из части~1 этого доказательства следует, что \(\varepsilon(F)\) является изоморфизмом и для малых прямых сумм копий \(R\), то есть для свободных модулей.
+
+\item[Часть 3.]
+Если функтор \(F\) сохраняет ещё и коядра, то из части~2 этого доказательства следует, что \(\varepsilon(F)\) является изоморфизмом и для коядер гомоморфизмов свободных модулей, то есть для всех модулей.
+\qedhere
+
+\end{proofparts}
 
 
 
@@ -6184,6 +6334,7 @@ f^{(r+1)}(0)
 %где \(a_i \in \{\pm 1\}\)
 %для всех \(1 \leq i \leq m\).
 \end{theorem}
+
 
 \begin{proofparts}[Доказательство (из двух частей).]
 
