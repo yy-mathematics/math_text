@@ -1990,27 +1990,56 @@ V'' = P'' \oplus Q'' \oplus L''
 \end{observation}
 
 \begin{remark}
+В наблюдении~\ref{obs:JordFormDecomp} говорится об эквивалентности категорий
+\begin{equation*}
+\frac{K[X]}{\prod_{\alpha \in \Phi} (X - \alpha)^{n_\alpha}} \module,
+\ 
+\biggl(%
+\prod_{\alpha \in \Phi} \frac{K[X]}{(X - \alpha)^{n_\alpha}}%
+\biggr) \module,
+\ \tn{и}\
+\prod_{\alpha \in \Phi}
+\biggl(%
+\frac{K[X]}{(X - \alpha)^{n_\alpha}} \module%
+\biggr).
+\end{equation*}
+\end{remark}
+
+\begin{remark}
 В условиях наблюдения~\ref{obs:JordFormDecomp} для каждого \(\alpha \in \Phi\) имеем изоморфизм колец \(K[X] / (X - \alpha)^{n_\alpha} \xrightarrow{\sim} K[Y] / Y^{n_\alpha}\), \(X \mapsto Y + \alpha\).
 \end{remark}
 
+%\begin{theorem}[\scshape Жорданова форма нильпотента]
+%Пусть \(M\) --- модуль над \(D[X]/X^n\), где \(D\) --- тело, а \(n \in \N_1\).
+%Тогда существует семейство \((m_i)_{i \in I} \in \{1,\dots{},n\}^{\times I}\), такое что \(M \simeq \bigoplus_{i \in I} D[X]/X^{m_i}\).
+%\end{theorem}
+
 \begin{theorem}[\scshape Жорданова форма нильпотента]
-%Пусть \(D\) --- тело, \(n \in \N_1\) --- натуральное число, а \(M\) --- \(D[X]/X^n\)\=/модуль.
-Пусть \(M\) --- модуль над \(D[X]/X^n\), где \(D\) --- тело, а \(n \in \N_1\).
-%Тогда \(M\) изоморфен прямой сумме \(D[X]/X^n\)\=/модулей вида \(D[X]/X^m\), где \(m \in \N_1\) и \(m \leq n\).
-Тогда существует семейство \((m_i)_{i \in I} \in \{1,\dots{},n\}^{\times I}\), такое что \(M \simeq \bigoplus_{i \in I} D[X]/X^{m_i}\).
+Пусть \(D\) --- тело, а \(V\) --- \(D[X]/X^n\)\=/модуль, где \(n \in \N_1\).
+Тогда \(V\) изоморфен прямой сумме \(D[X]/X^n\)\=/модулей вида \(D[X]/X^m\), где \(m \in \N_1\) и \(m \leq n\).
 \end{theorem}
 
 \begin{proofparts}[Доказательство (из двух частей)]
 
 \item[Часть 1.]
-Пусть \(x : M \to M\) --- это \(D\)\=/гомоморфизм действия \(X\).
-Сначала докажем, что \(D[X]/X^n\)\=/модуль \(M\) изоморфен \(\bigoplus_{i = 1}^n x^{-i}(0) / x^{-i+1}(0)\).
-Пусть \(V_n\) --- это дополнение к \(x^{-n+1}(0)\) в \(x^{-n}(0)\), \(V_{n-1}\) --- дополнение к \(x^{-n+2}(0)\) в \(x^{-n+1}(0)\), содержащее \(x(V_n)\), \(V_{n-2}\) --- дополнение к \(x^{-n+3}(0)\) в \(x^{-n+2}(0)\), содержащее \(x(V_{n-1})\), и так далее.
-Разложение \(M = \bigoplus_{i = 1}^n V_i\) устанавливает нужный изоморфизм.
+%Пусть \(\varphi : V \to V\), \(v \mapsto Xv\) --- это \(D\)\=/эндоморфизм действия \(X\).
+Пусть \(\varphi\) обозначает \(D\)\=/эндоморфизм \(v \mapsto Xv : V \to V\).
+Сначала докажем, что \(D[X]/X^n\)\=/модуль \(V\) изоморфен \(\bigoplus_{i = 1}^n \varphi^{-i}(0) / \varphi^{-i+1}(0)\).
+
+Пусть \(V_n\) --- это дополнение к \(\varphi^{-n+1}(0)\) в \(\varphi^{-n}(0)\), \(V_{n-1}\) --- дополнение к \(\varphi^{-n+2}(0)\) в \(\varphi^{-n+1}(0)\), содержащее \(\varphi(V_n)\), \(V_{n-2}\) --- дополнение к \(\varphi^{-n+3}(0)\) в \(\varphi^{-n+2}(0)\), содержащее \(\varphi(V_{n-1})\), и так далее.
+Тогда
+получаем изоморфизм
+\(
+V = \bigoplus_{i = 1}^n V_i
+\xrightarrow{\sim}
+\bigoplus_{i = 1}^n
+\varphi^{-i}(0) / \varphi^{-i+1}(0)
+\),
+\((v_i)_{i=1}^n \mapsto (v_i + \varphi^{-i+1}(0))_{i=1}^n\).
 
 \item[Часть 2.]
 Пусть \(\Delta_n\) --- это \(D\)\=/базис \(V_n\), \(\Delta_{n-1}\) --- это \(D\)\=/базис дополнения к \(\varphi(V_n)\) в \(V_{n-1}\), \(\Delta_{n-2}\) --- это \(D\)\=/базис дополнения к \(\varphi(V_{n-1})\) в \(V_{n-2}\) и так далее.
-Тогда \(M = \bigoplus_{k = 1}^n \bigoplus_{v \in \Delta_k} \bigoplus_{i = 0}^{k-1} D \cdot x^i(v)\) --- нужное разложение.
+Тогда \(V = \bigoplus_{k = 1}^n \bigoplus_{v \in \Delta_k} \bigoplus_{i = 0}^{k-1} D \cdot \varphi^i(v)\) --- нужное разложение.
 \qedhere
 
 \end{proofparts}
@@ -2032,9 +2061,11 @@ V'' = P'' \oplus Q'' \oplus L''
 В условиях наблюдения~\ref{obs:JordFormDecomp} кольцо
 \(A \coloneqq K[X] / \prod_{\alpha \in \Phi} (X - \alpha)^{n_\alpha}\)
 артиново
-и для любого \(A\)\=/модуля \(V\) и индекса \(\alpha \in \Phi\) имеем канонический изоморфизм
+и для любого \(A\)\=/модуля \(V\) и \(\alpha \in \Phi\) имеем канонический изоморфизм
 \(V \cong V_{f} \times V_{(f)}\),
-где \(f \coloneqq X - \alpha\).
+где \(f \coloneqq X - \alpha\),
+индуцированный изоморфизмом
+\(A \cong A_{f} \times A_{(f)}\).
 \end{observation}
 
 
@@ -11279,7 +11310,7 @@ K \otimes_{E_0} E_1 \otimes_{E_1} \cdots{} \otimes_{E_{n-1}} E_n
 \end{example}
 
 \begin{remark}
-Я узнал о примере~\ref{exa:CardOfMaxAlgIndSetNotUnique} из ответа \cite{ms942910} на <<\textenglish{Mathematics Stack Exchange}>>.
+Я узнал о примере~\ref{exa:CardOfMaxAlgIndSetNotUnique} из ответа \cite{ms942910} на <<\href{https://math.stackexchange.com}{\textenglish{Mathematics Stack Exchange}}>>.
 \end{remark}
 
 
@@ -11936,7 +11967,11 @@ A,
 
 \item[Часть 3.]
 Мы доказали, что любой ненулевой элемент \(A\) порождает какую-то степень \(\mf{m}\).
-Отсюда следует, что множество ненулевых главных идеалов в \(A\) с обратным порядком изоморфно подординалу ординала \(\omega\), откуда следует, что \(A\) --- кольцо дискретного нормирования.
+Отсюда следует, что множество ненулевых главных идеалов \(A\),
+упорядоченное обратно включению,
+%изоморфно подординалу ординала \(\omega\),
+образует ординал,
+откуда следует, что \(A\) --- кольцо дискретного нормирования.
 \qedhere
 
 \end{proofparts}
@@ -11988,12 +12023,12 @@ A,
 \end{observation}
 
 \begin{observation}
-Пусть \(A\) --- частично упорядоченная абелева группа, такая что
-%\(A_{>0}\) --- фундированное множество, то есть
-в \(A_{>0}\) нет бесконечных строго убывающих цепочек.%
+Пусть \(\Lambda\) --- частично упорядоченная абелева группа, такая что
+%\(\Lambda_{>0}\) --- фундированное множество, то есть
+в \(\Lambda_{>0}\) нет бесконечных строго убывающих цепочек.%
 \label{obs:PartOrdAbGrMinGen}
-%Тогда любой элемент \(A_{>0}\) представляется в виде суммы минимальных элементов \(A_{>0}\).
-Тогда полугруппа \(A_{>0}\) порождается своими минимальными элементами.
+%Тогда любой элемент \(\Lambda_{>0}\) представляется в виде суммы минимальных элементов \(\Lambda_{>0}\).
+Тогда полугруппа \(\Lambda_{>0}\) порождается своими минимальными элементами.
 \end{observation}
 
 %\begin{theorem}
@@ -12045,7 +12080,15 @@ A,
 =
 A_{\mf{m}}
 \).
-Взяв пересечение по всем \(\mf{m} \in \op{Spm}(A)\), получаем, что \(\mf{a} \cdot (A : \mf{a}) = A\).
+%Взяв пересечение по всем \(\mf{m} \in \op{Spm}(A)\), получаем, что \(\mf{a} \cdot (A : \mf{a}) = A\).
+%Так как вложение
+%\(\prod_{\mf{m} \in \op{Spm}(A)} (\mf{a} \cdot (A : \mf{a}))_{\mf{m}} \to \prod_{\mf{m} \in \op{Spm}(A)} A_{\mf{m}}\)
+%биективно,
+%то вложение \(\mf{a} \cdot (A : \mf{a}) \to A\) тоже биективно.
+Если \(\mf{x} \coloneqq \mf{a} \cdot (A : \mf{a}) \varsubsetneq A\),
+то \(\mf{x} \subset \mf{m}\)
+для какого-то \(\mf{m} \in \op{Spm}(A)\) и
+\(\mf{x}_{\mf{m}} \subset \mf{m}_{\mf{m}} \varsubsetneq A_{\mf{m}}\) --- противоречие.
 
 \item[Часть <<только тогда>>.]
 Пусть \(\mf{m} \in \op{Spm}(A)\).
@@ -12098,7 +12141,7 @@ A_{\mf{m}}
 Тогда \(A\) --- дедекиндово кольцо.
 \end{theorem}
 
-\begin{proofparts}[Доказательство (из двух частей).]
+\begin{proofparts}[Доказательство (из двух частей)]
 
 \item[Часть 1.]
 Заметим, что любой ненулевой простой идеал \(\mf{p} \subset A\) содержит обратимый простой идеал --- какой-то из членов простого разложения ненулевого главного идеала, который содержится в \(\mf{p}\).
@@ -14084,6 +14127,310 @@ A \sqcup B &
 из регулярного кообраза в регулярный образ
 является изоморфизмом.
 \end{definition}
+
+
+\section{Локально нильпотентные операторы}
+
+\begin{notation}[\scshape Произведение матриц]
+В этом разделе произведение матрицы \(x\) на матрицу \(y\) обозначается через \(x \circ y\).
+\end{notation}
+
+\begin{definition}[\scshape Расщепимое семейство подмодулей]
+Пусть \(R\) --- ассоциативное унитальное кольцо,
+\(V\) --- \(R\)\=/модуль,
+а \((U_i)_{i \in I}\) --- семейство подмодулей \(V\).
+Тогда семейство \((U_i)_{i \in I}\) называется \emph{расщепимым}, если существует семейство подмодулей \((V_j)_{j \in J}\) модуля \(V\),
+такое что \(V = \bigoplus_{j \in J} V_j\)
+и
+для любого \(i \in I\)
+выполняется равенство
+\(U_i = \bigoplus_{j \in J \suchthat V_j \subset U_i} V_j\).
+\end{definition}
+
+\begin{theorem}
+Пусть \(D\) --- тело.
+Тогда \(D\)\=/модуль \(V\) с оператором \(\varphi : V \to V\) изоморфен прямой сумме \(D\)\=/модулей с операторами вида
+\begin{equation}
+D \otimes_{\Z}
+\biggl(
+P \mapsto \frac{\6P}{\6X} :
+\sum_{k=0}^n \Z \frac{X^k}{k!}
+\to
+\sum_{k=0}^n \Z \frac{X^k}{k!}
+\biggr)%
+,\ \tn{где}\ 
+n = 1,2,\dots{},\infty,
+\label{eq:DivPowerDiffEnd}
+\end{equation}
+тогда и только тогда, когда
+выполняются следующие условия:
+\(V = \bigcup_{k=0}^{\infty} \varphi^{-k}(0)\),
+\(
+\varphi(\bigcap_{k=0}^{\infty} \varphi^k(V))
+=
+\bigcap_{k=0}^{\infty} \varphi^k(V)
+\)
+и
+\((\varphi^{-1}(0) \cap \varphi^{k}(V))_{k=0}^{\infty}\)
+является расщепимым семейством
+подмодулей \(D\)\=/модуля \(\varphi^{-1}(0)\).
+\end{theorem}
+
+\begin{proofparts}[Набросок доказательства (из двух частей)]
+
+\item[Часть <<только тогда>>.]
+Рассматриваемые три условия
+выполняются для модулей вида~\eqref{eq:DivPowerDiffEnd}
+и наследуются прямыми суммами.
+
+\item[Часть <<тогда>>.]
+По условию у \(D\)\=/модуля \(\varphi^{-1}(0)\) существует базис \(E^1\)
+и разбиение
+\(E^1 = E_{\infty}^1 \sqcup (\bigsqcup_{n=0}^{\infty} E_n^1)\),
+такое что
+для каждого \(r \in \N_0\)
+множество
+\(E_{\infty}^1 \sqcup (\bigsqcup_{n=r}^{\infty} E_n^1)\)
+является базисом
+\(\varphi^{-1}(0) \cap \varphi^{r}(V)\).
+
+%выполняется равенство
+%\(
+%\varphi^{-1}(0) \cap \varphi^{n}(V)
+%=
+%(\bigoplus_{e \in E_{\infty}^1} De)
+%\oplus
+%(
+%\bigoplus_{r=n}^{\infty}
+%\bigoplus_{e \in E_r^1} De
+%)
+%\).
+
+Для любых \(n,k \in \N_1\), таких что \(k \leq n\), по индукции возьмём в качестве \(E_{n}^{k+1}\) какое-то подмножество
+\(\varphi^{n-k}(V)\), такое что
+\(\varphi(E_n^{k+1}) = E_n^k\) и отображение \(v \mapsto \varphi(v) : E_n^{k+1} \to E_n^k\) биективно.
+
+Похожим образом для любого \(k \in \N_1\) по индукции возьмём в качестве \(E_{\infty}^{k+1}\) какое-то подмножество
+\(\bigcap_{i=0}^{\infty} \varphi^i(V)\), такое что
+\(\varphi(E_{\infty}^{k+1}) = E_{\infty}^k\) и отображение \(v \mapsto \varphi(v) : E_{\infty}^{k+1} \to E_{\infty}^k\) биективно.
+
+Тогда
+множество
+\(
+\bigsqcup_{k=1}^{\infty}
+(
+E_{\infty}^k
+\sqcup
+(\bigsqcup_{n=k-1}^{\infty} E_n^k)
+)
+\)
+является базисом \(D\)\=/модуля \(V\),
+устанавливающим нужный изоморфизм.
+\qedhere
+
+\end{proofparts}
+
+%\begin{example}
+%Рассмотрим
+%\(
+%V  \coloneqq
+%\sum_{n=1}^{\infty} \sum_{k=0}^n
+%\Q \cdot X_n^k / k!
+%\subset
+%\Q[X_i \smid i \in \N_1]
+%%\Q[X_1, X_2, \dots{}]
+%\)
+%как \(\Q\)\=/модуль,
+%снабжённый оператором
+%%\(\varphi : V \to V\),
+%%\(P(X_1, X_2, \dots{}) \mapsto \frac{\6}{\6X_1}P(X_1, X_2, \dots{}) + \frac{\6}{\6X_2}P(X_1, X_2, \dots{}) + \cdots{}\).
+%\(\varphi : V \to V\),
+%\(P \mapsto \sum_{i=1}^{\infty} \frac{\6}{\6X_i}P\).
+%Тогда
+%\(V = \bigcup_{i=0}^{\infty} \varphi^{-i}(0)\),
+%но
+%\(
+%\varphi(\bigcap_{i=0}^{\infty} \varphi^i(V))
+%\neq
+%\bigcap_{i=0}^{\infty} \varphi^i(V)
+%\).
+%\end{example}
+
+%\begin{example}
+%Пусть
+%\(D\) --- тело,
+%\(
+%V  \coloneqq
+%\sum_{n=1}^{\infty} \sum_{k=0}^n
+%\Z \cdot X_n^k / k!
+%\subset
+%\Q[X_i \smid i \in \N_1]
+%%\Q[X_1, X_2, \dots{}]
+%\),
+%%\(\varphi : V \to V\),
+%%\(P(X_1, X_2, \dots{}) \mapsto \frac{\6}{\6X_1}P(X_1, X_2, \dots{}) + \frac{\6}{\6X_2}P(X_1, X_2, \dots{}) + \cdots{}\).
+%\(\varphi : V \to V\),
+%\(P \mapsto \sum_{i=1}^{\infty} \frac{\6}{\6X_i}P\),
+%\(V_D \coloneqq D \otimes_{\Z} V\),
+%\(\varphi_D \coloneqq \Id_D \otimes \varphi : V_D \to V_D\).
+%Тогда
+%\(V_D = \bigcup_{i=0}^{\infty} \varphi_D^{-i}(0)\),
+%но
+%\(
+%\varphi_D(\bigcap_{i=0}^{\infty} \varphi_D^i(V))
+%\neq
+%\bigcap_{i=0}^{\infty} \varphi_D^i(V)
+%\).
+%\end{example}
+
+\begin{example}
+Пусть
+\(
+V_{\Z}  \coloneqq
+\sum_{n=1}^{\infty} \sum_{k=0}^n
+\Z \cdot X_n^k / k!
+\subset
+\Q[X_n \smid n \in \N_1]
+\)
+и
+\(\varphi_{\Z} : V \to V\),
+\(P \mapsto \sum_{n=1}^{\infty} \frac{\6}{\6X_n}P\).
+Тогда если \(R\) --- ненулевое ассоциативное унитальное кольцо,
+\(V \coloneqq R \otimes_{\Z} V_{\Z}\)
+и
+\(\varphi \coloneqq \Id_R \otimes_{\Z} \varphi_{\Z} : V \to V\),
+то
+\(V = \bigcup_{k=0}^{\infty} \varphi^{-k}(0)\),
+но
+\(
+\varphi(\bigcap_{k=0}^{\infty} \varphi^k(V))
+\neq
+\bigcap_{k=0}^{\infty} \varphi^k(V)
+\).
+%В частности, если
+%\((V_i)_{i \in I}\) --- семейство \(R[\varphi]\)\=/подмодулей \(V\), такое что \(V = \bigoplus_{i \in I} V_i\), то
+%для какого-то \(i \in I\)
+%включение
+%\(
+%%\varphi(\bigcap_{k=0}^{\infty} \varphi^k(V))
+%%=
+%%\bigoplus_{i \in I}
+%\varphi(\bigcap_{k=0}^{\infty} \varphi^k(V_i))
+%\varsubsetneq
+%%\bigoplus_{i \in I}
+%\bigcap_{k=0}^{\infty} \varphi^k(V_i)
+%%=
+%%\bigcap_{k=0}^{\infty} \varphi^k(V)
+%\)
+%строгое.
+\end{example}
+
+%\begin{question}
+%Пусть \(D\) --- тело,
+%\(V\) --- \(D[X]\)\=/модуль,
+%а буквой \(\varphi\) обозначается эндоморфизм
+%\(v \mapsto Xv : V \to V\).
+%%а \(\varphi : V \to V\), \(v \mapsto Xv\)
+%%--- это эндоморфизм действия \(X\).
+%Верно ли, что
+%\(D[X]\)\=/модули
+%\(V\) и \(\bigoplus_{k=1}^{\infty} \varphi^{-k}(0) / \varphi^{-k+1}(0)\)
+%изоморфны тогда и только тогда, когда
+%выполняются равенства
+%\(V = \bigcup_{k=0}^{\infty} \varphi^{-k}(V)\)
+%и
+%\(
+%\varphi(\bigcap_{k=0}^{\infty} \varphi^k(V))
+%=
+%\bigcap_{k=0}^{\infty} \varphi^k(V)
+%\)?
+%\end{question}
+
+\begin{theorem}[\scshape Теорема Эрдёша\namedash{}Капланского]
+Пусть \(D\) --- тело, а \(I\) --- счётное множество.%
+\label{thm:ErdosKaplansky}
+Тогда \(\dim_D(D^{\times I}) = \card(D^{\times I})\).
+\end{theorem}
+
+\begin{proofparts}[Доказательство (из трёх частей)]
+
+\item[Часть 1.]
+Заметим, что \(\card(D^{\times I}) = \card(D) \cdot \dim_D(D^{\times I})\), а потому достаточно доказать, что \(\dim_D(D^{\times I}) \geq \card(D)\).
+Для конечного \(D\) это очевидно, поэтому можно предположить, что \(D\) бесконечно.
+
+\item[Часть 2.]
+Предположим, что
+\(B \subset D^{\times I}\) --- это \(D\)\=/базис \(D^{\times I}\),
+такой что
+%выполняется соотношение
+\(\card(B) < \card(D)\),
+и придём к противоречию.
+Пусть \(T \subset D\) --- это наименьшее подтело в \(D\), такое что \(B \subset T^{\times I}\).
+Тогда \(\card(T) < \card(D)\).
+Отсюда следует, что существует семейство \((x_i)_{i \in I} \in D^{\times I}\), линейно независимое относительно действия \(T^o\) на \(D\) правым умножением.
+
+\item[Часть 3.]
+Если \(((t_{s,i})_{i \in I})_{s \in S} \in (T^{\times I})^{\times S}\) --- конечное семейство элементов \(T^{\times I}\), то существует ненулевое семейство \((r_i)_{i \in I} \in T^{\oplus I}\), такое что
+\(
+(t_{s,i})_{s \in S, i \in I}
+\circ
+(r_i)_{i \in I}
+%=
+%(\sum_{i \in I} t_{s,i} r_i)_{s \in S}
+= 0
+\).
+Поэтому для любого семейства
+\((a_s)_{s \in S} \in D^{\times S}\)
+линейная комбинация
+\(
+(b_i)_{i \in I}
+\coloneqq
+(a_s)_{s \in S}
+\circ
+(t_{s,i})_{s \in S, i \in I}
+%=
+%(\sum_{s \in S} a_s t_{s,i})_{i \in I}
+\)
+удовлетворяет соотношению
+\(
+(b_i)_{i \in I} \circ (r_i)_{i \in I}
+%=
+%(a_s)_{s \in S}
+%\circ
+%(t_{s,i})_{s \in S, i \in I}
+%\circ
+%(r_i)_{i \in I}
+%=
+%\sum_{i \in I} b_i r_i
+= 0
+\)
+и не может совпадать с \((x_i)_{i \in I}\).
+\qedhere
+
+\end{proofparts}
+
+\begin{remark}
+Я узнал о предложенном доказательстве теоремы~\ref{thm:ErdosKaplansky} из ответа~\cite{mo168624} на <<\href{https://mathoverflow.net}{\textenglish{MathOverflow}}>>.
+\end{remark}
+
+\begin{example}
+Пусть \(D\) --- тело.%
+\label{exa:AscFilNonSplit}
+Тогда стандартная убывающая фильтрация
+\((X^k D[[X]])_{k=0}^{\infty}\)
+на \(D[[X]]\)
+не расщепима,
+потому что иначе
+\(D\)\=/модули
+\(\bigoplus_{k=0}^{\infty} X^k D[[X]] / X^{k+1} D[[X]] \cong D[X]\)
+и
+\(D[[X]] / \bigcap_{k=0}^{\infty} X^k D[[X]] \cong D[[X]]\)
+были бы изоморфны, а согласно теореме~\ref{thm:ErdosKaplansky} это не так.
+\end{example}
+
+\begin{remark}
+Я узнал о примере~\ref{exa:AscFilNonSplit} из ответа~\cite{ms2848276} на <<\href{https://math.stackexchange.com}{\textenglish{Mathematics Stack Exchange}}>>.
+\end{remark}
 
 
 
