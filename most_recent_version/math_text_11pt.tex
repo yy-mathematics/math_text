@@ -5304,6 +5304,83 @@ n \cdot (1 + \lVert n \rVert + \cdots + {\lVert n \rVert}^{\lfloor \frac{\ln(m)}
 \end{observation}
 
 
+\section{Теорема Эрдёша\namedash{}Капланского}
+
+\begin{notation}[\scshape Произведение матриц]
+В этом разделе произведение матрицы \(x\) на матрицу \(y\) обозначается через \(x \circ y\).
+\end{notation}
+
+\begin{theorem}[\scshape Теорема Эрдёша\namedash{}Капланского]
+Пусть \(D\) --- тело, а \(I\) --- бесконечное множество.%
+\seclabel{thm:ErdosKaplansky}
+Тогда \(\dim_D(D^{\times I}) = \card(D^{\times I})\).
+\end{theorem}
+
+\begin{proofparts}[Доказательство (из трёх частей)]
+
+\item[Часть 1.]
+Во-первых, заметим, что \(\dim_D(D^{\times I}) \geq \dim_D(D^{\oplus I}) = \card(I)\).
+Во-вторых,
+заметим, что \(\card(D^{\times I}) = \card(D) \cdot \dim_D(D^{\times I})\), а потому достаточно доказать, что \(\dim_D(D^{\times I}) \geq \card(D)\).
+%Для конечного \(D\) это очевидно, поэтому можно предположить, что \(D\) бесконечно.
+В-третьих, заметим, что можно предположить, что \(D\) бесконечно, а \(I\) счётно.
+
+\item[Часть 2.]
+Предположим, что
+\(B \subset D^{\times I}\) --- это \(D\)\=/базис \(D^{\times I}\),
+такой что
+%выполняется соотношение
+\(\card(B) < \card(D)\),
+и придём к противоречию.
+Пусть \(T \subset D\) --- это наименьшее подтело в \(D\), такое что \(B \subset T^{\times I}\).
+Тогда \(\card(T) < \card(D)\).
+Отсюда следует, что существует семейство \((x_i)_{i \in I} \in D^{\times I}\), линейно независимое относительно действия \(T^o\) на \(D\) правым умножением.
+
+\item[Часть 3.]
+Если \(((t_{s,i})_{i \in I})_{s \in S} \in (T^{\times I})^{\times S}\) --- конечное семейство элементов \(T^{\times I}\), то существует ненулевое семейство \((r_i)_{i \in I} \in T^{\oplus I}\), такое что
+\(
+(t_{s,i})_{s \in S, i \in I}
+\circ
+(r_i)_{i \in I}
+%=
+%(\sum_{i \in I} t_{s,i} r_i)_{s \in S}
+= 0
+\).
+Поэтому для любого семейства
+\((a_s)_{s \in S} \in D^{\times S}\)
+линейная комбинация
+\(
+(b_i)_{i \in I}
+\coloneqq
+(a_s)_{s \in S}
+\circ
+(t_{s,i})_{s \in S, i \in I}
+%=
+%(\sum_{s \in S} a_s t_{s,i})_{i \in I}
+\)
+удовлетворяет соотношению
+\(
+(b_i)_{i \in I} \circ (r_i)_{i \in I}
+%=
+%(a_s)_{s \in S}
+%\circ
+%(t_{s,i})_{s \in S, i \in I}
+%\circ
+%(r_i)_{i \in I}
+%=
+%\sum_{i \in I} b_i r_i
+= 0
+\)
+и не может совпадать с \((x_i)_{i \in I}\).
+\qedhere
+
+\end{proofparts}
+
+\begin{remark}
+Я узнал о предложенном доказательстве теоремы~\ref{thm:ErdosKaplansky} из ответа~\cite{mo168624} на <<\href{https://mathoverflow.net}{\textenglish{MathOverflow}}>>.
+\end{remark}
+
+
 
 
 \part{Сгруппированные тексты}
@@ -14131,15 +14208,13 @@ A \sqcup B &
 
 \section{Локально нильпотентные операторы}
 
-\begin{notation}[\scshape Произведение матриц]
-В этом разделе произведение матрицы \(x\) на матрицу \(y\) обозначается через \(x \circ y\).
-\end{notation}
-
 \begin{definition}[\scshape Расщепимое семейство подмодулей]
-Пусть \(R\) --- ассоциативное унитальное кольцо,
-\(V\) --- \(R\)\=/модуль,
-а \((U_i)_{i \in I}\) --- семейство подмодулей \(V\).
-Тогда семейство \((U_i)_{i \in I}\) называется \emph{расщепимым}, если существует семейство подмодулей \((V_j)_{j \in J}\) модуля \(V\),
+%Пусть \(R\) --- ассоциативное унитальное кольцо,
+%а \(V\) --- \(R\)\=/модуль.
+Пусть \(V\) --- модуль над ассоциативным унитальным кольцом \(R\).
+Тогда семейство \((U_i)_{i \in I}\) подмодулей \(V\)
+называется \emph{расщепимым}, если существует
+семейство \((V_j)_{j \in J}\) подмодулей \(V\),
 такое что \(V = \bigoplus_{j \in J} V_j\)
 и
 для любого \(i \in I\)
@@ -14293,7 +14368,7 @@ V_{\Z}  \coloneqq
 \Q[X_n \smid n \in \N_1]
 \)
 и
-\(\varphi_{\Z} : V \to V\),
+\(\varphi_{\Z} : V_{\Z} \to V_{\Z}\),
 \(P \mapsto \sum_{n=1}^{\infty} \frac{\6}{\6X_n}P\).
 Тогда если \(R\) --- ненулевое ассоциативное унитальное кольцо,
 \(V \coloneqq R \otimes_{\Z} V_{\Z}\)
@@ -14346,73 +14421,6 @@ V_{\Z}  \coloneqq
 %\)?
 %\end{question}
 
-\begin{theorem}[\scshape Теорема Эрдёша\namedash{}Капланского]
-Пусть \(D\) --- тело, а \(I\) --- счётное множество.%
-\label{thm:ErdosKaplansky}
-Тогда \(\dim_D(D^{\times I}) = \card(D^{\times I})\).
-\end{theorem}
-
-\begin{proofparts}[Доказательство (из трёх частей)]
-
-\item[Часть 1.]
-Заметим, что \(\card(D^{\times I}) = \card(D) \cdot \dim_D(D^{\times I})\), а потому достаточно доказать, что \(\dim_D(D^{\times I}) \geq \card(D)\).
-Для конечного \(D\) это очевидно, поэтому можно предположить, что \(D\) бесконечно.
-
-\item[Часть 2.]
-Предположим, что
-\(B \subset D^{\times I}\) --- это \(D\)\=/базис \(D^{\times I}\),
-такой что
-%выполняется соотношение
-\(\card(B) < \card(D)\),
-и придём к противоречию.
-Пусть \(T \subset D\) --- это наименьшее подтело в \(D\), такое что \(B \subset T^{\times I}\).
-Тогда \(\card(T) < \card(D)\).
-Отсюда следует, что существует семейство \((x_i)_{i \in I} \in D^{\times I}\), линейно независимое относительно действия \(T^o\) на \(D\) правым умножением.
-
-\item[Часть 3.]
-Если \(((t_{s,i})_{i \in I})_{s \in S} \in (T^{\times I})^{\times S}\) --- конечное семейство элементов \(T^{\times I}\), то существует ненулевое семейство \((r_i)_{i \in I} \in T^{\oplus I}\), такое что
-\(
-(t_{s,i})_{s \in S, i \in I}
-\circ
-(r_i)_{i \in I}
-%=
-%(\sum_{i \in I} t_{s,i} r_i)_{s \in S}
-= 0
-\).
-Поэтому для любого семейства
-\((a_s)_{s \in S} \in D^{\times S}\)
-линейная комбинация
-\(
-(b_i)_{i \in I}
-\coloneqq
-(a_s)_{s \in S}
-\circ
-(t_{s,i})_{s \in S, i \in I}
-%=
-%(\sum_{s \in S} a_s t_{s,i})_{i \in I}
-\)
-удовлетворяет соотношению
-\(
-(b_i)_{i \in I} \circ (r_i)_{i \in I}
-%=
-%(a_s)_{s \in S}
-%\circ
-%(t_{s,i})_{s \in S, i \in I}
-%\circ
-%(r_i)_{i \in I}
-%=
-%\sum_{i \in I} b_i r_i
-= 0
-\)
-и не может совпадать с \((x_i)_{i \in I}\).
-\qedhere
-
-\end{proofparts}
-
-\begin{remark}
-Я узнал о предложенном доказательстве теоремы~\ref{thm:ErdosKaplansky} из ответа~\cite{mo168624} на <<\href{https://mathoverflow.net}{\textenglish{MathOverflow}}>>.
-\end{remark}
-
 \begin{example}
 Пусть \(D\) --- тело.%
 \label{exa:AscFilNonSplit}
@@ -14425,7 +14433,7 @@ V_{\Z}  \coloneqq
 \(\bigoplus_{k=0}^{\infty} X^k D[[X]] / X^{k+1} D[[X]] \cong D[X]\)
 и
 \(D[[X]] / \bigcap_{k=0}^{\infty} X^k D[[X]] \cong D[[X]]\)
-были бы изоморфны, а согласно теореме~\ref{thm:ErdosKaplansky} это не так.
+были бы изоморфны, а согласно теореме~\secref{thm:ErdosKaplansky} это не так.
 \end{example}
 
 \begin{remark}
