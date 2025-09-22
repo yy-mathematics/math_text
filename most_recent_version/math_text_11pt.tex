@@ -5306,9 +5306,20 @@ n \cdot (1 + \lVert n \rVert + \cdots + {\lVert n \rVert}^{\lfloor \frac{\ln(m)}
 
 \section{Теорема Эрдёша\namedash{}Капланского}
 
-\begin{notation}[\scshape Произведение матриц]
-В этом разделе произведение матрицы \(x\) на матрицу \(y\) обозначается через \(x \circ y\).
-\end{notation}
+%\begin{notation}[\scshape Произведение матриц]
+%В этом разделе произведение матрицы
+%\((x_{i,j})_{i \in I, j \in J}\)
+%на матрицу
+%\((y_{j,k})_{j \in J, k \in K}\)
+%обозначается через
+%\(
+%(x_{i,j})_{i \in I, j \in J}
+%*_j
+%(y_{j,k})_{j \in J, k \in K}
+%\coloneqq
+%(\sum_{j \in J} x_{i,j} y_{j,k})_{i \in I, k \in K}\),
+%как свёртка.
+%\end{notation}
 
 \begin{theorem}[\scshape Теорема Эрдёша\namedash{}Капланского]
 Пусть \(D\) --- тело, а \(I\) --- бесконечное множество.%
@@ -5337,13 +5348,14 @@ n \cdot (1 + \lVert n \rVert + \cdots + {\lVert n \rVert}^{\lfloor \frac{\ln(m)}
 Отсюда следует, что существует семейство \((x_i)_{i \in I} \in D^{\times I}\), линейно независимое относительно действия \(T^o\) на \(D\) правым умножением.
 
 \item[Часть 3.]
-Если \(((t_{s,i})_{i \in I})_{s \in S} \in (T^{\times I})^{\times S}\) --- конечное семейство элементов \(T^{\times I}\), то существует ненулевое семейство \((r_i)_{i \in I} \in T^{\oplus I}\), такое что
+Пусть \(((t_{s,i})_{i \in I})_{s \in S} \in (T^{\times I})^{\times S}\) --- конечное семейство элементов \(T^{\times I}\).
+Тогда существует ненулевое семейство \((r_i)_{i \in I} \in T^{\oplus I}\), такое что
 \(
-(t_{s,i})_{s \in S, i \in I}
-\circ
-(r_i)_{i \in I}
+%(t_{s,i})_{s \in S, i \in I}
+%*_{i}
+%(r_i)_{i \in I}
 %=
-%(\sum_{i \in I} t_{s,i} r_i)_{s \in S}
+(\sum_{i \in I} t_{s,i} r_i)_{s \in S}
 = 0
 \).
 Поэтому для любого семейства
@@ -5352,23 +5364,23 @@ n \cdot (1 + \lVert n \rVert + \cdots + {\lVert n \rVert}^{\lfloor \frac{\ln(m)}
 \(
 (b_i)_{i \in I}
 \coloneqq
-(a_s)_{s \in S}
-\circ
-(t_{s,i})_{s \in S, i \in I}
+%(a_s)_{s \in S}
+%*_s
+%(t_{s,i})_{s \in S, i \in I}
 %=
-%(\sum_{s \in S} a_s t_{s,i})_{i \in I}
+(\sum_{s \in S} a_s t_{s,i})_{i \in I}
 \)
 удовлетворяет соотношению
 \(
-(b_i)_{i \in I} \circ (r_i)_{i \in I}
+%(b_i)_{i \in I} *_i (r_i)_{i \in I}
 %=
 %(a_s)_{s \in S}
-%\circ
+%*_s
 %(t_{s,i})_{s \in S, i \in I}
-%\circ
+%*_i
 %(r_i)_{i \in I}
 %=
-%\sum_{i \in I} b_i r_i
+\sum_{i \in I} b_i r_i
 = 0
 \)
 и не может совпадать с \((x_i)_{i \in I}\).
@@ -5377,7 +5389,7 @@ n \cdot (1 + \lVert n \rVert + \cdots + {\lVert n \rVert}^{\lfloor \frac{\ln(m)}
 \end{proofparts}
 
 \begin{remark}
-Я узнал о предложенном доказательстве теоремы~\ref{thm:ErdosKaplansky} из ответа~\cite{mo168624} на <<\href{https://mathoverflow.net}{\textenglish{MathOverflow}}>>.
+Я узнал о приведённом доказательстве теоремы~\ref{thm:ErdosKaplansky} из ответа~\cite{mo168624} на <<\href{https://mathoverflow.net}{\textenglish{MathOverflow}}>>.
 \end{remark}
 
 
@@ -12262,6 +12274,437 @@ A_{\mf{m}}
 \qedhere
 
 \end{proofparts}
+
+
+\section{Ассоциированные простые идеалы}
+
+\subsection{Определение и базовые свойства носителя модуля}
+
+\begin{convention}[\scshape Кольцо]
+В этом разделе все кольца считаются ассоциативными, коммутативными и унитальными.
+\end{convention}
+
+\begin{definition}[\scshape Носитель модуля]
+Пусть \(A\) --- кольцо,
+а \(M\) --- \(A\)\=/модуль.
+Тогда
+множество
+\(\Supp_A(M) \coloneqq \{\mf{p} \in \Spec(A) \mid M_{\mf{p}} \neq 0\}\)
+называется \emph{носителем} \(M\) в \(\Spec(A)\).
+\end{definition}
+
+\begin{theorem}
+Пусть \(A\) --- кольцо,
+\(S \subset A\) --- мультипликативное множество,
+а \(M\) --- \(A\)\=/модуль.
+Тогда
+если \(M\) конечно порождён, то
+выполняется равенство
+\(S^{-1} \Ann_A (M) = \Ann_{S^{-1}A} (S^{-1} M)\).
+\end{theorem}
+
+\begin{proofparts}[Доказательство (из трёх частей).]
+
+\item[Часть 1.]
+Пусть \(M\) --- циклический \(A\)\=/модуль.
+Тогда
+\begin{multline*}
+\Ann_{S^{-1}A} (S^{-1} M)
+=
+\Ann_{S^{-1}A} (S^{-1} (A / \Ann_A(M)))
+=
+\\
+=
+\Ann_{S^{-1}A} ((S^{-1} A) / (S^{-1} \Ann_A(M)))
+=
+S^{-1} \Ann_A(M).
+\end{multline*}
+
+\item[Часть 2.]
+Пусть \((M_i)_{i \in I}\) --- конечное семейство подмодулей \(M\), такое что \(M = \sum_{i \in I} M_i\)
+и
+для любого индекса \(i \in I\)
+выполняется равенство
+\(
+S^{-1} \Ann_A (M_i)
+=
+\Ann_{S^{-1}A} (S^{-1} M_i)
+\).
+Тогда, так как локализация коммутирует с суммами и конечными пересечениями, то
+\begin{gather*}
+\textstyle
+S^{-1} \Ann_A (M)
+=
+S^{-1} \Ann_A (\sum_{i \in I} M_i)
+=
+S^{-1} \bigcap_{i \in I} \Ann_A (M_i)
+=
+\\
+\textstyle
+=
+\bigcap_{i \in I} S^{-1} \Ann_A (M_i)
+=
+\bigcap_{i \in I} \Ann_{S^{-1} A} (S^{-1} M_i)
+=
+\\
+\textstyle
+=
+\Ann_{S^{-1} A} (\sum_{i \in I} S^{-1} M_i)
+=
+\Ann_{S^{-1} A} (S^{-1} \sum_{i \in I} M_i)
+=
+\Ann_{S^{-1} A} (S^{-1} M).
+\end{gather*}
+
+\item[Часть 3.]
+Осталось воспользоваться тем, что если \(M\) --- конечно порождённый модуль, то \(M\) представляется в виде конечной суммы циклических подмодулей.
+\qedhere
+
+\end{proofparts}
+
+\begin{corollary}
+Пусть \(A\) --- кольцо,
+а \(M\) --- конечно порождённый \(A\)\=/модуль.%
+\label{cor:FinGenSuppAnn}
+Тогда
+\(
+\Supp_A(M) = \{\mf{p} \in \Spec(A) \mid \Ann_A(M) \subset \mf{p}\}
+\).
+\end{corollary}
+
+\begin{proof}
+Для любого \(\mf{p} \in \Spec(A)\) условие
+\(M_{\mf{p}} \neq 0\) эквивалентно условию
+\(
+A_{\mf{p}} / \Ann_{A_{\mf{p}}}(M_{\mf{p}})
+\cong
+A_{\mf{p}} / \Ann_{A}(M)_{\mf{p}}
+\neq 0
+\),
+которое эквивалентно условию
+\(\Ann_A(M) \subset \mf{p}\).
+\end{proof}
+
+\begin{observation}[\scshape Аддитивность носителя]
+Пусть \(A\) --- кольцо,
+а \(M\) --- \(A\)\=/модуль.
+Тогда
+выполняются следующие свойства аддитивности:
+\begin{enumerate}[
+	font=\upshape,
+	label=\asbuk*),
+	ref=\asbuk*,
+	]
+
+\item %\label{itm:SupportAdditivity1}
+Условие \(M = 0\) эквивалентно условию \(\Supp_A(M) = \varnothing\);
+
+\item %\label{itm:SupportAdditivity2}
+Если \(0 \to M' \to M \to M'' \to 0\)
+--- короткая точная последовательность \(A\)\=/модулей, то \(\Supp_A(M) = \Supp_A(M') \cup \Supp_A(M'')\);
+
+\item %\label{itm:SupportAdditivity3}
+Если \((M_i)_{i \in I}\) --- семейство подмодулей \(M\), такое что \(M = \bigoplus_{i \in I} M_i\), то \(\Supp_A(M) = \bigcup_{i \in I} \Supp_A(M_i)\).
+
+\end{enumerate}
+\end{observation}
+
+\subsection{Ассоциированные простые идеалы и носитель модуля}
+
+\begin{definition}[\scshape Ассоциированный простой идеал]
+Пусть \(A\) --- кольцо,
+а \(M\) --- \(A\)\=/модуль.%
+\label{def:AssPrime}
+%Тогда простой идеал \(\mf{p} \in \Spec(A)\) называется \emph{ассоциированным простым} к \(M\),
+%если существует \(m \in M\), такой что \(\mf{p} = \Ann_A(m)\),
+%то есть \(A\)\=/модуль \(A / \mf{p}\) вкладывается в \(M\).
+Тогда множество простых идеалов \(A\), \emph{ассоциированных} с \(M\), определяется следующим образом:
+\begin{align*}
+\Ass_A(M)
+&\coloneqq
+\{\mf{p} \in \Spec(A) \mid \mf{p} = \Ann_A(m)\ \tn{для какого-то}\ m \in M\} =
+\\
+&\mathrel{\phantom{\coloneqq}\mathllap{=}}
+\{\mf{p} \in \Spec(A) \mid \tn{\(A\)\=/модуль}\ A / \mf{p}\ \tn{вкладывается в \(M\)}\}.
+\end{align*}
+\end{definition}
+
+\begin{observation}
+Пусть \(A\) --- кольцо,
+а \(C\) --- ненулевой циклический \(A\)\=/модуль.%
+\label{obs:CommPrimeModule}
+Тогда \(\Ann_A(C) \in \Spec(A)\) тогда и только тогда, когда для любого \(c \in C \setminus \{0\}\) выполняется равенство \(\Ann_A(c) = \Ann_A(C)\).
+\end{observation}
+
+\begin{observation}
+Пусть \(A\) --- кольцо,
+а \(M\) --- ненулевой \(A\)\=/модуль.
+Тогда если \(\mf{p}\) --- максимальный
+%из идеалов \(A\), имеющих вид
+%\(\Ann_A(m)\), где \(m \in M \setminus \{0\}\),
+элемент множества
+\(\{\Ann_A(m) \mid m \in M \setminus \{0\}\}\),
+то \(\mf{p} \in \Ass_A(M)\).
+В частности, если \(A\) нётерово, то \(\Ass_A(M) \neq \varnothing\).
+\end{observation}
+
+%\begin{observation}
+%Пусть \(A\) --- кольцо,
+%\(S \subset A\) --- мультипликативное множество,
+%а \(M\) --- \(A\)\=/модуль.
+%Тогда
+%для любых
+%\(m \in M\) и \(r \in S\)
+%выполняется равенство
+%\(
+%A \cap \Ann_{A_S}(\frac{m}{r})
+%%=
+%%A \cap (\bigcup_{s \in S} \Ann_{A_S}(s\frac{m}{1}))
+%=
+%\bigcup_{s \in S} \Ann_A(sm)
+%\).
+%Если \(A\) нётерово,
+%то в семействе
+%\((\Ann_A(sm))_{s \in S}\)
+%существует максимальный элемент
+%\(\Ann_A(s'm)\), где \(s' \in S\),
+%и тогда
+%\(\bigcup_{s \in S} \Ann_A(sm) = \Ann_A(s'm)\).
+%\end{observation}
+
+\begin{observation}
+Пусть \(A\) --- кольцо,
+\(S \subset A\) --- мультипликативное множество,
+\(M\) --- \(A\)\=/модуль,
+а \(m \in M\).%
+\label{obs:AnnLocOne}
+Тогда
+\(\Ann_{A_S}(\frac{m}{1}) = \Ann_A(m)_S\),
+потому что
+%стандартное
+вложение
+\(
+a + \Ann_A(m) \mapsto am :
+A / \Ann_A(m) \to M
+\)
+индуцирует вложение
+\(
+\frac{a}{s} + \Ann_A(m)_S \mapsto \frac{am}{s} :
+A_S / \Ann_A(m)_S
+\cong
+(A / \Ann_A(m))_S
+\to
+M_S
+\).
+%и
+%\(
+%A \cap \Ann_{A_S}(\frac{m}{1})
+%=
+%A \cap \Ann_A(m)_S
+%=
+%\bigcup_{s \in S} \{a \in A \mid sa \in \Ann_A(m)\}
+%=
+%\bigcup_{s \in S} \Ann_A(sm)
+%\).
+%Если \(A\) нётерово,
+%то в семействе
+%\((\Ann_A(sm))_{s \in S}\)
+%существует максимальный элемент
+%\(\Ann_A(s'm)\), где \(s' \in S\),
+%и тогда
+%\(\bigcup_{s \in S} \Ann_A(sm) = \Ann_A(s'm)\).
+\end{observation}
+
+\begin{observation}
+В предположениях наблюдения~\ref{obs:AnnLocOne}
+выполняются равенства
+\(
+A \cap \Ann_{A_S}(\frac{m}{1})
+=
+A \cap \Ann_A(m)_S
+=
+\bigcup_{s \in S} \{a \in A \mid sa \in \Ann_A(m)\}
+=
+\bigcup_{s \in S} \Ann_A(sm)
+\).%
+\label{obs:AnnLocTwo}
+Помимо этого,
+если кольцо \(A\) нётерово,
+%то в семействе
+%\((\Ann_A(sm))_{s \in S}\)
+то в направленном множестве
+\(\{\Ann_A(sm) \mid s \in S\}\)
+существует максимальный элемент
+\(\Ann_A(rm)\), где \(r \in S\),
+и тогда
+%выполняется равенство
+\(\bigcup_{s \in S} \Ann_A(sm) = \Ann_A(rm)\).
+\end{observation}
+
+\begin{theorem}
+Пусть \(A\) --- кольцо,
+\(S \subset A\) --- мультипликативное множество,
+а \(M\) --- \(A\)\=/модуль.%
+\label{thm:AssLocInteraction}
+Тогда если отождествить
+\(\Spec(A_S)\)
+с его образом в \(\Spec(A)\), то
+%\(\Ass_A(M_S) = \Ass_{A_S}(M_S)\)
+%и
+\(
+\Ass_A(M) \cap \Spec(A_S) \subset \Ass_A(M_S)
+= \Ass_{A_S}(M_S)
+\),
+причём
+если \(A\) нётерово, то
+\(
+\Ass_A(M) \cap \Spec(A_S) = \Ass_A(M_S)
+\).
+\end{theorem}
+
+\begin{proof}
+Получается применением наблюдений~\ref{obs:AnnLocOne} и \ref{obs:AnnLocTwo}.
+%и соответствия между элементами \(\Spec(A_S)\) и элементами \(\Spec(A)\), дизъюнктными с \(S\).
+\end{proof}
+
+\begin{theorem}
+Пусть \(A\) --- нётерово кольцо,
+а \(M\) --- \(A\)\=/модуль.%
+\label{thm:SuppAssCl}
+Тогда
+выполняется равенство
+\(
+\Supp_A(M)
+=
+\bigcup_{\mf{p} \in \Ass_A(M)}
+\Cl_{\Spec(A)}(\{\mf{p}\})
+\).
+\end{theorem}
+
+\begin{proof}
+Так как кольцо \(A\) нётерово, то,
+воспользовавшись теоремой~\ref{thm:AssLocInteraction},
+получаем, что
+\(
+\Supp_A(M)
+=
+\{\mf{q} \in \Spec(A) \mid \Ass_A(M_{\mf{q}}) \neq \varnothing\}
+=
+\{\mf{q} \in \Spec(A) \mid \Ass_A(M) \cap \Spec(A_{\mf{q}}) \neq \varnothing\}
+=
+\bigcup_{\mf{p} \in \Ass_A(M)}
+\Cl_{\Spec(A)}(\{\mf{p}\})
+\).
+\end{proof}
+
+%\begin{proofparts}
+%
+%\item[Часть 1.]
+%Пусть
+%\(\mf{p} \in \Ass_A(M)\)
+%и
+%\(\mf{q} \in \Cl_{\Spec(A)}(\{\mf{p}\})\).
+%Тогда, согласно теореме~\ref{thm:AssLocInteraction},
+%выполняется включение
+%\(\mf{p} \in \Ass_A(M) \cap \Spec(A_{\mf{q}}) \subset \Ass_A(M_{\mf{q}})\),
+%а потому \(M_{\mf{q}} \neq 0\),
+%то есть \(\mf{q} \in \Supp_A(M)\).
+%%Тогда существует вложение
+%%\(A / \mf{p} \to M\),
+%%которое индуцирует вложение
+%%\((A / \mf{p})_{\mf{q}} \cong A_{\mf{q}} / \mf{p}_{\mf{q}} \to M_{\mf{q}}\),
+%%причём, так как \(\mf{p} \subset \mf{q}\),
+%%то \(A_{\mf{q}} / \mf{p}_{\mf{q}} \neq 0\),
+%%откуда следует, что
+%%\(M_{\mf{q}} \neq 0\).
+%
+%\item[Часть 2.]
+%Пусть \(\mf{q} \in \Supp_A(M)\).
+%Тогда
+%\(M_{\mf{q}} \neq 0\)
+%и потому,
+%так как кольцо \(A\) нётерово,
+%то существует
+%\(\mf{p} \in \Ass_A{M\mf{q}} = \Ass_A(M) \cap \Spec(A_S)\),
+%где мы снова используем теорему~\ref{thm:AssLocInteraction}.
+%Отсюда получаем, что
+%\(\mf{q} \in \Cl_{\Spec(A)}(\{\mf{p}\})\).
+%
+%\end{proofparts}
+
+\begin{corollary}
+Пусть \(A\) --- нётерово кольцо,
+а \(M\) --- \(A\)\=/модуль,
+такой что
+множество \(\Supp_A(M)\) замкнуто в \(\Spec(A)\).
+%\(\Cl_{\Spec(A)}(\Supp_A(M)) = \Supp_A(M)\).
+Тогда
+выполняется равенство
+\(\Supp_A(M) = \Cl_{\Spec(A)}(\Ass_A(M))\).
+\end{corollary}
+
+\begin{remark}
+Если \(M\) --- конечно порождённый модуль над кольцом \(A\), то, согласно следствию~\ref{cor:FinGenSuppAnn}, множество \(\Supp_A(M)\) замкнуто в \(\Spec(A)\).
+\end{remark}
+
+\begin{theorem}
+Пусть \(A\) --- кольцо, а
+\(0 \to M' \to M \to M'' \to 0\)
+--- короткая точная последовательность \(A\)\=/модулей.%
+\label{thm:SubaddOfAss}
+Тогда выполняется
+%включение
+свойство субаддитивности
+\(\Ass_A(M) \subset \Ass_A(M') \cup \Ass_A(M'')\).
+\end{theorem}
+
+\begin{proof}
+Пусть \(\mf{p} \in \Spec(A)\) и \(M\) содержит \(A\)\=/подмодуль \(C\), изоморфный \(A / \mf{p}\).
+Тогда если \(C \cap M' \neq 0\), то \(\mf{p} \in \Ass_A(M')\) согласно наблюдению~\ref{obs:CommPrimeModule},
+а если \(C \cap M' = 0\),
+то отображение \(M \to M''\) изоморфно вкладывает \(C\) в \(M''\), откуда следует, что \(\mf{p} \in \Ass_A(M'')\).
+\end{proof}
+
+\begin{theorem}
+Пусть \(A\) --- нётерово кольцо,
+а \(M\) --- конечный \(A\)\=/модуль.%
+\label{thm:FinModNoethRingPrimeFilt}
+Тогда существует последовательность
+\(
+0 = M_0 \subset M_1 \subset \cdots \subset M_n = M
+\)
+подмодулей \(M\),
+где \(n \in \N_0\),
+такая что
+\(\Ann_A(M_i / M_{i-1}) \in \Spec(A)\)
+и
+\(M_i / M_{i-1} \simeq A / \Ann_A(M_i / M_{i-1})\)
+для любого \(0 < i \leq n\).
+\end{theorem}
+
+\begin{proof}
+Пусть \(M'\) --- максимальный подмодуль \(M\), для которого верно утверждение теоремы.
+Тогда если \(M / M' \neq 0\), то существует \(\mf{p} \in \Ass_A(M / M')\), а потому существует подмодуль \(M'' \subset M\), такой что \(M' \subset M''\) и \(M'' / M' \simeq A / \mf{p}\), что противоречит максимальности \(M'\).
+\end{proof}
+
+\begin{corollary}
+Пусть \(A\) --- нётерово кольцо,
+а \(M\) --- конечно порождённый \(A\)\=/модуль.%
+\label{cor:AssFinModNoethRingFin}
+Тогда множество \(\Ass_A(M)\) конечно.
+\end{corollary}
+
+\begin{proof}
+С учётом наблюдения~\ref{obs:CommPrimeModule} следует из теорем~\ref{thm:SubaddOfAss} и \ref{thm:FinModNoethRingPrimeFilt}.
+\end{proof}
+
+\begin{observation}
+Пусть \(A\) --- нётерово кольцо.
+Тогда
+из теоремы~\ref{thm:SuppAssCl} и следствия~\ref{cor:AssFinModNoethRingFin} следует,
+что каждый элемент \(\Spec(A) = \Supp_A(A)\) содержит какой-то элемент конечного множества \(\Ass_A(A) \subset \Spec(A)\).
+%В частности, в множестве \(\Spec(A)\) конечное число минимальных элементов.
+\end{observation}
 
 
 
