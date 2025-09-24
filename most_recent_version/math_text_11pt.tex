@@ -5087,8 +5087,10 @@ n \cdot (1 + \lVert n \rVert + \cdots + {\lVert n \rVert}^{\lfloor \frac{\ln(m)}
 
 \begin{theorem}
 %Пусть \(p, q, s \in \Q^{\times}\), причём \(s = p/2 = 2/q\).
-Для любого \(s \in \Q^{\times}\)
-многозначная функция \((-)^s\) на \(\C^{\times}\) переводит траектории точек
+Для любого \(s \in \R^{\times}\)
+многозначная функция \(w(z) = z^s\) на \(\C \setminus \{0\}\)
+в понятном смысле
+переводит траектории точек
 %точки единичной массы
 в центральном поле с потенциалом \(U(r) = k r^{2s-2}\), энергией \(E\) и кинетическим моментом \(M\)%
 \label{thm:HookeNewtonTransform}
@@ -5096,7 +5098,7 @@ n \cdot (1 + \lVert n \rVert + \cdots + {\lVert n \rVert}^{\lfloor \frac{\ln(m)}
 \end{theorem}
 
 \begin{proof}%[Набросок доказательства]
-Заметим, что многозначная функция \((-)^s\) на \(\C^{\times}\)
+Заметим, что многозначная функция \(w(z)\) на \(\C \setminus \{0\}\)
 переводит в себя множество лучей, исходящих из нуля, и
 конформна, то есть сохраняет углы,
 а синус угла наклона вектора скорости к радиус-вектору при движении в центральном поле,
@@ -5474,7 +5476,7 @@ n \cdot (1 + \lVert n \rVert + \cdots + {\lVert n \rVert}^{\lfloor \frac{\ln(m)}
 
 \begin{definition}[\scshape Замкнутое влево подмножество]
 Подмножество \(Y\) частично упорядоченного множества \(X\) называется \emph{замкнутым влево}, если \(\bigcup_{y \in Y} X_{\leq y} \subset Y\).
-Множество замкнутых влево подмножеств частично упорядоченного множества \(X\) будет обозначаться через \([1]^X\).
+Множество замкнутых влево подмножеств частично упорядоченного множества \(X\) будет обозначаться через \([1]^{X^o}\).
 \end{definition}
 
 %\begin{notation}[\scshape Множество замкнутых влево подмножеств]
@@ -5492,7 +5494,7 @@ n \cdot (1 + \lVert n \rVert + \cdots + {\lVert n \rVert}^{\lfloor \frac{\ln(m)}
 \end{definition}
 
 \begin{definition}[\scshape Фундированность]
-Частично упорядоченное множество \(X\) называется \emph{фундированным}, если в множестве \([1]^X\) у любого не максимального элемента есть последующий.
+Частично упорядоченное множество \(X\) называется \emph{фундированным}, если в множестве \([1]^{X^o}\) у любого не максимального элемента есть последующий.
 \end{definition}
 
 \begin{definition}[\scshape Ординал]
@@ -5514,7 +5516,7 @@ n \cdot (1 + \lVert n \rVert + \cdots + {\lVert n \rVert}^{\lfloor \frac{\ln(m)}
 %\end{definition}
 
 \begin{definition}[\scshape Отображение последования]
-Пусть \(A\) --- ординал. Тогда \emph{отображение последования} \(r_A : [1]^A \setminus \{A\} \to [1]^A\) переводит любой не максимальный элемент \([1]^A\) в последующий элемент \([1]^A\).
+Пусть \(A\) --- ординал. Тогда \emph{отображение последования} \(r_A : [1]^{A^o} \setminus \{A\} \to [1]^{A^o}\) переводит любой не максимальный элемент \([1]^{A^o}\) в последующий элемент \([1]^{A^o}\).
 \end{definition}
 
 \begin{lemma}[\scshape Лемма о сравнении]
@@ -14125,10 +14127,20 @@ J^o \times I
 \end{observation}
 
 \begin{definition}[\scshape Образующие цилиндра]
-Пусть \(\mc{C} \tensor*[^{\varpi}]{\cylbinop}{^{\varrho}_{\mc{B}}} \mc{E}\) --- цилиндр пары функторов \(\mc{C} \xleftarrow{\varpi} \mc{B} \xrightarrow{\varrho} \mc{E}\).
-Тогда компоненты естественного преобразования
+Пусть
+\(\mc{C} \xleftarrow{\varpi} \mc{B} \xrightarrow{\varrho} \mc{E}\)
+---
+диаграмма категорий,
+а
+\(\mc{C} \tensor*[^{\varpi}]{\cylbinop}{^{\varrho}_{\mc{B}}} \mc{E}\)
+--- её цилиндр.
+Тогда компоненты структурного естественного преобразования
 \(\mc{B} \times [1] \to \mc{C} \tensor*[^{\varpi}]{\cylbinop}{^{\varrho}_{\mc{B}}} \mc{E}\)
-называются \emph{образующими} \(\mc{C} \tensor*[^{\varpi}]{\cylbinop}{^{\varrho}_{\mc{B}}} \mc{E}\).
+между структурными функторами
+\(\mc{B} \cong \mc{B} \times \{0\} \to \mc{C} \tensor*[^{\varpi}]{\cylbinop}{^{\varrho}_{\mc{B}}} \mc{E}\)
+и
+\(\mc{B} \cong \mc{B} \times \{1\} \to \mc{C} \tensor*[^{\varpi}]{\cylbinop}{^{\varrho}_{\mc{B}}} \mc{E}\)
+называются \emph{образующими} цилиндра \(\mc{C} \tensor*[^{\varpi}]{\cylbinop}{^{\varrho}_{\mc{B}}} \mc{E}\).
 \end{definition}
 
 %\begin{observation}
@@ -14665,6 +14677,25 @@ A \sqcup B &
 \(U_i = \bigoplus_{j \in J \suchthat V_j \subset U_i} V_j\).
 \end{definition}
 
+\begin{example}
+Пусть \(D\) --- тело.%
+\label{exa:AscFilNonSplit}
+Тогда стандартная убывающая фильтрация
+\((X^k D[[X]])_{k=0}^{\infty}\)
+на \(D[[X]]\)
+не расщепима,
+потому что иначе
+\(D\)\=/модули
+\(\bigoplus_{k=0}^{\infty} X^k D[[X]] / X^{k+1} D[[X]] \cong D[X]\)
+и
+\(D[[X]] / \bigcap_{k=0}^{\infty} X^k D[[X]] \cong D[[X]]\)
+были бы изоморфны, а согласно теореме~\secref{thm:ErdosKaplansky} это не так.
+\end{example}
+
+\begin{remark}
+Я узнал о примере~\ref{exa:AscFilNonSplit} из ответа~\cite{ms2848276} на <<\href{https://math.stackexchange.com}{\textenglish{Mathematics Stack Exchange}}>>.
+\end{remark}
+
 \begin{theorem}
 Пусть \(D\) --- тело.
 Тогда \(D\)\=/модуль \(V\) с оператором \(\varphi : V \to V\) изоморфен прямой сумме \(D\)\=/модулей с операторами вида
@@ -14863,25 +14894,6 @@ V_{\Z}  \coloneqq
 %\bigcap_{k=0}^{\infty} \varphi^k(V)
 %\)?
 %\end{question}
-
-\begin{example}
-Пусть \(D\) --- тело.%
-\label{exa:AscFilNonSplit}
-Тогда стандартная убывающая фильтрация
-\((X^k D[[X]])_{k=0}^{\infty}\)
-на \(D[[X]]\)
-не расщепима,
-потому что иначе
-\(D\)\=/модули
-\(\bigoplus_{k=0}^{\infty} X^k D[[X]] / X^{k+1} D[[X]] \cong D[X]\)
-и
-\(D[[X]] / \bigcap_{k=0}^{\infty} X^k D[[X]] \cong D[[X]]\)
-были бы изоморфны, а согласно теореме~\secref{thm:ErdosKaplansky} это не так.
-\end{example}
-
-\begin{remark}
-Я узнал о примере~\ref{exa:AscFilNonSplit} из ответа~\cite{ms2848276} на <<\href{https://math.stackexchange.com}{\textenglish{Mathematics Stack Exchange}}>>.
-\end{remark}
 
 
 
@@ -15203,13 +15215,27 @@ V \to \Coker(\Sigma_{C_p} : (V^{\otimes [p]_\Lambda})_{C_p} \to (V^{\otimes [p]_
 %Определим \emph{скрученное моноидальное кольцо} \(R[\rtimes_\rho M]\) как фактор копроизведения ассоциативных унитальных колец \(R\) и \(\Z[M]\) по соотношениям \(a \lambda = \tensor[^a]{\lambda}{} a\), где \(a \in M\), \(\lambda \in R\).
 %\end{definition}
 
+%\begin{observation}
+%Пусть \(R\) --- ассоциативное унитальное кольцо.
+%Тогда гомоморфизм
+%\(a \mapsto (v \mapsto av : M \to M)_{M \in \Ob(R\module)} : \Zent(R)
+%%\cong \End_{(R \otimes_{\Z} R^o)\module}(R)
+%\to \End(\Id_{R\module})\)
+%является изоморфизмом.
+%\end{observation}
+
 \begin{observation}
 Пусть \(R\) --- ассоциативное унитальное кольцо.
-Тогда гомоморфизм
-\(a \mapsto (v \mapsto av : M \to M)_{M \in \Ob(R\module)} : \Zent(R)
-%\cong \End_{(R \otimes_{\Z} R^o)\module}(R)
-\to \End(\Id_{R\module})\)
-является изоморфизмом.
+Тогда гомоморфизм~\eqref{eq:EndIdFuctModZent} является изоморфизмом.
+\begin{equation}
+(\varphi_M)_{M \in R\module} \mapsto \varphi_R :
+\End(\Id_{R\module})
+\to
+\End_{R \otimes_{\Z} R^o\module}(R)
+\cong
+\Zent(R)
+\label{eq:EndIdFuctModZent}
+\end{equation}
 \end{observation}
 
 \begin{definition}[\scshape Групповой объект]
