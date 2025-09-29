@@ -1499,7 +1499,7 @@ f \frac{d}{df} \log \sum_{i=0}^\infty f^i = \sum_{i=1}^\infty f^i,
 взяв \(f \coloneqq X_n t^n\) и заметив, что тогда выполняется равенство \(f \frac{d}{df} = \frac{1}{n} t \frac{d}{dt}\).
 
 \begin{remark}
-Формула~\eqref{eq1} является легко запоминаемой формой ряда для логарифма:
+Формула~\eqref{eq1} является легко запоминаемой формой <<ряда Меркатора>>, то есть ряда для логарифма:
 %\(
 %\frac{d}{df} \log \left((1-f)^{-1}\right) = \sum_{i=0}^\infty f^i
 %\),
@@ -12053,10 +12053,16 @@ A,
 %для любых \(a, b \in M\) таких что \(p \nmid a\) и \(p \nmid b\) выполняется условие \(p \nmid ab\).
 \end{definition}
 
+\begin{observation}
+Пусть \(M\) --- коммутативный положительный конус.
+%\label{obs:PrimesAreMinimal}
+Тогда множество простых элементов \(M\) является подмножеством множества минимальных нетривиальных элементов \(M\).
+\end{observation}
+
 \begin{theorem}
 Пусть \(M\) --- коммутативный положительный конус.%
 \seclabel{thm:PrimeDecompUnique}
-Тогда простые элементы \(M\) являются свободными образующими подмоноида, который порождают.
+Тогда простые элементы \(M\) являются свободными образующими подмоноида \(M\), который они порождают.
 \end{theorem}
 
 \begin{proof}
@@ -12066,28 +12072,50 @@ A,
 \((l_j)_{j \in J}\)
 --- конечные семейства простых элементов \(M\),
 такие что
-\(\prod_{i \in I} p_i = \prod_{j \in J} l_j\),
-а
-\(\mc{P}'\) и \(\mc{L}'\) --- это множества минимальных элементов
-множеств
-\(\mc{P} \coloneqq \{p_i \mid i \in I\}\)
-и
-\(\mc{L} \coloneqq \{l_j \mid j \in J\}\)
-соответственно.
+\(\prod_{i \in I} p_i = \prod_{j \in J} l_j\).
 Тогда,
-так как
-каждый элемент
-\(\mc{P}\)
-меньше либо равен какому-то элементу
-\(\mc{L}\),
+так как каждый элемент
+\(\mc{P} \coloneqq \{p_i \mid i \in I\}\)
+делит какой-то элемент
+\(\mc{L} \coloneqq \{l_j \mid j \in J\}\),
 и наоборот,
-то \(\mc{P}' = \mc{L}'\),
+то \(\mc{P} = \mc{L}\),
 а потому можно сократить равенство
 \(\prod_{i \in I} p_i = \prod_{j \in J} l_j\)
 на
-\(\prod_{p \in \mc{P}'} p = \prod_{l \in \mc{L}'} l\)
+\(\prod_{p \in \mc{P}} p = \prod_{l \in \mc{L}} l\)
 и доказать теорему по индукции.
 \end{proof}
+
+%\begin{proof}
+%Пусть
+%\((p_i)_{i \in I}\)
+%и
+%\((l_j)_{j \in J}\)
+%--- конечные семейства простых элементов \(M\),
+%такие что
+%\(\prod_{i \in I} p_i = \prod_{j \in J} l_j\),
+%а
+%\(\mc{P}'\) и \(\mc{L}'\) --- это множества минимальных элементов
+%множеств
+%\(\mc{P} \coloneqq \{p_i \mid i \in I\}\)
+%и
+%\(\mc{L} \coloneqq \{l_j \mid j \in J\}\)
+%соответственно.
+%Тогда,
+%так как
+%каждый элемент
+%\(\mc{P}\)
+%меньше либо равен какому-то элементу
+%\(\mc{L}\),
+%и наоборот,
+%то \(\mc{P}' = \mc{L}'\),
+%а потому можно сократить равенство
+%\(\prod_{i \in I} p_i = \prod_{j \in J} l_j\)
+%на
+%\(\prod_{p \in \mc{P}'} p = \prod_{l \in \mc{L}'} l\)
+%и доказать теорему по индукции.
+%\end{proof}
 
 \begin{observation}
 Пусть \(M\) --- коммутативный положительный конус,
@@ -12100,201 +12128,6 @@ A,
 \seclabel{obs:FreeCommMonChar}
 когда он является коммутативным положительным конусом, в котором нет бесконечных строго убывающих цепочек и в котором все нетривиальные минимальные элементы являются простыми.
 \end{observation}
-
-
-\section{Области главных идеалов}
-
-\begin{sectionintro}
-Этот раздел представляет собой краткий конспект стандартных фактов и добавлен для полноты.
-\end{sectionintro}
-
-\subsection{Факториальность областей главных идеалов}
-
-\begin{convention}
-В этом разделе все кольца считаются коммутативными, ассоциативными и унитальными.
-\end{convention}
-
-\begin{definition}[\scshape Факториальное кольцо]
-Пусть \(A\) --- область целостности.
-Тогда \(A\) называется \emph{факториальным кольцом} (англ.\ \textenglish{factorial ring}) или \emph{областью однозначного разложения на простые} (англ.\ \textenglish{unique factorization domain}, \textenglish{UFD}),
-если
-%каждый ненулевой главный идеал \(A\) однозначно представляется в виде конечного произведения ненулевых простых главных идеалов.
-коммутативный мультипликативный моноид ненулевых главных идеалов \(A\) свободен.
-\end{definition}
-
-\begin{observation}[\scshape Характеризация факториальных колец]
-Пусть \(A\) --- область целостности,
-а \(\mc{X}\) --- множество ненулевых собственных главных идеалов \(A\).
-Тогда
-из наблюдения~\secref{obs:FreeCommMonChar} следует, что
-\(A\) является
-областью однозначного разложения на простые
-%факториальным кольцом
-тогда и только тогда, когда все максимальные элементы \(\mc{X}\) являются простыми идеалами и в \(\mc{X}\) нет бесконечных строго возрастающих цепочек.
-\end{observation}
-
-\begin{corollary}
-Области главных идеалов являются областями однозначного разложения на простые.
-\end{corollary}
-
-%\section[Структурная теорема для конечно порождённых модулей над областями главных идеалов][Структурная теорема для кон.\ пор.\ модулей над ОГИ]{Структурная теорема для конечно порождённых модулей над областями главных идеалов}
-\subsection{Конечные модули над областями главных идеалов}
-
-\begin{observation}
-Кольца главных идеалов, очевидно, нётеровы,
-а каждый конечно порождённый модуль над нётеровым кольцом \(A\) является конечно представимым,%
-\label{obs:modpid}
-то есть является коядром гомоморфизма
-\(A^J \to A^I\), задаваемого матрицей из \(\Mat_{I,J}(A)\), где \(I\) и \(J\) --- конечные множества, причём замене базисов в
-\(A^J\) и \(A^I\) соответствует её двустороннее домножение на обратимые матрицы:
-\begin{equation*}
-\begin{tikzcd}[row sep = scriptsize]
-    A^J \arrow{r} \arrow[leftrightarrow]{d} & A^I \arrow[leftrightarrow]{d} \\
-    A^J \arrow{r} & A^I\mathrlap{.}
-\end{tikzcd}
-\label{eq:Am_to_An}
-\end{equation*}
-\end{observation}
-
-%\begin{remark}
-%Кольца главных идеалов, очевидно, нётеровы.
-%\end{remark}
-
-\begin{lemma}
-Пусть \(A\) --- область целостности, \(a,b,c \in A\) и \(Aa + Ab = Ac \neq 0\), то есть существуют \(c_a,a_c,b_c \in A\), такие что \(c_a a + c_b b = c \neq 0\), \(a_c c = a\), \(b_c c = b\).%
-\label{lem:PIDmatrix2}
-Тогда
-\(
-(
-\begin{smallmatrix}
-    c_a & c_b \\
-    -b_c & a_c
-\end{smallmatrix}
-)
-\in
-\GL_2(A)
-\)
-и
-\(
-(
-\begin{smallmatrix}
-    c \\
-    0 
-\end{smallmatrix}
-)
-=
-(
-\begin{smallmatrix}
-    c_a & c_b \\
-    -b_c & a_c
-\end{smallmatrix}
-)
-(
-\begin{smallmatrix}
-    a \\
-    b 
-\end{smallmatrix}
-)
-\).
-\end{lemma}
-
-\begin{proof}
-Подставив \(a = a_c c\) и \(b = b_c c\) в \(c = c_a a + c_b b\) и сократив на \(c\), получаем, что
-\(
-\det
-(
-\begin{smallmatrix}
-    c_a & c_b \\
-    -b_c & a_c
-\end{smallmatrix}
-)
-= c_a a_c + c_b b_c
-= 1
-\).
-\end{proof}
-
-\begin{theorem}
-Пусть \(A\) --- область главных идеалов,
-\(x \in \Mat_{I,J}(A)\), где \(I\) и \(J\) --- конечные множества.%
-\label{thm:diagpid}
-Тогда множество
-\(X \coloneqq {\op{GL}_I(A)} x {\op{GL}_J(A)}\)
-содержит матрицу, у которой в каждой строке и в каждом столбце максимум один ненулевой элемент.
-\end{theorem}
-
-\begin{proof}[Набросок доказательства]
-Можно предположить, что \(I,J \neq \varnothing\).
-По нётеровости \(A\) cуществуют \(y = (y_{i,j})_{i \in I, j \in J} \in X\) и \((i_1,j_1) \in I \times J\), такие что идеал \(Ay_{i_1,j_1}\) максимален среди идеалов вида \(Az_{i',j'}\) для \((z_{i,j})_{i \in I, j \in J} \in X\) и \((i',j') \in I \times J\).
-Тогда \(y_{i_1,j}, y_{i,j_1} \in A y_{i_1,j_1}\) для всех \(i \in I\) и \(j \in J\), так как иначе мы могли бы применить лемму~\ref{lem:PIDmatrix2} и получить противоречие с определением \(y_{i_1,j_1}\).
-%Отсюда следует, что \(\op{E}_I(A)y\op{E}_J(A)\)
-%содержит матрицу вида \((y_{i,j})_{i \in \{i_1\}, j \in \{j_1\}} \oplus (y'_{i,j})_{i \in I \setminus \{i_1\}, j \in J \setminus \{j_1\}}\), и
-%теорема доказывается по индукции,
-%заменой \(x\) на \((y'_{i,j})_{i \in I \setminus \{i_1\}, j \in J \setminus \{j_1\}} \in \mathrm{Mat}_{I \setminus \{i_1\},J \setminus \{j_1\}}(A)\).
-Отсюда следует, что множество \(\op{E}_I(A)y\op{E}_J(A)\)
-содержит матрицу вида \((y_{i,j})_{i \in \{i_1\}, j \in \{j_1\}} \oplus y'\), где \(y' \in \Mat_{I \setminus \{i_1\},J \setminus \{j_1\}}(A)\), и
-теорема доказывается по индукции, заменой \(x\) на \(y'\).
-\end{proof}
-
-\begin{remark}
-Между прочим, если кольцо \(A\) обладает свойством диагонализуемости матриц из формулировки теоремы~\ref{thm:diagpid}, то \(A\) является кольцом главных идеалов, что можно увидеть, рассмотрев случай \(\lvert J \rvert = 1\).
-\end{remark}
-
-\begin{theorem}[\scshape Примарное разложение]
-Пусть \(A\) --- область главных идеалов, а \(M\) --- конечно порождённый \(A\)\=/модуль. Тогда существует единственное с точностью до переиндексирования конечное семейство примарных идеалов \((\mathfrak{q}_i)_{i \in I}\) кольца \(A\), такое что \(M \simeq \bigoplus_{i \in I} A / \mathfrak{q}_i\).
-\end{theorem}
-
-\begin{proofparts}[Доказательство (из двух частей)]
-
-\item[Доказательство существования.]
-Из наблюдения~\ref{obs:modpid} и теоремы~\ref{thm:diagpid} мы получаем разложение \(M\) в конечную прямую сумму циклических слагаемых, которые, по китайской теореме об остатках и разложению на простые в областях главных идеалов, разлагаются в конечную прямую сумму примарных циклических слагаемых.
-
-\item[Доказательство единственности.]
-Пусть
-\(
-M \simeq (\bigoplus_{\mathfrak{p} \in \mathcal{P}} \bigoplus_{i = 1}^{N_\mathfrak{p}} A/{\mathfrak{p}}^{n_{\mathfrak{p},i}}) \oplus A^m
-\),
-где \(\mathcal{P}\) ---
-конечное множество ненулевых простых идеалов,
-%конечное подмножество \(\Spec(A) \setminus \{0\}\),
-\(N_\mathfrak{p} \geq 1\) и \(n_{\mathfrak{p},1} \geq n_{\mathfrak{p},2} \geq \cdots \geq n_{\mathfrak{p},N_\mathfrak{p}} \geq 1\) для всех \(\mathfrak{p} \in \mathcal{P}\).
-%Пусть \(M_\mathfrak{p} \coloneqq \{x \in M \mid \exists n \geq 0 : \mathfrak{p}^n x = 0\}\), где \(\mathfrak{p}\) --- простой идеал,
-Для любого \(\mf{p} \in \Spec(A) \setminus \{0\}\) пусть
-\(M_{\mf{p}}^{\mr{t}} \coloneqq \bigcup_{n=0}^{\infty} \{x \in M \mid \mf{p}^n x = 0\}\),
-а \(M^{\mr{f}} \coloneqq M / (\sum_{\mathfrak{p} \in \Spec(A) \setminus \{0\}} M_\mathfrak{p}^{\mr{t}})\).
-Тогда \(M_\mathfrak{p}^{\mr{t}} \simeq \bigoplus_{i = 1}^{N_\mathfrak{p}} A/\mathfrak{p}^{n_{\mathfrak{p},i}}\) если \(\mathfrak{p} \in \mathcal{P}\) и \(M_\mathfrak{p}^{\mr{t}} = 0\)
-%для \(\mf{p} \notin \mc{P} \cup \{0\}\),
-иначе,
-а \(M^{\mr{f}} \simeq A^m\).
-При этом
-\(\dim_{A/\mathfrak{p}}(\mathfrak{p}^{n-1}M_\mathfrak{p}^{\mr{t}} / \mathfrak{p}^n M_\mathfrak{p}^{\mr{t}}) = \max\{k \in \{1,\dots{},N_\mathfrak{p}\} \mid n_{\mathfrak{p},k} \geq n\}\)
-для любых
-\(\mathfrak{p} \in \mathcal{P}\) и \(1 \leq n \leq n_{\mathfrak{p},1}\),
-%\(\dim_{A/\mathfrak{p}}(M_\mathrm{free}/\mathfrak{p}M_\mathrm{free}) = m\) для произвольного простого идеала \(\mathfrak{p}\).
-а
-\(\dim_{\Frac(A)} (\Frac(A) \otimes_A M^{\mr{f}}) = m\).
-Это доказывает единственность.
-\qedhere
-
-\end{proofparts}
-
-\begin{corollary}[\scshape Разложение по инвариантным факторам]
-Пусть \(A\) --- область главных идеалов, а \(M\) --- конечно порождённый \(A\)\=/модуль. Тогда существует единственная последовательность собственных идеалов \(\mathfrak{d}_1 \supset \mathfrak{d}_2 \supset \cdots{} \supset \mathfrak{d}_n\) кольца \(A\), такая что \(M \simeq \bigoplus_{i=1}^n A / \mathfrak{d}_i\).
-\end{corollary}
-
-\begin{proof}
-По разложению
-\(
-M \simeq (\bigoplus_{\mathfrak{p} \in \mathcal{P}} \bigoplus_{i = 1}^{N_\mathfrak{p}} A/{\mathfrak{p}}^{n_{\mathfrak{p},i}}) \oplus A^m
-\),
-где \(\mathcal{P}\) --- конечное множество ненулевых простых идеалов,
-\(N_\mathfrak{p} \geq 1\) и \(n_{\mathfrak{p},1} \geq n_{\mathfrak{p},2} \geq \cdots \geq n_{\mathfrak{p},N_\mathfrak{p}} \geq 1\) для всех \(\mathfrak{p} \in \mathcal{P}\),
-однозначно строятся/вос\-ста\-нав\-ли\-ва\-ют\-ся \(\mathfrak{d}_1, \dots{}, \mathfrak{d}_n\):
-если \(N \coloneqq \max_{\mathfrak{p} \in \mathcal{P}}(N_\mathfrak{p})\), то
-\(n \coloneqq N + m\),
-\(\mathfrak{d}_i \coloneqq \mathfrak{b}_{N-i+1}\) для \(1 \leq i \leq N\), где
-\(\mathfrak{b}_i \coloneqq \prod_{\mathfrak{p} \in \mathcal{P} \suchthat N_\mathfrak{p} \geq i} \mathfrak{p}^{n_{\mathfrak{p},i}}\),
-и \(\mathfrak{d}_i \coloneqq 0\) для \(N+1 \leq i \leq N+m\).
-\end{proof}
 
 
 \section{Дедекиндовы кольца}
@@ -12466,18 +12299,31 @@ M \simeq (\bigoplus_{\mathfrak{p} \in \mathcal{P}} \bigoplus_{i = 1}^{N_\mathfra
 так как локализация коммутирует с суммами и конечными пересечениями.
 \end{proof}
 
-\begin{observation}
-В любой области целостности
-ненулевые главные идеалы обратимы
-и
-обратимость произведения идеалов эквивалентна обратимости всех его сомножителей.
+\subsection{Области главных идеалов}
+
+\begin{definition}[\scshape Факториальное кольцо]
+Пусть \(A\) --- область целостности.
+Тогда \(A\) называется \emph{факториальным кольцом} (англ.\ \textenglish{factorial ring}) или \emph{областью однозначного разложения на простые} (англ.\ \textenglish{unique factorization domain}, \textenglish{UFD}),
+если
+%каждый ненулевой главный идеал \(A\) однозначно представляется в виде конечного произведения ненулевых простых главных идеалов.
+коммутативный мультипликативный моноид ненулевых главных идеалов \(A\) свободен.
+\end{definition}
+
+\begin{observation}[\scshape Характеризация факториальных колец]
+Пусть \(A\) --- область целостности,
+\(\mc{G}\) --- группа ненулевых главных дробных идеалов \(A\),
+а \(\mc{G}_+ \coloneqq \{\mf{c} \in \mc{G} \mid \mf{c} \subset A\}\).
+Тогда
+из наблюдения~\secref{obs:FreeCommMonChar} следует, что
+\(A\) является
+%областью однозначного разложения на простые
+факториальным кольцом
+тогда и только тогда, когда все максимальные элементы \(\mc{G}_+ \setminus \{A\}\) являются простыми идеалами и в \(\mc{G}_+\) нет бесконечных строго возрастающих цепочек.
 \end{observation}
 
-\begin{observation}
-Согласно теореме~\secref{thm:PrimeDecompUnique}
-в любой области целостности
-разложение обратимого идеала в произведение простых идеалов определено однозначно, если существует.
-\end{observation}
+\begin{corollary}
+Области главных идеалов являются областями однозначного разложения на простые.
+\end{corollary}
 
 \subsection{Кольца дискретного нормирования}
 
@@ -12680,12 +12526,26 @@ A_{\mf{m}}
 
 \begin{proof}
 Следует из
-теоремы~\ref{thm:DedRingLoc}, теоремы~\ref{thm:AltDefDVR}
+теоремы~\ref{thm:DedRingLoc},
+теоремы~\ref{thm:AltDefDVR}
 и
 наблюдения~\ref{obs:DedRingLocAlt}.
 \end{proof}
 
-\subsection{Дополнительный материал}
+\subsection{Дополнительная характеризация дедекиндовых колец}
+
+\begin{observation}
+В любой области целостности
+ненулевые главные идеалы обратимы
+и
+обратимость произведения идеалов эквивалентна обратимости всех его сомножителей.
+\end{observation}
+
+\begin{observation}
+Согласно теореме~\secref{thm:PrimeDecompUnique}
+в любой области целостности
+разложение обратимого идеала в произведение простых идеалов определено однозначно, если существует.
+\end{observation}
 
 \begin{theorem}
 Пусть \(A\) --- область целостности, в которой любой идеал представляется в виде произведения простых идеалов.
@@ -12736,6 +12596,177 @@ A_{\mf{m}}
 \qedhere
 
 \end{proofparts}
+
+
+%\section[Структурная теорема для конечно порождённых модулей над областями главных идеалов][Структурная теорема для кон.\ пор.\ модулей над ОГИ]{Структурная теорема для конечно порождённых модулей над областями главных идеалов}
+\section{Конечные модули над областями главных идеалов}
+
+\begin{sectionintro}
+Этот раздел представляет собой краткий конспект стандартного доказательства и добавлен для полноты.
+\end{sectionintro}
+
+\begin{convention}
+В этом разделе все кольца считаются коммутативными, ассоциативными и унитальными.
+\end{convention}
+
+\begin{observation}
+Кольца главных идеалов, очевидно, нётеровы,
+а каждый конечно порождённый модуль над нётеровым кольцом \(A\) является конечно представимым,%
+\label{obs:modpid}
+то есть является коядром гомоморфизма
+\(A^J \to A^I\), задаваемого матрицей из \(\Mat_{I,J}(A)\), где \(I\) и \(J\) --- конечные множества, причём замене базисов в
+\(A^J\) и \(A^I\) соответствует её двустороннее домножение на обратимые матрицы:
+\begin{equation*}
+\begin{tikzcd}[row sep = scriptsize]
+    A^J \arrow{r} \arrow[leftrightarrow]{d} & A^I \arrow[leftrightarrow]{d} \\
+    A^J \arrow{r} & A^I\mathrlap{.}
+\end{tikzcd}
+\label{eq:Am_to_An}
+\end{equation*}
+\end{observation}
+
+%\begin{remark}
+%Кольца главных идеалов, очевидно, нётеровы.
+%\end{remark}
+
+\begin{lemma}
+Пусть \(A\) --- область целостности, \(a,b,c \in A\) и \(Aa + Ab = Ac \neq 0\), то есть существуют \(c_a,a_c,b_c \in A\), такие что \(c_a a + c_b b = c \neq 0\), \(a_c c = a\), \(b_c c = b\).%
+\label{lem:PIDmatrix2}
+Тогда
+\(
+(
+\begin{smallmatrix}
+    c_a & c_b \\
+    -b_c & a_c
+\end{smallmatrix}
+)
+\in
+\GL_2(A)
+\)
+и
+\(
+(
+\begin{smallmatrix}
+    c \\
+    0 
+\end{smallmatrix}
+)
+=
+(
+\begin{smallmatrix}
+    c_a & c_b \\
+    -b_c & a_c
+\end{smallmatrix}
+)
+(
+\begin{smallmatrix}
+    a \\
+    b 
+\end{smallmatrix}
+)
+\).
+\end{lemma}
+
+\begin{proof}
+Подставив \(a = a_c c\) и \(b = b_c c\) в \(c = c_a a + c_b b\) и сократив на \(c\), получаем, что
+\(
+\det
+(
+\begin{smallmatrix}
+    c_a & c_b \\
+    -b_c & a_c
+\end{smallmatrix}
+)
+= c_a a_c + c_b b_c
+= 1
+\).
+\end{proof}
+
+\begin{theorem}
+Пусть \(A\) --- область главных идеалов,
+\(x \in \Mat_{I,J}(A)\), где \(I\) и \(J\) --- конечные множества.%
+\label{thm:diagpid}
+Тогда множество
+\(X \coloneqq {\op{GL}_I(A)} x {\op{GL}_J(A)}\)
+содержит матрицу, у которой в каждой строке и в каждом столбце максимум один ненулевой элемент.
+\end{theorem}
+
+\begin{proof}[Набросок доказательства]
+Можно предположить, что \(I,J \neq \varnothing\).
+По нётеровости \(A\) cуществуют \(y = (y_{i,j})_{i \in I, j \in J} \in X\) и \((i_1,j_1) \in I \times J\), такие что идеал \(Ay_{i_1,j_1}\) максимален среди идеалов вида \(Az_{i',j'}\) для \((z_{i,j})_{i \in I, j \in J} \in X\) и \((i',j') \in I \times J\).
+Тогда \(y_{i_1,j}, y_{i,j_1} \in A y_{i_1,j_1}\) для всех \(i \in I\) и \(j \in J\), так как иначе мы могли бы применить лемму~\ref{lem:PIDmatrix2} и получить противоречие с определением \(y_{i_1,j_1}\).
+%Отсюда следует, что \(\op{E}_I(A)y\op{E}_J(A)\)
+%содержит матрицу вида \((y_{i,j})_{i \in \{i_1\}, j \in \{j_1\}} \oplus (y'_{i,j})_{i \in I \setminus \{i_1\}, j \in J \setminus \{j_1\}}\), и
+%теорема доказывается по индукции,
+%заменой \(x\) на \((y'_{i,j})_{i \in I \setminus \{i_1\}, j \in J \setminus \{j_1\}} \in \mathrm{Mat}_{I \setminus \{i_1\},J \setminus \{j_1\}}(A)\).
+Отсюда следует, что множество \(\op{E}_I(A)y\op{E}_J(A)\)
+содержит матрицу вида \((y_{i,j})_{i \in \{i_1\}, j \in \{j_1\}} \oplus y'\), где \(y' \in \Mat_{I \setminus \{i_1\},J \setminus \{j_1\}}(A)\), и
+теорема доказывается по индукции, заменой \(x\) на \(y'\).
+\end{proof}
+
+\begin{remark}
+Между прочим, если кольцо \(A\) обладает свойством диагонализуемости матриц из формулировки теоремы~\ref{thm:diagpid}, то \(A\) является кольцом главных идеалов, что можно увидеть, рассмотрев случай \(\lvert J \rvert = 1\).
+\end{remark}
+
+\begin{theorem}[\scshape Примарное разложение]
+Пусть \(A\) --- область главных идеалов, а \(M\) --- конечно порождённый \(A\)\=/модуль. Тогда существует единственное с точностью до переиндексирования конечное семейство примарных идеалов \((\mathfrak{q}_i)_{i \in I}\) кольца \(A\), такое что \(M \simeq \bigoplus_{i \in I} A / \mathfrak{q}_i\).
+\end{theorem}
+
+\begin{proofparts}[Доказательство (из двух частей)]
+
+\item[Существование разложения.]
+Из наблюдения~\ref{obs:modpid} и теоремы~\ref{thm:diagpid} мы получаем разложение \(M\) в конечную прямую сумму циклических слагаемых, которые, по китайской теореме об остатках и разложению на простые в областях главных идеалов, разлагаются в конечную прямую сумму примарных циклических слагаемых.
+
+\item[Единственность разложения.]
+Пусть
+\(
+M \simeq (\bigoplus_{\mathfrak{p} \in \mathcal{P}} \bigoplus_{i = 1}^{N_\mathfrak{p}} A/{\mathfrak{p}}^{n_{\mathfrak{p},i}}) \oplus A^m
+\),
+где \(\mathcal{P}\) --- конечное множество ненулевых простых идеалов,
+\(N_\mathfrak{p} \geq 1\) и \(n_{\mathfrak{p},1} \geq n_{\mathfrak{p},2} \geq \cdots \geq n_{\mathfrak{p},N_\mathfrak{p}} \geq 1\) для всех \(\mathfrak{p} \in \mathcal{P}\).
+%Пусть \(M_\mathfrak{p} \coloneqq \{x \in M \mid \exists n \geq 0 : \mathfrak{p}^n x = 0\}\), где \(\mathfrak{p}\) --- простой идеал,
+Для любого \(\mf{p} \in \Spec(A) \setminus \{0\}\) пусть
+\(M_{\mf{p}}^{\mr{tor}} \coloneqq \bigcup_{n=0}^{\infty} \{x \in M \mid \mf{p}^n x = 0\}\),
+а \(M^{\mr{fr}} \coloneqq M / (\sum_{\mathfrak{p} \in \Spec(A) \setminus \{0\}} M_\mathfrak{p}^{\mr{tor}})\).
+Тогда \(M_\mathfrak{p}^{\mr{tor}} \simeq \bigoplus_{i = 1}^{N_\mathfrak{p}} A/\mathfrak{p}^{n_{\mathfrak{p},i}}\) если \(\mathfrak{p} \in \mathcal{P}\) и \(M_\mathfrak{p}^{\mr{tor}} = 0\)
+если \(\mf{p} \notin \mc{P} \cup \{0\}\),
+%иначе,
+а \(M^{\mr{fr}} \simeq A^m\).
+При этом
+\(
+\dim_{A/\mf{p}}(\mf{p}^{n-1}M_\mf{p}^{\mr{tor}} / \mf{p}^n M_\mf{p}^{\mr{tor}})
+=
+\max\{k \in \{1,\dots{},N_\mf{p}\} \mid n_{\mf{p},k} \geq n\}
+\)
+для любых
+\(\mathfrak{p} \in \mathcal{P}\) и \(1 \leq n \leq n_{\mathfrak{p},1}\),
+%\(\dim_{A/\mathfrak{p}}(M_\mathrm{free}/\mathfrak{p}M_\mathrm{free}) = m\) для произвольного простого идеала \(\mathfrak{p}\).
+а
+\(\dim_K (K \otimes_A M^{\mr{fr}}) = m\),
+где \(K \coloneqq \Frac(A)\).
+Это доказывает единственность.
+\qedhere
+
+\end{proofparts}
+
+\begin{corollary}[\scshape Разложение по инвариантным факторам]
+Пусть \(A\) --- область главных идеалов, а \(M\) --- конечно порождённый \(A\)\=/модуль. Тогда существует единственная последовательность собственных идеалов \(\mathfrak{d}_1 \supset \mathfrak{d}_2 \supset \cdots{} \supset \mathfrak{d}_n\) кольца \(A\), такая что \(M \simeq \bigoplus_{i=1}^n A / \mathfrak{d}_i\).
+\end{corollary}
+
+\begin{proof}
+По разложению
+\(
+M \simeq (\bigoplus_{\mathfrak{p} \in \mathcal{P}} \bigoplus_{i = 1}^{N_\mathfrak{p}} A/{\mathfrak{p}}^{n_{\mathfrak{p},i}}) \oplus A^m
+\),
+где \(\mathcal{P}\) --- конечное множество ненулевых простых идеалов,
+\(N_\mathfrak{p} \geq 1\) и \(n_{\mathfrak{p},1} \geq n_{\mathfrak{p},2} \geq \cdots \geq n_{\mathfrak{p},N_\mathfrak{p}} \geq 1\) для всех \(\mathfrak{p} \in \mathcal{P}\),
+однозначно строятся/вос\-ста\-нав\-ли\-ва\-ют\-ся \(\mathfrak{d}_1, \dots{}, \mathfrak{d}_n\):
+если \(N \coloneqq \max_{\mathfrak{p} \in \mathcal{P}}(N_\mathfrak{p})\), то
+\(n \coloneqq N + m\),
+\(\mathfrak{d}_i \coloneqq \mathfrak{b}_{N-i+1}\) для \(1 \leq i \leq N\), где
+\(\mathfrak{b}_i \coloneqq \prod_{\mathfrak{p} \in \mathcal{P} \suchthat N_\mathfrak{p} \geq i} \mathfrak{p}^{n_{\mathfrak{p},i}}\),
+и \(\mathfrak{d}_i \coloneqq 0\) для \(N+1 \leq i \leq N+m\).
+\end{proof}
 
 
 \section{Ассоциированные простые идеалы}
