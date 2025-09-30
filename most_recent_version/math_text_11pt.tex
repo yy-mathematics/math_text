@@ -12158,10 +12158,9 @@ A,
 \begin{observation}
 Пусть \(A\) --- область целостности,
 а \(\mf{a}, \mf{b} \subset \Frac(A)\) --- дробные идеалы \(A\).
-Тогда их произведение \(\mf{a}\mf{b} = \sum_{a \in \mf{a}, b \in \mf{b}} \Z ab \subset \Frac(A)\)
+Тогда их произведение \(\mf{a}\mf{b} = \sum_{a \in \mf{a}, b \in \mf{b}} A ab \subset \Frac(A)\)
 как
-\(\Z\)\=/подмодулей \(\Frac(A)\)
-%аддитивных подгрупп \(\Frac(A)\)
+\(A\)\=/подмодулей \(\Frac(A)\)
 тоже является дробным идеалом \(A\).
 \end{observation}
 
@@ -12311,14 +12310,13 @@ A,
 
 \begin{observation}[\scshape Характеризация факториальных колец]
 Пусть \(A\) --- область целостности,
-\(\mc{G}\) --- группа ненулевых главных дробных идеалов \(A\),
-а \(\mc{G}_+ \coloneqq \{\mf{c} \in \mc{G} \mid \mf{c} \subset A\}\).
+а \(\mc{M}\) --- мультипликативный моноид ненулевых главных идеалов \(A\).
 Тогда
 из наблюдения~\secref{obs:FreeCommMonChar} следует, что
 \(A\) является
-%областью однозначного разложения на простые
-факториальным кольцом
-тогда и только тогда, когда все максимальные элементы \(\mc{G}_+ \setminus \{A\}\) являются простыми идеалами и в \(\mc{G}_+\) нет бесконечных строго возрастающих цепочек.
+областью однозначного разложения на простые
+%факториальным кольцом
+тогда и только тогда, когда все максимальные элементы \(\mc{M} \setminus \{A\}\) являются простыми идеалами и в \(\mc{M}\) нет бесконечных строго возрастающих цепочек.
 \end{observation}
 
 \begin{corollary}
@@ -12609,20 +12607,31 @@ A_{\mf{m}}
 В этом разделе все кольца считаются коммутативными, ассоциативными и унитальными.
 \end{convention}
 
+%\begin{observation}
+%Кольца главных идеалов, очевидно, нётеровы,
+%а каждый конечно порождённый модуль над нётеровым кольцом \(A\) является конечно представимым,%
+%\label{obs:modpid}
+%то есть является коядром гомоморфизма
+%\(A^J \to A^I\), задаваемого матрицей из \(\Mat_{I,J}(A)\), где \(I\) и \(J\) --- конечные множества, причём замене базисов в
+%\(A^J\) и \(A^I\) соответствует её двустороннее домножение на обратимые матрицы:
+%\begin{equation*}
+%\begin{tikzcd}[row sep = scriptsize]
+%    A^J \arrow{r} \arrow[leftrightarrow]{d} & A^I \arrow[leftrightarrow]{d} \\
+%    A^J \arrow{r} & A^I\mathrlap{.}
+%\end{tikzcd}
+%\label{eq:Am_to_An}
+%\end{equation*}
+%\end{observation}
+
 \begin{observation}
-Кольца главных идеалов, очевидно, нётеровы,
-а каждый конечно порождённый модуль над нётеровым кольцом \(A\) является конечно представимым,%
+Пусть \(A\) --- кольцо главных идеалов.
+Тогда \(A\) нётерово, а потому любой конечно порождённый \(A\)\=/модуль является конечно представимым,%
 \label{obs:modpid}
-то есть является коядром гомоморфизма
-\(A^J \to A^I\), задаваемого матрицей из \(\Mat_{I,J}(A)\), где \(I\) и \(J\) --- конечные множества, причём замене базисов в
-\(A^J\) и \(A^I\) соответствует её двустороннее домножение на обратимые матрицы:
-\begin{equation*}
-\begin{tikzcd}[row sep = scriptsize]
-    A^J \arrow{r} \arrow[leftrightarrow]{d} & A^I \arrow[leftrightarrow]{d} \\
-    A^J \arrow{r} & A^I\mathrlap{.}
-\end{tikzcd}
-\label{eq:Am_to_An}
-\end{equation*}
+то есть является коядром какого-то гомоморфизма
+\(v \mapsto xv : A^J \to A^I\), где \(x \in \Mat_{I,J}(A)\), а \(I\) и \(J\) --- конечные множества, причём заменам базисов
+\(v \mapsto gv : A^J \xrightarrow{\sim} A^J\) и \(v \mapsto hv : A^I \xrightarrow{\sim} A^I\),
+где \(g \in \GL_J(A)\) и \(h \in \GL_I(A)\),
+соответствует замена \(x\) на \(h x g^{-1}\).
 \end{observation}
 
 %\begin{remark}
@@ -12733,17 +12742,17 @@ M \simeq (\bigoplus_{\mathfrak{p} \in \mathcal{P}} \bigoplus_{i = 1}^{N_\mathfra
 %иначе,
 а \(M^{\mr{fr}} \simeq A^m\).
 При этом
+%\(\dim_{A/\mathfrak{p}}(M_\mathrm{free}/\mathfrak{p}M_\mathrm{free}) = m\) для произвольного простого идеала \(\mathfrak{p}\).
+\(\dim_K (K \otimes_A M^{\mr{fr}}) = m\),
+где \(K \coloneqq \Frac(A)\),
+а
 \(
 \dim_{A/\mf{p}}(\mf{p}^{n-1}M_\mf{p}^{\mr{tor}} / \mf{p}^n M_\mf{p}^{\mr{tor}})
 =
 \max\{k \in \{1,\dots{},N_\mf{p}\} \mid n_{\mf{p},k} \geq n\}
 \)
 для любых
-\(\mathfrak{p} \in \mathcal{P}\) и \(1 \leq n \leq n_{\mathfrak{p},1}\),
-%\(\dim_{A/\mathfrak{p}}(M_\mathrm{free}/\mathfrak{p}M_\mathrm{free}) = m\) для произвольного простого идеала \(\mathfrak{p}\).
-а
-\(\dim_K (K \otimes_A M^{\mr{fr}}) = m\),
-где \(K \coloneqq \Frac(A)\).
+\(\mathfrak{p} \in \mathcal{P}\) и \(1 \leq n \leq n_{\mathfrak{p},1}\).
 Это доказывает единственность.
 \qedhere
 
