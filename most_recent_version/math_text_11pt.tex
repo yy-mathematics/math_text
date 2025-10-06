@@ -367,6 +367,10 @@
 \footnote{Троица \texttt{приведённый}, \texttt{неприводимый} и \texttt{приводимый} возникает и в теории схем.}
 \end{convention}
 
+\begin{notation}[\scshape Поле частных]
+Поле частных ассоциативного коммутативного унитального целостного кольца \(A\) обозначается \(\Frac(A)\).
+\end{notation}
+
 \subsection{Теория категорий}
 
 \begin{notation}[\scshape Противоположная категория]
@@ -5036,6 +5040,10 @@ n \cdot (1 + \lVert n \rVert + \cdots + {\lVert n \rVert}^{\lfloor \frac{\ln(m)}
 Один метр --- это примерно одна десятимиллионная расстояния между полюсом и экватором по поверхности сферического приближения к Земле.
 Десять --- это количество пальцев на обеих руках человека, а семь нулей нужны для того, чтобы метр был максимально близок к росту человека.
 \end{observation}
+
+\begin{remark}
+По идеальной твёрдой сферической Земле идеальный пешеход, 12 часов каждые сутки движущийся со скоростью 5 км/ч, мог бы за год перейти из любой точки в любую точку.
+\end{remark}
 
 \begin{observation}[\scshape Человек, клетка, атом и протон]
 Размер человека --- примерно \(1\) метр.
@@ -11300,7 +11308,7 @@ M \to \prod_{i \in I} M_{S_i}\)
 
 \end{proofparts}
 
-\begin{theorem}
+\begin{corollary}
 Пусть \(A\) --- область целостности,
 а \((S_i)_{i \in I}\) --- семейство
 %не содержащих нуля
@@ -11308,17 +11316,20 @@ M \to \prod_{i \in I} M_{S_i}\)
 такое что
 семейство \((\Spec(A_{S_i}))_{i \in I}\) покрывает \(\Spec(A)\).
 Тогда \(A = \bigcap_{i \in I} A_{S_i} \subset \Frac(A)\).
-%Тогда \(A = \bigcap_{i \in I} A_{S_i}\) тогда и только тогда, когда
-%семейство \((\Spec(A_{S_i}))_{i \in I}\) покрывает \(\Spec(A)\).
-\end{theorem}
+\end{corollary}
 
 \begin{proof}
-Пусть \(r \in \bigcap_{i \in I} A_{S_i}\).
-Определим идеал знаменателей \(\mf{a} \coloneqq \{a \in A \mid ar \in A\}\).
-Тогда \(\mf{a} \cap S_i \neq \varnothing\) для любого \(i \in I\),
-а потому \(\mf{a} \not\subset \mf{p}\) для любого \(\mf{p} \in \Spec(A)\),
-а потому \(\mf{a} = A\) и \(r \in A\).
+Пусть \(B \coloneqq \bigcap_{i \in I} A_{S_i}\).
+Тогда для любого \(e \in S\) вложение \(A_{S_e} \to B_{S_e} \cong A_{S_e}\), индуцированное вложением \(A \to B\), биективно, а потому, согласно теореме~\ref{thm:LocCover}, вложение \(A \to B\) тоже биективно.
 \end{proof}
+
+%\begin{proof}
+%Пусть \(r \in \bigcap_{i \in I} A_{S_i}\).
+%Определим идеал знаменателей \(\mf{a} \coloneqq \{a \in A \mid ar \in A\}\).
+%Тогда \(\mf{a} \cap S_i \neq \varnothing\) для любого \(i \in I\),
+%а потому \(\mf{a} \not\subset \mf{p}\) для любого \(\mf{p} \in \Spec(A)\),
+%а потому \(\mf{a} = A\) и \(r \in A\).
+%\end{proof}
 
 %\begin{lemma} \label{lem:LocCoverInj}
 %Пусть \(M\) --- \(A\)-мо\-дуль.
@@ -11519,10 +11530,15 @@ M_{S_i S_j}.
 
 \subsection{Определение и базовые свойства целых элементов}
 
-\begin{convention}
+\begin{convention}[\scshape Кольца и алгебры]
 В этом разделе все кольца и алгебры считаются ассоциативными, коммутативными и унитальными.
 %если противное не указано явно.
 \end{convention}
+
+\begin{notation}[\scshape Размерность Крулля]
+Пусть \(A\) --- кольцо.
+Тогда в этом разделе через \(\dim(A)\) будет обозначаться размерность Крулля \(A\).
+\end{notation}
 
 %\section{Определения}
 
@@ -11672,6 +11688,475 @@ M_{S_i S_j}.
 Тогда \(A\) тоже целозамкнуто.
 \end{observation}
 
+\subsection{Теорема о несравнимости и теорема о подъёме}
+
+\begin{theorem}
+Пусть \(A\) ---
+%ассоциативное коммутативное унитальное
+целостное кольцо, такое что \(\Frac(A)\) цело над \(A\).
+Тогда
+выполняется равенство
+\(A = \Frac(A)\).
+\end{theorem}
+
+\begin{proof}
+Пусть \(a \in A \setminus \{0\}\).
+Так как элемент \(a^{-1} \in \Frac(A)\) целый над \(A\), то \(a^{-n} \in \sum_{i=0}^{n-1} A a^{-i}\) для какого-то \(n \in \N_1\).
+Умножив это соотношение на \(a^{n-1}\), получаем, что \(a^{-1} \in A\).
+\end{proof}
+
+\begin{theorem}
+Пусть \(B\) --- целостное кольцо, целое над своим подкольцом \(A\).%
+\seclabel{thm:IntExtField}
+%Тогда \(A\) является полем тогда и только тогда, когда \(B\) является полем.
+Тогда
+%\(A^{\times} = A \setminus \{0\}\)
+\(A = \Frac(A)\)
+тогда и только тогда, когда
+%\(B^{\times} = B \setminus \{0\}\)
+\(B = \Frac(B)\).
+\end{theorem}
+
+\begin{proof}
+Если \(B\) --- поле, то \(\Frac(A) \subset B\) цело над \(A\), а потому совпадает с \(A\).
+Если \(A\) --- поле, то, \(\Frac(B)\) алгебраично над \(A\), а потому цело над \(B\), а потому совпадает с \(B\).
+\end{proof}
+
+%\begin{proof}[Доказательство (из двух частей)]
+%~\begin{proofdescription}
+%
+%\item[Часть <<тогда>>.]
+%Пусть \(B\) --- поле, \(a \in A \setminus \{0\}\).
+%Так как элемент \(a^{-1} \in B\) целый над \(A\), то существует соотношение \(a^{-n} + \sum_{i=0}^{n-1} a_i a^{-i} = 0\), где \(n \in \N_1\) и \(a_i \in A\) для любого \(0 \leq i < n\).
+%Умножив его на на \(a^{n-1}\), получаем, что \(a^{-1} \in A\).
+%
+%\item[Часть <<только тогда>>.]
+%Пусть \(A\) --- поле, \(b \in B \setminus \{0\}\).
+%Так как элемент \(b\) целый над \(A\), то существует соотношение \(b^n + \sum_{i=0}^{n-1} a_i b^i = 0\), где \(n \in \N_1\) и \(a_i \in A\) для любого \(0 \leq i < n\).
+%Умножив его на подходящую степень \(b^{-1} \in \Frac(B)\), получаем, что \(b^{-1} \in B\).
+%\qedhere
+%
+%%\item[Часть <<только тогда>>.]
+%%Пусть \(A\) --- поле, \(0 \neq b \in B\).
+%%Так как элемент \(b\) целый над \(A\), то существует соотношение \(b^n = \sum_{i=0}^{n-1} a_i b^i\), где \(n \in \N_1\), \(a_i \in A\) для любого \(0 \leq i \leq n-1\).
+%%Сокращая на степень \(b\), можно предположить, что \(a_0 \neq 0\).
+%%Из соотношения \(b (b^{n-1} - \sum_{i=1}^{n-1} a_i b^{i-1}) = a_0\) получаем обратимость \(b\).
+%%\qedhere
+%
+%\end{proofdescription} 
+%\end{proof}
+
+\begin{remark}
+Теорема~\ref{thm:IntExtField} --- это частный случай того факта, что размерность Крулля не меняется при целых расширениях (теорема~\ref{thm:KrullDimIntExt}).
+\end{remark}
+
+\begin{corollary}
+Пусть \(B\) --- целая алгебра над кольцом \(A\).%
+\label{cor:IntExtFieldIdeal}
+Тогда простой идеал \(\mf{q}\) кольца \(B\) является максимальным тогда и только тогда, когда простой идеал \(\mf{p} \coloneqq \mf{q} \cap A\) кольца \(A\) является максимальным.
+\end{corollary}
+
+\begin{proof}
+Применим теорему~\ref{thm:IntExtField} к вложению \(A / \mf{p} \to B / \mf{q}\).
+\end{proof}
+
+\begin{theorem}[\scshape Теорема о несравнимости]
+Пусть \(B\) --- целая алгебра над своим подкольцом \(A\),
+а \(\mf{q}, \mf{Q} \subset B\) --- простые идеалы \(B\), такие что \(\mf{q} \subset \mf{Q}\) и \(\mf{q} \cap A = \mf{Q} \cap A\).%
+\label{thm:IntegralPrimeIncomparab}
+Тогда \(\mf{q} = \mf{Q}\).
+\end{theorem}
+
+\begin{proof}
+Пусть \(\mf{p} \coloneqq \mf{q} \cap A = \mf{Q} \cap A\), а \(S \coloneqq A \setminus \mf{p}\).
+Тогда \(B_S\) является целой алгеброй над своим подкольцом \(A_S\),
+а \(\mf{q}B_S\) и \(\mf{Q}B_S\) --- это простые идеалы \(B_S\), такие что \(\mf{q}B_S \cap A_S = \mf{Q}B_S \cap A_S = \mf{p} A_S\).
+Так как \(\mf{p} A_S \subset A_S\) --- максимальный идеал, то \(\mf{q}B_S = \mf{Q}B_S\) согласно следствию~\ref{cor:IntExtFieldIdeal}.
+Отсюда следует, что \(\mf{q} = \mf{q}B_S \cap B = \mf{Q}B_S \cap B = \mf{Q}\).
+\end{proof}
+
+\begin{theorem}[\scshape Теорема о поднятии простых]
+Пусть \(B\) --- целая алгебра над своим подкольцом \(A\),
+а \(\mf{p} \subset A\) --- простой идеал \(A\).%
+\label{thm:IntegralLyingOver}
+Тогда существует простой идеал \(\mf{q} \subset B\),
+такой что \(\mf{p} = \mf{q} \cap A\).
+\end{theorem}
+
+\begin{proof}
+Пусть \(S \coloneqq A \setminus \mf{p}\).
+Тогда \(B_S\) является целой алгеброй над своим подкольцом \(A_S\).
+Пусть \(\mf{m} \subset B_S\) --- какой-то максимальный идеал \(B_S\),
+а \(\mf{q} \coloneqq \mf{m} \cap B\).
+Докажем, что \(\mf{q} \cap A = \mf{p}\).
+Согласно следствию~\ref{cor:IntExtFieldIdeal} идеал \(\mf{m} \cap A_S \subset A_S\) является максимальным идеалом локального кольца \(A_S \cong A_{\mf{p}}\), а потому \(\mf{m} \cap A_S = \mf{p} A_S\).
+Осталось воспользоваться каноническими вложениями
+\(\Spec(B_S) \to \Spec(B)\)
+и
+\(\Spec(A_S) \to \Spec(A)\).
+\end{proof}
+
+\begin{theorem}[\scshape Теорема о подъёме]
+Пусть \(B\) --- целая алгебра над кольцом \(A\),
+а \(\mf{p}, \mf{P} \in \Spec(A)\) и \(\mf{q} \subset \Spec(B)\) --- простые идеалы, такие что
+\(\mf{p} \subset \mf{P}\) и \(\mf{p} = \mf{q} \cap A\).%
+\label{thm:GoingUpIntegral}
+Тогда существует
+простой идеал
+\(\mf{Q} \in \Spec(B)\),
+такой что \(\mf{q} \subset \mf{Q}\) и \(\mf{P} = \mf{Q} \cap A\).
+\end{theorem}
+
+\begin{proof}
+Заметим, что кольцо \(B / \mf{q}\) является целой алгеброй над своим подкольцом \(A / \mf{p}\)
+и применим теорему~\ref{thm:IntegralLyingOver} к простому идеалу \(\mf{P} / \mf{p}\) кольца \(A / \mf{p}\).
+\end{proof}
+
+\begin{observation}
+Пусть \(B\) --- целая алгебра над своим подкольцом \(A\),
+а \(\mf{P} \subset A\) --- простой идеал \(A\).
+Тогда
+%простые идеалы \(\mf{q} \subset B\), такие что \(\mf{q} \cap A \subset \mf{P}\), --- это простые идеалы \(\mf{q} \subset B\), такие что \(\mf{q} \cap S = \varnothing\), где \(S \coloneqq A \setminus \mf{p}\).
+\begin{equation*}
+\{\mf{q} \in \Spec(B) \mid \mf{q} \cap A \subset \mf{P}\}
+=
+\{\mf{q} \in \Spec(B) \mid \mf{q} \cap S = \varnothing\}
+\neq \varnothing,
+\end{equation*}
+где \(S \coloneqq A \setminus \mf{P}\).
+Поэтому теорему~\ref{thm:IntegralLyingOver} можно вывести из теоремы~\ref{thm:GoingUpIntegral}.
+\end{observation}
+
+\begin{theorem}[\scshape Размерность Крулля и целые расширения]
+Пусть \(B\) --- целая алгебра над своим подкольцом \(A\).%
+\label{thm:KrullDimIntExt}
+Тогда
+%выполняется равенство
+\(\dim(A) = \dim(B)\).
+\end{theorem}
+
+\begin{proof}
+Неравенство \(\dim(A) \geq \dim(B)\) следует из теоремы~\ref{thm:IntegralPrimeIncomparab},
+а неравенство \(\dim(A) \leq \dim(B)\) следует из теорем~\ref{thm:IntegralLyingOver} и \ref{thm:GoingUpIntegral}.
+\end{proof}
+
+\subsection{Целое замыкание абстрактного идеала и теорема о спуске}
+
+\begin{definition}[\scshape Абстрактный идеал]
+Аддитивная абелева группа \(\mf{a}\), снабжённая биаддитивным умножением
+\(a \otimes b \mapsto ab : \mf{a} \otimes_{\Z} \mf{a} \to \mf{a}\),
+называется \emph{абстрактным идеалом}.
+\end{definition}
+
+\begin{definition}[\scshape Целое замыкание абстрактного идеала]
+Пусть \(A\) --- кольцо, а \(\mf{a} \subset A\) --- абстрактный идеал.
+Тогда множество
+\(
+\Int_A(\mf{a}) \coloneqq
+\bigcup_{n = 1}^{\infty} \{a \in A \mid a^n \in \sum_{i = 0}^{n-1} \mf{a} a^i\}
+\)
+называется \emph{целым замыканием} \(\mf{a}\) в \(A\).
+\end{definition}
+
+\begin{observation}
+Пусть \(A\) --- кольцо, а \(\mf{a} \subset A\) --- абстрактный идеал.%
+\label{obs:IntClIdealContThatIdeal}
+Тогда
+выполняется включение
+\(\mf{a} \subset \Int_A(\mf{a})\).
+\end{observation}
+
+\begin{observation}
+Пусть \(A\) --- кольцо, а \(\mf{a} \subset A\) --- абстрактный идеал.%
+\label{obs:IntClosIdealRadical}
+Тогда если \(a \in A\) и \(a^n \in \Int_A(\mf{a})\) для какого-то \(n \in \N_1\), то \(a \in \Int_A(\mf{a})\).
+\end{observation}
+
+\begin{observation}
+Пусть \(B\) --- кольцо,
+\(\mf{a} \subset B\) --- абстрактный идеал,
+а \(A \subset B\) --- подкольцо,
+такое что \(A \mf{a} \subset \mf{a}\).%
+\label{obs:IntClosGradedPoly}
+Тогда
+множество \(A + \mf{a} X + \mf{a} X^2 + \cdots{} \subset B[X]\) является подкольцом \(B[X]\) и
+выполняются равенства~\eqref{eq:AbstrIdealIntClGraded1} и \eqref{eq:AbstrIdealIntClGraded2}.
+\begin{gather}
+\Int_B(A) = \{b \in B \mid b \in \Int_{B[X]}(A + \mf{a} X + \mf{a} X^2 + \cdots{})\}
+\label{eq:AbstrIdealIntClGraded1}
+\\
+\Int_B(\mf{a}) = \{b \in B \mid bX \in \Int_{B[X]}(A + \mf{a} X + \mf{a} X^2 + \cdots{})\}
+\label{eq:AbstrIdealIntClGraded2}
+\end{gather}
+\end{observation}
+
+\begin{theorem}
+Пусть \(B\) --- кольцо,
+\(\mf{a} \subset B\) --- абстрактный идеал,
+а \(A \subset B\) --- подкольцо,
+такое что \(A \mf{a} \subset \mf{a}\).%
+\label{thm:AbstrIdealClosMainProp}
+Тогда \(\Int_B(\mf{a}) \subset B\) является абстрактным идеалом и \(\Int_B(A) \Int_B(\mf{a}) \subset \Int_B(\mf{a})\).
+\end{theorem}
+
+\begin{proof}
+Из наблюдения~\ref{obs:IntClosGradedPoly} сразу следует, что \(\Int_B(\mf{a})\) является \(\Int_B(A)\)\=/подмодулем \(B\).
+Взяв в качестве \(A\) кольцо \(\Z + \mf{a} \subset B\), получаем, что \(\Int_B(\mf{a})\) является абстрактным идеалом.
+\end{proof}
+
+\begin{theorem}
+Пусть \(B\) --- кольцо,
+\(\mf{a} \subset B\) --- абстрактный идеал,
+\(A\) --- подкольцо \(B\),
+содержащее \(\mf{a}\),
+такое что \(A \mf{a} \subset \mf{a}\),
+а \(\overline{A} \coloneqq \Int_B(A)\).%
+\label{thm:AbstrIdealIntClChar}
+Тогда
+выполняется равенство
+\(
+\Int_B(\mf{a})
+=
+\op{rad}_{\overline{A}} (\mf{a} \overline{A})
+\).
+\end{theorem}
+
+\begin{proof}
+Включение
+\(
+\Int_B(\mf{a})
+\subset
+\op{rad}_{\overline{A}} (\mf{a} \overline{A})
+\)
+очевидно,
+а включение
+\(
+\op{rad}_{\overline{A}} (\mf{a} \overline{A})
+\subset
+\Int_B(\mf{a})
+\)
+следует из теоремы~\ref{thm:AbstrIdealClosMainProp} и наблюдений~\ref{obs:IntClIdealContThatIdeal} и \ref{obs:IntClosIdealRadical}.
+\end{proof}
+
+% Закомменченная старая версия изложения
+% целого замыкания абстрактного идеала
+
+%\begin{theorem}
+%Пусть \(B\) --- кольцо,
+%\(\mf{a} \subset B\) --- абстрактный идеал,
+%\(A' \coloneqq \Z + \mf{a}\),
+%\(A'' \coloneqq \{b \in B \mid b \mf{a} \subset \mf{a}\}\),
+%\(\overline{A'} \coloneqq \Int_B(A')\),
+%\(\overline{A''} \coloneqq \Int_B(A'')\).%
+%%\(\mf{a}' \coloneqq \mf{a} \overline{A'}\),
+%%\(\mf{a}'' \coloneqq \mf{a} \overline{A''}\).
+%\label{thm:AbstrIdealIntClChar}
+%Тогда
+%выполняются равенства
+%\(
+%\Int_B(\mf{a})
+%=
+%\op{rad}_{\overline{A'}} (\mf{a} \overline{A'})
+%=
+%\op{rad}_{\overline{A''}} (\mf{a} \overline{A''})
+%\).
+%\end{theorem}
+%
+%%\begin{proof}
+%%Включение
+%%\(
+%%\Int_B(\mf{a})
+%%\subset
+%%\op{rad}_{\overline{A'}} (\mf{a} \overline{A'})
+%%\)
+%%очевидно,
+%%а включение
+%%\(
+%%\op{rad}_{\overline{A'}} (\mf{a} \overline{A'})
+%%\subset
+%%\op{rad}_{\overline{A''}} (\mf{a} \overline{A''})
+%%\)
+%%следует из включения
+%%\(A' \subset A''\).
+%%Осталось доказать включение
+%%\(
+%%\op{rad}_{\overline{A''}} (\mf{a} \overline{A''})
+%%\subset
+%%\Int_B(\mf{a})
+%%\).
+%%Пусть
+%%\(b \in \op{rad}_{\overline{A''}} (\mf{a} \overline{A''})\).
+%%Тогда существуют число \(n \in \N_1\) и конечное семейство \((a_i)_{i \in I}\) элементов \(\overline{A''}\),
+%%такие что
+%%\(b^n \in \sum_{i \in I} \mf{a} a_i\).
+%%Мы получили, что
+%%\(C \coloneqq A''[b, a_i \smid i \in I]\)
+%%--- конечная \(A''\)\=/алгебра, такая что
+%%\(b^n C \subset \mf{a} C\).
+%%Согласно теореме Гамильтона\namedash{}Кэли, отсюда следует, что \(b^n \in \Int_B(\mf{a})\),
+%%откуда следует, что \(b \in \Int_B(\mf{a})\).
+%%\end{proof}
+%
+%\begin{proof}
+%Включение
+%\(
+%\Int_B(\mf{a})
+%\subset
+%\op{rad}_{\overline{A'}} (\mf{a} \overline{A'})
+%\)
+%очевидно,
+%а включение
+%\(
+%\op{rad}_{\overline{A'}} (\mf{a} \overline{A'})
+%\subset
+%\op{rad}_{\overline{A''}} (\mf{a} \overline{A''})
+%\)
+%следует из включения
+%\(A' \subset A''\).
+%Осталось доказать включение
+%\(
+%\op{rad}_{\overline{A''}} (\mf{a} \overline{A''})
+%\subset
+%\Int_B(\mf{a})
+%\).
+%Пусть
+%\(b \in \op{rad}_{\overline{A''}} (\mf{a} \overline{A''})\),
+%то есть \(b^n \in \mf{a} \overline{A''}\) для какого-то \(n \in \N_1\).
+%Тогда существует конечная \(A''\)\=/алгебра
+%\(C \subset B\), такая что
+%\(b^n \in \mf{a} C\).
+%Применив теорему Гамильтона\namedash{}Кэли к отображению
+%\(c \mapsto b^n c : C \to \mf{a} C \subset C\),
+%получаем, что
+%\(b^{nm} \in \Int_B(\mf{a})\)
+%для какого-то \(m \in \N_1\),
+%откуда следует, что
+%\(b \in \Int_B(\mf{a})\).
+%\end{proof}
+%
+%\begin{remark}
+%Теорему~\ref{thm:AbstrIdealIntClChar}
+%можно переформулировать следующим образом:
+%если \(B\) --- кольцо,
+%\(\mf{a} \subset B\) --- абстрактный идеал,
+%\(A\) --- подкольцо \(B\),
+%содержащее \(\mf{a}\),
+%такое что \(A \mf{a} \subset \mf{a}\),
+%а \(\overline{A} \coloneqq \Int_B(A)\),
+%то
+%%выполняется равенство
+%\(
+%\Int_B(\mf{a})
+%=
+%\op{rad}_{\overline{A}} (\mf{a} \overline{A})
+%\).
+%\end{remark}
+%
+%%\begin{remark}
+%%Если в условиях теоремы~\ref{thm:AbstrIdealIntClChar} абстрактный идеал \(\mf{a}\) является подкольцом \(B\),
+%%то
+%%выполняются равенства
+%%\(\mf{a} = A' = A''\).
+%%\end{remark}
+%
+%\begin{corollary}
+%Пусть \(A\) --- кольцо,
+%а \(\mf{a} \subset A\) --- абстрактный идеал.
+%Тогда \(\Int_A(\mf{a}) \subset A\) --- абстрактный идеал.
+%\end{corollary}
+
+\begin{theorem}
+Пусть \(E\) --- поле,
+\(\mf{a} \subset E\) --- абстрактный идеал,
+\(a \in \Int_E(\mf{a})\),
+а \(K\) --- подполе \(E\), такое что \(\mf{a} \subset K\).%
+\label{thm:MinPolyIntCl}
+%--- элемент \(E\), целый над \(\mf{a}\),
+%а \(K \subset E\) --- поле частных кольца
+%\(\{b \in E \mid b \mf{a} \subset \mf{a}\}\).
+Тогда все не старшие коэффициенты минимального многочлена \(x\) над \(K\) целые над \(\mf{a}\).
+\end{theorem}
+
+\begin{proof}
+Пусть \(P(X) \in K[X]\) --- минимальный многочлен \(a\) над \(K\),
+а \(L\) --- поле разложения \(P(X)\) над \(E\).
+Тогда если \(b \in L\) --- корень \(P(X)\), то
+минимальные многочлены \(a\) и \(b\) над \(K\) совпадают, а потому
+существует единственный изоморфизм
+\(K[a] \xrightarrow{\sim} K[b]\)
+алгебр над \(K\),
+переводящий \(a\) в \(b\),
+а потому \(b\) тоже является целым над \(\mf{a}\).
+Не старшие коэффициенты \(P(X)\) лежат в абстрактном идеале, порождённом корнями \(P(X)\) в \(L\), а потому являются целыми над \(\mf{a}\).
+\end{proof}
+
+\begin{theorem}
+Пусть задан гомоморфизм колец \(A \to B\) и простой идеал \(\mf{p} \subset A\).%
+\label{thm:NonemptySpecFiber}
+Тогда для существования простого идеала \(\mf{q} \subset B\), такого что \(\mf{p} = \mf{q} \cap A\), необходимо и достаточно выполнения условия \(\mf{p} = \mf{p} B \cap A\).
+\end{theorem}
+
+\begin{proof}
+Условие
+\(\mf{p} = \mf{p} B \cap A\)
+эквивалентно условию инъективности
+\(A / \mf{p} \to B / \mf{p} B \cong A / \mf{p} \otimes_A B\),
+которое эквивалентно условию инъективности
+\(\kappa(\mf{p}) \to \kappa(\mf{p}) \otimes_A B\),
+где \(\kappa(\mf{p}) \coloneqq \Frac(A / \mf{p})\),
+которое эквивалентно условию
+не пустоты множества
+\(\Spec(\kappa(\mf{p}) \otimes_A B)\),
+естественно биективного слою
+отображения
+\(\Spec(B) \to \Spec(A)\)
+над \(\mf{p} \in \Spec(A)\).
+\end{proof}
+
+\begin{theorem}[\scshape Теорема о спуске]
+Пусть \(B\) --- область целостности,
+целая над целозамкнутым подкольцом \(A \subset B\),
+а \(\mf{p}, \mf{P} \in \Spec(A)\) и \(\mf{Q} \in \Spec(B)\) --- простые идеалы,
+такие что
+\(\mf{p} \subset \mf{P}\)
+и
+\(\mf{Q} \cap A = \mf{P}\).%
+\label{thm:GoingDownIntegral}
+Тогда существует \(\mf{q} \in \Spec(B)\),
+такой что \(\mf{q} \subset \mf{Q}\) и \(\mf{p} = \mf{q} \cap A\).
+\end{theorem}
+
+\begin{proof}
+Нужно показать, что \(\mf{p}\) является сужением какого-то элемента \(\Spec(B_{\mf{Q}})\).
+Согласно теореме~\ref{thm:NonemptySpecFiber},
+это равносильно условию \(\mf{p} = \mf{p} B_{\mf{Q}} \cap A\).
+Пусть \(a \in \mf{p} B_{\mf{Q}} \cap A\)
+и \(a \neq 0\).
+Тогда \(a = x / y\), где \(x \in \mf{p} B\), а \(y \in B \setminus \mf{Q}\).
+Так как \(y\) цел над \(A\), то минимальное уравнение \(y\) над \(K \coloneqq \Frac(A)\) имеет вид
+\(
+y^r + a_1 y^{r-1} + \cdots{} + a_r y^0 = 0
+\),
+где \(r \in \N_1\), а \(a_1, \dots{}, a_r \in A\).
+С другой стороны, так как \(a \in A\), то минимальное уравнение \(x = ay\) над \(K\) имеет вид
+\(
+x^r + a_1 a^1 x^{r-1} + \cdots{} + a_r a^r x^0 = 0
+\),
+причём \(a_1 a^1, \dots{}, a_r a^r \in \mf{p}\),
+так как \(x \in \mf{p}B\) цел над \(\mf{p}\).
+Предположим, что \(a \notin \mf{p}\).
+Тогда \(a_1, \dots{}, a_r \in \mf{p}\),
+а потому \(y^r \in \mf{p} B \subset \mf{Q}\),
+что противоречит тому, что \(y \in B \setminus \mf{Q}\).
+\end{proof}
+
+\begin{remark}
+Изложение целых замыканий абстрактных идеалов в этом подразделе основано на тексте Д.\ Гринберга~\cite{DarijGrinbergIntegrality}.
+Доказательство теоремы о спуске (теоремы~\ref{thm:GoingDownIntegral}) повторяет доказательства из учебников
+Атьи\namedash{}Макдональда~\cite[81]{AtiyahMacdonald1972}
+и Милна~\cite[33]{milneFT_v4.03}.
+\end{remark}
+
 
 \section{Лемма Нётер о нормализации}
 
@@ -11812,35 +12297,35 @@ A,
 
 \subsection{Обобщённая лемма Зарисского}
 
-\begin{notation}[\scshape Поле частных]
-Поле частных ассоциативного коммутативного унитального целостного кольца \(A\) обозначается \(\Frac(A)\).
-\end{notation}
+%\begin{notation}[\scshape Поле частных]
+%Поле частных ассоциативного коммутативного унитального целостного кольца \(A\) обозначается \(\Frac(A)\).
+%\end{notation}
 
 \begin{definition}[\scshape Кольцо Джекобсона]
 Ассоциативное коммутативное унитальное кольцо \(A\) называется \emph{кольцом Гильберта} или \emph{кольцом Джекобсона}, если любой простой идеал в \(A\) является пересечением всех содержащих его максимальных идеалов.
 \end{definition}
 
-\begin{theorem}
-Пусть \(A\) --- ассоциативное коммутативное унитальное целостное кольцо, такое что \(\Frac(A)\) цело над \(A\).
-Тогда \(A = \Frac(A)\).
-\end{theorem}
+%\begin{theorem}
+%Пусть \(A\) --- ассоциативное коммутативное унитальное целостное кольцо, такое что \(\Frac(A)\) цело над \(A\).
+%Тогда \(A = \Frac(A)\).
+%\end{theorem}
 
-\begin{proof}
-Пусть \(a \in A \setminus \{0\}\).
-Так как элемент \(a^{-1} \in \Frac(A)\) целый над \(A\), то \(a^{-n} \in \sum_{i=0}^{n-1} A a^{-i}\) для какого-то \(n \in \N_1\).
-Умножив это соотношение на \(a^{n-1}\), получаем, что \(a^{-1} \in A\).
-\end{proof}
+%\begin{proof}
+%Пусть \(a \in A \setminus \{0\}\).
+%Так как элемент \(a^{-1} \in \Frac(A)\) целый над \(A\), то \(a^{-n} \in \sum_{i=0}^{n-1} A a^{-i}\) для какого-то \(n \in \N_1\).
+%Умножив это соотношение на \(a^{n-1}\), получаем, что \(a^{-1} \in A\).
+%\end{proof}
 
-\begin{theorem}
-Пусть ассоциативное коммутативное унитальное целостное кольцо \(B\) цело над своим подкольцом \(A\).%
-\label{thm:hilbert_1}
-Тогда \(A\) является полем тогда и только тогда, когда \(B\) является полем.
-\end{theorem}
+%\begin{theorem}
+%Пусть ассоциативное коммутативное унитальное целостное кольцо \(B\) цело над своим подкольцом \(A\).%
+%\label{thm:hilbert_1}
+%Тогда \(A\) является полем тогда и только тогда, когда \(B\) является полем.
+%\end{theorem}
 
-\begin{proof}
-Если \(B\) --- поле, то \(\Frac(A) \subset B\) цело над \(A\), а потому совпадает с \(A\).
-Если \(A\) --- поле, то, \(\Frac(B)\) алгебраично над \(A\), а потому цело над \(B\), а потому совпадает с \(B\).
-\end{proof}
+%\begin{proof}
+%Если \(B\) --- поле, то \(\Frac(A) \subset B\) цело над \(A\), а потому совпадает с \(A\).
+%Если \(A\) --- поле, то, \(\Frac(B)\) алгебраично над \(A\), а потому цело над \(B\), а потому совпадает с \(B\).
+%\end{proof}
 
 %\begin{proof}[Доказательство (из двух частей)]
 %~\begin{proofdescription}
@@ -11866,9 +12351,9 @@ A,
 %\end{proofdescription} 
 %\end{proof}
 
-\begin{remark}
-Теорема~\ref{thm:hilbert_1} --- это частный случай того факта, что размерность Крулля не меняется при целых расширениях.
-\end{remark}
+%\begin{remark}
+%Теорема~\ref{thm:hilbert_1} --- это частный случай того факта, что размерность Крулля не меняется при целых расширениях.
+%\end{remark}
 
 \begin{observation}[\scshape Об областях Голдмана]
 Пусть \(A\) --- ассоциативное коммутативное унитальное целостное кольцо.%
@@ -11948,7 +12433,10 @@ A,
 
 \item[Часть <<тогда>>.]
 Пусть \(\mf{p} \subset A\) --- простой идеал.
-Тогда если \(A\)\=/алгебра \(\Frac(A / \mf{p})\) является конечно порождённой, то, согласно условию, она конечна над \(A\). По теореме~\ref{thm:hilbert_1} из этого следует, что \(\mf{p}\) --- максимальный идеал.
+Тогда если \(A\)\=/алгебра \(\Frac(A / \mf{p})\) является конечно порождённой, то, согласно условию, она конечна над \(A\). По
+%теореме~\ref{thm:hilbert_1}
+теореме~\secref{thm:IntExtField}
+из этого следует, что \(\mf{p}\) --- максимальный идеал.
 Согласно теореме~\ref{thm:JacRingCharFrac} мы доказали, что \(A\) --- кольцо Джекобсона.
 
 %\item[Часть <<тогда>>.]
@@ -11961,7 +12449,10 @@ A,
 а \((x_j)_{j \in J}\), где \(J \subset I\), --- максимальное алгебраически независимое над \(A\) подсемейство семейства \((x_i)_{i \in I}\).
 Для каждого индекса \(i \in I \setminus J\) пусть \(P_i \in A[x_j \smid j \in J][X_i]\) --- какое-то нетривиальное алгебраическое соотношение между \(x_i\) и \((x_j)_{j \in J}\),
 а \(f_i \in A[x_j \smid j \in J]\) --- старший по \(X_i\) коэффициент \(P_i\).
-Тогда поле \(K\) цело над кольцом \(A' \coloneqq A[x_j \smid j \in J][f_i^{-1} \smid i \in I \setminus J]\), откуда, по теореме~\ref{thm:hilbert_1}, следует, что \(A' = \Frac(A)(x_j \smid j \in J)\).
+Тогда поле \(K\) цело над кольцом \(A' \coloneqq A[x_j \smid j \in J][f_i^{-1} \smid i \in I \setminus J]\), откуда,
+%по теореме~\ref{thm:hilbert_1},
+по теореме~\secref{thm:IntExtField},
+следует, что \(A' = \Frac(A)(x_j \smid j \in J)\).
 Так как \(A'\) конечно порождено как \(A\)\=/алгебра,
 то \(A' = \Frac(A)\) согласно теореме~\ref{thm:FieldPolyFracInfGen} и \(\Frac(A) = A\) согласно теореме~\ref{thm:JacRingCharFrac}.
 Мы доказали, что \(K\) --- конечно порождённая целая, то есть конечная, алгебра над \(A\).
@@ -11993,7 +12484,9 @@ A,
 Идеал \(\mf{m}\) является ядром сквозного гомоморфизма \(A \to A / \mf{m} \to k^\mr{alg}\).
 
 \item[Часть 2.]
-Пусть \(\varphi: A \to k^\mr{alg}\) --- гомоморфизм над \(k\). Так как \(k\)\=/алгебра \(k^\mr{alg}\) целостная и целая над \(k\), то её подалгебра \(\varphi(A)\) --- тоже, поэтому \(\varphi(A)\) является полем по теореме~\ref{thm:hilbert_1}.
+Пусть \(\varphi: A \to k^\mr{alg}\) --- гомоморфизм над \(k\). Так как \(k\)\=/алгебра \(k^\mr{alg}\) целостная и целая над \(k\), то её подалгебра \(\varphi(A)\) --- тоже, поэтому \(\varphi(A)\) является полем
+%по теореме~\ref{thm:hilbert_1}.
+по теореме~\secref{thm:IntExtField}.
 \qedhere
 
 \end{proofparts}
