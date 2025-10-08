@@ -264,7 +264,9 @@
 \end{convention}
 
 \begin{notation}[\scshape Единицы мультипликативного моноида]
-Символ \(M^{\times}\) обозначает группу \emph{единиц}, то есть двусторонне мультипликативно обратимых элементов, мультипликативного моноида \(M\).
+Символ \(M^{\times}\) обозначает группу \emph{единиц}, то есть двусторонне мультипликативно обратимых элементов,%
+\label{not:UnitsMonoid}
+мультипликативного моноида \(M\).
 \end{notation}
 
 \begin{convention}[\scshape Левое и правое]
@@ -495,9 +497,14 @@ The \((\phantom{x}, \phantom{x})\) operation then turned out to be fundamental i
 \end{observation}
 
 \begin{notation}[\scshape Группоид изоморфизмов]
-Пусть \(\mc{C}\) --- категория.
+Пусть \(\mc{C}\) --- категория.%
+\label{not:UnitsCategory}
 Тогда через \(\mc{C}^{\times}\) обозначается подкатегория \(\mc{C}\), морфизмами которой являются в точности все изоморфизмы в \(\mc{C}\).
 \end{notation}
+
+\begin{remark}
+Обозначение~\ref{not:UnitsCategory} согласовано с обозначением~\ref{not:UnitsMonoid}.
+\end{remark}
 
 \subsection{Метрическая геометрия и топология}
 
@@ -11579,12 +11586,6 @@ M_{S_i S_j}.
 Тогда из теоремы~\ref{thm:JoinFinAlg} следует, что \(\Int_B(A)\) является \(A\)\=/подалгеброй в \(B\).
 \end{remark}
 
-\begin{definition}[\scshape Целозамкнутая область]
-Область целостности \(A\) называется \emph{целозамкнутой}, если
-%целое замыкание \(A\) в \(\Frac(A)\) совпадает с \(A\).
-\(\Int_{\Frac(A)}(A) = A\).
-\end{definition}
-
 \begin{definition}[\scshape Целый элемент]
 Пусть \(B\) --- алгебра над кольцом \(A\).
 Элемент \(b \in B\) называется \emph{целым} над \(A\), если
@@ -11637,6 +11638,12 @@ M_{S_i S_j}.
 
 \subsection{Целое замыкание и локализация}
 
+\begin{definition}[\scshape Целозамкнутая область]
+Область целостности \(A\) называется \emph{целозамкнутой}, если
+%целое замыкание \(A\) в \(\Frac(A)\) совпадает с \(A\).
+\(\Int_{\Frac(A)}(A) = A\).
+\end{definition}
+
 \begin{theorem}[\scshape Целое замыкание локализации]
 Пусть \(B\) --- алгебра над кольцом \(A\),
 а \(S \subset A\) --- мультипликативное множество.
@@ -11645,9 +11652,87 @@ M_{S_i S_j}.
 \(\Int_{S^{-1}B}(S^{-1}A) = S^{-1} \Int_B(A)\).
 \end{theorem}
 
-\begin{proof}
-Прямая проверка.
-\end{proof}
+\begin{proofparts}[Доказательство (из двух частей)]
+
+\item[Часть 1.]
+Пусть \(b \in \Int_B(A)\), а \(s \in S\).
+Тогда
+\begin{equation}
+b^n +
+a_1 b^{n-1} +
+%a_2 b^{n-2} +
+\cdots{} +
+a_n %b^0
+= 0
+\label{eq:IntDepFrac1}
+\end{equation}
+для какого-то семейства \((a_i)_{i=1}^n \in A^{\times n}\), где \(n \in \N_1\).
+Разделив уравнение~\eqref{eq:IntDepFrac1} на \(s^n\), получаем уравнение
+\begin{equation*}
+\Bigl(\frac{b}{s}\Bigr)^n
++
+\frac{a_1}{s} \Bigl(\frac{b}{s}\Bigr)^{n-1}
+%+
+%\frac{a_2}{s^2} \Bigl(\frac{b}{s}\Bigr)^{n-2}
++ \cdots +
+\frac{a_n}{s^n} %\Bigl(\frac{b}{s}\Bigr)^0
+= 0,
+\end{equation*}
+откуда следует, что
+\(\frac{b}{s} \in \Int_{S^{-1}B}(S^{-1}A)\).
+
+\item[Часть 2.]
+Пусть \(\frac{b}{s} \in \Int_{S^{-1}B}(S^{-1}A)\),
+где \(b \in B\) и \(s \in S\).
+Тогда
+\begin{equation}
+\Bigl(\frac{b}{s}\Bigr)^n
++
+\frac{a_1}{s_1} \Bigl(\frac{b}{s}\Bigr)^{n-1}
+%+
+%\frac{a_2}{s_2} \Bigl(\frac{b}{s}\Bigr)^{n-2}
++ \cdots +
+\frac{a_n}{s_n} %\Bigl(\frac{b}{s}\Bigr)^0
+= 0
+\label{eq:IntDepFrac2}
+\end{equation}
+для каких-то семейств
+\((a_i)_{i=1}^n \in A^{\times n}\)
+и
+\((s_i)_{i=1}^n \in S^{\times n}\),
+где \(n \in \N_1\).
+Приведя дроби
+\(
+\frac{b}{s},
+\frac{a_1}{s_1},
+%\frac{a_2}{s_2},
+\dots{},
+\frac{a_n}{s_n}
+\)
+к общему знаменателю,
+можно считать, что
+\(
+s =
+s_1 =
+%s_2 =
+\cdots{} =
+s_n
+\).
+Домножив уравнение~\eqref{eq:IntDepFrac2} на \(s^n\), получаем уравнение
+\begin{equation*}
+b^n +
+a_1 b^{n-1} +
+%a_2 s^1 b^{n-2} +
+\cdots +
+a_n s^{n-1} %b^0
+= 0,
+\end{equation*}
+откуда следует, что
+\(b \in \Int_B(A)\)
+и \(\frac{b}{s} \in S^{-1} \Int_B(A)\).
+\qedhere
+
+\end{proofparts}
 
 \begin{corollary}[\scshape Целозамкнутость наследуется локализациями]
 Пусть \(A\) --- целозамкнутая область целостности,
@@ -11698,6 +11783,28 @@ M_{S_i S_j}.
 для любого \(i \in I\) кольцо \(S_i^{-1}A\) целозамкнуто.
 Тогда \(A\) тоже целозамкнуто.
 \end{observation}
+
+\begin{theorem}[\scshape Целозамкнутость факториальных колец]
+Пусть \(A\) --- факториальное кольцо.
+Тогда \(A\) целозамкнуто.
+\end{theorem}
+
+\begin{proof}
+Пусть \(x \in \Int_{\Frac(A)}(A)\).
+Тогда
+\(x^n = \sum_{i=1}^n a_i x^{n-i}\),
+для какого-то семейства \((a_i)_{i=1}^n \in A^{\times n}\), где \(n \in \N_1\).
+Помимо этого существуют \(a, b \in A\),
+такие что \(x = \frac{a}{b}\)
+%и не существует простого элемента \(\pi \in A\), такого что \(p \mid a\) и \(p \mid b\).
+и \(Aa + Ab = A\).
+Предположим, что \(x \notin A\).
+Тогда \(b \notin A^{\times}\),
+а потому существует простой элемент \(\pi \in A\),
+такой что \(\pi \mid b\), но \(\pi \nmid a\),
+что противоречит соотношению
+\(a^n = \sum_{i=1}^n a_i a^{n-i} b^i\).
+\end{proof}
 
 \subsection{Теорема о несравнимости и теорема о подъёме}
 
@@ -11824,7 +11931,7 @@ M_{S_i S_j}.
 
 \begin{proof}
 Заметим, что кольцо \(B / \mf{q}\) является целой алгеброй над своим подкольцом \(A / \mf{p}\)
-и применим теорему~\ref{thm:IntegralLyingOver} к простому идеалу \(\mf{P} / \mf{p}\) кольца \(A / \mf{p}\).
+и применим теорему~\ref{thm:IntegralLyingOver} к простому идеалу \(\mf{P} / \mf{p}\) подкольца \(A / \mf{p}\) кольца \(B / \mf{q}\).
 \end{proof}
 
 \begin{observation}
@@ -12155,18 +12262,18 @@ M_{S_i S_j}.
 Тогда \(a = x / y\), где \(x \in \mf{p} B\), а \(y \in B \setminus \mf{Q}\).
 Так как \(y\) цел над \(A\), то минимальное уравнение \(y\) над \(K \coloneqq \Frac(A)\) имеет вид
 \(
-y^r + a_1 y^{r-1} + \cdots{} + a_r y^0 = 0
+y^n + a_1 y^{n-1} + \cdots{} + a_n y^0 = 0
 \),
-где \(r \in \N_1\), а \(a_1, \dots{}, a_r \in A\).
+где \(n \in \N_1\), а \(a_1, \dots{}, a_n \in A\).
 С другой стороны, так как \(a \in K^{\times}\), то минимальное уравнение \(x = ay\) над \(K\) имеет вид
 \(
-x^r + a_1 a^1 x^{r-1} + \cdots{} + a_r a^r x^0 = 0
+x^n + a_1 a^1 x^{n-1} + \cdots{} + a_n a^n x^0 = 0
 \),
-причём \(a_1 a^1, \dots{}, a_r a^r \in \mf{p}\),
+причём \(a_1 a^1, \dots{}, a_n a^n \in \mf{p}\),
 так как \(x \in \mf{p}B\) цел над \(\mf{p}\).
 Если \(a \notin \mf{p}\),
-то \(a_1, \dots{}, a_r \in \mf{p}\),
-а потому \(y^r \in \mf{p} B \subset \mf{Q}\),
+то \(a_1, \dots{}, a_n \in \mf{p}\),
+а потому \(y^n \in \mf{p} B \subset \mf{Q}\),
 что противоречит тому, что \(y \in B \setminus \mf{Q}\).
 \end{proof}
 
@@ -12723,7 +12830,7 @@ A,
 \section{Коммутативные положительные конусы}
 
 \begin{convention}
-В этом подразделе для моноидов по умолчанию используется мультипликативная запись.
+В этом разделе для моноидов по умолчанию используется мультипликативная запись.
 \end{convention}
 
 \begin{definition}[\scshape Коммутативный положительный конус]
