@@ -137,22 +137,32 @@
 	
 \renewcommand{\maketitlehookc}%
 	{\noindent\hrulefill\vfill
+
+%---
 	
-	\begin{tikzpicture}[%
-		remember picture,
-		overlay,
-		opacity=0.1,
-		]
-	\node at (current page.center)
-	{
-	\begin{tikzpicture}
-	\begin{scope}[transparency group]
-	\draw [line width=1cm] (-0.5\paperwidth,-0.5\paperheight) -- (0.5\paperwidth,0.5\paperheight);
-	\draw [line width=1cm] (0,0) circle [radius=0.35\paperwidth];
-	\end{scope}
-	\end{tikzpicture}
-	};
-	\end{tikzpicture}
+%	Фоновая картинка на титульной странице
+	
+%	\begin{tikzpicture}[%
+%		remember picture,
+%		overlay,
+%		opacity=0.1,
+%		]
+%	\node at (current page.center)
+%	{
+%	\begin{tikzpicture}
+%	\begin{scope}[transparency group]
+%	\draw [line width=1cm]
+%		(-0.5\paperwidth,-0.5\paperheight)
+%		--
+%		(0.5\paperwidth,0.5\paperheight);
+%	\draw [line width=1cm]
+%		(0,0) circle [radius=0.35\paperwidth];
+%	\end{scope}
+%	\end{tikzpicture}
+%	};
+%	\end{tikzpicture}
+
+%---
 	
 	\noindent\hrulefill
 	\begin{flushleft}%
