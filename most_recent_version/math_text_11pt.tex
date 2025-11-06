@@ -529,6 +529,10 @@ The \((\phantom{x}, \phantom{x})\) operation then turned out to be fundamental i
 Мы не включаем требование хаусдорфовости в определение компактного топологического пространства.
 \end{convention}
 
+\begin{notation}[\scshape Категория топологических пространств]
+Категория топологических пространств и непрерывных отображений обозначается \(\mr{Top}\).
+\end{notation}
+
 \begin{notation}[\scshape Функция расстояния]
 Расстояние между точками \(x'\) и \(x''\) в метрическом пространстве \(X\) часто будет обозначаться через \(\od_X(x',x'')\) или просто через \(\od(x',x'')\).
 \end{notation}
@@ -5157,6 +5161,62 @@ X \times [0,2]
 (X \times [1,2])
 \).
 \end{example}
+
+\begin{example}
+Пусть
+\(
+X \coloneqq
+\R \setminus (\Z \setminus \{0\})^{:(-1)} =
+\R \setminus \{\pm 1, \pm \frac{1}{2}, \pm \frac{1}{3}, \dots{}\}
+\).%
+\label{exa:TopProdPushout}
+Тогда каноническая непрерывная биекция
+\(
+Y' \coloneqq
+(\R \times X)
+\sqcup_{\Z \times X}
+(\pt \times X)
+\to
+Y'' \coloneqq
+(\R \sqcup_{\Z} \pt) \times X
+\)
+не является гомеоморфизмом,
+потому что образ
+%множества
+\(
+\Gamma \coloneqq
+\{(t,x) \in \R \times X \mid tx=1\}
+%\subset \R \times X
+\)
+в \(Y'\)
+замкнут,
+а образ
+\(\Gamma\)
+в \(Y''\)
+не замкнут,
+так как его замыкание
+содержит образ точки
+\((0,0) \in \R \times X\).
+\end{example}
+
+\begin{observation}
+Пример~\ref{exa:TopProdPushout} показывает,%
+\label{obs:TopProdNoRightAdj}
+что функтор
+декартова произведения
+\(- \times X : \mr{Top} \to \mr{Top}\),
+где
+\(
+X \coloneqq
+%\R \setminus (\Z^{\times})^{:(-1)} =
+\R \setminus \{\pm 1, \pm \frac{1}{2}, \pm \frac{1}{3}, \dots{}\}
+\),
+не сохраняет пушауты, откуда следует, что он не имеет правого сопряжённого.
+\end{observation}
+
+\begin{remark}
+Наблюдение~\ref{obs:TopProdNoRightAdj} не понадобится в этом разделе.
+\end{remark}
 
 \begin{lemma}
 Пусть \(E\) и \(X\) --- два топологических пространства,
