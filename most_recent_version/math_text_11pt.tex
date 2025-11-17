@@ -222,6 +222,15 @@
 Символ <<\(\in\)>> происходит от повёрнутой на \(180^{\circ}\) кириллической буквы <<э>>, первой буквы слова <<это>>: <<\(x \in \R\)>> --- <<\(x\) --- это вещественное число>>. Шутка. На самом деле это стилизованная греческая буква \(\epsilon\), первая буква слова <<ἐστί>> --- <<ѥстъ>>/<<єстъ>>/<<есть>>.
 \end{remark}
 
+\begin{notation}[\scshape Образ как подмножество]
+Образ подмножества \(X \subset Y\) под действием отображения
+\(f : Y \to Z\)
+иногда будет обозначаться через
+\(\{f(x) \in Z \mid x \in X\}\)
+или
+\(\{f(x) \mid x \in X\}\).
+\end{notation}
+
 \begin{notation}[\scshape Образ в экспоненциальном обозначении]
 Образ подмножества \(X \subset Y\) под действием%
 \label{not:im_exp_not}
@@ -2874,8 +2883,9 @@ F,
 В этом разделе \(\Hom\) без индексов обозначает \(\Hom\) как абелевых групп. То же верно насчёт \(\otimes\) и \(\End\).
 \end{notation}
 
-\begin{definition}[\scshape Тензорное произведение] \label{def:AbTensorProd}
-Определим \emph{тензорное произведение} конечного семейства абелевых групп \((V_i)_{i \in I}\) как абелеву группу \(\bigotimes_{i \in I} V_i\),
+\begin{definition}[\scshape Тензорное произведение]
+Определим \emph{тензорное произведение} конечного семейства абелевых групп \((V_i)_{i \in I}\) как абелеву группу \(\bigotimes_{i \in I} V_i\),%
+\label{def:AbTensorProd}
 заданную образующими --- формальными произведениями \(\bigotimes_{i \in I} v_i\),
 биективными семействам \((v_i)_{i \in I} \in \prod_{i \in I} V_i\),
 %--- и соотношениями дистрибутивности ---
@@ -2892,10 +2902,24 @@ v''_{\otimes e} \otimes (\bigotimes_{i \in I \setminus \{e\}} v_i),
 \end{definition}
 
 \begin{remark}
-Индекс \(\otimes e\) в выражении \(v'_{\otimes e}\), называемый \emph{позиционным индексом}, указывает на место \(v'\) в формальном произведении. 
-%Вот ещё один пример использования позиционных индексов:
-%\(V^{\otimes I} = \bigotimes_{i \in I} V_{\otimes i}\).
+Индекс \(\otimes e\) в выражениях \(v'_{\otimes e}\), \(v''_{\otimes e}\) и \((v' + v'')_{\otimes e}\) из определения~\ref{def:AbTensorProd}, называемый \emph{позиционным индексом}, указывает на место соответствующих элементов в формальном произведении.
 Группировка тензорных мономов считается ясной из контекста.
+\end{remark}
+
+\begin{remark}
+Пусть \((V_i)_{i \in I}\) --- конечное семейство абелевых групп.
+Тогда для любого семейства \((v_i)_{i \in I} \in \prod_{i \in I} V_i\) запись \(\bigotimes_{i \in I} v_i\) является сокращённой формой записи \(\bigotimes_{i \in I} v_{i, \otimes i}\).
+То же касается записи \(\bigotimes_{i \in I} V_i\).
+\end{remark}
+
+\begin{remark}
+Если \((V_i)_{i \in I}\) --- конечное семейство абелевых групп, то отображение
+\(
+(v_i)_{i \in I} \mapsto \bigotimes_{i \in I} v_i :
+\prod_{i \in I} V_i \to \bigotimes_{i \in I} V_i
+\)
+является универсальным полиаддитивным отображением из \(\prod_{i \in I} V_i\) в абелеву группу
+--- это определение~\ref{def:AbTensorProd}, сказанное другими словами.
 \end{remark}
 
 \begin{observation}
@@ -2942,8 +2966,9 @@ a \otimes v \mapsto av :
 \).
 \end{statement}
 
-\begin{statement}[\scshape Дистрибутивность \(\otimes\)] \label{sta:TensorDistr}
-Пусть \(\pi : I \to J\) --- отображение множеств, \(J\) конечно, \((V_i)_{i \in I}\) --- семейство абелевых групп.
+\begin{statement}[\scshape Дистрибутивность \(\otimes\)]
+Пусть \(\pi : I \to J\) --- отображение множеств, \(J\) конечно, \((V_i)_{i \in I}\) --- семейство абелевых групп.%
+\label{sta:TensorDistr}
 Пусть \(\op{Sec}(\pi) \coloneqq \{\sigma : J \to I \mid \pi \circ \sigma = \mathrm{Id}_J\}\).
 Тогда проекции на слагаемые и вложения слагаемых прямых сумм индуцируют пару взаимно обратных гомоморфизмов:
 \(
@@ -2957,8 +2982,9 @@ a \otimes v \mapsto av :
 \).
 \end{statement}
 
-\begin{statement}[\scshape Точность справа \(\otimes\)] \label{sta:TensorRightExact}
-Пусть \(I\) --- конечное множество, \((V_i)_{i \in I}\) и \((U_i)_{i \in I}\) --- семейства абелевых групп, причём \(U_i\) является подгруппой \(V_i\) для любого \(i \in I\).
+\begin{statement}[\scshape Точность справа \(\otimes\)]
+Пусть \(I\) --- конечное множество, \((V_i)_{i \in I}\) и \((U_i)_{i \in I}\) --- семейства абелевых групп, причём \(U_i\) является подгруппой \(V_i\) для любого \(i \in I\).%
+\label{sta:TensorRightExact}
 Тогда следующая последовательность с очевидным образом определёнными гомоморфизмами точна:
 \[
 \textstyle
@@ -2983,10 +3009,11 @@ a \otimes v \mapsto av :
 (\bigotimes_{i \in I} v_i) + \mathcal{U}
 \).
 Определение корректно --- образ
+формального произведения
 \(\bigotimes_{i \in I} (v_i + U_i)\) зависит только от классов \(v_i + U_i \in V_i/U_i\), где \(i \in I\).
 \end{proof}
 
-\begin{example}
+\begin{example}[\scshape Факторизация по двустороннему идеалу]
 Пусть \(R\) --- кольцо, а \(\mf{I} \subset R\) --- аддитивная подгруппа, такая что \(R\mf{I} + \mf{I}R \subset \mf{I}\), то есть двусторонний идеал. Тогда отображение умножения \(R \otimes R \to R\) индуцирует отображение \((R/\mf{I}) \otimes (R/\mf{I}) \cong (R \otimes R) / (R \otimes \mf{I} + \mf{I} \otimes R) \to R/\mf{I}\).
 \end{example}
 
@@ -3026,7 +3053,7 @@ a \otimes v \mapsto av :
 %\end{proof}
 
 \begin{statement}[\scshape Ассоциативность \(\otimes\)]
-Пусть \(\pi : I \to J\) --- отображение конечных множеств, \((V_i)_{i \in I}\) --- семейство абелевых групп.
+Пусть \(\pi : I \to J\) --- отображение конечных множеств, \((V_i)_{i \in I}\) --- семейство абелевых групп.%
 \label{sta:TensorAbAss}
 Тогда имеем следующий изоморфизм:
 \begin{equation}\label{eq:TensorAssIso}
@@ -3255,9 +3282,10 @@ M / (rm = mr \mid r \in R,\ m \in M),
 %\end{definition}
 
 \begin{definition}[\scshape Система коэффициентов]
-Пусть \(I\) --- конечное множество.
+Пусть \(I\) --- конечное множество.%
 \label{def:TensorSysCoeff}
-Тогда будем называть \emph{системой коэффициентов} семейство ассоциативных унитальных колец \((R_{i,i'})_{(i,i') \in I^{\times 2} \setminus \Delta}\), такое что \(R_{i,i'} = R_{i',i}^o\) для всех \((i,i') \in I^{\times 2} \setminus \Delta\).
+Тогда будем называть \emph{системой коэффициентов} семейство ассоциативных унитальных колец \((R_{i,i'})_{(i,i') \in I^{\times 2} \setminus \Delta}\), такое что \(R_{i,i'} = R_{i',i}^o\) для всех \((i,i') \in I^{\times 2} \setminus \Delta\),
+где \(\Delta \coloneqq \{(i,i) \in I^{\times 2} \mid i \in I\}\) --- диагональ \(I^{\times 2}\).
 \end{definition}
 
 \begin{definition}[\scshape Действие системы коэффициентов]
@@ -5166,7 +5194,8 @@ X \times [0,2]
 Пусть
 \(
 X \coloneqq
-\R \setminus (\Z \setminus \{0\})^{:(-1)} =
+%\R \setminus (\Z \setminus \{0\})^{:(-1)} =
+\R \setminus (1 / (\Z \setminus \{0\})) =
 \R \setminus \{\pm 1, \pm \frac{1}{2}, \pm \frac{1}{3}, \dots{}\}
 \).%
 \label{exa:TopProdPushout}
@@ -5185,7 +5214,7 @@ Y'' \coloneqq
 %множества
 \(
 \Gamma \coloneqq
-\{(t,x) \in \R \times X \mid tx=1\}
+\{(t,x) \in Y \coloneqq \R \times X \mid tx=1\}
 %\subset \R \times X
 \)
 в \(Y'\)
@@ -5195,8 +5224,9 @@ Y'' \coloneqq
 в \(Y''\)
 не замкнут,
 так как его замыкание
-содержит образ точки
-\((0,0) \in \R \times X\).
+содержит образ
+%точки \((0,0) \in Y\).
+множества \(\Z \times \{0\} \subset Y\).
 \end{example}
 
 \begin{observation}
@@ -5208,8 +5238,8 @@ Y'' \coloneqq
 где
 \(
 X \coloneqq
-%\R \setminus (\Z^{\times})^{:(-1)} =
-\R \setminus \{\pm 1, \pm \frac{1}{2}, \pm \frac{1}{3}, \dots{}\}
+\R \setminus \{\frac{1}{n} \mid n \in \Z \setminus \{0\}\}
+%\R \setminus \{\pm 1, \pm \frac{1}{2}, \pm \frac{1}{3}, \dots{}\}
 \),
 не сохраняет пушауты, откуда следует, что он не имеет правого сопряжённого.
 \end{observation}
@@ -5246,7 +5276,7 @@ X \times [\frac{1}{2}, 1]
 X \times \{\frac{1}{2}\}
 \)
 --- произвольная ретракция,
-то \(E_1 \cong r^*(E_{01})\),
+то \(E_1 \simeq r^*(E_{01})\),
 потому что \(E_1\) тривиализуемо.
 Отсюда получаем, что ограничение тривиализации
 \(E_0\) на \(E_{01}\) продолжается до тривиализации \(E_1\).
@@ -5590,13 +5620,18 @@ E \times_B (D^q \times [0,1])
 D^q \times [0,1]
 \),
 а \(\tilde{h}_0\)
-на сечение
+--- на сечение
 \(D^q \times \{0\} \to h^*(E)\),
 индуцированное
 \(\tilde{h}_0\) и \(\iota\),
 сводим теорему к случаю
 \(B = D^q \times [0,1]\) и \(h = \Id\).
-В этом случае расслоение \(p\) тривиализуемо по лемме~\ref{lem:FeldbauTheorem} (теореме Фельдбау) и теорема совершенно очевидна.
+В этом случае расслоение \(p\) тривиализуемо по лемме~\ref{lem:FeldbauTheorem} (теореме Фельдбау)
+%и теорема совершенно очевидна.
+и теорема сводится к очевидному утверждению,
+что вложение \(\iota\) обратимо слева,
+то есть \(D^q \times \{0\}\)
+является ретрактом \(D^q \times [0,1]\).
 \end{proof}
 
 
@@ -16868,6 +16903,249 @@ V_{\Z}  \coloneqq
 \begin{observation}
 Классические кольца комплексных чисел \(\C\), кватернионов \(\Bbb H\) и октонионов \(\Bbb O\) получаются из действительных чисел \(\R\) последовательными применениями удвоения Кэли\namedash{}Диксона относительно \(-1\).
 \end{observation}
+
+
+\section{Цепной комплекс градуированной категории}
+
+\begin{notation}[\scshape Омега]
+Первый бесконечный ординал, как обычно, обозначается символом \(\omega\).
+\end{notation}
+
+\begin{definition}[\scshape Неразложимый морфизм]
+Морфизм называется \emph{неразложимым}, если он не является тождественным морфизмом и не представляется в виде композиции двух не тождественных морфизмов.
+\end{definition}
+
+\begin{definition}[\scshape Градуированная категория]
+Категория \(\mc{S}\) называется \emph{градуированной},%
+\label{def:GradedCat}
+если
+в \(\mc{S}\) есть начальный объект,
+любой морфизм в \(\mc{S}\) представляется в виде композиции неразложимых морфизмов
+и существует
+с необходимостью единственный
+функтор \(\mc{S} \to \omega\),
+переводящий неразложимые морфизмы в неразложимые морфизмы
+и начальный объект в начальный объект,
+называемый \emph{градуировкой}.
+\end{definition}
+
+\begin{example}
+Пусть \(\Delta'\) --- это категория конечных ординалов фон Неймана и сохраняющих порядок инъективных отображений между ними.
+Тогда \(\Delta'\) --- это градуированная категория
+в смысле определения~\ref{def:GradedCat}.
+\end{example}
+
+\begin{example}
+Пусть \(K'\) --- это упорядоченное по включению множество множеств, все элементы которого конечны, содержащее в качестве элементов все подмножества своих элементов,
+то есть \(K'\) --- это абстрактный симплициальный комплекс с добавленным пустым симплексом.
+Тогда \(K'\) --- это градуированная категория
+в смысле определения~\ref{def:GradedCat}.
+\end{example}
+
+\begin{definition}[\scshape Элементарные цепи]
+Пусть \(\mc{S}\) --- малая градуированная категория,
+а \(Q\) --- множество её неразложимых морфизмов.
+Тогда для любого \(s \in \Ob(\mc{S})\) определим абелеву группу
+\emph{элементарных цепей}
+\(C_s\) и
+\emph{гомоморфизм границы}
+\(
+\6_s :
+C_s
+\to
+\bigoplus_{\varphi \in Q \suchthat \Cod(\varphi) = s}
+C_{\Dom(\varphi)}
+\)
+по индукции как ядро сквозного гомоморфизма
+\begin{equation*}
+\bigoplus_{%
+	\substack{%
+		\varphi \in Q \\ %
+		\Cod(\varphi) = s}}
+C_{\Dom(\varphi)}
+\to
+\bigoplus_{%
+	\substack{%
+	\varphi \in Q \\ %
+	\Cod(\varphi) = s}}
+\bigoplus_{%
+	\substack{%
+		\psi \in Q \\ %
+		\Cod(\psi) = \Dom(\varphi)}}
+C_{\Dom(\psi)}
+\to
+\bigoplus_{%
+	\substack{%
+		\theta \in Q \circ Q \\ %
+		\Cod(\theta) = s}}
+C_{\Dom(\theta)},
+\label{eq:ElemBoundHomOne}
+\end{equation*}
+где
+\(Q \circ Q \coloneqq \{\varphi \circ \psi \in \Ar(\mc{S}) \mid \varphi, \psi \in Q,\  \Cod(\psi) = \Dom(\varphi)\}\),
+первая стрелка --- это
+\(
+\bigoplus_{\varphi \in Q \suchthat \Cod(\varphi) = s}
+\6_{\Dom(\varphi)}
+\),
+а вторая стрелка --- это
+свёртка,
+то есть суммирование по слоям отображения композиции
+\[
+	\{%
+		(\varphi, \psi) \in %
+			Q \t*[^{\mr{Dom}}]{\times}{^{\mr{Cod}}} Q
+		\mid %
+		\Cod(\varphi) = s %
+	\}
+	\xrightarrow{%
+		(\varphi, \psi)
+		\mapsto
+		\varphi \circ \psi}
+	\{%
+		\theta \in Q \circ Q %
+		\mid %
+		\Cod(\theta) = s%
+	\}.
+\]
+В качестве базы индукции \(C_o \coloneqq \Z\),
+где \(o \in \Ob(\mc{S})\) --- начальный объект.
+\end{definition}
+
+\begin{definition}[\scshape Элементарные цепи с коэффициентами]
+Пусть \(\mc{S}\) --- малая градуированная категория
+с множеством неразложимых морфизмов \(Q\),
+а \(F : \mc{S}^o \to \mr{Ab}\) --- функтор
+в категорию абелевых групп.
+%называемый функтором коэффициентов.
+Тогда
+для любого \(s \in \Ob(\mc{S})\)
+определим группу
+\(C_s^F\)
+\emph{элементарных цепей с коэффициентами в \(F\)}
+как
+\(F(s) \otimes_{\Z} C_s\),
+а \emph{гомоморфизм границы}
+\(
+\6_s^F :
+C_s^F
+\to
+\bigoplus_{\varphi \in Q \suchthat \Cod(\varphi) = s}
+C_{\Dom(\varphi)}^F
+\)
+как композицию
+\(\Id_{F(s)} \otimes \6_s\),
+изоморфизма дистрибутивности и
+\(
+\bigoplus_{%
+	\varphi \in Q %
+	\suchthat %
+	\Cod(\varphi) = s}
+(F(\varphi^o) \otimes \Id_{C_{\Dom(\varphi)}})
+\).
+%\begin{gather*}
+%	\Id_{F(s)} \otimes_{\Z} \6_s
+%	:
+%	F(s) \otimes_{\Z} C_s
+%	\to
+%	F(s) \otimes_{\Z}
+%	\bigoplus_{%
+%		\mathclap{%
+%			\substack{%
+%				\varphi \in Q \\ %
+%				\Cod(\varphi) = s}}}
+%	C_{\Dom(\varphi)}
+%	\\
+%	\bigoplus_{%
+%		\mathclap{%
+%			\substack{%
+%				\varphi \in Q \\ %
+%				\Cod(\varphi) = s}}}
+%	F(\varphi^o) \otimes \Id
+%	:
+%	\bigoplus_{%
+%		\mathclap{%
+%			\substack{%
+%				\varphi \in Q \\ %
+%				\Cod(\varphi) = s}}}
+%	F(s) \otimes_{\Z} C_{\Dom(\varphi)}
+%	\to
+%	\bigoplus_{%
+%		\mathclap{%
+%			\substack{%
+%				\varphi \in Q \\ %
+%				\Cod(\varphi) = s}}}
+%	F(\Dom(\varphi)) \otimes_{\Z} C_{\Dom(\varphi)}
+%\end{gather*}
+\end{definition}
+
+\begin{definition}[\scshape Цепной комплекс градуированной категории]
+Пусть \(\mc{S}\) --- малая градуированная категория
+с функтором градуировки
+\(r : \mc{S} \to \Z_{\geq -1} \cong \omega\)
+и множеством неразложимых морфизмов \(Q\),
+а \(F : \mc{S}^o \to \mr{Ab}\) --- функтор
+в категорию абелевых групп.
+%называемый функтором коэффициентов.
+Тогда определим \emph{цепной комплекс \(\mc{S}\) с коэффициентами в \(F\)}
+как комплекс с группами \(n\)\=/цепей
+\(
+C_n \coloneqq
+\bigoplus_{s \in \Ob(\mc{S}) \suchthat r(s) = n}
+C_s^F
+\)
+и дифференциалами
+\(\6_n : C_n \to C_{n-1}\),
+где \(n \in \Z_{\geq -1}\),
+определёнными как сквозные отображения
+\begin{equation*}
+	\bigoplus_{%
+		\substack{%
+			s \in \Ob(\mc{S}) \\ %
+			r(s) = n}}
+	C_s^F
+	\to
+	\bigoplus_{%
+		\substack{%
+			s \in \Ob(\mc{S}) \\ %
+			r(s) = n}}
+	\bigoplus_{%
+		\substack{%
+			\varphi \in Q \\ %
+			\Cod(\varphi) = s}}
+	C_{\Dom(\varphi)}^F
+	\to
+	\bigoplus_{%
+		\substack{%
+			s \in \Ob(\mc{S}) \\ %
+			r(s) = n - 1}}
+	C_s^F,
+\end{equation*}
+где первая стрелка --- это
+\(
+\bigoplus_{%
+	s \in \Ob(\mc{S}) %
+	\suchthat %
+	r(s) = n}
+\6_s^F
+\),
+а вторая стрелка --- это гомоморфизм суммирования по слоям отображения
+\(
+(s, \varphi) \mapsto \Dom(\varphi) :
+\{
+(s, \varphi) \in \Ob(\mc{S}) \times Q
+\mid
+r(s) = n,\ 
+\Cod(\varphi) = s
+\}
+\to
+\{
+s \in \Ob(\mc{S})
+\mid
+r(s) = n - 1
+\}
+\).
+\end{definition}
 
 
 
