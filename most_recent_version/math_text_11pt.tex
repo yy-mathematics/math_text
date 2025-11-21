@@ -5635,6 +5635,349 @@ D^q \times [0,1]
 \end{proof}
 
 
+\section%
+[Цепной комплекс \texorpdfstring{\(\WTbm{\omega}\)\=/градуированной}{омега-градуированной} диаграммы абелевых групп]%
+[Цепной комплекс \texorpdfstring{\(\WTbm{\omega}\)\=/градуированной}{омега-градуированной} диагр.\ аб.\ групп]%
+{Цепной комплекс \texorpdfstring{\(\WTbm{\omega}\)\=/градуированной}{омега-градуированной} диаграммы абелевых групп}
+
+\begin{sectionintro}
+В этом разделе изложена моя попытка придать смысл стандартному визуальному образу, связанному с понятием ориентированного симплекса, изображённому на рисунке~\ref{fig:OrientedSimplexes}.
+\end{sectionintro}
+
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}
+	
+	\coordinate (A) at (210:1cm);
+	\coordinate (B) at (330:1cm);
+	\coordinate (C) at (90:1cm);
+	
+	\newlength{\arrowdist}
+	\newlength{\labeldist}
+	\newlength{\circlerad}
+	\newlength{\shiftrad}
+	
+	\setlength{\arrowdist}{4pt}
+	\setlength{\labeldist}{10pt}
+	\setlength{\circlerad}{2pt}
+	\setlength{\shiftrad}{3pt}
+	
+	\fill	(A) circle [radius = \circlerad]
+			(B) circle [radius = \circlerad]
+			(C) circle [radius = \circlerad];
+	
+	\begin{scope}[->, semithick]
+	\draw []
+		($(A)!\arrowdist!(B)$) -- ($(B)!\arrowdist!(A)$);
+	\draw []
+		($(B)!\arrowdist!(C)$) -- ($(C)!\arrowdist!(B)$);
+	\draw []
+		($(C)!\arrowdist!(A)$) -- ($(A)!\arrowdist!(C)$);
+	\end{scope}
+	
+	\begin{scope}[
+		inner sep = 0pt,
+		outer sep = 0pt,
+		text depth = 0pt,
+		minimum width = 15pt,
+		minimum height = 10.5pt,
+		]
+	\node (node Ab) [anchor = north]
+		at ([shift = {(270:\shiftrad)}] A) {\(-1\)};
+	\node (node aB) [anchor = north]
+		at ([shift = {(270:\shiftrad)}] B) {\(+1\)};
+	\node (node Bc) [anchor = south west]
+		at ([shift = {(30:\shiftrad)}] B) {\(-1\)};
+	\node (node bC) [anchor = south west]
+		at ([shift = {(30:\shiftrad)}] C) {\(+1\)};
+	\node (node Ca) [anchor = south east]
+		at ([shift = {(150:\shiftrad)}] C) {\(-1\)};
+	\node (node cA) [anchor = south east]
+		at ([shift = {(150:\shiftrad)}] A) {\(+1\)};
+	\end{scope}
+	
+	\tikzmath{\secpicshift = (1/3) * \textwidth;}
+	
+	\coordinate (M) at ($(A)!0.5!(B)$);
+	\coordinate (N) at ($(M)!0.5!(C)$);
+	\coordinate (S) at ($(N)-(M)$);
+	\coordinate (D') at ($(A) + (S)$);
+	\coordinate (E') at ($(B) + (S)$);
+	\coordinate (D) at ([xshift = (-\secpicshift)] D');
+	\coordinate (E) at ([xshift = (-\secpicshift)] E');
+	
+	\fill	(D) circle [radius = \circlerad]
+			(E) circle [radius = \circlerad];
+	
+	\draw [->, semithick]
+		($(D)!\arrowdist!(E)$) -- ($(E)!\arrowdist!(D)$);
+	
+	\begin{scope}[
+		inner sep = 0pt,
+		outer sep = 0pt,
+		text depth = 0pt,
+		minimum width = 15pt,
+		minimum height = 10.5pt,
+		]
+	\node (node De) [anchor = north]
+		at ([shift = {(270:\shiftrad)}] D) {\(-1\)};
+	\node (node dE) [anchor = north]
+		at ([shift = {(270:\shiftrad)}] E) {\(+1\)};
+	\end{scope}
+	
+	\end{tikzpicture}
+	\caption{Ориентированные симплексы}
+	\label{fig:OrientedSimplexes}
+\end{figure}
+
+\begin{notation}[\scshape Омега]
+Первый бесконечный ординал, как обычно, обозначается символом \(\omega\).
+\end{notation}
+
+\begin{definition}[\scshape Неразложимый морфизм]
+Морфизм называется \emph{неразложимым}, если он не является тождественным морфизмом и не представляется в виде композиции двух не тождественных морфизмов.
+\end{definition}
+
+\begin{definition}[\scshape \(\omega\)\=/Градуированная категория]
+Категория \(\mc{S}\) называется \emph{\(\omega\)\=/градуированной},%
+\label{def:GradedCat}
+если
+в \(\mc{S}\) есть начальный объект,
+любой морфизм в \(\mc{S}\) представляется в виде композиции неразложимых морфизмов
+и существует
+с необходимостью единственный
+функтор \(\mc{S} \to \omega\),
+переводящий неразложимые морфизмы в неразложимые морфизмы
+и начальный объект в начальный объект,
+называемый \emph{\(\omega\)\=/градуировкой}.
+\end{definition}
+
+\begin{example}
+Пусть \(\Delta'\) --- это категория конечных ординалов фон Неймана и сохраняющих порядок инъективных отображений между ними.%
+\label{ex:CatDeltaAlt}
+Тогда \(\Delta'\) --- это \(\omega\)\=/градуированная категория
+в смысле определения~\ref{def:GradedCat}.
+\end{example}
+
+\begin{example}
+Пусть \(K'\) --- это упорядоченное по включению множество множеств, все элементы которого конечны, содержащее в качестве элементов все подмножества своих элементов,
+то есть \(K'\) --- это абстрактный симплициальный комплекс с добавленным пустым симплексом.%
+\label{ex:AbstrSimplComplAlt}
+Тогда \(K'\) --- это \(\omega\)\=/градуированная категория
+в смысле определения~\ref{def:GradedCat}.
+\end{example}
+
+\begin{definition}[\scshape Элементарные цепи]
+Пусть \(\mc{S}\) --- малая \(\omega\)\=/градуированная категория,
+а \(Q\) --- множество её неразложимых морфизмов.%
+\label{def:ElemChains}
+Тогда для любого \(s \in \Ob(\mc{S})\) определим абелеву группу
+\emph{элементарных цепей}
+\(C_s\) и
+\emph{гомоморфизм границы}
+\(
+\6_s :
+C_s
+\to
+\bigoplus_{\varphi \in Q \suchthat \Cod(\varphi) = s}
+C_{\Dom(\varphi)}
+\)
+по индукции как ядро сквозного гомоморфизма
+\begin{equation*}
+\bigoplus_{%
+	\substack{%
+		\varphi \in Q \\ %
+		\Cod(\varphi) = s}}
+C_{\Dom(\varphi)}
+\to
+\bigoplus_{%
+	\substack{%
+	\varphi \in Q \\ %
+	\Cod(\varphi) = s}}
+\bigoplus_{%
+	\substack{%
+		\psi \in Q \\ %
+		\Cod(\psi) = \Dom(\varphi)}}
+C_{\Dom(\psi)}
+\to
+\bigoplus_{%
+	\substack{%
+		\theta \in Q \circ Q \\ %
+		\Cod(\theta) = s}}
+C_{\Dom(\theta)},
+\label{eq:ElemBoundHomOne}
+\end{equation*}
+где
+\(Q \circ Q \coloneqq \{\varphi \circ \psi \in \Ar(\mc{S}) \mid \varphi, \psi \in Q,\  \Cod(\psi) = \Dom(\varphi)\}\),
+первая стрелка --- это
+\(
+\bigoplus_{\varphi \in Q \suchthat \Cod(\varphi) = s}
+\6_{\Dom(\varphi)}
+\),
+а вторая стрелка --- это
+свёртка,
+то есть суммирование по слоям отображения композиции
+\[
+	\{%
+		(\varphi, \psi) \in %
+			Q \t*[^{\mr{Dom}}]{\times}{^{\mr{Cod}}} Q
+		\mid %
+		\Cod(\varphi) = s %
+	\}
+	\xrightarrow{%
+		(\varphi, \psi)
+		\mapsto
+		\varphi \circ \psi}
+	\{%
+		\theta \in Q \circ Q %
+		\mid %
+		\Cod(\theta) = s%
+	\}.
+\]
+В качестве базы индукции \(C_o \coloneqq \Z\),
+где \(o \in \Ob(\mc{S})\) --- начальный объект.
+\end{definition}
+
+\begin{remark}
+Рисунок~\ref{fig:OrientedSimplexes} является иллюстрацией к определению~\ref{def:ElemChains} для примеров~\ref{ex:CatDeltaAlt} и \ref{ex:AbstrSimplComplAlt}.
+\end{remark}
+
+\begin{definition}[\scshape Элементарные цепи с коэффициентами]
+Пусть \(\mc{S}\) --- малая \(\omega\)\=/градуированная категория
+с множеством неразложимых морфизмов \(Q\),
+а \(F : \mc{S}^o \to \mr{Ab}\) --- функтор
+в категорию абелевых групп.
+%называемый функтором коэффициентов.
+Тогда
+для любого \(s \in \Ob(\mc{S})\)
+определим группу
+\(C_s^F\)
+\emph{элементарных цепей с коэффициентами в \(F\)}
+как
+\(F(s) \otimes_{\Z} C_s\),
+а \emph{гомоморфизм границы}
+\(
+\6_s^F :
+C_s^F
+\to
+\bigoplus_{\varphi \in Q \suchthat \Cod(\varphi) = s}
+C_{\Dom(\varphi)}^F
+\)
+как композицию
+\(\Id_{F(s)} \otimes \6_s\),
+изоморфизма дистрибутивности и
+\(
+\bigoplus_{%
+	\varphi \in Q %
+	\suchthat %
+	\Cod(\varphi) = s}
+(F(\varphi^o) \otimes \Id_{C_{\Dom(\varphi)}})
+\).
+%\begin{gather*}
+%	\Id_{F(s)} \otimes_{\Z} \6_s
+%	:
+%	F(s) \otimes_{\Z} C_s
+%	\to
+%	F(s) \otimes_{\Z}
+%	\bigoplus_{%
+%		\mathclap{%
+%			\substack{%
+%				\varphi \in Q \\ %
+%				\Cod(\varphi) = s}}}
+%	C_{\Dom(\varphi)}
+%	\\
+%	\bigoplus_{%
+%		\mathclap{%
+%			\substack{%
+%				\varphi \in Q \\ %
+%				\Cod(\varphi) = s}}}
+%	F(\varphi^o) \otimes \Id
+%	:
+%	\bigoplus_{%
+%		\mathclap{%
+%			\substack{%
+%				\varphi \in Q \\ %
+%				\Cod(\varphi) = s}}}
+%	F(s) \otimes_{\Z} C_{\Dom(\varphi)}
+%	\to
+%	\bigoplus_{%
+%		\mathclap{%
+%			\substack{%
+%				\varphi \in Q \\ %
+%				\Cod(\varphi) = s}}}
+%	F(\Dom(\varphi)) \otimes_{\Z} C_{\Dom(\varphi)}
+%\end{gather*}
+\end{definition}
+
+\begin{definition}[\scshape Цепной комплекс \(\omega\)\=/градуированной диаграммы абелевых групп]
+Пусть \(\mc{S}\) --- малая \(\omega\)\=/градуированная категория
+с \(\omega\)\=/градуировкой
+\(r : \mc{S} \to \Z_{\geq -1} \cong \omega\)
+и множеством неразложимых морфизмов \(Q\),
+а \(F : \mc{S}^o \to \mr{Ab}\) --- функтор
+в категорию абелевых групп.
+%называемый функтором коэффициентов.
+Тогда определим \emph{цепной комплекс \(\mc{S}\) с коэффициентами в \(F\)}
+как комплекс с группами \(n\)\=/цепей
+\(
+C_n \coloneqq
+\bigoplus_{s \in \Ob(\mc{S}) \suchthat r(s) = n}
+C_s^F
+\)
+и дифференциалами
+\(\6_n : C_n \to C_{n-1}\),
+где \(n \in \Z\),
+определёнными как сквозные отображения
+\begin{equation*}
+	\bigoplus_{%
+		\substack{%
+			s \in \Ob(\mc{S}) \\ %
+			r(s) = n}}
+	C_s^F
+	\to
+	\bigoplus_{%
+		\substack{%
+			s \in \Ob(\mc{S}) \\ %
+			r(s) = n}}
+	\bigoplus_{%
+		\substack{%
+			\varphi \in Q \\ %
+			\Cod(\varphi) = s}}
+	C_{\Dom(\varphi)}^F
+	\to
+	\bigoplus_{%
+		\substack{%
+			s \in \Ob(\mc{S}) \\ %
+			r(s) = n - 1}}
+	C_s^F,
+\end{equation*}
+где первая стрелка --- это
+\(
+\bigoplus_{%
+	s \in \Ob(\mc{S}) %
+	\suchthat %
+	r(s) = n}
+\6_s^F
+\),
+а вторая стрелка --- это гомоморфизм суммирования по слоям отображения
+\(
+(s, \varphi) \mapsto \Dom(\varphi) :
+\{
+(s, \varphi) \in \Ob(\mc{S}) \times Q
+\mid
+r(s) = n,\ 
+\Cod(\varphi) = s
+\}
+\to
+\{
+s \in \Ob(\mc{S})
+\mid
+r(s) = n - 1
+\}
+\).
+\end{definition}
+
+
 
 
 \part{Сгруппированные тексты}
@@ -16903,342 +17246,6 @@ V_{\Z}  \coloneqq
 \begin{observation}
 Классические кольца комплексных чисел \(\C\), кватернионов \(\Bbb H\) и октонионов \(\Bbb O\) получаются из действительных чисел \(\R\) последовательными применениями удвоения Кэли\namedash{}Диксона относительно \(-1\).
 \end{observation}
-
-
-\section{Цепной комплекс градуированной категории}
-
-\begin{notation}[\scshape Омега]
-Первый бесконечный ординал, как обычно, обозначается символом \(\omega\).
-\end{notation}
-
-\begin{definition}[\scshape Неразложимый морфизм]
-Морфизм называется \emph{неразложимым}, если он не является тождественным морфизмом и не представляется в виде композиции двух не тождественных морфизмов.
-\end{definition}
-
-\begin{definition}[\scshape Градуированная категория]
-Категория \(\mc{S}\) называется \emph{градуированной},%
-\label{def:GradedCat}
-если
-в \(\mc{S}\) есть начальный объект,
-любой морфизм в \(\mc{S}\) представляется в виде композиции неразложимых морфизмов
-и существует
-с необходимостью единственный
-функтор \(\mc{S} \to \omega\),
-переводящий неразложимые морфизмы в неразложимые морфизмы
-и начальный объект в начальный объект,
-называемый \emph{градуировкой}.
-\end{definition}
-
-\begin{example}
-Пусть \(\Delta'\) --- это категория конечных ординалов фон Неймана и сохраняющих порядок инъективных отображений между ними.%
-\label{ex:CatDeltaAlt}
-Тогда \(\Delta'\) --- это градуированная категория
-в смысле определения~\ref{def:GradedCat}.
-\end{example}
-
-\begin{example}
-Пусть \(K'\) --- это упорядоченное по включению множество множеств, все элементы которого конечны, содержащее в качестве элементов все подмножества своих элементов,
-то есть \(K'\) --- это абстрактный симплициальный комплекс с добавленным пустым симплексом.%
-\label{ex:AbstrSimplComplAlt}
-Тогда \(K'\) --- это градуированная категория
-в смысле определения~\ref{def:GradedCat}.
-\end{example}
-
-\begin{definition}[\scshape Элементарные цепи]
-Пусть \(\mc{S}\) --- малая градуированная категория,
-а \(Q\) --- множество её неразложимых морфизмов.%
-\label{def:ElemChains}
-Тогда для любого \(s \in \Ob(\mc{S})\) определим абелеву группу
-\emph{элементарных цепей}
-\(C_s\) и
-\emph{гомоморфизм границы}
-\(
-\6_s :
-C_s
-\to
-\bigoplus_{\varphi \in Q \suchthat \Cod(\varphi) = s}
-C_{\Dom(\varphi)}
-\)
-по индукции как ядро сквозного гомоморфизма
-\begin{equation*}
-\bigoplus_{%
-	\substack{%
-		\varphi \in Q \\ %
-		\Cod(\varphi) = s}}
-C_{\Dom(\varphi)}
-\to
-\bigoplus_{%
-	\substack{%
-	\varphi \in Q \\ %
-	\Cod(\varphi) = s}}
-\bigoplus_{%
-	\substack{%
-		\psi \in Q \\ %
-		\Cod(\psi) = \Dom(\varphi)}}
-C_{\Dom(\psi)}
-\to
-\bigoplus_{%
-	\substack{%
-		\theta \in Q \circ Q \\ %
-		\Cod(\theta) = s}}
-C_{\Dom(\theta)},
-\label{eq:ElemBoundHomOne}
-\end{equation*}
-где
-\(Q \circ Q \coloneqq \{\varphi \circ \psi \in \Ar(\mc{S}) \mid \varphi, \psi \in Q,\  \Cod(\psi) = \Dom(\varphi)\}\),
-первая стрелка --- это
-\(
-\bigoplus_{\varphi \in Q \suchthat \Cod(\varphi) = s}
-\6_{\Dom(\varphi)}
-\),
-а вторая стрелка --- это
-свёртка,
-то есть суммирование по слоям отображения композиции
-\[
-	\{%
-		(\varphi, \psi) \in %
-			Q \t*[^{\mr{Dom}}]{\times}{^{\mr{Cod}}} Q
-		\mid %
-		\Cod(\varphi) = s %
-	\}
-	\xrightarrow{%
-		(\varphi, \psi)
-		\mapsto
-		\varphi \circ \psi}
-	\{%
-		\theta \in Q \circ Q %
-		\mid %
-		\Cod(\theta) = s%
-	\}.
-\]
-В качестве базы индукции \(C_o \coloneqq \Z\),
-где \(o \in \Ob(\mc{S})\) --- начальный объект.
-\end{definition}
-
-\begin{remark}
-Рисунок~\ref{fig:OrientedSimplexes} является иллюстрацией к определению~\ref{def:ElemChains} для примеров~\ref{ex:CatDeltaAlt} и \ref{ex:AbstrSimplComplAlt}.
-\end{remark}
-
-\begin{figure}[h]
-\centering
-\begin{tikzpicture}
-
-\coordinate (A) at (210:1cm);
-\coordinate (B) at (330:1cm);
-\coordinate (C) at (90:1cm);
-
-\newlength{\arrowdist}
-\newlength{\labeldist}
-\newlength{\circlerad}
-\newlength{\shiftrad}
-
-\setlength{\arrowdist}{4pt}
-\setlength{\labeldist}{10pt}
-\setlength{\circlerad}{2pt}
-\setlength{\shiftrad}{3pt}
-
-\fill	(A) circle [radius = \circlerad]
-		(B) circle [radius = \circlerad]
-		(C) circle [radius = \circlerad];
-
-\begin{scope}[->, semithick]
-\draw []
-	($(A)!\arrowdist!(B)$) -- ($(B)!\arrowdist!(A)$);
-\draw []
-	($(B)!\arrowdist!(C)$) -- ($(C)!\arrowdist!(B)$);
-\draw []
-	($(C)!\arrowdist!(A)$) -- ($(A)!\arrowdist!(C)$);
-\end{scope}
-
-\begin{scope}[
-	inner sep = 0pt,
-	outer sep = 0pt,
-	text depth = 0pt,
-	minimum width = 15pt,
-	minimum height = 10.5pt,
-	]
-\node (node Ab) [anchor = north]
-	at ([shift = {(270:\shiftrad)}] A) {\(-1\)};
-\node (node aB) [anchor = north]
-	at ([shift = {(270:\shiftrad)}] B) {\(+1\)};
-\node (node Bc) [anchor = south west]
-	at ([shift = {(30:\shiftrad)}] B) {\(-1\)};
-\node (node bC) [anchor = south west]
-	at ([shift = {(30:\shiftrad)}] C) {\(+1\)};
-\node (node Ca) [anchor = south east]
-	at ([shift = {(150:\shiftrad)}] C) {\(-1\)};
-\node (node cA) [anchor = south east]
-	at ([shift = {(150:\shiftrad)}] A) {\(+1\)};
-\end{scope}
-
-\tikzmath{\secpicshift = (1/3) * \textwidth;}
-
-\coordinate (M) at ($(A)!0.5!(B)$);
-\coordinate (N) at ($(M)!0.5!(C)$);
-\coordinate (S) at ($(N)-(M)$);
-\coordinate (D') at ($(A) + (S)$);
-\coordinate (E') at ($(B) + (S)$);
-\coordinate (D) at ([xshift = (-\secpicshift)] D');
-\coordinate (E) at ([xshift = (-\secpicshift)] E');
-
-\fill	(D) circle [radius = \circlerad]
-		(E) circle [radius = \circlerad];
-
-\draw [->, semithick]
-	($(D)!\arrowdist!(E)$) -- ($(E)!\arrowdist!(D)$);
-
-\begin{scope}[
-	inner sep = 0pt,
-	outer sep = 0pt,
-	text depth = 0pt,
-	minimum width = 15pt,
-	minimum height = 10.5pt,
-	]
-\node (node De) [anchor = north]
-	at ([shift = {(270:\shiftrad)}] D) {\(-1\)};
-\node (node dE) [anchor = north]
-	at ([shift = {(270:\shiftrad)}] E) {\(+1\)};
-\end{scope}
-
-\end{tikzpicture}
-\caption{Ориентированные симплексы}
-\label{fig:OrientedSimplexes}
-\end{figure}
-
-\begin{definition}[\scshape Элементарные цепи с коэффициентами]
-Пусть \(\mc{S}\) --- малая градуированная категория
-с множеством неразложимых морфизмов \(Q\),
-а \(F : \mc{S}^o \to \mr{Ab}\) --- функтор
-в категорию абелевых групп.
-%называемый функтором коэффициентов.
-Тогда
-для любого \(s \in \Ob(\mc{S})\)
-определим группу
-\(C_s^F\)
-\emph{элементарных цепей с коэффициентами в \(F\)}
-как
-\(F(s) \otimes_{\Z} C_s\),
-а \emph{гомоморфизм границы}
-\(
-\6_s^F :
-C_s^F
-\to
-\bigoplus_{\varphi \in Q \suchthat \Cod(\varphi) = s}
-C_{\Dom(\varphi)}^F
-\)
-как композицию
-\(\Id_{F(s)} \otimes \6_s\),
-изоморфизма дистрибутивности и
-\(
-\bigoplus_{%
-	\varphi \in Q %
-	\suchthat %
-	\Cod(\varphi) = s}
-(F(\varphi^o) \otimes \Id_{C_{\Dom(\varphi)}})
-\).
-%\begin{gather*}
-%	\Id_{F(s)} \otimes_{\Z} \6_s
-%	:
-%	F(s) \otimes_{\Z} C_s
-%	\to
-%	F(s) \otimes_{\Z}
-%	\bigoplus_{%
-%		\mathclap{%
-%			\substack{%
-%				\varphi \in Q \\ %
-%				\Cod(\varphi) = s}}}
-%	C_{\Dom(\varphi)}
-%	\\
-%	\bigoplus_{%
-%		\mathclap{%
-%			\substack{%
-%				\varphi \in Q \\ %
-%				\Cod(\varphi) = s}}}
-%	F(\varphi^o) \otimes \Id
-%	:
-%	\bigoplus_{%
-%		\mathclap{%
-%			\substack{%
-%				\varphi \in Q \\ %
-%				\Cod(\varphi) = s}}}
-%	F(s) \otimes_{\Z} C_{\Dom(\varphi)}
-%	\to
-%	\bigoplus_{%
-%		\mathclap{%
-%			\substack{%
-%				\varphi \in Q \\ %
-%				\Cod(\varphi) = s}}}
-%	F(\Dom(\varphi)) \otimes_{\Z} C_{\Dom(\varphi)}
-%\end{gather*}
-\end{definition}
-
-\begin{definition}[\scshape Цепной комплекс градуированной категории]
-Пусть \(\mc{S}\) --- малая градуированная категория
-с функтором градуировки
-\(r : \mc{S} \to \Z_{\geq -1} \cong \omega\)
-и множеством неразложимых морфизмов \(Q\),
-а \(F : \mc{S}^o \to \mr{Ab}\) --- функтор
-в категорию абелевых групп.
-%называемый функтором коэффициентов.
-Тогда определим \emph{цепной комплекс \(\mc{S}\) с коэффициентами в \(F\)}
-как комплекс с группами \(n\)\=/цепей
-\(
-C_n \coloneqq
-\bigoplus_{s \in \Ob(\mc{S}) \suchthat r(s) = n}
-C_s^F
-\)
-и дифференциалами
-\(\6_n : C_n \to C_{n-1}\),
-где \(n \in \Z_{\geq -1}\),
-определёнными как сквозные отображения
-\begin{equation*}
-	\bigoplus_{%
-		\substack{%
-			s \in \Ob(\mc{S}) \\ %
-			r(s) = n}}
-	C_s^F
-	\to
-	\bigoplus_{%
-		\substack{%
-			s \in \Ob(\mc{S}) \\ %
-			r(s) = n}}
-	\bigoplus_{%
-		\substack{%
-			\varphi \in Q \\ %
-			\Cod(\varphi) = s}}
-	C_{\Dom(\varphi)}^F
-	\to
-	\bigoplus_{%
-		\substack{%
-			s \in \Ob(\mc{S}) \\ %
-			r(s) = n - 1}}
-	C_s^F,
-\end{equation*}
-где первая стрелка --- это
-\(
-\bigoplus_{%
-	s \in \Ob(\mc{S}) %
-	\suchthat %
-	r(s) = n}
-\6_s^F
-\),
-а вторая стрелка --- это гомоморфизм суммирования по слоям отображения
-\(
-(s, \varphi) \mapsto \Dom(\varphi) :
-\{
-(s, \varphi) \in \Ob(\mc{S}) \times Q
-\mid
-r(s) = n,\ 
-\Cod(\varphi) = s
-\}
-\to
-\{
-s \in \Ob(\mc{S})
-\mid
-r(s) = n - 1
-\}
-\).
-\end{definition}
 
 
 
