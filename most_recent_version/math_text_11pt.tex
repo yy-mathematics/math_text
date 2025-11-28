@@ -2739,6 +2739,29 @@ F,
 \end{proofparts}
 
 
+\section{Удвоение Кэли\namedash{}Диксона}
+
+\begin{definition}[\scshape Удвоение Кэли\namedash{}Диксона]
+Пусть \(R\) --- кольцо с инволюцией \(x \mapsto \bar{x} : R \to R^o\), а \(\alpha \in \Zent(R)\) --- центральный элемент \(R\).
+Тогда \emph{удвоением Кэли\namedash{}Диксона} \(R\) относительно \(\alpha\) называется кольцо над \(R\), заданное над \(R\) образующей \(i\) и соотношениями
+\(i^2 = \alpha\),
+\(x i = i \bar{x}\),
+\(x(yi) = (yx)i\),
+\((iy)x = i(xy)\)
+и
+\((xi)(iy) = y \alpha x\),
+где \(x,y \in R\),
+снабжённое
+продолжающей \(x \mapsto \bar{x} : R \to R^o\)
+инволюцией,
+переводящей \(i\) в \(-i\).
+\end{definition}
+
+\begin{observation}
+Классические кольца комплексных чисел \(\C\), кватернионов \(\Bbb H\) и октонионов \(\Bbb O\) получаются из действительных чисел \(\R\) последовательными применениями удвоения Кэли\namedash{}Диксона относительно \(-1\).
+\end{observation}
+
+
 
 \chapter{Подкорректированные старые тексты}
 
@@ -4634,6 +4657,349 @@ S^\mr{sat} \coloneqq
 %\end{observation}
 
 
+\section%
+[Цепной комплекс \texorpdfstring{\(\WTbm{\omega}\)\=/градуированной}{омега-градуированной} диаграммы абелевых групп]%
+[Цепной комплекс \texorpdfstring{\(\WTbm{\omega}\)\=/градуированной}{омега-градуированной} диагр.\ аб.\ групп]%
+{Цепной комплекс \texorpdfstring{\(\WTbm{\omega}\)\=/градуированной}{омега-градуированной} диаграммы абелевых групп}
+
+\begin{sectionintro}
+В этом разделе изложена моя попытка придать смысл стандартному визуальному образу, связанному с понятием ориентированного симплекса, изображённому на рисунке~\ref{fig:OrientedSimplexes}.
+\end{sectionintro}
+
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}
+	
+	\coordinate (A) at (210:1cm);
+	\coordinate (B) at (330:1cm);
+	\coordinate (C) at (90:1cm);
+	
+	\newlength{\arrowdist}
+	\newlength{\labeldist}
+	\newlength{\circlerad}
+	\newlength{\shiftrad}
+	
+	\setlength{\arrowdist}{4pt}
+	\setlength{\labeldist}{10pt}
+	\setlength{\circlerad}{2pt}
+	\setlength{\shiftrad}{3pt}
+	
+	\fill	(A) circle [radius = \circlerad]
+			(B) circle [radius = \circlerad]
+			(C) circle [radius = \circlerad];
+	
+	\begin{scope}[->, semithick]
+	\draw []
+		($(A)!\arrowdist!(B)$) -- ($(B)!\arrowdist!(A)$);
+	\draw []
+		($(B)!\arrowdist!(C)$) -- ($(C)!\arrowdist!(B)$);
+	\draw []
+		($(C)!\arrowdist!(A)$) -- ($(A)!\arrowdist!(C)$);
+	\end{scope}
+	
+	\begin{scope}[
+		inner sep = 0pt,
+		outer sep = 0pt,
+		text depth = 0pt,
+		minimum width = 15pt,
+		minimum height = 10.5pt,
+		]
+	\node (node Ab) [anchor = north]
+		at ([shift = {(270:\shiftrad)}] A) {\(-1\)};
+	\node (node aB) [anchor = north]
+		at ([shift = {(270:\shiftrad)}] B) {\(+1\)};
+	\node (node Bc) [anchor = south west]
+		at ([shift = {(30:\shiftrad)}] B) {\(-1\)};
+	\node (node bC) [anchor = south west]
+		at ([shift = {(30:\shiftrad)}] C) {\(+1\)};
+	\node (node Ca) [anchor = south east]
+		at ([shift = {(150:\shiftrad)}] C) {\(-1\)};
+	\node (node cA) [anchor = south east]
+		at ([shift = {(150:\shiftrad)}] A) {\(+1\)};
+	\end{scope}
+	
+	\tikzmath{\secpicshift = (1/3) * \textwidth;}
+	
+	\coordinate (M) at ($(A)!0.5!(B)$);
+	\coordinate (N) at ($(M)!0.5!(C)$);
+	\coordinate (S) at ($(N)-(M)$);
+	\coordinate (D') at ($(A) + (S)$);
+	\coordinate (E') at ($(B) + (S)$);
+	\coordinate (D) at ([xshift = (-\secpicshift)] D');
+	\coordinate (E) at ([xshift = (-\secpicshift)] E');
+	
+	\fill	(D) circle [radius = \circlerad]
+			(E) circle [radius = \circlerad];
+	
+	\draw [->, semithick]
+		($(D)!\arrowdist!(E)$) -- ($(E)!\arrowdist!(D)$);
+	
+	\begin{scope}[
+		inner sep = 0pt,
+		outer sep = 0pt,
+		text depth = 0pt,
+		minimum width = 15pt,
+		minimum height = 10.5pt,
+		]
+	\node (node De) [anchor = north]
+		at ([shift = {(270:\shiftrad)}] D) {\(-1\)};
+	\node (node dE) [anchor = north]
+		at ([shift = {(270:\shiftrad)}] E) {\(+1\)};
+	\end{scope}
+	
+	\end{tikzpicture}
+	\caption{Ориентированные симплексы}
+	\label{fig:OrientedSimplexes}
+\end{figure}
+
+\begin{notation}[\scshape Омега]
+Первый бесконечный ординал, как обычно, обозначается символом \(\omega\).
+\end{notation}
+
+\begin{definition}[\scshape Неразложимый морфизм]
+Морфизм называется \emph{неразложимым}, если он не является тождественным морфизмом и не представляется в виде композиции двух не тождественных морфизмов.
+\end{definition}
+
+\begin{definition}[\scshape \(\omega\)\=/Градуированная категория]
+Категория \(\mc{S}\) называется \emph{\(\omega\)\=/градуированной},%
+\label{def:GradedCat}
+если
+в \(\mc{S}\) есть начальный объект,
+любой морфизм в \(\mc{S}\) представляется в виде композиции неразложимых морфизмов
+и существует
+с необходимостью единственный
+функтор \(\mc{S} \to \omega\),
+переводящий неразложимые морфизмы в неразложимые морфизмы
+и начальный объект в начальный объект,
+называемый \emph{\(\omega\)\=/градуировкой}.
+\end{definition}
+
+\begin{example}
+Пусть \(\Delta_+^<\) --- это категория конечных ординалов фон Неймана и сохраняющих порядок инъективных отображений между ними.%
+\label{ex:CatDeltaAlt}
+Тогда \(\Delta_+^<\) --- это \(\omega\)\=/градуированная категория
+в смысле определения~\ref{def:GradedCat}.
+\end{example}
+
+\begin{example}
+Пусть \(K^<\) --- это упорядоченное по включению множество множеств, все элементы которого конечны, содержащее в качестве элементов все подмножества своих элементов,
+то есть \(K^<\) --- это абстрактный симплициальный комплекс с добавленным пустым симплексом.%
+\label{ex:AbstrSimplComplAlt}
+Тогда \(K^<\) --- это \(\omega\)\=/градуированная категория
+в смысле определения~\ref{def:GradedCat}.
+\end{example}
+
+\begin{definition}[\scshape Элементарные цепи]
+Пусть \(\mc{S}\) --- малая \(\omega\)\=/градуированная категория,
+а \(Q\) --- множество её неразложимых морфизмов.%
+\label{def:ElemChains}
+Тогда для любого \(s \in \Ob(\mc{S})\) определим абелеву группу
+\emph{элементарных цепей}
+\(C_s\) и
+\emph{гомоморфизм границы}
+\(
+\6_s :
+C_s
+\to
+\bigoplus_{\varphi \in Q \suchthat \Cod(\varphi) = s}
+C_{\Dom(\varphi)}
+\)
+по индукции как ядро сквозного гомоморфизма
+\begin{equation*}
+\bigoplus_{%
+	\substack{%
+		\varphi \in Q \\ %
+		\Cod(\varphi) = s}}
+C_{\Dom(\varphi)}
+\to
+\bigoplus_{%
+	\substack{%
+	\varphi \in Q \\ %
+	\Cod(\varphi) = s}}
+\bigoplus_{%
+	\substack{%
+		\psi \in Q \\ %
+		\Cod(\psi) = \Dom(\varphi)}}
+C_{\Dom(\psi)}
+\to
+\bigoplus_{%
+	\substack{%
+		\theta \in Q \circ Q \\ %
+		\Cod(\theta) = s}}
+C_{\Dom(\theta)},
+\label{eq:ElemBoundHomOne}
+\end{equation*}
+где
+\(Q \circ Q \coloneqq \{\varphi \circ \psi \in \Ar(\mc{S}) \mid \varphi, \psi \in Q,\  \Cod(\psi) = \Dom(\varphi)\}\),
+первая стрелка --- это
+\(
+\bigoplus_{\varphi \in Q \suchthat \Cod(\varphi) = s}
+\6_{\Dom(\varphi)}
+\),
+а вторая стрелка --- это
+свёртка,
+то есть суммирование по слоям отображения композиции
+\[
+	\{%
+		(\varphi, \psi) \in %
+			Q \t*[^{\mr{Dom}}]{\times}{^{\mr{Cod}}} Q
+		\mid %
+		\Cod(\varphi) = s %
+	\}
+	\xrightarrow{%
+		(\varphi, \psi)
+		\mapsto
+		\varphi \circ \psi}
+	\{%
+		\theta \in Q \circ Q %
+		\mid %
+		\Cod(\theta) = s%
+	\}.
+\]
+В качестве базы индукции \(C_o \coloneqq \Z\),
+где \(o \in \Ob(\mc{S})\) --- начальный объект.
+\end{definition}
+
+\begin{remark}
+Рисунок~\ref{fig:OrientedSimplexes} является иллюстрацией к определению~\ref{def:ElemChains} для примеров~\ref{ex:CatDeltaAlt} и \ref{ex:AbstrSimplComplAlt}.
+\end{remark}
+
+\begin{definition}[\scshape Элементарные цепи с коэффициентами]
+Пусть \(\mc{S}\) --- малая \(\omega\)\=/градуированная категория
+с множеством неразложимых морфизмов \(Q\),
+а \(F : \mc{S}^o \to \mr{Ab}\) --- функтор
+в категорию абелевых групп.
+%называемый функтором коэффициентов.
+Тогда
+для любого \(s \in \Ob(\mc{S})\)
+определим группу
+\(C_s^F\)
+\emph{элементарных цепей с коэффициентами в \(F\)}
+как
+\(F(s) \otimes_{\Z} C_s\),
+а \emph{гомоморфизм границы}
+\(
+\6_s^F :
+C_s^F
+\to
+\bigoplus_{\varphi \in Q \suchthat \Cod(\varphi) = s}
+C_{\Dom(\varphi)}^F
+\)
+как композицию
+\(\Id_{F(s)} \otimes \6_s\),
+изоморфизма дистрибутивности и
+\(
+\bigoplus_{%
+	\varphi \in Q %
+	\suchthat %
+	\Cod(\varphi) = s}
+(F(\varphi^o) \otimes \Id_{C_{\Dom(\varphi)}})
+\).
+%\begin{gather*}
+%	\Id_{F(s)} \otimes_{\Z} \6_s
+%	:
+%	F(s) \otimes_{\Z} C_s
+%	\to
+%	F(s) \otimes_{\Z}
+%	\bigoplus_{%
+%		\mathclap{%
+%			\substack{%
+%				\varphi \in Q \\ %
+%				\Cod(\varphi) = s}}}
+%	C_{\Dom(\varphi)}
+%	\\
+%	\bigoplus_{%
+%		\mathclap{%
+%			\substack{%
+%				\varphi \in Q \\ %
+%				\Cod(\varphi) = s}}}
+%	F(\varphi^o) \otimes \Id
+%	:
+%	\bigoplus_{%
+%		\mathclap{%
+%			\substack{%
+%				\varphi \in Q \\ %
+%				\Cod(\varphi) = s}}}
+%	F(s) \otimes_{\Z} C_{\Dom(\varphi)}
+%	\to
+%	\bigoplus_{%
+%		\mathclap{%
+%			\substack{%
+%				\varphi \in Q \\ %
+%				\Cod(\varphi) = s}}}
+%	F(\Dom(\varphi)) \otimes_{\Z} C_{\Dom(\varphi)}
+%\end{gather*}
+\end{definition}
+
+\begin{definition}[\scshape Цепной комплекс \(\omega\)\=/градуированной диаграммы абелевых групп]
+Пусть \(\mc{S}\) --- малая \(\omega\)\=/градуированная категория
+с \(\omega\)\=/градуировкой
+\(r : \mc{S} \to \Z_{\geq -1} \cong \omega\)
+и множеством неразложимых морфизмов \(Q\),
+а \(F : \mc{S}^o \to \mr{Ab}\) --- функтор
+в категорию абелевых групп.
+%называемый функтором коэффициентов.
+Тогда определим \emph{цепной комплекс \(\mc{S}\) с коэффициентами в \(F\)}
+как комплекс с группами \(n\)\=/цепей
+\(
+C_n \coloneqq
+\bigoplus_{s \in \Ob(\mc{S}) \suchthat r(s) = n}
+C_s^F
+\)
+и дифференциалами
+\(\6_n : C_n \to C_{n-1}\),
+где \(n \in \Z\),
+определёнными как сквозные отображения
+\begin{equation*}
+	\bigoplus_{%
+		\substack{%
+			s \in \Ob(\mc{S}) \\ %
+			r(s) = n}}
+	C_s^F
+	\to
+	\bigoplus_{%
+		\substack{%
+			s \in \Ob(\mc{S}) \\ %
+			r(s) = n}}
+	\bigoplus_{%
+		\substack{%
+			\varphi \in Q \\ %
+			\Cod(\varphi) = s}}
+	C_{\Dom(\varphi)}^F
+	\to
+	\bigoplus_{%
+		\substack{%
+			s \in \Ob(\mc{S}) \\ %
+			r(s) = n - 1}}
+	C_s^F,
+\end{equation*}
+где первая стрелка --- это
+\(
+\bigoplus_{%
+	s \in \Ob(\mc{S}) %
+	\suchthat %
+	r(s) = n}
+\6_s^F
+\),
+а вторая стрелка --- это гомоморфизм суммирования по слоям отображения
+\(
+(s, \varphi) \mapsto \Dom(\varphi) :
+\{
+(s, \varphi) \in \Ob(\mc{S}) \times Q
+\mid
+r(s) = n,\ 
+\Cod(\varphi) = s
+\}
+\to
+\{
+s \in \Ob(\mc{S})
+\mid
+r(s) = n - 1
+\}
+\).
+\end{definition}
+
+
 
 \chapter{Относительно новые тексты}
 
@@ -5633,349 +5999,6 @@ D^q \times [0,1]
 то есть \(D^q \times \{0\}\)
 является ретрактом \(D^q \times [0,1]\).
 \end{proof}
-
-
-\section%
-[Цепной комплекс \texorpdfstring{\(\WTbm{\omega}\)\=/градуированной}{омега-градуированной} диаграммы абелевых групп]%
-[Цепной комплекс \texorpdfstring{\(\WTbm{\omega}\)\=/градуированной}{омега-градуированной} диагр.\ аб.\ групп]%
-{Цепной комплекс \texorpdfstring{\(\WTbm{\omega}\)\=/градуированной}{омега-градуированной} диаграммы абелевых групп}
-
-\begin{sectionintro}
-В этом разделе изложена моя попытка придать смысл стандартному визуальному образу, связанному с понятием ориентированного симплекса, изображённому на рисунке~\ref{fig:OrientedSimplexes}.
-\end{sectionintro}
-
-\begin{figure}[h]
-	\centering
-	\begin{tikzpicture}
-	
-	\coordinate (A) at (210:1cm);
-	\coordinate (B) at (330:1cm);
-	\coordinate (C) at (90:1cm);
-	
-	\newlength{\arrowdist}
-	\newlength{\labeldist}
-	\newlength{\circlerad}
-	\newlength{\shiftrad}
-	
-	\setlength{\arrowdist}{4pt}
-	\setlength{\labeldist}{10pt}
-	\setlength{\circlerad}{2pt}
-	\setlength{\shiftrad}{3pt}
-	
-	\fill	(A) circle [radius = \circlerad]
-			(B) circle [radius = \circlerad]
-			(C) circle [radius = \circlerad];
-	
-	\begin{scope}[->, semithick]
-	\draw []
-		($(A)!\arrowdist!(B)$) -- ($(B)!\arrowdist!(A)$);
-	\draw []
-		($(B)!\arrowdist!(C)$) -- ($(C)!\arrowdist!(B)$);
-	\draw []
-		($(C)!\arrowdist!(A)$) -- ($(A)!\arrowdist!(C)$);
-	\end{scope}
-	
-	\begin{scope}[
-		inner sep = 0pt,
-		outer sep = 0pt,
-		text depth = 0pt,
-		minimum width = 15pt,
-		minimum height = 10.5pt,
-		]
-	\node (node Ab) [anchor = north]
-		at ([shift = {(270:\shiftrad)}] A) {\(-1\)};
-	\node (node aB) [anchor = north]
-		at ([shift = {(270:\shiftrad)}] B) {\(+1\)};
-	\node (node Bc) [anchor = south west]
-		at ([shift = {(30:\shiftrad)}] B) {\(-1\)};
-	\node (node bC) [anchor = south west]
-		at ([shift = {(30:\shiftrad)}] C) {\(+1\)};
-	\node (node Ca) [anchor = south east]
-		at ([shift = {(150:\shiftrad)}] C) {\(-1\)};
-	\node (node cA) [anchor = south east]
-		at ([shift = {(150:\shiftrad)}] A) {\(+1\)};
-	\end{scope}
-	
-	\tikzmath{\secpicshift = (1/3) * \textwidth;}
-	
-	\coordinate (M) at ($(A)!0.5!(B)$);
-	\coordinate (N) at ($(M)!0.5!(C)$);
-	\coordinate (S) at ($(N)-(M)$);
-	\coordinate (D') at ($(A) + (S)$);
-	\coordinate (E') at ($(B) + (S)$);
-	\coordinate (D) at ([xshift = (-\secpicshift)] D');
-	\coordinate (E) at ([xshift = (-\secpicshift)] E');
-	
-	\fill	(D) circle [radius = \circlerad]
-			(E) circle [radius = \circlerad];
-	
-	\draw [->, semithick]
-		($(D)!\arrowdist!(E)$) -- ($(E)!\arrowdist!(D)$);
-	
-	\begin{scope}[
-		inner sep = 0pt,
-		outer sep = 0pt,
-		text depth = 0pt,
-		minimum width = 15pt,
-		minimum height = 10.5pt,
-		]
-	\node (node De) [anchor = north]
-		at ([shift = {(270:\shiftrad)}] D) {\(-1\)};
-	\node (node dE) [anchor = north]
-		at ([shift = {(270:\shiftrad)}] E) {\(+1\)};
-	\end{scope}
-	
-	\end{tikzpicture}
-	\caption{Ориентированные симплексы}
-	\label{fig:OrientedSimplexes}
-\end{figure}
-
-\begin{notation}[\scshape Омега]
-Первый бесконечный ординал, как обычно, обозначается символом \(\omega\).
-\end{notation}
-
-\begin{definition}[\scshape Неразложимый морфизм]
-Морфизм называется \emph{неразложимым}, если он не является тождественным морфизмом и не представляется в виде композиции двух не тождественных морфизмов.
-\end{definition}
-
-\begin{definition}[\scshape \(\omega\)\=/Градуированная категория]
-Категория \(\mc{S}\) называется \emph{\(\omega\)\=/градуированной},%
-\label{def:GradedCat}
-если
-в \(\mc{S}\) есть начальный объект,
-любой морфизм в \(\mc{S}\) представляется в виде композиции неразложимых морфизмов
-и существует
-с необходимостью единственный
-функтор \(\mc{S} \to \omega\),
-переводящий неразложимые морфизмы в неразложимые морфизмы
-и начальный объект в начальный объект,
-называемый \emph{\(\omega\)\=/градуировкой}.
-\end{definition}
-
-\begin{example}
-Пусть \(\Delta'\) --- это категория конечных ординалов фон Неймана и сохраняющих порядок инъективных отображений между ними.%
-\label{ex:CatDeltaAlt}
-Тогда \(\Delta'\) --- это \(\omega\)\=/градуированная категория
-в смысле определения~\ref{def:GradedCat}.
-\end{example}
-
-\begin{example}
-Пусть \(K'\) --- это упорядоченное по включению множество множеств, все элементы которого конечны, содержащее в качестве элементов все подмножества своих элементов,
-то есть \(K'\) --- это абстрактный симплициальный комплекс с добавленным пустым симплексом.%
-\label{ex:AbstrSimplComplAlt}
-Тогда \(K'\) --- это \(\omega\)\=/градуированная категория
-в смысле определения~\ref{def:GradedCat}.
-\end{example}
-
-\begin{definition}[\scshape Элементарные цепи]
-Пусть \(\mc{S}\) --- малая \(\omega\)\=/градуированная категория,
-а \(Q\) --- множество её неразложимых морфизмов.%
-\label{def:ElemChains}
-Тогда для любого \(s \in \Ob(\mc{S})\) определим абелеву группу
-\emph{элементарных цепей}
-\(C_s\) и
-\emph{гомоморфизм границы}
-\(
-\6_s :
-C_s
-\to
-\bigoplus_{\varphi \in Q \suchthat \Cod(\varphi) = s}
-C_{\Dom(\varphi)}
-\)
-по индукции как ядро сквозного гомоморфизма
-\begin{equation*}
-\bigoplus_{%
-	\substack{%
-		\varphi \in Q \\ %
-		\Cod(\varphi) = s}}
-C_{\Dom(\varphi)}
-\to
-\bigoplus_{%
-	\substack{%
-	\varphi \in Q \\ %
-	\Cod(\varphi) = s}}
-\bigoplus_{%
-	\substack{%
-		\psi \in Q \\ %
-		\Cod(\psi) = \Dom(\varphi)}}
-C_{\Dom(\psi)}
-\to
-\bigoplus_{%
-	\substack{%
-		\theta \in Q \circ Q \\ %
-		\Cod(\theta) = s}}
-C_{\Dom(\theta)},
-\label{eq:ElemBoundHomOne}
-\end{equation*}
-где
-\(Q \circ Q \coloneqq \{\varphi \circ \psi \in \Ar(\mc{S}) \mid \varphi, \psi \in Q,\  \Cod(\psi) = \Dom(\varphi)\}\),
-первая стрелка --- это
-\(
-\bigoplus_{\varphi \in Q \suchthat \Cod(\varphi) = s}
-\6_{\Dom(\varphi)}
-\),
-а вторая стрелка --- это
-свёртка,
-то есть суммирование по слоям отображения композиции
-\[
-	\{%
-		(\varphi, \psi) \in %
-			Q \t*[^{\mr{Dom}}]{\times}{^{\mr{Cod}}} Q
-		\mid %
-		\Cod(\varphi) = s %
-	\}
-	\xrightarrow{%
-		(\varphi, \psi)
-		\mapsto
-		\varphi \circ \psi}
-	\{%
-		\theta \in Q \circ Q %
-		\mid %
-		\Cod(\theta) = s%
-	\}.
-\]
-В качестве базы индукции \(C_o \coloneqq \Z\),
-где \(o \in \Ob(\mc{S})\) --- начальный объект.
-\end{definition}
-
-\begin{remark}
-Рисунок~\ref{fig:OrientedSimplexes} является иллюстрацией к определению~\ref{def:ElemChains} для примеров~\ref{ex:CatDeltaAlt} и \ref{ex:AbstrSimplComplAlt}.
-\end{remark}
-
-\begin{definition}[\scshape Элементарные цепи с коэффициентами]
-Пусть \(\mc{S}\) --- малая \(\omega\)\=/градуированная категория
-с множеством неразложимых морфизмов \(Q\),
-а \(F : \mc{S}^o \to \mr{Ab}\) --- функтор
-в категорию абелевых групп.
-%называемый функтором коэффициентов.
-Тогда
-для любого \(s \in \Ob(\mc{S})\)
-определим группу
-\(C_s^F\)
-\emph{элементарных цепей с коэффициентами в \(F\)}
-как
-\(F(s) \otimes_{\Z} C_s\),
-а \emph{гомоморфизм границы}
-\(
-\6_s^F :
-C_s^F
-\to
-\bigoplus_{\varphi \in Q \suchthat \Cod(\varphi) = s}
-C_{\Dom(\varphi)}^F
-\)
-как композицию
-\(\Id_{F(s)} \otimes \6_s\),
-изоморфизма дистрибутивности и
-\(
-\bigoplus_{%
-	\varphi \in Q %
-	\suchthat %
-	\Cod(\varphi) = s}
-(F(\varphi^o) \otimes \Id_{C_{\Dom(\varphi)}})
-\).
-%\begin{gather*}
-%	\Id_{F(s)} \otimes_{\Z} \6_s
-%	:
-%	F(s) \otimes_{\Z} C_s
-%	\to
-%	F(s) \otimes_{\Z}
-%	\bigoplus_{%
-%		\mathclap{%
-%			\substack{%
-%				\varphi \in Q \\ %
-%				\Cod(\varphi) = s}}}
-%	C_{\Dom(\varphi)}
-%	\\
-%	\bigoplus_{%
-%		\mathclap{%
-%			\substack{%
-%				\varphi \in Q \\ %
-%				\Cod(\varphi) = s}}}
-%	F(\varphi^o) \otimes \Id
-%	:
-%	\bigoplus_{%
-%		\mathclap{%
-%			\substack{%
-%				\varphi \in Q \\ %
-%				\Cod(\varphi) = s}}}
-%	F(s) \otimes_{\Z} C_{\Dom(\varphi)}
-%	\to
-%	\bigoplus_{%
-%		\mathclap{%
-%			\substack{%
-%				\varphi \in Q \\ %
-%				\Cod(\varphi) = s}}}
-%	F(\Dom(\varphi)) \otimes_{\Z} C_{\Dom(\varphi)}
-%\end{gather*}
-\end{definition}
-
-\begin{definition}[\scshape Цепной комплекс \(\omega\)\=/градуированной диаграммы абелевых групп]
-Пусть \(\mc{S}\) --- малая \(\omega\)\=/градуированная категория
-с \(\omega\)\=/градуировкой
-\(r : \mc{S} \to \Z_{\geq -1} \cong \omega\)
-и множеством неразложимых морфизмов \(Q\),
-а \(F : \mc{S}^o \to \mr{Ab}\) --- функтор
-в категорию абелевых групп.
-%называемый функтором коэффициентов.
-Тогда определим \emph{цепной комплекс \(\mc{S}\) с коэффициентами в \(F\)}
-как комплекс с группами \(n\)\=/цепей
-\(
-C_n \coloneqq
-\bigoplus_{s \in \Ob(\mc{S}) \suchthat r(s) = n}
-C_s^F
-\)
-и дифференциалами
-\(\6_n : C_n \to C_{n-1}\),
-где \(n \in \Z\),
-определёнными как сквозные отображения
-\begin{equation*}
-	\bigoplus_{%
-		\substack{%
-			s \in \Ob(\mc{S}) \\ %
-			r(s) = n}}
-	C_s^F
-	\to
-	\bigoplus_{%
-		\substack{%
-			s \in \Ob(\mc{S}) \\ %
-			r(s) = n}}
-	\bigoplus_{%
-		\substack{%
-			\varphi \in Q \\ %
-			\Cod(\varphi) = s}}
-	C_{\Dom(\varphi)}^F
-	\to
-	\bigoplus_{%
-		\substack{%
-			s \in \Ob(\mc{S}) \\ %
-			r(s) = n - 1}}
-	C_s^F,
-\end{equation*}
-где первая стрелка --- это
-\(
-\bigoplus_{%
-	s \in \Ob(\mc{S}) %
-	\suchthat %
-	r(s) = n}
-\6_s^F
-\),
-а вторая стрелка --- это гомоморфизм суммирования по слоям отображения
-\(
-(s, \varphi) \mapsto \Dom(\varphi) :
-\{
-(s, \varphi) \in \Ob(\mc{S}) \times Q
-\mid
-r(s) = n,\ 
-\Cod(\varphi) = s
-\}
-\to
-\{
-s \in \Ob(\mc{S})
-\mid
-r(s) = n - 1
-\}
-\).
-\end{definition}
 
 
 
@@ -16174,6 +16197,7 @@ J^o \times I
 
 
 
+%\part{Определения, наблюдения и наброски}
 \part{Совсем сырые или мелкие тексты}
 
 
@@ -16182,69 +16206,90 @@ J^o \times I
 
 
 
-\chapter{Сырые и мелкие тексты}
+%\chapter%
+%[Сгруппированные в разделы определения, наблюдения и наброски]%
+%[Сгруппированные опред., наблюд.\ и наброски]%
+%{Сгруппированные в разделы определения, наблюдения и наброски}
+\chapter{Сырые или мелкие тексты}
 
 
-\section{Категория Лямбда}
+\section{Категория Лямбда Алена Конна}
 
-\subsection{Категория элементов и колчан элементов}
-
-\begin{definition}[\scshape Категория элементов]
-Если \(F : \mc{C} \to \mr{Sets}\) --- функтор, то его \emph{категорией элементов} называется категория
-\(F \lsqdiv_{\op{Fun}(\mc{C},\mr{Sets})^o} \mc{C}\),
-которую можно отождествить с
-\(\pt \lsqdiv^F \mc{C}\) и с \(\mc{C} \tensor*[^F]{\times}{_{\mr{Sets}}} (\pt \lsqdiv \mr{Sets})\).
-\end{definition}
-
-%\begin{definition}[\scshape Колчан элементов]
-%Если \(F : I \to \mr{Sets}\) --- представление малого колчана \(I\), то его \emph{колчаном элементов} называется прообраз \(I\)
-%относительно канонической проекции категории элементов индуцированного функтора \(\op{Free}(I) \to \mr{Sets}\) на \(\op{Free}(I)\), где \(\op{Free}(I)\) --- свободная категория на \(I\).
+%\subsection{Категория элементов и колчан элементов}
+%
+%\begin{definition}[\scshape Категория элементов]
+%Если \(F : \mc{C} \to \mr{Sets}\) --- функтор, то его \emph{категорией элементов} называется категория
+%\(F \lsqdiv_{\op{Fun}(\mc{C},\mr{Sets})^o} \mc{C}\),
+%которую можно отождествить с
+%\(\pt \lsqdiv^F \mc{C}\) и с \(\mc{C} \tensor*[^F]{\times}{_{\mr{Sets}}} (\pt \lsqdiv \mr{Sets})\).
 %\end{definition}
-
-\begin{remark}
-Иногда категория
-\((F \lsqdiv \mc{C})^o \cong \mc{C}^o \lsqdiv F = \mc{C}^o \lsqdiv_{\op{Fun}(\mc{C},\mr{Sets})} F\)
-тоже называется категорией элементов функтора \(F : \mc{C} \to \mr{Sets}\).
-\end{remark}
-
-\begin{definition}[\scshape Колчан элементов]
-Если \(F : I \to \mr{Sets}\) --- представление колчана \(I\), то его \emph{колчаном элементов} называется расслоенное произведение
-\(I \tensor*[^F]{\times}{_{\mr{Sets}}} (\pt \lsqdiv \mr{Sets})\)
-в категории колчанов.
-\end{definition}
-
-\begin{definition}[\scshape Компоненты связности]
-%Слои универсального функтора из данной категории в дискретную категорию называются \emph{компонентами связности}.
-Будем называть \emph{компонентами связности} категории слои универсального функтора из данной категории в дискретную категорию.
-\end{definition}
-
-\begin{example}
-Элементы копредела функтора \(F: I \to \mr{Sets}\), где \(I\) --- малая категория, можно интерпретировать как компоненты связности категории \(F \lsqdiv I\), а элементы предела --- как сечения проекции \(F \lsqdiv I \to I\).
-\end{example}
-
+%
+%%\begin{definition}[\scshape Колчан элементов]
+%%Если \(F : I \to \mr{Sets}\) --- представление малого колчана \(I\), то его \emph{колчаном элементов} называется прообраз \(I\)
+%%относительно канонической проекции категории элементов индуцированного функтора \(\op{Free}(I) \to \mr{Sets}\) на \(\op{Free}(I)\), где \(\op{Free}(I)\) --- свободная категория на \(I\).
+%%\end{definition}
+%
+%\begin{remark}
+%Иногда категория
+%\((F \lsqdiv \mc{C})^o \cong \mc{C}^o \lsqdiv F = \mc{C}^o \lsqdiv_{\op{Fun}(\mc{C},\mr{Sets})} F\)
+%тоже называется категорией элементов функтора \(F : \mc{C} \to \mr{Sets}\).
+%\end{remark}
+%
+%\begin{definition}[\scshape Колчан элементов]
+%Если \(F : I \to \mr{Sets}\) --- представление колчана \(I\), то его \emph{колчаном элементов} называется расслоенное произведение
+%\(I \tensor*[^F]{\times}{_{\mr{Sets}}} (\pt \lsqdiv \mr{Sets})\)
+%в категории колчанов.
+%\end{definition}
+%
+%\begin{definition}[\scshape Компоненты связности]
+%%Слои универсального функтора из данной категории в дискретную категорию называются \emph{компонентами связности}.
+%Будем называть \emph{компонентами связности} категории слои универсального функтора из данной категории в дискретную категорию.
+%\end{definition}
+%
 %\begin{example}
-%Для подмножества группы, реализованного как однообъектный колчан, действующего на группе умножением, конструкция колчана элементов даёт соответствующий <<граф Кэли>>, а для представлений колчана-стрелки и колчана-петли --- традиционные картинки, связанные с морфизмами и эндоморфизмами множеств.
-%%Для категорий это частный случай <<конструкции Гротендика>>, строящей расслоенную категорию по \(2\)-функтору из категории в категорию малых категорий.
+%Элементы копредела функтора \(F: I \to \mr{Sets}\), где \(I\) --- малая категория, можно интерпретировать как компоненты связности категории \(F \lsqdiv I\), а элементы предела --- как сечения проекции \(F \lsqdiv I \to I\).
+%\end{example}
+%
+%%\begin{example}
+%%Для подмножества группы, реализованного как однообъектный колчан, действующего на группе умножением, конструкция колчана элементов даёт соответствующий <<граф Кэли>>, а для представлений колчана-стрелки и колчана-петли --- традиционные картинки, связанные с морфизмами и эндоморфизмами множеств.
+%%%Для категорий это частный случай <<конструкции Гротендика>>, строящей расслоенную категорию по \(2\)-функтору из категории в категорию малых категорий.
+%%\end{example}
+%
+%\begin{example}
+%Если мы рассмотрим вложение Кэли группы как представление однообъектного группоида отображениями множеств, ограничим его на подколчан и рассмотрим колчан элементов, то получится соответствующий граф Кэли.
+%\end{example}
+%
+%\begin{example}
+%Для представлений колчана-стрелки и колчана-петли отображениями множеств изображение колчана элементов даёт традиционные картинки, связанные с морфизмами и эндоморфизмами множеств.
+%\end{example}
+%
+%%\begin{example}
+%%Категория элементов функтора \(\Id_{\mr{Sets}} : \mr{Sets} \to \mr{Sets}\) --- это категория пунктированных множеств \(\pt \lsqdiv \mr{Sets}\).
+%%\end{example}
+%
+%\begin{example}%[\scshape Орбита группы]
+%Действие группы на множестве является {транзитивным действием} или {орбитой}
+%тогда и только тогда, когда у соответствующего группоида элементов ровно одна компонента связности.
 %\end{example}
 
-\begin{example}
-Если мы рассмотрим вложение Кэли группы как представление однообъектного группоида отображениями множеств, ограничим его на подколчан и рассмотрим колчан элементов, то получится соответствующий граф Кэли.
-\end{example}
+\subsection{Определение категории Лямбда}
+
+\begin{definition}[\scshape Колчан элементов]
+Если \(F : I \to \mr{Sets}\) --- представление колчана \(I\) отображениями множеств, то его \emph{колчаном элементов} называется расслоенное произведение
+\(I \tensor*[^F]{\times}{_{\mr{Sets}}} (\pt \lsqdiv \mr{Sets})\)
+в категории колчанов,
+где \(\pt \lsqdiv \mr{Sets}\) --- это категория множеств с отмеченной точкой.
+\end{definition}
 
 \begin{example}
 Для представлений колчана-стрелки и колчана-петли отображениями множеств изображение колчана элементов даёт традиционные картинки, связанные с морфизмами и эндоморфизмами множеств.
 \end{example}
 
-%\begin{example}
-%Категория элементов функтора \(\Id_{\mr{Sets}} : \mr{Sets} \to \mr{Sets}\) --- это категория пунктированных множеств \(\pt \lsqdiv \mr{Sets}\).
-%\end{example}
-
-\begin{example}%[\scshape Орбита группы]
-Действие группы на множестве является {транзитивным действием} или {орбитой}
-тогда и только тогда, когда у соответствующего группоида элементов ровно одна компонента связности.
+\begin{example}
+Если мы рассмотрим вложение Кэли группы как представление
+соответствующего группе
+однообъектного группоида отображениями множеств, ограничим его на подколчан и рассмотрим колчан элементов, то получится соответствующий граф Кэли.
 \end{example}
-
-\subsection{Определение категории Лямбда}
 
 \begin{definition}%[\scshape Свободные циклические категории]
 [\scshape Циклинар]
@@ -16270,20 +16315,6 @@ J^o \times I
 Порождающий колчан свободной категории однозначно восстанавливается по ней.
 \end{observation}
 
-\begin{notation}[\scshape Группоидофикация]
-В этом разделе локализацию малой категории \(\mc{C}\) по всем морфизмам будем обозначать через
-\(\mc{C}^\mr{grp}\).
-\end{notation}
-
-\begin{observation}
-Группа автоморфизмов категории \([n]_\Lambda\) --- это циклическая группа порядка \(n\).
-Группа автоморфизмов соответствующего группоида \([n]_\Lambda^\mr{grp}\) --- это диэдральная группа порядка \(2n\).
-\end{observation}
-
-\begin{remark}
-Обратите внимание на группы \(\Aut([2]_\Lambda^\mr{grp})\) и \(\Aut([1]_\Lambda^\mr{grp})\)!
-\end{remark}
-
 %\begin{observation}
 %Функторы, строгие/полные на подкатегориях эндоморфизмов образуют подметакатегорию метакатегории категорий.
 %\end{observation}
@@ -16304,7 +16335,8 @@ J^o \times I
 Категория, объектами которой являются циклинары \([n]_\Lambda\), где \(n \in \N_1\), а морфизмами
 %из \([n]_\Lambda\) в \([m]_\Lambda\)
 являются функторы,
-строгие и полные на эндоморфизмах,
+строгие и полные на эндоморфизмах,%
+\label{def:ConnesLambda}
 %\(\varphi : [n]_\Lambda \to [m]_\Lambda\),
 %%где \(n, m \in \N_1\),
 %такие что все индуцированные гомоморфизмы
@@ -16313,6 +16345,28 @@ J^o \times I
 %являются изоморфизмами,
 обозначается символом \(\Lambda\) и называется \emph{категорией Лямбда}.
 \end{definition}
+
+\begin{remark}
+Категория \(\Lambda\) из определения~\ref{def:ConnesLambda},
+иногда называемая циклической категорией Конна,
+была определена в статье~\cite[3]{ConnesCyclique1983}.
+\end{remark}
+
+\subsection{Свойства категории Лямбда}
+
+\begin{notation}[\scshape Группоидофикация]
+В этом разделе локализацию малой категории \(\mc{C}\) по всем морфизмам будем обозначать через
+\(\mc{C}^\mr{grp}\).
+\end{notation}
+
+%\begin{observation}
+%Группа автоморфизмов категории \([n]_\Lambda\) --- это циклическая группа порядка \(n\).
+%Группа автоморфизмов соответствующего группоида \([n]_\Lambda^\mr{grp}\) --- это диэдральная группа порядка \(2n\).
+%\end{observation}
+
+%\begin{remark}
+%Обратите внимание на группы \(\Aut([2]_\Lambda^\mr{grp})\) и \(\Aut([1]_\Lambda^\mr{grp})\)!
+%\end{remark}
 
 \begin{lemma}%[\scshape ]
 Пусть \(\varphi : [n]_\Lambda \to [m]_\Lambda\), где \(n, m \in \N_1\), --- функтор.
@@ -16662,7 +16716,7 @@ J^o \times I
 
 \section{Категорные цилиндры и расслоения}
 
-\subsection{Определение и основные свойства цилиндра}
+\subsection{Определение и основные свойства категорного цилиндра}
 
 \begin{definition}[\scshape Категорный цилиндр]
 Определим \emph{цилиндр} диаграммы категорий и функторов
@@ -16680,6 +16734,44 @@ J^o \times I
 \begin{remark}
 Понятие категорного цилиндра в некотором смысле является двойственным понятию комма-категории.
 \end{remark}
+
+\begin{definition}[\scshape Образующие цилиндра]
+Пусть
+\(\mc{C} \xleftarrow{\varpi} \mc{B} \xrightarrow{\varrho} \mc{E}\)
+---
+диаграмма категорий,
+а
+\(
+\mc{X}
+\coloneqq
+\mc{C} \tensor*[^{\varpi}]{\cylbinop}{^{\varrho}_{\mc{B}}} \mc{E}
+\)
+--- её цилиндр.
+Тогда
+структурный функтор
+\(\mc{B} \times [1] \to \mc{X}\)
+соответствует естественному преобразованию
+\((\t*[^{\varpi}]{\vv{b}}{^{\varrho}} : \varpi(b) \to \varrho(b))_{b \in \Ob(\mc{B})}\)
+из
+%функтора
+\(\mc{B} \cong \mc{B} \times \{0\} \to \mc{X}\)
+в
+\(\mc{B} \cong \mc{B} \times \{1\} \to \mc{X}\),
+компоненты которого
+называются \emph{образующими} \(\mc{X}\).
+\begin{equation}
+\shorthandoff{"}%
+\begin{tikzcd}[sep = small,]
+& \mc{B} \arrow[ld, swap, "\varpi"] \arrow[rd, "\varrho"] &
+\\
+\mc{C} \arrow[rd] \arrow[rr, Rightarrow, shorten <=18pt, shorten >=18pt, "(\vv{b})_{b \in \mc{B}}"] & &  \mc{E} \arrow[ld] 
+\\
+& \mc{C} \tensor*[^{\varpi}]{\cylbinop}{^{\varrho}_{\mc{B}}} \mc{E} &
+\end{tikzcd}
+\shorthandon{"}%
+\label{eq:CatCylNatTrans}
+\end{equation}
+\end{definition}
 
 \begin{observation}
 Если \(\mc{C} \xleftarrow{\varpi} \mc{B} \xrightarrow{\varrho} \mc{E}\) --- диаграмма категорий, то её цилиндр автоматически снабжён функтором \(\mc{C} \tensor*[^{\varpi}]{\cylbinop}{^{\varrho}_{\mc{B}}} \mc{E} \to [1]\), слои которого отождествляются с \(\mc{C} \cong \mc{C} \times \{0\}\) и \(\mc{E} \cong \mc{E} \times \{1\}\) соответственно.
@@ -16707,32 +16799,32 @@ J^o \times I
 %называются \emph{образующими} цилиндра \(\mc{C} \tensor*[^{\varpi}]{\cylbinop}{^{\varrho}_{\mc{B}}} \mc{E}\).
 %\end{definition}
 
-\begin{definition}[\scshape Образующие цилиндра]
-Пусть
-\(\mc{C} \xleftarrow{\varpi} \mc{B} \xrightarrow{\varrho} \mc{E}\)
----
-диаграмма категорий,
-а
-\(
-\mc{X}
-\coloneqq
-\mc{C} \tensor*[^{\varpi}]{\cylbinop}{^{\varrho}_{\mc{B}}} \mc{E}
-\)
---- её цилиндр.
-Тогда
-структурный функтор
-\(\mc{B} \times [1] \to \mc{X}\)
-соответствует естественному преобразованию
-\((\t*[^{\varpi}]{\vv{b}}{^{\varrho}} : \varpi(b) \to \varrho(b))_{b \in \Ob(\mc{B})}\)
-из
-%функтора
-\(\mc{B} \cong \mc{B} \times \{0\} \to \mc{X}\)
-в
-\(\mc{B} \cong \mc{B} \times \{1\} \to \mc{X}\).
-Компоненты
-\((\t*[^{\varpi}]{\vv{b}}{^{\varrho}})_{b \in \Ob(\mc{B})}\)
-называются \emph{образующими} \(\mc{X}\).
-\end{definition}
+%\begin{definition}[\scshape Образующие цилиндра]
+%Пусть
+%\(\mc{C} \xleftarrow{\varpi} \mc{B} \xrightarrow{\varrho} \mc{E}\)
+%---
+%диаграмма категорий,
+%а
+%\(
+%\mc{X}
+%\coloneqq
+%\mc{C} \tensor*[^{\varpi}]{\cylbinop}{^{\varrho}_{\mc{B}}} \mc{E}
+%\)
+%--- её цилиндр.
+%Тогда
+%структурный функтор
+%\(\mc{B} \times [1] \to \mc{X}\)
+%соответствует естественному преобразованию
+%\((\t*[^{\varpi}]{\vv{b}}{^{\varrho}} : \varpi(b) \to \varrho(b))_{b \in \Ob(\mc{B})}\)
+%из
+%%функтора
+%\(\mc{B} \cong \mc{B} \times \{0\} \to \mc{X}\)
+%в
+%\(\mc{B} \cong \mc{B} \times \{1\} \to \mc{X}\),
+%компоненты
+%которого
+%называются \emph{образующими} \(\mc{X}\).
+%\end{definition}
 
 %\begin{observation}
 %Пусть \(F : \mc{C} \to I\) --- функтор.
@@ -16745,29 +16837,55 @@ J^o \times I
 для любого \(c \in \Ob(\mc{C})\) соответствующая образующая \(\vv{c}^F : c \to F(c)\) является начальным объектом в \(c \lsqdiv_{\mc{C} \cylbinop^F I} I\).
 \end{observation}
 
+%\begin{observation}
+%Пусть функторы
+%\(\alpha : \mc{C} \to \mc{C}'\),
+%\(\beta : \mc{E} \to \mc{E}'\) и
+%\(\gamma : \mc{B} \to \mc{B}'\)
+%--- компоненты морфизма из диаграммы категорий
+%\(\mc{C} \xleftarrow{\varpi} \mc{B} \xrightarrow{\varrho} \mc{E}\)
+%в диаграмму категорий
+%\(\mc{C}' \xleftarrow{\varpi'} \mc{B}' \xrightarrow{\varrho'} \mc{E}'\).
+%Тогда \(\alpha\), \(\beta\) и \(\gamma\) индуцируют функтор между соответствующими цилиндрами:
+%\(
+%{\alpha \cylbinop_{\gamma} \beta} :
+%{
+%\mc{C} \tensor*[^{\varpi}]{\cylbinop}{^{\varrho}_{\mc{B}}} \mc{E}
+%\to
+%\mc{C}' \tensor*[^{\varpi'}]{\cylbinop}{^{\varrho'}_{\mc{B}'}} \mc{E}'
+%}
+%\).
+%\end{observation}
+
 \begin{observation}
-Пусть функторы
-\(\alpha : \mc{C} \to \mc{C}'\),
-\(\beta : \mc{E} \to \mc{E}'\) и
-\(\gamma : \mc{B} \to \mc{B}'\)
---- компоненты морфизма из диаграммы категорий
-\(\mc{C} \xleftarrow{\varpi} \mc{B} \xrightarrow{\varrho} \mc{E}\)
-в диаграмму категорий
-\(\mc{C}' \xleftarrow{\varpi'} \mc{B}' \xrightarrow{\varrho'} \mc{E}'\).
-Тогда \(\alpha\), \(\beta\) и \(\gamma\) индуцируют функтор между соответствующими цилиндрами:
+Произвольная коммутативная диаграмма категорий, функторов и естественных преобразований~\eqref{eq:CatCylIndMor} индуцирует функтор
 \(
-{\alpha \cylbinop_{\gamma} \beta} :
+{\alpha \tensor*[^{\zeta}]{\cylbinop}{^{\xi}_{\gamma}} \beta} :
 {
 \mc{C} \tensor*[^{\varpi}]{\cylbinop}{^{\varrho}_{\mc{B}}} \mc{E}
 \to
 \mc{C}' \tensor*[^{\varpi'}]{\cylbinop}{^{\varrho'}_{\mc{B}'}} \mc{E}'
 }
-\).
+\)
+между соответствующими цилиндрами.
+\begin{equation}
+\shorthandoff{"}%
+\begin{tikzcd}
+\mc{C} \arrow[d, "\alpha"] & \mc{B} \ar[l, swap, "\varpi", ""{name=Ul, below}] \ar[d, "\gamma"] \ar[r, "\varrho", ""{name=Ur, below}] & \mc{E} \ar[d, "\beta"]
+\\
+\mc{C'} & \mc{B'} \ar[l, "\varpi'", ""{name=Dl, above}] \ar[r, swap, "\varrho'", ""{name=Dr, above}] & \mc{E'}
+\arrow[Rightarrow, shorten <=5pt, shorten >=5pt, from=Ul, to=Dl, "\zeta"]
+\arrow[swap, Rightarrow, shorten <=5pt, shorten >=5pt, from=Dr, to=Ur, "\xi"]
+\end{tikzcd}
+\shorthandon{"}%
+\label{eq:CatCylIndMor}
+\end{equation}
 \end{observation}
 
-\begin{example}
-Пусть \(\rho: \mc{C} \to \mc{E}\) --- функтор.
-В качестве иллюстрации к введённым обозначениям приведём следующий декартов квадрат:
+\begin{observation}
+Пусть \(\mc{C}\) и \(\mc{E}\) --- категории,
+а \(\rho: \mc{C} \to \mc{E}\) --- функтор.
+Тогда следующий квадрат категорий декартов:
 \begin{equation*}
 	\begin{tikzcd}[ampersand replacement=\&, column sep = 6.6em,]
 		\mc{C} \tensor*[]{\cylbinop}{^{\rho}_{\mc{C}}} \mc{E}
@@ -16780,7 +16898,7 @@ J^o \times I
 		\mc{E} \tensor*[]{\cylbinop}{_{\mc{E}}} \pt\mathrlap{.}
 	\end{tikzcd}
 \end{equation*}
-\end{example}
+\end{observation}
 
 \subsection{Определение расслоения Гротендика}
 
@@ -16791,12 +16909,15 @@ J^o \times I
 достраивается до декартового квадрата, в котором морфизм \(c' \times_c c'' \to c'\) лежит в \(P\).
 \end{definition}
 
-\begin{definition}[\scshape Расслоение категорий]
-Функтор \(F : \mc{C} \to I\) называется
+\begin{definition}[\scshape (Ко)расслоение категорий]
+Пусть \(\mc{C}\) и \(I\) --- категории,
+а \(F : \mc{C} \to I\) --- функтор.
+Тогда \(F\) называется
 \emph{расслоением категорий}
 или
 \emph{расслоением Гротендика},
-если класс образующих цилиндра \(\mc{C} \cylbinop^F I\) замкнут относительно пуллбэков вдоль морфизмов из \(I\).
+если класс образующих цилиндра \(\mc{C} \cylbinop^F I\) замкнут относительно пуллбэков вдоль морфизмов из \(I\),
+и называется \emph{корасслоением}, если \(F^o : \mc{C}^o \to I^o\) является расслоением.
 \end{definition}
 
 \begin{definition}[\scshape Сильно декартов морфизм]
@@ -16811,6 +16932,10 @@ F(c') \ar{r}{F(\varphi)} & F(c)
 \end{equation}
 \end{definition}
 
+\begin{convention}[\scshape Декартов морфизм]
+В дальнейшем выражение <<декартов морфизм>> означает <<сильно декартов морфизм>>, если противное не оговорено явно.
+\end{convention}
+
 \begin{observation}
 Функтор \(F : \mc{C} \to I\) является расслоением Гротендика тогда и только тогда, когда для любого \(c \in \Ob(\mc{C})\) у любого морфизма в \(I\) с кобластью \(F(c)\) существует сильно декартово поднятие в \(\mc{C}\).
 \end{observation}
@@ -16819,10 +16944,13 @@ F(c') \ar{r}{F(\varphi)} & F(c)
 %Функтор \(F : \mc{C} \to I\) называется \emph{расслоением Стрита} или \emph{расслоением Стрита-Гротендика}, если класс композиций образующих и изоморфизмов в \(\Cyl(\mc{C} \mid^F I)\) замкнут относительно пуллбэков вдоль морфизмов из \(I\).
 %\end{definition}
 
-\begin{definition}[\scshape Существенное расслоение]
+\begin{definition}[\scshape Существенное (ко)расслоение]
 Пусть \(\mc{C}\) и \(I\) --- категории, \(F : \mc{C} \to I\) --- функтор, а \(\mc{E} \coloneqq \mc{C} \cylbinop^F I\).
-Если класс морфизмов \(\varphi \in \Ob(\mc{C} \lsqdiv_{\mc{E}} I) \subset \Ar(\mc{E})\), таких что \(\varphi\) --- начальный объект в \(\op{Dom}(\varphi) \lsqdiv_{\mc{E}} I\), замкнут относительно пуллбэков вдоль морфизмов из \(I\),
-то \(F\) называется \emph{существенным расслоением} или \emph{расслоением Стрита}.
+Тогда \(F\) называется \emph{существенным расслоением} или \emph{расслоением Стрита},
+если класс морфизмов \(\varphi \in \Ob(\mc{C} \lsqdiv_{\mc{E}} I) \subset \Ar(\mc{E})\), таких что \(\varphi\) --- начальный объект в \(\op{Dom}(\varphi) \lsqdiv_{\mc{E}} I\), замкнут относительно пуллбэков вдоль морфизмов из \(I\),
+и называется \emph{существенным корасслоением}, если
+противоположный функтор
+\(F^o : \mc{C}^o \to I^o\) является существенным расслоением.
 \end{definition}
 
 \begin{remark}
@@ -16831,8 +16959,113 @@ F(c') \ar{r}{F(\varphi)} & F(c)
 \end{remark}
 
 \begin{example}
+Забывающий функтор \(\mr{Top} \to \mr{Sets}\) является%
+\label{exa:TopSetsForgetFib}
+и расслоением категорий, и корасслоением категорий.
+\end{example}
+
+\begin{remark}
+Я узнал о примере~\ref{exa:TopSetsForgetFib} из статьи~\cite[с.\ 52, ex.\ 3.19]{vistoli2007fibered}.
+\end{remark}
+
+\begin{example}
 Для любого накрытия \(Y \to X\) топологических пространств индуцированный морфизм группоидов Пуанкаре \(\pi_{\leq 1}(Y) \to \pi_{\leq 1}(X)\) является расслоением Гротендика с дискретными слоями.
 \end{example}
+
+\subsection{Транспонированное (ко)расслоение Гротендика}
+
+\begin{definition}[\scshape Слой функтора]
+Пусть \(\pi : \mc{C} \to I\) --- функтор,
+а \(i \in \Ob(I)\) --- объект \(I\).
+Тогда \emph{слоем} \(\pi\) над \(i\), обычно обозначаемым через \(\mc{C}_i\), называется прообраз относительно \(\pi\) подкатегории \(I\), состоящей из одного объекта \(i\) и одного морфизма \(\Id_i : i \to i\).
+\end{definition}
+
+\begin{definition}[\scshape Вертикальный морфизм]
+Пусть \(\pi : \mc{C} \to I\) --- функтор.
+Тогда морфизм \(\varphi \in \Ar(\mc{C})\) называется \emph{вертикальным} относительно \(\pi\), если \(\pi(\varphi)\) является тождественным морфизмом.
+\end{definition}
+
+\begin{definition}[\scshape Транспонированное (ко)расслоение]
+Пусть \(\pi : \mc{C} \to I\) --- расслоение/корасслоение Гротендика.
+Тогда определим
+%\emph{транспонированную}
+категорию \(\mc{C}^{\cattrans}\)
+как категорию \(\bigsqcup_{i \in I} C_i\), к которой
+для каждого декартова морфизма
+\(\varphi : c' \to c\) в \(\mc{C}\)
+добавили морфизм \(\varphi^{\cattrans} : c \to c'\),
+для каждого коммутативного квадрата~(\ref{eq:GrothFibTransSquare}, слева) в \(\mc{C}\), такого что \(\varphi_0\) и \(\varphi_1\) декартовы, а \(v\) и \(v'\) вертикальны, добавили соотношение
+%\(v \circ \varphi_{\perp} = \psi_{\perp} \circ u\),
+коммутативности квадрата~(\ref{eq:GrothFibTransSquare}, справа)
+%для каждой тройки декартовых морфизмов \(\varphi', \varphi'', \varphi \in \Ar(\mc(C))\), такой что \(\varphi'' \circ \varphi' = \varphi\), добавили соотношение \(\varphi'_{\perp} \circ \varphi''_{\perp} = \varphi_{\perp}\).
+и для каждого коммутативного треугольника декартовых морфизмов~(\ref{eq:GrothFibTransTri}, слева) в \(\mc{C}\)
+добавили соотношение коммутативности треугольника~(\ref{eq:GrothFibTransTri}, справа).
+Определим
+\emph{транспонированное к \(\pi\) корасслоение/расслоение}
+\(\pi^{\cattrans} : \mc{C}^{\cattrans} \to I^o\)
+как функтор, совпадающий с \(\pi\) на \(\bigsqcup_{i \in I} C_i\) и для любого декартова \(\varphi \in \Ar(\mc{C})\) переводящий \(\varphi^{\cattrans}\) в \(\pi(\varphi)^o\).
+\shorthandoff{"}%
+\begin{gather}
+\begin{tikzcd}[ampersand replacement = \amprep]
+	c_0'
+		\arrow[r, "\varphi_0"]
+		\arrow[d, swap, "v'"]
+	\amprep
+	c_0
+		\arrow[d, "v"]
+	\amprep
+	c_0'
+		\arrow[d, swap, "v'"]
+	\amprep
+	c_0
+		\arrow[l, swap, "\varphi_0^{\cattrans}"]
+		\arrow[d, "v"]
+\\
+	c_1'
+		\arrow[r, "\varphi_1"]
+	\amprep
+	c_1
+	\amprep
+	c_1'
+	\amprep
+	c_1
+		\arrow[l, swap, "\varphi_1^{\cattrans}"]
+\end{tikzcd}
+\label{eq:GrothFibTransSquare}
+\\
+\begin{tikzcd}[%
+	column sep = small,
+	row sep = normal,
+	ampersand replacement = \amprep,
+	]
+	\amprep
+	c'
+		\arrow[rd, "\varphi'"]
+	\amprep
+	\amprep
+	\amprep
+	c'
+		\arrow[ld, swap, "\varphi''^{\cattrans}"]
+\displaybreak[0]
+\\
+	c''
+		\arrow[ru, "\varphi''"]
+		\arrow[rr, "\varphi"]
+	\amprep
+	\amprep
+	c
+	\amprep
+	c''
+	\amprep
+	\amprep
+	c
+		\arrow[lu, swap, "\varphi'^{\cattrans}"]
+		\arrow[ll, swap, "\varphi^{\cattrans}"]
+\end{tikzcd}
+\label{eq:GrothFibTransTri}
+\end{gather}
+\shorthandon{"}%
+\end{definition}
 
 
 %\section{Фильтрованные и градуированные абелевы группы}
@@ -16991,6 +17224,10 @@ A \sqcup B &
 
 
 \section{Локально нильпотентные операторы}
+
+\begin{sectionintro}
+В этом разделе изложен набросок альтернативного доказательства теоремы о жордановой нормальной форме для нильпотентных операторов.
+\end{sectionintro}
 
 \begin{definition}[\scshape Расщепимое семейство подмодулей]
 %Пусть \(R\) --- ассоциативное унитальное кольцо,
@@ -17225,30 +17462,11 @@ V_{\Z}  \coloneqq
 %\end{question}
 
 
-\section{Удвоение Кэли\namedash{}Диксона}
 
-\begin{definition}[\scshape Удвоение Кэли\namedash{}Диксона]
-Пусть \(R\) --- кольцо с инволюцией \(x \mapsto \bar{x} : R \to R^o\), а \(\alpha \in \Zent(R)\) --- центральный элемент \(R\).
-Тогда \emph{удвоением Кэли\namedash{}Диксона} \(R\) относительно \(\alpha\) называется кольцо над \(R\), заданное над \(R\) образующей \(i\) и соотношениями
-\(i^2 = \alpha\),
-\(x i = i \bar{x}\),
-\(x(yi) = (yx)i\),
-\((iy)x = i(xy)\)
-и
-\((xi)(iy) = y \alpha x\),
-где \(x,y \in R\),
-снабжённое
-продолжающей \(x \mapsto \bar{x} : R \to R^o\)
-инволюцией,
-переводящей \(i\) в \(-i\).
-\end{definition}
-
-\begin{observation}
-Классические кольца комплексных чисел \(\C\), кватернионов \(\Bbb H\) и октонионов \(\Bbb O\) получаются из действительных чисел \(\R\) последовательными применениями удвоения Кэли\namedash{}Диксона относительно \(-1\).
-\end{observation}
-
-
-
+%\chapter%
+%[{Не сгруппированные в разделы определения, наблюдения и наброски}]%
+%[{Не сгрупп.\ опред., наблюд.\ и наброски}]%
+%{Не сгруппированные в разделы определения, наблюдения и наброски}
 \chapter{Совсем мелкие тексты}
 
 
