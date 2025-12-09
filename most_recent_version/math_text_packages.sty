@@ -584,8 +584,12 @@ labelsep=period,]%
 
 % Символ для <<категорного цилиндра>>
 
-\newcommand{\cylbinop}{%
-\mathbin{\succ}}
+\makeatletter
+\newcommand{\cylbinop}%
+	{\mathbin{\smash{\mathpalette\@cylbinop{}}}}
+\newcommand{\@cylbinop}[1]%
+	{\reflectbox{\(#1\mkern0.6mu\natural\mkern0.6mu\)}}
+\makeatother
 
 %-------------------
 

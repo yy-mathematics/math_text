@@ -453,12 +453,14 @@ The \((\phantom{x}, \phantom{x})\) operation then turned out to be fundamental i
 \label{conv:ObjOverUnder}
 то категории \(\mc{C} \lsqdiv_{\mc{C}} \{C\}\) и \(\{C\} \lsqdiv_{\mc{C}} \mc{C}\) часто будут обозначаться через \(\mc{C} \lsqdiv C\) и \(C \lsqdiv \mc{C}\)
 и называться \emph{категорией объектов над \(C\)} и \emph{категорией объектов под \(C\)} соответственно.
+Тем не менее, иногда категория объектов под \(C\) будет называться категорией объектов над \(C\).
+Что конкретно имеется в виду в рассматриваемом случае считается ясным из контекста или оговаривается заранее.
 \end{convention}
 
-\begin{convention}[\scshape Категория колец над/под данным кольцом]
-Исключениями из соглашения~\ref{conv:ObjOverUnder} являются подкатегории категории колец: для них смысл фраз <<категория объектов над данным>> и <<категория объектов под данным>> переставлен.
-Это сделано для согласованности с переходом к категории аффинных схем для категории коммутативных ассоциативных унитальных колец и согласованности с практикой применения фразы <<алгебра над кольцом>>.
-\end{convention}
+%\begin{convention}[\scshape Категория колец над/под данным кольцом]
+%Исключениями из соглашения~\ref{conv:ObjOverUnder} являются подкатегории категории колец: для них смысл фраз <<категория объектов над данным>> и <<категория объектов под данным>> переставлен.
+%Это сделано для согласованности с переходом к категории аффинных схем для категории коммутативных ассоциативных унитальных колец и согласованности с практикой применения фразы <<алгебра над кольцом>>.
+%\end{convention}
 
 \begin{notation}[\scshape Изоморфность]
 Выражение типа \(A \simeq B\), как правило, означает, что \(A\) и \(B\) изоморфны, а выражение типа \(A \cong B\), как правило, означает, что между \(A\) и \(B\) есть единственный или однозначно определённый контекстом изоморфизм.
@@ -16761,7 +16763,10 @@ J^o \times I
 называются \emph{образующими} \(\mc{X}\).
 \begin{equation}
 \shorthandoff{"}%
-\begin{tikzcd}[sep = small,]
+\begin{tikzcd}[
+	column sep = small,
+	row sep = scriptsize,
+	]
 & \mc{B} \arrow[ld, swap, "\varpi"] \arrow[rd, "\varrho"] &
 \\
 \mc{C} \arrow[rd] \arrow[rr, Rightarrow, shorten <=18pt, shorten >=18pt, "(\vv{b})_{b \in \mc{B}}"] & &  \mc{E} \arrow[ld] 
@@ -16999,19 +17004,21 @@ F(c') \ar{r}{F(\varphi)} & F(c)
 Пусть \(\mc{C}\) и \(I\) --- категории,
 а \(\pi : \mc{C} \to I\) --- расслоение Гротендика.%
 \label{def:GroFibTranspose}
-Тогда определим
-%\emph{транспонированную}
-категорию \(\mc{C}^{\cattrans}\)
-как категорию \(\bigsqcup_{i \in I} \mc{C}_i\), к которой
-для каждого декартова морфизма
-\(\varphi\) в \(\mc{C}\)
-добавили морфизм \(\varphi^{\cattrans} : \Cod(\varphi) \to \Dom(\varphi)\),
-для каждого коммутативного квадрата~(\ref{eq:GrothFibTransSquare}, слева) в \(\mc{C}\), такого что \(\varphi_0\) и \(\varphi_1\) декартовы, а \(v\) и \(v'\) вертикальны, добавили соотношение
+Тогда определим категорию \(\mc{C}^{\cattrans}\) образующими и соотношениями над \(\bigsqcup_{i \in I} \mc{C}_i\) следующим образом:
+%Тогда определим
+%%\emph{транспонированную}
+%категорию \(\mc{C}^{\cattrans}\)
+%как категорию \(\bigsqcup_{i \in I} \mc{C}_i\), к которой
+для каждого декартова
+\(\varphi \in \Ar(\mc{C})\)
+добавим к \(\bigsqcup_{i \in I} \mc{C}_i\) стрелку \(\varphi^{\cattrans} : \Cod(\varphi) \to \Dom(\varphi)\),
+для каждого коммутативного квадрата~(\ref{eq:GrothFibTransSquare}, слева) в \(\mc{C}\), такого что \(\varphi_0\) и \(\varphi_1\) декартовы, а \(v\) и \(v'\) вертикальны, добавим соотношение
 %\(v \circ \varphi_{\perp} = \psi_{\perp} \circ u\),
 коммутативности квадрата~(\ref{eq:GrothFibTransSquare}, справа)
 %для каждой тройки декартовых морфизмов \(\varphi', \varphi'', \varphi \in \Ar(\mc(C))\), такой что \(\varphi'' \circ \varphi' = \varphi\), добавили соотношение \(\varphi'_{\perp} \circ \varphi''_{\perp} = \varphi_{\perp}\).
-и для каждого коммутативного треугольника декартовых морфизмов~(\ref{eq:GrothFibTransTri}, слева) в \(\mc{C}\)
-добавили соотношение коммутативности треугольника~(\ref{eq:GrothFibTransTri}, справа).
+и для каждой пары декартовых морфизмов \(\varphi', \varphi'' \in \Ar(\mc{C})\), такой что \(\Dom(\varphi') = \Cod(\varphi'')\), добавим соотношение \((\varphi' \circ \varphi'')^{\cattrans} = \varphi''^{\cattrans} \circ \varphi'^{\cattrans}\).
+%и для каждого коммутативного треугольника декартовых морфизмов~(\ref{eq:GrothFibTransTri}, слева) в \(\mc{C}\)
+%добавим соотношение коммутативности треугольника~(\ref{eq:GrothFibTransTri}, справа).
 Определим
 \emph{транспонированное к \(\pi\) корасслоение}
 \(\pi^{\cattrans} : \mc{C}^{\cattrans} \to I^o\)
@@ -17044,37 +17051,37 @@ F(c') \ar{r}{F(\varphi)} & F(c)
 		\arrow[l, swap, "\varphi_1^{\cattrans}"]
 \end{tikzcd}
 \label{eq:GrothFibTransSquare}
-\\
-\begin{tikzcd}[%
-	column sep = small,
-	row sep = normal,
-	ampersand replacement = \amprep,
-	]
-	\amprep
-	c'
-		\arrow[rd, "\varphi'"]
-	\amprep
-	\amprep
-	\amprep
-	c'
-		\arrow[ld, swap, "\varphi''^{\cattrans}"]
-\displaybreak[0]
-\\
-	c''
-		\arrow[ru, "\varphi''"]
-		\arrow[rr, "\varphi"]
-	\amprep
-	\amprep
-	c
-	\amprep
-	c''
-	\amprep
-	\amprep
-	c
-		\arrow[lu, swap, "\varphi'^{\cattrans}"]
-		\arrow[ll, swap, "\varphi^{\cattrans}"]
-\end{tikzcd}
-\label{eq:GrothFibTransTri}
+%\\
+%\begin{tikzcd}[%
+%	column sep = small,
+%	row sep = normal,
+%	ampersand replacement = \amprep,
+%	]
+%	\amprep
+%	c'
+%		\arrow[rd, "\varphi'"]
+%	\amprep
+%	\amprep
+%	\amprep
+%	c'
+%		\arrow[ld, swap, "\varphi''^{\cattrans}"]
+%\displaybreak[0]
+%\\
+%	c''
+%		\arrow[ru, "\varphi''"]
+%		\arrow[rr, "\varphi"]
+%	\amprep
+%	\amprep
+%	c
+%	\amprep
+%	c''
+%	\amprep
+%	\amprep
+%	c
+%		\arrow[lu, swap, "\varphi'^{\cattrans}"]
+%		\arrow[ll, swap, "\varphi^{\cattrans}"]
+%\end{tikzcd}
+%\label{eq:GrothFibTransTri}
 \end{gather}
 \shorthandon{"}%
 \end{definition}
