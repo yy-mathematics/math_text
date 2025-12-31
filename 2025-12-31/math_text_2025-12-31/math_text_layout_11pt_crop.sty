@@ -1,0 +1,257 @@
+%-------------------
+
+\ProvidesPackage{math_text_layout_11pt_crop}
+
+%-------------------
+
+% Написано для XeLaTeX.
+
+%-------------------
+
+% Класс и классовые опции
+
+%\documentclass[
+%	extrafontsizes,
+%%	article,
+%	a5paper,
+%	12pt,
+%%	openany,
+%	hyphens,
+%%	draft,
+%]{memoir}
+
+%-------------------
+
+% Схема страницы
+
+%\settypeblocksize{548pt}{390pt}{*}
+%\setlrmargins{*}{*}{1}
+%\setulmargins{30pt}{*}{*}
+%%\setheadfoot{15pt}{19pt}
+%\setheadfoot{19pt}{19pt}
+%\setheaderspaces{0pt}{*}{*}
+%\checkandfixthelayout
+
+%\settypeblocksize{457.8pt}{326pt}{*}
+%\setlrmargins{*}{*}{1.75}
+%\setulmargins{*}{*}{1.75}
+%\checkandfixthelayout
+
+\setstocksize{548.482pt}{386.548pt}
+\settrimmedsize{\stockheight}{\stockwidth}{*}
+%\settypeblocksize{503.5pt}{358pt}{*}
+\settypeblocksize{500.6pt}{358pt}{*}
+\setlrmargins{*}{*}{1}
+\setulmargins{27.54pt}{*}{*}
+\setheadfoot{17.441pt}{17.441pt}
+\setheaderspaces{0pt}{*}{*}
+\checkandfixthelayout
+
+%\setstocksize{497.923pt}{350.917pt}
+%\settrimmedsize{\stockheight}{\stockwidth}{*}
+%%\settypeblocksize{457.8pt}{326pt}{*}
+%\settypeblocksize{455pt}{326pt}{*}
+%\setlrmargins{*}{*}{1}
+%\setulmargins{25.077pt}{*}{*}
+%\setheadfoot{15.882pt}{15.882pt}
+%\setheaderspaces{0pt}{*}{*}
+%\checkandfixthelayout
+
+%\settypeblocksize{500pt}{358pt}{*}
+%\setlrmargins{*}{*}{1.75}
+%\setulmargins{*}{*}{1.2}
+%\setheadfoot{17.441pt}{17.441pt}
+%\setheaderspaces{*}{15pt}{*}
+%\checkandfixthelayout
+
+%\settypeblocksize{548pt}{390pt}{*}
+%\setlrmargins{*}{*}{1.75}
+%\setulmargins{30pt}{*}{*}
+%\setheadfoot{19pt}{19pt}
+%\setheaderspaces{0pt}{*}{*}
+%\checkandfixthelayout
+
+%-------------------
+
+% Старая схема страницы
+
+%\documentclass[12pt, hyphens, draft]{article}
+%\usepackage[
+%	a5paper,
+%%	margin=0.55cm,
+%	textwidth=390pt,
+%	top=0.7cm,
+%	bottom=1.2cm,
+%	footskip=8mm,
+%]{geometry}
+
+%-------------------
+
+% Подключение базовых пакетов
+
+\usepackage{xltxtra, xunicode, fontspec, setspace, tocloft}
+
+%-------------------
+
+% Шрифты
+
+\defaultfontfeatures{
+	Scale=MatchLowercase, 
+	Ligatures=TeX, 
+	Mapping=tex-text,
+	SlantedFont = CMU Serif Roman Slanted,
+}
+
+\usepackage{polyglossia}
+
+\setdefaultlanguage[babelshorthands=true]{russian}
+\setotherlanguages{english}
+\setmainfont{CMU Serif}
+\setmonofont{CMU Typewriter Text}
+%\newfontfamily{\englishfont}{CMU Serif}
+%\newfontfamily{\russianfont}{CMU Serif}
+%\newfontfamily{\armenianfont}{DejaVu Serif}
+%\newfontfamily{\armenianfont}{DejaVu Serif Condensed}
+
+\SetLanguageKeys{russian}{indentfirst=false}
+
+%-------------------
+
+% Длина, используемая при оформлении колонтитулов
+
+\newlength{\headraiselength}
+%\setlength{\headraiselength}{-0.4pt}
+\setlength{\headraiselength}{-0.367pt}
+
+%-------------------
+
+% Параметры титульного листа
+
+\makeatletter
+
+\renewcommand{\maketitlehooka}%
+	{\noindent\hrulefill}
+	
+\renewcommand{\maketitlehookb}%
+	{}
+	
+\renewcommand{\maketitlehookc}%
+	{\noindent\hrulefill\vfill
+
+%---
+	
+%	Фоновая картинка на титульной странице
+	
+%	\begin{tikzpicture}[%
+%		remember picture,
+%		overlay,
+%		opacity=0.1,
+%		]
+%	\node at (current page.center)
+%	{
+%	\begin{tikzpicture}
+%	\begin{scope}[transparency group]
+%	\draw [line width=1cm]
+%		(-0.5\paperwidth,-0.5\paperheight)
+%		--
+%		(0.5\paperwidth,0.5\paperheight);
+%	\draw [line width=1cm]
+%		(0,0) circle [radius=0.35\paperwidth];
+%	\end{scope}
+%	\end{tikzpicture}
+%	};
+%	\end{tikzpicture}
+
+%---
+	
+	\noindent\hrulefill
+	\begin{flushleft}%
+	\noindent\Huge Обрезанная версия 11pt
+	\end{flushleft}
+	\noindent\hrulefill}
+	
+\renewcommand{\maketitlehookd}%
+	{}
+	
+\makeatother
+
+\pretitle{%
+	\begin{flushleft}%
+	\scshape\bfseries%
+	\HUGE%
+}
+
+\posttitle{%
+	\par\end{flushleft}\vskip 0.5em%
+}
+
+\preauthor{%
+	\begin{flushright}
+	\HUGE \lineskip 0.5em%
+	%\begin{tabular}[t]{c}
+}
+
+\postauthor{%
+	%\end{tabular}
+	\par\end{flushright}%
+}
+
+\predate{%
+	\begin{flushleft}\Huge%
+}
+
+\postdate{%
+	\par\end{flushleft}%
+}
+
+%-------------------
+
+% Исправление математических шрифтов
+
+\usepackage{fixcmex}
+
+%-------------------
+
+% Изменение отступов в TOC
+
+\setlength{\cftpartindent}{0em}
+\setlength{\cftpartnumwidth}{2em}
+
+\setlength{\cftchapterindent}{0em}
+\setlength{\cftchapternumwidth}{2em}
+
+\setlength{\cftsectionindent}{2em}
+\setlength{\cftsectionnumwidth}{2.7em}
+
+\setlength{\cftsubsectionindent}{4.7em}
+
+\setlength{\cftsubsubsectionindent}{7.9em}
+
+\makeatletter
+\renewcommand{\@pnumwidth}{1.7em}
+\renewcommand{\@tocrmarg}{2.7em}
+\makeatother
+
+%-------------------
+
+% Эпиграфы
+
+\setlength{\epigraphwidth}{0.45\textwidth}
+
+%\setlength{\epigraphrule}{0pt}
+
+%\epigraphtextposition{flushleftright}
+
+%-------------------
+
+% Подключение пакета xpatch
+
+\usepackage{xpatch}
+
+% Изменение формата даты
+
+\makeatletter
+\AtBeginDocument{\xpatchcmd{\daterussian@modern}{г.}{года}{}{}}
+\makeatother
+
+%-------------------
