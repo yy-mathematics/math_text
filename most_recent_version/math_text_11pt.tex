@@ -582,17 +582,19 @@ The \((\phantom{x}, \phantom{x})\) operation then turned out to be fundamental i
 %Из теоремы о факторквадрате суммы-пе\-ре\-се\-че\-ния получаем короткую точную последовательность абелевых групп:
 Следующий короткий комплекс абелевых групп
 \begin{equation*}
-\begin{tikzcd}[column sep = scriptsize]
+\shorthandoff{"}%
+\begin{tikzcd}[ampersand replacement = \amprep]
 R / (\mathfrak{I} \cap \mathfrak{J})
-\ar[hookrightarrow]{rrrr}{x + \mathfrak{I} \cap \mathfrak{J} \,\mapsto\, (x + \mathfrak{I}, x + \mathfrak{J})}
-& & & &
+\arrow[r, hookrightarrow, "{x + \mathfrak{I} \cap \mathfrak{J} \mapsto (x + \mathfrak{I}, x + \mathfrak{J})}"]
+\amprep[4.8em] 
 R/\mathfrak{I} \oplus R/\mathfrak{J}
-\ar[twoheadrightarrow]{rrrrr}{(x + \mathfrak{I}, y + \mathfrak{J}) \,\mapsto\, x - y + (\mathfrak{I} + \mathfrak{J})}
-& & & & &
+\arrow[r, twoheadrightarrow, "{(x + \mathfrak{I}, y + \mathfrak{J}) \mapsto x - y + (\mathfrak{I} + \mathfrak{J})}"]
+\amprep[6.8em] 
 R / (\mathfrak{I} + \mathfrak{J})
 \end{tikzcd}
+\shorthandon{"}%
 \end{equation*}
-точен согласно теореме о факторквадрате сум\-мы-пе\-ре\-се\-че\-ния (теорема~\secref{thm:sum-int-square}). Это можно проверить и непосредственно.
+точен согласно теореме о факторквадрате сум\-мы-пе\-ре\-се\-че\-ния (теорема~\secref{thm:sum-int-square}), то есть по универсальному свойству факторизации.
 \end{proof}
 
 \begin{remark}
@@ -617,7 +619,7 @@ $\card(I) < \infty$.
 %Очевидно, что второе условие влечёт первое.
 Очевидно, что (ii) $\implies$ (i).
 Докажем обратное.
-Рассмотрим $N \coloneqq \Img(R \to \prod_{i \in I} R/\mathfrak{I}_i)$. Для любых $i,j \in I$, $i \neq j$ мы можем найти $a_{ij} \in N$, такой что $i$-ая координата $a_{ij}$ равна $1$, а $j$-ая --- $0$. Тогда $a_i \coloneqq \prod_{j \in I \setminus \{i\}} a_{ij} \in N$ (произведение в произвольном порядке) имеет $i$-ую координату $1$ и остальные координаты $0$. Такие $a_i$ порождают $\prod_{i \in I} R/\mathfrak{I}_i$ как $R$-модуль, поэтому $N = \prod_{i \in I} R/\mathfrak{I}_i$.
+Рассмотрим $N \coloneqq \Img(R \to \prod_{i \in I} R/\mathfrak{I}_i)$. Для любых $i,j \in I$, $i \neq j$ мы можем найти $a_{i,j} \in N$, такой что $i$\=/ая координата $a_{i,j}$ равна $1$, а $j$\=/ая --- $0$. Тогда $a_i \coloneqq \prod_{j \in I \setminus \{i\}} a_{i,j} \in N$ (произведение в произвольном порядке) имеет $i$\=/ую координату $1$ и остальные координаты $0$. Такие $a_i$ порождают $\prod_{i \in I} R/\mathfrak{I}_i$ как $R$\=/модуль, поэтому $N = \prod_{i \in I} R/\mathfrak{I}_i$.
 \end{proof}
 
 \begin{corollary}
@@ -4777,9 +4779,9 @@ S^\mr{sat} \coloneqq
 \end{definition}
 
 \begin{example}
-Пусть \(\Delta_+^<\) --- это категория конечных ординалов фон Неймана и сохраняющих порядок инъективных отображений между ними.%
+Пусть \(\Delta_{\mr{f}}^<\) --- это категория конечных ординалов фон Неймана и сохраняющих порядок инъективных отображений между ними.%
 \label{ex:CatDeltaAlt}
-Тогда \(\Delta_+^<\) --- это \(\omega\)\=/градуированная категория
+Тогда \(\Delta_{\mr{f}}^<\) --- это \(\omega\)\=/градуированная категория
 в смысле определения~\ref{def:GradedCat}.
 \end{example}
 
@@ -5568,7 +5570,7 @@ X \coloneqq
 \).%
 \label{exa:TopProdPushout}
 Тогда каноническая непрерывная биекция
-\(
+\begin{equation*}
 Y' \coloneqq
 (\R \times X)
 \sqcup_{\Z \times X}
@@ -5576,15 +5578,17 @@ Y' \coloneqq
 \to
 Y'' \coloneqq
 (\R \sqcup_{\Z} \pt) \times X
-\)
+\end{equation*}
 не является гомеоморфизмом,
-потому что образ
-%множества
+потому что если
+\(Y \coloneqq \R \times X\),
+а
 \(
 \Gamma \coloneqq
-\{(t,x) \in Y \coloneqq \R \times X \mid tx=1\}
-%\subset \R \times X
-\)
+\{(t,x) \in Y \mid tx=1\}
+\subset Y
+\),
+то образ \(\Gamma\)
 в \(Y'\)
 замкнут,
 а образ
@@ -16734,8 +16738,24 @@ J^o \times I
 \end{definition}
 
 \begin{remark}
-Понятие категорного цилиндра в некотором смысле является двойственным понятию комма-категории.
+Не для любой диаграммы категорий
+\(\mc{C} \xleftarrow{\varpi} \mc{B} \xrightarrow{\varrho} \mc{E}\)
+соответствующий цилиндр
+\(\mc{X} \coloneqq \mc{C} \tensor*[^{\varpi}]{\cylbinop}{^{\varrho}_{\mc{B}}} \mc{E}\)
+существует как категория в стандартном смысле,
+а не groß\-/категория, потому что могут существовать \(X, Y \in \Ob(\mc{X})\), такие что \(\Hom_{\mc{X}}(X, Y)\) не образует множества.
 \end{remark}
+
+\begin{notation}[\scshape Канонические вложения]
+Пусть
+\(\mc{C} \xleftarrow{\varpi} \mc{B} \xrightarrow{\varrho} \mc{E}\)
+---
+диаграмма категорий.
+Тогда канонические вложения в соответствующий цилиндр обычно будут обозначаться через
+\(s : \mc{C} \to \mc{C} \tensor*[^{\varpi}]{\cylbinop}{^{\varrho}_{\mc{B}}} \mc{E} \from \mc{E} : t\).
+Иногда \(\mc{C}\) и \(\mc{E}\) будут отождествляться со своими образами в
+\(\mc{C} \tensor*[^{\varpi}]{\cylbinop}{^{\varrho}_{\mc{B}}} \mc{E}\).
+\end{notation}
 
 \begin{definition}[\scshape Образующие цилиндра]
 Пусть
@@ -16753,38 +16773,124 @@ J^o \times I
 структурный функтор
 \(\mc{B} \times [1] \to \mc{X}\)
 соответствует естественному преобразованию
-\((\t*[^{\varpi}]{\vv{b}}{^{\varrho}} : \varpi(b) \to \varrho(b))_{b \in \Ob(\mc{B})}\)
+\((\t*[^{\varpi}]{\vv{b}}{^{\varrho}} : s(\varpi(b)) \to t(\varrho(b)))_{b \in \Ob(\mc{B})}\)
 из
-%функтора
-\(\mc{B} \cong \mc{B} \times \{0\} \to \mc{X}\)
+функтора
+\(s \circ \varpi\)
 в
-\(\mc{B} \cong \mc{B} \times \{1\} \to \mc{X}\),
-компоненты которого
+функтор
+\(t \circ \varrho\).
+%функтора
+%\(\mc{B} \cong \mc{B} \times \{0\} \to \mc{X}\)
+%в
+%\(\mc{B} \cong \mc{B} \times \{1\} \to \mc{X}\),
+Компоненты этого преобразования
 называются \emph{образующими} \(\mc{X}\).
+\end{definition}
+
+\begin{remark}
+Диаграмма~\eqref{eq:CatCylNatTrans} иллюстрирует цилиндр диаграммы категорий \(\mc{C} \xleftarrow{\varpi} \mc{B} \xrightarrow{\varrho} \mc{E}\) вместе со структурными вложениями \(s\), \(t\) и естественным преобразованием \((\vv{b})_{b \in \mc{B}}\).
 \begin{equation}
 \shorthandoff{"}%
 \begin{tikzcd}[
-	column sep = small,
-	row sep = scriptsize,
+	column sep={3em,between origins},
+	row sep={3em,between origins},
 	]
 & \mc{B} \arrow[ld, swap, "\varpi"] \arrow[rd, "\varrho"] &
 \\
-\mc{C} \arrow[rd] \arrow[rr, Rightarrow, shorten <=18pt, shorten >=18pt, "(\vv{b})_{b \in \mc{B}}"] & &  \mc{E} \arrow[ld] 
+\mc{C} \arrow[rd, swap, "{s}"] \arrow[rr, Rightarrow, shorten <=0.6em, shorten >=0.6em, "(\vv{b})_{b \in \mc{B}}"] & &  \mc{E} \arrow[ld, "{t}"] 
 \\
 & \mc{C} \tensor*[^{\varpi}]{\cylbinop}{^{\varrho}_{\mc{B}}} \mc{E} &
 \end{tikzcd}
 \shorthandon{"}%
 \label{eq:CatCylNatTrans}
 \end{equation}
+\end{remark}
+
+\begin{observation}[\scshape Универсальное свойство категорного цилиндра]
+Пусть
+\(\mc{C} \xleftarrow{\varpi} \mc{B} \xrightarrow{\varrho} \mc{E}\)
+---
+диаграмма категорий,
+\(
+\mc{X}
+\coloneqq
+\mc{C} \tensor*[^{\varpi}]{\cylbinop}{^{\varrho}_{\mc{B}}} \mc{E}
+\)
+--- её цилиндр,
+а
+\(\omega \coloneqq (\vv{b})_{b \in \mc{B}}\).%
+\label{obs:CatCylUniProp}
+Тогда для любой категории \(\mc{X}'\), пары функторов \(s' : \mc{C} \to \mc{X}' \from \mc{E} : t'\) и естественного преобразования \(\omega' : s' \varpi \to t' \varrho\) существует единственный функтор \(\upsilon\), такой что
+\(s' = \upsilon s\),
+\(t' = \upsilon t\)
+и
+\(\omega' = \upsilon \omega\).
+\end{observation}
+
+\begin{remark}
+Наблюдение~\ref{obs:CatCylUniProp} показывает, что понятия категорного цилиндра и комма-категории в некотором роде двойственны друг другу.
+\end{remark}
+
+%\begin{observation}
+%Пусть функторы
+%\(\alpha : \mc{C} \to \mc{C}'\),
+%\(\beta : \mc{E} \to \mc{E}'\) и
+%\(\gamma : \mc{B} \to \mc{B}'\)
+%--- компоненты морфизма из диаграммы категорий
+%\(\mc{C} \xleftarrow{\varpi} \mc{B} \xrightarrow{\varrho} \mc{E}\)
+%в диаграмму категорий
+%\(\mc{C}' \xleftarrow{\varpi'} \mc{B}' \xrightarrow{\varrho'} \mc{E}'\).
+%Тогда \(\alpha\), \(\beta\) и \(\gamma\) индуцируют функтор между соответствующими цилиндрами:
+%\(
+%{\alpha \cylbinop_{\gamma} \beta} :
+%{
+%\mc{C} \tensor*[^{\varpi}]{\cylbinop}{^{\varrho}_{\mc{B}}} \mc{E}
+%\to
+%\mc{C}' \tensor*[^{\varpi'}]{\cylbinop}{^{\varrho'}_{\mc{B}'}} \mc{E}'
+%}
+%\).
+%\end{observation}
+
+\begin{observation}
+Произвольная коммутативная диаграмма категорий, функторов и естественных преобразований~\eqref{eq:CatCylIndMor} индуцирует функтор
+\(
+{\alpha \tensor*[^{\zeta}]{\cylbinop}{^{\xi}_{\gamma}} \beta} :
+{
+\mc{C} \tensor*[^{\varpi}]{\cylbinop}{^{\varrho}_{\mc{B}}} \mc{E}
+\to
+\mc{C}' \tensor*[^{\varpi'}]{\cylbinop}{^{\varrho'}_{\mc{B}'}} \mc{E}'
+}
+\)
+между соответствующими цилиндрами.
+\begin{equation}
+\shorthandoff{"}%
+\begin{tikzcd}
+\mc{C} \arrow[d, "\alpha"] & \mc{B} \ar[l, swap, "\varpi", ""{name=Ul, below}] \ar[d, "\gamma"] \ar[r, "\varrho", ""{name=Ur, below}] & \mc{E} \ar[d, "\beta"]
+\\
+\mc{C'} & \mc{B'} \ar[l, "\varpi'", ""{name=Dl, above}] \ar[r, swap, "\varrho'", ""{name=Dr, above}] & \mc{E'}
+\arrow[Rightarrow, shorten <=5pt, shorten >=5pt, from=Ul, to=Dl, "\zeta"]
+\arrow[swap, Rightarrow, shorten <=5pt, shorten >=5pt, from=Dr, to=Ur, "\xi"]
+\end{tikzcd}
+\shorthandon{"}%
+\label{eq:CatCylIndMor}
+\end{equation}
+\end{observation}
+
+\begin{definition}[\scshape Слой функтора]
+Пусть \(\mc{C}\) и \(I\) --- категории,
+\(\pi : \mc{C} \to I\) --- функтор,
+а \(i \in \Ob(I)\) --- объект \(I\).
+Тогда \emph{слоем} \(\pi\) над \(i\), обычно обозначаемым через \(\mc{C}_i\), называется прообраз относительно \(\pi\) подкатегории \(I\), состоящей из одного объекта \(i\) и одного морфизма \(\Id_i : i \to i\).
 \end{definition}
 
 \begin{observation}
-Если \(\mc{C} \xleftarrow{\varpi} \mc{B} \xrightarrow{\varrho} \mc{E}\) --- диаграмма категорий, то её цилиндр автоматически снабжён функтором \(\mc{C} \tensor*[^{\varpi}]{\cylbinop}{^{\varrho}_{\mc{B}}} \mc{E} \to [1]\), слои которого отождествляются с \(\mc{C} \cong \mc{C} \times \{0\}\) и \(\mc{E} \cong \mc{E} \times \{1\}\) соответственно.
+Если \(\mc{C} \xleftarrow{\varpi} \mc{B} \xrightarrow{\varrho} \mc{E}\) --- диаграмма категорий, то её цилиндр автоматически снабжён функтором \(\mc{C} \tensor*[^{\varpi}]{\cylbinop}{^{\varrho}_{\mc{B}}} \mc{E} \to \pt \cylbinop_{\pt} \pt \cong [1]\), слои которого отождествляются с \(\mc{C} \cong \mc{C} \times \{0\}\) и \(\mc{E} \cong \mc{E} \times \{1\}\) соответственно.
 \end{observation}
 
 \begin{observation}
-Пусть \(\mc{S} \to [1]\) --- функтор, а \(\mc{S}_0\) и \(\mc{S}_1\) --- его слои над \(0\) и \(1\) соответственно. Тогда
-\(\mc{S} \cong \mc{S}_0 \cylbinop_{\mc{S}_0 \lsqdiv_{\mc{S}} \mc{S}_1} \mc{S}_1\).
+Пусть \(\mc{X} \to [1]\) --- функтор, а \(\mc{X}_0\) и \(\mc{X}_1\) --- его слои над \(0\) и \(1\) соответственно. Тогда
+\(\mc{X} \cong \mc{X}_0 \cylbinop_{\mc{X}_0 \lsqdiv_{\mc{X}} \mc{X}_1} \mc{X}_1\).
 \end{observation}
 
 %\begin{definition}[\scshape Образующие цилиндра]
@@ -16842,60 +16948,15 @@ J^o \times I
 для любого \(c \in \Ob(\mc{C})\) соответствующая образующая \(\vv{c}^F : c \to F(c)\) является начальным объектом в \(c \lsqdiv_{\mc{C} \cylbinop^F I} I\).
 \end{observation}
 
-%\begin{observation}
-%Пусть функторы
-%\(\alpha : \mc{C} \to \mc{C}'\),
-%\(\beta : \mc{E} \to \mc{E}'\) и
-%\(\gamma : \mc{B} \to \mc{B}'\)
-%--- компоненты морфизма из диаграммы категорий
-%\(\mc{C} \xleftarrow{\varpi} \mc{B} \xrightarrow{\varrho} \mc{E}\)
-%в диаграмму категорий
-%\(\mc{C}' \xleftarrow{\varpi'} \mc{B}' \xrightarrow{\varrho'} \mc{E}'\).
-%Тогда \(\alpha\), \(\beta\) и \(\gamma\) индуцируют функтор между соответствующими цилиндрами:
-%\(
-%{\alpha \cylbinop_{\gamma} \beta} :
-%{
-%\mc{C} \tensor*[^{\varpi}]{\cylbinop}{^{\varrho}_{\mc{B}}} \mc{E}
-%\to
-%\mc{C}' \tensor*[^{\varpi'}]{\cylbinop}{^{\varrho'}_{\mc{B}'}} \mc{E}'
-%}
-%\).
-%\end{observation}
-
-\begin{observation}
-Произвольная коммутативная диаграмма категорий, функторов и естественных преобразований~\eqref{eq:CatCylIndMor} индуцирует функтор
-\(
-{\alpha \tensor*[^{\zeta}]{\cylbinop}{^{\xi}_{\gamma}} \beta} :
-{
-\mc{C} \tensor*[^{\varpi}]{\cylbinop}{^{\varrho}_{\mc{B}}} \mc{E}
-\to
-\mc{C}' \tensor*[^{\varpi'}]{\cylbinop}{^{\varrho'}_{\mc{B}'}} \mc{E}'
-}
-\)
-между соответствующими цилиндрами.
-\begin{equation}
-\shorthandoff{"}%
-\begin{tikzcd}
-\mc{C} \arrow[d, "\alpha"] & \mc{B} \ar[l, swap, "\varpi", ""{name=Ul, below}] \ar[d, "\gamma"] \ar[r, "\varrho", ""{name=Ur, below}] & \mc{E} \ar[d, "\beta"]
-\\
-\mc{C'} & \mc{B'} \ar[l, "\varpi'", ""{name=Dl, above}] \ar[r, swap, "\varrho'", ""{name=Dr, above}] & \mc{E'}
-\arrow[Rightarrow, shorten <=5pt, shorten >=5pt, from=Ul, to=Dl, "\zeta"]
-\arrow[swap, Rightarrow, shorten <=5pt, shorten >=5pt, from=Dr, to=Ur, "\xi"]
-\end{tikzcd}
-\shorthandon{"}%
-\label{eq:CatCylIndMor}
-\end{equation}
-\end{observation}
-
 \begin{observation}
 Пусть \(\mc{C}\) и \(\mc{E}\) --- категории,
 а \(\rho: \mc{C} \to \mc{E}\) --- функтор.
 Тогда следующий квадрат категорий декартов:
 \begin{equation*}
-	\begin{tikzcd}[ampersand replacement=\&, column sep = 6.6em,]
+	\begin{tikzcd}[ampersand replacement=\&]
 		\mc{C} \tensor*[]{\cylbinop}{^{\rho}_{\mc{C}}} \mc{E}
 			\ar{r}{\Id \cylbinop_{\Id} (\mc{E} \to \pt)}
-			\ar[swap]{d}{\rho \cylbinop_{\rho} \Id} \&
+			\ar[swap]{d}{\rho \cylbinop_{\rho} \Id} \&[2.7em]
 		\mc{C} \tensor*[]{\cylbinop}{_{\mc{C}}} \pt
 			\ar{d}{\rho \cylbinop_{\rho} \Id} \\
 		\mc{E} \tensor*[]{\cylbinop}{_{\mc{E}}} \mc{E}
@@ -16908,10 +16969,10 @@ J^o \times I
 \subsection{Определение расслоения Гротендика}
 
 \begin{definition}[\scshape Замкнутость относительно пуллбэков]
-Если \(\mc{C}\) --- категория, а \(B\) и \(P\) --- два класса морфизмов в \(\mc{C}\), то \(P\) называется замкнутым относительно пуллбэков вдоль морфизмов из \(B\), если любая диаграмма вида
-\(\beta : c' \to c \from c'' : \pi\), где \(\pi \in P\), а \(\beta \in B\),
+Если \(\mc{C}\) --- категория, а \(\mc{B}\) и \(\mc{P}\) --- два класса морфизмов в \(\mc{C}\), то \(\mc{P}\) называется замкнутым относительно пуллбэков вдоль морфизмов из \(\mc{B}\), если любая диаграмма вида
+\(\beta : c' \to c \from c'' : \pi\), где \(\pi \in \mc{P}\), а \(\beta \in \mc{B}\),
 %\(B \ni \beta : c' \to c \from c'' : \pi \in P\)
-достраивается до декартового квадрата, в котором морфизм \(c' \times_c c'' \to c'\) лежит в \(P\).
+достраивается до декартового квадрата, в котором морфизм \(c' \times_c c'' \to c'\) лежит в \(\mc{P}\).
 \end{definition}
 
 \begin{definition}[\scshape (Ко)расслоение категорий]
@@ -16952,10 +17013,10 @@ F(c') \ar{r}{F(\varphi)} & F(c)
 %\end{definition}
 
 \begin{definition}[\scshape Существенное (ко)расслоение]
-Пусть \(\mc{C}\) и \(I\) --- категории, \(F : \mc{C} \to I\) --- функтор, а \(\mc{E} \coloneqq \mc{C} \cylbinop^F I\).%
+Пусть \(\mc{C}\) и \(I\) --- категории, \(F : \mc{C} \to I\) --- функтор, а \(\mc{X} \coloneqq \mc{C} \cylbinop^F I\).%
 \label{def:EssFibCat}
 Тогда \(F\) называется \emph{существенным расслоением} или \emph{расслоением Стрита},
-если класс морфизмов \(\varphi \in \Ob(\mc{C} \lsqdiv_{\mc{E}} I) \subset \Ar(\mc{E})\), таких что \(\varphi\) --- начальный объект в \(\op{Dom}(\varphi) \lsqdiv_{\mc{E}} I\), замкнут относительно пуллбэков вдоль морфизмов из \(I\),
+если класс морфизмов \(\varphi \in \Ob(\mc{C} \lsqdiv_{\mc{X}} I) \subset \Ar(\mc{X})\), таких что \(\varphi\) --- начальный объект в \(\op{Dom}(\varphi) \lsqdiv_{\mc{X}} I\), замкнут относительно пуллбэков вдоль морфизмов из \(I\),
 и называется \emph{существенным корасслоением}, если
 противоположный функтор
 \(F^o : \mc{C}^o \to I^o\) является существенным расслоением.
@@ -16985,13 +17046,6 @@ F(c') \ar{r}{F(\varphi)} & F(c)
 \end{example}
 
 \subsection{Транспонированное корасслоение Гротендика}
-
-\begin{definition}[\scshape Слой функтора]
-Пусть \(\mc{C}\) и \(I\) --- категории,
-\(\pi : \mc{C} \to I\) --- функтор,
-а \(i \in \Ob(I)\) --- объект \(I\).
-Тогда \emph{слоем} \(\pi\) над \(i\), обычно обозначаемым через \(\mc{C}_i\), называется прообраз относительно \(\pi\) подкатегории \(I\), состоящей из одного объекта \(i\) и одного морфизма \(\Id_i : i \to i\).
-\end{definition}
 
 \begin{definition}[\scshape Вертикальный морфизм]
 Пусть \(\mc{C}\) и \(I\) --- категории,
