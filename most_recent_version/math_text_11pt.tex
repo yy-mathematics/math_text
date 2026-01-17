@@ -6006,6 +6006,259 @@ D^q \times [0,1]
 является ретрактом \(D^q \times [0,1]\).
 \end{proof}
 
+\section{Определитель как многочлен}
+
+\subsection{Определитель как естественное преобразование}
+
+\begin{notation}[\scshape Категория коммутативных колец]
+В этом разделе категория коммутативных ассоциативных унитальных колец обозначается через \(\mr{CRng}\).
+\end{notation}
+
+\begin{notation}[\scshape Мультипликативный моноид кольца]
+Пусть \(R\) --- ассоциативное унитальное кольцо.
+Тогда моноид элементов \(R\) с операцией умножения обозначается через \(R^{\mr{mult}}\).
+\end{notation}
+
+\begin{lemma}[\scshape Сепарабельность общего характеристического многочлена]
+Пусть \(I\) --- конечное множество, а \(K \coloneqq \Q(X_{i,j} \smid i,j \in I)\).%
+\label{lem:GenCharPolySep}
+Тогда дискриминант
+характеристического многочлена общей матрицы
+\((X_{i,j})_{i,j \in I} \in \Mat_I(K)\),
+то есть
+многочлена \(\det((\delta_{i,j} T - X_{i,j})_{i,j \in I}) \in K[T]\),
+где \(\delta_{i,j}\) --- дельта Кронекера,
+не равен нулю.
+\end{lemma}
+
+\begin{proof}
+Подстановка \(X_{i,j} \mapsto \delta_{i,j} X_{i,j}\),
+где \(\delta_{i,j}\) --- дельта Кронекера,
+переводит дискриминант
+%общего характеристического
+многочлена
+\(\det((\delta_{i,j} T - X_{i,j})_{i,j \in I}) \in K[T]\)
+в дискриминант многочлена
+\(
+\det((\delta_{i,j} T - \delta_{i,j} X_{i,j})_{i,j \in I})
+=
+\prod_{i \in I} (T - X_{i,i})
+\in
+K[T]
+\),
+который не равен нулю.
+\end{proof}
+
+%\begin{observation}[\scshape Сепарабельность универсального характеристического многочлена]
+%Пусть \(I\) --- конечное множество,
+%а \(A \coloneqq \Z[X_{i,j} \smid i,j \in I]\).
+%Тогда характеристический многочлен
+%\(P(T) \in A[T]\) универсальной матрицы
+%\((X_{i,j})_{i,j \in I} \in \Mat_I(A)\)
+%сепарабелен как элемент кольца многочленов \(\Frac(A)[T]\), так как после подстановки \(X_{i,j} \mapsto \delta_{i,j} X_{i,j}\), где \(\delta_{i,j}\) --- дельта Кронекера, он переходит в многочлен \(\prod_{i \in I} (T - X_{i,i})\).
+%\end{observation}
+
+\begin{observation}
+Пусть \(K\) --- поле, а \(\Phi\) --- конечное подмножество \(K\).%
+\label{obs:SemisimpOperDecomp}
+Тогда \(K\)\=/модуль, снабжённый эндоморфизмом, зануляемым многочленом \(\prod_{\alpha \in \Phi} (X - \alpha) \in K[X]\), --- это то же самое, что модуль над кольцом \(K[X] / \prod_{\alpha \in \Phi} (X - \alpha) \cong \prod_{\alpha \in \Phi} (K[X] / (X - \alpha))\),
+а это то же самое, что индексированная \(\alpha \in \Phi\) прямая сумма \(K[X] / (X - \alpha)\)\=/модулей.
+\end{observation}
+
+\begin{theorem}[\scshape Определитель как естественное преобразование]
+Пусть \(I\) --- конечное множество.%
+\label{thm:DetNatGen}
+Тогда моноид естественных преобразований
+\((\Mat_I(A)^{\mr{mult}} \to A^{\mr{mult}})_{A \in \mr{CRng}}\)
+порождён определителем.
+\end{theorem}
+
+\begin{proofparts}[Доказательство (из четырёх частей)]
+
+\item[Часть 1.]
+Пусть
+\((\varphi_A : \Mat_I(A)^{\mr{mult}} \to A^{\mr{mult}})_{A \in \mr{CRng}}\)
+--- естественое преобразование.
+Так как для любого кольца \(A \in \Ob(\mr{CRng})\) и любой матрицы \((a_{i,j})_{i,j \in I} \in \Mat_I(A)\) существует единственный гомоморфизм колец \(\Z[X_{i,j} \smid i,j \in I] \to A\), переводящий \((X_{i,j})_{i,j \in I}\) в \((a_{i,j})_{i,j \in I}\), то
+естественное преобразование \((\varphi_A)_{A \in \mr{CRing}}\) однозначно задаётся многочленом
+\begin{equation*}
+P(X_{i,j} \smid i,j \in I) \coloneqq \varphi_{\Z[X_{i,j} \mid i,j \in I]}((X_{i,j})_{i,j \in I}) \in \Z[X_{i,j} \smid i,j \in I],
+\end{equation*}
+который удовлетворяет свойствам
+\begin{gather}
+P(\delta_{i,j} \smid i,j \in I) = 1,\ \tn{где \(\delta_{i,j}\) --- это дельта Кронекера},
+\label{eq:DetNatPolyOne}
+\\
+\textstyle
+P(\sum_{k \in I} X'_{i,k} X''_{k,j} \smid i,j \in I) = P(X'_{i,j} \smid i,j \in I) \cdot P(X''_{i,j} \smid i,j \in I),
+\label{eq:DetNatPolyTwo}
+\end{gather}
+где~\eqref{eq:DetNatPolyOne} --- это равенство в \(\Z\), а~\eqref{eq:DetNatPolyTwo} --- это равенство в \(\Z[X'_{i,j}, X''_{i,j} \smid i,j \in I]\).
+
+\item[Часть 2.]
+Случай \(I = \varnothing\) тривиален.
+%а случай \(\card(I) = 1\) прямо следует из уравнения~\eqref{eq:DetNatPolyTwo} с помощью рассмотрения коэффициентов \(P(X)\).
+Рассмотрим случай \(\card(I) = 1\).
+Пусть \(P(X) = \sum_{k = 0}^n a_k X^k\), где \(\deg(P) = n\) и \(a_k \in \Z\) для любого \(k\) от \(0\) до \(n\).
+Тогда условия~\eqref{eq:DetNatPolyOne} и \eqref{eq:DetNatPolyTwo} превращаются в условия
+\(\sum_{k = 0}^n a_k = 1\),
+\(a_k^2 = a_k\) для любого \(k\) от \(0\) до \(n\)
+и \(a_{k'} a_{k''} = 0\) для любых различных \(k'\) и \(k''\) от \(0\) до \(n\).
+Иначе говоря, коэффициенты \(P(X)\) образуют полную систему попарно ортогональных идемпотентов.
+Но в целостном кольце \(\Z\) все идемпотенты тривиальны, а потому \(P(X) = X^n\).
+
+\item[Часть 3.]
+Для любого \(s \in I\) определено естественное вложение
+\begin{equation*}
+\textstyle
+\iota_s : A^{\mr{mult}} \cong \Mat_{\pt}(A)^{\mr{mult}} \to \Mat_I(A)^{\mr{mult}},
+\ 
+a \mapsto
+%(a)_{i,j \in \{e\}} \oplus (\delta_{i,j})_{i,j \in I \setminus \{e\}}
+a e_{s,s} + \sum_{i \in I \setminus \{s\}} e_{i,i}
+\end{equation*}
+и, согласно части~2 данного доказательства,
+для любого \(s \in I\) отображение \(\varphi_A \circ \iota_s\) имеет вид \(x \mapsto x^{n_s} : A^{\mr{mult}} \to A^{\mr{mult}}\), где \(n_s \in \N_0\).
+
+Так как для любых различных \(s', s'' \in I\) вложения \(\iota_{s'}\) и \(\iota_{s''}\) сопряжены матрицей транспозиции \((s',s'')\),
+а \(\varphi_A\) принимает одинаковые значения на классах сопряжённости,
+%а \(\varphi_I(gxg^{-1}) = \varphi_I(x)\)
+%для любых \(g \in \GL_I(A)\) и \(x \in \Mat_I(A)\),
+то \(n_{s'} = n_{s''}\) для любых \(s', s'' \in I\).
+
+Так как
+для любого кольца \(A \in \Ob(\mr{CRng})\) моноид диагональных матриц
+\(\op{D}_I(A)^{\mr{mult}}\)
+разлагается в произведение
+\(\prod_{i \in I} \iota_i(A)^{\mr{mult}}\),
+%порождается подмоноидами \(\iota_e(A)^{\mr{mult}} \subset \op{D}_I(A)^{\mr{mult}}\), гдe \(e \in I\),
+то существует \(n \in \N_0\), такое что \(\varphi_A(x) = \det(x)^n\) для любого \(x \in \op{D}_I(A)\).
+
+\item[Часть 4.]
+Осталось заметить, что, согласно лемме~\ref{lem:GenCharPolySep} и наблюдению~\ref{obs:SemisimpOperDecomp},
+если \(K\) --- это поле разложения над \(\Q(X_{i,j} \smid i,j \in I)\) характеристического многочлена общей матрицы \((X_{i,j})_{i,j \in I}\),
+то матрица \((X_{i,j})_{i,j \in I}\) диагонализуема как матрица с коэффициентами в \(K\).
+\qedhere
+
+\end{proofparts}
+
+\begin{remark}
+Я узнал формулировку теоремы~\ref{thm:DetNatGen} и схему её доказательства из поста~\cite{rafi3akDetNat} пользователя \texttt{@rafi3ak} в Twitter/X.
+\end{remark}
+
+\subsection{Неприводимость определителя}
+
+\begin{definition}[\scshape Консервативный гомоморфизм]
+Гомоморфизм ассоциативных унитальных колец называется \emph{консервативным}, если он переводит необратимые элементы в необратимые элементы.
+\end{definition}
+
+\begin{observation}[\scshape Консервативные гомоморфизмы и неприводимость]
+Любой консервативный гомоморфизм коммутативных ассоциативных унитальных целостных колец%
+\label{obs:ConsHomReflIrred}
+переводит не неприводимые элементы в не неприводимые элементы.
+\end{observation}
+
+\begin{remark}
+Наблюдение~\ref{obs:ConsHomReflIrred} можно сформулировать следующим образом:
+<<консервативные гомоморфизмы отражают неприводимость>>.
+\end{remark}
+
+\begin{observation}[\scshape Характеристический многочлен мономиальной матрицы]
+Пусть \(n \in \N_1\) --- натуральное число,
+\(I \coloneqq \Z/n\Z\) --- циклическая группа порядка \(n\),
+а \(x \coloneqq \sum_{i \in I} X_i e_{i+1, i} \in \Mat_I(\Z[X_i \smid i \in I])\) --- общая мономиальная матрица, соответствующая циклической перестановке.%
+\label{obs:MonMatrixCharPoly}
+Тогда характеристический многочлен \(x\) равен
+\(T^n - \prod_{i \in I} X_i\).
+\end{observation}
+
+\begin{theorem}[\scshape Неприводимость определителя]
+Пусть \(I\) --- непустое конечное множество.%
+\label{thm:DetIrred}
+Тогда многочлен~\eqref{eq:GenDetPoly} неприводим.
+\begin{equation}
+\det((X_{i,j})_{i,j\in I})
+=
+\sum_{\mathclap{\sigma \in \Sym(I)}}
+\op{sgn}(\sigma)
+\prod_{i \in I} X_{i, \sigma(i)}
+\in
+\Z[X_{i,j} \smid i,j \in I]%
+\label{eq:GenDetPoly}
+\end{equation}
+\end{theorem}
+
+\begin{proof}[Первое доказательство]
+Для любого индекса \(i \in I\)
+многочлен~\eqref{eq:GenDetPoly}
+является однородным степени \(1\),
+во-первых,
+по множеству переменных
+\(\{X_{i,j} \mid j \in I\}\)
+и по каждой из них,
+во-вторых,
+по множеству переменных
+\(\{X_{j,i} \mid j \in I\}\)
+и по каждой из них,
+а потому
+для любого индекса \(i \in I\)
+все делители~\eqref{eq:GenDetPoly} являются однородными степени \(1\) или \(0\),
+во-первых,
+по множеству переменных
+\(\{X_{i,j} \mid j \in I\}\)
+и по каждой из них,
+во-вторых,
+по множеству переменных
+\(\{X_{j,i} \mid j \in I\}\)
+и по каждой из них.
+Отсюда сразу выводится утверждение теоремы.
+\end{proof}
+
+\begin{proof}[Второе доказательство]
+Введём обозначение
+\(n \coloneqq \card(I)\)
+и предположим, что \(I = \Z/n\Z\).
+Пусть
+\(
+\varphi : \Z[X_{i,j} \smid i,j \in I] \to \Z[T, X_i \smid i \in I]
+\)
+--- это гомоморфизм колец, переводящий матрицу
+\((X_{i,j})_{i,j \in I}\)
+в матрицу
+\(\sum_{i \in I}(T e_{i,i} - X_i e_{i+1,i})\).
+Тогда,
+согласно наблюдению~\ref{obs:MonMatrixCharPoly},
+гомоморфизм \(\varphi\) переводит многочлен
+\(\det((X_{i,j})_{i,j\in I})\)
+в многочлен
+\(T^n - \prod_{i \in I} X_i\),
+который неприводим по критерию Эйзенштейна.
+Осталось заметить, что
+\(\varphi\) консервативен,
+%---
+%\(
+%\varphi(\sum_{i,j \in I} X_{i,j} A)
+%\subset
+%T A' + \sum_{i \in I} X_i A'
+%\),
+%---
+а консервативные гомоморфизмы,
+согласно наблюдению~\ref{obs:ConsHomReflIrred},
+переводят не неприводимые элементы в не неприводимые элементы.
+%а потому,
+%согласно наблюдению~\ref{obs:ConsHomReflIrred},
+%из неприводимости
+%\(\varphi(\det((X_{i,j})_{i,j\in I}))\)
+%следует неприводимость
+%\(\det((X_{i,j})_{i,j\in I})\).
+\end{proof}
+
+\begin{remark}
+Я узнал второе из приведённых доказательств теоремы~\ref{thm:DetIrred} из вопроса~\cite{ms4617539}
+%пользователя \texttt{Maxim Nikitin}
+на <<\href{https://math.stackexchange.com/}{\textenglish{Mathematics Stack Exchange}}>>.
+\end{remark}
+
 
 
 
@@ -10078,6 +10331,39 @@ E \mapsto
 %Более конкретно, произвольный \(R\)-под\-мо\-дуль в \(N \otimes_D D^{\oplus I}\), где \(I\) --- множество, является образом какого-то гомоморфизма \(N^{\oplus J} \cong N \otimes_D D^{\oplus J} \to N^{\oplus I} \cong N \otimes_D D^{\oplus I}\), где \(J\) --- множество, а этот образ совпадает с \(N \otimes_D U\), где \(U\) --- образ соответствующего гомоморфизма \(D^{\oplus J} \to D^{\oplus I}\).
 %\end{proof}
 
+\begin{example}
+Пусть \((D_i)_{i \in I}\) --- несчётное семейство тел,
+\(R \coloneqq \prod_{i \in I} D_i\),
+а \(V\) --- идеал \(R\), состоящий из семейств с не более чем счётным носителем.%
+\label{exa:NotFiniteConnectedModule}
+Тогда
+\(R\)\=/модуль \(V\) не является конечно порождённым,
+но для любого семейства \(R\)\=/модулей \((U_j)_{j \in J}\)
+канонический гомоморфизм
+\begin{equation}
+\textstyle
+\bigoplus_{j \in J} \Hom_R(V, U_j)
+\to
+\Hom_R(V, \bigoplus_{j \in J} U_j)
+\label{eq:HomSumExchange}
+\end{equation}
+биективен,
+потому что в \(V\) все счётно порождённые подмодули содержатся в циклических подмодулях,
+а в образе любого гомоморфизма \(V \to \bigoplus_{j \in J} U_j\), который не лежит в образе~\eqref{eq:HomSumExchange},
+содержится счётно порождённый подмодуль, который не содержится ни в каком конечно порождённом, в частности, циклическом, подмодуле.
+\end{example}
+
+\begin{remark}
+Я узнал о примере~\ref{exa:NotFiniteConnectedModule} из ответа~\cite{mo94442}
+на <<\href{https://mathoverflow.net/}{\textenglish{MathOverflow}}>>.
+\end{remark}
+
+\begin{remark}
+Пример~\ref{exa:NotFiniteConnectedModule},
+который показывает, что модуль, \({\op{Hom}}\) из которого сохраняет прямые суммы, не обязан быть конечно порождённым,
+--- это  небольшое отступление от основной темы подраздела.
+\end{remark}
+
 \begin{theorem}
 Пусть \(k\) --- поле, \(R\) --- центральная простая ассоциативная унитальная алгебра над \(k\), а \(R'\) --- простая ассоциативная унитальная алгебра над \(k\).%
 \label{thm:TensProdCentSimpAndSimp}
@@ -12862,20 +13148,15 @@ a_n s^{n-1} %b^0
 \end{theorem}
 
 \begin{proof}
-Пусть \(x \in \Int_{\Frac(A)}(A)\).
-Тогда
-\(x^n = \sum_{i=1}^n a_i x^{n-i}\),
+Пусть \(x \in \Int_{\Frac(A)}(A)\),
+то есть
+\(x^n = \sum_{i=1}^n a_i x^{n-i}\)
 для какого-то семейства \((a_i)_{i=1}^n \in A^{\times n}\), где \(n \in \N_1\).
-Помимо этого существуют \(a, b \in A\),
-такие что \(x = \frac{a}{b}\)
-%и не существует простого элемента \(\pi \in A\), такого что \(p \mid a\) и \(p \mid b\).
-и \(Aa + Ab = A\).
-Предположим, что \(x \notin A\).
-Тогда \(b \notin A^{\times}\),
-а потому существует простой элемент \(\pi \in A\),
-такой что \(\pi \mid b\), но \(\pi \nmid a\),
+Тогда если \(x \notin A\),
+то \(\lVert x \rVert_\pi > 1\)
+для какого-то простого \(\pi \in A\),
 что противоречит соотношению
-\(a^n = \sum_{i=1}^n a_i a^{n-i} b^i\).
+\(\lVert x \rVert_{\pi}^n = \lVert \sum_{i=1}^n a_i x^{n-i} \rVert_{\pi} \leq \max_{i=1}^n(\lVert a_i \rVert_{\pi} \lVert x \rVert_{\pi}^{n-i}) \leq \max_{i=1}^n(\lVert x \rVert_{\pi}^{n-i})\).
 \end{proof}
 
 \subsection{Теорема о несравнимости и теорема о подъёме}
@@ -14125,6 +14406,11 @@ A,
 \begin{definition}[\scshape Примитивная часть и содержание]
 В обозначениях теоремы~\ref{thm:GaussLemmaPoly} для любого \(\mf{c} \in \mc{I}_{A[X]} \cong \mc{I}_{A} \times \mc{I}_{K[X]}\) соответствующая компонента в \(\mc{I}_{A}\) называется \emph{содержанием} \(\mf{c}\), а соответствующая компонента в \(\mc{I}_{K[X]}\) называется \emph{примитивной частью} \(\mf{c}\).
 \end{definition}
+
+\begin{example}
+Простые идеалы \(\Z[X,Y]X\) и \(\Z[X,Y]Y\) факториальной области \(\Z[X,Y]\) не совпадают,
+при этом \(\Z[X,Y]X + \Z[X,Y]Y \neq \Z[X,Y]\).
+\end{example}
 
 
 \section{Дедекиндовы кольца}
