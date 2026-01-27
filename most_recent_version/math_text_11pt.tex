@@ -10332,25 +10332,17 @@ E \mapsto
 %\end{proof}
 
 \begin{example}
-Пусть \((D_i)_{i \in I}\) --- несчётное семейство тел,
-\(R \coloneqq \prod_{i \in I} D_i\),
+Пусть \((R_i)_{i \in I}\) --- несчётное семейство нетривиальных ассоциативных унитальных колец,
+\(R \coloneqq \prod_{i \in I} R_i\),
 а \(V\) --- идеал \(R\), состоящий из семейств с не более чем счётным носителем.%
 \label{exa:NotFiniteConnectedModule}
 Тогда
 \(R\)\=/модуль \(V\) не является конечно порождённым,
-но для любого семейства \(R\)\=/модулей \((U_j)_{j \in J}\)
-канонический гомоморфизм
-\begin{equation}
-\textstyle
-\bigoplus_{j \in J} \Hom_R(V, U_j)
-\to
-\Hom_R(V, \bigoplus_{j \in J} U_j)
-\label{eq:HomSumExchange}
-\end{equation}
-биективен,
-потому что в \(V\) все счётно порождённые подмодули содержатся в циклических подмодулях,
-а в образе любого гомоморфизма \(V \to \bigoplus_{j \in J} U_j\), который не лежит в образе~\eqref{eq:HomSumExchange},
-содержится счётно порождённый подмодуль, который не содержится ни в каком конечно порождённом, в частности, циклическом, подмодуле.
+но
+любой счётно порождённый подмодуль \(V\) содержится в конечно порождённом и даже циклическом подмодуле \(V\).
+Это свойство наследуется гомоморфными образами \(V\) и из него следует, что функтор
+\(\Hom_{R\module}(V, -)\)
+сохраняет прямые суммы.
 \end{example}
 
 \begin{remark}
@@ -11136,8 +11128,14 @@ R \otimes_{\Z} R \arrow{r}{\mathrm{mult}}& R
 \end{remark}
 
 \begin{observation}
-Обычно \(e^{a \otimes 1 + 1 \otimes a} = e^a \otimes e^a\) и \(e^{a* - *a} = e^a* \circ *e^{-a}\), когда эти выражения имеют смысл.
+Обычно \(e^{a \otimes 1 + 1 \otimes a} = e^a \otimes e^a\) и \(e^{a* - *a} = e^a* \circ *e^{-a}\),%
+\label{obs:CampbellId}
+когда эти выражения имеют смысл.
 \end{observation}
+
+\begin{remark}
+Вторую формулу наблюдения~\ref{obs:CampbellId} иногда называют \emph{тождеством Кэмпбелла}.
+\end{remark}
 
 \begin{observation}%[\scshape Инвариантность формы Киллинга]
 Форма Киллинга --- это след произведения. Взяв след от тождества
@@ -11168,22 +11166,27 @@ V \otimes_A V
 
 \begin{observation}
 Пусть \(R\) --- алгебра над ассоциативным коммутативным унитальным кольцом \(A\), отображение \(d : R \to R\) --- дифференцирование \(R\) над \(A\), а \(a\) и \(b\) --- элементы \(A\).
-Тогда мы имеем коммутативную диаграмму \eqref{eq:diff_scal_binom}, где \(\mathrm{mult}\) --- это отображение умножения в \(R\), которая делает очевидной формулу \eqref{eq:diff_scal_binom_form}, где \(x,y \in R\), а \(n \in \N_0\).
-\begin{equation}
-\label{eq:diff_scal_binom}
-\begin{tikzcd}[column sep = 7.5em]
-R \otimes_A R \ar[swap]{d}{\mathrm{mult}} \ar{r}{(d-a) \otimes 1 + 1 \otimes (d-b)} &
+Тогда мы имеем коммутативную диаграмму~\eqref{eq:diff_scal_binom}, где \(\mathrm{mult}\) --- это отображение умножения в \(R\), которая делает очевидной формулу~\eqref{eq:diff_scal_binom_form}, где \(x,y \in R\), а \(n \in \N_0\).
+\begin{gather}
+\begin{tikzcd}[
+	ampersand replacement = \amprep,
+	column sep = 7.5em,
+	]
+R \otimes_A R \ar[swap]{d}{\mathrm{mult}} \ar{r}{(d-a) \otimes 1 + 1 \otimes (d-b)}
+\amprep
 R \otimes_A R \ar{d}{\mathrm{mult}}
 \\
-R \ar{r}{d - (a + b)} &
+R \ar{r}{d - (a + b)}
+\amprep
 R
 \end{tikzcd}
-\end{equation}
-\begin{equation}
-\label{eq:diff_scal_binom_form}
+\label{eq:diff_scal_binom}
+\displaybreak[0]
+\\
 (d - (a + b))^n (xy) =
 \sum_{i=0}^n \binom{n}{i} ((d - a)^{n-i} (x)) ((d - b)^i (y))
-\end{equation}
+\label{eq:diff_scal_binom_form}
+\end{gather}
 \end{observation}
 
 \begin{example}
@@ -11198,14 +11201,37 @@ R
 Следовательно, у эндоморфизмов \(x\) и \(x \6 / \6 x\) нет общего собственного вектора.
 \end{example}
 
-\begin{observation} \label{obs:BCH_truncated}
-Пусть \(R \coloneqq \Q\langle X, Y \rangle / (P \in \Q\langle X, Y \rangle \mid \deg(P) \geq 3)\) --- алгебра усечённых многочленов от двух не коммутирующих переменных, а \(x, y \in R\) --- образы \(X, Y \in \Q\langle X, Y \rangle\).
-Тогда, в понятном смысле, выполняются равенства \(e^x e^y = e^{x + y + (1/2)(xy - yx)}\) и \(e^x e^y e^{-x} e^{-y} = e^{xy - yx}\).
+\begin{observation}
+Пусть \(x\) и \(y\) --- это образы \(X\) и \(Y\) соответственно в кольце \(\Q \llangle X, Y \rrangle / ([X,[X,Y]], [Y,[X,Y]])\).
+Тогда
+\(
+e^x e^y e^{-x} e^{-y}
+=
+e^{e^x y e^{-x}} e^{-y}
+=
+e^{e^{\op{ad(x)}} y} e^{-y}
+=
+e^{y + [x,y] + \frac{1}{2!} [x,[x,y]] + \frac{1}{3!} [x,[x,[x,y]]] + \cdots{}} e^{-y}
+=
+e^{y + [x,y]} e^{-y}
+=
+e^{[x,y]}
+\).
 \end{observation}
 
-\begin{remark}
-Первая формула наблюдения~\ref{obs:BCH_truncated} --- это усечённая форма формулы Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа\namedash{}Дынкина, полная версия которой формулируется и доказывается в разделе~\ref{sec:BKHD}.
-\end{remark}
+\begin{corollary}
+Пусть \(R \coloneqq \Q\langle X, Y \rangle / (P \in \Q\langle X, Y \rangle \mid \deg(P) \geq 3)\) --- алгебра усечённых многочленов от двух не коммутирующих переменных, а \(x, y \in R\) --- образы \(X, Y \in \Q\langle X, Y \rangle\).
+Тогда \(e^x e^y e^{-x} e^{-y} = e^{xy - yx}\).
+\end{corollary}
+
+%\begin{observation} \label{obs:BCH_truncated}
+%Пусть \(R \coloneqq \Q\langle X, Y \rangle / (P \in \Q\langle X, Y \rangle \mid \deg(P) \geq 3)\) --- алгебра усечённых многочленов от двух не коммутирующих переменных, а \(x, y \in R\) --- образы \(X, Y \in \Q\langle X, Y \rangle\).
+%Тогда, в понятном смысле, выполняются равенства \(e^x e^y = e^{x + y + (1/2)(xy - yx)}\) и \(e^x e^y e^{-x} e^{-y} = e^{xy - yx}\).
+%\end{observation}
+
+%\begin{remark}
+%Первая формула наблюдения~\ref{obs:BCH_truncated} --- это усечённая форма формулы Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа\namedash{}Дынкина, полная версия которой формулируется и доказывается в разделе~\ref{sec:BKHD}.
+%\end{remark}
 
 %\begin{remark}
 %Текст~\cite{Mueger_BCHD} содержит формулировку и несколько доказательств формулы Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа\namedash{}Дынкина.
@@ -11213,7 +11239,8 @@ R
 %\end{remark}
 
 \begin{corollary}
-Пусть \(R\) --- ассоциативное унитальное кольцо, а \(x, y \in R\) --- его элементы, такие что \(x^2 = y^2 = xyx = yxy = 0\). Тогда, в понятном смысле, выполняется равенство \(e^x e^y e^{-x} e^{-y} = e^{xy - yx}\).
+Пусть \(x\) и \(y\) --- это образы \(X\) и \(Y\) соответственно в кольце \(\Z \langle X, Y \rangle / (X^2, Y^2, XYX, YXY)\).
+Тогда \(e^x e^y e^{-x} e^{-y} = e^{xy - yx}\).
 \end{corollary}
 
 %\begin{remark}
@@ -11262,7 +11289,6 @@ R
 \), то есть \(2\tr(x) = 0\).
 \end{observation}
 
-
 \begin{observation}
 Пусть \(p \in \N_1\) --- простое число, а \(X, Y \in \F_p[X,Y]\) --- коммутирующие переменные.%
 \label{obs:FrobEndCor}
@@ -11276,21 +11302,91 @@ R
 Тогда, применив наблюдение~\ref{obs:FrobEndCor}, получаем формулу \(\op{ad}(x)^{p-1}(D(x)) = (x* - *x)^{p-1}(D(x)) = D(x^p)\), где \(\op{ad}(x) = [x, -]\).
 \end{observation}
 
-\begin{observation}
-Пусть \(p \in \N_1\) --- простое число, а \(X, Y, T \in \F_p\langle X, Y \rangle [T]\) --- переменные.
-Тогда, продифференцировав тождество~\eqref{eq:RestrLie1} по \(T\), согласно наблюдению~\ref{obs:DiffAndAdInCharP}, получаем тождество~\eqref{eq:RestrLie2}.
-\begin{equation}
-(XT + Y)^p = X^p T^p + s_{p-1}(X, Y) T^{p-1} + \cdots{} + s_1(X, Y) T + Y^p%
-\label{eq:RestrLie1}%
-\end{equation}
-\begin{multline}
-%\op{ad}(XT + Y)^{p-1}(X) =
-[\underbrace{XT + Y, [XT + Y, [XT + Y, \dots{}, [XT + Y}_{p-1}, X]]] \dots{} ] =%
+%\begin{observation}
+%Пусть \(p \in \N_1\) --- простое число, а \(X, Y, T \in \F_p\langle X, Y \rangle [T]\) --- переменные.
+%Тогда, продифференцировав тождество~\eqref{eq:RestrLie1} по \(T\), согласно наблюдению~\ref{obs:DiffAndAdInCharP}, получаем тождество~\eqref{eq:RestrLie2}.
+%\begin{equation}
+%(XT + Y)^p = X^p T^p + s_{p-1}(X, Y) T^{p-1} + \cdots{} + s_1(X, Y) T + Y^p%
+%\label{eq:RestrLie1}%
+%\end{equation}
+%\begin{multline}
+%%\op{ad}(XT + Y)^{p-1}(X) =
+%[\underbrace{XT + Y, [XT + Y, [XT + Y, \dots{}, [XT + Y}_{p-1}, X]]] \dots{} ] =%
+%\\
+%= (p - 1) s_{p - 1}(X, Y) T^{p - 2} + \cdots{} + 2 s_2(X, Y) T + s_1(X, Y)%
+%\label{eq:RestrLie2}
+%\end{multline}
+%\end{observation}
+
+\begin{theorem}
+Пусть \(p \in \N_1\) --- простое число.%
+\label{thm:RestrLieAlgId}
+Тогда в кольце некоммутативных многочленов \(R \coloneqq \F_p\langle X, Y \rangle\) выполняется равенство
+%\begin{gather}
+%\begin{gathered}
+%(X + Y)^p - X^p - Y^p =
+%\\
+%=
+%\sum_{\mathclap{c_1 = 0}}^1 \cdots{} \sum_{\mathclap{c_{p-2} = 0}}^1
+%\frac%
+%{%
+%	[c_1 X + (1 - c_1) Y, \dots{}, [c_{p-2} X + (1 - c_{p-2}) Y, [Y, X]] \dots{} ]
+%}%
+%{%
+%	1 + \sum_{i=1}^{p-2} c_i%
+%}.
+%\end{gathered}
+%\label{eq:RestrLie3}
+%\end{gather}
+\begin{gather}
+\begin{gathered}
+(X + Y)^p - X^p - Y^p
+=
+\smashoperator[r]{\sum_{c_1 = 0}^1}
+\cdots{}
+\smashoperator[l]{\sum_{c_{p-2} = 0}^1}
+\frac{1}{1 + \sum_{i=1}^{p-2} c_i}
+\times
 \\
-= (p - 1) s_{p - 1}(X, Y) T^{p - 2} + \cdots{} + 2 s_2(X, Y) T + s_1(X, Y)%
+\times
+\op{ad}(c_1 X + (1 - c_1) Y)
+\cdots{}
+\op{ad}(c_{p-2} X + (1 - c_{p-2}) Y)
+[Y, X].
+\end{gathered}
+\label{eq:RestrLie3}
+\end{gather}
+\end{theorem}
+
+\begin{proof}
+Пусть \(D : R \to R\) --- дифференцирование, такое что \(D(X) = X\) и \(D(Y) = 0\).
+Тогда если применить к разложению~\eqref{eq:RestrLie1},
+где
+\(f_n(X,Y) \in R\)
+и
+\(\deg_X(f_n(X,Y)) = n\)
+для любого \(n\) от \(1\) до \(p-1\),
+оператор \(D\), то,
+согласно наблюдению~\ref{obs:DiffAndAdInCharP}, получится тождество~\eqref{eq:RestrLie2}.
+\begin{gather}
+(X + Y)^p
+=
+X^p +
+f_{p-1}(X,Y) + f_{p-2}(X,Y) + \cdots{} + f_1(X,Y)
++ Y^p
+\label{eq:RestrLie1}
+\\
+[\underbrace{X + Y, [X + Y, [X + Y, \dots{}, [X + Y}_{p-1}, X]]] \dots{} ]
+=
+\sum_{n=1}^{p-1} n f_n(X,Y)
 \label{eq:RestrLie2}
-\end{multline}
-\end{observation}
+\end{gather}
+Приравняв однородные по \(X\) и по \(Y\) слагаемые левой и правой части формулы~\eqref{eq:RestrLie2} и подставив в формулу~\eqref{eq:RestrLie1}, получаем формулу~\eqref{eq:RestrLie3}.
+\end{proof}
+
+\begin{remark}
+Я узнал приведённое доказательство теоремы~\ref{thm:RestrLieAlgId} из книги Н.~Джекобсона~\cite[206--207]{NatJacLieAlgRu}.
+\end{remark}
 
 
 \section{Формула Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа\namedash{}Дынкина}
@@ -11344,7 +11440,13 @@ R
 %\displaybreak[0]
 \\
 =
-\sum_{(c_1, \dots{}, c_n) \in \{0,1\}^n}
+%\sum_{(c_1, \dots{}, c_n) \in \{0,1\}^n}
+\sum_{\mathclap{c_1 = 0}}^1
+\cdots{}
+\sum_{\mathclap{c_n = 0}}^1
+%\smashoperator[r]{\sum_{c_1 = 0}^1}
+%\cdots{}
+%\smashoperator[l]{\sum_{c_n = 0}^1}
 (-1)^{\sum_{i=1}^n (1 - c_i)}
 (\sum_{i=1}^n c_i)
 X_1^{c_1} \cdots{} X_n^{c_n} X_n^{1 - c_n} \cdots{} X_1^{1 - c_1}
@@ -11352,7 +11454,13 @@ X_1^{c_1} \cdots{} X_n^{c_n} X_n^{1 - c_n} \cdots{} X_1^{1 - c_1}
 %\displaybreak[0]
 \\
 =
-\sum_{(c_1, \dots{}, c_n) \in \{0,1\}^n}
+%\sum_{(c_1, \dots{}, c_n) \in \{0,1\}^n}
+\sum_{\mathclap{c_1 = 0}}^1
+\cdots{}
+\sum_{\mathclap{c_n = 0}}^1
+%\smashoperator[r]{\sum_{c_1 = 0}^1}
+%\cdots{}
+%\smashoperator[l]{\sum_{c_n = 0}^1}
 (-1)^{\sum_{i=1}^n (1 - c_i)}
 (\sum_{i=1}^n c_i)
 X_1^{c_1} \cdots{} X_{n-1}^{c_{n-1}} X_n X_{n-1}^{1 - c_{n-1}} \cdots{} X_1^{1 - c_1}
@@ -11360,7 +11468,13 @@ X_1^{c_1} \cdots{} X_{n-1}^{c_{n-1}} X_n X_{n-1}^{1 - c_{n-1}} \cdots{} X_1^{1 -
 %\displaybreak[0]
 \\
 =
-\sum_{(c_1, \dots{}, c_{n-1}) \in \{0,1\}^{n-1}}
+%\sum_{(c_1, \dots{}, c_{n-1}) \in \{0,1\}^{n-1}}
+\sum_{\mathclap{c_1 = 0}}^1
+\cdots{}
+\sum_{\mathclap{c_{n-1} = 0}}^1
+%\smashoperator[r]{\sum_{c_1 = 0}^1}
+%\cdots{}
+%\smashoperator[l]{\sum_{c_{n-1} = 0}^1}
 (-1)^{\sum_{i=1}^{n-1} (1 - c_i)}
 X_1^{c_1} \cdots{} X_{n-1}^{c_{n-1}} X_n X_{n-1}^{1 - c_{n-1}} \cdots{} X_1^{1 - c_1}
 =
