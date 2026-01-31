@@ -11202,7 +11202,8 @@ R
 \end{example}
 
 \begin{observation}
-Пусть \(x\) и \(y\) --- это образы \(X\) и \(Y\) соответственно в кольце \(\Q \llangle X, Y \rrangle / ([X,[X,Y]], [Y,[X,Y]])\).
+Пусть \(x\) и \(y\) --- это образы \(X\) и \(Y\) соответственно в кольце \(\Q \llangle X, Y \rrangle / ([X,[X,Y]], [Y,[X,Y]])\).%
+\label{obs:TruncAddMultCommForm}
 Тогда
 \(
 e^x e^y e^{-x} e^{-y}
@@ -11218,6 +11219,20 @@ e^{y + [x,y]} e^{-y}
 e^{[x,y]}
 \).
 \end{observation}
+
+\begin{remark}
+Формулу
+\(e^x e^y e^{-x} e^{-y} = e^{[x,y]}\)
+наблюдения~\ref{obs:TruncAddMultCommForm} можно вывести из усечённой формы формулы Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа\namedash{}Дынкина (теорема~\secref{thm:TruncBCHDFormula}):
+\(
+e^x e^y e^{-x} e^{-y}
+=
+e^{x + y + \frac{1}{2}[x,y]}
+e^{-x - y + \frac{1}{2}[x,y]}
+=
+e^{[x,y]}
+\).
+\end{remark}
 
 \begin{corollary}
 Пусть \(R \coloneqq \Q\langle X, Y \rangle / (P \in \Q\langle X, Y \rangle \mid \deg(P) \geq 3)\) --- алгебра усечённых многочленов от двух не коммутирующих переменных, а \(x, y \in R\) --- образы \(X, Y \in \Q\langle X, Y \rangle\).
@@ -11258,17 +11273,22 @@ e^{[x,y]}
 
 \begin{example}
 Пусть \(R\) --- ассоциативное унитальное кольцо, \(a_1, a_2 \in R\), а \(\varepsilon_1, \varepsilon_2 \in R[E_1, E_2] / (E_1^2, E_2^2)\) --- образы \(E_1\) и \(E_2\) соответственно.
-Тогда \(e^{x_1} e^{x_2} e^{-x_1} e^{-x_2} = e^{x_1 x_2 - x_2 x_1}\), где \(x_1 \coloneqq a_1 \varepsilon_1\), \(x_2 \coloneqq a_2 \varepsilon_2\).
+Положим \(x_1 \coloneqq a_1 \varepsilon_1\) и \(x_2 \coloneqq a_2 \varepsilon_2\).
+Тогда \(e^{x_1} e^{x_2} e^{-x_1} e^{-x_2} = e^{x_1 x_2 - x_2 x_1}\).
 \end{example}
 
 \begin{example}
 Пусть \(R\) --- ассоциативное унитальное кольцо,
 \(I\) --- конечное множество,
-\(u_1, u_2 \in \Mat_{\pt, I}(R)\) --- две строки,
-а \(v_1, v_2 \in \Mat_{I, \pt}(R)\) --- два столбца,
-причём \(u_1 v_1 = u_2 v_2 = u_1 v_2 = 0\).%
+а
+\(u_1, u_2 \in \Mat_{\pt, I}(R)\)
+и
+\(v_1, v_2 \in \Mat_{I, \pt}(R)\)
+--- пара строк и пара столбцов,
+такие что выполняются равенства \(u_1 v_1 = u_2 v_2 = u_1 v_2 = 0\).%
 \label{exa:TransvCommForm}
-Тогда \(e^{x_1} e^{x_2} e^{-x_1} e^{-x_2} = e^{x_1 x_2 - x_2 x_1}\), где \(x_1 \coloneqq v_1 u_1\), \(x_2 \coloneqq v_2 u_2\).
+Положим \(x_1 \coloneqq v_1 u_1\) и \(x_2 \coloneqq v_2 u_2\).
+Тогда \(e^{x_1} e^{x_2} e^{-x_1} e^{-x_2} = e^{x_1 x_2 - x_2 x_1}\).
 \end{example}
 
 \begin{remark}
@@ -11288,6 +11308,7 @@ e^{[x,y]}
 \tr(x) = \tr(sxs^{-1}) = \tr(-x^{\vee}) = -\tr(x)
 \), то есть \(2\tr(x) = 0\).
 \end{observation}
+
 
 \begin{observation}
 Пусть \(p \in \N_1\) --- простое число, а \(X, Y \in \F_p[X,Y]\) --- коммутирующие переменные.%
@@ -11394,8 +11415,75 @@ f_{p-1}(X,Y) + f_{p-2}(X,Y) + \cdots{} + f_1(X,Y)
 
 \subsection{Предисловие}
 
-Практически весь материал этого раздела позаимствован из раздела~6 текста~\cite{Mueger_BCHD}, который содержит несколько доказательств теоремы Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа и её уточнений.
+Практически весь материал этого раздела,
+за исключением подраздела
+<<Усечённая формула БКХД>>,
+позаимствован из раздела~6 текста~\cite{Mueger_BCHD}, который содержит несколько доказательств теоремы Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа и её уточнений.
 Я узнал об этом тексте из учебника по алгебрам Ли и группам Ли П.\ Этингофа \cite[\textenglish{Remark~14.8}]{EtingofLie_2024}.
+
+\subsection{Усечённая формула БКХД}
+
+\begin{theorem}[\scshape Усечённая формула Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа\namedash{}Дынкина]
+Пусть \(x\) и \(y\) --- это образы \(X\) и \(Y\) соответственно в кольце
+\(
+R
+\coloneqq
+\Q \llangle X, Y \rrangle
+/
+([X,[X,Y]], [Y,[X,Y]])
+\).%
+\seclabel{thm:TruncBCHDFormula}
+Тогда
+\(e^x e^y = e^{x + y + \frac{1}{2}[x,y]}\).
+\end{theorem}
+
+\begin{proofparts}[Доказательство (из трёх частей)]
+
+\item[Часть 1.]
+Заметим, что
+стандартное
+разложение
+на однородные компоненты
+\(
+\Q \llangle X, Y \rrangle
+\cong
+\prod_{n=0}^{\infty}
+\{f \in \Q \llangle X, Y \rrangle \mid \deg(f) = n\}
+\)
+вместе с топологией обратного предела
+наследуется кольцом \(R\).
+
+\item[Часть 2.]
+Пусть \(D : R \to R\) --- непрерывное дифференцирование, такое что \(D(x) = x\) и \(D(y) = y\).
+Введём обозначение \(g \coloneqq e^x e^y\).
+Тогда
+\begin{equation}
+D(g)
+=
+(x + e^x y e^{-x}) g
+=
+(x + e^{\op{ad}(x)} y) g
+=
+(x + y + [x,y]) g.
+\label{eq:TruncBCHDDiffEq}
+\end{equation}
+
+\item[Часть 3.]
+Осталось заметить, что
+уравнение~\eqref{eq:TruncBCHDDiffEq} представляет собой рекуррентное соотношение, позволяющее однозначно восстановить все однородные компоненты \(g\) по свободному члену \(g\),
+а \(e^{x + y + \frac{1}{2}[x,y]}\) имеет свободный член \(1\) и является решением уравнения~\eqref{eq:TruncBCHDDiffEq}
+как уравнения на \(g\),
+так как
+\(x + y + [x,y] = D(x + y + \frac{1}{2}[x,y])\)
+коммутирует с
+\(x + y + \frac{1}{2}[x,y]\).
+\qedhere
+
+\end{proofparts}
+
+\begin{remark}
+Я узнал приведённое доказательство теоремы~\ref{eq:TruncBCHDDiffEq} из статьи в Википедии~\cite[раздел <<Campbell identity>>]{wiki_BCH_formula}.
+\end{remark}
 
 \subsection{Критерии Фридрихса и Дынкина\namedash{}Шпехта\namedash{}Уивера}
 
@@ -11437,7 +11525,7 @@ f_{p-1}(X,Y) + f_{p-2}(X,Y) + \cdots{} + f_1(X,Y)
 (\mu \circ (D \otimes S) \circ \delta)
 (X_1 \cdots{} X_n)
 =
-%\displaybreak[0]
+\displaybreak[0]
 \\
 =
 %\sum_{(c_1, \dots{}, c_n) \in \{0,1\}^n}
@@ -11451,7 +11539,7 @@ f_{p-1}(X,Y) + f_{p-2}(X,Y) + \cdots{} + f_1(X,Y)
 (\sum_{i=1}^n c_i)
 X_1^{c_1} \cdots{} X_n^{c_n} X_n^{1 - c_n} \cdots{} X_1^{1 - c_1}
 =
-%\displaybreak[0]
+\displaybreak[0]
 \\
 =
 %\sum_{(c_1, \dots{}, c_n) \in \{0,1\}^n}
@@ -11465,7 +11553,7 @@ X_1^{c_1} \cdots{} X_n^{c_n} X_n^{1 - c_n} \cdots{} X_1^{1 - c_1}
 (\sum_{i=1}^n c_i)
 X_1^{c_1} \cdots{} X_{n-1}^{c_{n-1}} X_n X_{n-1}^{1 - c_{n-1}} \cdots{} X_1^{1 - c_1}
 =
-%\displaybreak[0]
+\displaybreak[0]
 \\
 =
 %\sum_{(c_1, \dots{}, c_{n-1}) \in \{0,1\}^{n-1}}
@@ -11478,7 +11566,7 @@ X_1^{c_1} \cdots{} X_{n-1}^{c_{n-1}} X_n X_{n-1}^{1 - c_{n-1}} \cdots{} X_1^{1 -
 (-1)^{\sum_{i=1}^{n-1} (1 - c_i)}
 X_1^{c_1} \cdots{} X_{n-1}^{c_{n-1}} X_n X_{n-1}^{1 - c_{n-1}} \cdots{} X_1^{1 - c_1}
 =
-%\displaybreak[0]
+\displaybreak[0]
 \\
 %=
 %[X_1, [X_2, [ \dots{}, [X_{n-1}, X_n]] \dots{} ]
@@ -11602,7 +11690,7 @@ R(X_1 \cdots{} X_n).
 Пусть \(K\) --- поле характеристики ноль,
 а \(\mc{X}\) --- конечное множество.
 Тогда идемпотент Дынкина \(P : K \llangle \mc{X} \rrangle \to K \llangle \mc{X} \rrangle\) идемпотентен, то есть \(P \circ P = P\),
-а образ \(P\) совпадает с рядами, все однородные компоненты которых представляются в виде \(K\)\=/линейных комбинаций кратных коммутаторов элементов \(\mc{X}\).
+при этом образ \(P\) совпадает с множеством рядов, все однородные компоненты которых представляются в виде \(K\)\=/линейных комбинаций кратных коммутаторов элементов \(\mc{X}\).
 \end{observation}
 
 \begin{theorem}[\scshape Формула Дынкина]
