@@ -11235,8 +11235,25 @@ e^{[x,y]}
 \end{remark}
 
 \begin{corollary}
-Пусть \(R \coloneqq \Q\langle X, Y \rangle / (P \in \Q\langle X, Y \rangle \mid \deg(P) \geq 3)\) --- алгебра усечённых многочленов от двух не коммутирующих переменных, а \(x, y \in R\) --- образы \(X, Y \in \Q\langle X, Y \rangle\).
-Тогда \(e^x e^y e^{-x} e^{-y} = e^{xy - yx}\).
+Пусть
+\(
+\Q\langle X, Y \rangle
+=
+\bigoplus_{n=0}^{\infty}
+\Q\langle X, Y \rangle_n
+\)
+--- градуировка, такая что
+\(X, Y \in \Q\langle X, Y \rangle_1\),
+а \(x\) и \(y\) --- это образы \(X\) и \(Y\) соответственно в кольце
+\(\Q\langle X, Y \rangle / (\Q\langle X, Y \rangle_n)_{n=3}^{\infty}\).
+%---
+%кольце усечённых многочленов от двух не коммутирующих переменных.
+Тогда
+\(
+e^x e^y e^{-x} e^{-y}
+=
+e^{xy - yx}
+\).
 \end{corollary}
 
 %\begin{observation} \label{obs:BCH_truncated}
@@ -11254,8 +11271,40 @@ e^{[x,y]}
 %\end{remark}
 
 \begin{corollary}
-Пусть \(x\) и \(y\) --- это образы \(X\) и \(Y\) соответственно в кольце \(\Z \langle X, Y \rangle / (X^2, Y^2, XYX, YXY)\).
-Тогда \(e^x e^y e^{-x} e^{-y} = e^{xy - yx}\).
+Пусть
+\(
+\Z \langle X, Y \rangle
+=
+\bigoplus_{n,m = 0}^{\infty}
+\Z \langle X, Y \rangle_{n,m}
+\)
+--- двойная градуировка, такая что
+\(X \in \Z \langle X, Y \rangle_{1,0}\)
+и
+\(Y \in \Z \langle X, Y \rangle_{0,1}\),
+а \(x\) и \(y\) --- это образы \(X\) и \(Y\) соответственно в кольце
+\(
+\Z \langle X, Y \rangle
+/
+(\Z \langle X, Y \rangle_{n,m})%
+_{(n,m) \notin \{0,1\} \times \{0,1\}}
+\),
+то есть в кольце
+\(
+\Z \langle X, Y \rangle
+/ (X^2, Y^2, XYX, YXY)
+\).
+Тогда
+выполняются равенства
+\(
+(1 + x)(1 + y)(1 - x)(1 - y)
+=
+e^x e^y e^{-x} e^{-y}
+=
+e^{xy - yx}
+=
+1 + (xy - yx)
+\).
 \end{corollary}
 
 %\begin{remark}
@@ -11317,10 +11366,14 @@ e^{[x,y]}
 откуда следует, что \((X - Y)^{p-1} = X^{p-1} + X^{p-2}Y + \cdots{} + XY^{p-2} + Y^{p-1}\).
 \end{observation}
 
-\begin{observation}
+\begin{observation}[\scshape Дифференциал \(p\)\=/ой степени в характеристике \(p\)]
 Пусть \(p \in \N_1\) --- простое число, \(R\) --- ассоциативная унитальная \(\F_p\)\=/алгебра, \(x\) --- элемент \(R\), а \(D : R \to R\) --- дифференцирование кольца \(R\).%
 \label{obs:DiffAndAdInCharP}
-Тогда, применив наблюдение~\ref{obs:FrobEndCor}, получаем формулу \(\op{ad}(x)^{p-1}(D(x)) = (x* - *x)^{p-1}(D(x)) = D(x^p)\), где \(\op{ad}(x) = [x, -]\).
+Тогда, применив наблюдение~\ref{obs:FrobEndCor}, получаем формулу
+\begin{equation}
+D(x^p) = (x* - *x)^{p-1}(D(x)) = \op{ad}(x)^{p-1}(D(x)).
+\label{eq:DerPowerPComm}
+\end{equation}
 \end{observation}
 
 %\begin{observation}
@@ -11339,10 +11392,13 @@ e^{[x,y]}
 %\end{multline}
 %\end{observation}
 
-\begin{theorem}
+\begin{theorem}[\scshape Формула Джекобсона]
 Пусть \(p \in \N_1\) --- простое число.%
 \label{thm:RestrLieAlgId}
-Тогда в кольце некоммутативных многочленов \(R \coloneqq \F_p\langle X, Y \rangle\) выполняется равенство
+Тогда в кольце
+%некоммутативных многочленов
+\(R \coloneqq \F_p\langle X, Y \rangle\)
+выполняется равенство
 %\begin{gather}
 %\begin{gathered}
 %(X + Y)^p - X^p - Y^p =
@@ -11380,15 +11436,21 @@ e^{[x,y]}
 \end{theorem}
 
 \begin{proof}
-Пусть \(D : R \to R\) --- дифференцирование, такое что \(D(X) = X\) и \(D(Y) = 0\).
+Пусть
+\(R = \bigoplus_{n,m = 0}^{\infty} R_{n,m}\)
+--- двойная градуировка, такая что
+\(X \in R_{1,0}\)
+и
+\(Y \in R_{0,1}\),
+а \(D : R \to R\) --- дифференцирование, такое что \(D(X) = X\) и \(D(Y) = 0\).
 Тогда если применить к разложению~\eqref{eq:RestrLie1},
 где
-\(f_n(X,Y) \in R\)
-и
-\(\deg_X(f_n(X,Y)) = n\)
+\(f_n(X,Y) \in R_{n, p-n}\)
 для любого \(n\) от \(1\) до \(p-1\),
-оператор \(D\), то,
-согласно наблюдению~\ref{obs:DiffAndAdInCharP}, получится тождество~\eqref{eq:RestrLie2}.
+оператор \(D\)
+%то, согласно наблюдению~\ref{obs:DiffAndAdInCharP},
+и воспользоваться формулой~\eqref{eq:DerPowerPComm}, то
+получится тождество~\eqref{eq:RestrLie2}.
 \begin{gather}
 (X + Y)^p
 =
@@ -11441,17 +11503,16 @@ R
 
 \item[Часть 1.]
 Заметим, что
-стандартное
-разложение
-на однородные компоненты
+элементы
+\([X,[X,Y]], [Y,[X,Y]] \in \Q \langle X, Y \rangle\)
+однородны
+и
+кольцо
 \(
-\Q \llangle X, Y \rrangle
-\cong
-\prod_{n=0}^{\infty}
-\{f \in \Q \llangle X, Y \rrangle \mid \deg(f) = n\}
+R
 \)
-вместе с топологией обратного предела
-наследуется кольцом \(R\).
+является пополнением неотрицательно градуированного кольца
+\(\Q \langle X, Y \rangle / ([X,[X,Y]], [Y,[X,Y]])\).
 
 \item[Часть 2.]
 Пусть \(D : R \to R\) --- непрерывное дифференцирование, такое что \(D(x) = x\) и \(D(y) = y\).
