@@ -11084,6 +11084,11 @@ E \mapsto
 Введём обозначения \(a* : R \to R\), \(x \mapsto ax\) и \(*a : R \to R\), \(x \mapsto xa\), где \(a \in R\).
 \end{notation}
 
+\begin{convention}[\scshape Пополнение неотрицательно градуированного кольца]
+Пусть \(R = \bigoplus_{i=0}^{\infty} R_i\) --- неотрицательно градуированное ассоциативное унитальное кольцо.
+Тогда \emph{пополнением} \(R\) обычно будет называться кольцо \(\varprojlim_{n=0}^{\infty} R / \bigoplus_{i=n}^{\infty} R_i\).
+\end{convention}
+
 \begin{observation}
 Пусть \(R\) --- кольцо.
 Заметим, что \(d \in \End_{\Z\tn{-}\mr{mod}}(R)\) является дифференцированием \(R\) тогда и только тогда, когда диаграмма~\eqref{eq:DiffCommSquare}, где \(\mathrm{mult}\) --- это отображение умножения в \(R\), коммутативна.
@@ -11206,6 +11211,7 @@ R
 неотрицательно
 градуированного кольца
 \(\Q \langle X, Y \rangle / ([X,[X,Y]], [Y,[X,Y]])\),
+в котором образы \(X\) и \(Y\) являются однородными степени \(1\),
 а \(x\) и \(y\) --- это образы \(X\) и \(Y\) соответственно в кольце \(R\).%
 \label{obs:TruncAddMultCommForm}
 Тогда
@@ -11494,6 +11500,7 @@ f_{p-1}(X,Y) + f_{p-2}(X,Y) + \cdots{} + f_1(X,Y)
 неотрицательно
 градуированного кольца
 \(\Q \langle X, Y \rangle / ([X,[X,Y]], [Y,[X,Y]])\),
+в котором образы \(X\) и \(Y\) являются однородными степени \(1\),
 а \(x\) и \(y\) --- это образы \(X\) и \(Y\) соответственно в кольце \(R\).%
 \seclabel{thm:TruncBCHDFormula}
 Тогда
@@ -11530,6 +11537,48 @@ D(g)
 
 \subsection{Критерии Фридрихса и Дынкина\namedash{}Шпехта\namedash{}Уивера}
 
+\begin{convention}[\scshape Алгебра Хопфа многочленов]
+Пусть \(K\) --- поле, а \(\mc{X}\) --- множество.%
+\label{con:PolyHopfAlg}
+В этом разделе мы будем рассматривать \(K\)\=/алгебру \(K\langle \mc{X} \rangle\) как алгебру Хопфа
+\((K \la \mc{X} \ra, \mu, \eta, \delta, \varepsilon, S)\)
+следующим образом:
+\begin{enumerate}[
+	font=\upshape,
+	label=\asbuk*),
+	ref=\asbuk*,
+	]
+
+\item
+Умножение
+\(\mu : K\langle \mc{X} \rangle \otimes_K K\langle \mc{X} \rangle \to K\langle \mc{X} \rangle\)
+--- это обычное умножение многочленов,
+а единица
+\(\eta : K \to K\langle \mc{X} \rangle\)
+--- это стандартное вложение,
+переводящее \(1 \in K\) в \(1 \in K\langle \mc{X} \rangle\);
+
+\item
+Коумножение
+\(\delta : K\langle \mc{X} \rangle \to K\langle \mc{X} \rangle \otimes_K K\langle \mc{X} \rangle\)
+задаётся тем, что
+\(\delta(X) = X \otimes 1 + 1 \otimes X\)
+для любого \(X \in \mc{X}\),
+а
+коединица
+\(\varepsilon : K\langle \mc{X} \rangle \to K\)
+задаётся тем, что
+\(\varepsilon(X) = 0\)
+для любого \(X \in \mc{X}\);
+
+\item
+Антипод
+\(S : K\langle \mc{X} \rangle \to K\langle \mc{X} \rangle\)
+переводит \(X\) в \(-X\) для любого \(X \in \mc{X}\).
+
+\end{enumerate}
+\end{convention}
+
 %\begin{definition}
 %Пусть \(K\) --- поле, а \(I\) --- множество.
 %Определим \(K\)\=/линейные отображения \(D, R : K \la X_i \smid i \in I \ra \rrarrow K \la X_i \smid i \in I \ra\) на мономах следующим образом:
@@ -11547,13 +11596,14 @@ D(g)
 \end{definition}
 
 \begin{lemma}
-Пусть \(K\) --- поле, \(\mc{X}\) --- множество, а \((K \la \mc{X} \ra, \mu, \eta, \delta, \varepsilon, S)\) --- это \(K \la \mc{X} \ra\) со стандартной структурой алгебры Хопфа.
+Пусть \(K\) --- поле, \(\mc{X}\) --- множество, а \((K \la \mc{X} \ra, \mu, \eta, \delta, \varepsilon, S)\) --- это \(K \la \mc{X} \ra\) со структурой алгебры Хопфа из соглашения~\ref{con:PolyHopfAlg}.
 Тогда
+свёртка \(D\) и \(S\) равна \(R\),
+то есть выполняется равенство
 \begin{equation}
 \mu \circ (D \otimes S) \circ \delta = R.%
 \label{eq:D_S_conv}
 \end{equation}
-%Иначе говоря, свёртка \(D\) и \(S\) равна \(R\).
 \end{lemma}
 
 \begin{proof}
@@ -11620,11 +11670,9 @@ R(X_1 \cdots{} X_n).
 \end{proof}
 
 \begin{theorem}[\scshape Критерии Фридрихса и Дынкина\namedash{}Шпехта\namedash{}Уивера]
-Пусть \(K\) --- поле, характеристика которого равна нулю,
+Пусть \(K\) --- поле характеристики ноль,
 \(\mc{X}\) --- множество,
-\((K \la \mc{X} \ra, \mu, \eta, \delta, \varepsilon, S)\)
---- это \(K \la \mc{X} \ra\) со стандартной структурой алгебры Хопфа,
-а \(f\) --- элемент \(K \la \mc{X} \ra\).%
+а \(f\) --- элемент алгебры Хопфа \((K \la \mc{X} \ra, \mu, \eta, \delta, \varepsilon, S)\) из соглашения~\ref{con:PolyHopfAlg}.%
 \label{thm:FriDynSpeWev}
 Тогда следующие условия эквивалентны:
 \begin{enumerate}[
