@@ -11217,69 +11217,175 @@ R / \bigoplus_{i=0}^{\infty} R_i)
 \end{convention}
 
 \begin{observation}
-Пусть \(A = \bigoplus_{i=0}^{\infty} A_i\) ---  ассоциативное коммутативное унитальное неотрицательно градуированное кольцо,
-а \(\mc{S} \subset A\) --- какое-то конечное множество однородных элементов.
-Тогда очевидный гомоморфизм колец
+Пусть \(R = \bigoplus_{i=0}^{\infty} R_i\) ---  ассоциативное унитальное неотрицательно градуированное кольцо,
+а \(\mf{I} \subset R\) --- однородный двусторонний идеал.
+Тогда ядром канонического гомоморфизма
 \(
-	A^{\wedge} / \mc{S} \to (A / \mc{S})^{\wedge}
+	R^{\wedge} \to (R / \mf{I})^{\wedge}
 \)
-является изоморфизмом.
+является замыкание двустороннего идеала \(R^{\wedge}\), порождённого \(\mf{I}\).
 \end{observation}
 
-\begin{example}
-Очевидный гомоморфизм колец
-\begin{multline*}
-\Q[X_i \smid i \in \N_1]^{\wedge} / (X_i)_{i=1}^{\infty}
-\cong
-\Q[[X_i \smid i \in \N_1]] / (X_i)_{i=1}^{\infty}
-\to
-\\
-\to
-(\Q[X_i \smid i \in \N_1] / (X_i)_{i=1}^{\infty})^\wedge
-\cong
-\Q
-\end{multline*}
-не инъективен%
-\label{exa:GradComplFactorHomComm}
---- образ ряда
-\(
-f(X_i \smid i \in \N_1) \coloneqq
-\sum_{n=1}^{\infty} \prod_{i=n}^{2n-1} X_i
-= X_1 + X_2 X_3 + X_3 X_4 X_5 + \cdots
-\in \Q[[X_i \smid i \in \N_1]]
-\)
-в кольце
-\(
-\Q[[X_i \smid i \in \N_1]]
-/
-(X_i)_{i=1}^{\infty}
-\)
-не равен нулю, хотя образ \(f(X_i \smid i \in \N_1)\) в \(\Q\) равен нулю.
-\end{example}
+%\begin{observation}
+%Пусть \(A = \bigoplus_{i=0}^{\infty} A_i\) ---  ассоциативное коммутативное унитальное неотрицательно градуированное кольцо,
+%а \(\mc{S} \subset A\) --- какое-то конечное множество однородных элементов.
+%Тогда очевидный гомоморфизм колец
+%\(
+%	A^{\wedge} / \mc{S} \to (A / \mc{S})^{\wedge}
+%\)
+%является изоморфизмом.
+%Другими словами, идеал кольца \(A\), порождённый \(\mc{S}\), замкнут.
+%\end{observation}
+
+\begin{observation}
+Пусть \(A = \bigoplus_{i=0}^{\infty} A_i\) ---  ассоциативное коммутативное унитальное неотрицательно градуированное кольцо.
+Тогда любой идеал \(A^{\wedge}\), порождённый конечным числом однородных элементов \(A\), замкнут.
+\end{observation}
+
+%\begin{example}
+%Очевидный гомоморфизм колец
+%%\begin{multline*}
+%%\Q[X_1, X_2, \ldots{}]^{\wedge} / (X_1, X_2, \ldots{})
+%%\cong
+%%\Q[[X_1, X_2, \ldots{}]] / (X_1, X_2, \ldots{})
+%%\to
+%%\\
+%%\to
+%%(\Q[X_1, X_2, \ldots{}] / (X_1, X_2, \ldots{}))^\wedge
+%%\cong
+%%\Q
+%%\end{multline*}
+%\begin{equation}
+%\shorthandoff{"}%
+%\begin{tikzcd}[
+%	ampersand replacement = \amprep,
+%	row sep=small,
+%	]
+%\Q[X_1, X_2, \ldots{}]^{\wedge} / (X_1, X_2, \ldots{}) \arrow[r]
+%\arrow[d, equal, "{\rotatebox[origin=c]{+90}{\(\sim\)}}"{font=\normalsize}]
+%\amprep
+%(\Q[X_1, X_2, \ldots{}] / (X_1, X_2, \ldots{}))^\wedge
+%\arrow[d, equal, "{\rotatebox[origin=c]{+90}{\(\sim\)}}"{font=\normalsize}]
+%\\
+%\Q[[X_1, X_2, \ldots{}]] / (X_1, X_2, \ldots{})
+%\arrow[r]
+%\amprep
+%\Q
+%\end{tikzcd}
+%\shorthandon{"}%
+%\label{eq:GradComplFactorHomComm}
+%\end{equation}
+%не инъективен%
+%\label{exa:GradComplFactorHomComm}
+%--- образ ряда
+%\(
+%%f(X_1, X_2, \ldots{}) \coloneqq
+%\sum_{n=1}^{\infty} \prod_{i=n}^{2n-1} X_i
+%= X_1 + X_2 X_3 + X_3 X_4 X_5 + X_4 X_5 X_6 X_7 + \cdots
+%\in \Q[[X_1, X_2, \ldots{}]]
+%\)
+%в кольце
+%\(
+%\Q[[X_1, X_2, \ldots{}]]
+%/
+%(X_1, X_2, \ldots{})
+%\),
+%принадлежащий ядру гомоморфизма~\eqref{eq:GradComplFactorHomComm},
+%не равен нулю.
+%%хотя образ \(f(X_i \smid i \in \N_1)\) в \(\Q\) равен нулю.
+%\end{example}
 
 \begin{example}
-Очевидный гомоморфизм колец
-\begin{equation*}
-\Q \langle X, Y \rangle^{\wedge} / (X)
+Идеал
+\(
+(X_1, X_2, \ldots{})
+\subset
+\Q[[X_1, X_2, \ldots{}]]
 \cong
-\Q \llangle X, Y \rrangle / (X)
-\to
-(\Q \langle X, Y \rangle / (X))^\wedge
+\Q[X_1, X_2, \ldots{}]^{\wedge}
+\)
+не замкнут
+--- формальный ряд
+\(
+\sum_{n=1}^{\infty} \prod_{i=n}^{2n-1} X_i
+= X_1 + X_2 X_3 + X_3 X_4 X_5
++ X_4 X_5 X_6 X_7
++ \cdots
+\in \Q[[X_1, X_2, \ldots{}]]
+\)
+лежит в
+\(
+\overline{(X_1, X_2, \ldots{})}
+\setminus
+(X_1, X_2, \ldots{})
+\).
+\end{example}
+
+%\begin{example}
+%Очевидный гомоморфизм колец
+%\begin{equation}
+%\Q \langle X, Y \rangle^{\wedge} / (X)
+%\cong
+%\Q \llangle X, Y \rrangle / (X)
+%\to
+%(\Q \langle X, Y \rangle / (X))^\wedge
+%\cong
+%\Q \llangle Y \rrangle
+%\label{eq:GradComplFactorHomNonComm}
+%\end{equation}
+%не инъективен%
+%\label{exa:GradComplFactorHomNonComm}
+%--- для любого формального ряда
+%\(
+%\sum_{M \in \mc{M}} c_M M
+%%\in
+%%\Q \llangle X, Y \rrangle
+%\),
+%где
+%\(\mc{M}\) обозначает множество некоммутативных мономов от переменных \(X\) и \(Y\),
+%а \((c_M)_{M \in \mc{M}} \in \Q^{\times \mc{M}}\),
+%принадлежащего двустороннему идеалу кольца \(\Q \llangle X, Y \rrangle\), порождённому \(X\), бесконечная матрица \((c_{Y^i X Y^j})_{i,j=0}^{\infty}\) имеет конечный ранг, а потому образ ряда
+%\(
+%\sum_{i=0}^{\infty} Y^i X Y^i
+%%=
+%%X + YXY + Y^2XY^2 + \cdots{}
+%\in
+%\Q \llangle X, Y \rrangle
+%\)
+%в кольце \(\Q \llangle X, Y \rrangle / (X)\),
+%принадлежащий ядру гомоморфизма~\eqref{eq:GradComplFactorHomNonComm},
+%не равен нулю.
+%%не равен нулю, хотя образ \(f(X,Y)\) в \(\Q \llangle Y \rrangle\) равен нулю.
+%\end{example}
+
+\begin{example}
+Двусторонний идеал
+\(
+(X)
+\subset
+\Q \llangle X, Y \rrangle
 \cong
-\Q \llangle Y \rrangle
-\end{equation*}
-не инъективен%
+\Q \langle X, Y \rangle^{\wedge}
+\)
+не замкнут%
 \label{exa:GradComplFactorHomNonComm}
 --- для любого формального ряда
 \(
 \sum_{M \in \mc{M}} c_M M
-%\in
-%\Q \llangle X, Y \rrangle
+\in
+(X)
 \),
 где
 \(\mc{M}\) обозначает множество некоммутативных мономов от переменных \(X\) и \(Y\),
 а \((c_M)_{M \in \mc{M}} \in \Q^{\times \mc{M}}\),
-принадлежащего двустороннему идеалу кольца \(\Q \llangle X, Y \rrangle\), порождённому \(X\), матрица \((c_{Y^i X Y^j})_{i,j=0}^{\infty}\) имеет конечный ранг, а потому образ ряда \(f(X,Y) \coloneqq \sum_{i=0}^{\infty} Y^i X Y^i \in \Q \llangle X, Y \rrangle\) в кольце \(\Q \llangle X, Y \rrangle / (X)\) не равен нулю, хотя образ \(f(X,Y)\) в \(\Q \llangle Y \rrangle\) равен нулю.
+бесконечная матрица \((c_{Y^i X Y^j})_{i,j=0}^{\infty}\) имеет конечный ранг, а потому 
+\(
+\sum_{i=0}^{\infty} Y^i X Y^i
+=
+X + YXY + Y^2XY^2 + \cdots{}
+\in
+\overline{(X)} \setminus (X)
+\).
 \end{example}
 
 \begin{remark}
@@ -11305,13 +11411,19 @@ f(X_i \smid i \in \N_1) \coloneqq
 %\).
 %\end{observation}
 
-\begin{observation}
-Пусть \(R\) --- это пополнение
-неотрицательно
-градуированного кольца
-\(\Q \langle X, Y \rangle / ([X,[X,Y]], [Y,[X,Y]])\),
-в котором образы \(X\) и \(Y\) являются однородными степени \(1\),
-а \(x\) и \(y\) --- это образы \(X\) и \(Y\) соответственно в кольце \(R\).%
+\begin{observation}[\scshape Усечённая формула коммутатора экспонент]
+%Пусть \(R\) --- это пополнение
+%неотрицательно
+%градуированного кольца
+%\(\Q \langle X, Y \rangle / ([X,[X,Y]], [Y,[X,Y]])\),
+%в котором образы \(X\) и \(Y\) являются однородными степени \(1\),
+%а \(x\) и \(y\) --- это образы \(X\) и \(Y\) соответственно в кольце \(R\).
+Пусть \(x\) и \(y\) --- это образы формальных переменных \(X\) и \(Y\) соответственно в кольце
+\(
+\Q \llangle X, Y \rrangle
+/
+\overline{([X,[X,Y]], [Y,[X,Y]])}
+\).%
 \label{obs:TruncAddMultCommForm}
 Тогда
 \(
@@ -11321,7 +11433,10 @@ e^{e^x y e^{-x}} e^{-y}
 =
 e^{e^{\op{ad(x)}} y} e^{-y}
 =
-e^{y + [x,y] + \frac{1}{2!} [x,[x,y]] + \frac{1}{3!} [x,[x,[x,y]]] + \cdots{}} e^{-y}
+e^{y + [x,y] + \frac{1}{2!} [x,[x,y]]
+%+ \frac{1}{3!} [x,[x,[x,y]]]
++ \cdots{}}
+e^{-y}
 =
 e^{y + [x,y]} e^{-y}
 =
@@ -11595,12 +11710,18 @@ f_{p-1}(X,Y) + f_{p-2}(X,Y) + \cdots{} + f_1(X,Y)
 \subsection{Усечённая формула БКХД}
 
 \begin{theorem}[\scshape Усечённая формула Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа\namedash{}Дынкина]
-Пусть \(R\) --- это пополнение
-неотрицательно
-градуированного кольца
-\(\Q \langle X, Y \rangle / ([X,[X,Y]], [Y,[X,Y]])\),
-в котором образы \(X\) и \(Y\) являются однородными степени \(1\),
-а \(x\) и \(y\) --- это образы \(X\) и \(Y\) соответственно в кольце \(R\).%
+%Пусть \(R\) --- это пополнение
+%неотрицательно
+%градуированного кольца
+%\(\Q \langle X, Y \rangle / ([X,[X,Y]], [Y,[X,Y]])\),
+%в котором образы \(X\) и \(Y\) являются однородными степени \(1\),
+%а \(x\) и \(y\) --- это образы \(X\) и \(Y\) соответственно в кольце \(R\).%
+Пусть \(x\) и \(y\) --- это образы \(X\) и \(Y\) соответственно в кольце
+\(
+\Q \llangle X, Y \rrangle
+/
+\overline{([X,[X,Y]], [Y,[X,Y]])}
+\).%
 \seclabel{thm:TruncBCHDFormula}
 Тогда
 \(e^x e^y = e^{x + y + \frac{1}{2}[x,y]}\).
@@ -17972,17 +18093,28 @@ F(c') \ar{r}{F(\varphi)} & F(c)
 Пусть \(\mc{C}\) --- полуаддитивная категория с начальным объектом \(0 \in \Ob(\mc{C})\) и конечным объектом \(1 \in \Ob(\mc{C})\).
 Тогда канонический морфизм \(0 \xrightarrow{\sim} 1\) является изоморфизмом и канонические морфизмы~\eqref{eq:SemiaddProdCoprodExchange} являются изоморфизмами для любых \(A, B \in \Ob(\mc{C})\).
 \begin{equation}
-\begin{tikzcd}[column sep=small]
+\shorthandoff{"}%
+\begin{tikzcd}[sep=small]
 &
-(A \times 0) \sqcup (0 \times B) \ar{rr}{\sim} \ar{d}{\rotatebox[origin=c]{-90}{\(\sim\)}} &
+(A \times 0) \sqcup (0 \times B)
+	\ar[r, "{\sim}"]
+	\ar[d, "{\rotatebox[origin=c]{-90}{\(\sim\)}}"]
+&[1.2em]
+(A \sqcup 0) \times (0 \sqcup B)
+	\ar[d, "{\rotatebox[origin=c]{-90}{\(\sim\)}}"]
 &
-(A \sqcup 0) \times (0 \sqcup B) \ar{d}{\rotatebox[origin=c]{-90}{\(\sim\)}} &
-A \times B \ar[swap, equal]{l}{\sim} \\
-A \sqcup B &
-(A \times 1) \sqcup (1 \times B) \ar{rr}{\sim} \ar[swap, equal]{l}{\sim} &
+A \times B
+	\ar[swap, equal, l, "{\sim}"]
+\\[0.9em]
+A \sqcup B
 &
+(A \times 1) \sqcup (1 \times B)
+	\ar[r, "{\sim}"]
+	\ar[swap, equal, l, "{\sim}"]
+&[1.2em]
 (A \sqcup 1) \times (1 \sqcup B)
 \end{tikzcd}%
+\shorthandon{"}%
 \label{eq:SemiaddProdCoprodExchange}
 \end{equation}
 Другими словами, \(0 \cong 1\) и стандартный морфизм
