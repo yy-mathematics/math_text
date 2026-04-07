@@ -6595,12 +6595,14 @@ X \to \op{Ded}(X)
 \end{theorem}
 
 \begin{proof}
-Любой элемент \(K_{>1}\) имеет вид \(1 + \varepsilon\), где \(\varepsilon \in K_{>0}\).
-Для любого \(n \in \N_0\) в поле \(K\) выполняется неравенство \((1 + \varepsilon)^n \geq 1 + n \varepsilon\).
-Так как множество
-\(\{n \in \N_0 \mid 1 + n \varepsilon\} \subset K_{>0}\)
+Пусть \(a \in K_{>1}\),
+а \(\varepsilon \coloneqq a - 1 \in K_{>0}\).
+Тогда \(a = 1 + \varepsilon\) и для любого \(n \in \N_0\) в поле \(K\) выполняется неравенство \((1 + \varepsilon)^n \geq 1 + n \varepsilon\),
+а потому,
+так как множество
+\(\{1 + n \varepsilon \in K_{>0} \mid n \in \N_0\}\)
 не ограничено, то множество
-\(\{n \in \N_0 \mid (1 + \varepsilon)^n\} \subset K_{>0}\)
+\(\{(1 + \varepsilon)^n \in K_{>0} \mid n \in \N_0\}\)
 тоже не ограничено.
 \end{proof}
 
@@ -6679,11 +6681,14 @@ X \to \op{Ded}(X)
 \end{theorem}
 
 \begin{proof}[Набросок доказательства]
-Во-первых,
-воспользовавшись теоремой~\ref{thm:ArchDedCompAb} и наблюдением~\ref{obs:ArchFieldChar}
-легко убедиться, что \((\Q \cap K_{< a}, \Q \cap K_{> a}) \in \op{Ded}(\Q)\) для любого \(a \in K\), а отображение \(a \mapsto (\Q \cap K_{< a}, \Q \cap K_{> a}) : K \to \op{Ded}(\Q)\) биективно и является сохраняющим порядок кольцевым гомоморфизмом.
+Воспользовавшись теоремой~\ref{thm:ArchDedCompAb} и наблюдением~\ref{obs:ArchFieldChar}
+легко убедиться, что \((\Q \cap K_{< a}, \Q \cap K_{> a}) \in \op{Ded}(\Q)\) для любого \(a \in K\)
+и отображение \(a \mapsto (\Q \cap K_{< a}, \Q \cap K_{> a}) : K \to \op{Ded}(\Q)\) является биективным сохраняющим порядок кольцевым гомоморфизмом.
 %Во-вторых, так как у поля \(\Q\) нет нетривиальных автоморфизмов, то и у поля \(\mc{R}\) нет сохраняющих порядок нетривиальных автоморфизмов.
-Во-вторых, у поля \(K\) нет сохраняющих порядок нетривиальных автоморфизмов, так как их нет у \(\Q\).
+Единственность монотонного гомоморфизма
+\(K \to \op{Ded}(\Q)\)
+тоже сразу выводится из
+теоремы~\ref{thm:ArchDedCompAb} и наблюдения~\ref{obs:ArchFieldChar}.
 \end{proof}
 
 \begin{remark}
