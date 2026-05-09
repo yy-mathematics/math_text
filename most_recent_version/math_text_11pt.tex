@@ -588,8 +588,9 @@ The \((\phantom{x}, \phantom{x})\) operation then turned out to be fundamental i
 \end{notation}
 
 \begin{theorem}[\scshape Теорема Кантора]
+Если \(X\) --- множество, а \(\varphi : X \to 2^X\) --- отображение,%
 \label{thm:CantorDiagArg}
-Если \(X\) --- множество, а \(\varphi : X \to 2^X\) --- отображение, то \(\varphi\) не сюръективно.
+то \(\varphi\) не сюръективно.
 \end{theorem}
 
 \begin{proof}
@@ -602,6 +603,10 @@ The \((\phantom{x}, \phantom{x})\) operation then turned out to be fundamental i
 \begin{remark}
 В обозначениях формулировки и доказательства теоремы \ref{thm:CantorDiagArg} характеристическая функция \(X \to \{0,1\}\) подмножества \(X \setminus C  \subset X\) разлагается в композицию диагонального отображения \(X \to X \times X\) и отображения \(X \times X \to \{0,1\}\), соответствующего \(\varphi : X \to 2^X\),
 поэтому рассуждение из приведённого доказательства теоремы \ref{thm:CantorDiagArg} часто называют \emph{диагональным аргументом Кантора}.
+\end{remark}
+
+\begin{remark}
+У теоремы~\ref{thm:CantorDiagArg} существует обобщающая её категорная версия, которая называется \emph{теоремой Ловера о фиксированной точке}, см.\ страницу~\cite{nCatLabLawvereFixedPoint} на \href{https://ncatlab.org}{\textenglish{\(n\)Lab}} и статью Ловера~\cite{Lawvere_Diagonal_arguments}.
 \end{remark}
 
 \begin{observation}[\scshape Парадокс Рассела]
@@ -1535,7 +1540,10 @@ X \to \op{McN}(X)
 Предположим, что \(X\) компактно.
 Если \(X\) не полно, то существует сечение МакНила \((L,R)\) множества \(X\),
 не имеющее вид \((X_{\leq x}, X_{\geq x})\), где \(x \in X\).
-Тогда \(X = (\bigcup_{l \in L} X_{<l}) \cup (\bigcup_{r \in R} X_{>r})\) --- открытое покрытие \(X\), у которого нет конечного подпокрытия,
+Тогда
+%\(X = (\bigcup_{l \in L} X_{<l}) \cup (\bigcup_{r \in R} X_{>r})\)
+\(\{X_{<l} \mid l \in L\} \cup \{X_{>r} \mid r \in R\}\)
+--- открытое покрытие \(X\), у которого нет конечного подпокрытия,
 что противоречит компактности \(X\).
 \qedhere
 
@@ -17143,7 +17151,7 @@ n \cdot (1 + \lVert n \rVert + \cdots + {\lVert n \rVert}^{\lfloor \frac{\ln(m)}
 \begin{observation}
 Пусть \(X_0\) и \(X_1\) --- топологические пространства,
 а \(X_{01}\) --- их общее замкнутое подмножество.%
-\label{obs:ClosedSubsetSquare1}
+\seclabel{obs:ClosedSubsetSquare1}
 Тогда стандартные вложения
 \(X_0 \to X_0 \sqcup_{X_{01}} X_1 \from X_1\)
 замкнуты,
@@ -17249,19 +17257,23 @@ X \coloneqq
 \(E = E_0 \sqcup_{E_{01}} E_1\),
 где \(E_0\), \(E_1\) и \(E_{01}\)
 --- это ограничения \(E\) на
-\(X \times [0, \frac{1}{2}]\),
-\(X \times [\frac{1}{2}, 1]\)
+\(X_0 \coloneqq X \times [0, \frac{1}{2}]\),
+\(X_1 \coloneqq X \times [\frac{1}{2}, 1]\)
 и
-\(X \times \{\frac{1}{2}\}\)
+\(X_{01} \coloneqq X \times \{\frac{1}{2}\}\)
 соответственно.
-Во-вторых, заметим, что если
+Во-вторых, заметим, что существует ретракция
+\(X_1\) на \(X_{01} \subset X_1\).
+В третьих, заметим, что если
 \(
 r :
-X \times [\frac{1}{2}, 1]
+%X \times [\frac{1}{2}, 1]
+X_1
 \to
-X \times \{\frac{1}{2}\}
+X_{01}
+%X \times \{\frac{1}{2}\}
 \)
---- произвольная ретракция,
+--- ретракция,
 то \(E_1 \simeq r^*(E_{01})\),
 потому что \(E_1\) тривиализуемо.
 Отсюда получаем, что ограничение тривиализации
@@ -17619,6 +17631,7 @@ D^q \times [0,1]
 то есть \(D^q \times \{0\}\)
 является ретрактом \(D^q \times [0,1]\).
 \end{proof}
+
 
 \section{Определитель как многочлен}
 
@@ -19565,6 +19578,49 @@ V \to \Coker(\Sigma_{C_p} : (V^{\otimes [p]_\Lambda})_{C_p} \to (V^{\otimes [p]_
 \((\mu_X : \Hom_{\mc{C}}(X,G) \times \Hom_{\mc{C}}(X,G) \to \Hom_{\mc{C}}(X,G))_{X \in \Ob(\mc{C})}\),
 которое превращает каждое из множеств \(\Hom_{\mc{C}}(X, G)\) в группу.
 \end{definition}
+
+\begin{observation}[\scshape Критерий (эпи/моно)морфности]
+Пусть \(\mc{C}\) --- категория,
+\(X, Y \in \Ob(\mc{C})\),
+а \(\varphi \in \Hom_{\mc{C}}(X, Y)\).%
+\label{obs:EpiMonoCrit}
+Тогда \(\varphi\) эпиморфен тогда и только тогда, когда два канонических морфизма
+\(Y \to Y \t*[^{\varphi}]{\sqcup}{^{\varphi}_{X}} Y \from Y\) совпадают.
+Двойственно, \(\varphi\) мономорфен тогда и только тогда, когда два канонических морфизма
+\(X \from X \t*[^{\varphi}]{\times}{^{\varphi}_{Y}} X \to X\) совпадают.
+\end{observation}
+
+\begin{theorem}[\scshape Эпиморфизмы в категории хаусдорфовых топологических пространств]
+Пусть \(\mc{C}\) --- категория хаусдорфовых топологических пространств и непрерывных отображений,
+а \(\varphi : X \to Y\), где \(X, Y \in \Ob(\mc{C})\), --- морфизм из \(\mc{C}\).
+Тогда \(\varphi\) эпиморфен тогда и только тогда, когда \(X' \coloneqq \Cl_Y(\varphi(X)) = Y\),
+то есть образ \(X\) в \(Y\) плотен.
+\end{theorem}
+
+\begin{proofparts}[Доказательство (из двух частей)]
+
+\item[Часть <<тогда>>.]
+Предположим, что \(X' = Y\),
+а \(\psi_1, \psi_2 : Y \rrarrow Z\), где \(Z \in \Ob(\mc{C})\), --- пара непрерывных отображений, такая что \(\psi_1 \circ \varphi = \psi_2 \circ \varphi\).
+Введём обозначение
+\(\psi \coloneqq \psi_1 \bartimes \psi_2 : Y \to Z \times Z\).
+Тогда, так как \(Z\) хаусдорфово, то диагональ \(\Delta \subset Z \times Z\) замкнута,
+а потому множество \(\psi^{-1}(\Delta) = \{y \in Y \mid \psi_1(y) = \psi_2(y)\}\) тоже замкнуто.
+Поэтому из включения \(\varphi(X) \subset \psi^{-1}(\Delta)\) следует, что \(X' = Y \subset \psi^{-1}(\Delta)\), то есть \(\psi_1 = \psi_2\).
+
+\item[Часть <<только тогда>>.]
+Пусть \(X' \neq Y\),
+а \(Y \sqcup_{X'} Y\) --- это копроизведение \(Y\) и \(Y\) над \(X'\) в категории топологических пространств и непрерывных отображений.
+Тогда, очевидно, канонические непрерывные отображения
+\(Y \to Y \sqcup_{X'} Y \from Y\)
+не совпадают.
+Более того, с помощью наблюдения~\secref{obs:ClosedSubsetSquare1} легко увидеть, что пространство \(Y \sqcup_{X'} Y\) хаусдорфово.
+Осталось воспользоваться критерием эпиморфности из наблюдения~\ref{obs:EpiMonoCrit}
+и получить, что вложение \(X' \to Y\) не эпиморфно в \(\mc{C}\),
+а \(\varphi\) --- тем более.
+\qedhere
+
+\end{proofparts}
 
 
 
