@@ -605,9 +605,9 @@ The \((\phantom{x}, \phantom{x})\) operation then turned out to be fundamental i
 поэтому рассуждение из приведённого доказательства теоремы \ref{thm:CantorDiagArg} часто называют \emph{диагональным аргументом Кантора}.
 \end{remark}
 
-\begin{remark}
-У теоремы~\ref{thm:CantorDiagArg} существует обобщающая её категорная версия, которая называется \emph{теоремой Ловера о фиксированной точке}, см.\ страницу~\cite{nCatLabLawvereFixedPoint} на \href{https://ncatlab.org}{\textenglish{\(n\)Lab}} и статью Ловера~\cite{Lawvere_Diagonal_arguments}.
-\end{remark}
+%\begin{remark}
+%У теоремы~\ref{thm:CantorDiagArg} существует обобщающая её категорная версия, которая называется \emph{теоремой Ловера о фиксированной точке}, см.\ страницу~\cite{nCatLabLawvereFixedPoint} на \href{https://ncatlab.org}{\textenglish{\(n\)Lab}} и статью Ловера~\cite{Lawvere_Diagonal_arguments}.
+%\end{remark}
 
 \begin{observation}[\scshape Парадокс Рассела]
 Предположим, что существует множество всех множеств, которое мы обозначим буквой \(X\).
@@ -617,6 +617,26 @@ The \((\phantom{x}, \phantom{x})\) operation then turned out to be fundamental i
 \begin{observation}[\scshape Несчётность множества вещественных чисел]
 По теореме Кантора множество вещественных чисел из интервала \([0,1]\), у которых существует троичное разложение, в котором не участвует цифра \(1\), биективное \(2^{\N_1}\) и называемое \emph{множеством Кантора}, несчётно. Как следствие, множество вещественных чисел несчётно.
 \end{observation}
+
+\begin{observation}[\scshape Теорема Ловера о фиксированной точке]
+Пусть \(X\) и \(S\) --- множества,
+а \(\varphi : X \times X \to S\)
+и \(\tau : S \to S\) --- отображения.%
+\label{obs:LawvereFixedPoint}
+Тогда если сквозное отображение
+\(\tau \circ \varphi \circ \delta : X \to X \times X \to S \to S\),
+где \(\delta \coloneqq \Id_X \bartimes \Id_X\) --- диагональное отображение,
+представляется в виде
+\(y \mapsto \varphi(x,y) : X \to S\)
+для какого-то \(x \in X\),
+то \(\tau(\varphi(x,x)) = \varphi(x,x)\).
+\end{observation}
+
+\begin{remark}
+Наблюдение~\ref{obs:LawvereFixedPoint} является обобщением теоремы~\ref{thm:CantorDiagArg}.
+Классическая теорема Ловера о фиксированной точке является категорно формулируемым следствием наблюдения~\ref{obs:LawvereFixedPoint},
+см.~\cite{nCatLabLawvereFixedPoint} и~\cite{Lawvere_Diagonal_arguments}.
+\end{remark}
 
 
 \section{Теорема Кантора\namedash{}Бернштейна\namedash{}Шрёдера}
