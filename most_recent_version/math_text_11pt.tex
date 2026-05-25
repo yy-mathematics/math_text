@@ -37,11 +37,17 @@
 
 %\setlength{\droptitle}{130pt}
 
-\title{\MakeUppercase{Математические} \MakeUppercase{Заметки}}
+%\title{\MakeUppercase{Математические} \MakeUppercase{Заметки}}
+\title{%
+{\MakeUppercase{Энциклопедические}} %
+{\MakeUppercase{Математические}} %
+{\MakeUppercase{Заметки}}%
+}
 
 \author{Y.\ Y.}
 
-\date{Дата компиляции:\\ \raggedleft\today}
+%\date{Дата компиляции:\\ \raggedleft\today}
+\date{Скомпилировано \today}
 
 \maketitle
 
@@ -75,7 +81,7 @@
 
 Для вёрстки использовался \XeLaTeX.
 %Дизайн приспособлен для отображения на экране, а не печати на бумаге.
-Это версия файла с обрезанными полями, предназначенная для отображения на экране, а не печати на бумаге.
+Это версия файла с маленькими полями, предназначенная для отображения на экране, а не печати на бумаге.
 %В частности, несколько гротескный титульный лист нужен для того, чтобы превью на экранах электронных устройств были читаемыми и идентифицируемыми.
 
 Номера страниц в оглавлении кликабельны.
@@ -18163,7 +18169,7 @@ a e_{s,s} + \sum_{i \in I \setminus \{s\}} e_{i,i}
 \end{definition}
 
 \begin{observation}[\scshape Свободно порождающий колчан]
-Порождающий колчан свободной категории однозначно восстанавливается по ней.
+Порождающий подколчан свободной категории единственен.
 \end{observation}
 
 \begin{observation}[\scshape Порождающий колчан конечного циклинара]
@@ -18223,17 +18229,10 @@ a e_{s,s} + \sum_{i \in I \setminus \{s\}} e_{i,i}
 \end{definition}
 
 \begin{definition}[\scshape Категория Лямбда]
-Категория, объектами которой являются конечные циклинары \([n]_\Lambda\), где \(n \in \N_1\), а морфизмами
-%из \([n]_\Lambda\) в \([m]_\Lambda\)
+Категория, объектами которой являются конечные циклинары, а морфизмами
 являются функторы,
 строгие и полные на эндоморфизмах,%
 \label{def:ConnesLambda}
-%\(\varphi : [n]_\Lambda \to [m]_\Lambda\),
-%%где \(n, m \in \N_1\),
-%такие что все индуцированные гомоморфизмы
-%\(\varphi_x : \End_{[n]_\Lambda}(x) \to \End_{[m]_\Lambda}(\varphi(x))\),
-%где \(x \in \Ob([n]_\Lambda)\),
-%являются изоморфизмами,
 обозначается символом \(\Lambda\) и называется \emph{категорией Лямбда}.
 \end{definition}
 
@@ -18943,14 +18942,24 @@ F(c') \ar{r}{F(\varphi)} & F(c)
 Пусть \(\mc{C}\) и \(I\) --- категории,
 а \(\pi : \mc{C} \to I\) --- расслоение Гротендика.%
 \label{def:GroFibTranspose}
-Тогда определим категорию \(\mc{C}^{\cattrans}\) образующими и соотношениями над \(\bigsqcup_{i \in I} \mc{C}_i\) следующим образом:
+\begin{enumerate}[
+	font=\upshape,
+	label=\asbuk*),
+	ref=\asbuk*,
+	]
+
+\item
+Определим категорию \(\mc{C}^{\cattrans}\) образующими и соотношениями следующим образом:
 %Тогда определим
 %%\emph{транспонированную}
 %категорию \(\mc{C}^{\cattrans}\)
 %как категорию \(\bigsqcup_{i \in I} \mc{C}_i\), к которой
-для каждого декартова
+возьмём категорию \(\bigsqcup_{i \in I} \mc{C}_i\),
+для каждого декартова морфизма
 \(\varphi \in \Ar(\mc{C})\)
-добавим к \(\bigsqcup_{i \in I} \mc{C}_i\) стрелку \(\varphi^{\cattrans} : \Cod(\varphi) \to \Dom(\varphi)\),
+добавим к \(\bigsqcup_{i \in I} \mc{C}_i\)
+формальную
+стрелку \(\varphi^{\cattrans} : \Cod(\varphi) \to \Dom(\varphi)\),
 для каждого коммутативного квадрата~(\ref{eq:GrothFibTransSquare}, слева) в \(\mc{C}\), такого что \(\varphi_0\) и \(\varphi_1\) декартовы, а \(v\) и \(v'\) вертикальны, добавим соотношение
 %\(v \circ \varphi_{\perp} = \psi_{\perp} \circ u\),
 коммутативности квадрата~(\ref{eq:GrothFibTransSquare}, справа)
@@ -18958,10 +18967,6 @@ F(c') \ar{r}{F(\varphi)} & F(c)
 и для каждой пары декартовых морфизмов \(\varphi', \varphi'' \in \Ar(\mc{C})\), такой что \(\Dom(\varphi') = \Cod(\varphi'')\), добавим соотношение \((\varphi' \circ \varphi'')^{\cattrans} = \varphi''^{\cattrans} \circ \varphi'^{\cattrans}\).
 %и для каждого коммутативного треугольника декартовых морфизмов~(\ref{eq:GrothFibTransTri}, слева) в \(\mc{C}\)
 %добавим соотношение коммутативности треугольника~(\ref{eq:GrothFibTransTri}, справа).
-Определим
-\emph{транспонированное к \(\pi\) корасслоение}
-\(\pi^{\cattrans} : \mc{C}^{\cattrans} \to I^o\)
-как функтор, совпадающий с \(\pi\) на \(\bigsqcup_{i \in I} \mc{C}_i\) и для любого декартова \(\varphi \in \Ar(\mc{C})\) переводящий \(\varphi^{\cattrans}\) в \(\pi(\varphi)^o\).
 \shorthandoff{"}%
 \begin{gather}
 \begin{tikzcd}[ampersand replacement = \amprep]
@@ -19023,6 +19028,14 @@ F(c') \ar{r}{F(\varphi)} & F(c)
 %\label{eq:GrothFibTransTri}
 \end{gather}
 \shorthandon{"}%
+
+\item
+Определим
+\emph{транспонированное к \(\pi\) корасслоение}
+\(\pi^{\cattrans} : \mc{C}^{\cattrans} \to I^o\)
+как функтор, совпадающий с \(\pi\) на \(\bigsqcup_{i \in I} \mc{C}_i\) и для любого декартова \(\varphi \in \Ar(\mc{C})\) переводящий \(\varphi^{\cattrans}\) в \(\pi(\varphi)^o\).
+
+\end{enumerate}
 \end{definition}
 
 \begin{definition}[\scshape Транспонированное расслоение]
@@ -19140,7 +19153,7 @@ F(c') \ar{r}{F(\varphi)} & F(c)
 %\end{observation}
 
 
-\section{Абелевы категории}
+\section{Полуаддитивные категории}
 
 \begin{definition}[\scshape Полуаддитивная категория]
 Категория, в которой конечные произведения и копроизведения существуют и коммутируют друг с другом,%
