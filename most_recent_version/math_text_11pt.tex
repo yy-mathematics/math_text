@@ -33,6 +33,42 @@
 
 \begin{titlingpage*}
 
+\vspace*{50pt}
+\begin{center}
+\Huge
+\shorthandoff{"}%
+\resizebox{340pt}{!}{%
+\(
+	\begin{tikzcd}[%
+		ampersand replacement = \amprep,
+		column sep = huge,
+		cramped,
+		]
+	\bullet \arrow[r] \arrow[d, ""{name=L}]
+	\amprep
+	\bullet \arrow[d, swap, ""{name=R}]
+	\\
+	\bullet \arrow[r]
+	\amprep
+	\bullet
+	\arrow[phantom, from=L, to=R, "{\scalebox{2.2}{\textnormal{ЭМЗ}}}"]
+	\end{tikzcd}
+\)%
+}
+\shorthandon{"}%
+
+\vspace*{110pt}
+
+\resizebox{340pt}{!}{\today}
+\end{center}
+\vspace*{\fill}
+
+\end{titlingpage*}
+
+
+
+\begin{titlingpage*}
+
 %\newpagecolor{red}\afterpage{\restorepagecolor}
 
 %\setlength{\droptitle}{130pt}
@@ -60,6 +96,18 @@
 \pagestyle{tocpagestyle}
 
 \tableofcontents
+
+%---
+
+% Некоторые опции для etoc
+
+\etocmemoirtoctotocfmt{section}{\contentsname}
+\etocarticlestyle
+
+\etocsettocdepth{subsubsection}
+\etocsettocdepth.toc{subsubsection}
+
+%---
 
 
 
@@ -191,6 +239,8 @@
 
 
 \section{Глобальные обозначения, соглашения и определения}
+
+\sectiontableofcontents
 
 \subsection{Теория множеств}
 
@@ -785,6 +835,8 @@ The \((\phantom{x}, \phantom{x})\) operation then turned out to be fundamental i
 
 
 \section{Сечения Дедекинда}
+
+\sectiontableofcontents
 
 \subsection{Сечения Дедекинда и поле вещественных чисел}
 
@@ -2540,6 +2592,8 @@ f^{(r+1)}(0).
 
 \section{Направленности и теорема Тихонова}
 
+\sectiontableofcontents
+
 \label{sec:NetsAndTychonoffTheorem}
 
 \subsection{Направленности и их пределы}
@@ -2823,6 +2877,8 @@ J_{\infty}
 
 
 \section{Собственные отображения в топологии}
+
+\sectiontableofcontents
 
 \subsection{Лемма о трубке}
 
@@ -3316,6 +3372,8 @@ Z \times
 
 
 \section{Дуальность Стоуна для булевых колец}
+
+\sectiontableofcontents
 
 \subsection{Теорема Стоуна}
 
@@ -4344,6 +4402,8 @@ D^q \times [0,1]
 
 \section{Группы и их действия}
 
+\sectiontableofcontents
+
 \subsection{Теорема об орбитах и стабилизаторах}
 
 \begin{definition}[\scshape Транзитивность]
@@ -4598,6 +4658,8 @@ D^q \times [0,1]
 
 \section{Автоморфизмы симметрических групп}
 
+\sectiontableofcontents
+
 %\subsection%
 %[Автоморфизмы группы \texorpdfstring{\({\Sym(\Omega)}\)}{\textbackslash{}Sym(\textbackslash{}Omega)} при \texorpdfstring{\({\lvert \Omega \rvert \neq 6}\)}{\textbackslash{}lvert \textbackslash{}Omega \textbackslash{}rvert \textbackslash{}neq 6}]%
 %[Автоморфизмы группы \texorpdfstring{\({\Sym(\Omega)}\)}{\textbackslash{}Sym(\textbackslash{}Omega)} при \texorpdfstring{\({\lvert \Omega \rvert \neq 6}\)}{\textbackslash{}lvert \textbackslash{}Omega \textbackslash{}rvert \textbackslash{}neq 6}]%
@@ -4693,6 +4755,17 @@ D^q \times [0,1]
 
 \begin{proof}
 Следует из теоремы~\ref{thm:TransInner} и леммы~\ref{lem:AutFinSymTriv}, так как, очевидно, \(\Phi(\FSym(\Omega)) = \FSym(\Omega)\).
+\end{proof}
+
+\begin{theorem}
+Пусть \(\Omega\) --- множество, такое что \(\lvert \Omega \rvert \neq 6\). Тогда любой автоморфизм группы \(\Sym(\Omega)\) является внутренним автоморфизмом.
+\end{theorem}
+
+\begin{proof}
+Согласно теореме~\ref{thm:AutSymTransInner} достаточно доказать, что любой автоморфизм группы \(\Sym(\Omega)\) переводит транспозиции в транспозиции.
+Если \(\Omega\) конечно, то в классе сопряжённости инволюций, элементы которого имеют фиксированные точки, есть пара элементов, расположенных как на рис.~\ref{fig:InvPair1}, а в классе, элементы которого не имеют фиксированных точек, --- как на рис.~\ref{fig:InvPair2}.
+Отсюда ясно, что если \(\lvert \Omega \rvert \neq 4, 6\), то в любом классе инволюций, кроме класса транспозиций, есть пара элементов, порядок произведения которых строго больше \(3\).
+А в \(\Sym(4)\) все инволюции без фиксированных точек попарно коммутируют, в отличие от транспозиций.
 \end{proof}
 
 \begin{figure}[h]
@@ -4798,17 +4871,6 @@ D^q \times [0,1]
   \caption{Примеры пар сопряжённых инволюций}
 \end{figure}
 
-\begin{theorem}
-Пусть \(\Omega\) --- множество, такое что \(\lvert \Omega \rvert \neq 6\). Тогда любой автоморфизм группы \(\Sym(\Omega)\) является внутренним автоморфизмом.
-\end{theorem}
-
-\begin{proof}
-Согласно теореме~\ref{thm:AutSymTransInner} достаточно доказать, что любой автоморфизм группы \(\Sym(\Omega)\) переводит транспозиции в транспозиции.
-Если \(\Omega\) конечно, то в классе сопряжённости инволюций, элементы которого имеют фиксированные точки, есть пара элементов, расположенных как на рис.~\ref{fig:InvPair1}, а в классе, элементы которого не имеют фиксированных точек, --- как на рис.~\ref{fig:InvPair2}.
-Отсюда ясно, что если \(\lvert \Omega \rvert \neq 4, 6\), то в любом классе инволюций, кроме класса транспозиций, есть пара элементов, порядок произведения которых строго больше \(3\).
-А в \(\Sym(4)\) все инволюции без фиксированных точек попарно коммутируют, в отличие от транспозиций.
-\end{proof}
-
 %\subsection%
 %[Автоморфизмы группы \texorpdfstring{\({\Sym(6)}\)}{\textbackslash{}Sym(6)}]%
 %[Автоморфизмы группы \texorpdfstring{\({\Sym(6)}\)}{\textbackslash{}Sym(6)}]%
@@ -4835,6 +4897,24 @@ D^q \times [0,1]
 \label{obs:S6Inv2}
 на множестве упорядоченных пар не коммутирующих длинных инволюций в \(\Sym(6)\).
 \end{observation}
+
+\begin{observation}
+Любая пара не коммутирующих длинных инволюций в \(\Sym(6)\) однозначно достраивается%
+\label{obs:S6Inv3}
+до пятёрки (см.\ рис.\ \ref{fig:Inv2}).
+\end{observation}
+
+\begin{lemma}
+Группа элементов \(\Sym(6)\), переводящих фиксированную пятёрку в себя,%
+\label{lem:S5ExcAction}
+имеет порядок \(120\) и реализует в точности все перестановки элементов пятёрки.
+\end{lemma}
+
+\begin{proof}
+Согласно наблюдению~\ref{obs:S6Inv2} любую упорядоченную пару различных элементов пятёрки можно перевести в любую другую упорядоченную пару различных элементов пятёрки действием элемента \(\Sym(6)\),
+при этом, согласно наблюдению~\ref{obs:S6Inv3}, пятёрка автоматически перейдёт в себя.
+Стабилизатор в \(\Sym(6)\) упорядоченной пары элементов пятёрки имеет порядок \(6\) и реализует в точности все перестановки оставшихся трёх элементов пятёрки (см.\ рис.\ \ref{fig:Inv2}).
+\end{proof}
 
 \begin{figure}[h]
   \centering
@@ -4942,24 +5022,6 @@ D^q \times [0,1]
 \end{figure}
 
 \begin{observation}
-Любая пара не коммутирующих длинных инволюций в \(\Sym(6)\) однозначно достраивается%
-\label{obs:S6Inv3}
-до пятёрки (см.\ рис.\ \ref{fig:Inv2}).
-\end{observation}
-
-\begin{lemma}
-Группа элементов \(\Sym(6)\), переводящих фиксированную пятёрку в себя,%
-\label{lem:S5ExcAction}
-имеет порядок \(120\) и реализует в точности все перестановки элементов пятёрки.
-\end{lemma}
-
-\begin{proof}
-Согласно наблюдению~\ref{obs:S6Inv2} любую упорядоченную пару различных элементов пятёрки можно перевести в любую другую упорядоченную пару различных элементов пятёрки действием элемента \(\Sym(6)\),
-при этом, согласно наблюдению~\ref{obs:S6Inv3}, пятёрка автоматически перейдёт в себя.
-Стабилизатор в \(\Sym(6)\) упорядоченной пары элементов пятёрки имеет порядок \(6\) и реализует в точности все перестановки оставшихся трёх элементов пятёрки (см.\ рис.\ \ref{fig:Inv2}).
-\end{proof}
-
-\begin{observation}
 Согласно наблюдениям~\ref{obs:S6Inv2} и \ref{obs:S6Inv3} группа \(\Sym(6)\) транзитивно действует на пятёрках.
 С учётом леммы~\ref{lem:S5ExcAction} количество пятёрок равно \(6\).
 \end{observation}
@@ -4999,6 +5061,8 @@ D^q \times [0,1]
 
 
 \section{Тензорное произведение}
+
+\sectiontableofcontents
 
 \subsection{Тензорное произведение абелевых групп}
 
@@ -5475,6 +5539,8 @@ M / (rm = mr \mid r \in R,\ m \in M),
 
 
 \section{Коммутативная локализация}
+
+\sectiontableofcontents
 
 \subsection{Определение и задание локализации}
 
@@ -6182,6 +6248,8 @@ $.
 
 \section{Модули над кольцом матриц}
 
+\sectiontableofcontents
+
 \subsection{Эквивалентность категорий}
 
 \begin{theorem}
@@ -6377,6 +6445,8 @@ $.
 
 
 \section{Нётеровы и артиновы модули}
+
+\sectiontableofcontents
 
 \subsection{Основные определения и теорема Гильберта о базисе}
 
@@ -6679,6 +6749,8 @@ $.
 
 
 \section{Полупростые модули}
+
+\sectiontableofcontents
 
 \subsection{Простые модули и лемма Шура}
 
@@ -7260,6 +7332,8 @@ $.
 
 
 \section{Радикал Джекобсона}
+
+\sectiontableofcontents
 
 \subsection{Определение и эквивалентные характеризации}
 
@@ -8395,13 +8469,17 @@ f_{p-1}(X,Y) + f_{p-2}(X,Y) + \cdots{} + f_1(X,Y)
 \section{Формула Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа\namedash{}Дынкина}
 \label{sec:BKHD}
 
-\subsection{Предисловие}
+%\subsection{Предисловие}
 
+\begin{sectionintro}
 Практически весь материал этого раздела,
 за исключением подраздела
 <<Усечённая формула БКХД>>,
 позаимствован из раздела~6 текста~\cite{Mueger_BCHD}, который содержит несколько доказательств теоремы Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа и её уточнений.
 Я узнал об этом тексте из учебника по алгебрам Ли и группам Ли П.\ Этингофа \cite[\textenglish{Remark~14.8}]{EtingofLie_2024}.
+\end{sectionintro}
+
+\sectiontableofcontents
 
 \subsection{Усечённая формула БКХД}
 
@@ -8985,6 +9063,8 @@ R(X_1 \cdots{} X_n).
 Помимо этого использовался учебник Джеймса Милна \cite{milneFT_v5.10}.
 \end{sectionintro}
 
+\sectiontableofcontents
+
 \subsection{Диагонализуемые алгебры и расширения Галуа}
 
 \begin{definition}[\scshape Диагонализуемая алгебра] \label{def:DiagAlg}
@@ -9474,6 +9554,8 @@ K \otimes_{E_0} E_1 \otimes_{E_1} \cdots{} \otimes_{E_{n-1}} E_n
 
 \section{Некоторые утверждения из теории полей}
 
+\sectiontableofcontents
+
 \subsection{Существование алгебраического замыкания}
 
 \begin{theorem}
@@ -9719,6 +9801,8 @@ K \otimes_{E_0} E_1 \otimes_{E_1} \cdots{} \otimes_{E_{n-1}} E_n
 
 
 \section{Базовые свойства локализации}
+
+\sectiontableofcontents
 
 \subsection{Локализация и идеалы кольца}
 
@@ -10177,6 +10261,8 @@ M
 
 
 \section{Целое замыкание}
+
+\sectiontableofcontents
 
 \subsection{Определение и базовые свойства целых элементов}
 
@@ -11052,6 +11138,8 @@ A,
 
 \section{Теорема Гильберта о нулях}
 
+\sectiontableofcontents
+
 \subsection{Обобщённая лемма Зарисского}
 
 %\begin{notation}[\scshape Поле частных]
@@ -11686,6 +11774,8 @@ A,
 
 
 \section{Дедекиндовы кольца}
+
+\sectiontableofcontents
 
 \subsection{Дробные идеалы}
 
@@ -12554,6 +12644,8 @@ M \simeq (\bigoplus_{\mathfrak{p} \in \mathcal{P}} \bigoplus_{i = 1}^{N_\mathfra
 
 \section{Ассоциированные простые идеалы}
 
+\sectiontableofcontents
+
 \subsection{Определение и базовые свойства носителя модуля}
 
 \begin{convention}[\scshape Кольцо]
@@ -12990,6 +13082,8 @@ A \cap \Ann_A(m)_S
 
 \section{Категории как полугруппы}
 
+\sectiontableofcontents
+
 \subsection{Мультипликативные полугруппы с нулём}
 
 \begin{definition}[\scshape Бинар]
@@ -13137,6 +13231,8 @@ g \circ \varepsilon_{F(X)} \circ F(\eta_X) = g,
 
 
 \section{Финальные и инициальные функторы}
+
+\sectiontableofcontents
 
 \subsection{Определение и характеризация}
 
@@ -13401,6 +13497,8 @@ V(Q) \coloneqq
 
 
 \section{Фильтрованные категории}
+
+\sectiontableofcontents
 
 \subsection{Определение и характеризация фильтрованных категорий}
 
@@ -14115,6 +14213,8 @@ a \wedge b \wedge d(c) =
 
 \section{Системы корней классических алгебр Ли}
 
+\sectiontableofcontents
+
 %\begin{observation}
 %\label{obs:tr_lie_bilin}
 %Пусть \(V\) --- конечномерное векторное пространство над полем \(K\). Пусть \(s : V \xrightarrow{\sim} V^{\vee}\) --- невырожденная билинейная форма, \(x : V \to V\) --- линейное отображение, \(x^{\vee} : V^{\vee} \to V^{\vee}\) --- двойственное отображение.
@@ -14276,6 +14376,8 @@ e_{k,k} - e_{l,l}
 %{Векторы Витта и \texorpdfstring{\(\bm{p}\)-адические}{p-адические} числа}
 
 \section{Векторы Витта и \texorpdfstring{\(\WTbm{p}\)-адические}{p-адические} числа}
+
+\sectiontableofcontents
 
 %\subsection*{\itshape Соглашения и обозначения}
 %\addcontentsline{toc}{subsection}{\itshape Соглашения и обозначения}
@@ -15068,6 +15170,8 @@ x^{(k)_p} \coloneqq
 
 
 \section{Теорема, разложение и кольцо Витта}
+
+\sectiontableofcontents
 
 \subsection{Теорема Витта}
 
@@ -16152,6 +16256,8 @@ F,
 
 
 \section{Теорема Гамильтона\namedash{}Кэли}
+
+\sectiontableofcontents
 
 \subsection{Формулировка и доказательство}
 
@@ -17452,6 +17558,8 @@ n \cdot (1 + \lVert n \rVert + \cdots + {\lVert n \rVert}^{\lfloor \frac{\ln(m)}
 
 \section{Разложения Брюа и Гаусса}
 
+\sectiontableofcontents
+
 \subsection{Стандартные подгруппы в общей линейной группе}
 
 \begin{definition}[\scshape Группа диагональных матриц]
@@ -17901,6 +18009,8 @@ n \cdot (1 + \lVert n \rVert + \cdots + {\lVert n \rVert}^{\lfloor \frac{\ln(m)}
 
 \section{Определитель как многочлен}
 
+\sectiontableofcontents
+
 \subsection{Определитель как естественное преобразование}
 
 \begin{notation}[\scshape Категория коммутативных колец]
@@ -18155,6 +18265,8 @@ a e_{s,s} + \sum_{i \in I \setminus \{s\}} e_{i,i}
 
 \section{Категория Лямбда Алена Конна}
 
+\sectiontableofcontents
+
 \subsection{Определение категории Лямбда}
 
 \begin{definition}[\scshape Конечный циклинар]
@@ -18279,6 +18391,8 @@ a e_{s,s} + \sum_{i \in I \setminus \{s\}} e_{i,i}
 
 
 \section{Топология Гротендика}
+
+\sectiontableofcontents
 
 \subsection{Общее определение}
 
@@ -18606,6 +18720,8 @@ a e_{s,s} + \sum_{i \in I \setminus \{s\}} e_{i,i}
 
 \section{Категорные цилиндры и расслоения}
 
+\sectiontableofcontents
+
 \subsection{Определение и основные свойства категорного цилиндра}
 
 \begin{definition}[\scshape Категорный цилиндр]
@@ -18677,12 +18793,14 @@ a e_{s,s} + \sum_{i \in I \setminus \{s\}} e_{i,i}
 \begin{equation}
 \shorthandoff{"}%
 \begin{tikzcd}[
-	column sep={3em,between origins},
-	row sep={3em,between origins},
+%	column sep={3em,between origins},
+%	row sep={3em,between origins},
+	column sep=tiny,
+	row sep=small,
 	]
 & \mc{B} \arrow[ld, swap, "\varpi"] \arrow[rd, "\varrho"] &
 \\
-\mc{C} \arrow[rd, swap, "{s}"] \arrow[rr, Rightarrow, shorten <=0.6em, shorten >=0.6em, "(\vv{b})_{b \in \mc{B}}"] & &  \mc{E} \arrow[ld, "{t}"] 
+\mc{C} \arrow[rd, swap, "{s}"] \arrow[rr, Rightarrow, shorten <=1em, shorten >=1em, "(\vv{b})_{b \in \mc{B}}"] & &  \mc{E} \arrow[ld, "{t}"] 
 \\
 & \mc{C} \tensor*[^{\varpi}]{\cylbinop}{^{\varrho}_{\mc{B}}} \mc{E} &
 \end{tikzcd}
@@ -19455,6 +19573,8 @@ V_{\Z}  \coloneqq
 
 
 \section{Измеримость по Каратеодори}
+
+\sectiontableofcontents
 
 \subsection{Общие определения}
 

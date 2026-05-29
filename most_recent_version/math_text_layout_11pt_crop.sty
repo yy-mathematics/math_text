@@ -255,3 +255,48 @@
 \makeatother
 
 %-------------------
+
+% Оглавление раздела
+
+% Основано на
+% https://tex.stackexchange.com/a/330211
+% touhami
+% answered Sep 18, 2016 at 18:04
+% edited Oct 15, 2016 at 13:50
+
+\makeatletter
+\newcommand{\dottedetocline}[5]%
+	{\@dottedtocline{#1}{#2}{#3}{#4}{#5}}
+%\newcommand{\tocdoton}
+%	{\renewcommand{\@dotsep}{\cftdotsep}}
+%\newcommand{\tocdotsoff}
+%	{\renewcommand{\@dotsep}{\cftnodots}}
+\makeatother
+
+\newcommand{\sectiontableofcontents}{
+	\begingroup
+
+	\etocsettocstyle
+	{\subsection*{Оглавление}}%
+	{}% don't do anything special after the toc contents
+	
+	\makeatletter
+	\etocsetstyle{subsection}
+	{\etocskipfirstprefix}
+	{\vspace{\smallskipamount}}
+	{\normalsize\dottedetocline{1}{0em}{\cftsectionindent}{\etocname}{\etocpage}\par}
+	{}
+	\makeatother
+	
+	\etocsetstyle{subsubsection}
+	{\vspace{2pt}\begingroup\leftskip\cftsectionindent\sloppy\relax}
+	{}
+	{\noindent\mdseries\small\etocname{} (\etocpage). }
+	{\par\endgroup}
+	
+	\localtableofcontents
+	
+	\endgroup
+}
+
+%-------------------
