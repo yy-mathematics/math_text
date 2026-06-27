@@ -7027,16 +7027,43 @@ $.
 \begin{theorem}
 Пусть \(N\) --- простой модуль над ассоциативным унитальным кольцом \(R\), а \(D \coloneqq \End_{R\module}(N)^o\).%
 \label{thm:TensorSimpleEnd}
-Тогда функтор \(N \otimes_D (-) : D\module \to R\module\) строгий и полный, а его существенный образ замкнут относительно перехода к подмодулям и фактормодулям.
+Тогда функтор \(N \otimes_D (-) : D\module \to R\module\) строгий и полный,
+а его существенный образ замкнут относительно перехода к подмодулям и фактормодулям.
 \end{theorem}
 
-\begin{proof}
-То, что функтор строгий и полный, следует из того, что все модули над \(D\) свободные, а \(R\)\=/модуль \(N\) конечно порождён --- морфизмы в \(D\module\) и его существенном образе,
-%то есть категории полупростых \(R\)-модулей, совпадающих со своей \(N\)-изотипической компонентой,
-%то есть категории \(R\)\=/модулей, изоморфных прямым суммам \(N\),
-то есть категории \(N\)\=/изотипических полупростых \(R\)\=/модулей,
-задаются столбцово-финитарными матрицами с элементами в \(D^o\).
-\end{proof}
+%\begin{proof}
+%То, что функтор строгий и полный, следует из того, что все модули над \(D\) свободные, а \(R\)\=/модуль \(N\) конечно порождён --- морфизмы в \(D\module\) и его существенном образе,
+%%то есть категории полупростых \(R\)-модулей, совпадающих со своей \(N\)-изотипической компонентой,
+%%то есть категории \(R\)\=/модулей, изоморфных прямым суммам \(N\),
+%то есть категории \(N\)\=/изотипических полупростых \(R\)\=/модулей,
+%задаются столбцово-финитарными матрицами с элементами в \(D^o\).
+%\end{proof}
+
+\begin{proofparts}[Доказательство (из двух частей)]
+
+\item[Часть 1.]
+Функтор \(N \otimes_D (-)\) является левым сопряжённым к функтору \(\Hom_{R\module}(N, -)\).
+Для любого множества \(I\) имеем канонический изоморфизм
+\(N \otimes_D D^{\oplus I} \cong (N \otimes_D D)^{\oplus I} \cong N^{\oplus I}\)
+%в \(R\module\)
+модулей над \(R\)
+и канонический изоморфизм
+\(\Hom_{R\module}(N, N^{\oplus I}) \cong \Hom_{R\module}(N, N)^{\oplus I} \cong D^{\oplus I}\)
+%в \(D\module\)
+модулей над \(D\)
+---
+так как \(R\)\=/модуль \(N\) конечно порождён,
+то канонический гомоморфизм
+\(\Hom_{R\module}(N, N)^{\oplus I} \to \Hom_{R\module}(N, N^{\oplus I})\) биективен.
+
+\item[Часть 2.]
+Существенный образ функтора
+\(N \otimes_D (-)\)
+совпадает с категорией \(N\)\=/изотипических полупростых \(R\)\=/модулей,
+а потому замкнут относительно перехода к подмодулям и фактормодулям.
+\qedhere
+
+\end{proofparts}
 
 \begin{corollary}
 Пусть \(R\) --- ассоциативное унитальное кольцо, 
@@ -8705,13 +8732,20 @@ R(X_1 \cdots{} X_n).
 \end{enumerate}
 \end{theorem}
 
-\begin{proof}
-Импликация (\ref{itm:FriDynSpeWev3})~\({\implies}\)~(\ref{itm:FriDynSpeWev1}) очевидна, а импликация (\ref{itm:FriDynSpeWev1})~\({\implies}\)~(\ref{itm:FriDynSpeWev2}) следует из классической формулы \([g \otimes 1 + 1 \otimes g, h \otimes 1 + 1 \otimes h] = [g, h] \otimes 1 + 1 \otimes [g, h]\), где \(g, h \in K \la \mc{X} \ra\), --- множество \(\{d \in K \la \mc{X} \ra \mid \delta(d) = d \otimes 1 + 1 \otimes d\}\) является подалгеброй Ли в \(K \la \mc{X} \ra\).
-Осталось доказать импликацию (\ref{itm:FriDynSpeWev2})~\({\implies}\)~(\ref{itm:FriDynSpeWev3}).
-Пусть \(f\) удовлетворяет условию~(\ref{itm:FriDynSpeWev2}).
-Применяя отображение \(\varepsilon \otimes \Id\) к обеим сторонам равенства \(\delta(f) = f \otimes 1 + 1 \otimes f\) получаем равенство \(f = \varepsilon(f) 1 + \varepsilon(1) f = \varepsilon(f) + f\), откуда следует, что \(\varepsilon(f) = 0\).
+\begin{proofparts}[Доказательство (из трёх частей)]
+
+\item[Часть (\ref{itm:FriDynSpeWev1})~\({\implies}\)~(\ref{itm:FriDynSpeWev2}).]
+Эта импликация следует из стандартной формулы \([g \otimes 1 + 1 \otimes g, h \otimes 1 + 1 \otimes h] = [g, h] \otimes 1 + 1 \otimes [g, h]\), где \(g, h \in K \la \mc{X} \ra\), --- множество \(\{d \in K \la \mc{X} \ra \mid \delta(d) = d \otimes 1 + 1 \otimes d\}\) является подалгеброй Ли в \(K \la \mc{X} \ra\), которая содержит все элементы \(\mc{X}\).
+
+\item[Часть (\ref{itm:FriDynSpeWev2})~\({\implies}\)~(\ref{itm:FriDynSpeWev3}).]
+Применяя отображение \(\varepsilon \otimes \Id\) к обеим сторонам равенства \(\delta(f) = f \otimes 1 + 1 \otimes f\) получаем, что \(f = \varepsilon(f) 1 + \varepsilon(1) f = \varepsilon(f) + f\), откуда следует, что \(\varepsilon(f) = 0\).
 Подставив выражение \(\delta(f) = f \otimes 1 + 1 \otimes f\) в формулу~\eqref{eq:D_S_conv}, получаем, что \(D(f) = D(f) S(1) + D(1) S(F) = R(f)\).
-\end{proof}
+
+\item[Часть (\ref{itm:FriDynSpeWev3})~\({\implies}\)~(\ref{itm:FriDynSpeWev1}).]
+Эта импликация очевидна.
+\qedhere
+
+\end{proofparts}
 
 \subsection{Теорема Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа}
 
@@ -8745,7 +8779,9 @@ R(X_1 \cdots{} X_n).
 Все однородные компоненты ряда Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа, то есть ряда \(\log(e^X e^Y) \in \Q \llangle X, Y \rrangle\), представляются в виде \(\Q\)\=/линейных комбинаций кратных коммутаторов переменных \(X\) и \(Y\).
 \end{theorem}
 
-\begin{proof}[Набросок доказательства]
+\begin{proofparts}[Набросок доказательства (из двух частей)]
+
+\item[Часть 1.]
 Гомоморфизм
 \(
 	\delta :
@@ -8774,11 +8810,15 @@ R(X_1 \cdots{} X_n).
 	 \Q \langle X, Y \rangle_n)
 	\supset
 	\Q \llangle X, Y \rrangle^{\otimes_{\Q} 2}
-\).
-%где нижними индексами обозначены однородные компоненты соответствующей степени.
+\),
+где нижними индексами обозначены однородные компоненты соответствующей степени.
+
+\item[Часть 2.]
 Осталось заметить, что экспонента задаёт биекцию между элементами \(f \in \Q \llangle X, Y \rrangle\) с постоянным членом \(0\), удовлетворяющими условию \(\delta(f) = f \otimes 1 + 1 \otimes f\), и элементами \(g \in \Q \llangle X, Y \rrangle\) с постоянным членом \(1\), удовлетворяющими условию \(\delta(g) = g \otimes g\), а потом использовать теорему~\ref{thm:FriDynSpeWev},
 а точнее, критерий Фридрихса.
-\end{proof}
+\qedhere
+
+\end{proofparts}
 
 \subsection{Формула Дынкина для ряда БКХ}
 
@@ -19576,7 +19616,88 @@ V_{\Z}  \coloneqq
 
 \sectiontableofcontents
 
-\subsection{Общие определения}
+\subsection{Сигма-алгебры}
+
+%\begin{notation}[\scshape Обозначения в булевых алгебрах]
+%В этом разделе мы будем использовать теоретико-множественные обозначения и названия для супремумов и инфимумов в булевых алгебрах, а также для отношения частичного порядка в булевых алгебрах.
+%\end{notation}
+
+%\begin{convention}[\scshape Объединения и пересечения в булевых алгебрах]
+%В этом разделе супремумы в булевых алгебрах иногда будут называться объединениями, а инфимумы --- пересечениями.
+%\end{convention}
+
+\begin{observation}[\scshape Конечно-бесконечная дистрибутивность в булевых алгебрах]
+Пусть \(\mc{A}\) --- булева алгебра,
+а \(A \in \mc{A}\).
+Тогда гомоморфизм
+\(X \mapsto A \wedge X : \mc{A} \to \mc{A}_{\leq A}\)
+сохраняет инфимумы семейств элементов \(\mc{A}\),
+а потому,
+по формулам де Моргана,
+сохраняет и супремумы семейств элементов \(\mc{A}\).
+По двойственности гомоморфизм
+\(X \mapsto A \vee X : \mc{A} \to \mc{A}_{\geq A}\)
+тоже сохраняет инфимумы и супремумы семейств элементов \(\mc{A}\).
+\end{observation}
+
+\begin{definition}[\scshape Сигма-алгебра]
+Булева алгебра \(\mc{A}\), такая что у любого счётного семейства \((A_i)_{i \in I} \in \mc{A}^{\times I}\) существует супремум \(\bigvee_{i \in I} A_i \in \mc{A}\) и инфимум \(\bigwedge_{i \in I} A_i \in \mc{A}\)
+называется \emph{\(\sigma\)\=/алгеброй} или \emph{сигма-алгеброй}.
+\end{definition}
+
+\begin{definition}[\scshape Гомоморфизм сигма-алгебр]
+Пусть \(\mc{A}\) и \(\mc{B}\) --- две \(\sigma\)\=/алгебры,
+а \(\varphi : \mc{A} \to \mc{B}\) --- гомоморфизм булевых алгебр.
+Тогда \(\varphi\) называется \emph{гомоморфизмом \(\sigma\)\=/алгебр}, если он сохраняет счётные супремумы и инфимумы.
+\end{definition}
+
+\begin{definition}[\scshape Сигма-подалгебра]
+Пусть \(\mc{A}\) --- \(\sigma\)\=/алгебра,
+а \(\mc{B} \subset \mc{A}\) --- её булева подалгебра.
+Тогда \(\mc{B}\) называется \emph{\(\sigma\)\=/подалгеброй} \(\mc{A}\), если вложение \(\mc{B} \to \mc{A}\) является гомоморфизмом \(\sigma\)\=/алгебр.
+\end{definition}
+
+\begin{definition}[\scshape Ограничение \(\sigma\)\=/алгебры]
+Пусть \(\mc{A}\) --- \(\sigma\)\=/алгебра,
+\(\mc{B} \subset \mc{A}\) --- её \(\sigma\)\=/подалгебра,
+а \(S \in \mc{A}\) --- элемент \(\mc{A}\).
+Тогда множество
+%\(\mc{A}|_{S} \coloneqq \{E \in 2^S \mid \text{существует}\ A \in \mc{A},\ \text{такой что}\ E = S \cap A\}\)
+\(\mc{B}|_{S} \coloneqq \Image(B \mapsto B \wedge S : \mc{B} \to \mc{A}_{\leq S})\)
+является \(\sigma\)\=/подалгеброй \(\mc{A}_{\leq S}\),
+которая
+называется \emph{ограничением \(\sigma\)\=/алгебры} \(\mc{B}\) на \(S\).
+\end{definition}
+
+\subsection{Внешние меры}
+
+\begin{definition}[\scshape Внешняя мера]
+Пусть \((\mc{A}, \wedge, \vee, \top, \bot)\) --- \(\sigma\)\=/алгебра,
+а \(\mu^* : \mc{A} \to [0,\infty]\) --- функция.
+Тогда \(\mu^*\) называется \emph{внешней мерой}, если \(\mu^*(\bot) = 0\)
+и для любого счётного семейства \((A_i)_{i \in I} \in \mc{A}^{\times I}\) и \(B \in \mc{A}\), такого что \(B \leq \bigvee_{i \in I} A_i\),
+выполняется неравенство
+\(\mu^*(B) \leq \sum_{i \in I} \mu^*(A_i)\).
+\end{definition}
+
+\begin{definition}[\scshape Счётно-аддитивная мера]
+Пусть \((\mc{A}, \wedge, \vee, \top, \bot)\) --- \(\sigma\)\=/алгебра,
+а \(\mu : \mc{A} \to [0,\infty]\) --- функция.
+Тогда \(\mu\) называется \emph{мерой} или \emph{счётно-аддитивной мерой}, если \(\mu(\bot) = 0\)
+и для любого счётного семейства \((A_i)_{i \in I} \in \mc{A}^{\times I}\),
+такого что \(A_i \wedge A_j = \bot\) для любых \(i,j \in I\), таких что \(i \neq j\),
+выполняется равенство
+\(\mu(\bigvee_{i \in I} A_i) = \sum_{i \in I} \mu(A_i)\).
+\end{definition}
+
+\begin{definition}[\scshape Конечно-аддитивная мера]
+Пусть \((\mc{A}, \wedge, \vee, \top, \bot)\) --- булева алгебра,
+а \(\mu : \mc{A} \to [0,\infty]\) --- функция.
+Тогда \(\mu\) называется \emph{конечно-аддитивной мерой}, если \(\mu(\bot) = 0\)
+и для любых \(A, B \in \mc{A}\)
+выполняется равенство
+\(\mu(A \vee B) + \mu(A \wedge B) = \mu(A) + \mu(B)\).
+\end{definition}
 
 %\begin{notation}
 %Пусть \(X\) --- множество, а \(\kappa\) --- кардинал.
@@ -19594,72 +19715,114 @@ V_{\Z}  \coloneqq
 %Тогда введём следующее обозначение для множества покрытий: \(\op{Cov}_{\leq \kappa}(E, \mc{S}) \coloneqq \{\mc{C} \in 2^{\mc{S}} \mid E \subset \bigcup_{C \in \mc{C}} C\ \text{и}\ \card(\mc{C}) \leq \kappa\}\).
 %\end{notation}
 
+%\begin{definition}[\scshape Порождение внешней меры]
+%Пусть \(X\) --- множество, а \(f : \mc{S} \to [0, +\infty]\), где \(\mc{S} \subset 2^X\), --- функция.
+%Тогда внешняя мера
+%\(
+%E \mapsto
+%%\inf_{\mc{C} \subset \mc{S} \suchthat \card(\mc{C}) \leq \aleph_0, E \subset \bigcup_{C \in \mc{C}} C}
+%%\inf_{\{\mc{C} \in \Lambda^{\leq \aleph_0}(\mc{S}) \mid E \subset \bigcup_{C \in \mc{C}} C\}}
+%%\inf_{\mc{C} \in \Lambda^{\leq \aleph_0}(\mc{S}) \cap \op{Cov}(E, \mc{S})}
+%%\inf_{\mc{C} \in \op{Cov}_{\leq \aleph_0}(E, \mc{S})}
+%\inf_{\mc{C} \in 2^{\mc{S}} \suchthat (E \subset \bigcup_{C \in \mc{C}} C) \wedge (\card(\mc{C}) \leq \aleph_0)}
+%\sum_{C \in \mc{C}} f(C)
+%: 2^X \to [0, +\infty]
+%\)
+%называется \emph{внешней мерой, порождённой функцией \(f\)}.
+%\end{definition}
+
 \begin{definition}[\scshape Порождение внешней меры]
-Пусть \(X\) --- множество, а \(f : \mc{S} \to [0, +\infty]\), где \(\mc{S} \subset 2^X\), --- функция.
-Тогда внешняя мера
-\(
-E \mapsto
-%\inf_{\mc{C} \subset \mc{S} \suchthat \card(\mc{C}) \leq \aleph_0, E \subset \bigcup_{C \in \mc{C}} C}
-%\inf_{\{\mc{C} \in \Lambda^{\leq \aleph_0}(\mc{S}) \mid E \subset \bigcup_{C \in \mc{C}} C\}}
-%\inf_{\mc{C} \in \Lambda^{\leq \aleph_0}(\mc{S}) \cap \op{Cov}(E, \mc{S})}
-%\inf_{\mc{C} \in \op{Cov}_{\leq \aleph_0}(E, \mc{S})}
-\inf_{\mc{C} \in 2^{\mc{S}} \suchthat (E \subset \bigcup_{C \in \mc{C}} C) \wedge (\card(\mc{C}) \leq \aleph_0)}
-\sum_{C \in \mc{C}} f(C)
-: 2^X \to [0, +\infty]
-\)
+Пусть \(\mc{A}\) --- \(\sigma\)\=/алгебра,
+\(\mc{S}\) --- подмножество \(\mc{A}\),
+а \(f : \mc{S} \to [0, +\infty]\) --- функция.
+Тогда внешняя мера~\eqref{eq:ExtMeasGen}
 называется \emph{внешней мерой, порождённой функцией \(f\)}.
+\begin{equation}
+E \mapsto
+\inf\nolimits_{\mc{C} \in 2^{\mc{S}} \suchthat (E \leq \bigvee_{C \in \mc{C}} C) \wedge (\card(\mc{C}) \leq \aleph_0)}
+\sum_{C \in \mc{C}} f(C)
+: \mc{A} \to [0, +\infty]
+\label{eq:ExtMeasGen}
+\end{equation}
 \end{definition}
 
+%\begin{observation}
+%Пусть \(X\) --- множество, \(f : \mc{S} \to [0, +\infty]\), где \(\mc{S} \subset 2^X\), --- функция, а \(\mu^* : 2^X \to [0, +\infty]\) --- внешняя мера, порождённая \(f\).
+%Тогда функция \(\mu^*|_{\mc{S}}\) тоже порождает внешнюю меру \(\mu^*\).
+%\end{observation}
+
 \begin{observation}
-Пусть \(X\) --- множество, \(f : \mc{S} \to [0, +\infty]\), где \(\mc{S} \subset 2^X\), --- функция, а \(\mu^* : 2^X \to [0, +\infty]\) --- внешняя мера, порождённая \(f\).
+Пусть \(\mc{A}\) --- \(\sigma\)\=/алгебра,
+\(f : \mc{S} \to [0, +\infty]\),
+где \(\mc{S} \subset \mc{A}\),
+--- функция,
+а \(\mu^* : \mc{A} \to [0, +\infty]\) --- внешняя мера, порождённая \(f\).
 Тогда функция \(\mu^*|_{\mc{S}}\) тоже порождает внешнюю меру \(\mu^*\).
 \end{observation}
 
-\begin{definition}[\scshape Ограничение внешней меры]
-Пусть \(X\) --- множество, \(\mu^* : 2^X \to [0, +\infty]\) --- внешняя мера на \(X\), а \(S \subset X\) --- подмножество \(X\).
-Тогда функция \(\mu^*|_{2^S} : 2^S \to [0, +\infty]\) является внешней мерой на \(S\), которая называется \emph{ограничением внешней меры} \(\mu^*\) на \(S\).
-\end{definition}
+%\begin{definition}[\scshape Ограничение внешней меры]
+%Пусть \(X\) --- множество, \(\mu^* : 2^X \to [0, +\infty]\) --- внешняя мера на \(X\), а \(S \subset X\) --- подмножество \(X\).
+%Тогда функция \(\mu^*|_{2^S} : 2^S \to [0, +\infty]\) является внешней мерой на \(S\), которая называется \emph{ограничением внешней меры} \(\mu^*\) на \(S\).
+%\end{definition}
 
-\begin{definition}[\scshape Ограничение \(\sigma\)\=/алгебры]
-Пусть \(X\) --- множество, \(\mc{A} \subset 2^X\) --- \(\sigma\)\=/алгебра на \(X\), а \(S \subset X\) --- подмножество \(X\).
-Тогда множество
-%\(\mc{A}|_{S} \coloneqq \{E \in 2^S \mid \text{существует}\ A \in \mc{A},\ \text{такой что}\ E = S \cap A\}\)
-\(\mc{A}|_{S} \coloneqq \Image(A \mapsto A \cap S : \mc{A} \to 2^S)\)
-является \(\sigma\)\=/алгеброй
-на \(S\),
-которая
-называется \emph{ограничением \(\sigma\)\=/алгебры} \(\mc{A}\) на \(S\).
-\end{definition}
+%\begin{definition}[\scshape Ограничение внешней меры]
+%Пусть \(\mc{A}\) --- \(\sigma\)\=/алгебра,
+%\(\mu^* : \mc{A} \to [0, +\infty]\) --- внешняя мера на \(\mc{A}\),
+%а \(S \in \mc{A}\) --- элемент \(\mc{A}\).
+%Тогда функция
+%\(\mu^*|_{\mc{A}_{\leq S}} : \mc{A}_{\leq S} \to [0, +\infty]\)
+%является внешней мерой на \(\mc{A}_{\leq S}\), которая называется \emph{ограничением внешней меры} \(\mu^*\) на \(\mc{A}_{\leq S}\).
+%\end{definition}
 
 \begin{observation}
-Пусть \((X, \mu^*)\) --- множество с внешней мерой,
-а \(\mc{A}\) --- \(\sigma\)\=/алгебра на \(X\).
-Тогда если функция \(\mu^*\) аддитивна на \(\mc{A}\),
-то функция \(\mu^*\) счётно-аддитивна на \(\mc{A}\).
-%Тогда если \(\mu^*|_{\mc{A}}\) аддитивна, то \(\mu^*|_{\mc{A}}\) \(\sigma\)\=/аддитивна.
+Пусть \((\mc{A}, \mu^*)\) --- \(\sigma\)\=/алгебра с внешней мерой.
+Тогда если \(\mu^*\) является конечно-аддитивной мерой,
+то \(\mu^*\) является счётно-аддитивной мерой.
 \end{observation}
 
 \subsection{Конструкция Каратеодори}
 
+%\begin{definition}[\scshape Измеримость по Каратеодори]
+%Пусть \((X, \mu^*)\) --- множество с внешней мерой.
+%Тогда множество подмножеств \(X\), \emph{измеримых по Каратеодори} относительно \(\mu^*\), определяется следующим образом:
+%\(
+%\Car(\mu^*) \coloneqq
+%\{A \in 2^X \mid \mu^*(S) = \mu^*(S \cap A) + \mu^*(S \setminus A)\ \text{для всех}\ S \in 2^X\}
+%\).
+%\end{definition}
+
 \begin{definition}[\scshape Измеримость по Каратеодори]
-Пусть \((X, \mu^*)\) --- множество с внешней мерой.
-Тогда множество подмножеств \(X\), \emph{измеримых по Каратеодори} относительно \(\mu^*\), определяется следующим образом:
-\(
+Пусть \((\mc{A}, \mu^*)\) --- \(\sigma\)\=/алгебра с внешней мерой.
+Тогда множество элементов \(\mc{A}\), \emph{измеримых по Каратеодори} относительно \(\mu^*\), определяется следующим образом:
+\begin{equation*}
 \Car(\mu^*) \coloneqq
-\{A \in 2^X \mid \mu^*(S) = \mu^*(S \cap A) + \mu^*(S \setminus A)\ \text{для всех}\ S \in 2^X\}
-\).
+\bigcap_{S \in \mc{A}}
+\{A \in \mc{A} \mid \mu^*(S) = \mu^*(S \wedge A) + \mu^*(S \wedge \neg A)\}.
+\end{equation*}
 \end{definition}
+
+%\begin{observation}%
+%%[\scshape Характеризация конструкции Каратеодори]
+%[\scshape Характеризация измеримости по Каратеодори]
+%Пусть \((X, \mu^*)\) --- множество с внешней мерой,
+%%а \(\mc{A}\) --- множество подмножеств \(X\), измеримых по Каратеодори относительно \(\mu^*\).
+%а \(\mc{A} \coloneqq \Car(\mu^*)\).%
+%\label{obs:CarMeasChar}
+%Тогда \(\mc{A}\) является \(\sigma\)\=/алгеброй на \(X\), такой что \(\mu^*|_{2^S}\) аддитивна на \(\mc{A}|_S\) для любого \(S \subset X\),
+%%и наибольшей по включению \(\sigma\)\=/алгеброй на \(X\) с таким свойством.
+%и \(\mc{A}\) содержит любую \(\sigma\)\=/алгебру на \(X\) с таким свойством.
+%\end{observation}
 
 \begin{observation}%
 %[\scshape Характеризация конструкции Каратеодори]
 [\scshape Характеризация измеримости по Каратеодори]
-Пусть \((X, \mu^*)\) --- множество с внешней мерой,
+Пусть \((\mc{A}, \mu^*)\) --- \(\sigma\)\=/алгебра с внешней мерой,
 %а \(\mc{A}\) --- множество подмножеств \(X\), измеримых по Каратеодори относительно \(\mu^*\).
-а \(\mc{A} \coloneqq \Car(\mu^*)\).%
+а \(\mc{K} \coloneqq \Car(\mu^*)\).%
 \label{obs:CarMeasChar}
-Тогда \(\mc{A}\) является \(\sigma\)\=/алгеброй на \(X\), такой что \(\mu^*|_{2^S}\) аддитивна на \(\mc{A}|_S\) для любого \(S \subset X\),
+Тогда \(\mc{K}\) является \(\sigma\)\=/подалгеброй \(\mc{A}\), такой что \(\mu^*|_{\mc{K}|_S}\) аддитивна на \(\mc{K}|_S\) для любого \(S \in \mc{A}\),
 %и наибольшей по включению \(\sigma\)\=/алгеброй на \(X\) с таким свойством.
-и \(\mc{A}\) содержит любую \(\sigma\)\=/алгебру на \(X\) с таким свойством.
+и \(\mc{K}\) содержит любую \(\sigma\)\=/подалгебру \(\mc{A}\) с таким свойством.
 \end{observation}
 
 %\begin{proof}
@@ -19670,14 +19833,129 @@ E \mapsto
 Замкнутость \(\sigma\)\=/алгебры относительно дополнений существенна для наблюдения~\ref{obs:CarMeasChar}.
 \end{remark}
 
+%\begin{observation}
+%Пусть \((X, \mu^*)\) --- множество с внешней мерой, а \(\mc{S} \subset 2^X\) --- множество подмножеств \(X\), такое что функция \(\mu^*|_{\mc{S}}\) порождает \(\mu^*\).
+%Тогда
+%\(
+%\Car(\mu^*) =
+%\{A \in 2^X \mid \mu^*(S) = \mu^*(S \cap A) + \mu^*(S \setminus A)\ \text{для всех}\ S \in \mc{S}\}
+%\).
+%\end{observation}
+
 \begin{observation}
-Пусть \((X, \mu^*)\) --- множество с внешней мерой, а \(\mc{S} \subset 2^X\) --- множество подмножеств \(X\), такое что функция \(\mu^*|_{\mc{S}}\) порождает \(\mu^*\).
+Пусть \((\mc{A}, \mu^*)\) --- \(\sigma\)\=/алгебра с внешней мерой,
+а \(\mc{S} \subset \mc{A}\) --- подмножество \(\mc{A}\), такое что функция \(\mu^*|_{\mc{S}}\) порождает \(\mu^*\).
 Тогда
-\(
+\begin{equation*}
 \Car(\mu^*) =
-\{A \in 2^X \mid \mu^*(S) = \mu^*(S \cap A) + \mu^*(S \setminus A)\ \text{для всех}\ S \in \mc{S}\}
-\).
+\bigcap_{S \in \mc{S}}
+\{A \in \mc{A} \mid \mu^*(S) = \mu^*(S \wedge A) + \mu^*(S \wedge \neg A)\}.
+\end{equation*}
 \end{observation}
+
+
+\section{Неравенство Минковского}
+
+\begin{definition}[\scshape \(l_p\)\=/Норма]
+Пусть \(X\) --- множество,
+\(f : X \to \C\) --- отображение,
+а \(p \in \R_{\geq 1}\).
+Тогда определим \emph{\(l_p\)\=/норму} \(f\)
+%обозначаемую через \(\lV f \rV_p\),
+формулой
+\(
+\lV f \rV_p
+\coloneqq
+(\sum_{x \in X} \lv f(x) \rv^p)^{1/p}
+\in [0, \infty]
+\),
+где мы полагаем \(\infty^{1/p} \coloneqq \infty\).
+Определим \emph{\(l_{\infty}\)\=/норму} \(f\)
+формулой
+\(
+\lV f \rV_{\infty}
+\coloneqq
+\sup_{x \in X} \lv f(x) \rv
+\in [0, \infty]
+\).
+\end{definition}
+
+\begin{observation}[\scshape Абсолютная однородность \(l_p\)\=/норм]
+Пусть \(X\) --- множество,
+\(f : X \to \C\) --- отображение,
+а \(z \in \C\).%
+\label{obs:l_p_abs_hom}
+Тогда для любого \(p \in [1, \infty]\) выполняется равенство \(\lVert z f \rVert_p = \lvert z \rvert \lVert f \rVert_p\).
+\end{observation}
+
+\begin{theorem}[\scshape Неравенство Минковского]
+Пусть \(X\) --- множество,
+\(f, g : X \rrarrow \C\) --- два отображения,
+а \(p \in [1, \infty]\).
+Тогда
+\begin{equation}
+\lV f + g \rV_p \leq \lV f \rV_p + \lV g \rV_p.
+\label{eq:l_p-normTriangle}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Случай \(p = \infty\) тривиален,
+случай \(\lV f \rV_p + \lV g \rV_p = 0\) тоже тривиален.
+Поэтому без ограничения общности можно предположить, что \(p \neq \infty\) и \(\lV f \rV_p + \lV g \rV_p \neq 0\).
+Воспользовавшись абсолютной однородностью \(l_p\)\=/нормы (наблюдение~\ref{obs:l_p_abs_hom})
+и заменив функции \(f\) и \(g\) на функции
+\(\lambda f\)
+и
+\(\lambda g\)
+соответственно,
+где \(\lambda \coloneqq (\lV f \rV_p + \lV g \rV_p)^{-1} \in \R_{>0}\),
+получаем, что
+можно предположить,
+что
+\(\lV f \rV_p + \lV g \rV_p = 1\).
+Тогда, воспользовавшись выпуклостью функции
+\(z \mapsto \lvert z \rvert^p : \C \to \R\),
+получаем, что
+\begin{gather*}
+\lV f + g \rV_p^p
+=
+\sum_{x \in X} \lv f(x) + g(x) \rv^p
+=
+\\
+=
+\sum_{x \in X} \biggl\vert \lV f \rV_p \frac{f(x)}{\lV f \rV_p} + \lV g \rV_p \frac{g(x)}{\lV g \rV_p} \biggr\vert^p
+\leq
+\\
+\leq
+\sum_{x \in X} \biggl(\lV f \rV_p \biggl\vert \frac{f(x)}{\lV f \rV_p} \biggr\vert^p + \lV g \rV_p \biggl\vert \frac{g(x)}{\lV g \rV_p} \biggr\vert^p\biggr)
+%=
+%\frac{\sum_{x \in X} \lv f(x) \rv^p}{\lV f \rV_p^{p-1}}
+%+
+%\frac{\sum_{x \in X} \lv g(x) \rv^p}{\lV g \rV_p^{p-1}}
+=
+\\
+=
+\lV f \rV_p
+\frac{\sum_{x \in X} \lv f(x) \rv^p}{\lV f \rV_p^p}
++
+\lV g \rV_p
+\frac{\sum_{x \in X} \lv g(x) \rv^p}{\lV g \rV_p^p}
+=
+\\
+%=
+%\frac{\lV f \rV_p^p}{\lV f \rV_p^{p-1}}
+%+
+%\frac{\lV g \rV_p^p}{\lV g \rV_p^{p-1}}
+=
+\lV f \rV_p + \lV g \rV_p
+=
+1
+=
+(\lV f \rV_p + \lV g \rV_p)^p.
+\qedhere
+\end{gather*}
+\end{proof}
 
 
 
