@@ -31,39 +31,39 @@
 
 
 
-\begin{titlingpage*}
-
-\vspace*{50pt}
-\begin{center}
-\Huge
-\shorthandoff{"}%
-\resizebox{340pt}{!}{%
-\(
-	\begin{tikzcd}[%
-		ampersand replacement = \amprep,
-		column sep = huge,
-		cramped,
-		]
-	\bullet \arrow[r] \arrow[d, ""{name=L}]
-	\amprep
-	\bullet \arrow[d, swap, ""{name=R}]
-	\\
-	\bullet \arrow[r]
-	\amprep
-	\bullet
-	\arrow[phantom, from=L, to=R, "{\scalebox{2.2}{\textnormal{ЭМЗ}}}"]
-	\end{tikzcd}
-\)%
-}
-\shorthandon{"}%
-
-\vspace*{110pt}
-
-\resizebox{340pt}{!}{\today}
-\end{center}
-\vspace*{\fill}
-
-\end{titlingpage*}
+%\begin{titlingpage*}
+%
+%\vspace*{50pt}
+%\begin{center}
+%\Huge
+%\shorthandoff{"}%
+%\resizebox{340pt}{!}{%
+%\(
+%	\begin{tikzcd}[%
+%		ampersand replacement = \amprep,
+%		column sep = huge,
+%		cramped,
+%		]
+%	\bullet \arrow[r] \arrow[d, ""{name=L}]
+%	\amprep
+%	\bullet \arrow[d, swap, ""{name=R}]
+%	\\
+%	\bullet \arrow[r]
+%	\amprep
+%	\bullet
+%	\arrow[phantom, from=L, to=R, "{\scalebox{2.2}{\textnormal{ЭМЗ}}}"]
+%	\end{tikzcd}
+%\)%
+%}
+%\shorthandon{"}%
+%
+%\vspace*{110pt}
+%
+%\resizebox{340pt}{!}{\today}
+%\end{center}
+%\vspace*{\fill}
+%
+%\end{titlingpage*}
 
 
 
@@ -6175,6 +6175,226 @@ $.
 \end{example}
 
 
+\section{Свободное произведение моноидов}
+
+\begin{notation}
+Пусть \((X, \leq)\) --- частично упорядоченное множество,
+а \(x, y \in X\) --- его элементы.
+Тогда запись \(x \lessdot y\) означает, что
+\(\lvert X_{\geq x} \cap X_{\leq y} \rvert = 2\),
+то есть \(x < y\) и не существует \(z \in X\), такого что \(x < z < y\).
+\end{notation}
+
+%\begin{definition}[\scshape Градуированное частично упорядоченное множество]
+%Пара из частично упорядоченного множества \(X\) и отображения \(\rho : X \to \omega\), где \(\omega = \{0, 1, 2, \ldots{}\}\), называется \emph{градуированным частично упорядоченным множеством}, если \(\rho\) является монотонным отображением с дискретными слоями, таким что для любой пары элементов \(x, y \in X\), такой что \(x \lessdot y\), выполняется условие \(\rho(x) \lessdot \rho(y)\).
+%\end{definition}
+
+%\begin{observation}
+%Пусть \((X, \rho)\) --- градуированное частично упорядоченное множество,
+%такое что для любой тройки элементов \(x, y, z \in X\), такой что \(y \lessdot x\) и \(z \lessdot x\),
+%существует элемент \(w \in X\), такой что \(w \leq y\) и \(w \leq z\).
+%Тогда в любой связной компоненте \(X\) существует ровно один минимальный элемент \(X\).
+%\end{observation}
+
+\begin{observation}
+Пусть \(X\) --- частично упорядоченное множество,
+такое что для любого \(x \in X\) у частично упорядоченного множества \(X_{\leq x}\) конечная цепная размерность.%
+\label{obs:LeftBoundPosetFiltConn}
+Тогда следующие условия эквивалентны:
+\begin{enumerate}[
+	font=\upshape,
+	label=\asbuk*),
+	ref=\asbuk*,
+	]
+
+\item
+Для любой тройки элементов \(x, x_0, x_1 \in X\), такой что \(x_0 \lessdot x\) и \(x_1 \lessdot x\),
+существует элемент \(x_{01} \in X\), такой что \(x_{01} \leq x_0\) и \(x_{01} \leq x_1\);
+
+\item
+Любая связная компонента \(X\) содержит ровно один минимальный элемент \(X\);
+
+\item
+Все связные компоненты \(X\) конаправленны.
+
+\end{enumerate}
+\end{observation}
+
+\begin{theorem}
+Пусть \(((M_{\alpha}, \cdot{}, e_{\alpha}))_{\alpha \in \Omega}\) --- семейство попарно дизъюнктных моноидов,
+а \(M\) --- свободное произведение этого семейства.
+Отождествим каждый из \(M_{\alpha}\), где \(\alpha \in \Omega\), с его образом в \(M\).
+Тогда каждый элемент \(M\) однозначно представляется в виде произведения вида
+\(a_1 a_2 \cdots a_n\),
+где \(n \in \N_0\),
+\(a_i \in \bigcup_{\alpha \in \Omega} (M_{\alpha} \setminus \{e_{\alpha}\})\)
+для любого \(i\) от \(1\) до \(n\)
+и
+для любого \(i\) от \(1\) до \(n-1\)
+не существует \(\alpha \in \Omega\), такого что
+\(a_i, a_{i+1} \in M_{\alpha}\).
+\end{theorem}
+
+\begin{proof}
+Пусть \(\mc{W}\) --- свободный моноид, свободно порождённый множеством \(\bigsqcup_{\alpha \in \Omega} M_{\alpha} = \bigcup_{\alpha \in \Omega} (M_{\alpha} \times \{\alpha\})\).
+Введём на \(\mc{W}\) отношение частичного порядка,
+порождённое соотношениями вида
+\(W_1 \cdot (a_1, \alpha) \cdot (a_2, \alpha) \cdot W_2 \geq W_1 \cdot (a_1 a_2, \alpha) \cdot W_2\)
+и
+\(W_1 \cdot (e_{\alpha}, \alpha) \cdot W_2 \geq W_1 \cdot W_2\),
+где \(W_1, W_2 \in \mc{W}\), \(\alpha \in \Omega\), \(a_1, a_2 \in M_{\alpha}\).
+Тогда легко проверить, что для любых трёх элементов \(V, V_0, V_1 \in \mc{W}\), таких что \(V_0 \lessdot V\), \(V_1 \lessdot V\) и \(V_0 \neq V_1\),
+существует элемент \(V_{01} \in \mc{W}\), такой что \(V_{01} \lessdot V_0\) и \(V_{01} \lessdot V_1\).
+Осталось применить к частично упорядоченному множеству \(\mc{W}\) наблюдение~\ref{obs:LeftBoundPosetFiltConn} и заметить, что фактор \(\mc{W}\) по отношению эквивалентности, порождённому определённым выше частичным порядком, отождествляется с \(M\).
+\end{proof}
+
+%\begin{proofparts}
+%
+%\item[Часть 1.]
+%Пусть \(\mc{W}\) --- свободный моноид, порождённый множеством \(\bigsqcup_{\alpha \in \Omega} M_{\alpha}\).
+%Элементы \(\mc{W}\) будем называть словами.
+%Назовём элементарной редукцией первого типа замену слова \(w \in \mc{W}\) на слово \(w' \in \mc{W}\), полученное заменой двух соседних элементов \(w\), лежащих в одном и том же \(M_{\alpha}\), на их произведение в \(M_{\alpha}\).
+%Назовём элементарной редукцией второго типа замену слова \(w \in \mc{W}\) на слово \(w' \in \mc{W}\), полученное вычёркиванием из \(w\) нейтрального элемента какого-то из \(M_{\alpha}\).
+%Назовём редукцией последовательность элементарных редукций первого или второго типа.
+%Назовём слово \(w \in \mc{W}\) редуцированным, если для любого \(\alpha \in \Omega\) в \(w\) нет соседних элементов, лежащих в \(M_{\alpha}\), и нет элемента, равного нейтральному элементу \(M_{\alpha}\).
+%Так как элементарные редукции уменьшают длину слова, то любое слово \(w \in \mc{W}\) можно перевести в редуцированное слово \(w' \in \mc{W}\) с помощью последовательности элементарных редукций.
+%
+%\item[Часть 2.]
+%Пусть \(w \in \mc{W}\).
+%Докажем, что любые два редуцированных слова, которые можно получить с помощью редукции \(w\), совпадают.
+%Пусть \(w_0\) и \(w_1\) --- два слова,
+%каждое из которых получено из \(w\) с помощью какой-то одной элементарной редукции.
+%Воспользовавшись индукцией по длине слова, можно предположить, что любые два редуцированных слова, которые можно получить с помощью редукции \(w_0\), совпадают, и то же верно про \(w_1\).
+%Осталось заметить, что всегда существует слово \(w_{01} \in \mc{W}\), которое можно получить и редукцией слова \(w_0\), и редукцией слова \(w_1\)
+%--- две элементарные редукции <<комутируют>> друг с другом, что следует из ассоциативности умножения в моноиде и определения нейтрального элемента, поэтому в качестве \(w_{01}\) можно взять слово, полученное «одновременным применением» двух элементарных редукций, соответствующих переходам от \(w\) к \(w_0\) и от \(w\) к \(w_1\).
+%
+%
+%
+% как проиллюстрировано диаграммами X, Y, Z и W,
+%где знак \(\otimes\) обозначает формальное произведение в \(\mc{W}\), а волнистыми стрелками обозначены элементарные редукции.
+%
+%\shorthandoff{"}%
+%\begin{gather}
+%\begin{tikzcd}[
+%	ampersand replacement = \amprep,
+%	]
+%\amprep
+%\mathmakebox[4em]{W_1 \otimes a \otimes b \otimes W_2 \otimes c \otimes d \otimes W_2}
+%	\arrow[dl, rightsquigarrow]
+%	\arrow[dr, rightsquigarrow]
+%\amprep
+%\\
+%\mathmakebox[4em]{W_1 \otimes ab \otimes W_2 \otimes c \otimes d \otimes W_2}
+%	\arrow[dr, rightsquigarrow]
+%\amprep
+%\amprep
+%\mathmakebox[4em]{W_1 \otimes a \otimes b \otimes W_2 \otimes cd \otimes W_3}
+%	\arrow[dl, rightsquigarrow]
+%\\
+%\amprep
+%\mathmakebox[4em]{\cdots \otimes ab \otimes \cdots \otimes cd \otimes \cdots}
+%\amprep
+%\end{tikzcd}
+%\\
+%\begin{tikzcd}[
+%	ampersand replacement = \amprep,
+%	]
+%\amprep
+%\mathmakebox[4em]{\cdots \otimes a \otimes b \otimes c \otimes \cdots}
+%	\arrow[dl, rightsquigarrow]
+%	\arrow[dr, rightsquigarrow]
+%\amprep
+%\\
+%\mathmakebox[4em]{\cdots \otimes ab \otimes c \otimes \cdots}
+%	\arrow[dr, rightsquigarrow]
+%\amprep
+%\amprep
+%\mathmakebox[4em]{\cdots \otimes a \otimes bc \otimes \cdots}
+%	\arrow[dl, rightsquigarrow]
+%\\
+%\amprep
+%\mathmakebox[4em]{\cdots \otimes abc \otimes \cdots}
+%\amprep
+%\end{tikzcd}
+%\end{gather}
+%\shorthandon{"}%
+%
+%\end{proofparts}
+
+%\shorthandoff{"}%
+%\begin{gather}
+%\begin{tikzcd}[
+%	ampersand replacement = \amprep,
+%	]
+%\amprep
+%\mathmakebox[4em]{W_1 (a, \alpha) (b, \alpha) W_2 (c, \beta) (d, \beta) W_3}
+%\amprep
+%\\
+%\mathmakebox[4em]{W_1 (ab, \alpha) W_2 (c, \beta) (d, \beta) W_3}
+%	\arrow[ur]
+%\amprep
+%\amprep
+%\mathmakebox[4em]{W_1 (a, \alpha) (b, \alpha) W_2 (cd, \beta) W_3}
+%	\arrow[ul]
+%\\
+%\amprep
+%\mathmakebox[4em]{W_1 (ab, \alpha) W_2 (cd, \beta) W_3}
+%	\arrow[ul]
+%	\arrow[ur]
+%\amprep
+%\end{tikzcd}
+%\end{gather}
+%\shorthandon{"}%
+%\shorthandoff{"}%
+%\begin{gather}
+%\begin{tikzcd}[
+%	ampersand replacement = \amprep,
+%	]
+%\amprep
+%\mathmakebox[4em]{W_1 (a, \alpha) (b, \alpha) (c, \alpha) W_2}
+%\amprep
+%\\
+%\mathmakebox[4em]{W_1 (ab, \alpha) (c, \alpha) W_2}
+%	\arrow[ur]
+%\amprep
+%\amprep
+%\mathmakebox[4em]{W_1 (a, \alpha) (bc, \alpha) W_2}
+%	\arrow[ul]
+%\\
+%\amprep
+%\mathmakebox[4em]{W_1 (abc, \alpha) W_2}
+%	\arrow[ul]
+%	\arrow[ur]
+%\amprep
+%\end{tikzcd}
+%\end{gather}
+%\shorthandon{"}%
+%\shorthandoff{"}%
+%\begin{gather}
+%\begin{tikzcd}[
+%	ampersand replacement = \amprep,
+%	]
+%\amprep
+%\mathmakebox[4em]{W_1 (1, \alpha) W_2 (1, \beta) W_3}
+%\amprep
+%\\
+%\mathmakebox[4em]{W_1 W_2 (1, \beta) W_3}
+%	\arrow[ur]
+%\amprep
+%\amprep
+%\mathmakebox[4em]{W_1 (1, \alpha) W_2 W_3}
+%	\arrow[ul]
+%\\
+%\amprep
+%\mathmakebox[4em]{W_1 W_2 W_3}
+%	\arrow[ul]
+%	\arrow[ur]
+%\amprep
+%\end{tikzcd}
+%\end{gather}
+%\shorthandon{"}%
+
+
 
 \chapter{Модули над некоммутативными кольцами}
 
@@ -9899,6 +10119,27 @@ A \cap (S^{-1}\mathfrak{a})
 \{a \in A \mid \exists s \in S : sa \in \mathfrak{a}\}.
 \end{align*}
 \end{observation}
+
+\begin{example}
+Рассмотрим
+заданные образующими и соотношениями
+моноиды
+\(M \coloneqq \langle X, X^{-1}, Y, Z, W \mid X^{-1} X = X X^{-1} = 1 \rangle\),
+\(L \coloneqq \langle X, Y, Z, W \rangle\)
+и
+\(N \coloneqq \langle X, X^{-1}, Y, Z \mid X^{-1} X = X X^{-1} = 1 \rangle\).%
+\label{exa:NoncommLocalInject}
+Тогда гомоморфизм моноидов
+\(\varphi : M \to N\),
+\(X \mapsto X\), \(Y \mapsto Y\), \(Z \mapsto Z\), \(W \mapsto Y X^{-1} Z\) не инъективен,
+так как \(\varphi(Y X^{-1} Z) = \varphi(W)\),
+но ограничение \(\varphi\) на \(L\) инъективно,
+несмотря на то, что \(M\) получен из \(L\) формальной локализацией по \(X\).
+\end{example}
+
+\begin{remark}
+Пример~\ref{exa:NoncommLocalInject} был подсказан мне анонимным комментарием в Интернете.
+\end{remark}
 
 \subsection{Локализация и спектр кольца}
 
@@ -18305,9 +18546,14 @@ a e_{s,s} + \sum_{i \in I \setminus \{s\}} e_{i,i}
 
 \section{Категория Лямбда Алена Конна}
 
-\sectiontableofcontents
+%\sectiontableofcontents
 
-\subsection{Определение категории Лямбда}
+%\subsection{Определение категории Лямбда}
+
+\begin{notation}[\scshape Группоидофикация]
+В этом разделе локализацию малой категории \(\mc{C}\) по всем морфизмам будем обозначать через
+\(\mc{C}^\mr{grp}\).
+\end{notation}
 
 \begin{definition}[\scshape Конечный циклинар]
 Пусть \(n \in \N_1\).
@@ -18394,12 +18640,7 @@ a e_{s,s} + \sum_{i \in I \setminus \{s\}} e_{i,i}
 была определена в статье~\cite[3]{ConnesCyclique1983}.
 \end{remark}
 
-\subsection{Свойства категории Лямбда}
-
-\begin{notation}[\scshape Группоидофикация]
-В этом разделе локализацию малой категории \(\mc{C}\) по всем морфизмам будем обозначать через
-\(\mc{C}^\mr{grp}\).
-\end{notation}
+%\subsection{Свойства категории Лямбда}
 
 %\begin{observation}
 %Группа автоморфизмов категории \([n]_\Lambda\) --- это циклическая группа порядка \(n\).
@@ -18410,23 +18651,56 @@ a e_{s,s} + \sum_{i \in I \setminus \{s\}} e_{i,i}
 %Обратите внимание на группы \(\Aut([2]_\Lambda^\mr{grp})\) и \(\Aut([1]_\Lambda^\mr{grp})\)!
 %\end{remark}
 
-\begin{lemma}%[\scshape ]
+%\begin{lemma}%[\scshape ]
+%Пусть \(\varphi : [n]_\Lambda \to [m]_\Lambda\), где \(n, m \in \N_1\), --- функтор.
+%Тогда индуцированные гомоморфизмы свободных циклических моноидов
+%\(\varphi_x : \End_{[n]_\Lambda}(x) \to \End_{[m]_\Lambda}(\varphi(x))\),
+%где \(x \in \Ob([n]_\Lambda)\),
+%изоморфны друг другу
+%как объекты категории стрелок категории моноидов.
+%\end{lemma}
+
+%\begin{proof}
+%Для индуцированного морфизма группоидов
+%\(\varphi^\mr{grp} : [n]_\Lambda^\mr{grp} \to [m]_\Lambda^\mr{grp}\)
+%индуцированные гомоморфизмы свободных циклических групп
+%\(\varphi_x^\mr{grp} : \End_{[n]_\Lambda^\mr{grp}}(x) \to \End_{[m]_\Lambda^\mr{grp}}(\varphi(x))\),
+%где \(x \in \Ob([n]_\Lambda) = \Ob([n]_\Lambda^\mr{grp})\),
+%изоморфны друг другу как объекты категории стрелок категории моноидов, так как все объекты категории \([n]_\Lambda^\mr{grp}\) изоморфны друг другу.
+%Теперь заметим, что не изоморфные гомоморфизмы свободных циклических моноидов индуцируют не изоморфные гомоморфизмы свободных циклических групп.
+%\end{proof}
+
+\begin{observation}
+Пусть \(n \in \N_1\) --- натуральное число,
+\(\tau \in \Ar([n]_\Lambda)\) --- морфизм из \([n]_\Lambda\),
+а \(\alpha\) и \(\beta\) --- образующие
+моноидов
+\(\End_{[n]_\Lambda}(\Dom(\tau))\)
+и
+\(\End_{[n]_\Lambda}(\Cod(\tau))\)
+соответственно.%
+\label{obs:LambdaConnGenRel}
+Тогда
+\(\tau \circ \alpha = \beta \circ \tau\),
+что достаточно проверить для \(\tau\), лежащего в порождающем колчане \([n]_\Lambda\).
+\end{observation}
+
+\begin{theorem}
 Пусть \(\varphi : [n]_\Lambda \to [m]_\Lambda\), где \(n, m \in \N_1\), --- функтор.
-Тогда индуцированные гомоморфизмы свободных циклических моноидов
-\(\varphi_x : \End_{[n]_\Lambda}(x) \to \End_{[m]_\Lambda}(\varphi(x))\),
-где \(x \in \Ob([n]_\Lambda)\),
-изоморфны друг другу
-как объекты категории стрелок категории моноидов.
-\end{lemma}
+Тогда число
+\(\lvert \End_{[m]_\Lambda}(\varphi(x)) / \varphi(\End_{[n]_\Lambda}(x)) \rvert\)
+не зависит от выбора \(x \in \Ob([n]_\Lambda)\).
+\end{theorem}
 
 \begin{proof}
-Для индуцированного морфизма группоидов
+Рассмотрим \([n]_\Lambda\) и \([m]_\Lambda\) как подкатегории группоидов \([n]_\Lambda^\mr{grp}\) и \([m]_\Lambda^\mr{grp}\)
+соответственно,
+заметим, что
+для любого \(\tau \in \Ar([n]_\Lambda)\)
+индуцированный \(\varphi\) функтор
 \(\varphi^\mr{grp} : [n]_\Lambda^\mr{grp} \to [m]_\Lambda^\mr{grp}\)
-индуцированные гомоморфизмы свободных циклических групп
-\(\varphi_x^\mr{grp} : \End_{[n]_\Lambda^\mr{grp}}(x) \to \End_{[m]_\Lambda^\mr{grp}}(\varphi(x))\),
-где \(x \in \Ob([n]_\Lambda) = \Ob([n]_\Lambda^\mr{grp})\),
-изоморфны друг другу как объекты категории стрелок категории моноидов, так как все объекты категории \([n]_\Lambda^\mr{grp}\) изоморфны друг другу.
-Теперь заметим, что не изоморфные гомоморфизмы свободных циклических моноидов индуцируют не изоморфные гомоморфизмы свободных циклических групп.
+переводит эндоморфизмы, сопряжённые с помощью \(\tau\), в эндоморфизмы, сопряжённые с помощью \(\varphi(\tau)\),
+после чего воспользуемся наблюдением~\ref{obs:LambdaConnGenRel}.
 \end{proof}
 
 
