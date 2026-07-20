@@ -6179,7 +6179,7 @@ $.
 \(I\) --- трёхэлементное множество,
 а \(B \varsubsetneq A^{\oplus I}\) --- ядро отображения суммирования
 \(A^{\oplus I} \to A\).
-Тогда для любого двухэлементного подмножества \(J \subset I\) ограничение проекции
+Тогда для любого двухэлементного подмножества \(J \subset I\) ограничение канонической проекции
 \(A^{\oplus I} \to A^{\oplus J}\)
 на \(B\) сюръективно
 --- китайская теорема об остатках для семейств не работает для модулей.
@@ -6194,6 +6194,123 @@ $.
 Тогда \(R = (\mf{I} + \mf{J}_1)(\mf{I} + \mf{J}_2) \subset \mf{I} + \mf{J}_1 \mf{J}_2 \subset R\),
 а потому выполняется равенство \(\mf{I} + \mf{J}_1 \mf{J}_2 = R\).
 \end{observation}
+
+
+\section{Разложение на простейшие дроби}
+
+\begin{observation}
+Пусть \(A\) --- область целостности,
+\(I\) --- конечное множество,
+\((p_i)_{i \in I}\) --- семейство элементов \(A\),
+такое что \(Ap_i + Ap_j = A\) для любых \(i,j \in I\), таких что \(i \neq j\),
+а \((n_i)_{i \in I} \in \N_1^{\times I}\).%
+\label{obs:FracChiRem}
+Тогда,
+cогласно китайской теореме об остатках,
+выполняется равенство
+\begin{equation*}
+A \frac{1}{\prod_{i \in I} p_i^{n_i}}
+=
+\Bigl(
+A \prod_{i \in I} p_i^{n_i}
++
+\sum_{i \in I}
+\prod_{\substack{j \in I \\ j \neq i}}
+A p_j^{n_j}
+\Bigr)
+\frac{1}{\prod_{i \in I} p_i^{n_i}}
+=
+A + \sum_{i \in I} A \frac{1}{p_i^{n_i}}.
+\end{equation*}
+\end{observation}
+
+\begin{observation}[\scshape Евклидово деление многочленов]
+Пусть \(K\) --- поле,
+\(f \in K[X]\),
+а \(g \in K[X] \setminus \{0\}\).%
+\label{obs:EuclDivPoly}
+Тогда существуют единственные
+\(q, r \in K[X]\),
+такие что
+\(f = q g + r\)
+и
+\(\deg(r) < \deg(g)\).
+\end{observation}
+
+\begin{theorem}
+Пусть \(K\) --- поле,
+\(K[X] = \bigoplus_{i=0}^{\infty} K[X]_i\)
+--- стандартная градуировка кольца многочленов,
+\(I\) --- конечное множество,
+\((p_i)_{i \in I} \in K[X]^{\times I}\)
+--- семейство попарно различных неприводимых многочленов,
+а \((n_i)_{i \in I} \in \N_1^{\times I}\).
+Тогда выполняется следующее равенство:
+\begin{equation*}
+K[X]
+\frac{1}{\prod_{i \in I} p_i^{n_i}}
+=
+K[X]
+\oplus
+\bigoplus_{i \in I}
+K[X]_{< n_i \deg(p_i)}
+\frac{1}{p_i^{n_i}}.
+\label{eq:ParFracDecompOne}
+\end{equation*}
+\end{theorem}
+
+\begin{proofparts}[Доказательство (из двух частей)]
+
+\item[Доказательство существования.]
+Пусть \(f \in K[X]\).
+Тогда, согласно наблюдению~\ref{obs:FracChiRem},
+существуют семейство многочленов \((h_i)_{i \in I} \in K[X]^{\times I}\) и многочлен \(h \in K[X]\),
+такие что выполняется равенство
+\begin{equation}
+\frac{f}{\prod_{i \in I} p_i^{n_i}}
+=
+h +
+\sum_{i \in I}
+\frac{h_i}{p_i^{n_i}}.
+\label{eq:ParFracDecompOneFirst}
+\end{equation}
+Для каждого \(i \in I\) записав \(h_i = q_i p_i^{n_i} + r_i\),
+где \(q_i, r_i \in K[X]\) и \(\deg(r_i) < n_i \deg(p_i)\),
+и заменив в~\eqref{eq:ParFracDecompOneFirst} многочлен \(h_i\) на \(r_i\), а \(h\) --- на \(h + \sum_{i \in I} q_i\), получаем разложение вида~\eqref{eq:ParFracDecompOneFirst}, где
+\(\deg(h_i) < n_i \deg(p_i)\)
+для любого \(i \in I\).
+
+\item[Доказательство единственности.]
+Умножив~\eqref{eq:ParFracDecompOneFirst} на
+многочлен
+\(\prod_{i \in I} p_i^{n_i}\)
+и воспользовавшись наблюдением~\ref{obs:EuclDivPoly}
+получаем, что
+\(h\) в разложении~\eqref{eq:ParFracDecompOneFirst} определено однозначно,
+и если \(\deg(f) < \sum_{i \in I} n_i \deg(p_i)\), то \(h = 0\).
+Согласно уже доказанному очевидное \(K\)\=/линейное отображение
+\begin{equation}
+\bigoplus_{i \in I}
+K[X]_{< n_i \deg(p_i)}
+\frac{1}{p_i^{n_i}}
+\to
+K[X]_{< \sum_{i \in I} n_i \deg(p_i)}
+\frac{1}{\prod_{i \in I} p_i^{n_i}}
+\label{eq:ParFracDecompOneSecond}
+\end{equation}
+сюръективно,
+причём \(K\)\=/размерности области и кообласти~\eqref{eq:ParFracDecompOneSecond}
+равны \(\sum_{i \in I} n_i \deg(p_i)\) и совпадают.
+Отсюда следует, что~\eqref{eq:ParFracDecompOneSecond} биективно,
+и в разложении~\eqref{eq:ParFracDecompOneFirst}
+набор многочленов \((h_i)_{i \in I}\),
+удовлетворяющих условию
+\(\deg(h_i) < n_i \deg(p_i)\)
+для любого \(i \in I\),
+определён однозначно.
+\qedhere
+
+\end{proofparts}
 
 
 \section{Свободное произведение моноидов}
@@ -6212,17 +6329,6 @@ $.
 то говорят, что у \(X\) \emph{конечная цепная размерность}
 и \emph{цепная размерность \(X\) равна \(n-1\)}.
 \end{definition}
-
-%\begin{definition}[\scshape Градуированное частично упорядоченное множество]
-%Пара из частично упорядоченного множества \(X\) и отображения \(\rho : X \to \omega\), где \(\omega = \{0, 1, 2, \ldots{}\}\), называется \emph{градуированным частично упорядоченным множеством}, если \(\rho\) является монотонным отображением с дискретными слоями, таким что для любой пары элементов \(x, y \in X\), такой что \(x \lessdot y\), выполняется условие \(\rho(x) \lessdot \rho(y)\).
-%\end{definition}
-
-%\begin{observation}
-%Пусть \((X, \rho)\) --- градуированное частично упорядоченное множество,
-%такое что для любой тройки элементов \(x, y, z \in X\), такой что \(y \lessdot x\) и \(z \lessdot x\),
-%существует элемент \(w \in X\), такой что \(w \leq y\) и \(w \leq z\).
-%Тогда в любой связной компоненте \(X\) существует ровно один минимальный элемент \(X\).
-%\end{observation}
 
 \begin{theorem}
 Пусть \(X\) --- частично упорядоченное множество,
@@ -6288,160 +6394,16 @@ $.
 Пусть \(\mc{W}\) --- свободный моноид, свободно порождённый множеством \(\bigsqcup_{\alpha \in \Omega} M_{\alpha} = \bigcup_{\alpha \in \Omega} (M_{\alpha} \times \{\alpha\})\).
 Введём на \(\mc{W}\) отношение частичного порядка,
 порождённое соотношениями вида
-\(W_1 \cdot (a_1, \alpha) \cdot (a_2, \alpha) \cdot W_2 \geq W_1 \cdot (a_1 a_2, \alpha) \cdot W_2\)
-и
-\(W_1 \cdot (e_{\alpha}, \alpha) \cdot W_2 \geq W_1 \cdot W_2\),
+\begin{equation*}
+W_1 \cdot (a_1, \alpha) \cdot (a_2, \alpha) \cdot W_2 \geq W_1 \cdot (a_1 a_2, \alpha) \cdot W_2
+\quad\tn{и}\quad
+W_1 \cdot (e_{\alpha}, \alpha) \cdot W_2 \geq W_1 \cdot W_2,
+\end{equation*}
 где \(W_1, W_2 \in \mc{W}\), \(\alpha \in \Omega\), \(a_1, a_2 \in M_{\alpha}\).
 Тогда легко проверить, что для любых трёх элементов \(V, V_0, V_1 \in \mc{W}\), таких что \(V_0 \lessdot V \gtrdot V_1\) и \(V_0 \neq V_1\),
 существует элемент \(V_{01} \in \mc{W}\), такой что \(V_0 \gtrdot V_{01} \lessdot V_1\).
 Осталось применить к частично упорядоченному множеству \(\mc{W}\) теорему~\ref{thm:LeftBoundPosetFiltConn} и заметить, что фактор \(\mc{W}\) по отношению эквивалентности, порождённому определённым выше частичным порядком, отождествляется с \(M\).
 \end{proof}
-
-%\begin{proofparts}
-%
-%\item[Часть 1.]
-%Пусть \(\mc{W}\) --- свободный моноид, порождённый множеством \(\bigsqcup_{\alpha \in \Omega} M_{\alpha}\).
-%Элементы \(\mc{W}\) будем называть словами.
-%Назовём элементарной редукцией первого типа замену слова \(w \in \mc{W}\) на слово \(w' \in \mc{W}\), полученное заменой двух соседних элементов \(w\), лежащих в одном и том же \(M_{\alpha}\), на их произведение в \(M_{\alpha}\).
-%Назовём элементарной редукцией второго типа замену слова \(w \in \mc{W}\) на слово \(w' \in \mc{W}\), полученное вычёркиванием из \(w\) нейтрального элемента какого-то из \(M_{\alpha}\).
-%Назовём редукцией последовательность элементарных редукций первого или второго типа.
-%Назовём слово \(w \in \mc{W}\) редуцированным, если для любого \(\alpha \in \Omega\) в \(w\) нет соседних элементов, лежащих в \(M_{\alpha}\), и нет элемента, равного нейтральному элементу \(M_{\alpha}\).
-%Так как элементарные редукции уменьшают длину слова, то любое слово \(w \in \mc{W}\) можно перевести в редуцированное слово \(w' \in \mc{W}\) с помощью последовательности элементарных редукций.
-%
-%\item[Часть 2.]
-%Пусть \(w \in \mc{W}\).
-%Докажем, что любые два редуцированных слова, которые можно получить с помощью редукции \(w\), совпадают.
-%Пусть \(w_0\) и \(w_1\) --- два слова,
-%каждое из которых получено из \(w\) с помощью какой-то одной элементарной редукции.
-%Воспользовавшись индукцией по длине слова, можно предположить, что любые два редуцированных слова, которые можно получить с помощью редукции \(w_0\), совпадают, и то же верно про \(w_1\).
-%Осталось заметить, что всегда существует слово \(w_{01} \in \mc{W}\), которое можно получить и редукцией слова \(w_0\), и редукцией слова \(w_1\)
-%--- две элементарные редукции <<комутируют>> друг с другом, что следует из ассоциативности умножения в моноиде и определения нейтрального элемента, поэтому в качестве \(w_{01}\) можно взять слово, полученное «одновременным применением» двух элементарных редукций, соответствующих переходам от \(w\) к \(w_0\) и от \(w\) к \(w_1\).
-%
-%
-%
-% как проиллюстрировано диаграммами X, Y, Z и W,
-%где знак \(\otimes\) обозначает формальное произведение в \(\mc{W}\), а волнистыми стрелками обозначены элементарные редукции.
-%
-%\shorthandoff{"}%
-%\begin{gather}
-%\begin{tikzcd}[
-%	ampersand replacement = \amprep,
-%	]
-%\amprep
-%\mathmakebox[4em]{W_1 \otimes a \otimes b \otimes W_2 \otimes c \otimes d \otimes W_2}
-%	\arrow[dl, rightsquigarrow]
-%	\arrow[dr, rightsquigarrow]
-%\amprep
-%\\
-%\mathmakebox[4em]{W_1 \otimes ab \otimes W_2 \otimes c \otimes d \otimes W_2}
-%	\arrow[dr, rightsquigarrow]
-%\amprep
-%\amprep
-%\mathmakebox[4em]{W_1 \otimes a \otimes b \otimes W_2 \otimes cd \otimes W_3}
-%	\arrow[dl, rightsquigarrow]
-%\\
-%\amprep
-%\mathmakebox[4em]{\cdots \otimes ab \otimes \cdots \otimes cd \otimes \cdots}
-%\amprep
-%\end{tikzcd}
-%\\
-%\begin{tikzcd}[
-%	ampersand replacement = \amprep,
-%	]
-%\amprep
-%\mathmakebox[4em]{\cdots \otimes a \otimes b \otimes c \otimes \cdots}
-%	\arrow[dl, rightsquigarrow]
-%	\arrow[dr, rightsquigarrow]
-%\amprep
-%\\
-%\mathmakebox[4em]{\cdots \otimes ab \otimes c \otimes \cdots}
-%	\arrow[dr, rightsquigarrow]
-%\amprep
-%\amprep
-%\mathmakebox[4em]{\cdots \otimes a \otimes bc \otimes \cdots}
-%	\arrow[dl, rightsquigarrow]
-%\\
-%\amprep
-%\mathmakebox[4em]{\cdots \otimes abc \otimes \cdots}
-%\amprep
-%\end{tikzcd}
-%\end{gather}
-%\shorthandon{"}%
-%
-%\end{proofparts}
-
-%\shorthandoff{"}%
-%\begin{gather}
-%\begin{tikzcd}[
-%	ampersand replacement = \amprep,
-%	]
-%\amprep
-%\mathmakebox[4em]{W_1 (a, \alpha) (b, \alpha) W_2 (c, \beta) (d, \beta) W_3}
-%\amprep
-%\\
-%\mathmakebox[4em]{W_1 (ab, \alpha) W_2 (c, \beta) (d, \beta) W_3}
-%	\arrow[ur]
-%\amprep
-%\amprep
-%\mathmakebox[4em]{W_1 (a, \alpha) (b, \alpha) W_2 (cd, \beta) W_3}
-%	\arrow[ul]
-%\\
-%\amprep
-%\mathmakebox[4em]{W_1 (ab, \alpha) W_2 (cd, \beta) W_3}
-%	\arrow[ul]
-%	\arrow[ur]
-%\amprep
-%\end{tikzcd}
-%\end{gather}
-%\shorthandon{"}%
-%\shorthandoff{"}%
-%\begin{gather}
-%\begin{tikzcd}[
-%	ampersand replacement = \amprep,
-%	]
-%\amprep
-%\mathmakebox[4em]{W_1 (a, \alpha) (b, \alpha) (c, \alpha) W_2}
-%\amprep
-%\\
-%\mathmakebox[4em]{W_1 (ab, \alpha) (c, \alpha) W_2}
-%	\arrow[ur]
-%\amprep
-%\amprep
-%\mathmakebox[4em]{W_1 (a, \alpha) (bc, \alpha) W_2}
-%	\arrow[ul]
-%\\
-%\amprep
-%\mathmakebox[4em]{W_1 (abc, \alpha) W_2}
-%	\arrow[ul]
-%	\arrow[ur]
-%\amprep
-%\end{tikzcd}
-%\end{gather}
-%\shorthandon{"}%
-%\shorthandoff{"}%
-%\begin{gather}
-%\begin{tikzcd}[
-%	ampersand replacement = \amprep,
-%	]
-%\amprep
-%\mathmakebox[4em]{W_1 (1, \alpha) W_2 (1, \beta) W_3}
-%\amprep
-%\\
-%\mathmakebox[4em]{W_1 W_2 (1, \beta) W_3}
-%	\arrow[ur]
-%\amprep
-%\amprep
-%\mathmakebox[4em]{W_1 (1, \alpha) W_2 W_3}
-%	\arrow[ul]
-%\\
-%\amprep
-%\mathmakebox[4em]{W_1 W_2 W_3}
-%	\arrow[ul]
-%	\arrow[ur]
-%\amprep
-%\end{tikzcd}
-%\end{gather}
-%\shorthandon{"}%
 
 \begin{observation}
 Предел и копредел диаграммы групп как диаграммы моноидов являются группами,
@@ -7315,7 +7277,7 @@ $.
 %задаются столбцово-финитарными матрицами с элементами в \(D^o\).
 %\end{proof}
 
-\begin{proofparts}[Доказательство (из двух частей)]
+\begin{proofparts}[Доказательство (из двух или трёх частей)]
 
 \item[Часть 1.]
 Функтор \(N \otimes_D (-)\) является левым сопряжённым к функтору \(\Hom_{R\module}(N, -)\).
@@ -7331,6 +7293,9 @@ $.
 так как \(R\)\=/модуль \(N\) конечно порождён,
 то канонический гомоморфизм
 \(\Hom_{R\module}(N, N)^{\oplus I} \to \Hom_{R\module}(N, N^{\oplus I})\) биективен.
+
+\item[Часть 1, альтернативная форма.]
+То, что функтор \(N \otimes_D (-)\) строгий и полный, следует из того, что все модули над \(D\) свободные, а \(R\)\=/модуль \(N\) конечно порождён --- морфизмы в \(D\module\) и его существенном образе задаются столбцово-финитарными матрицами с элементами в \(D^o\).
 
 \item[Часть 2.]
 Существенный образ функтора
@@ -8260,14 +8225,14 @@ R \otimes_{\Z} R \arrow{r}{\mathrm{mult}}& R
 \label{obs:DiffCommAdj}
 Тогда то, что \(d\) является дифференцированием \(R\),
 эквивалентно тому, что
-для любого \(a \in R\) выполняется тождество~(\ref{eq:DiffCommAdj}, слева),
-что эквивалентно тому, что для любого \(a \in R\) выполняется тождество~(\ref{eq:DiffCommAdj}, справа).
-\begin{equation}
-[d, a{*}] = (da){*}
-\qquad\qquad
-[d, {*}a] = {*}(da)
-\label{eq:DiffCommAdj}
-\end{equation}
+для любого \(a \in R\) выполняется равенство \([d, a{*}] = (da){*}\),
+что эквивалентно тому, что для любого \(a \in R\) выполняется равенство \([d, {*}a] = {*}(da)\).
+%\begin{equation}
+%[d, a{*}] = (da){*}
+%\qquad\qquad
+%[d, {*}a] = {*}(da)
+%\label{eq:DiffCommAdj}
+%\end{equation}
 \end{observation}
 
 \begin{remark}
@@ -8301,7 +8266,8 @@ R \otimes_{\Z} R \arrow{r}{\mathrm{mult}}& R
 \end{observation}
 
 \begin{remark}
-Наблюдение~\ref{obs:DerivProdComm} вместе с наблюдением~\ref{obs:AdjAssProdDiff} даёт альтернативное доказательство выполнения тождества Якоби\namedash{}Лейбница для коммутатора в ассоциативном кольце.
+Из наблюдений~\ref{obs:AdjAssProdDiff} и~\ref{obs:DerivProdComm} сразу следует,
+что коммутатор в ассоциативном кольце удовлетворяет тождеству Якоби\namedash{}Лейбница.
 \end{remark}
 
 \begin{observation}
