@@ -6057,7 +6057,11 @@ S^\mr{sat} \coloneqq
 %\end{observation}
 
 
-\section{Китайская теорема об остатках}
+\section{Китайская теорема об остатках и разложение дробей}
+
+\sectiontableofcontents
+
+\subsection{Китайская теорема об остатках}
 
 \begin{lemma}
 \label{lem:gen_chi_rem}
@@ -6110,7 +6114,9 @@ $\card(I) < \infty$.
 \end{proof}
 
 \begin{corollary}
-В предположениях теоремы \ref{thm:surj_for_fam_of_ideals} следующие условия эквивалентны:
+В предположениях%
+\label{cor:ChiRemTheoremSurj}
+теоремы \ref{thm:surj_for_fam_of_ideals} следующие условия эквивалентны:
 \begin{enumerate*}[label={\textup{(\roman*)}}]
     \item Если $i,j \in I$, $i \neq j$, то $\mathfrak{I}_i + \mathfrak{I}_j = R$;
     \item
@@ -6148,7 +6154,8 @@ $\sigma : \{1, 2, \dots, n\} \xrightarrow{\sim} I$,
 \begin{theorem}
 Пусть $R$ --- ассоциативное унитальное кольцо,
 $(\mathfrak{I}_i)_{i \in I}$ --- семейство двусторонних идеалов $R$,
-$\card(I) < \infty$, причём $\mathfrak{I}_i + \mathfrak{I}_j = R$ при $i,j \in I$, $i \neq j$.
+$\card(I) < \infty$, причём $\mathfrak{I}_i + \mathfrak{I}_j = R$ при $i,j \in I$, $i \neq j$.%
+\label{thm:ChiRemTheoremProd}
 Тогда $\prod^{\mr{sym}}_{i \in I} \mathfrak{I}_i = \bigcap_{i \in I} \mathfrak{I}_i$.
 \end{theorem}
 
@@ -6167,6 +6174,12 @@ $
 \bigcap_{i \in I} \mathfrak{I}_i
 $.
 \end{proof}
+
+%\begin{remark}
+%Следствие~\ref{cor:ChiRemTheoremSurj}
+%и теорема~\ref{thm:ChiRemTheoremProd}
+%вместе называются китайской теоремой об остатках.
+%\end{remark}
 
 %\begin{example}
 %Пусть \(M\) --- ненулевой модуль над ассоциативным унитальным кольцом \(R\).
@@ -6195,32 +6208,29 @@ $.
 а потому выполняется равенство \(\mf{I} + \mf{J}_1 \mf{J}_2 = R\).
 \end{observation}
 
-
-\section{Разложение на простейшие дроби}
+\subsection{Разложение на простейшие дроби}
 
 \begin{observation}
 Пусть \(A\) --- область целостности,
-\(I\) --- конечное множество,
-\((p_i)_{i \in I}\) --- семейство элементов \(A\),
-такое что \(Ap_i + Ap_j = A\) для любых \(i,j \in I\), таких что \(i \neq j\),
-а \((n_i)_{i \in I} \in \N_1^{\times I}\).%
+а \((a_i)_{i \in I}\) --- конечное семейство ненулевых элементов \(A\),
+такое что \(Aa_i + Aa_j = A\) для любых \(i,j \in I\), таких что \(i \neq j\).%
 \label{obs:FracChiRem}
 Тогда,
 cогласно китайской теореме об остатках,
 выполняется равенство
 \begin{equation*}
-A \frac{1}{\prod_{i \in I} p_i^{n_i}}
+A \frac{1}{\prod_{i \in I} a_i}
 =
 \Bigl(
-A \prod_{i \in I} p_i^{n_i}
+\prod_{i \in I} A a_i
 +
 \sum_{i \in I}
 \prod_{\substack{j \in I \\ j \neq i}}
-A p_j^{n_j}
+A a_j
 \Bigr)
-\frac{1}{\prod_{i \in I} p_i^{n_i}}
+\frac{1}{\prod_{i \in I} a_i}
 =
-A + \sum_{i \in I} A \frac{1}{p_i^{n_i}}.
+A + \sum_{i \in I} A \frac{1}{a_i}.
 \end{equation*}
 \end{observation}
 
@@ -6237,80 +6247,131 @@ A + \sum_{i \in I} A \frac{1}{p_i^{n_i}}.
 \(\deg(r) < \deg(g)\).
 \end{observation}
 
+%\begin{observation}[\scshape Евклидово деление многочленов]
+%Пусть \(K\) --- поле,
+%\(K[X] = \bigoplus_{n=0}^{\infty} K[X]_n\)
+%--- стандартная градуировка \(K[X]\),
+%а \(g \in K[X] \setminus \{0\}\).%
+%\label{obs:EuclDivPoly}
+%Тогда
+%\(K[X] = K[X] g \oplus K[X]_{< \deg(g)}\).
+%\end{observation}
+
 \begin{theorem}
 Пусть \(K\) --- поле,
-\(K[X] = \bigoplus_{i=0}^{\infty} K[X]_i\)
---- стандартная градуировка кольца многочленов,
-\(I\) --- конечное множество,
-\((p_i)_{i \in I} \in K[X]^{\times I}\)
---- семейство попарно различных неприводимых многочленов,
-а \((n_i)_{i \in I} \in \N_1^{\times I}\).
+\(K[X] = \bigoplus_{r=0}^{\infty} K[X]_r\)
+--- стандартная градуировка \(K[X]\),
+а \((g_i)_{i \in I} \in K[X]^{\times I}\)
+--- конечное семейство ненулевых многочленов,
+такое что \(K[X] g_i + K[X] g_j = K[X]\)
+для любых \(i,j \in I\),
+таких что \(i \neq j\).
 Тогда выполняется следующее равенство:
 \begin{equation*}
 K[X]
-\frac{1}{\prod_{i \in I} p_i^{n_i}}
+\frac{1}{\prod_{i \in I} g_i}
 =
 K[X]
 \oplus
 \bigoplus_{i \in I}
-K[X]_{< n_i \deg(p_i)}
-\frac{1}{p_i^{n_i}}.
+K[X]_{< \deg(g_i)}
+\frac{1}{g_i}.
 \label{eq:ParFracDecompOne}
 \end{equation*}
 \end{theorem}
 
-\begin{proofparts}[Доказательство (из двух частей)]
+\begin{proofparts}[Доказательство (из трёх частей)]
 
-\item[Доказательство существования.]
+\item[Часть 1.]
 Пусть \(f \in K[X]\).
 Тогда, согласно наблюдению~\ref{obs:FracChiRem},
-существуют семейство многочленов \((h_i)_{i \in I} \in K[X]^{\times I}\) и многочлен \(h \in K[X]\),
-такие что выполняется равенство
+существуют \((h_i)_{i \in I} \in K[X]^{\times I}\) и \(h \in K[X]\),
+такие что выполняется равенство~\eqref{eq:ParFracDecompOneFirst}.
 \begin{equation}
-\frac{f}{\prod_{i \in I} p_i^{n_i}}
+\frac{f}{\prod_{i \in I} g_i}
 =
 h +
 \sum_{i \in I}
-\frac{h_i}{p_i^{n_i}}.
+\frac{h_i}{g_i}
 \label{eq:ParFracDecompOneFirst}
 \end{equation}
-Для каждого \(i \in I\) записав \(h_i = q_i p_i^{n_i} + r_i\),
-где \(q_i, r_i \in K[X]\) и \(\deg(r_i) < n_i \deg(p_i)\),
-и заменив в~\eqref{eq:ParFracDecompOneFirst} многочлен \(h_i\) на \(r_i\), а \(h\) --- на \(h + \sum_{i \in I} q_i\), получаем разложение вида~\eqref{eq:ParFracDecompOneFirst}, где
-\(\deg(h_i) < n_i \deg(p_i)\)
+Согласно наблюдению~\ref{obs:EuclDivPoly}
+для любого \(i \in I\)
+существуют \(q_i, r_i \in K[X]\),
+такие что
+\(h_i = q_i g_i + r_i\) и \(\deg(r_i) < \deg(g_i)\).
+Заменив в~\eqref{eq:ParFracDecompOneFirst} для каждого \(i \in I\) многочлен \(h_i\) на \(r_i\) и заменив \(h\) на \(h + \sum_{i \in I} q_i\), получаем разложение вида~\eqref{eq:ParFracDecompOneFirst}, где
+\(\deg(h_i) < \deg(g_i)\)
 для любого \(i \in I\).
 
-\item[Доказательство единственности.]
+\item[Часть 2.]
 Умножив~\eqref{eq:ParFracDecompOneFirst} на
-многочлен
-\(\prod_{i \in I} p_i^{n_i}\)
+%многочлен
+\(\prod_{i \in I} g_i\)
 и воспользовавшись наблюдением~\ref{obs:EuclDivPoly}
 получаем, что
-\(h\) в разложении~\eqref{eq:ParFracDecompOneFirst} определено однозначно,
-и если \(\deg(f) < \sum_{i \in I} n_i \deg(p_i)\), то \(h = 0\).
-Согласно уже доказанному очевидное \(K\)\=/линейное отображение
-\begin{equation}
-\bigoplus_{i \in I}
-K[X]_{< n_i \deg(p_i)}
-\frac{1}{p_i^{n_i}}
-\to
-K[X]_{< \sum_{i \in I} n_i \deg(p_i)}
-\frac{1}{\prod_{i \in I} p_i^{n_i}}
-\label{eq:ParFracDecompOneSecond}
-\end{equation}
+\(h\) в разложении~\eqref{eq:ParFracDecompOneFirst},
+где
+\(\deg(h_i) < \deg(g_i)\)
+для любого \(i \in I\),
+определено однозначно,
+и если \(\deg(f) < \sum_{i \in I} \deg(g_i)\), то \(h = 0\).
+
+\item[Часть 3.]
+Согласно доказанному в частях~1 и~2 очевидное \(K\)\=/линейное отображение~\eqref{eq:ParFracDecompOneSecond}
 сюръективно,
 причём \(K\)\=/размерности области и кообласти~\eqref{eq:ParFracDecompOneSecond}
-равны \(\sum_{i \in I} n_i \deg(p_i)\) и совпадают.
-Отсюда следует, что~\eqref{eq:ParFracDecompOneSecond} биективно,
+конечны, равны \(\sum_{i \in I} \deg(g_i)\) и совпадают.
+\begin{equation}
+\bigoplus_{i \in I}
+K[X]_{< \deg(g_i)}
+\frac{1}{g_i}
+\to
+K[X]_{< \sum_{i \in I} \deg(g_i)}
+\frac{1}{\prod_{i \in I} g_i}
+\label{eq:ParFracDecompOneSecond}
+\end{equation}
+Отсюда следует, что отображение~\eqref{eq:ParFracDecompOneSecond} биективно,
 и в разложении~\eqref{eq:ParFracDecompOneFirst}
 набор многочленов \((h_i)_{i \in I}\),
 удовлетворяющих условию
-\(\deg(h_i) < n_i \deg(p_i)\)
+\(\deg(h_i) < \deg(g_i)\)
 для любого \(i \in I\),
 определён однозначно.
 \qedhere
 
 \end{proofparts}
+
+\begin{observation}
+Пусть \(K\) --- поле,
+\(K[X] = \bigoplus_{r=0}^{\infty} K[X]_r\)
+--- стандартная градуировка \(K[X]\),
+а \(g \in K[X] \setminus \{0\}\).%
+\label{obs:PolyDecompGadic}
+Тогда
+для любого \(n \in N_1\)
+многократным применением наблюдения~\ref{obs:EuclDivPoly}
+получается <<\(g\)\=/ичное>> разложение
+\(
+	K[X]_{< n \deg(g)}
+	=
+	\bigoplus_{k=0}^{n-1}
+	K[X]_{< \deg(g)} g^k
+\).
+Поделив на \(g^n\), получаем, что
+\begin{equation*}
+	K[X]_{< n \deg(g)}
+	\frac{1}{g^n}
+	=
+	\bigoplus_{k=1}^{n}
+	K[X]_{< \deg(g)}
+	\frac{1}{g^k}.
+\end{equation*}
+\end{observation}
+
+\begin{remark}
+По-английски разложение рациональной дроби на простейшие называется <<\textenglish{partial fraction decomposition}>> или <<\textenglish{partial fraction expansion}>>.
+\end{remark}
 
 
 \section{Свободное произведение моноидов}
