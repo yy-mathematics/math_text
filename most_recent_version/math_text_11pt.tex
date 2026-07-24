@@ -15540,19 +15540,19 @@ f \frac{d}{df} \log \sum_{i=0}^\infty f^i = \sum_{i=1}^\infty f^i,
 \dotparagraph{Сложение и умножение}
 Теперь очевидно, что сложению векторов Витта соответствует ум\-но\-же\-ние соответствующих рядов.
 Описать ум\-но\-же\-ние
-векторов Витта,
-которое мы будем обозначать символом пятиконечной звезды \(\star\),
+векторов Витта
+%которое мы будем обозначать символом пятиконечной звезды \(\star\),
 тоже не очень трудно:
-\begin{gather}
-	-t \frac{d}{dt} \log %
-	\biggl(
-		\Bigl( \prod_{n \geq 1} (1 - X_n t^n) \Bigr)
-		\star
-		\Bigl( \prod_{n \geq 1} (1 - Y_n t^n) \Bigr)
-	\biggr)
-	=
-	\nonumber\\
-	=
+\begin{gather*}
+%	-t \frac{d}{dt} \log %
+%	\biggl(
+%		\Bigl( \prod_{n \geq 1} (1 - X_n t^n) \Bigr)
+%		\star
+%		\Bigl( \prod_{n \geq 1} (1 - Y_n t^n) \Bigr)
+%	\biggr)
+%	=
+%	\nonumber\\
+%	=
 	\sum_{\substack{m \geqslant 1 \\ e,r \mid m}}
 	e X_e^{m/e}
 	r Y_r^{m/r}
@@ -15576,9 +15576,9 @@ f \frac{d}{df} \log \sum_{i=0}^\infty f^i = \sum_{i=1}^\infty f^i,
 		t^{\mathrm{lcm}(e,r)}
 	\bigr)^{{er}/{\mathrm{lcm}(e,r)}}.
 	\label{eq:WittVectMultLogDer}
-\end{gather}
-Предпоследнее равенство --- тавтология.
-Чтобы получить последнее равенство, возьмём
+\end{gather*}
+Первое равенство --- тавтология.
+Чтобы получить второе равенство, возьмём
 \(
 	f \coloneqq
 	X_e^{{\mathrm{lcm}(e,r)}/{e}}
@@ -15637,6 +15637,17 @@ x^{(k)_p} \coloneqq
 будем называть \emph{топологией Крулля}.
 \end{convention}
 
+\begin{notation}
+Обозначим категорию ассоциативных коммутативных унитальных колец через \(\mr{Ann}\),
+топологических абелевых групп --- через \(\mr{TopAb}\),
+топологических унитальных колец --- через \(\mr{TopRing}\).
+\end{notation}
+
+\begin{notation}[\scshape НОК]
+Пусть \(n, m \in \N_1\).
+Тогда \([n,m] \coloneqq \mathrm{lcm}(n,b)\).
+\end{notation}
+
 \begin{observation}
 Пусть \(A\) --- ассоциативное коммутативное унитальное кольцо, а \(\Lambda \subset A\) --- конечное подмножество \(A\).
 Тогда если \(\prod_{\lambda \in \Lambda} (t - \lambda) \in 1 + t A[[t]]\),
@@ -15651,34 +15662,52 @@ x^{(k)_p} \coloneqq
 \).
 \end{observation}
 
-\begin{observation}%[\scshape Векторы Витта и корни многочленов]
-Пусть \(\mc{C}\) --- категория коммутативных ассоциативных унитальных колец,
-\(\mc{E}\) --- категория топологических абелевых групп,
-а \(\mathbb{W} : \mc{C} \to \mc{E}\)
---- функтор, переводящий кольцо \(A\) в топологическую абелеву группу \(1 + t A[[t]] \subset A[[t]]\) с операцией умножения рядов в качестве сложения и топологией Крулля.
-Тогда существует единственное продолжение \(\mathbb{W}\) до функтора в категорию унитальных топологических колец,
-такого что
-для любого \(A \in \Ob(\mc{C})\) и для любых \(a, b \in A\)
-выполняется равенство~\eqref{eq:WittVectMultBasicLin},
-где \(\star\) --- это новое произведение в \(\mathbb{W}(A)\).
-\begin{equation}
-(1 - a t) \star (1 - b t) = 1 - ab t
-\label{eq:WittVectMultBasicLin}
-\end{equation}
+\begin{observation}[\scshape Векторы Витта и корни многочленов]
+Пусть \(\mathbb{W}_{\mr{add}} : \mr{Ann} \to \mr{TopAb}\) --- функтор,
+переводящий кольцо \(A\) в топологическую абелеву группу \(1 + t A[[t]] \subset A[[t]]\) с операцией умножения рядов в качестве сложения и топологией Крулля.
+Тогда существует единственное продолжение \(\mathbb{W}_{\mr{add}}\) до функтора
+\(\mathbb{W} : \mr{Ann} \to \mr{TopRing}\),
+%в категорию унитальных топологических колец,
+такого что для любого
+%коммутативного ассоциативного унитального кольца \(A\)
+\(A \in \Ob(\mr{Ann})\)
+и для любых \(a, b \in A\)
+выполняется равенство
+\((1 - a t) \star (1 - b t) = 1 - ab t\),
+где \(\star\) --- это произведение в \(\mathbb{W}(A)\).
+%\begin{equation}
+%(1 - a t) \star (1 - b t) = 1 - ab t
+%\label{eq:WittVectMultBasicLin}
+%\end{equation}
 \end{observation}
 
 \begin{remark}
-Другой способ доказать, что произведение векторов Витта задаётся многочленами с целыми, а не просто рациональными коэффициентами, и получить формулу~\eqref{eq:WittVectMultLogDer} --- вычисления
+Другой способ доказать, что произведение векторов Витта задаётся многочленами с целыми, а не просто рациональными коэффициентами, и получить формулу~\eqref{eq:WittVectMultStand} --- вычисления~\eqref{eq:WittVectMultCyclotomic} и~\eqref{eq:WittVectMultConst}, из которых выводится~\eqref{eq:WittVectMultBasis}.
 \begin{gather}
-(1 - t^e) \star (1 - t^r) = (1 - t^{\mr{lcm}(er)})^{er / \mr{lcm}(er)},
-\label{eq:WittVectMultCyclotomic}
-\\
-(1 - X t^s) = (1 - X^{1/s} t) \star (1 - t^s),
-\label{eq:WittVectMultConst}
-\end{gather}
-где вычисление~\eqref{eq:WittVectMultCyclotomic} удобно провести для кольца коэффициентов \(\C\), а~\eqref{eq:WittVectMultConst} --- для кольца коэффициентов \(\Q[X^{1/s}]\).
-Из~\eqref{eq:WittVectMultCyclotomic} и~\eqref{eq:WittVectMultConst} получаем, что
-\begin{gather*}
+	\bigl( \prod_{e \geq 1} (1 - X_e t^e) \bigr)
+	\star
+	\bigl( \prod_{r \geq 1} (1 - Y_r t^r) \bigr)
+	=
+   \prod_{\mathclap{e,r \geqslant 1}}
+	(1 -
+		X_e^{[e,r]/e}
+		Y_r^{[e,r]/r}
+		t^{[e,r]}
+	)^{er/[e,r]}
+	\label{eq:WittVectMultStand}
+	\displaybreak[0]
+	\\[\smallskipamount]
+	(1 - t^e) \star (1 - t^r)
+	=
+	(1 - t^{[e,r]})^{er / [e,r]}
+	\label{eq:WittVectMultCyclotomic}
+	\displaybreak[0]
+	\\[\smallskipamount]
+	(1 - X_s t^s) = (1 - X_s^{1/s} t) \star (1 - t^s)
+	\label{eq:WittVectMultConst}
+	\displaybreak[0]
+	\\[\smallskipamount]
+	\begin{multlined}[320pt]
 	(1 - X_e t^e)
 	\star
 	(1 - Y_r t^r)
@@ -15697,16 +15726,21 @@ x^{(k)_p} \coloneqq
 	=
 	(1 - X_e^{1/e} Y_r^{1/r} t)
 	\star
-	(1 - t^{\mr{lcm}(er)})^{er / \mr{lcm}(er)}
+	(1 - t^{[e,r]})^{er / [e,r]}
 	=
 	\\
 	=
-	\bigl(1 -
-		X_e^{{\mathrm{lcm}(e,r)}/{e}}
-		Y_r^{{\mathrm{lcm}(e,r)}/{r}}
-		t^{\mathrm{lcm}(e,r)}
-	\bigr)^{{er}/{\mathrm{lcm}(e,r)}}.
-\end{gather*}
+	(1 -
+		X_e^{[e,r]/e}
+		Y_r^{[e,r]/r}
+		t^{[e,r]}
+	)^{er/[e,r]}
+	\label{eq:WittVectMultBasis}
+	\end{multlined}
+\end{gather}
+Формула~\eqref{eq:WittVectMultCyclotomic} является формулой для кольца коэффициентов \(\Z\), которую можно получить, расширив \(\Z\) до \(\C\).
+Формула~\eqref{eq:WittVectMultConst} является формулой для кольца коэффициентов \(\Z[X_s^{1/s}]\).
+Наконец, формула~\eqref{eq:WittVectMultBasis} является формулой для кольца коэффициентов \(\Z[X_e, Y_r]\), вывод которой использует расширение \(\Z[X_e, Y_r]\) до \(\Z[X_e^{1/e}, Y_r^{1/r}]\).
 \end{remark}
 
 
