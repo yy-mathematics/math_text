@@ -6349,7 +6349,7 @@ K[X]_{< \sum_{i \in I} \deg(g_i)}
 а \(g \in K[X] \setminus \{0\}\).%
 \label{obs:PolyDecompGadic}
 Тогда
-для любого \(n \in N_1\)
+для любого \(n \in \N_1\)
 многократным применением наблюдения~\ref{obs:EuclDivPoly}
 получается <<\(g\)\=/ичное>> разложение
 \(
@@ -15540,10 +15540,20 @@ f \frac{d}{df} \log \sum_{i=0}^\infty f^i = \sum_{i=1}^\infty f^i,
 \dotparagraph{Сложение и умножение}
 Теперь очевидно, что сложению векторов Витта соответствует ум\-но\-же\-ние соответствующих рядов.
 Описать ум\-но\-же\-ние
-векторов Витта
+векторов Витта,
+которое мы будем обозначать символом пятиконечной звезды \(\star\),
 тоже не очень трудно:
-\begin{gather*}
-\sum_{\substack{m \geqslant 1 \\ e,r \mid m}}
+\begin{gather}
+	-t \frac{d}{dt} \log %
+	\biggl(
+		\Bigl( \prod_{n \geq 1} (1 - X_n t^n) \Bigr)
+		\star
+		\Bigl( \prod_{n \geq 1} (1 - Y_n t^n) \Bigr)
+	\biggr)
+	=
+	\nonumber\\
+	=
+	\sum_{\substack{m \geqslant 1 \\ e,r \mid m}}
 	e X_e^{m/e}
 	r Y_r^{m/r}
 	t^m
@@ -15555,7 +15565,8 @@ f \frac{d}{df} \log \sum_{i=0}^\infty f^i = \sum_{i=1}^\infty f^i,
 		Y_r^{{\mathrm{lcm}(e,r)}/{r}}
 		t^{\mathrm{lcm}(e,r)}
 	\bigr)^n
-   =\\
+   =
+   \nonumber\\
    =
    -t \frac{d}{dt}
    \log \prod_{e,r \geqslant 1}
@@ -15564,9 +15575,10 @@ f \frac{d}{df} \log \sum_{i=0}^\infty f^i = \sum_{i=1}^\infty f^i,
 		Y_r^{{\mathrm{lcm}(e,r)}/{r}}
 		t^{\mathrm{lcm}(e,r)}
 	\bigr)^{{er}/{\mathrm{lcm}(e,r)}}.
-\end{gather*}
-Первое равенство --- тавтология.
-Чтобы получить второе равенство, возьмём
+	\label{eq:WittVectMultLogDer}
+\end{gather}
+Предпоследнее равенство --- тавтология.
+Чтобы получить последнее равенство, возьмём
 \(
 	f \coloneqq
 	X_e^{{\mathrm{lcm}(e,r)}/{e}}
@@ -15614,6 +15626,87 @@ x^{(k)_p} \coloneqq
 Имеем изоморфизм
 \(W(\Z/p\Z) \xrightarrow{\sim} \Z_p\),
 \((x_i)_{i \in \N_0} \mapsto \sum_{i=0}^\infty p^i x_i^\tau\).
+\end{remark}
+
+\subsubsection{Ещё одна характеризация векторов Витта}
+
+\begin{convention}[\scshape Топология Крулля на формальных рядах]
+Пусть \(A\) --- коммутативное ассоциативное унитальное кольцо.
+Тогда стандартную топологию обратного предела на кольце формальных рядов
+\(A[[t]] = \lim_{n=1}^{\infty} A[t] / t^n A\)
+будем называть \emph{топологией Крулля}.
+\end{convention}
+
+\begin{observation}
+Пусть \(A\) --- ассоциативное коммутативное унитальное кольцо, а \(\Lambda \subset A\) --- конечное подмножество \(A\).
+Тогда если \(\prod_{\lambda \in \Lambda} (t - \lambda) \in 1 + t A[[t]]\),
+то есть
+\(\prod_{\lambda \in \Lambda} \lambda = (-1)^{\card(\Lambda)}\),
+то
+%\(\Lambda \subset A^{\times}\) и
+\(
+\prod_{\lambda \in \Lambda} (t - \lambda)
+=
+\prod_{\lambda \in \Lambda} (1 - {\lambda}^{-1} t)
+\).
+\end{observation}
+
+\begin{observation}%[\scshape Векторы Витта и корни многочленов]
+Пусть \(\mc{C}\) --- категория коммутативных ассоциативных унитальных колец,
+\(\mc{E}\) --- категория топологических абелевых групп,
+а \(\mathbb{W} : \mc{C} \to \mc{E}\)
+--- функтор, переводящий кольцо \(A\) в топологическую абелеву группу \(1 + t A[[t]] \subset A[[t]]\) с операцией умножения рядов в качестве сложения и топологией Крулля.
+Тогда существует единственное продолжение \(\mathbb{W}\) до функтора в категорию унитальных топологических колец,
+такого что
+для любого \(A \in \Ob(\mc{C})\) и для любых \(a, b \in A\)
+выполняется равенство~\eqref{eq:WittVectMultBasicLin},
+где \(\star\) --- это новое произведение в \(\mathbb{W}(A)\).
+\begin{equation}
+(1 - a t) \star (1 - b t) = 1 - ab t
+\label{eq:WittVectMultBasicLin}
+\end{equation}
+\end{observation}
+
+\begin{remark}
+Другой способ доказать, что произведение векторов Витта задаётся многочленами с целыми, а не просто рациональными коэффициентами, и получить формулу~\eqref{eq:WittVectMultLogDer} --- вычисления
+\begin{gather}
+(1 - t^e) \star (1 - t^r) = (1 - t^{\mr{lcm}(er)})^{er / \mr{lcm}(er)},
+\label{eq:WittVectMultCyclotomic}
+\\
+(1 - X t^s) = (1 - X^{1/s} t) \star (1 - t^s),
+\label{eq:WittVectMultConst}
+\end{gather}
+где вычисление~\eqref{eq:WittVectMultCyclotomic} удобно провести для кольца коэффициентов \(\C\), а~\eqref{eq:WittVectMultConst} --- для кольца коэффициентов \(\Q[X^{1/s}]\).
+Из~\eqref{eq:WittVectMultCyclotomic} и~\eqref{eq:WittVectMultConst} получаем, что
+\begin{gather*}
+	(1 - X_e t^e)
+	\star
+	(1 - Y_r t^r)
+	=
+	\\
+	=
+	(1 - X_e^{1/e} t)
+	\star
+	(1 - Y_r^{1/r} t)
+	\star
+	(1 - t^e)
+	\star
+	(1 - t^r)
+	=
+	\\
+	=
+	(1 - X_e^{1/e} Y_r^{1/r} t)
+	\star
+	(1 - t^{\mr{lcm}(er)})^{er / \mr{lcm}(er)}
+	=
+	\\
+	=
+	\bigl(1 -
+		X_e^{{\mathrm{lcm}(e,r)}/{e}}
+		Y_r^{{\mathrm{lcm}(e,r)}/{r}}
+		t^{\mathrm{lcm}(e,r)}
+	\bigr)^{{er}/{\mathrm{lcm}(e,r)}}.
+\end{gather*}
 \end{remark}
 
 
