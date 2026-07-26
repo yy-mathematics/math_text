@@ -15628,7 +15628,7 @@ x^{(k)_p} \coloneqq
 \((x_i)_{i \in \N_0} \mapsto \sum_{i=0}^\infty p^i x_i^\tau\).
 \end{remark}
 
-\subsubsection{Ещё одна характеризация векторов Витта}
+\subsubsection{Векторы Витта и унитальные многочлены}
 
 \begin{convention}[\scshape Топология Крулля на формальных рядах]
 Пусть \(A\) --- коммутативное ассоциативное унитальное кольцо.
@@ -15641,11 +15641,17 @@ x^{(k)_p} \coloneqq
 Обозначим категорию ассоциативных коммутативных унитальных колец через \(\mr{Ann}\),
 топологических абелевых групп --- через \(\mr{TopAb}\),
 топологических унитальных колец --- через \(\mr{TopRing}\).
+%унитальных полуколец --- через \(\mr{SemiRing}\).
 \end{notation}
 
 \begin{notation}[\scshape НОК]
 Пусть \(n, m \in \N_1\).
 Тогда \([n,m] \coloneqq \mathrm{lcm}(n,b)\).
+\end{notation}
+
+\begin{notation}[\scshape Унитальные многочлены]
+Пусть \(A\) --- ассоциативное коммутативное унитальное кольцо.
+Тогда через \(A[t]_{\mr{mon}}\) обозначним множество элементов \(A[t]\) со старшим коэффициентом \(1\).
 \end{notation}
 
 \begin{observation}
@@ -15682,11 +15688,12 @@ x^{(k)_p} \coloneqq
 \end{observation}
 
 \begin{remark}
-Другой способ доказать, что произведение векторов Витта задаётся многочленами с целыми, а не просто рациональными коэффициентами, и получить формулу~\eqref{eq:WittVectMultStand} --- вычисления~\eqref{eq:WittVectMultCyclotomic} и~\eqref{eq:WittVectMultConst}, из которых выводится~\eqref{eq:WittVectMultBasis}.
+Другой способ доказать, что произведение векторов Витта задаётся многочленами с целыми, а не просто рациональными коэффициентами, и получить формулу~\eqref{eq:WittVectMultStand}
+--- вычисления~\eqref{eq:WittVectMultCyclotomic} и~\eqref{eq:WittVectMultConst}, из которых выводится~\eqref{eq:WittVectMultBasis}.
 \begin{gather}
-	\bigl( \prod_{e \geq 1} (1 - X_e t^e) \bigr)
+	\bigl( \prod_{\mathclap{e \geq 1}} (1 - X_e t^e) \bigr)
 	\star
-	\bigl( \prod_{r \geq 1} (1 - Y_r t^r) \bigr)
+	\bigl( \prod_{\mathclap{r \geq 1}} (1 - Y_r t^r) \bigr)
 	=
    \prod_{\mathclap{e,r \geqslant 1}}
 	(1 -
@@ -15702,18 +15709,18 @@ x^{(k)_p} \coloneqq
 	(1 - t^{[e,r]})^{er / [e,r]}
 	\label{eq:WittVectMultCyclotomic}
 	\displaybreak[0]
-	\\[\smallskipamount]
+	\\%[\smallskipamount]
 	(1 - X_s t^s) = (1 - X_s^{1/s} t) \star (1 - t^s)
 	\label{eq:WittVectMultConst}
 	\displaybreak[0]
 	\\[\smallskipamount]
-	\begin{multlined}[320pt]
+%	\begin{multlined}[320pt]
 	(1 - X_e t^e)
 	\star
 	(1 - Y_r t^r)
 	=
-	\\
-	=
+%	\\
+%	=
 	(1 - X_e^{1/e} t)
 	\star
 	(1 - Y_r^{1/r} t)
@@ -15722,25 +15729,66 @@ x^{(k)_p} \coloneqq
 	\star
 	(1 - t^r)
 	=
-	\\
+	\nonumber\\
 	=
 	(1 - X_e^{1/e} Y_r^{1/r} t)
 	\star
 	(1 - t^{[e,r]})^{er / [e,r]}
 	=
-	\\
-	=
+%	\\
+%	=
 	(1 -
 		X_e^{[e,r]/e}
 		Y_r^{[e,r]/r}
 		t^{[e,r]}
 	)^{er/[e,r]}
 	\label{eq:WittVectMultBasis}
-	\end{multlined}
+%	\end{multlined}
 \end{gather}
-Формула~\eqref{eq:WittVectMultCyclotomic} является формулой для кольца коэффициентов \(\Z\), которую можно получить, расширив \(\Z\) до \(\C\).
-Формула~\eqref{eq:WittVectMultConst} является формулой для кольца коэффициентов \(\Z[X_s^{1/s}]\).
-Наконец, формула~\eqref{eq:WittVectMultBasis} является формулой для кольца коэффициентов \(\Z[X_e, Y_r]\), вывод которой использует расширение \(\Z[X_e, Y_r]\) до \(\Z[X_e^{1/e}, Y_r^{1/r}]\).
+Коэффициенты~\eqref{eq:WittVectMultStand} лежат в
+\(
+\Z[X_i, Y_i \smid i \in \N_1]
+\subset
+\Q[X_i, Y_i \smid i \in \N_1]
+\).
+Коэффициенты~\eqref{eq:WittVectMultCyclotomic} лежат в \(\Z \subset \Q\).
+Эту формулу можно получить, расширив коэффициенты до \(\C\).
+Коэффициенты~\eqref{eq:WittVectMultConst} лежат в \(\Z[X_s^{1/s}] \subset \Q[X_s^{1/s}]\).
+Эту формулу можно получить, расширив коэффициенты до \(\C[X_s^{1/s}]\).
+Наконец, коэффициенты~\eqref{eq:WittVectMultBasis} лежат в \(\Z[X_e, Y_r] \subset \Q[X_e, Y_r]\),
+а вывод использует расширение коэффициентов до \(\Z[X_e^{1/e}, Y_r^{1/r}] \subset \Q[X_e^{1/e}, Y_r^{1/r}]\).
+\end{remark}
+
+\begin{observation}[\scshape Унитальные многочлены как векторы Витта]
+Пусть \(A \in \Ob(\Ann)\).
+Тогда
+\(A[t] \cap (1 + t A[[t]])\) является подполукольцом
+кольца векторов Витта
+\(\mathbb{W}(A) = 1 + t A[[t]]\),
+а отображение~\eqref{eq:WittFinitaryPolyTensor}
+является изоморфизмом моноидов с операцией умножения многочленов.
+\begin{equation}
+P(t) \mapsto t^{\deg(P)} P(1/t) :
+A[t]_{\mr{mon}}
+\xrightarrow{\sim}
+A[t] \cap (1 + t A[[t]])
+\subset
+1 + t A[[t]]
+%= \mathbb{W}(A)
+\label{eq:WittFinitaryPolyTensor}
+\end{equation}
+\end{observation}
+
+\begin{observation}[\scshape Произведение Витта унитальных многочленов]
+Cуществует единственная функториальная по \(A \in \Ob(\Ann)\) и двусторонне дистрибутивная по отношению к умножению многочленов бинарная операция
+\(\circledast : A[t]_{\mr{mon}}^{\times 2} \to A[t]_{\mr{mon}}\),%
+\label{obs:WittProdMonicPoly}
+такая что для любого \(A \in \Ob(\Ann)\) и для любых \(a, b \in A\) выполняется равенство
+\((t - a) \circledast (t - b) = t - ab\).
+\end{observation}
+
+\begin{remark}
+Операция \(\circledast\) из наблюдения~\ref{obs:WittProdMonicPoly} иногда называется тензорным произведением унитальных многочленов.
 \end{remark}
 
 
@@ -16215,23 +16263,6 @@ V = \bigoplus_{i = 1}^n V_i
 \end{observation}
 
 
-\section{Целые в квадратичных полях}
-
-\begin{theorem}
-Пусть \(d \in \mathbb{Z}\) --- бесквадратное целое число, а
-\(
-\mathcal{O}_{\mathbb{Q}[\sqrt{d}]} \coloneqq \{a+b\sqrt{d} \in \mathbb{Q}[\sqrt{d}] \mid a,b \in \Q,\ 2a \in \mathbb{Z},\ a^2-{b^2}d \in \mathbb{Z} \}
-\).
-Тогда если \(d \equiv 2,3 \pmod{4}\), то \(\mathcal{O}_{\mathbb{Q}[\sqrt{d}]} = \mathbb{Z}[\sqrt{d}]\), а если \(d \equiv 1 \pmod{4}\), то \(\mathcal{O}_{\mathbb{Q}[\sqrt{d}]} = \mathbb{Z}[\frac{1+\sqrt{d}}{2}]\).
-\end{theorem}
-
-\begin{proof}
-Пусть \(a, b \in \mathbb{Q}\) --- числа, такие что \(2a, a^2-{b^2}d \in \mathbb{Z}\).
-Так как \(a^2-{b^2}d \in \mathbb{Z}\), то \(4a^2-4{b^2}d \in \mathbb{Z}\), откуда, так как \(2a \in \mathbb{Z}\), следует, что \(4{b^2}d \in \mathbb{Z}\), откуда следует, что \(2b \in \mathbb{Z}\), так как \(d\) бесквадратное.
-Осталось рассмотреть условие \(4(a^2-{b^2}d) = (2a)^2 - (2b)^2 d \equiv 0 \pmod{4}\).
-\end{proof}
-
-
 \section{Изображение конфигурации Дезарга}
 
 \begin{figure}[ht]
@@ -16597,6 +16628,23 @@ V = \bigoplus_{i = 1}^n V_i
 %На
 %рисунке~\ref{fig:des} изображена конфигурация Дезарга, на которой выделены два взаимно вписанных пятиугольника. Посмотрим, как такую картинку можно нарисовать.
 %Применив растяжения вдоль осей \(x\) и \(y\) (рис. \ref{fig:des_ult}), можно считать, что точки \(A\), \(B\) и \(D\) фиксированы. Тогда выбор точки \(C\) задаёт рисунок: проводятся линии \(CD\), \(C'D\), \(CA\) (до \(E'\)), \(C'A\) (до \(E\)), \(CB\) (до \(F'\)), \(C'B'\) (до \(F\)). Точки \(B\), \(E\) и \(F\) всегда лежат на одной линии, что можно проверить, например, координатным методом.
+
+
+\section{Целые в квадратичных полях}
+
+\begin{theorem}
+Пусть \(d \in \mathbb{Z}\) --- бесквадратное целое число, а
+\(
+\mathcal{O}_{\mathbb{Q}[\sqrt{d}]} \coloneqq \{a+b\sqrt{d} \in \mathbb{Q}[\sqrt{d}] \mid a,b \in \Q,\ 2a \in \mathbb{Z},\ a^2-{b^2}d \in \mathbb{Z} \}
+\).
+Тогда если \(d \equiv 2,3 \pmod{4}\), то \(\mathcal{O}_{\mathbb{Q}[\sqrt{d}]} = \mathbb{Z}[\sqrt{d}]\), а если \(d \equiv 1 \pmod{4}\), то \(\mathcal{O}_{\mathbb{Q}[\sqrt{d}]} = \mathbb{Z}[\frac{1+\sqrt{d}}{2}]\).
+\end{theorem}
+
+\begin{proof}
+Пусть \(a, b \in \mathbb{Q}\) --- числа, такие что \(2a, a^2-{b^2}d \in \mathbb{Z}\).
+Так как \(a^2-{b^2}d \in \mathbb{Z}\), то \(4a^2-4{b^2}d \in \mathbb{Z}\), откуда, так как \(2a \in \mathbb{Z}\), следует, что \(4{b^2}d \in \mathbb{Z}\), откуда следует, что \(2b \in \mathbb{Z}\), так как \(d\) бесквадратное.
+Осталось рассмотреть условие \(4(a^2-{b^2}d) = (2a)^2 - (2b)^2 d \equiv 0 \pmod{4}\).
+\end{proof}
 
 
 \section{Элемент Казимира}
