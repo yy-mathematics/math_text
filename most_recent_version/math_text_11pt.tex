@@ -5060,6 +5060,106 @@ D^q \times [0,1]
 \chapter{Общая алгебра}
 
 
+\section{Свободное произведение моноидов}
+
+\begin{notation}
+Пусть \((X, \leq)\) --- частично упорядоченное множество,
+а \(x, y \in X\) --- его элементы.
+Тогда запись \(x \lessdot y\) означает, что
+\(\lvert X_{\geq x} \cap X_{\leq y} \rvert = 2\),
+то есть \(x < y\) и не существует \(z \in X\), такого что \(x < z < y\).
+\end{notation}
+
+\begin{definition}[\scshape Конечная цепная размерность]
+Пусть \(X\) --- частично упорядоченное множество.
+Тогда если в множестве мощностей конечных линейно упорядоченных подмножеств \(X\) существует максимальный элемент \(n \in \N_0\),
+то говорят, что у \(X\) \emph{конечная цепная размерность}
+и \emph{цепная размерность \(X\) равна \(n-1\)}.
+\end{definition}
+
+\begin{theorem}
+Пусть \(X\) --- частично упорядоченное множество,
+такое что для любого \(x \in X\) у частично упорядоченного множества \(X_{\leq x}\) конечная цепная размерность.%
+\label{thm:LeftBoundPosetFiltConn}
+Тогда следующие условия эквивалентны:
+\begin{enumerate}[
+	font=\upshape,
+	label=\asbuk*),
+	ref=\asbuk*,
+	]
+
+\item \label{itm:LBPFiltConn1}
+Для любых трёх элементов \(x, x_0, x_1 \in X\), таких что \(x_0 \lessdot x \gtrdot x_1\),
+существует элемент \(x_{01} \in X\), такой что \(x_0 \geq x_{01} \leq x_1\);
+
+\item \label{itm:LBPFiltConn2}
+Любая связная компонента \(X\) содержит ровно один минимальный элемент \(X\);
+
+\item \label{itm:LBPFiltConn3}
+Все связные компоненты \(X\) конаправленны.
+
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Докажем импликацию (\ref{itm:LBPFiltConn1})\(\implies\)(\ref{itm:LBPFiltConn2}).
+Так как в \(X\) нет бесконечных строго убывающих цепочек,
+то для любого \(x \in X\) в множестве \(X_{\leq x}\) существует минимальный элемент.
+Определим отображение ранга \(\rho : X \to \N_0\), переводящее \(x \in X\) в цепную размерность \(X_{\leq x}\),
+и докажем с помощью индукции по рангу, что для любого \(x \in X\) минимальный элемент \(X_{\leq x}\) единственен.
+Случай \(\rho(x) = 0\) тривиален.
+Предположим, что \(\rho(x) \geq 1\).
+Пусть \(x'_0\) и \(x'_1\) --- два минимальных элемента \(X_{\leq x}\).
+Пусть \(x_0\) и \(x_1\) --- элементы \(X_{\geq x'_0} \cap X_{<x}\) и \(X_{\geq x'_1} \cap X_{<x}\) соответственно максимального ранга.
+Тогда \(x'_0 \leq x_0 \lessdot x \gtrdot x_1 \geq x'_1\).
+Согласно условию существует элемент \(x_{01} \in X\),
+такой что \(x_0 \geq x_{01} \leq x_1\).
+Пусть \(x'_{01}\) --- минимальный элемент \(X_{\leq x_{01}}\).
+Тогда, применив предположение индукции к \(x_0\) и \(x_1\), получаем, что \(x'_0 = x'_{01} = x'_1\),
+что и требовалось доказать.
+Осталось заметить, что элементы \(x, y \in X\) лежат в одной компоненте связности тогда и только тогда, когда минимальные элементы \(X_{\leq x}\) и \(X_{\leq y}\) совпадают.
+Импликации (\ref{itm:LBPFiltConn2})\(\iff\)(\ref{itm:LBPFiltConn3}) и (\ref{itm:LBPFiltConn3})\(\implies\)(\ref{itm:LBPFiltConn1}) тривиальны.
+\end{proof}
+
+\begin{theorem}
+Пусть \(((M_{\alpha}, \cdot{}, e_{\alpha}))_{\alpha \in \Omega}\) --- семейство попарно дизъюнктных моноидов,
+а \(M\) --- свободное произведение этого семейства.
+Отождествим каждый из \(M_{\alpha}\), где \(\alpha \in \Omega\), с его образом в \(M\).%
+\seclabel{thm:FreeProdMonElem}
+Тогда каждый элемент \(M\) однозначно представляется в виде произведения вида
+\(a_1 a_2 \cdots a_n\),
+где \(n \in \N_0\),
+\(a_i \in \bigcup_{\alpha \in \Omega} (M_{\alpha} \setminus \{e_{\alpha}\})\)
+для любого \(i\) от \(1\) до \(n\)
+и
+для любого \(i\) от \(1\) до \(n-1\)
+не существует \(\alpha \in \Omega\), такого что
+\(a_i, a_{i+1} \in M_{\alpha}\).
+\end{theorem}
+
+\begin{proof}
+Пусть \(\mc{W}\) --- свободный моноид, свободно порождённый множеством \(\bigsqcup_{\alpha \in \Omega} M_{\alpha} = \bigcup_{\alpha \in \Omega} (M_{\alpha} \times \{\alpha\})\).
+Введём на \(\mc{W}\) отношение частичного порядка,
+порождённое соотношениями вида
+\begin{equation*}
+W_1 \cdot (a_1, \alpha) \cdot (a_2, \alpha) \cdot W_2 \geq W_1 \cdot (a_1 a_2, \alpha) \cdot W_2
+\quad\tn{и}\quad
+W_1 \cdot (e_{\alpha}, \alpha) \cdot W_2 \geq W_1 \cdot W_2,
+\end{equation*}
+где \(W_1, W_2 \in \mc{W}\), \(\alpha \in \Omega\), \(a_1, a_2 \in M_{\alpha}\).
+Тогда легко проверить, что для любых трёх элементов \(V, V_0, V_1 \in \mc{W}\), таких что \(V_0 \lessdot V \gtrdot V_1\) и \(V_0 \neq V_1\),
+существует элемент \(V_{01} \in \mc{W}\), такой что \(V_0 \gtrdot V_{01} \lessdot V_1\).
+Осталось применить к частично упорядоченному множеству \(\mc{W}\) теорему~\ref{thm:LeftBoundPosetFiltConn} и заметить, что фактор \(\mc{W}\) по отношению эквивалентности, порождённому определённым выше частичным порядком, отождествляется с \(M\).
+\end{proof}
+
+\begin{observation}
+Предел и копредел диаграммы групп как диаграммы моноидов являются группами,
+а потому являются пределом и копределом соответственно этой же диаграммы как диаграммы групп.
+В частности, теорема~\ref{thm:FreeProdMonElem}
+описывает и элементы копроизведений групп.
+\end{observation}
+
+
 \section{Тензорное произведение}
 
 \sectiontableofcontents
@@ -6057,7 +6157,7 @@ S^\mr{sat} \coloneqq
 %\end{observation}
 
 
-\section{Китайская теорема об остатках и разложение дробей}
+\section{Китайская теорема об остатках и её приложения}
 
 \sectiontableofcontents
 
@@ -6358,7 +6458,7 @@ K[X]_{< \sum_{i \in I} \deg(g_i)}
 	\bigoplus_{k=0}^{n-1}
 	K[X]_{< \deg(g)} g^k
 \).
-Поделив на \(g^n\), получаем, что
+Поделив на \(g^n\) получаем, что
 \begin{equation*}
 	K[X]_{< n \deg(g)}
 	\frac{1}{g^n}
@@ -6373,104 +6473,676 @@ K[X]_{< \sum_{i \in I} \deg(g_i)}
 По-английски разложение рациональной дроби на простейшие называется <<\textenglish{partial fraction decomposition}>> или <<\textenglish{partial fraction expansion}>>.
 \end{remark}
 
+\subsection{Алгоритм RSA}
 
-\section{Свободное произведение моноидов}
+\begin{theorem}
+Пусть \(n \in \N_1\) --- бесквадратное число,
+\(\lambda(n)\) --- экспонента группы \((\Z / n\Z)^{\times}\),
+а \(s \in \N_0\) --- число, такое что \(s \equiv 1 \pmod{\lambda(n)}\).%
+\label{thm:ExponentRSA}
+Тогда \(x^s = x\) для любого \(x \in \Z / n\Z\).
+\end{theorem}
+
+\begin{proof}
+Практически очевидно из канонического изоморфизма
+\(\Z / n\Z \cong \prod_{p \in \mc{P}} \Z / p\Z\),
+где \(\mc{P}\) --- множество простых делителей \(n\).
+\end{proof}
+
+\begin{remark}
+Если, в обозначениях теоремы~\ref{thm:ExponentRSA}, выбрать числа \(e, d \in \N_0\),
+взаимно обратные по модулю \(\lambda(n)\),
+то соответствующие отображения
+\(x \mapsto x^e : \Z / n\Z \rlarrow \Z / n\Z : x^d \mapsfrom x\)
+будут взаимно обратными биекциями,
+причём по \(n\) и \(e\) в общем случае довольно трудно найти элемент \(d + \lambda(n) \Z\).
+Это обстоятельство лежит в основе \emph{алгоритма RSA}:
+первое отображение зашифровывает сообщения, а второе их расшифровывает.
+\end{remark}
+
+
+\section{Векторы Витта}
+
+\sectiontableofcontents
+
+\subsection{Векторы Витта и призрачные компоненты}
 
 \begin{notation}
-Пусть \((X, \leq)\) --- частично упорядоченное множество,
-а \(x, y \in X\) --- его элементы.
-Тогда запись \(x \lessdot y\) означает, что
-\(\lvert X_{\geq x} \cap X_{\leq y} \rvert = 2\),
-то есть \(x < y\) и не существует \(z \in X\), такого что \(x < z < y\).
+Обозначим категорию ассоциативных коммутативных унитальных колец через \(\mr{Ann}\),
+топологических абелевых групп --- через \(\mr{TopAb}\),
+топологических унитальных колец --- через \(\mr{TopRing}\),
+ассоциативных коммутативных унитальных \(\Q\)\=/алгебр --- через \(\Q\anneau\).
+%унитальных полуколец --- через \(\mr{SemiRing}\).
 \end{notation}
 
-\begin{definition}[\scshape Конечная цепная размерность]
-Пусть \(X\) --- частично упорядоченное множество.
-Тогда если в множестве мощностей конечных линейно упорядоченных подмножеств \(X\) существует максимальный элемент \(n \in \N_0\),
-то говорят, что у \(X\) \emph{конечная цепная размерность}
-и \emph{цепная размерность \(X\) равна \(n-1\)}.
+\begin{definition}[\scshape Произведение Адамара рядов]
+Пусть \(R\) --- ассоциативное унитальное кольцо,
+а
+\(
+	\sum_{i=0}^{\infty} a_i T^i,
+	\sum_{i=0}^{\infty} b_i T^i
+	\in R[[T]]
+\),
+где
+\(
+	(a_i)_{i=0}^{\infty},
+	(b_i)_{i=0}^{\infty}
+	\in R^{\times \N_0}
+\),
+--- два формальных ряда.
+Тогда \emph{произведение Адамара} этих рядов определяется и обозначается следующим образом:
+\begin{equation*}
+	(\sum_{i=0}^{\infty} a_i T^i)
+	\odot
+	(\sum_{i=0}^{\infty} b_i T^i)
+	\coloneqq
+	\sum_{i=0}^{\infty} (a_i \cdot b_i) T^i
+	\in R[[T]].
+\end{equation*}
 \end{definition}
 
-\begin{theorem}
-Пусть \(X\) --- частично упорядоченное множество,
-такое что для любого \(x \in X\) у частично упорядоченного множества \(X_{\leq x}\) конечная цепная размерность.%
-\label{thm:LeftBoundPosetFiltConn}
-Тогда следующие условия эквивалентны:
-\begin{enumerate}[
-	font=\upshape,
-	label=\asbuk*),
-	ref=\asbuk*,
-	]
+\begin{observation}[\scshape Логарифмическая производная суммы геометрической прогрессии]
+В кольце \(\Q[[t]]\) выполняется%
+\label{obs:LogDerGeomSeries}
+следующее равенство:
+\(
+	\frac{d}{dt} \log \sum_{i=0}^\infty t^i
+	=
+	\sum_{i=0}^\infty t^i
+\).
+Иначе говоря, логарифмическая производная суммы геометрической прогрессии равна ей самой.
+Эта формула является легко запоминаемой формой <<ряда Меркатора>>, то есть ряда для логарифма:
+\(
+\frac{d}{dt} \log ((1-t)^{-1})
+=
+\sum_{i=0}^\infty t^i
+\),
+\(
+-\log(1-t) = \sum_{i=1}^\infty \frac{t^i}{i}
+%\label{eq:LogSeriesGeom}
+\).
+\end{observation}
 
-\item \label{itm:LBPFiltConn1}
-Для любых трёх элементов \(x, x_0, x_1 \in X\), таких что \(x_0 \lessdot x \gtrdot x_1\),
-существует элемент \(x_{01} \in X\), такой что \(x_0 \geq x_{01} \leq x_1\);
-
-\item \label{itm:LBPFiltConn2}
-Любая связная компонента \(X\) содержит ровно один минимальный элемент \(X\);
-
-\item \label{itm:LBPFiltConn3}
-Все связные компоненты \(X\) конаправленны.
-
-\end{enumerate}
-\end{theorem}
-
-\begin{proof}
-Докажем импликацию (\ref{itm:LBPFiltConn1})\(\implies\)(\ref{itm:LBPFiltConn2}).
-Так как в \(X\) нет бесконечных строго убывающих цепочек,
-то для любого \(x \in X\) в множестве \(X_{\leq x}\) существует минимальный элемент.
-Определим отображение ранга \(\rho : X \to \N_0\), переводящее \(x \in X\) в цепную размерность \(X_{\leq x}\),
-и докажем с помощью индукции по рангу, что для любого \(x \in X\) минимальный элемент \(X_{\leq x}\) единственен.
-Случай \(\rho(x) = 0\) тривиален.
-Предположим, что \(\rho(x) \geq 1\).
-Пусть \(x'_0\) и \(x'_1\) --- два минимальных элемента \(X_{\leq x}\).
-Пусть \(x_0\) и \(x_1\) --- элементы \(X_{\geq x'_0} \cap X_{<x}\) и \(X_{\geq x'_1} \cap X_{<x}\) соответственно максимального ранга.
-Тогда \(x'_0 \leq x_0 \lessdot x \gtrdot x_1 \geq x'_1\).
-Согласно условию существует элемент \(x_{01} \in X\),
-такой что \(x_0 \geq x_{01} \leq x_1\).
-Пусть \(x'_{01}\) --- минимальный элемент \(X_{\leq x_{01}}\).
-Тогда, применив предположение индукции к \(x_0\) и \(x_1\), получаем, что \(x'_0 = x'_{01} = x'_1\),
-что и требовалось доказать.
-Осталось заметить, что элементы \(x, y \in X\) лежат в одной компоненте связности тогда и только тогда, когда минимальные элементы \(X_{\leq x}\) и \(X_{\leq y}\) совпадают.
-Импликации (\ref{itm:LBPFiltConn2})\(\iff\)(\ref{itm:LBPFiltConn3}) и (\ref{itm:LBPFiltConn3})\(\implies\)(\ref{itm:LBPFiltConn1}) тривиальны.
-\end{proof}
-
-\begin{theorem}
-Пусть \(((M_{\alpha}, \cdot{}, e_{\alpha}))_{\alpha \in \Omega}\) --- семейство попарно дизъюнктных моноидов,
-а \(M\) --- свободное произведение этого семейства.
-Отождествим каждый из \(M_{\alpha}\), где \(\alpha \in \Omega\), с его образом в \(M\).%
-\seclabel{thm:FreeProdMonElem}
-Тогда каждый элемент \(M\) однозначно представляется в виде произведения вида
-\(a_1 a_2 \cdots a_n\),
-где \(n \in \N_0\),
-\(a_i \in \bigcup_{\alpha \in \Omega} (M_{\alpha} \setminus \{e_{\alpha}\})\)
-для любого \(i\) от \(1\) до \(n\)
-и
-для любого \(i\) от \(1\) до \(n-1\)
-не существует \(\alpha \in \Omega\), такого что
-\(a_i, a_{i+1} \in M_{\alpha}\).
-\end{theorem}
-
-\begin{proof}
-Пусть \(\mc{W}\) --- свободный моноид, свободно порождённый множеством \(\bigsqcup_{\alpha \in \Omega} M_{\alpha} = \bigcup_{\alpha \in \Omega} (M_{\alpha} \times \{\alpha\})\).
-Введём на \(\mc{W}\) отношение частичного порядка,
-порождённое соотношениями вида
-\begin{equation*}
-W_1 \cdot (a_1, \alpha) \cdot (a_2, \alpha) \cdot W_2 \geq W_1 \cdot (a_1 a_2, \alpha) \cdot W_2
-\quad\tn{и}\quad
-W_1 \cdot (e_{\alpha}, \alpha) \cdot W_2 \geq W_1 \cdot W_2,
-\end{equation*}
-где \(W_1, W_2 \in \mc{W}\), \(\alpha \in \Omega\), \(a_1, a_2 \in M_{\alpha}\).
-Тогда легко проверить, что для любых трёх элементов \(V, V_0, V_1 \in \mc{W}\), таких что \(V_0 \lessdot V \gtrdot V_1\) и \(V_0 \neq V_1\),
-существует элемент \(V_{01} \in \mc{W}\), такой что \(V_0 \gtrdot V_{01} \lessdot V_1\).
-Осталось применить к частично упорядоченному множеству \(\mc{W}\) теорему~\ref{thm:LeftBoundPosetFiltConn} и заметить, что фактор \(\mc{W}\) по отношению эквивалентности, порождённому определённым выше частичным порядком, отождествляется с \(M\).
-\end{proof}
+\begin{corollary}
+Пусть \(A\) --- область целостности,
+а \(f \in tA[[t]]\).%
+\label{cor:LogDerGeomSeriesFun}
+Тогда в поле
+рядов Лорана
+\(
+\Frac(A) \llparen t \rrparen
+=
+\Frac(A[[t]])
+\)
+выполняется равенство
+\(
+	\frac{d}{df} \log \sum_{i=0}^\infty f^i
+	= \sum_{i=0}^\infty f^i
+\),
+где
+\(
+	\frac{d}{df} \coloneqq
+	(\frac{df}{dt})^{-1} \frac{d}{dt} :
+	\Frac(A) \llparen t \rrparen
+	\to
+	\Frac(A) \llparen t \rrparen
+\).
+\end{corollary}
 
 \begin{observation}
-Предел и копредел диаграммы групп как диаграммы моноидов являются группами,
-а потому являются пределом и копределом соответственно этой же диаграммы как диаграммы групп.
-В частности, теорема~\ref{thm:FreeProdMonElem}
-описывает и элементы копроизведений групп.
+В кольце \(A[[t]]\), где
+\(A \coloneqq \Q[X_i \smid i \in \N_1]\),
+выполняются включения~\eqref{eq:WittVectorsPowerSeriesOne}
+и~\eqref{eq:WittVectorsPowerSeriesTwo}.%
+\label{obs:WittVectorsPowerSeries}
+В частности, для любого
+%ассоциативного коммутативного унитального кольца \(A\)
+\(A \in \Ob(\mr{Ann})\)
+отображение
+\((x_n)_{n=1}^{\infty} \mapsto \prod_{n \geq 1} (1 - x_n t^n) : A^{\times \N_1} \to 1 + tA[[t]]\)
+биективно.
+\begin{gather}
+\prod_{n \geq 1} (1 - X_n t^n)
+\in
+1 + 
+\sum_{n \geq 1} (X_n + \Z[X_1, \ldots{}, X_{n-1}]) t^n
+\label{eq:WittVectorsPowerSeriesOne}
+\\
+1 + \sum_{n \geq 1} X_n t^n
+\in
+\prod_{n \geq 1} (1 - (X_n + \Z[X_1, \ldots{}, X_{n-1}]) t^n)
+\label{eq:WittVectorsPowerSeriesTwo}
+\end{gather}
+\end{observation}
+
+\begin{observation}
+В кольце \(A[[t]]\), где
+\(A \coloneqq \Q[X_i \smid i \in \N_1]\),
+выполняется следующая формула:
+\begin{equation}
+-t {\frac{d}{dt}} \log \prod_{n \geqslant 1} (1 - X_n t^n)
+%= \sum_{m \geqslant 1} X^{(m)} t^m
+= \adjustlimits\sum_{m \geqslant 1} \sum_{e \mid m}
+	e X_e^{m/e} t^m.
+\label{eq:WittVecProdLogDer}
+\end{equation}
+Чтобы получить это равенство,
+возьмём \(f \coloneqq X_n t^n\), заметим, что тогда выполняется равенство
+\(f \frac{d}{df} = \frac{1}{n} t \frac{d}{dt}\)
+и применим следствие~\ref{cor:LogDerGeomSeriesFun}.
+\end{observation}
+
+\begin{observation}[\scshape Формула произведения Витта]
+В кольце \(A[[t]]\), где
+\(A \coloneqq \Q[X_i, Y_i \smid i \in \N_1]\),
+выполняется следующая формула:
+\begin{gather}
+	\Bigl(
+		-t \frac{d}{dt} \log
+		\prod_{\mathclap{n \geq 1}} (1 - X_n t^n)
+	\Bigr)
+	\odot
+	\Bigl(
+		-t \frac{d}{dt} \log
+		\prod_{\mathclap{n \geq 1}} (1 - Y_n t^n)
+	\Bigr)
+	=
+	\displaybreak[0]
+	\nonumber\\
+	=
+	\Bigl(
+		\smashoperator[r]{\sum_{\substack{%
+			m \geq 1 \\ e \mid m}}}
+		e X_e^{m/e} t^m
+	\Bigr)
+	\odot
+	\Bigl(
+		\smashoperator[r]{\sum_{\substack{%
+			m \geq 1 \\ r \mid m}}}
+		r Y_r^{m/r} t^m
+	\Bigr)
+	=
+	\displaybreak[0]
+	\nonumber\\
+	=
+	\sum_{\mathclap{\substack{%
+		m \geqslant 1 \\ e,r \mid m}}}
+	e X_e^{m/e}
+	r Y_r^{m/r}
+	t^m
+   =
+	\sum_{\mathclap{%
+		n,e,r \geqslant 1}}
+	er
+	\bigl(
+		X_e^{{\mathrm{lcm}(e,r)}/{e}}
+		Y_r^{{\mathrm{lcm}(e,r)}/{r}}
+		t^{\mathrm{lcm}(e,r)}
+	\bigr)^n
+   =
+   \displaybreak[0]
+   \nonumber\\
+   =
+   -t \frac{d}{dt}
+   \log \prod_{\mathclap{e,r \geqslant 1}}
+	\bigl(1 -
+		X_e^{{\mathrm{lcm}(e,r)}/{e}}
+		Y_r^{{\mathrm{lcm}(e,r)}/{r}}
+		t^{\mathrm{lcm}(e,r)}
+	\bigr)^{{er}/{\mathrm{lcm}(e,r)}}.
+	\label{eq:WittVectMultLogDer}
+\end{gather}
+Предпоследнее равенство --- тавтология.
+Чтобы получить последнее равенство, возьмём
+\(
+	f \coloneqq
+	X_e^{{\mathrm{lcm}(e,r)}/{e}}
+	Y_r^{{\mathrm{lcm}(e,r)}/{r}}
+	t^{\mathrm{lcm}(e,r)}
+\),
+заметим, что
+тогда выполняется равенство \(f \frac{d}{df} = \frac{1}{\mathrm{lcm}(e,r)} t \frac{d}{dt}\)
+и применим следствие~\ref{cor:LogDerGeomSeriesFun}.
+\end{observation}
+
+\begin{theorem}[\scshape Векторы Витта и призрачные компоненты]
+Существует единственное поднятие функтора
+\(A \mapsto 1 + t A[[t]] : \mr{Ann} \to \mr{Sets}\)
+до функтора
+\(A \mapsto (1 + t A[[t]], \cdot, \star) : \mr{Ann} \to \mr{Ring}\),
+такого что для любого \(A \in \Ob(\mr{Ann})\) отображение
+\(\mf{G}_A : 1 + t A[[t]] \to tA[[t]]\),
+\(f \mapsto - \frac{t}{f} \frac{df}{dt}\)
+является гомоморфизмом колец из \((1 + t A[[t]], \cdot, \star)\) в \((tA[[t]], +, \odot)\).
+\end{theorem}
+
+\begin{proof}
+Если \(A \in \Q\anneau\),
+то призрачное отображение~\eqref{eq:WittVectGhostQ} биективно
+и отображения \(\cdot\) и \(\star\) задаются формулами~\eqref{eq:WittVectAddPolyForm} и~\eqref{eq:WittVectMultPolyForm} соответственно в кольце \(\Q[X_i, Y_i \smid i \in \N_1][[t]]\),
+где \(S_n, P_n \in \Q[X_i, Y_i \smid 1 \leq i \leq n]\) для любого \(n \in \N_1\).
+Полиномиальные тождества, соответствующие аксиомам ассоциативного коммутативного унитального кольца, следуют из того, что \((tA[[t]], +, \odot)\), где \(A \in \Q\anneau\), является ассоциативным коммутативным унитальным кольцом.
+\begin{gather}
+\mf{G}_A : 1 + t A[[t]] \to tA[[t]],\ 
+f \mapsto - \frac{t}{f} \frac{df}{dt} = -t \frac{d}{dt} \log (f)
+\label{eq:WittVectGhostQ}
+\displaybreak[0]
+\\
+(1 + \sum_{n \geq 1} X_n t^n)
+\cdot
+(1 + \sum_{n \geq 1} Y_n t^n)
+=
+1 + \sum_{n \geq 1}
+S_n(X_i, Y_i \smid 1 \leq i \leq n) t^n
+\label{eq:WittVectAddPolyForm}
+\displaybreak[0]
+\\
+(1 + \sum_{n \geq 1} X_n t^n)
+\star
+(1 + \sum_{n \geq 1} Y_n t^n)
+=
+1 + \sum_{n \geq 1}
+P_n(X_i, Y_i \smid 1 \leq i \leq n) t^n
+\label{eq:WittVectMultPolyForm}
+\end{gather}
+Единственная вещь, которую нужно проверить --- это то, что многочлены \(S_n\) и \(P_n\), где \(n \in \N_1\), лежат не просто в \(\Q[X_i, Y_i \smid i \in \N_1]\), а в \(\Z[X_i, Y_i \smid i \in \N_1]\),
+то есть имеют целые коэффициенты.
+Для многочленов \(S_n\), где \(n \in \N_1\), достаточно заметить, что, как ясно из формулы~\eqref{eq:WittVectGhostQ}, операция~\eqref{eq:WittVectAddPolyForm} --- это обычное умножение рядов.
+Для многочленов \(P_n\), где \(n \in \N_1\),
+достаточно сослаться на формулы~\eqref{eq:WittVectorsPowerSeriesOne}, \eqref{eq:WittVectorsPowerSeriesTwo} и~\eqref{eq:WittVectMultLogDer}.
+\end{proof}
+
+\subsection{Усечённые векторы Витта}
+
+\begin{observation}[\scshape Гомоморфизм \(S\)\=/усечения]
+Пусть
+\(S\) --- подмножество \(\N_1\), такое что
+\(\bigcup_{s \in S} \{n \in \N_1 \mid n\ \tn{делит}\ s\} = S\),
+%а \(A\) --- ассоциативное коммутативное унитальное кольцо.
+а \(A \in \Ob(\mr{Ann})\).%
+\label{obs:WittVecTruncHom}
+Тогда из формулы~\eqref{eq:WittVecProdLogDer} ясно,
+что на множестве \(A^{\times S}\) существует единственная структура кольца,
+такая что отображение
+\(
+\prod_{n \geq 1} (1 - a_n t^n)
+\mapsto (a_s)_{s \in S} :
+\mathbb{W}(A) \to A^{\times S}
+\)
+является гомоморфизмом колец.
+\end{observation}
+
+\begin{definition}[\scshape \(S\)\=/Усечённые векторы Витта]
+Пусть
+\(S\) --- подмножество \(\N_1\), такое что
+\(\bigcup_{s \in S} \{n \in \N_1 \mid n\ \tn{делит}\ s\} = S\),
+%а \(A\) --- ассоциативное коммутативное унитальное кольцо.
+а \(A \in \Ob(\mr{Ann})\).
+Тогда множество \(A^{\times S}\) с кольцевой структурой, описанной в наблюдении~\ref{obs:WittVecTruncHom},
+называется множеством \emph{\(S\)\=/усечённых векторов Витта} с коэффициентами в \(A\) и обозначается \(\mathbb{W}_S(A)\).
+\end{definition}
+
+\begin{definition}[\scshape \(p\)\=/Типические векторы Витта]
+Пусть \(p \in \N_1\) --- простое число,
+\(S \coloneqq p^{:\N_0} = \{1, p, p^2, p^3, \ldots{}\}\),
+а \(A \in \Ob(\mr{Ann})\).
+Тогда кольцо \(\mathbb{W}_S(A)\) называется кольцом \emph{\(p\)\=/типических векторов Витта} с коэффициентами в \(A\) и обозначается \(W(A)\).
+\end{definition}
+
+\begin{definition}[\scshape \(n\)\=/Усечённые векторы Витта]
+Пусть \(n \in \N_1\),
+а \(A \in \Ob(\mr{Ann})\).
+Тогда кольцо \(\mathbb{W}_S(A)\),
+где \(S \coloneqq \{s \in \N_1 \mid s \leq n\}\),
+называется кольцом \emph{\(n\)\=/усечённых векторов Витта} с коэффициентами в \(A\) и обозначается \(\mathbb{W}_n(A)\).
+Если \(p \in \N_1\) --- простое число,
+то кольцо \(\mathbb{W}_S(A)\),
+где \(S \coloneqq \{1, p, p^2, p^3, \ldots{}, p^{n-1}\}\),
+называется кольцом \emph{\(n\)\=/усечённых \(p\)\=/типических векторов Витта} с коэффициентами в \(A\) и обозначается \(W_n(A)\).
+\end{definition}
+
+\begin{convention}[\scshape Нумерация координат]
+Пусть \(p \in \N_1\) --- простое число,
+\(n \in \N_1\),
+а \(A \in \Ob(\mr{Ann})\).
+Тогда координаты в \(W(A)\) и \(W_n(A)\) обычно нумеруются не множествами
+\(\{1, p, p^2, \ldots{}\}\)
+и
+\(\{1, p, p^2, \ldots{}, p^{n-1}\}\),
+а множествами
+\(\{0, 1, 2, \ldots{}\}\)
+и
+\(\{0, 1, 2, \ldots{}, n-1\}\)
+соответственно.
+\end{convention}
+
+\begin{observation}[\scshape Векторы Витта как обратный предел]
+Пусть \(A\) --- ассоциативное коммутативное унитальное кольцо.
+Тогда канонические гомоморфизмы колец
+\(\mathbb{W}(A) \to \mathbb{W}_n(A)\),
+где \(n \in \N_1\),
+задают изоморфизм \(\mathbb{W}(A) \cong \lim_n \mathbb{W}_n(A)\).
+Таким же образом для любого простого \(p \in \N_1\) имеем изоморфизм \(W(A) \cong \lim_n W_n(A)\).
+\end{observation}
+
+\subsection{Векторы Витта и унитальные многочлены}
+
+\begin{convention}[\scshape Топология Крулля на формальных рядах]
+Пусть \(A\) --- коммутативное ассоциативное унитальное кольцо.
+Тогда стандартную топологию обратного предела на кольце формальных рядов
+\(A[[t]] = \lim_{n=1}^{\infty} A[t] / t^n A\)
+будем называть \emph{топологией Крулля}.
+\end{convention}
+
+\begin{notation}[\scshape НОК]
+Пусть \(n, m \in \N_1\).
+Тогда \([n,m] \coloneqq \mathrm{lcm}(n,b)\).
+\end{notation}
+
+\begin{notation}[\scshape Унитальные многочлены]
+Пусть \(A\) --- ассоциативное коммутативное унитальное кольцо.
+Тогда через \(A[t]_{\mr{mon}}\) обозначним множество элементов \(A[t]\) со старшим коэффициентом \(1\).
+\end{notation}
+
+\begin{observation}
+Пусть \(A\) --- ассоциативное коммутативное унитальное кольцо, \(\mu\) --- элемент \(A\),
+а \((\lambda_i)_{i \in I}\) --- конечное семейство элементов \(A\).
+Тогда если \(\mu \prod_{i \in I} (t - \lambda_i) \in 1 + t A[[t]]\),
+то есть
+\(\mu \prod_{i \in I} \lambda_i = (-1)^{\card(I)}\),
+то выполняется равенство
+\(
+\mu \prod_{i \in I} (t - \lambda_i)
+=
+\prod_{i \in I} (1 - {\lambda_i}^{-1} t)
+\).
+\end{observation}
+
+\begin{theorem}[\scshape Векторы Витта и корни многочленов]
+Пусть \(\mathbb{W}_{\mr{add}} : \mr{Ann} \to \mr{TopAb}\) --- функтор,
+переводящий кольцо \(A\) в топологическую абелеву группу \(1 + t A[[t]] \subset A[[t]]\) с операцией умножения рядов в качестве сложения и топологией Крулля.%
+\label{thm:WittVecDegreeOneProd}
+Тогда существует единственное продолжение \(\mathbb{W}_{\mr{add}}\) до функтора
+\(\mathbb{W} : \mr{Ann} \to \mr{TopRing}\),
+%в категорию унитальных топологических колец,
+такого что для любого
+%коммутативного ассоциативного унитального кольца \(A\)
+\(A \in \Ob(\mr{Ann})\)
+и для любых \(a, b \in A\)
+выполняется равенство
+\((1 - a t) \star (1 - b t) = 1 - ab t\),
+где \(\star\) --- это произведение в \(\mathbb{W}(A)\).
+%\begin{equation}
+%(1 - a t) \star (1 - b t) = 1 - ab t
+%\label{eq:WittVectMultBasicLin}
+%\end{equation}
+\end{theorem}
+
+\begin{proofparts}[Доказательство (из трёх частей)]
+
+\item[Доказательство существования.]
+В качестве операции \(\star\) можно взять умножение векторов Витта,
+так как
+\(-t \frac{d}{dt} \log (1 - Xt) = \sum_{i=0}^{\infty} X^i t^{i+1}\).
+
+\item[Первое доказательство единственности.]
+Пусть \(n, m \in \N_0\) --- пара натуральных чисел,
+\(f(t) \coloneqq 1 + \sum_{i=1}^n X_i t^i\)
+и \(g(t) \coloneqq 1 + \sum_{i=1}^m Y_i t^i\)
+--- пара универсальных многочленов со свободным членом~\(1\) с коэффициентами в кольце \(A \coloneqq \Z[X_1, \ldots{}, X_n][Y_1, \ldots, Y_m]\),
+а \(K\) --- поле разложения \(f(t)g(t)\) как элемента \(\Frac(A)[t]\). Тогда в \(K[t]\) многочлены \(f(t)\) и \(g(t)\) полностью разлагаются на линейные множители, откуда следует, что элемент \(f(t) \star g(t)\) однозначно определён.
+Осталось заметить, что топология Крулля в \(1 + t A[[t]]\) хаусдорфова и любой элемент \(1 + t A[[t]]\) является пределом последовательности многочленов.
+
+\item[Второе доказательство единственности.]
+Докажем единственность \(\star\).
+Для этого достаточно произвести вычисления~\eqref{eq:WittVectMultCyclotomic} и~\eqref{eq:WittVectMultConst}, которые вместе эквивалентны формуле~\eqref{eq:WittVectMultBasis},
+а формула~\eqref{eq:WittVectMultBasis}, с учётом предполагаемой непрерывности операции \(\star\), эквивалентна формуле~\eqref{eq:WittVectMultStand}.
+\begin{gather}
+	\bigl( \prod_{\mathclap{e \geq 1}} (1 - X_e t^e) \bigr)
+	\star
+	\bigl( \prod_{\mathclap{r \geq 1}} (1 - Y_r t^r) \bigr)
+	=
+   \prod_{\mathclap{e,r \geqslant 1}}
+	(1 -
+		X_e^{[e,r]/e}
+		Y_r^{[e,r]/r}
+		t^{[e,r]}
+	)^{er/[e,r]}
+	\label{eq:WittVectMultStand}
+	\displaybreak[0]
+	\\[\smallskipamount]
+	(1 - X_e t^e)
+	\star
+	(1 - Y_r t^r)
+	=
+	(1 - X_e^{1/e} t)
+	\star
+	(1 - Y_r^{1/r} t)
+	\star
+	(1 - t^e)
+	\star
+	(1 - t^r)
+	=
+	\nonumber\\
+	=
+	(1 - X_e^{1/e} Y_r^{1/r} t)
+	\star
+	(1 - t^{[e,r]})^{er / [e,r]}
+	=
+	(1 -
+		X_e^{[e,r]/e}
+		Y_r^{[e,r]/r}
+		t^{[e,r]}
+	)^{er/[e,r]}
+	\label{eq:WittVectMultBasis}
+	\displaybreak[0]
+	\\[\smallskipamount]
+	(1 - t^e) \star (1 - t^r)
+	=
+	(1 - t^{[e,r]})^{er / [e,r]}
+	\label{eq:WittVectMultCyclotomic}
+	\displaybreak[0]
+	\\%[\smallskipamount]
+	(1 - X_s t^s) = (1 - X_s^{1/s} t) \star (1 - t^s)
+	\label{eq:WittVectMultConst}
+\end{gather}
+Коэффициенты~\eqref{eq:WittVectMultStand} лежат в
+\(
+\Z[X_i, Y_i \smid i \in \N_1]
+\subset
+\Q[X_i, Y_i \smid i \in \N_1]
+\).
+Формулу~\eqref{eq:WittVectMultCyclotomic}, коэффициенты которой лежат в \(\Z \subset \Q\), можно получить, расширив коэффициенты до \(\C\):
+отображение
+\(
+	(u, v) \mapsto u v :
+	C_e \times C_r \to C_{[e,r]}
+\),
+где \(C_l \coloneqq \{z \in \C \mid z^l = 1\}\)
+для любого \(l \in \N_1\),
+является сюръективным гомоморфизмом мультипликативных групп.
+Формулу~\eqref{eq:WittVectMultConst}, коэффициенты которой лежат в \(\Z[X_s^{1/s}] \subset \Q[X_s^{1/s}]\), можно получить, расширив коэффициенты до \(\C[X_s^{1/s}]\).
+Коэффициенты~\eqref{eq:WittVectMultBasis} лежат в \(\Z[X_e, Y_r] \subset \Q[X_e, Y_r]\),
+а предоставленный там же вывод использует расширение коэффициентов до \(\Z[X_e^{1/e}, Y_r^{1/r}] \subset \Q[X_e^{1/e}, Y_r^{1/r}]\).
+\qedhere
+
+\end{proofparts}
+
+\begin{remark}
+Вычисления~\eqref{eq:WittVectMultConst}, \eqref{eq:WittVectMultCyclotomic},  \eqref{eq:WittVectMultBasis} и~\eqref{eq:WittVectMultStand} из последней части доказательства теоремы~\ref{thm:WittVecDegreeOneProd} являются альтернативным способом доказать, что произведение векторов Витта задаётся многочленами с целыми, а не просто рациональными коэффициентами.
+\end{remark}
+
+\begin{observation}[\scshape Унитальные многочлены как векторы Витта]
+Пусть \(A \in \Ob(\Ann)\).
+Тогда
+\(A[t] \cap (1 + t A[[t]])\) является подполукольцом
+кольца векторов Витта
+\(\mathbb{W}(A) = 1 + t A[[t]]\),
+а отображение~\eqref{eq:WittFinitaryPolyTensor}
+является изоморфизмом моноидов с операцией умножения многочленов.
+\begin{equation}
+P(t) \mapsto t^{\deg(P)} P(1/t) :
+A[t]_{\mr{mon}}
+\xrightarrow{\sim}
+A[t] \cap (1 + t A[[t]])
+\subset
+1 + t A[[t]]
+%= \mathbb{W}(A)
+\label{eq:WittFinitaryPolyTensor}
+\end{equation}
+\end{observation}
+
+\begin{observation}[\scshape Произведение Витта унитальных многочленов]
+Cуществует единственная функториальная по \(A \in \Ob(\Ann)\) и двусторонне дистрибутивная по отношению к умножению многочленов бинарная операция
+\(\circledast : A[t]_{\mr{mon}}^{\times 2} \to A[t]_{\mr{mon}}\),%
+\label{obs:WittProdMonicPoly}
+такая что для любого \(A \in \Ob(\Ann)\) и для любых \(a, b \in A\) выполняется равенство
+\((t - a) \circledast (t - b) = t - ab\).
+\end{observation}
+
+\begin{remark}
+Операция \(\circledast\) из наблюдения~\ref{obs:WittProdMonicPoly} иногда называется тензорным произведением унитальных многочленов.
+\end{remark}
+
+\subsection{{Векторы Витта и \texorpdfstring{\(\WTbm{p}\)-адические}{p-адические} числа}}
+
+\begin{convention}
+В этом подразделе \(p \in \N_1\) --- фиксированное простое число, а все кольца и алгебры считаются коммутативными, ассоциативными и унитальными,
+если противное не указано явно.
+\end{convention}
+
+\begin{notation}
+В этом подразделе для любого натурального \(n \in \N_0\) будет использоваться обозначение
+\([n]_0 \coloneqq \{i \in \N_0 \mid 0 \leq i < n\}\).
+\end{notation}
+
+\begin{definition}[\scshape Представитель Тейхмюллера]
+Пусть отображение \(\pi : A \to \Z/p\Z\), где \(A = \Z_p\) или \(A = \Z/p^n\Z\), \(n \geq 1\), --- это очевидная редукция, пусть \(a \in A\). Если \(a^p = a\), то \(a\) называется \emph{представителем Тейхмюллера} для \(\pi(a) \in \Z/p\Z\).
+\end{definition}
+
+\begin{lemma}[\scshape Лемма Гензеля]
+%Решение сравнения \(f(x) \equiv 0 \pmod {p^n}\)
+%где $f \in \mathbb{Z}[X]$, $f'(x) \not\equiv 0 \pmod p$, можно поднять до решения $\mod p^{n+1}$, причём единственным
+%$\mod {p^{n+1}}$ образом.
+Пусть \(s \in \mathbb{Z}\) и
+\(f(s) \equiv 0 \pmod {p^n}\),
+где \(f \in \mathbb{Z}[X]\) и \(n \geq 1\), причём \(f'(s) \not\equiv 0 \pmod p\).%
+\label{lem:HenselLemmaBasic}
+Тогда существует единственное по модулю \(p^{n+1}\) число \(\tilde{s} \in \mathbb{Z}\), такое что \(\tilde{s} \equiv s \pmod {p^n}\) и \(f(\tilde{s}) \equiv 0 \pmod {p^{n+1}}\).
+\end{lemma}
+
+\begin{proof}
+Пусть \(\tilde{s} = s + b p^n\), а \(f(s) = a p^n\). Тогда
+\begin{align*}
+f(s+bp^n)       &\equiv 0  \pmod {p^{n+1}}\\
+f(s)+f'(s)bp^n  &\equiv 0  \pmod {p^{n+1}}\\
+ap^n+f'(s)bp^n  &\equiv 0  \pmod {p^{n+1}}\\
+(a+f'(s)b)p^n   &\equiv 0  \pmod {p^{n+1}}\\
+a+f'(s)b        &\equiv 0  \pmod p.
+%\qedhere
+\end{align*}
+Если \(f'(s) \not\equiv 0 \pmod p\), то последнее уравнение однозначным по модулю \(p\) образом определяет \(b\), так как \(\mathbb{Z} / p \mathbb{Z}\) --- поле.
+\end{proof}
+
+\begin{corollary}
+Для любого
+\(\alpha \in \Z/p\Z\)
+существуют единственные представители Тейхмюллера \(\alpha^\tau \in \Z_p\) и \(\alpha^{\tau_n} \in \Z/p^n\Z\), где \(n \geq 1\).
+\end{corollary}
+
+\begin{proof}[Первое доказательство]
+Возьмём \(f(X) = X^p - X\) и применим лемму Гензеля (лемма~\ref{lem:HenselLemmaBasic}).
+\end{proof}
+
+\begin{proofparts}[Второе доказательство (из трёх частей)]
+
+\item[Часть 1.]
+Для любого \(n \geq 1\) имеем индуцированный очевидным гомоморфизмом
+%колец
+\(\rho : \Z/p^n\Z \to \Z/p\Z\) гомоморфизм
+%соответствующих мультипликативных групп
+\(\rho^\times: (\Z/p^n\Z)^\times \to (\Z/p\Z)^\times,\)
+причём \(\lvert\Ker(\rho^\times)\rvert = p^{n-1}\), так как \(\lvert(\Z/p^n\Z)^\times\rvert = p^n - p^{n-1}\) (класс \(l \in \Z\) обратим в \(\Z/k\Z\) тогда и только тогда, когда \(l\) и \(k\) взаимно просты).
+
+\item[Часть 1.]
+Пусть \(\alpha \in (\Z/p\Z)^\times\), пусть \(a_1,a_2 \in \Z/p^n\Z\) и \(\rho(a_1) = \rho(a_2) = \alpha\). Тогда \(a_1,a_2 \in (\Z/p^n\Z)^\times\) и \(a_1^{p^{n-1}} = a_2^{p^{n-1}}\), так как \(a_1/a_2 \in \Ker(\rho^\times)\). Взяв \(a = a_1^{p^{n-1}}\) и \(a_2 = a_1^p\), получаем, что \(a^p = a\).
+%Воспользовавшись представлением
+%\(\Z_p = \lim(\cdots{} \to \Z/p^3\Z \to \Z/p^2\Z \to \Z/p\Z)\), получаем существование и единственность представителей Тейхмюллера.
+
+\item[Часть 3.]
+Если \(a \in \Z/p^n\Z\) и \(\rho(a)=0\), то
+\(a \in p\Z/p^n\Z\), откуда
+получаем, что
+\(a^{n} \in p^n\Z/p^n\Z = 0\).
+\qedhere
+
+\end{proofparts}
+
+\begin{observation}
+Очевидно, что
+для любого \(a \in \Z_p\) существует единственное семейство \((\alpha_i)_{i \in \N_0} \in (\Z/p\Z)^{\N_0}\), такое что
+\(a = \sum_{i = 0}^\infty \alpha_i^\tau p^i\).
+Аналогичное разложение \(a = \sum_{i = 0}^n \alpha_i^{\tau_{n+1}} p^i\) есть для \(a \in \Z/p^{n+1}\Z\).
+\end{observation}
+
+\begin{observation}
+Для любого кольца \(A\) и любого \(a \in A\) выполняются следующие вложения:
+\(p(a + p^n A) \subset pa + p^{n+1} A\),
+где \(n \geq 0\),
+и
+\((a + p^n A)^p \subset a^p + p^{n+1} A\),
+где \(n \geq 1\).
+Другими словами, если \(\tilde{f}(x)=px\) или \(\tilde{f}(x)=x^p\), то существует единственное \(f\), такое что следующая диаграмма коммутативна:
+\begin{equation}
+\begin{tikzcd}%[row sep = scriptsize]
+A \ar{r}{\tilde{f}} \ar[twoheadrightarrow]{d} & A \ar[twoheadrightarrow]{d} \\
+A/p^nA \ar{r}{f} & A/p^{n+1}A\mathrlap{.}
+\end{tikzcd}
+\label{eq:ZpZlift}
+\end{equation}
+Злоупотребляя обозначениями, будем писать \(f(x) = px\) и \(f(x) = x^p\).
+\end{observation}
+
+\begin{remark}
+В верхней строчке диаграммы \eqref{eq:ZpZlift} кольцо \(A\), очевидно, можно заменить на \(A/p^mA\), где \(m \geq n+1\).
+\end{remark}
+
+\begin{observation}
+Разложение в ряды по представителям Тейхмюллера можно описать следующей биекцией:
+\begin{equation}
+%\textstyle
+(\Z/p\Z)^{[n+1]_0}
+\xrightarrow{\sim}
+\Z/p^{n+1}\Z, \quad
+(x_i)_{i \in [n+1]_0}
+\mapsto
+\sum_{i=0}^n p^i x_i^{p^{n-i}}
+=
+\sum_{i=0}^n p^i x_i^{\tau_{n+1}}.
+\label{eq:ghost}
+\end{equation}
+Это можно увидеть, например,
+подняв \(x_i \in \Z/p\Z\) до \(x_i^{\tau_{n+1}} \in \Z/p^{n+1}\Z\) и вычислив:
+\(
+\sum_{i=0}^n p^i (x_i^{\tau_{n+1}})^{p^{n-i}} =
+\sum_{i=0}^n p^i x_i^{\tau_{n+1}}
+\).
+\end{observation}
+
+\begin{observation}[\scshape \(p\)\=/Адические числа как \(p\)\=/типические векторы Витта]
+Если рассмотреть биективное отображение~\eqref{eq:ghost} как отображение \(W_{n+1}(\Z/p\Z) \xrightarrow{\sim} \Z/p^{n+1}\Z\), то оно является гомоморфизмом колец,
+в чём можно убедиться, посмотрев на коммутативную диаграмму~\eqref{eq:IntWittTeichLift},
+где вертикальные стрелки --- стандартные редукции.
+%(используем её поднятие до \(W_{n+1}(\Z) \to \Z\)),
+Отсюда получаем изоморфизм
+\(W(\Z/p\Z) \cong \lim_n W_n(\Z/p\Z) \xrightarrow{\sim} \Z_p \cong \lim_n \Z/p^n\Z\).
+\begin{equation}
+\begin{tikzcd}[column sep = 10.8em,]
+W_{n+1}(\Z) \ar{r}{(x_i)_{i \in [n+1]_0} \mapsto \sum_{i=0}^n p^i x_i^{p^{n-i}}} \ar[twoheadrightarrow]{d} & \Z \ar[twoheadrightarrow]{d} \\
+W_{n+1}(\Z/p\Z) \ar{r}{(x_i)_{i \in [n+1]_0} \mapsto \sum_{i=0}^n p^i x_i^{\tau_{n+1}}} & \Z/p^{n+1}\Z
+\end{tikzcd}
+\label{eq:IntWittTeichLift}
+\end{equation}
 \end{observation}
 
 
@@ -14840,958 +15512,6 @@ e_{k,k} - e_{l,l}
 %\end{remark}
 
 
-%\section%
-%[Векторы Витта и \texorpdfstring{\(p\)-адические}{p-адические} числа]%
-%[Векторы Витта и \texorpdfstring{\(p\)-адические}{p-адические} числа]%
-%{Векторы Витта и \texorpdfstring{\(\bm{p}\)-адические}{p-адические} числа}
-
-\section{Векторы Витта и \texorpdfstring{\(\WTbm{p}\)-адические}{p-адические} числа}
-
-\sectiontableofcontents
-
-%\subsection*{\itshape Соглашения и обозначения}
-%\addcontentsline{toc}{subsection}{\itshape Соглашения и обозначения}
-
-\subsection{Соглашения и обозначения}
-
-\begin{convention}
-В этом разделе \(p \in \N_1\) --- фиксированное простое число, кольца и алгебры считаются коммутативными, ассоциативными и унитальными.
-\end{convention}
-
-%\begin{convention}
-%В этом разделе кольца и алгебры считаются коммутативными, ассоциативными и унитальными.
-%\end{convention}
-
-\begin{notation}
-В этом разделе
-\([n]_0 \coloneqq \{i \in \N_0 \mid 0 \leq i < n\}\),
-где \(n \in \N_0\).
-\end{notation}
-
-
-\subsection{Представители Тейхмюллера}
-
-\subsubsection{Существование и единственность представителей Тейхмюллера}
-
-\begin{definition}[\scshape Представитель Тейхмюллера]
-Пусть отображение \(\pi : R \to \Z/p\Z\), где \(R = \Z_p\) или \(R = \Z/p^n\Z\), \(n \geq 1\), --- это очевидная редукция, пусть \(a \in R\). Если \(a^p = a\), то \(a\) называется \emph{представителем Тейхмюллера} для \(\pi(a) \in \Z/p\Z\).
-\end{definition}
-
-\begin{lemma}[\scshape Лемма Гензеля]
-%Решение сравнения \(f(x) \equiv 0 \pmod {p^n}\)
-%где $f \in \mathbb{Z}[X]$, $f'(x) \not\equiv 0 \pmod p$, можно поднять до решения $\mod p^{n+1}$, причём единственным
-%$\mod {p^{n+1}}$ образом.
-Пусть \(s \in \mathbb{Z}\) и
-\(f(s) \equiv 0 \pmod {p^n}\),
-где \(f \in \mathbb{Z}[X]\) и \(n \geq 1\), причём \(f'(s) \not\equiv 0 \pmod p\). Тогда существует единственное по модулю \(p^{n+1}\) число \(\tilde{s} \in \mathbb{Z}\), такое что \(\tilde{s} \equiv s \pmod {p^n}\) и \(f(\tilde{s}) \equiv 0 \pmod {p^{n+1}}\).
-\end{lemma}
-
-\begin{proof}
-Пусть \(\tilde{s} = s + b p^n\), а \(f(s) = a p^n\). Тогда
-\begin{align*}
-f(s+bp^n)       &\equiv 0  \pmod {p^{n+1}}\\
-f(s)+f'(s)bp^n  &\equiv 0  \pmod {p^{n+1}}\\
-ap^n+f'(s)bp^n  &\equiv 0  \pmod {p^{n+1}}\\
-(a+f'(s)b)p^n   &\equiv 0  \pmod {p^{n+1}}\\
-a+f'(s)b        &\equiv 0  \pmod p.
-%\qedhere
-\end{align*}
-Если \(f'(s) \not\equiv 0 \pmod p\), то последнее уравнение однозначным по модулю \(p\) образом определяет \(b\), так как \(\mathbb{Z} / p \mathbb{Z}\) --- поле.
-\end{proof}
-
-\begin{corollary}
-Для любого
-\(\alpha \in \Z/p\Z\)
-существуют единственные представители Тейхмюллера \(\alpha^\tau \in \Z_p\) и \(\alpha^{\tau_n} \in \Z/p^n\Z\), где \(n \geq 1\).
-\end{corollary}
-
-\begin{proof}
-Возьмём \(f(X) = X^p - X\).
-\end{proof}
-
-\begin{remark}
-Существование и единственность представителей Тейхмюллера можно доказать и другим способом.
-
-Для любого \(n \geq 1\) имеем индуцированный очевидным гомоморфизмом
-%колец
-\(\rho : \Z/p^n\Z \to \Z/p\Z\) гомоморфизм
-%соответствующих мультипликативных групп
-\(\rho^\times: (\Z/p^n\Z)^\times \to (\Z/p\Z)^\times,\)
-причём \(\lvert\Ker(\rho^\times)\rvert = p^{n-1}\), так как \(\lvert(\Z/p^n\Z)^\times\rvert = p^n - p^{n-1}\) (класс \(l \in \Z\) обратим в \(\Z/k\Z\) тогда и только тогда, когда \(l\) и \(k\) взаимно просты).
-
-Пусть \(\alpha \in (\Z/p\Z)^\times\), пусть \(a_1,a_2 \in \Z/p^n\Z\) и \(\rho(a_1) = \rho(a_2) = \alpha\). Тогда \(a_1,a_2 \in (\Z/p^n\Z)^\times\) и \(a_1^{p^{n-1}} = a_2^{p^{n-1}}\), так как \(a_1/a_2 \in \Ker(\rho^\times)\). Взяв \(a = a_1^{p^{n-1}}\) и \(a_2 = a_1^p\), получаем, что \(a^p = a\).
-%Воспользовавшись представлением
-%\(\Z_p = \lim(\cdots{} \to \Z/p^3\Z \to \Z/p^2\Z \to \Z/p\Z)\), получаем существование и единственность представителей Тейхмюллера.
-
-Если \(a \in \Z/p^n\Z\) и \(\rho(a)=0\), то
-\(a \in p\Z/p^n\Z\), откуда \(a^{n} \in p^n\Z/p^n\Z = 0\).
-\end{remark}
-
-\subsubsection{Разложение в ряды по представителям Тейхмюллера}
-
-%\subsubsection{Разложение в ряды по представителям Тейхмюллера}
-
-\begin{observation}
-Очевидно, что
-%элементы \(\Z_p\) можно однозначно раскладывать в ряды по представителям Тейхмюллера:
-для любого \(a \in \Z_p\) существует единственное семейство \((\alpha_i)_{i \in \N_0} \in (\Z/p\Z)^{\N_0}\), такое что
-\(a = \sum_{i = 0}^\infty \alpha_i^\tau p^i\).
-%где \(\alpha_i^\tau\) --- представитель Тейхмюллера \(\alpha_i\).
-Аналогичное разложение \(a = \sum_{i = 0}^n \alpha_i^{\tau_{n+1}} p^i\) есть для \(a \in \Z/p^{n+1}\Z\).
-%\(\Z_p = \sum_{i=0}^\infty [\Z/p\Z] p^i\), где \([\Z/p\Z]\) --- множество представителей Тейхмюллера элементов \(\Z/p\Z\).
-%То есть мы получаем следующую биекцию:
-%\begin{equation}
-%\pi_\bullet : \Z_p \to (\Z/p\Z)^{\times\{0,1,2,\dots{}\}},
-%\quad
-%\textstyle\sum_{i \in \{0,1,2,\dots{}\}} a_i p^i \mapsto (\pi(a_i))_{i \in \{0,1,2,\dots{}\}},
-%\label{eq:pibullet}
-%\end{equation}
-%где \(\pi : \Z_p \to \Z / p \Z\) --- это очевидная редукция, а \(a_i\) для каждого \(i \geq 0\) --- представители Тейхмюллера.
-\end{observation}
-
-%\subsubsection%
-%[Умножение на \texorpdfstring{\(p\)}{p} и возведение в \texorpdfstring{\(p\)-ую}{p-ую} степень]%
-%[Умножение на \texorpdfstring{\(p\)}{p} и возведение в \texorpdfstring{\(p\)-ую}{p-ую} степень]%
-%{Умножение на \texorpdfstring{\(\bm{p}\)}{p} и возведение в \texorpdfstring{\(\bm{p}\)-ую}{p-ую} степень}
-
-%\subsubsection{Умножение на \texorpdfstring{\(\WTbm{p}\)}{p} и возведение в \texorpdfstring{\(\WTbm{p}\)-ую}{p-ую} степень}
-
-\begin{observation}
-Для любого кольца \(A\) и любого \(a \in A\) выполняются следующие вложения:
-\(p(a + p^n A) \subset pa + p^{n+1} A\),
-где \(n \geq 0\),
-и
-\((a + p^n A)^p \subset a^p + p^{n+1} A\),
-где \(n \geq 1\).
-Другими словами, если \(\tilde{f}(x)=px\) или \(\tilde{f}(x)=x^p\), то существует единственное \(f\), такое что следующая диаграмма коммутативна:
-\begin{equation}
-\begin{tikzcd}%[row sep = scriptsize]
-A \ar{r}{\tilde{f}} \ar[twoheadrightarrow]{d} & A \ar[twoheadrightarrow]{d} \\
-A/p^nA \ar{r}{f} & A/p^{n+1}A\mathrlap{.}
-\end{tikzcd}
-\label{eq:ZpZlift}
-\end{equation}
-Злоупотребляя обозначениями, будем писать \(f(x) = px\) и \(f(x) = x^p\).
-\end{observation}
-
-\begin{remark}
-В верхней строчке диаграммы \eqref{eq:ZpZlift} кольцо \(A\), очевидно, можно заменить на \(A/p^mA\), где \(m \geq n+1\).
-\end{remark}
-
-%\begin{statement}
-%Пусть в диаграмме \eqref{eq:ZpZlift} вертикальные стрелки --- это стандартные редукции.
-%Тогда для любого отображения \(\tilde{f} : \Z \to \Z\) существует не более одного отображения \(f : \Z / p^n \Z \to \Z / p^{n+1} \Z\), такого что диаграмма \eqref{eq:ZpZlift} коммутативна.
-%\end{statement}
-%
-%\begin{proof}
-%Очевидно.
-%\end{proof}
-%
-%\begin{statement}[\scshape Умножение на p]
-%Пусть \(n \geq 0\). Пусть \(\tilde{f} : \Z \to \Z\), \(x \mapsto px\). Тогда существует отображение \(f : \Z / p^n \Z \to \Z / p^{n+1} \Z\), такое что диаграмма \eqref{eq:ZpZlift} коммутативна.
-%Злоупотребляя обзначениями, обозначим его \(x \mapsto px : \Z / p^n \Z \to \Z / p^{n+1} \Z\).
-%\end{statement}
-%
-%\begin{proof}
-%Если \(a \in \Z\), то \(p(a + p^n \Z) \subset pa + p^{n+1} \Z\).
-%\end{proof}
-%
-%\begin{statement}[\scshape Возведение в p-ую степень]
-%Пусть \(n \geq 1\). Пусть \(\tilde{f} : \Z \to \Z\), \(x \mapsto x^p\). Тогда существует отображение \(f : \Z / p^n \Z \to \Z / p^{n+1} \Z\), такое что диаграмма \eqref{eq:ZpZlift} коммутативна.
-%Злоупотребляя обзначениями, обозначим его \(x \mapsto x^p : \Z / p^n \Z \to \Z / p^{n+1} \Z\).
-%\end{statement}
-%
-%\begin{proof}
-%Если \(a \in \Z\), то \((a + p^n \Z)^p \subset a^p + p^{n+1} \Z\).
-%\end{proof}
-%
-%\begin{remark}
-%Вообще, вложения
-%\(p(a + p^n A) \subset pa + p^{n+1} A\),
-%где \(n \geq 0\),
-%и
-%\((a + p^n A)^p \subset a^p + p^{n+1} A\),
-%где \(n \geq 1\),
-%выполняются для любого кольца \(A\) и любого \(a \in A\).
-%\end{remark}
-
-%\subsubsection{Формула разложения по представителям Тейхмюллера}
-
-\begin{observation}
-%Отображение \(x \mapsto x^{p^n} : \Z/p\Z \to \Z/p^{n+1}\Z\) сопоставляет \(x \in \Z/p\Z\) соответствующего представителя Тейхмюллера.
-Разложение в ряды по представителям Тейхмюллера можно описать следующей биекцией:
-%где \(x_i^\tau\), \(0 \leq i \leq n\), --- это представитель Тейхмюллера для \(x_i\):
-\begin{equation}
-%\textstyle
-(\Z/p\Z)^{[n+1]_0}
-\xrightarrow{\sim}
-\Z/p^{n+1}\Z, \quad
-(x_i)_{i \in [n+1]_0}
-\mapsto
-\sum_{i=0}^n p^i x_i^{p^{n-i}}
-=
-\sum_{i=0}^n p^i x_i^{\tau_{n+1}}.
-\label{eq:ghost}
-\end{equation}
-Это можно увидеть, например,
-подняв \(x_i \in \Z/p\Z\) до \(x_i^{\tau_{n+1}} \in \Z/p^{n+1}\Z\) и вычислив:
-\(
-\sum_{i=0}^n p^i (x_i^{\tau_{n+1}})^{p^{n-i}} =
-\sum_{i=0}^n p^i x_i^{\tau_{n+1}}
-\).
-%\begin{equation*}
-%\begin{tikzcd}[row sep = scriptsize]
-%\Z^{\underline{n+1}} \ar{r} \ar[hookrightarrow]{d} & \Z \ar[hookrightarrow]{d}
-%\\
-%(\Z_p)^{\underline{n+1}} \ar{r} \ar[twoheadrightarrow]{d} & \Z_p \ar[twoheadrightarrow]{d}
-%\\
-%(\Z/p\Z)^{\underline{n+1}} \ar{r} & \Z/p\Z
-%\end{tikzcd}
-%\end{equation*}
-%Следующие два отображения являются взаимно обратными:
-%\begin{equation*}
-%(x_i)_{i \in \underline{n+1}}
-%\mapsto
-%\sum_{i=0}^n p^i x_i^{p^{n-i}} :
-%(\Z/p\Z)^{\underline{n+1}}
-%\longleftrightarrow
-%\Z/p^{n+1}\Z :
-%(x_i)_{i \in \underline{n+1}} 
-%\mathrel{\reflectbox{\(\mapsto\)}}
-%\sum_{i=0}^n p^i [x_i]
-%%
-%%(x_0,x_1,\dots{},x_n)
-%%(x_i)_{i \in \underline{n+1}}
-%%\mapsto
-%%\sum_{i=0}^n p^i x_i^{p^{n-i}}
-%%&:
-%%(\Z/p\Z)^{\underline{n+1}}
-%%\to
-%%\Z/p^{n+1}\Z,
-%%\\
-%%\sum_{i=0}^n p^i [\alpha_i]
-%%\mapsto
-%%(\alpha_i)_{i \in \underline{n+1}}
-%%&:
-%%\Z/p^{n+1}\Z
-%%\to
-%%(\Z/p\Z)^{\underline{n+1}},
-%\end{equation*}
-%где \([x_i]\), \(0 \leq i \leq n\), --- это представитель Тейхмюллера \(x_i \in \Z/p\Z\).
-\end{observation}
-
-
-\subsubsection{Что мы хотим построить}
-
-Пусть для каждого кольца \(R\)
-%и для каждого \(n \geq 0\)
-%на множестве \(R^{\underline{n+1}}\) введена структура кольца
-%\(W_{n+1}(R)\) и
-на множестве \(R^{\N_0}\) определена согласованная со структурой функтора от \(R\) структура кольца \(W(R)\),
-такая что
-проекции
-\(
-R^{\N_0} \to R^{[n]_0}
-\)
-индуцируют структуры колец \(W_n(R)\) на \(R^{[n]_0}\)
-%\(
-%W(R) \to W_n(R)
-%\)
-%предельный конус множеств
-%\[
-%R^{\times\{0,1,2,\dots{}\}}
-%\longrightarrow
-%(\cdots \to R^{\underline{n+1}} \to R^{\underline{n}} \to \cdots)
-%\]
-%индуцирует предельный конус колец
-%\[
-%W(R)
-%\longrightarrow
-%(\cdots \to W_{n+1}(R) \to W_n(R) \to \cdots)
-%\]
-и отображения
-\(
-W_{n+1}(R) \to R
-\),
-\(
-(x_i)_{i \in [n+1]_0}
-\mapsto
-\sum_{i=0}^n p^i x_i^{p^{n-i}}
-\)
-являются гомоморфизмами колец.
-\begin{equation}
-\begin{tikzcd}[column sep = 10.8em,]
-W_{n+1}(\Z) \ar{r}{(x_i)_{i \in [n+1]_0} \mapsto \sum_{i=0}^n p^i x_i^{p^{n-i}}} \ar[twoheadrightarrow]{d} & \Z \ar[twoheadrightarrow]{d} \\
-W_{n+1}(\Z/p\Z) \ar{r}{(x_i)_{i \in [n+1]_0} \mapsto \sum_{i=0}^n p^i x_i^{\tau_{n+1}}} & \Z/p^{n+1}\Z
-\end{tikzcd}
-\label{eq:IntWittTeichLift}
-\end{equation}
-Тогда биекция~\eqref{eq:ghost}: \(W_{n+1}(\Z/p\Z) \xrightarrow{\sim} \Z/p^{n+1}\Z\) является гомоморфизмом колец,
-в чём можно убедиться, посмотрев на коммутативную диаграмму~\eqref{eq:IntWittTeichLift},
-где вертикальные стрелки --- стандартные редукции,
-%(используем её поднятие до \(W_{n+1}(\Z) \to \Z\)),
-откуда получаем изоморфизм
-\(W(\Z/p\Z) \cong \lim_n W_n(\Z/p\Z) \xrightarrow{\sim} \Z_p \cong \lim_n \Z/p^n\Z\).
-%\begin{enumerate}
-%
-%\item
-%согласованная со структурой функтора от \(R\) на \(R^{\underline{n+1}}\);
-%
-%\item
-%согласованная с отображениями
-%\(
-%(x_i)_{i \in \underline{n+1}} \mapsto (x_i)_{i \in \underline{n}} : R^{\underline{n+1}} \to R^{\underline{n}};
-%\)
-%
-%\item
-%такая что отображения
-%\(
-%(x_i)_{i\in \underline{n+1}}
-%\mapsto
-%\sum_{i=0}^n p^i x_i^{p^{n-i}}
-%:
-%R^{\underline{n+1}} \to R
-%\)
-%являются гомоморфизмами колец.
-%
-%\end{enumerate}
-%согласованная со структурой функтора от \(R\) и согласованная с отображениями ограничения
-%\[
-%(x_i)_{i \in \underline{n+1}} \mapsto (x_i)_{i \in \underline{n}} : R^{\underline{n+1}} \to R^{\underline{n}},
-%\]
-%такая что отображения
-%\[
-%(x_i)_{i\in \underline{n+1}}
-%\mapsto
-%\sum_{i=0}^n p^i x_i^{p^{n-i}}
-%:
-%R^{\underline{n+1}} \to R
-%\]
-%являются гомоморфизмами колец.
-%Пусть \(W_{n+1}(R)\) обозначает множество \(R^{\underline{n+1}}\) с этой кольцевой структурой.
-%Тогда следующая коммутативная диаграмма, где \(\tilde{f}\) и \(f\) определены формулой
-%\(
-%(x_i)_{i\in \underline{n+1}}
-%\mapsto
-%\sum_{i=0}^n p^i x_i^{p^{n-i}}
-%\):
-%\begin{equation*}
-%\begin{tikzcd}[row sep = scriptsize]
-%W_{n+1}(\Z)
-%	\ar{r}{
-%		\tilde{f}
-%%		(x_i)_{i\in \underline{n+1}}
-%%		\,\mapsto\,
-%%		\sum_{i=0}^n p^i x_i^{p^{n-i}}
-%	}
-%	\ar[twoheadrightarrow]{d} &
-%\Z
-%	\ar[twoheadrightarrow]{d}
-%\\
-%W_{n+1}(\Z/p\Z)
-%	\ar{r}{
-%		f
-%%		(x_i)_{i\in \underline{n+1}}
-%%		\,\mapsto\,
-%%		\sum_{i=0}^n p^i x_i^{p^{n-i}}
-%	} &
-%\Z/p^{n+1}\Z
-%\end{tikzcd}
-%\end{equation*}
-%показывает, что
-%биекция \(f\)
-%\[
-%(x_i)_{i\in \underline{n+1}}
-%\mapsto
-%\sum_{i=0}^n p^i x_i^{p^{n-i}}
-%:
-%W_{n+1}(\Z/p\Z) \to \Z/p^{n+1}\Z
-%\]
-%является изоморфизмом колец.
-%Эти изоморфизмы индуцируют изоморфизм
-%\(W(\Z/p\Z) = \lim_n W_n(\Z/p\Z) \xrightarrow{\sim} \Z_p\).
-%\[
-%\textstyle
-%\lim_n(W_n(\Z/p\Z))
-%= W(\Z/p\Z)
-%\cong
-%\Z_p = \lim_n(\Z/p^n\Z).
-%\]
-%\[
-%\begin{tikzcd}[column sep = scriptsize]
-%W(\Z/p\Z) \ar{d} \ar[equal]{r}{def} &
-%\lim(\cdots \to W_{n+1}(\Z/p\Z) \to W_n(\Z/p\Z) \to \cdots)
-%\\
-%\Z_p \ar[equal]{r} &
-%\lim(\cdots \to \Z/p^{n+1}\Z \to \Z/p^n\Z \to \cdots).
-%\end{tikzcd}
-%\]
-
-
-
-
-
-%\subsubsection{Наблюдение}
-%
-%Рассмотрим целые \(p\)-адические числа
-%\[
-%a = \sum_{i=0}^\infty  a_i p^i,\quad
-%b = \sum_{i=0}^\infty  b_i p^i,\quad
-%c = \sum_{i=0}^\infty  c_i p^i,
-%\]
-%где \(a_i\), \(b_i\), \(c_i\) для каждого \(i \geq 0\) --- представители Тейхмюллера.
-%Условие, что \(c = a + b\), можно записать так:
-%для любого \(n \geq 0\) выполняется сравнение
-%\[
-%%\forall n \quad
-%\sum_{i=0}^n  c_i p^i \equiv
-%\sum_{i=0}^n  a_i p^i +
-%\sum_{i=0}^n  b_i p^i \pmod {p^{n+1}}.
-%\]
-%Учитывая, что \(a_i\), \(b_i\), \(c_i\) --- представители Тейхмюллера, это можно
-%переписать так:
-%для любого \(n \geq 0\) выполняется сравнение
-%\begin{equation}\label{eq0}
-%%\forall n \quad
-%\sum_{i=0}^n  c_i^{p^{n-i}} p^i \equiv
-%\sum_{i=0}^n  a_i^{p^{n-i}} p^i +
-%\sum_{i=0}^n  b_i^{p^{n-i}} p^i \pmod {p^{n+1}}.
-%\end{equation}
-%А эти условия уже
-%зависят
-%%не зависят от того, какие поднятия элементов из
-%%$\mathbb{Z}/p\mathbb{Z}$
-%%мы используем (то есть они зависят
-%только от классов \(a_i\), \(b_i\), \(c_i\) по модулю \(p\), благодаря следующей лемме:
-%
-%\begin{lemma}
-%\[
-%a \equiv b \pmod p
-%\implies
-%{a}^{p^n} \equiv {b}^{p^n} \pmod {p^{n+1}}.
-%\]
-%\end{lemma}
-%
-%\begin{proof}
-%\begin{gather*}
-%a = b + p^n \zeta
-%\implies
-%a^p = (b + p^n \zeta)^p = b^p + p^{n+1} \xi,
-%\\
-%\text{то есть}
-%\\
-%a \equiv b \pmod{p^n} \implies a^p \equiv b^p \pmod{p^{n+1}}.
-%\qedhere
-%\end{gather*}
-%%Если \(a = b + p^n \zeta\), то \(a^p = (b + p^n \zeta)^p = b^p + p^{n+1} \xi\), то есть \(a \equiv b \pmod{p^n} \implies a^p \equiv b^p \pmod{p^{n+1}}\).
-%\end{proof}
-
-
-
-%\subsubsection{Декларация намерения}
-%
-%Утверждение, которые мы собираемся доказать, такое:
-%на множестве \((\Z/p\Z)^{\times\{0,1,2,\dots{}\}}\) существует определённая многочленами с целыми коэффициентами структура кольца, такая что биекция \(\pi_\bullet\) становится изоморфизмом колец.
-%
-%Другими словами и более строго:
-%для каждого кольца \(R\) на множестве \(R^{\times\{0,1,2,\dots{}\}}\) существует согласованная со структурой функтора от \(R\) структура кольца, такая что для \(R = \Z/p\Z\) биекция \(\pi_\bullet\) становится изоморфизмом колец.
-%
-%\subsubsection{Полиномиальные формулы}
-%
-%Мы найдём такие
-%\(
-%C_0, C_1, \dots{} \in \mathbb{Z}[A_0, A_1, \dots{}, B_0, B_1, \dots{}],
-%\)
-%для которых равенства
-%\begin{equation}
-%\sum_{i=0}^n  C_i^{p^{n-i}} p^i =
-%\sum_{i=0}^n  A_i^{p^{n-i}} p^i +
-%\sum_{i=0}^n  B_i^{p^{n-i}} p^i
-%\label{eq:Ci}
-%\end{equation}
-%будут выполнятся как тождества между многочленами с коэффициентами в \(\mathbb{Z}\). Для \(c = a b\) всё то же самое. Эти \(C_i\)-ые и будут нужными нам полиномиальными формулами операций.
-%
-%\begin{remark}
-%Нетрудно заметить, что равенства \eqref{eq:Ci} однозначным образом по индукции определяют \(C_n\) как многочлены с коэффициентами в \(\Z[1/p]\). Нетривиальная часть заключается в том, чтобы доказать, что коэффициенты \(C_n\) лежат в \(\Z\).
-%\end{remark}
-%
-%\begin{remark}
-%%Пусть \(\pi : \mathbb{Z}_p \leftrightarrows \mathbb{Z} / p \mathbb{Z} : \tau\) --- это очевидная редукция и отображение, сопоставляющее элементу \(\mathbb{Z} / p \mathbb{Z}\) соответствующего представителя Тейхмюллера. Тогда для каждого \(i\) выполняется сравнение
-%Поясним связь \(C_i\) и \(\pi_\bullet\).
-%Пусть \(\pi : \Z_p \to \Z / p \Z\) --- это очевидная редукция, пусть \(\tau: \Z / p \Z \to \Z_p\) --- это отображение, сопоставляющее элементу \(\mathbb{Z} / p \mathbb{Z}\) соответствующего представителя Тейхмюллера. Тогда для любого \(i \geq 0\) выполняется следующее сравнение:
-%\begin{gather*}
-%\tau (C_i(\pi(a_0), \pi(a_1), \dots{}, \pi(b_0), \pi(b_1), \dots{}))
-%%=\\
-%=
-%\tau ( \pi (C_i(a_0, a_1, \dots{}, b_0, b_1, \dots{})))
-%\equiv\\
-%\equiv C_i(a_0, a_1, \dots{}, b_0, b_1, \dots{})
-%\pmod {p}.
-%\end{gather*}
-%Выбор \(c_i = C_i(a_0, a_1, \dots{}, b_0, b_1, \dots{})\) удовлетворяет условию \eqref{eq0}, поэтому выбор
-%\(
-%c_i = \tau (C_i(\pi(a_0), \pi(a_1), \dots{}, \pi(b_0), \pi(b_1), \dots{}))
-%\) --- тоже.
-%\end{remark}
-
-
-\subsection{Векторы Витта}
-
-\subsubsection{Формулировка утверждения}
-
-%\begin{definition}[\scshape Множество векторов Витта]
-%Пусть \(R\) --- кольцо. Определим \emph{множество векторов Витта}:
-%\(
-%%\mathbb{W}(R) \coloneqq R^{\times\{1,2,3,\dots{}\}}
-%\mathbb{W}(R) \coloneqq R^{\N_1}
-%\).
-%Множество \(\mathbb{W}(R)\) наследует от \(R^{\N_1}\) структуру функтора от \(R\).
-%\end{definition}
-%
-%\begin{definition}[\scshape Призрачные компоненты]
-%Пусть \(R\) --- кольцо.
-%%Определим \emph{фантомное отображение} следующим образом:
-%%\begin{gather*}
-%%\mathbb{W}(R) \to R^{\times\{1,2,3,\dots{}\}},\
-%%(x_n)_{n \in \{1,2,\dots{}\}} \mapsto
-%%(x^{(n)})_{n \in \{1,2,\dots{}\}},\
-%%x^{(n)} \coloneqq \textstyle\sum_{e \mid n} e x_e^{n/e}.
-%%\end{gather*}
-%Элементы \(x^{(n)} \coloneqq \sum_{e \mid n} e x_e^{n/e} \in R\), где \(n \geq 1\), называются \emph{призрачными компонентами} вектора \((x_n)_{n \in \N_1} \in \mathbb{W}(R)\).
-%%Очевидно, что фантомное отображение является естественным преобразованием функторов от \(R\).
-%\end{definition}
-%
-%\begin{statement}[\scshape Существование и единственность]
-%Для каждого кольца \(R\) на множестве \(\mathbb{W}(R)\) существует единственная согласованная со структурой функтора от \(R\) структура кольца, такая что
-%для каждого \(m \geq 1\)
-%отображение
-%\(
-%\mathbb{W}(R) \to R
-%\),
-%\(
-%(x_n)_{n \in \N_1} \mapsto x^{(m)}
-%\)
-%%\((x_n)_{n \in \N_1} \mapsto x^{(m)}\)
-%является гомоморфизмом колец.
-%\label{st:witt1}
-%\end{statement}
-
-\begin{statement}%[\scshape Существование и единственность]
-Для каждого кольца \(R\) на множестве \(\mathbb{W}(R) \coloneqq R^{\N_1}\), называемом \emph{множеством векторов Витта}, существует единственная согласованная со структурой функтора от \(R\) структура кольца, такая что
-для каждого \(m \geq 1\)
-отображение
-\(
-\mathbb{W}(R) \to R
-\),
-\(
-(x_n)_{n \in \N_1} \mapsto x^{(m)}
-\coloneqq \sum_{e \mid m} e x_e^{m/e}
-\),
-называемое \emph{\(m\)-ой призрачной/фантомной компонентой},
-является гомоморфизмом колец.
-\label{st:witt1}
-\end{statement}
-
-\subsubsection{Доказательство единственности}
-
-\dotparagraph{Универсальный случай}
-Чтобы доказать утвеждение \ref{st:witt1} 
-%\(R = \Z[X_1,X_2,\dots{},Y_1,Y_2,\dots{}]\)
-%то есть свободное кольцо для множества
-%\(\{X_1,X_2,\dots{},Y_1,Y_2,\dots{}\}\),
-вычислим сумму и произведение
-векторов
-\(
-(X_i)_{i \in \N_1},
-(Y_i)_{i \in \N_1}
-\in
-\mathbb{W}\bigl(\Z\bigl[ X_i, Y_i \,|\, i \in \N_1 \bigr]\bigr)
-\).
-%\((X_i)_{i \in \N_1}\) и
-%\((Y_i)_{i \in \N_1}\) в
-%%\(\mathbb{W}(\Z[(X_i)_{i \in \N_1}, (Y_i)_{i \in \N_1}])\).
-%\(\mathbb{W}\bigl(\Z\bigl[ X_i, Y_i \,|\, i \in \N_1 \bigr]\bigr)\).
-Это задаст сумму и произведение любых
-%векторов Витта
-\((x_i)_{i \in \N_1},(y_i)_{i \in \N_1} \in \mathbb{W}(R)\)
-для любого
-кольца
-\(R\)
-применением гомоморфизма
-\(
-%\Z[(X_i)_{i \in \N_1}, (Y_i)_{i \in \N_1}]
-\Z\bigl[X_i, Y_i \,|\, i \in \N_1 \bigr]
-\to R
-\),
-\(X_i \mapsto x_i\),
-\(Y_i \mapsto y_i\) 
-для всех
-\(i \in \N_1\).
-Для вычисления
-%суммы и произведения
-%\(X\) и \(Y\)
-также будет использоваться вложение
-\(\iota :
-%\Z[(X_i)_{i \in \N_1}, (Y_i)_{i \in \N_1}]
-\Z\bigl[X_i, Y_i \,|\, i \in \N_1 \bigr]
-\hookrightarrow
-%\Q[(X_i)_{i \in \N_1}, (Y_i)_{i \in \N_1}].
-\Q\bigl[X_i, Y_i \,|\, i \in \N_1 \bigr].
-%\label{eq:ZQemb}
-\)
-
-\dotparagraph{Единственность и свойства}
-Применив \(\iota\)
-и заметив, что в \(\Q\)-ал\-ге\-брах \(x_n\) восстанавливается по индукции из
-\(
-x^{(n)} = \sum_{e \mid n} e x_e^{n/e}
-\),
-сразу
-получаем единственность сложения и умножения и свойства кольца: для проверки ассоциативности и дистрибутивности
-используем
-векторы
-%универсальную тройку векторов
-\(
-(X_i)_{i \in \N_1},
-(Y_i)_{i \in \N_1},
-(Z_i)_{i \in \N_1}
-\in
-\mathbb{W}\bigl(\Z\bigl[ X_i, Y_i, Z_i \,|\, i \in \N_1 \bigr]\bigr).
-\)
-%вычислим \(X(YZ)\), \((XY)Z\), \(X+(Y+Z)\), \((X+Y)+Z\), где
-%\(X = (X_1,X_2,\dots{})\),
-%\(Y = (Y_1,Y_2,\dots{})\),
-%\(Z = (Z_1,Z_2,\dots{})\)
-%--- элементы
-%\(\mathbb{W}(\Z(X_1,X_2,\dots{},Y_1,Y_2,\dots{},Z_1,Z_2,\dots{}))\).
-%следующих трёх векторов:
-%\begin{gather*}
-%(X_1,X_2,\dots{}),
-%(Y_1,Y_2,\dots{}),
-%(Z_1,Z_2,\dots{})
-%\in \\
-%\in
-%\mathbb{W}(\Z(X_1,X_2,\dots{},Y_1,Y_2,\dots{},Z_1,Z_2,\dots{})).
-%\end{gather*}
-
-\subsubsection{Доказательство существования}
-
-%\paragraph{План}
-%Осталось доказать {существование} суммы и произведения векторов Витта. Для этого построим биекцию между векторами Витта и формальными рядами с <<постоянным членом>> 1 и выразим призрачные компоненты через логарифмическое дифферецирование.
-
-\dotparagraph{Формальные ряды}
-Для произвольного кольца \(R\) построим биекцию
-\[
-\mathbb{W}(R) \xrightarrow{\sim} 1 + t R[[t]] \subset R[[t]],
-\quad
-(x_n)_{n \in \N_1}
-\mapsto
-%\textstyle
-\prod_{n \geqslant 1} (1 - x_n t^n).
-\]
-Коэффициенты ряда
-\(\prod_{n \geqslant 1} (1 - x_n t^n)\)
-и \(x_n\), где \(n \geq 1\),
-восстанавливаются друг из друга по индукции как
-многочлены с коэффициентами в \(\mathbb{Z}\).
-
-\dotparagraph{Логарифмическое дифференцирование}
-Выполняется равенство
-\[
--t {\frac{d}{dt}} \log \prod_{n \geqslant 1} (1 - X_n t^n)
-= \sum_{m \geqslant 1} X^{(m)} t^m.
-\]
-Это легко увидеть, зная, что логарифмическая производная геометрической прогрессии равна ей самой:
-\begin{equation}\label{eq1}
-\frac{d}{df} \log \sum_{i=0}^\infty f^i = \sum_{i=0}^\infty f^i
-\quad
-\text{или}
-\quad
-f \frac{d}{df} \log \sum_{i=0}^\infty f^i = \sum_{i=1}^\infty f^i,
-\end{equation}
-%зная формулу суммы геометрической прогрессии:
-%\(
-%(1-f)^{-1} = \sum_{i=0}^\infty f^i
-%\)
-взяв \(f \coloneqq X_n t^n\) и заметив, что тогда выполняется равенство \(f \frac{d}{df} = \frac{1}{n} t \frac{d}{dt}\).
-
-\begin{remark}
-Формула~\eqref{eq1} является легко запоминаемой формой <<ряда Меркатора>>, то есть ряда для логарифма:
-%\(
-%\frac{d}{df} \log \left((1-f)^{-1}\right) = \sum_{i=0}^\infty f^i
-%\),
-%\(
-%-\log(1-f) = \sum_{i=1}^\infty f^i / i
-%\).
-%\(
-%\frac{d}{df} \log ((1-f)^{-1}) = \sum_{i=0}^\infty f^i
-%\),
-%\(
-%-\log(1-f) = \sum_{i=1}^\infty f^i/i
-%\).
-\begin{equation*}
-\frac{d}{df} \log \frac{1}{1-f} = 1 + f + f^2 + \cdots{},
-\quad
--\log(1-f) = f + \frac{f^2}{2} + \frac{f^3}{3} + \cdots{}.
-%\label{eq:LogSeriesGeom}
-\end{equation*}
-\end{remark}
-
-\dotparagraph{Сложение и умножение}
-Теперь очевидно, что сложению векторов Витта соответствует ум\-но\-же\-ние соответствующих рядов.
-Описать ум\-но\-же\-ние
-векторов Витта
-%которое мы будем обозначать символом пятиконечной звезды \(\star\),
-тоже не очень трудно:
-\begin{gather*}
-%	-t \frac{d}{dt} \log %
-%	\biggl(
-%		\Bigl( \prod_{n \geq 1} (1 - X_n t^n) \Bigr)
-%		\star
-%		\Bigl( \prod_{n \geq 1} (1 - Y_n t^n) \Bigr)
-%	\biggr)
-%	=
-%	\nonumber\\
-%	=
-	\sum_{\substack{m \geqslant 1 \\ e,r \mid m}}
-	e X_e^{m/e}
-	r Y_r^{m/r}
-	t^m
-   =
-   \sum_{n,e,r \geqslant 1}
-	er
-	\bigl(
-		X_e^{{\mathrm{lcm}(e,r)}/{e}}
-		Y_r^{{\mathrm{lcm}(e,r)}/{r}}
-		t^{\mathrm{lcm}(e,r)}
-	\bigr)^n
-   =
-   \nonumber\\
-   =
-   -t \frac{d}{dt}
-   \log \prod_{e,r \geqslant 1}
-	\bigl(1 -
-		X_e^{{\mathrm{lcm}(e,r)}/{e}}
-		Y_r^{{\mathrm{lcm}(e,r)}/{r}}
-		t^{\mathrm{lcm}(e,r)}
-	\bigr)^{{er}/{\mathrm{lcm}(e,r)}}.
-	\label{eq:WittVectMultLogDer}
-\end{gather*}
-Первое равенство --- тавтология.
-Чтобы получить второе равенство, возьмём
-\(
-	f \coloneqq
-	X_e^{{\mathrm{lcm}(e,r)}/{e}}
-	Y_r^{{\mathrm{lcm}(e,r)}/{r}}
-	t^{\mathrm{lcm}(e,r)}
-\),
-заметим, что
-тогда выполняется равенство \(f \frac{d}{df} = \frac{1}{\mathrm{lcm}(e,r)} t \frac{d}{dt}\)
-и применим формулу~\eqref{eq1}.
-
-%\subsubsection%
-%[\texorpdfstring{\(p\)-Типические}{p-Типические} векторы Витта]%
-%[\texorpdfstring{\(p\)-Типические}{p-Типические} векторы Витта]%
-%{\texorpdfstring{\(\bm{p}\)-Типические}{p-Типические} векторы Витта}
-
-\subsubsection{\texorpdfstring{\(\WTbm{p}\)-Типические}{p-Типические} векторы Витта}
-
-\begin{definition}[\scshape \(p\)-Типические векторы Витта]
-Пусть \(R\) --- кольцо. Из формулы
-\(x^{(n)} = \textstyle\sum_{e \mid n} e x_e^{n/e}\)
-нетрудно убедится, что если применить проекцию забывания всех координат, кроме степеней фиксированного простого:
-\(
-R^{\{1,2,3,\dots{}\}}
-\to
-R^{\{p^0,p^1,p^2,\dots{}\}}
-\),
-то кольцевая структура \(\mathbb{W}(R)\) на \(R^{\N_1}\) индуцирует кольцевую структуру \(W(R)\) на \(R^{\{p^0,p^1,p^2,\dots{}\}} \leftrightarrow R^{\N_0}\). Кольцо \(W(R)\) называется кольцом \emph{\(p\)-типических векторов Витта}.
-\end{definition}
-
-\begin{remark}
-Операции на \(W(R)\) задаются функториальностью по \(R\) и условием аддитивности и мультипликативности для любого \(k \geq 0\) следующих отображений:
-\(
-%\textstyle
-W(R) \to R
-\),
-\(
-(x_n)_{n \in \N_0}
-\mapsto
-x^{(k)_p} \coloneqq
-\sum_{l=0}^k p^l x_l^{p^{k-l}}
-\).
-\end{remark}
-
-\begin{remark}
-Имеем изоморфизм
-\(W(\Z/p\Z) \xrightarrow{\sim} \Z_p\),
-\((x_i)_{i \in \N_0} \mapsto \sum_{i=0}^\infty p^i x_i^\tau\).
-\end{remark}
-
-\subsubsection{Векторы Витта и унитальные многочлены}
-
-\begin{convention}[\scshape Топология Крулля на формальных рядах]
-Пусть \(A\) --- коммутативное ассоциативное унитальное кольцо.
-Тогда стандартную топологию обратного предела на кольце формальных рядов
-\(A[[t]] = \lim_{n=1}^{\infty} A[t] / t^n A\)
-будем называть \emph{топологией Крулля}.
-\end{convention}
-
-\begin{notation}
-Обозначим категорию ассоциативных коммутативных унитальных колец через \(\mr{Ann}\),
-топологических абелевых групп --- через \(\mr{TopAb}\),
-топологических унитальных колец --- через \(\mr{TopRing}\).
-%унитальных полуколец --- через \(\mr{SemiRing}\).
-\end{notation}
-
-\begin{notation}[\scshape НОК]
-Пусть \(n, m \in \N_1\).
-Тогда \([n,m] \coloneqq \mathrm{lcm}(n,b)\).
-\end{notation}
-
-\begin{notation}[\scshape Унитальные многочлены]
-Пусть \(A\) --- ассоциативное коммутативное унитальное кольцо.
-Тогда через \(A[t]_{\mr{mon}}\) обозначним множество элементов \(A[t]\) со старшим коэффициентом \(1\).
-\end{notation}
-
-\begin{observation}
-Пусть \(A\) --- ассоциативное коммутативное унитальное кольцо, а \(\Lambda \subset A\) --- конечное подмножество \(A\).
-Тогда если \(\prod_{\lambda \in \Lambda} (t - \lambda) \in 1 + t A[[t]]\),
-то есть
-\(\prod_{\lambda \in \Lambda} \lambda = (-1)^{\card(\Lambda)}\),
-то
-%\(\Lambda \subset A^{\times}\) и
-\(
-\prod_{\lambda \in \Lambda} (t - \lambda)
-=
-\prod_{\lambda \in \Lambda} (1 - {\lambda}^{-1} t)
-\).
-\end{observation}
-
-\begin{observation}[\scshape Векторы Витта и корни многочленов]
-Пусть \(\mathbb{W}_{\mr{add}} : \mr{Ann} \to \mr{TopAb}\) --- функтор,
-переводящий кольцо \(A\) в топологическую абелеву группу \(1 + t A[[t]] \subset A[[t]]\) с операцией умножения рядов в качестве сложения и топологией Крулля.
-Тогда существует единственное продолжение \(\mathbb{W}_{\mr{add}}\) до функтора
-\(\mathbb{W} : \mr{Ann} \to \mr{TopRing}\),
-%в категорию унитальных топологических колец,
-такого что для любого
-%коммутативного ассоциативного унитального кольца \(A\)
-\(A \in \Ob(\mr{Ann})\)
-и для любых \(a, b \in A\)
-выполняется равенство
-\((1 - a t) \star (1 - b t) = 1 - ab t\),
-где \(\star\) --- это произведение в \(\mathbb{W}(A)\).
-%\begin{equation}
-%(1 - a t) \star (1 - b t) = 1 - ab t
-%\label{eq:WittVectMultBasicLin}
-%\end{equation}
-\end{observation}
-
-\begin{remark}
-Другой способ доказать, что произведение векторов Витта задаётся многочленами с целыми, а не просто рациональными коэффициентами, и получить формулу~\eqref{eq:WittVectMultStand}
---- вычисления~\eqref{eq:WittVectMultCyclotomic} и~\eqref{eq:WittVectMultConst}, из которых выводится~\eqref{eq:WittVectMultBasis}.
-\begin{gather}
-	\bigl( \prod_{\mathclap{e \geq 1}} (1 - X_e t^e) \bigr)
-	\star
-	\bigl( \prod_{\mathclap{r \geq 1}} (1 - Y_r t^r) \bigr)
-	=
-   \prod_{\mathclap{e,r \geqslant 1}}
-	(1 -
-		X_e^{[e,r]/e}
-		Y_r^{[e,r]/r}
-		t^{[e,r]}
-	)^{er/[e,r]}
-	\label{eq:WittVectMultStand}
-	\displaybreak[0]
-	\\[\smallskipamount]
-	(1 - t^e) \star (1 - t^r)
-	=
-	(1 - t^{[e,r]})^{er / [e,r]}
-	\label{eq:WittVectMultCyclotomic}
-	\displaybreak[0]
-	\\%[\smallskipamount]
-	(1 - X_s t^s) = (1 - X_s^{1/s} t) \star (1 - t^s)
-	\label{eq:WittVectMultConst}
-	\displaybreak[0]
-	\\[\smallskipamount]
-%	\begin{multlined}[320pt]
-	(1 - X_e t^e)
-	\star
-	(1 - Y_r t^r)
-	=
-%	\\
-%	=
-	(1 - X_e^{1/e} t)
-	\star
-	(1 - Y_r^{1/r} t)
-	\star
-	(1 - t^e)
-	\star
-	(1 - t^r)
-	=
-	\nonumber\\
-	=
-	(1 - X_e^{1/e} Y_r^{1/r} t)
-	\star
-	(1 - t^{[e,r]})^{er / [e,r]}
-	=
-%	\\
-%	=
-	(1 -
-		X_e^{[e,r]/e}
-		Y_r^{[e,r]/r}
-		t^{[e,r]}
-	)^{er/[e,r]}
-	\label{eq:WittVectMultBasis}
-%	\end{multlined}
-\end{gather}
-Коэффициенты~\eqref{eq:WittVectMultStand} лежат в
-\(
-\Z[X_i, Y_i \smid i \in \N_1]
-\subset
-\Q[X_i, Y_i \smid i \in \N_1]
-\).
-Коэффициенты~\eqref{eq:WittVectMultCyclotomic} лежат в \(\Z \subset \Q\).
-Эту формулу можно получить, расширив коэффициенты до \(\C\).
-Коэффициенты~\eqref{eq:WittVectMultConst} лежат в \(\Z[X_s^{1/s}] \subset \Q[X_s^{1/s}]\).
-Эту формулу можно получить, расширив коэффициенты до \(\C[X_s^{1/s}]\).
-Наконец, коэффициенты~\eqref{eq:WittVectMultBasis} лежат в \(\Z[X_e, Y_r] \subset \Q[X_e, Y_r]\),
-а вывод использует расширение коэффициентов до \(\Z[X_e^{1/e}, Y_r^{1/r}] \subset \Q[X_e^{1/e}, Y_r^{1/r}]\).
-\end{remark}
-
-\begin{observation}[\scshape Унитальные многочлены как векторы Витта]
-Пусть \(A \in \Ob(\Ann)\).
-Тогда
-\(A[t] \cap (1 + t A[[t]])\) является подполукольцом
-кольца векторов Витта
-\(\mathbb{W}(A) = 1 + t A[[t]]\),
-а отображение~\eqref{eq:WittFinitaryPolyTensor}
-является изоморфизмом моноидов с операцией умножения многочленов.
-\begin{equation}
-P(t) \mapsto t^{\deg(P)} P(1/t) :
-A[t]_{\mr{mon}}
-\xrightarrow{\sim}
-A[t] \cap (1 + t A[[t]])
-\subset
-1 + t A[[t]]
-%= \mathbb{W}(A)
-\label{eq:WittFinitaryPolyTensor}
-\end{equation}
-\end{observation}
-
-\begin{observation}[\scshape Произведение Витта унитальных многочленов]
-Cуществует единственная функториальная по \(A \in \Ob(\Ann)\) и двусторонне дистрибутивная по отношению к умножению многочленов бинарная операция
-\(\circledast : A[t]_{\mr{mon}}^{\times 2} \to A[t]_{\mr{mon}}\),%
-\label{obs:WittProdMonicPoly}
-такая что для любого \(A \in \Ob(\Ann)\) и для любых \(a, b \in A\) выполняется равенство
-\((t - a) \circledast (t - b) = t - ab\).
-\end{observation}
-
-\begin{remark}
-Операция \(\circledast\) из наблюдения~\ref{obs:WittProdMonicPoly} иногда называется тензорным произведением унитальных многочленов.
-\end{remark}
-
-
 %\section{Тождества Ньютона-Жирара}
 %
 %%\paritem
@@ -16263,6 +15983,23 @@ V = \bigoplus_{i = 1}^n V_i
 \end{observation}
 
 
+\section{Целые в квадратичных полях}
+
+\begin{theorem}
+Пусть \(d \in \mathbb{Z}\) --- бесквадратное целое число, а
+\(
+\mathcal{O}_{\mathbb{Q}[\sqrt{d}]} \coloneqq \{a+b\sqrt{d} \in \mathbb{Q}[\sqrt{d}] \mid a,b \in \Q,\ 2a \in \mathbb{Z},\ a^2-{b^2}d \in \mathbb{Z} \}
+\).
+Тогда если \(d \equiv 2,3 \pmod{4}\), то \(\mathcal{O}_{\mathbb{Q}[\sqrt{d}]} = \mathbb{Z}[\sqrt{d}]\), а если \(d \equiv 1 \pmod{4}\), то \(\mathcal{O}_{\mathbb{Q}[\sqrt{d}]} = \mathbb{Z}[\frac{1+\sqrt{d}}{2}]\).
+\end{theorem}
+
+\begin{proof}
+Пусть \(a, b \in \mathbb{Q}\) --- числа, такие что \(2a, a^2-{b^2}d \in \mathbb{Z}\).
+Так как \(a^2-{b^2}d \in \mathbb{Z}\), то \(4a^2-4{b^2}d \in \mathbb{Z}\), откуда, так как \(2a \in \mathbb{Z}\), следует, что \(4{b^2}d \in \mathbb{Z}\), откуда следует, что \(2b \in \mathbb{Z}\), так как \(d\) бесквадратное.
+Осталось рассмотреть условие \(4(a^2-{b^2}d) = (2a)^2 - (2b)^2 d \equiv 0 \pmod{4}\).
+\end{proof}
+
+
 \section{Изображение конфигурации Дезарга}
 
 \begin{figure}[ht]
@@ -16628,23 +16365,6 @@ V = \bigoplus_{i = 1}^n V_i
 %На
 %рисунке~\ref{fig:des} изображена конфигурация Дезарга, на которой выделены два взаимно вписанных пятиугольника. Посмотрим, как такую картинку можно нарисовать.
 %Применив растяжения вдоль осей \(x\) и \(y\) (рис. \ref{fig:des_ult}), можно считать, что точки \(A\), \(B\) и \(D\) фиксированы. Тогда выбор точки \(C\) задаёт рисунок: проводятся линии \(CD\), \(C'D\), \(CA\) (до \(E'\)), \(C'A\) (до \(E\)), \(CB\) (до \(F'\)), \(C'B'\) (до \(F\)). Точки \(B\), \(E\) и \(F\) всегда лежат на одной линии, что можно проверить, например, координатным методом.
-
-
-\section{Целые в квадратичных полях}
-
-\begin{theorem}
-Пусть \(d \in \mathbb{Z}\) --- бесквадратное целое число, а
-\(
-\mathcal{O}_{\mathbb{Q}[\sqrt{d}]} \coloneqq \{a+b\sqrt{d} \in \mathbb{Q}[\sqrt{d}] \mid a,b \in \Q,\ 2a \in \mathbb{Z},\ a^2-{b^2}d \in \mathbb{Z} \}
-\).
-Тогда если \(d \equiv 2,3 \pmod{4}\), то \(\mathcal{O}_{\mathbb{Q}[\sqrt{d}]} = \mathbb{Z}[\sqrt{d}]\), а если \(d \equiv 1 \pmod{4}\), то \(\mathcal{O}_{\mathbb{Q}[\sqrt{d}]} = \mathbb{Z}[\frac{1+\sqrt{d}}{2}]\).
-\end{theorem}
-
-\begin{proof}
-Пусть \(a, b \in \mathbb{Q}\) --- числа, такие что \(2a, a^2-{b^2}d \in \mathbb{Z}\).
-Так как \(a^2-{b^2}d \in \mathbb{Z}\), то \(4a^2-4{b^2}d \in \mathbb{Z}\), откуда, так как \(2a \in \mathbb{Z}\), следует, что \(4{b^2}d \in \mathbb{Z}\), откуда следует, что \(2b \in \mathbb{Z}\), так как \(d\) бесквадратное.
-Осталось рассмотреть условие \(4(a^2-{b^2}d) = (2a)^2 - (2b)^2 d \equiv 0 \pmod{4}\).
-\end{proof}
 
 
 \section{Элемент Казимира}
@@ -18570,34 +18290,6 @@ n \cdot (1 + \lVert n \rVert + \cdots + {\lVert n \rVert}^{\lfloor \frac{\ln(m)}
 
 \begin{remark}
 Почти весь материал этого раздела взят из книг В.~И.~Арнольда \cite[42]{arnold_mmkm}, \cite[29]{arnold_ponimanie} и \cite[75]{arnold_ngbg}.
-\end{remark}
-
-
-\section{Алгоритм RSA}
-
-\begin{theorem}
-Пусть \(n \in \N_1\) --- бесквадратное число,
-\(\lambda(n)\) --- экспонента группы \((\Z / n\Z)^{\times}\),
-а \(s \in \N_0\) --- число, такое что \(s \equiv 1 \pmod{\lambda(n)}\).%
-\label{thm:ExponentRSA}
-Тогда \(x^s = x\) для любого \(x \in \Z / n\Z\).
-\end{theorem}
-
-\begin{proof}
-Практически очевидно из канонического изоморфизма
-\(\Z / n\Z \cong \prod_{p \in \mc{P}} \Z / p\Z\),
-где \(\mc{P}\) --- множество простых делителей \(n\).
-\end{proof}
-
-\begin{remark}
-Если, в обозначениях теоремы~\ref{thm:ExponentRSA}, выбрать числа \(e, d \in \N_0\),
-взаимно обратные по модулю \(\lambda(n)\),
-то соответствующие отображения
-\(x \mapsto x^e : \Z / n\Z \rlarrow \Z / n\Z : x^d \mapsfrom x\)
-будут взаимно обратными биекциями,
-причём по \(n\) и \(e\) в общем случае довольно трудно вычислить класс \([d] \in \Z / \lambda(n) \Z\).
-Это обстоятельство лежит в основе \emph{алгоритма RSA}:
-первое отображение зашифровывает сообщения, а второе их расшифровывает.
 \end{remark}
 
 
