@@ -6458,7 +6458,7 @@ K[X]_{< \sum_{i \in I} \deg(g_i)}
 	\bigoplus_{k=0}^{n-1}
 	K[X]_{< \deg(g)} g^k
 \).
-Поделив на \(g^n\) получаем, что
+Поделив на \(g^n\), получаем, что
 \begin{equation*}
 	K[X]_{< n \deg(g)}
 	\frac{1}{g^n}
@@ -6709,7 +6709,8 @@ K[X]_{< \sum_{i \in I} \deg(g_i)}
 Существует единственное поднятие функтора
 \(A \mapsto 1 + t A[[t]] : \mr{Ann} \to \mr{Sets}\)
 до функтора
-\(A \mapsto (1 + t A[[t]], \cdot, \star) : \mr{Ann} \to \mr{Ring}\),
+\(A \mapsto (1 + t A[[t]], \cdot, \star) : \mr{Ann} \to \mr{Ring}\),%
+\label{the:WittVecGhostComp}
 такого что для любого \(A \in \Ob(\mr{Ann})\) отображение
 \(\mf{G}_A : 1 + t A[[t]] \to tA[[t]]\),
 \(f \mapsto - \frac{t}{f} \frac{df}{dt}\)
@@ -6717,11 +6718,11 @@ K[X]_{< \sum_{i \in I} \deg(g_i)}
 \end{theorem}
 
 \begin{proof}
-Если \(A \in \Q\anneau\),
+Если \(A \in \Ob(\Q\anneau)\),
 то призрачное отображение~\eqref{eq:WittVectGhostQ} биективно
 и отображения \(\cdot\) и \(\star\) задаются формулами~\eqref{eq:WittVectAddPolyForm} и~\eqref{eq:WittVectMultPolyForm} соответственно в кольце \(\Q[X_i, Y_i \smid i \in \N_1][[t]]\),
 где \(S_n, P_n \in \Q[X_i, Y_i \smid 1 \leq i \leq n]\) для любого \(n \in \N_1\).
-Полиномиальные тождества, соответствующие аксиомам ассоциативного коммутативного унитального кольца, следуют из того, что \((tA[[t]], +, \odot)\), где \(A \in \Q\anneau\), является ассоциативным коммутативным унитальным кольцом.
+Полиномиальные тождества, соответствующие аксиомам ассоциативного коммутативного унитального кольца, следуют из того, что \((tA[[t]], +, \odot)\), где \(A \in \Ob(\Q\anneau)\), является ассоциативным коммутативным унитальным кольцом.
 \begin{gather}
 \mf{G}_A : 1 + t A[[t]] \to tA[[t]],\ 
 f \mapsto - \frac{t}{f} \frac{df}{dt} = -t \frac{d}{dt} \log (f)
@@ -6751,6 +6752,11 @@ P_n(X_i, Y_i \smid 1 \leq i \leq n) t^n
 Для многочленов \(P_n\), где \(n \in \N_1\),
 достаточно сослаться на формулы~\eqref{eq:WittVectorsPowerSeriesOne}, \eqref{eq:WittVectorsPowerSeriesTwo} и~\eqref{eq:WittVectMultLogDer}.
 \end{proof}
+
+\begin{definition}[\scshape Кольцо векторов Витта]
+Пусть \(A\) --- ассоциативное коммутативное унитальное кольцо.
+Тогда кольцо \((1 + t A[[t]], \cdot, \star)\), описанное в формулировке теоремы~\ref{the:WittVecGhostComp}, называется \emph{кольцом векторов Витта} или \emph{кольцом больших векторов Витта} и обозначается \(\mathbb{W}(A)\).
+\end{definition}
 
 \subsection{Усечённые векторы Витта}
 
@@ -6891,7 +6897,7 @@ P_n(X_i, Y_i \smid 1 \leq i \leq n) t^n
 и \(g(t) \coloneqq 1 + \sum_{i=1}^m Y_i t^i\)
 --- пара универсальных многочленов со свободным членом~\(1\) с коэффициентами в кольце \(A \coloneqq \Z[X_1, \ldots{}, X_n][Y_1, \ldots, Y_m]\),
 а \(K\) --- поле разложения \(f(t)g(t)\) как элемента \(\Frac(A)[t]\). Тогда в \(K[t]\) многочлены \(f(t)\) и \(g(t)\) полностью разлагаются на линейные множители, откуда следует, что элемент \(f(t) \star g(t)\) однозначно определён.
-Осталось заметить, что топология Крулля в \(1 + t A[[t]]\) хаусдорфова и любой элемент \(1 + t A[[t]]\) является пределом последовательности многочленов.
+Осталось заметить, что для любого \(A \in \Ob(\mr{Ann})\) топология Крулля в \(1 + t A[[t]]\) хаусдорфова и множество \(A[t] \cap (1 + t A[[t]])\) плотно в \(1 + t A[[t]]\).
 
 \item[Второе доказательство единственности.]
 Докажем единственность \(\star\).
@@ -7006,52 +7012,49 @@ Cуществует единственная функториальная по \
 
 \subsection{{Векторы Витта и \texorpdfstring{\(\WTbm{p}\)-адические}{p-адические} числа}}
 
-\begin{convention}
-В этом подразделе \(p \in \N_1\) --- фиксированное простое число, а все кольца и алгебры считаются коммутативными, ассоциативными и унитальными,
-если противное не указано явно.
+\begin{convention}[\scshape Фиксированное простое число \(p\)]
+В этом подразделе \(p \in \N_1\) --- фиксированное простое число.
 \end{convention}
-
-\begin{notation}
-В этом подразделе для любого натурального \(n \in \N_0\) будет использоваться обозначение
-\([n]_0 \coloneqq \{i \in \N_0 \mid 0 \leq i < n\}\).
-\end{notation}
 
 \begin{definition}[\scshape Представитель Тейхмюллера]
 Пусть отображение \(\pi : A \to \Z/p\Z\), где \(A = \Z_p\) или \(A = \Z/p^n\Z\), \(n \geq 1\), --- это очевидная редукция, пусть \(a \in A\). Если \(a^p = a\), то \(a\) называется \emph{представителем Тейхмюллера} для \(\pi(a) \in \Z/p\Z\).
 \end{definition}
 
-\begin{lemma}[\scshape Лемма Гензеля]
+\begin{theorem}[\scshape Лемма Гензеля]
 %Решение сравнения \(f(x) \equiv 0 \pmod {p^n}\)
 %где $f \in \mathbb{Z}[X]$, $f'(x) \not\equiv 0 \pmod p$, можно поднять до решения $\mod p^{n+1}$, причём единственным
 %$\mod {p^{n+1}}$ образом.
 Пусть \(s \in \mathbb{Z}\) и
 \(f(s) \equiv 0 \pmod {p^n}\),
 где \(f \in \mathbb{Z}[X]\) и \(n \geq 1\), причём \(f'(s) \not\equiv 0 \pmod p\).%
-\label{lem:HenselLemmaBasic}
+\label{thm:HenselLemmaBasic}
 Тогда существует единственное по модулю \(p^{n+1}\) число \(\tilde{s} \in \mathbb{Z}\), такое что \(\tilde{s} \equiv s \pmod {p^n}\) и \(f(\tilde{s}) \equiv 0 \pmod {p^{n+1}}\).
-\end{lemma}
+\end{theorem}
 
 \begin{proof}
 Пусть \(\tilde{s} = s + b p^n\), а \(f(s) = a p^n\). Тогда
 \begin{align*}
-f(s+bp^n)       &\equiv 0  \pmod {p^{n+1}}\\
-f(s)+f'(s)bp^n  &\equiv 0  \pmod {p^{n+1}}\\
-ap^n+f'(s)bp^n  &\equiv 0  \pmod {p^{n+1}}\\
-(a+f'(s)b)p^n   &\equiv 0  \pmod {p^{n+1}}\\
+f(s+bp^n)       &\equiv 0  \pmod {p^{n+1}}
+\displaybreak[0]\\
+f(s)+f'(s)bp^n  &\equiv 0  \pmod {p^{n+1}}
+\displaybreak[0]\\
+ap^n+f'(s)bp^n  &\equiv 0  \pmod {p^{n+1}}
+\displaybreak[0]\\
+(a+f'(s)b)p^n   &\equiv 0  \pmod {p^{n+1}}
+\displaybreak[0]\\
 a+f'(s)b        &\equiv 0  \pmod p.
-%\qedhere
 \end{align*}
 Если \(f'(s) \not\equiv 0 \pmod p\), то последнее уравнение однозначным по модулю \(p\) образом определяет \(b\), так как \(\mathbb{Z} / p \mathbb{Z}\) --- поле.
 \end{proof}
 
-\begin{corollary}
+\begin{theorem}[\scshape Существование и единственность представителей Тейхмюллера]
 Для любого
 \(\alpha \in \Z/p\Z\)
 существуют единственные представители Тейхмюллера \(\alpha^\tau \in \Z_p\) и \(\alpha^{\tau_n} \in \Z/p^n\Z\), где \(n \geq 1\).
-\end{corollary}
+\end{theorem}
 
 \begin{proof}[Первое доказательство]
-Возьмём \(f(X) = X^p - X\) и применим лемму Гензеля (лемма~\ref{lem:HenselLemmaBasic}).
+Возьмём \(f(X) = X^p - X\) и применим лемму Гензеля (теорема~\ref{thm:HenselLemmaBasic}).
 \end{proof}
 
 \begin{proofparts}[Второе доказательство (из трёх частей)]
@@ -7064,8 +7067,10 @@ a+f'(s)b        &\equiv 0  \pmod p.
 \(\rho^\times: (\Z/p^n\Z)^\times \to (\Z/p\Z)^\times,\)
 причём \(\lvert\Ker(\rho^\times)\rvert = p^{n-1}\), так как \(\lvert(\Z/p^n\Z)^\times\rvert = p^n - p^{n-1}\) (класс \(l \in \Z\) обратим в \(\Z/k\Z\) тогда и только тогда, когда \(l\) и \(k\) взаимно просты).
 
-\item[Часть 1.]
-Пусть \(\alpha \in (\Z/p\Z)^\times\), пусть \(a_1,a_2 \in \Z/p^n\Z\) и \(\rho(a_1) = \rho(a_2) = \alpha\). Тогда \(a_1,a_2 \in (\Z/p^n\Z)^\times\) и \(a_1^{p^{n-1}} = a_2^{p^{n-1}}\), так как \(a_1/a_2 \in \Ker(\rho^\times)\). Взяв \(a = a_1^{p^{n-1}}\) и \(a_2 = a_1^p\), получаем, что \(a^p = a\).
+\item[Часть 2.]
+Пусть \(\alpha \in (\Z/p\Z)^\times\), пусть \(a_1,a_2 \in \Z/p^n\Z\) и \(\rho(a_1) = \rho(a_2) = \alpha\). Тогда \(a_1,a_2 \in (\Z/p^n\Z)^\times\) и \(a_1^{p^{n-1}} = a_2^{p^{n-1}}\), так как \(a_1/a_2 \in \Ker(\rho^\times)\). Взяв
+\(a_1 \in \rho^{-1}(\alpha)\),
+\(a_2 = a_1^p\) и \(a = a_1^{p^{n-1}}\), получаем, что \(a^p = a\).
 %Воспользовавшись представлением
 %\(\Z_p = \lim(\cdots{} \to \Z/p^3\Z \to \Z/p^2\Z \to \Z/p\Z)\), получаем существование и единственность представителей Тейхмюллера.
 
@@ -7080,41 +7085,41 @@ a+f'(s)b        &\equiv 0  \pmod p.
 
 \begin{observation}
 Очевидно, что
-для любого \(a \in \Z_p\) существует единственное семейство \((\alpha_i)_{i \in \N_0} \in (\Z/p\Z)^{\N_0}\), такое что
+для любого \(a \in \Z_p\) существует единственное семейство \((\alpha_i)_{i=0}^{\infty} \in (\Z/p\Z)^{\times \N_0}\), такое что
 \(a = \sum_{i = 0}^\infty \alpha_i^\tau p^i\).
 Аналогичное разложение \(a = \sum_{i = 0}^n \alpha_i^{\tau_{n+1}} p^i\) есть для \(a \in \Z/p^{n+1}\Z\).
 \end{observation}
 
 \begin{observation}
-Для любого кольца \(A\) и любого \(a \in A\) выполняются следующие вложения:
+Для любого ассоциативного коммутативного и унитального кольца \(A\) и любого \(a \in A\) выполняются следующие вложения:
 \(p(a + p^n A) \subset pa + p^{n+1} A\),
 где \(n \geq 0\),
 и
 \((a + p^n A)^p \subset a^p + p^{n+1} A\),
 где \(n \geq 1\).
-Другими словами, если \(\tilde{f}(x)=px\) или \(\tilde{f}(x)=x^p\), то существует единственное \(f\), такое что следующая диаграмма коммутативна:
+Другими словами, если \(\tilde{f}(x)=px\) или \(\tilde{f}(x)=x^p\), то существует единственное \(f\), такое что диаграмма~\eqref{eq:ZpZlift} коммутативна.
+Злоупотребляя обозначениями, будем писать \(f(x) = px\) или \(f(x) = x^p\) соответственно.
 \begin{equation}
 \begin{tikzcd}%[row sep = scriptsize]
 A \ar{r}{\tilde{f}} \ar[twoheadrightarrow]{d} & A \ar[twoheadrightarrow]{d} \\
-A/p^nA \ar{r}{f} & A/p^{n+1}A\mathrlap{.}
+A/p^nA \ar{r}{f} & A/p^{n+1}A%\mathrlap{.}
 \end{tikzcd}
 \label{eq:ZpZlift}
 \end{equation}
-Злоупотребляя обозначениями, будем писать \(f(x) = px\) и \(f(x) = x^p\).
 \end{observation}
 
 \begin{remark}
-В верхней строчке диаграммы \eqref{eq:ZpZlift} кольцо \(A\), очевидно, можно заменить на \(A/p^mA\), где \(m \geq n+1\).
+В верхней строке диаграммы \eqref{eq:ZpZlift} кольцо \(A\), очевидно, можно заменить на \(A/p^mA\), где \(m \geq n+1\).
 \end{remark}
 
 \begin{observation}
-Разложение в ряды по представителям Тейхмюллера можно описать следующей биекцией:
+Разложение в ряды по представителям Тейхмюллера можно описать следующей биекцией, где \(n \geq 0\):
 \begin{equation}
 %\textstyle
-(\Z/p\Z)^{[n+1]_0}
+(\Z/p\Z)^{\{0, 1, \ldots{}, n\}}
 \xrightarrow{\sim}
 \Z/p^{n+1}\Z, \quad
-(x_i)_{i \in [n+1]_0}
+(x_i)_{i=0}^n
 \mapsto
 \sum_{i=0}^n p^i x_i^{p^{n-i}}
 =
@@ -7130,16 +7135,16 @@ A/p^nA \ar{r}{f} & A/p^{n+1}A\mathrlap{.}
 \end{observation}
 
 \begin{observation}[\scshape \(p\)\=/Адические числа как \(p\)\=/типические векторы Витта]
-Если рассмотреть биективное отображение~\eqref{eq:ghost} как отображение \(W_{n+1}(\Z/p\Z) \xrightarrow{\sim} \Z/p^{n+1}\Z\), то оно является гомоморфизмом колец,
+Если рассмотреть биективное отображение~\eqref{eq:ghost}, где \(n \geq 0\), как отображение \(W_{n+1}(\Z/p\Z) \xrightarrow{\sim} \Z/p^{n+1}\Z\), то оно является гомоморфизмом колец,
 в чём можно убедиться, посмотрев на коммутативную диаграмму~\eqref{eq:IntWittTeichLift},
 где вертикальные стрелки --- стандартные редукции.
 %(используем её поднятие до \(W_{n+1}(\Z) \to \Z\)),
 Отсюда получаем изоморфизм
 \(W(\Z/p\Z) \cong \lim_n W_n(\Z/p\Z) \xrightarrow{\sim} \Z_p \cong \lim_n \Z/p^n\Z\).
 \begin{equation}
-\begin{tikzcd}[column sep = 10.8em,]
-W_{n+1}(\Z) \ar{r}{(x_i)_{i \in [n+1]_0} \mapsto \sum_{i=0}^n p^i x_i^{p^{n-i}}} \ar[twoheadrightarrow]{d} & \Z \ar[twoheadrightarrow]{d} \\
-W_{n+1}(\Z/p\Z) \ar{r}{(x_i)_{i \in [n+1]_0} \mapsto \sum_{i=0}^n p^i x_i^{\tau_{n+1}}} & \Z/p^{n+1}\Z
+\begin{tikzcd}[column sep = 9em,]
+W_{n+1}(\Z) \ar{r}{(x_i)_{i=0}^n \mapsto \sum_{i=0}^n p^i x_i^{p^{n-i}}} \ar[twoheadrightarrow]{d} & \Z \ar[twoheadrightarrow]{d} \\
+W_{n+1}(\Z/p\Z) \ar{r}{(x_i)_{i=0}^n \mapsto \sum_{i=0}^n p^i x_i^{\tau_{n+1}}} & \Z/p^{n+1}\Z
 \end{tikzcd}
 \label{eq:IntWittTeichLift}
 \end{equation}
@@ -8777,13 +8782,14 @@ R \to \End_{\Z\module}(M)
     ab = ba^b,\
     a[a,b] = a^b,\
     ba[a,b]=ab,\
+    \displaybreak[0]
     \\
     a^{bc} = (a^b)^c,\
     (ab)^c = a^cb^c,\
     [a,b]^{-1} = [b,a],\ 
     [a,b]^g = [a^g,b^g].
-\end{gather*}
-\begin{gather*}
+	\displaybreak[0]
+	\\[\bigskipamount]
     a[a,bc] =
     a^{bc} =
     (a^b)^c =
@@ -8791,43 +8797,43 @@ R \to \End_{\Z\module}(M)
     a^c [a,b]^c =
     a[a,c][a,b]^c
     \implies
-    \\
+    \displaybreak[0]\\
     \implies
     [a,bc] =
     [a,c][a,b]^c.
-    \\
+    \displaybreak[0]\\
     \text{Обращением получаем:}\
     [bc,a] =
     [b,a]^c [c,a].
-    \\
+    \displaybreak[0]\\
     \text{Подставив}\ 
     b=c^{-1},\ 
     \text{получаем:}\
     [c,a] =
     [a,c^{-1}]^c.
-\end{gather*}
-\begin{gather*}
+	\displaybreak[0]
+	\\[\bigskipamount]
     a(bc)[bc,a] =
     (bc)a\ 
     (\text{цикл}\ (a,b,c))
     \implies
-    \\
+    \displaybreak[0]\\
     \implies
     abc[bc,a][ca,b][ab,c] = abc
     \implies
     [bc,a][ca,b][ab,c] = 1.
-\end{gather*}
-\begin{gather*}
+	\displaybreak[0]
+	\\[\bigskipamount]
     a^b[a^b,[b,c]] =
     (a^b)^{[b,c]} =
     a^{b[b,c]} =
     a^{b^c},
-    \\
+    \displaybreak[0]\\
     X \coloneqq
     [a^b,[b,c]] =
     [a^b,[c,b^{-1}]^b] =
     [a,[c,b^{-1}]]^b,
-    \\
+    \displaybreak[0]\\
     bca^b X =
     bca^{b^c} =
     cb^ca^{b^c} =
@@ -8836,15 +8842,17 @@ R \to \End_{\Z\module}(M)
     \\
     \Downarrow
     \\
+    \begin{aligned}
     [a^b,[b,c]]
     [b^c,[c,a]]
-    [c^a,[a,b]] = 1\ 
+    [c^a,[a,b]] &= 1\ 
     \text{(тождество Холла)},
     \\
     [a,[c,b^{-1}]]^b
     [b,[a,c^{-1}]]^c
-    [c,[b,a^{-1}]]^a = 1\ 
+    [c,[b,a^{-1}]]^a &= 1\ 
     \text{(тождество Холла\namedash{}Витта)}.
+    \end{aligned}
 \end{gather*}
 
 
@@ -9517,7 +9525,6 @@ D(x^p) = (x* - *x)^{p-1}(D(x)) = \op{ad}(x)^{p-1}(D(x)).
 %\label{eq:RestrLie3}
 %\end{gather}
 \begin{gather}
-\begin{gathered}
 (X + Y)^p - X^p - Y^p
 =
 \smashoperator[r]{\sum_{c_1 = 0}^1}
@@ -9525,13 +9532,12 @@ D(x^p) = (x* - *x)^{p-1}(D(x)) = \op{ad}(x)^{p-1}(D(x)).
 \smashoperator[l]{\sum_{c_{p-2} = 0}^1}
 \frac{1}{1 + \sum_{i=1}^{p-2} c_i}
 \times
-\\
+\nonumber\displaybreak[0]\\
 \times
 \op{ad}(c_1 X + (1 - c_1) Y)
 \cdots{}
 \op{ad}(c_{p-2} X + (1 - c_{p-2}) Y)
 [Y, X].
-\end{gathered}
 \label{eq:RestrLie3}
 \end{gather}
 \end{theorem}
@@ -9559,7 +9565,7 @@ X^p +
 f_{p-1}(X,Y) + f_{p-2}(X,Y) + \cdots{} + f_1(X,Y)
 + Y^p
 \label{eq:RestrLie1}
-\\
+\displaybreak[0]\\
 [\underbrace{X + Y, [X + Y, [X + Y, \dots{}, [X + Y}_{p-1}, X]]] \dots{} ]
 =
 \sum_{n=1}^{p-1} n f_n(X,Y)
@@ -9831,28 +9837,26 @@ R(X_1 \cdots{} X_n).
 
 \begin{definition}[\scshape Ряд Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа]
 Следующий формальный ряд называется \emph{рядом Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа}:
-\begin{equation}
-	\begin{gathered}
-		\log(e^X e^Y) =
-		\sum_{k=1}^{\infty}
-		\frac{(-1)^{k-1}}{k}
-		\Bigl(\sum_{m, n = 0}^{\infty}
-		\frac{X^m Y^n}{m! n!} - 1\Bigr)^k
-		=
-		\\
-		=
-		\sum_{k=1}^{\infty}
-		\sum_{m_1 + n_1 > 0}
-		\cdots{}
-		\sum_{m_k + n_k > 0}
-		\frac{(-1)^{k-1}}{k}
-		\frac%
-		{X^{m_1} Y^{n_1} \cdots{} X^{m_k} Y^{n_k}}%
-		{m_1! n_1! \cdots{} m_k! n_k!}
-		\in \Q \llangle X, Y \rrangle.%
-		\label{eq:BakCamHauSeries}
-	\end{gathered}
-\end{equation}
+\begin{gather}
+	\log(e^X e^Y) =
+	\sum_{k=1}^{\infty}
+	\frac{(-1)^{k-1}}{k}
+	\Bigl(\sum_{m, n = 0}^{\infty}
+	\frac{X^m Y^n}{m! n!} - 1\Bigr)^k
+	=
+	\nonumber\displaybreak[0]\\
+	=
+	\sum_{k=1}^{\infty}
+	\sum_{m_1 + n_1 > 0}
+	\cdots{}
+	\sum_{m_k + n_k > 0}
+	\frac{(-1)^{k-1}}{k}
+	\frac%
+	{X^{m_1} Y^{n_1} \cdots{} X^{m_k} Y^{n_k}}%
+	{m_1! n_1! \cdots{} m_k! n_k!}
+	\in \Q \llangle X, Y \rrangle.
+	\label{eq:BakCamHauSeries}
+\end{gather}
 \end{definition}
 
 \begin{theorem}[\scshape Теорема Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа]
@@ -9918,43 +9922,41 @@ R(X_1 \cdots{} X_n).
 
 \begin{theorem}[\scshape Формула Дынкина]
 В кольце \(\Q \llangle X, Y \rrangle\) выполняется следующее соотношение, которое называется \emph{формулой Дынкина для ряда Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа}, или же \emph{формулой Бейкера\namedash{}Кэмпбелла\namedash{}Хаусдорфа\namedash{}Дынкина}:
-\begin{equation}
-	\begin{gathered}
-		\log(e^X e^Y) =
-		\sum_{k=1}^{\infty}
-		\sum_{m_1 + n_1 > 0}
-		\cdots{}
-		\sum_{m_k + n_k > 0}
-		\frac%
-		{
-			(-1)^{k - 1}
-		}
-		{
-			k
-			\sum_{i = 1}^k (m_i + n_i)
-			%m_1! n_1! \dots{} m_k! n_k!
-			\prod_{j = 1}^k m_j! n_j!
-		}
-		\times
-		\\
-		\times
-		%[X, [\dots{}, [X,
-		%[Y, [\dots{}, [Y,
-		%[\dots{}
-		%[X, [\dots{}, [X,
-		%[Y, [\dots{}, [Y,
-		%[\dots{}]
-		%\dots{}].%
-		[\underbrace{X, [X, \dots{}, [X}_{m_1},
-		[\underbrace{Y, [Y, \dots{}, [Y}_{n_1},
-		\dots{},
-		[\underbrace{X, [X, \dots{}, [X}_{m_k},
-		[\underbrace{Y, [Y, \dots{}, Y}_{n_k}]]
-		\dots{}
-		]].%
-		\label{eq:BKHD_formula}
-	\end{gathered}
-\end{equation}
+\begin{gather}
+	\log(e^X e^Y) =
+	\sum_{k=1}^{\infty}
+	\sum_{m_1 + n_1 > 0}
+	\cdots{}
+	\sum_{m_k + n_k > 0}
+	\frac%
+	{
+		(-1)^{k - 1}
+	}
+	{
+		k
+		\sum_{i = 1}^k (m_i + n_i)
+		%m_1! n_1! \dots{} m_k! n_k!
+		\prod_{j = 1}^k m_j! n_j!
+	}
+	\times
+	\nonumber\displaybreak[0]\\
+	\times
+	%[X, [\dots{}, [X,
+	%[Y, [\dots{}, [Y,
+	%[\dots{}
+	%[X, [\dots{}, [X,
+	%[Y, [\dots{}, [Y,
+	%[\dots{}]
+	%\dots{}].%
+	[\underbrace{X, [X, \dots{}, [X}_{m_1},
+	[\underbrace{Y, [Y, \dots{}, [Y}_{n_1},
+	\dots{},
+	[\underbrace{X, [X, \dots{}, [X}_{m_k},
+	[\underbrace{Y, [Y, \dots{}, Y}_{n_k}]]
+	\dots{}
+	]].
+	\label{eq:BKHD_formula}
+\end{gather}
 \end{theorem}
 
 \begin{proof}
