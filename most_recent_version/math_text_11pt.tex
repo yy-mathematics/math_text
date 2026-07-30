@@ -6365,7 +6365,8 @@ A + \sum_{i \in I} A \frac{1}{a_i}.
 --- конечное семейство ненулевых многочленов,
 такое что \(K[X] g_i + K[X] g_j = K[X]\)
 для любых \(i,j \in I\),
-таких что \(i \neq j\).
+таких что \(i \neq j\).%
+\label{the:PartFracDecompMain}
 Тогда выполняется следующее равенство:
 \begin{equation*}
 K[X]
@@ -6467,6 +6468,18 @@ K[X]_{< \sum_{i \in I} \deg(g_i)}
 	K[X]_{< \deg(g)}
 	\frac{1}{g^k}.
 \end{equation*}
+\end{observation}
+
+\begin{observation}[\scshape Базис расширения полей \(K(X)/K\)]
+Пусть \(K\) --- поле,
+а \(\op{Irred}(K[X]_{\mr{mon}})\) --- множество неприводимых элементов \(K[X]\) со старшим коэффициентом \(1\).
+Тогда, использовав то, что \(K[X]\) является областью однозначного разложения на простые и скомбинировав теорему~\ref{the:PartFracDecompMain} с наблюдением~\ref{obs:PolyDecompGadic}, получаем,
+что множество~\eqref{eq:PolyFracBasis} является базисом \(K(X)\) как векторного пространства над \(K\).
+\begin{equation}
+\Bigl\{X^n \;\Big|\; n \geq 0\Bigr\} \cup
+\Bigl\{\frac{X^n}{g^k} \;\Big|\; g \in \op{Irred}(K[X]_{\mr{mon}}),\ k \geq 1,\ 0 \leq n < \deg(g)\Bigr\}
+\label{eq:PolyFracBasis}
+\end{equation}
 \end{observation}
 
 \begin{remark}
@@ -6637,30 +6650,30 @@ K[X]_{< \sum_{i \in I} \deg(g_i)}
 \(A \coloneqq \Q[X_i, Y_i \smid i \in \N_1]\),
 выполняется следующая формула:
 \begin{gather}
-	\Bigl(
+	\bigl(
 		-t \frac{d}{dt} \log
 		\prod_{\mathclap{n \geq 1}} (1 - X_n t^n)
-	\Bigr)
+	\bigr)
 	\odot
-	\Bigl(
+	\bigl(
 		-t \frac{d}{dt} \log
 		\prod_{\mathclap{n \geq 1}} (1 - Y_n t^n)
-	\Bigr)
+	\bigr)
 	=
 	\displaybreak[0]
 	\nonumber\\
 	=
-	\Bigl(
-		\smashoperator[r]{\sum_{\substack{%
+	(
+		\sum_{\mathclap{\substack{%
 			m \geq 1 \\ e \mid m}}}
 		e X_e^{m/e} t^m
-	\Bigr)
+	)
 	\odot
-	\Bigl(
-		\smashoperator[r]{\sum_{\substack{%
+	(
+		\sum_{\mathclap{\substack{%
 			m \geq 1 \\ r \mid m}}}
 		r Y_r^{m/r} t^m
-	\Bigr)
+	)
 	=
 	\displaybreak[0]
 	\nonumber\\
@@ -6674,22 +6687,22 @@ K[X]_{< \sum_{i \in I} \deg(g_i)}
 	\sum_{\mathclap{%
 		n,e,r \geqslant 1}}
 	er
-	\bigl(
+	(
 		X_e^{{\mathrm{lcm}(e,r)}/{e}}
 		Y_r^{{\mathrm{lcm}(e,r)}/{r}}
 		t^{\mathrm{lcm}(e,r)}
-	\bigr)^n
+	)^n
    =
    \displaybreak[0]
    \nonumber\\
    =
    -t \frac{d}{dt}
    \log \prod_{\mathclap{e,r \geqslant 1}}
-	\bigl(1 -
+	(1 -
 		X_e^{{\mathrm{lcm}(e,r)}/{e}}
 		Y_r^{{\mathrm{lcm}(e,r)}/{r}}
 		t^{\mathrm{lcm}(e,r)}
-	\bigr)^{{er}/{\mathrm{lcm}(e,r)}}.
+	)^{{er}/{\mathrm{lcm}(e,r)}}.
 	\label{eq:WittVectMultLogDer}
 \end{gather}
 Предпоследнее равенство --- тавтология.
@@ -6852,7 +6865,8 @@ P_n(X_i, Y_i \smid 1 \leq i \leq n) t^n
 
 \begin{observation}
 Пусть \(A\) --- ассоциативное коммутативное унитальное кольцо, \(\mu\) --- элемент \(A\),
-а \((\lambda_i)_{i \in I}\) --- конечное семейство элементов \(A\).
+а \((\lambda_i)_{i \in I}\) --- конечное семейство элементов \(A\).%
+\label{obs:WittVecPolySplit}
 Тогда если \(\mu \prod_{i \in I} (t - \lambda_i) \in 1 + t A[[t]]\),
 то есть
 \(\mu \prod_{i \in I} \lambda_i = (-1)^{\card(I)}\),
@@ -6896,7 +6910,7 @@ P_n(X_i, Y_i \smid 1 \leq i \leq n) t^n
 \(f(t) \coloneqq 1 + \sum_{i=1}^n X_i t^i\)
 и \(g(t) \coloneqq 1 + \sum_{i=1}^m Y_i t^i\)
 --- пара универсальных многочленов со свободным членом~\(1\) с коэффициентами в кольце \(A \coloneqq \Z[X_1, \ldots{}, X_n][Y_1, \ldots, Y_m]\),
-а \(K\) --- поле разложения \(f(t)g(t)\) как элемента \(\Frac(A)[t]\). Тогда в \(K[t]\) многочлены \(f(t)\) и \(g(t)\) полностью разлагаются на линейные множители, откуда следует, что элемент \(f(t) \star g(t)\) однозначно определён.
+а \(K\) --- поле разложения \(f(t)g(t)\) как элемента \(\Frac(A)[t]\). Тогда в \(K[t]\) многочлены \(f(t)\) и \(g(t)\) полностью разлагаются на линейные множители. Воспользовавшись наблюдением~\ref{obs:WittVecPolySplit} получаем, что элемент \(f(t) \star g(t)\) однозначно определён.
 Осталось заметить, что для любого \(A \in \Ob(\mr{Ann})\) топология Крулля в \(1 + t A[[t]]\) хаусдорфова и множество \(A[t] \cap (1 + t A[[t]])\) плотно в \(1 + t A[[t]]\).
 
 \item[Второе доказательство единственности.]
@@ -7118,7 +7132,8 @@ A/p^nA \ar{r}{f} & A/p^{n+1}A%\mathrlap{.}
 %\textstyle
 (\Z/p\Z)^{\{0, 1, \ldots{}, n\}}
 \xrightarrow{\sim}
-\Z/p^{n+1}\Z, \quad
+\Z/p^{n+1}\Z,
+\quad
 (x_i)_{i=0}^n
 \mapsto
 \sum_{i=0}^n p^i x_i^{p^{n-i}}
