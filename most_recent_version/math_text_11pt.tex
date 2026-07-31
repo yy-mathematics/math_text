@@ -6334,28 +6334,31 @@ A + \sum_{i \in I} A \frac{1}{a_i}.
 \end{equation*}
 \end{observation}
 
-\begin{observation}[\scshape Евклидово деление многочленов]
-Пусть \(K\) --- поле,
-\(f \in K[X]\),
-а \(g \in K[X] \setminus \{0\}\).%
-\label{obs:EuclDivPoly}
-Тогда существуют единственные
-\(q, r \in K[X]\),
-такие что
-\(f = q g + r\)
-и
-\(\deg(r) < \deg(g)\).
-\end{observation}
-
 %\begin{observation}[\scshape Евклидово деление многочленов]
 %Пусть \(K\) --- поле,
-%\(K[X] = \bigoplus_{n=0}^{\infty} K[X]_n\)
-%--- стандартная градуировка \(K[X]\),
+%\(f \in K[X]\),
 %а \(g \in K[X] \setminus \{0\}\).%
 %\label{obs:EuclDivPoly}
-%Тогда
-%\(K[X] = K[X] g \oplus K[X]_{< \deg(g)}\).
+%Тогда существуют единственные
+%\(q, r \in K[X]\),
+%такие что
+%\(f = q g + r\)
+%и
+%\(\deg(r) < \deg(g)\).
 %\end{observation}
+
+\begin{observation}[\scshape Евклидово деление многочленов]
+Пусть \(K\) --- поле,
+\(K[X] = \bigoplus_{n=0}^{\infty} K[X]_n\)
+--- стандартная градуировка \(K[X]\),
+а \(g \in K[X] \setminus \{0\}\).%
+\label{obs:EuclDivPoly}
+Тогда
+\(K[X] = K[X] g \oplus K[X]_{< \deg(g)}\).
+Иначе говоря, очевидное отображение
+\(K[X]_{< \deg(g)} \to K[X] / (g)\)
+биективно.
+\end{observation}
 
 \begin{theorem}
 Пусть \(K\) --- поле,
@@ -6381,20 +6384,17 @@ K[X]_{< \deg(g_i)}
 \end{equation*}
 \end{theorem}
 
-\begin{proofparts}[Доказательство (из трёх частей)]
+\begin{proofparts}[Доказательство (из двух частей)]
 
-\item[Часть 1.]
+\item[Доказательство существования.]
 Пусть \(f \in K[X]\).
 Тогда, согласно наблюдению~\ref{obs:FracChiRem},
 существуют \((h_i)_{i \in I} \in K[X]^{\times I}\) и \(h \in K[X]\),
 такие что выполняется равенство~\eqref{eq:ParFracDecompOneFirst}.
 \begin{equation}
-\frac{f}{\prod_{i \in I} g_i}
-=
-h +
-\sum_{i \in I}
-\frac{h_i}{g_i}
-\label{eq:ParFracDecompOneFirst}
+	\frac{f}{\prod_{i \in I} g_i} =
+	h + \sum_{i \in I} \frac{h_i}{g_i}
+	\label{eq:ParFracDecompOneFirst}
 \end{equation}
 Согласно наблюдению~\ref{obs:EuclDivPoly}
 для любого \(i \in I\)
@@ -6404,44 +6404,100 @@ h +
 Заменив в~\eqref{eq:ParFracDecompOneFirst} для каждого \(i \in I\) многочлен \(h_i\) на \(r_i\) и заменив \(h\) на \(h + \sum_{i \in I} q_i\), получаем разложение вида~\eqref{eq:ParFracDecompOneFirst}, где
 \(\deg(h_i) < \deg(g_i)\)
 для любого \(i \in I\).
-
-\item[Часть 2.]
-Умножив~\eqref{eq:ParFracDecompOneFirst} на
-%многочлен
-\(\prod_{i \in I} g_i\)
-и воспользовавшись наблюдением~\ref{obs:EuclDivPoly}
-получаем, что
-\(h\) в разложении~\eqref{eq:ParFracDecompOneFirst},
-где
+С этого момента будем предполагать, что
 \(\deg(h_i) < \deg(g_i)\)
-для любого \(i \in I\),
-определено однозначно,
-и если \(\deg(f) < \sum_{i \in I} \deg(g_i)\), то \(h = 0\).
+для любого \(i \in I\).
 
-\item[Часть 3.]
-Согласно доказанному в частях~1 и~2 очевидное \(K\)\=/линейное отображение~\eqref{eq:ParFracDecompOneSecond}
-сюръективно,
-причём \(K\)\=/размерности области и кообласти~\eqref{eq:ParFracDecompOneSecond}
-конечны, равны \(\sum_{i \in I} \deg(g_i)\) и совпадают.
-\begin{equation}
-\bigoplus_{i \in I}
-K[X]_{< \deg(g_i)}
-\frac{1}{g_i}
-\to
-K[X]_{< \sum_{i \in I} \deg(g_i)}
-\frac{1}{\prod_{i \in I} g_i}
-\label{eq:ParFracDecompOneSecond}
-\end{equation}
-Отсюда следует, что отображение~\eqref{eq:ParFracDecompOneSecond} биективно,
-и в разложении~\eqref{eq:ParFracDecompOneFirst}
-набор многочленов \((h_i)_{i \in I}\),
-удовлетворяющих условию
-\(\deg(h_i) < \deg(g_i)\)
-для любого \(i \in I\),
-определён однозначно.
+\item[Доказательство единственности.]
+Введём обозначения
+\(g \coloneqq \prod_{i \in I} g_i\)
+и
+\(\hat{g}_i \coloneqq \prod_{j \in I \setminus \{i\}} g_j\),
+где \(i \in I\).
+Домножив равенство~\eqref{eq:ParFracDecompOneFirst} на \(g\), получаем равенство
+\(f = h g + \sum_{i \in I} h_i \hat{g}_i\).
+Осталось воспользоваться биективностью отображений
+\(
+	K[X]_{< \deg(g)}
+	\to
+	K[X] / (g)
+	\to
+	\prod_{i \in I} (K[X] / (g_i))
+\)
+и заметить, что для любого \(i \in I\) выполняются неравенство \(\deg(h_i \hat{g}_i) < \deg(g)\) и сравнения
+\(h_i \hat{g}_i \equiv 0 \pmod{g_j}\), где \(j \in I \setminus \{i\}\),
+и
+\(h_i \hat{g}_i \equiv f \pmod{g_i}\).
+Отсюда получаем единственность \(h_i \hat{g}_i\) для любого \(i \in I\), откуда получаем единственность \(h_i\) для любого \(i \in I\) и единственность \(h\).
 \qedhere
 
 \end{proofparts}
+
+%\begin{proofparts}[Доказательство (из трёх частей)]
+%
+%\item[Часть 1.]
+%Пусть \(f \in K[X]\).
+%Тогда, согласно наблюдению~\ref{obs:FracChiRem},
+%существуют \((h_i)_{i \in I} \in K[X]^{\times I}\) и \(h \in K[X]\),
+%такие что выполняется равенство~\eqref{eq:ParFracDecompOneFirst}.
+%\begin{equation}
+%\frac{f}{\prod_{i \in I} g_i}
+%=
+%h +
+%\sum_{i \in I}
+%\frac{h_i}{g_i}
+%\label{eq:ParFracDecompOneFirst}
+%\end{equation}
+%Согласно наблюдению~\ref{obs:EuclDivPoly}
+%для любого \(i \in I\)
+%существуют \(q_i, r_i \in K[X]\),
+%такие что
+%\(h_i = q_i g_i + r_i\) и \(\deg(r_i) < \deg(g_i)\).
+%Заменив в~\eqref{eq:ParFracDecompOneFirst} для каждого \(i \in I\) многочлен \(h_i\) на \(r_i\) и заменив \(h\) на \(h + \sum_{i \in I} q_i\), получаем разложение вида~\eqref{eq:ParFracDecompOneFirst}, где
+%\(\deg(h_i) < \deg(g_i)\)
+%для любого \(i \in I\).
+%
+%\item[Часть 2.]
+%Умножив~\eqref{eq:ParFracDecompOneFirst} на
+%%многочлен
+%\(\prod_{i \in I} g_i\)
+%и воспользовавшись наблюдением~\ref{obs:EuclDivPoly}
+%получаем, что
+%\(h\) в разложении~\eqref{eq:ParFracDecompOneFirst},
+%где
+%\(\deg(h_i) < \deg(g_i)\)
+%для любого \(i \in I\),
+%определено однозначно,
+%и если \(\deg(f) < \sum_{i \in I} \deg(g_i)\), то \(h = 0\).
+%
+%\item[Часть 3.]
+%Согласно доказанному в частях~1 и~2 очевидное \(K\)\=/линейное отображение~\eqref{eq:ParFracDecompOneSecond}
+%сюръективно,
+%причём \(K\)\=/размерности области и кообласти~\eqref{eq:ParFracDecompOneSecond}
+%конечны, равны \(\sum_{i \in I} \deg(g_i)\) и совпадают.
+%\begin{equation}
+%\bigoplus_{i \in I}
+%K[X]_{< \deg(g_i)}
+%\frac{1}{g_i}
+%\to
+%K[X]_{< \sum_{i \in I} \deg(g_i)}
+%\frac{1}{\prod_{i \in I} g_i}
+%\label{eq:ParFracDecompOneSecond}
+%\end{equation}
+%Отсюда следует, что отображение~\eqref{eq:ParFracDecompOneSecond} биективно,
+%и в разложении~\eqref{eq:ParFracDecompOneFirst}
+%набор многочленов \((h_i)_{i \in I}\),
+%удовлетворяющих условию
+%\(\deg(h_i) < \deg(g_i)\)
+%для любого \(i \in I\),
+%определён однозначно.
+%\qedhere
+%
+%\end{proofparts}
+
+\begin{remark}
+Заметим, что наблюдение~\ref{obs:EuclDivPoly} является частным случаем теоремы~\ref{the:PartFracDecompMain} при \(\card(I) = 1\).
+\end{remark}
 
 \begin{observation}
 Пусть \(K\) --- поле,
