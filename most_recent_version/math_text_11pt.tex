@@ -6310,14 +6310,27 @@ $.
 
 \subsection{Разложение на простейшие дроби}
 
-\begin{observation}
-Пусть \(A\) --- область целостности,
+\begin{notation}[\scshape Унитальные многочлены]
+Пусть \(A\) --- ассоциативное коммутативное унитальное кольцо.
+Тогда через \(A[X]_{\mr{mon}}\) обозначним множество элементов \(A[X]\) со старшим коэффициентом \(1\).
+\end{notation}
+
+\begin{notation}[\scshape Градуировка кольца многочленов]
+Пусть \(A\) --- ассоциативное коммутативное унитальное кольцо.
+Тогда в этом разделе
+\(A[X] = \bigoplus_{n=0}^{\infty} A[X]_n\),
+где \(A[X]_0 = A\) и \(X \in A[X]_1\),
+--- стандартная градуировка кольца \(A[X]\) степенью многочлена.
+\end{notation}
+
+\begin{observation}[\scshape Существование разложения на простейшие]
+Пусть \(A\) --- ассоциативное коммутативное унитальное кольцо,
 а \((a_i)_{i \in I}\) --- конечное семейство ненулевых элементов \(A\),
 такое что \(Aa_i + Aa_j = A\) для любых \(i,j \in I\), таких что \(i \neq j\).%
 \label{obs:FracChiRem}
 Тогда,
 cогласно китайской теореме об остатках,
-выполняется равенство
+в кольце \(A[1 / \prod_{i \in I} a_i]\) выполняется равенство
 \begin{equation*}
 A \frac{1}{\prod_{i \in I} a_i}
 =
@@ -6348,182 +6361,106 @@ A + \sum_{i \in I} A \frac{1}{a_i}.
 %\end{observation}
 
 \begin{observation}[\scshape Евклидово деление многочленов]
-Пусть \(K\) --- поле,
-\(K[X] = \bigoplus_{n=0}^{\infty} K[X]_n\)
---- стандартная градуировка \(K[X]\),
-а \(g \in K[X] \setminus \{0\}\).%
+Пусть \(A\) --- ассоциативное коммутативное унитальное кольцо,
+а \(g \in A[X]_{\mr{mon}}\) --- унитальный многочлен.%
 \label{obs:EuclDivPoly}
 Тогда
-\(K[X] = K[X] g \oplus K[X]_{< \deg(g)}\).
+\(A[X] = A[X] g \oplus A[X]_{< \deg(g)}\).
 Иначе говоря, очевидное отображение
-\(K[X]_{< \deg(g)} \to K[X] / (g)\)
+\(A[X]_{< \deg(g)} \to A[X] / (g)\)
 биективно.
 \end{observation}
 
-\begin{theorem}
-Пусть \(K\) --- поле,
-\(K[X] = \bigoplus_{r=0}^{\infty} K[X]_r\)
---- стандартная градуировка \(K[X]\),
-а \((g_i)_{i \in I} \in K[X]^{\times I}\)
---- конечное семейство ненулевых многочленов,
-такое что \(K[X] g_i + K[X] g_j = K[X]\)
+\begin{theorem}[\scshape Однозначное разложение на простейшие]
+Пусть \(A\) --- ассоциативное коммутативное унитальное кольцо,
+а \((g_i)_{i \in I} \in A[X]_{\mr{mon}}^{\times I}\)
+--- конечное семейство унитальных многочленов,
+такое что \(A[X] g_i + A[X] g_j = A[X]\)
 для любых \(i,j \in I\),
 таких что \(i \neq j\).%
 \label{the:PartFracDecompMain}
-Тогда выполняется следующее равенство:
+Тогда в кольце
+\(A[X][1 / \prod_{i \in I} g_i]\)
+выполняется следующее равенство:
 \begin{equation*}
-K[X]
+A[X]
 \frac{1}{\prod_{i \in I} g_i}
 =
-K[X]
+A[X]
 \oplus
 \bigoplus_{i \in I}
-K[X]_{< \deg(g_i)}
+A[X]_{< \deg(g_i)}
 \frac{1}{g_i}.
 \label{eq:ParFracDecompOne}
 \end{equation*}
 \end{theorem}
 
-\begin{proofparts}[Доказательство (из двух частей)]
-
-\item[Доказательство существования.]
-Пусть \(f \in K[X]\).
-Тогда, согласно наблюдению~\ref{obs:FracChiRem},
-существуют \((h_i)_{i \in I} \in K[X]^{\times I}\) и \(h \in K[X]\),
-такие что выполняется равенство~\eqref{eq:ParFracDecompOneFirst}.
-\begin{equation}
-	\frac{f}{\prod_{i \in I} g_i} =
-	h + \sum_{i \in I} \frac{h_i}{g_i}
-	\label{eq:ParFracDecompOneFirst}
-\end{equation}
-Согласно наблюдению~\ref{obs:EuclDivPoly}
-для любого \(i \in I\)
-существуют \(q_i, r_i \in K[X]\),
-такие что
-\(h_i = q_i g_i + r_i\) и \(\deg(r_i) < \deg(g_i)\).
-Заменив в~\eqref{eq:ParFracDecompOneFirst} для каждого \(i \in I\) многочлен \(h_i\) на \(r_i\) и заменив \(h\) на \(h + \sum_{i \in I} q_i\), получаем разложение вида~\eqref{eq:ParFracDecompOneFirst}, где
-\(\deg(h_i) < \deg(g_i)\)
-для любого \(i \in I\).
-С этого момента будем предполагать, что
-\(\deg(h_i) < \deg(g_i)\)
-для любого \(i \in I\).
-
-\item[Доказательство единственности.]
+\begin{proof}
 Введём обозначения
 \(g \coloneqq \prod_{i \in I} g_i\)
 и
 \(\hat{g}_i \coloneqq \prod_{j \in I \setminus \{i\}} g_j\),
 где \(i \in I\).
-Домножив равенство~\eqref{eq:ParFracDecompOneFirst} на \(g\), получаем равенство
-\(f = h g + \sum_{i \in I} h_i \hat{g}_i\).
-Осталось воспользоваться биективностью отображений
+Согласно наблюдению~\ref{obs:EuclDivPoly} и китайской теореме об остатках сквозное отображение
 \(
-	K[X]_{< \deg(g)}
-	\to
-	K[X] / (g)
-	\to
-	\prod_{i \in I} (K[X] / (g_i))
+\rho : 
+A[X]_{< \deg(g)}
+\xrightarrow{\sim}
+A[X] / (g)
+\xrightarrow{\sim}
+\bigoplus_{i \in I}
+A[X] / (g_i)
+%\label{eq:PartFracCRTMap}
 \)
-и заметить, что для любого \(i \in I\) выполняются неравенство \(\deg(h_i \hat{g}_i) < \deg(g)\) и сравнения
-\(h_i \hat{g}_i \equiv 0 \pmod{g_j}\), где \(j \in I \setminus \{i\}\),
+биективно
 и
-\(h_i \hat{g}_i \equiv f \pmod{g_i}\).
-Отсюда получаем единственность \(h_i \hat{g}_i\) для любого \(i \in I\), откуда получаем единственность \(h_i\) для любого \(i \in I\) и единственность \(h\).
-\qedhere
-
-\end{proofparts}
-
-%\begin{proofparts}[Доказательство (из трёх частей)]
-%
-%\item[Часть 1.]
-%Пусть \(f \in K[X]\).
-%Тогда, согласно наблюдению~\ref{obs:FracChiRem},
-%существуют \((h_i)_{i \in I} \in K[X]^{\times I}\) и \(h \in K[X]\),
-%такие что выполняется равенство~\eqref{eq:ParFracDecompOneFirst}.
-%\begin{equation}
-%\frac{f}{\prod_{i \in I} g_i}
-%=
-%h +
-%\sum_{i \in I}
-%\frac{h_i}{g_i}
-%\label{eq:ParFracDecompOneFirst}
-%\end{equation}
-%Согласно наблюдению~\ref{obs:EuclDivPoly}
-%для любого \(i \in I\)
-%существуют \(q_i, r_i \in K[X]\),
-%такие что
-%\(h_i = q_i g_i + r_i\) и \(\deg(r_i) < \deg(g_i)\).
-%Заменив в~\eqref{eq:ParFracDecompOneFirst} для каждого \(i \in I\) многочлен \(h_i\) на \(r_i\) и заменив \(h\) на \(h + \sum_{i \in I} q_i\), получаем разложение вида~\eqref{eq:ParFracDecompOneFirst}, где
-%\(\deg(h_i) < \deg(g_i)\)
-%для любого \(i \in I\).
-%
-%\item[Часть 2.]
-%Умножив~\eqref{eq:ParFracDecompOneFirst} на
-%%многочлен
-%\(\prod_{i \in I} g_i\)
-%и воспользовавшись наблюдением~\ref{obs:EuclDivPoly}
-%получаем, что
-%\(h\) в разложении~\eqref{eq:ParFracDecompOneFirst},
-%где
-%\(\deg(h_i) < \deg(g_i)\)
-%для любого \(i \in I\),
-%определено однозначно,
-%и если \(\deg(f) < \sum_{i \in I} \deg(g_i)\), то \(h = 0\).
-%
-%\item[Часть 3.]
-%Согласно доказанному в частях~1 и~2 очевидное \(K\)\=/линейное отображение~\eqref{eq:ParFracDecompOneSecond}
-%сюръективно,
-%причём \(K\)\=/размерности области и кообласти~\eqref{eq:ParFracDecompOneSecond}
-%конечны, равны \(\sum_{i \in I} \deg(g_i)\) и совпадают.
-%\begin{equation}
-%\bigoplus_{i \in I}
-%K[X]_{< \deg(g_i)}
-%\frac{1}{g_i}
-%\to
-%K[X]_{< \sum_{i \in I} \deg(g_i)}
-%\frac{1}{\prod_{i \in I} g_i}
-%\label{eq:ParFracDecompOneSecond}
-%\end{equation}
-%Отсюда следует, что отображение~\eqref{eq:ParFracDecompOneSecond} биективно,
-%и в разложении~\eqref{eq:ParFracDecompOneFirst}
-%набор многочленов \((h_i)_{i \in I}\),
-%удовлетворяющих условию
-%\(\deg(h_i) < \deg(g_i)\)
-%для любого \(i \in I\),
-%определён однозначно.
-%\qedhere
-%
-%\end{proofparts}
+для любого \(i \in I\)
+выполняется равенство
+\(
+\rho^{-1}(A[X] / (g_i)) =
+A[X]_{< \deg(g)} \cap A[X] \hat{g}_i =
+A[X]_{< \deg(g_i)} \hat{g}_i
+\).
+Осталось умножить равенство
+\(
+A[X] =
+A[X] g \oplus
+A[X]_{< \deg(g)}
+=
+A[X] g \oplus
+\bigoplus_{i \in I}
+A[X]_{< \deg(g_i)} \hat{g}_i
+\)
+на \(1/g\).
+\end{proof}
 
 \begin{remark}
 Заметим, что наблюдение~\ref{obs:EuclDivPoly} является частным случаем теоремы~\ref{the:PartFracDecompMain} при \(\card(I) = 1\).
 \end{remark}
 
-\begin{observation}
-Пусть \(K\) --- поле,
-\(K[X] = \bigoplus_{r=0}^{\infty} K[X]_r\)
---- стандартная градуировка \(K[X]\),
-а \(g \in K[X] \setminus \{0\}\).%
+\begin{observation}[\scshape Разложение по степеням унитального многочлена]
+Пусть \(A\) --- ассоциативное коммутативное унитальное кольцо,
+а \(g \in A[X]_{\mr{mon}}\) --- унитальный многочлен.%
 \label{obs:PolyDecompGadic}
 Тогда
 для любого \(n \in \N_1\)
 многократным применением наблюдения~\ref{obs:EuclDivPoly}
 получается <<\(g\)\=/ичное>> разложение
 \(
-	K[X]_{< n \deg(g)}
+	A[X]_{< n \deg(g)}
 	=
 	\bigoplus_{k=0}^{n-1}
-	K[X]_{< \deg(g)} g^k
+	A[X]_{< \deg(g)} g^k
 \).
-Поделив на \(g^n\), получаем, что
-\begin{equation*}
-	K[X]_{< n \deg(g)}
-	\frac{1}{g^n}
+Умножив на \(g^{-n} \in A[X][1/g]\), получаем равенство
+\(
+	A[X]_{< n \deg(g)} g^{-n}
 	=
 	\bigoplus_{k=1}^{n}
-	K[X]_{< \deg(g)}
-	\frac{1}{g^k}.
-\end{equation*}
+	A[X]_{< \deg(g)} g^{-k}
+%	\subset
+%	A[X][1/g]
+\).
 \end{observation}
 
 \begin{observation}[\scshape Базис расширения полей \(K(X)/K\)]
@@ -10763,7 +10700,7 @@ K \otimes_{E_0} E_1 \otimes_{E_1} \cdots{} \otimes_{E_{n-1}} E_n
 Этот максимальный элемент можно взять в качестве \(k^{\mr{alg}}\).
 \end{proof}
 
-\subsection{Цикличность конечных подгрупп мультипликативной группы поля}
+\subsection[Цикличность конечных подгрупп мульт.\ группы поля]{Цикличность конечных подгрупп мультипликативной группы поля}
 
 \begin{theorem}
 Пусть \(G\) --- конечная группа порядка \(n\),
