@@ -6319,11 +6319,10 @@ $.
 Пусть \(A\) --- ассоциативное коммутативное унитальное кольцо.
 Тогда в этом разделе
 \(A[X] = \bigoplus_{n=0}^{\infty} A[X]_n\),
-где \(A[X]_0 = A\) и \(X \in A[X]_1\),
---- стандартная градуировка кольца \(A[X]\) степенью многочлена.
+где \(A[X]_n \coloneqq A \cdot X^n\) для любого \(n \in \N_0\), --- стандартная градуировка кольца многочленов \(A[X]\).
 \end{notation}
 
-\begin{observation}[\scshape Существование разложения на простейшие]
+\begin{observation}[\scshape Аддитивное разложение дробей]
 Пусть \(A\) --- ассоциативное коммутативное унитальное кольцо,
 а \((a_i)_{i \in I}\) --- конечное семейство ненулевых элементов \(A\),
 такое что \(Aa_i + Aa_j = A\) для любых \(i,j \in I\), таких что \(i \neq j\).%
@@ -6332,18 +6331,19 @@ $.
 cогласно китайской теореме об остатках,
 в кольце \(A[1 / \prod_{i \in I} a_i]\) выполняется равенство
 \begin{equation*}
-A \frac{1}{\prod_{i \in I} a_i}
-=
-\Bigl(
-\prod_{i \in I} A a_i
-+
-\sum_{i \in I}
-\prod_{\substack{j \in I \\ j \neq i}}
-A a_j
-\Bigr)
-\frac{1}{\prod_{i \in I} a_i}
-=
-A + \sum_{i \in I} A \frac{1}{a_i}.
+	A \frac{1}{\prod_{i \in I} a_i}
+	=
+	\Bigl(
+		\prod_{i \in I} A a_i
+		+
+		\sum_{i \in I}
+		\prod_{\substack{j \in I \\
+			j \neq i}}
+		A a_j
+	\Bigr)
+	\frac{1}{\prod_{i \in I} a_i}
+	=
+	A + \sum_{i \in I} A \frac{1}{a_i}.
 \end{equation*}
 \end{observation}
 
@@ -6371,7 +6371,7 @@ A + \sum_{i \in I} A \frac{1}{a_i}.
 биективно.
 \end{observation}
 
-\begin{theorem}[\scshape Однозначное разложение на простейшие]
+\begin{theorem}[\scshape Аддитивное разложение для рациональных дробей]
 Пусть \(A\) --- ассоциативное коммутативное унитальное кольцо,
 а \((g_i)_{i \in I} \in A[X]_{\mr{mon}}^{\times I}\)
 --- конечное семейство унитальных многочленов,
@@ -6381,18 +6381,19 @@ A + \sum_{i \in I} A \frac{1}{a_i}.
 \label{the:PartFracDecompMain}
 Тогда в кольце
 \(A[X][1 / \prod_{i \in I} g_i]\)
-выполняется следующее равенство:
-\begin{equation*}
-A[X]
-\frac{1}{\prod_{i \in I} g_i}
-=
-A[X]
-\oplus
-\bigoplus_{i \in I}
-A[X]_{< \deg(g_i)}
-\frac{1}{g_i}.
-\label{eq:ParFracDecompOne}
-\end{equation*}
+выполняется равенство~\eqref{eq:ParFracDecompOne}.
+\begin{equation}
+	A[X] \cdot
+	\frac{1}{\prod_{i \in I} g_i}
+	=
+	A[X] \oplus
+	(
+		\bigoplus_{i \in I}
+		A[X]_{< \deg(g_i)} \cdot
+		\frac{1}{g_i}
+	)
+	\label{eq:ParFracDecompOne}
+\end{equation}
 \end{theorem}
 
 \begin{proof}
@@ -6403,39 +6404,56 @@ A[X]_{< \deg(g_i)}
 где \(i \in I\).
 Согласно наблюдению~\ref{obs:EuclDivPoly} и китайской теореме об остатках сквозное отображение
 \(
-\rho : 
-A[X]_{< \deg(g)}
-\xrightarrow{\sim}
-A[X] / (g)
-\xrightarrow{\sim}
-\bigoplus_{i \in I}
-A[X] / (g_i)
-%\label{eq:PartFracCRTMap}
+	\rho : 
+	A[X]_{< \deg(g)}
+	\xrightarrow{\sim}
+	A[X] / (g)
+	\xrightarrow{\sim}
+	\bigoplus_{i \in I}
+	A[X] / (g_i)
+	%\label{eq:PartFracCRTMap}
 \)
 биективно
 и
 для любого \(i \in I\)
 выполняется равенство
 \(
-\rho^{-1}(A[X] / (g_i)) =
-A[X]_{< \deg(g)} \cap A[X] \hat{g}_i =
-A[X]_{< \deg(g_i)} \hat{g}_i
+	\rho^{-1}(A[X] / (g_i)) =
+	A[X]_{< \deg(g)} \cap (A[X] \hat{g}_i) =
+	A[X]_{< \deg(g_i)} \hat{g}_i
 \).
 Осталось умножить равенство
 \(
-A[X] =
-A[X] g \oplus
-A[X]_{< \deg(g)}
-=
-A[X] g \oplus
-\bigoplus_{i \in I}
-A[X]_{< \deg(g_i)} \hat{g}_i
+	A[X]
+	=
+	A[X] g \oplus
+	A[X]_{< \deg(g)}
+	=
+	A[X] g \oplus
+	(
+		\bigoplus_{i \in I}
+		A[X]_{< \deg(g_i)} \hat{g}_i
+	)
 \)
 на \(1/g\).
 \end{proof}
 
 \begin{remark}
-Заметим, что наблюдение~\ref{obs:EuclDivPoly} является частным случаем теоремы~\ref{the:PartFracDecompMain} при \(\card(I) = 1\).
+В обозначениях теоремы~\ref{the:PartFracDecompMain} канонический гомоморфизм колец
+\(A[X] \to A[X][1 / \prod_{i \in I} g_i]\)
+инъективен,
+а потому равенство
+\(
+	A[X]
+	=
+	A[X] g \oplus
+	(
+		\bigoplus_{i \in I}
+		A[X]_{< \deg(g_i)} \hat{g}_i
+	)
+\)
+эквивалентно равенству~\eqref{eq:ParFracDecompOne}.
+В частности, наблюдение~\ref{obs:EuclDivPoly} является частным случаем теоремы~\ref{the:PartFracDecompMain} при \(\card(I) = 1\).
 \end{remark}
 
 \begin{observation}[\scshape Разложение по степеням унитального многочлена]
@@ -6469,9 +6487,20 @@ A[X]_{< \deg(g_i)} \hat{g}_i
 Тогда, использовав то, что \(K[X]\) является областью однозначного разложения на простые и скомбинировав теорему~\ref{the:PartFracDecompMain} с наблюдением~\ref{obs:PolyDecompGadic}, получаем,
 что множество~\eqref{eq:PolyFracBasis} является базисом \(K(X)\) как векторного пространства над \(K\).
 \begin{equation}
-\Bigl\{X^n \;\Big|\; n \geq 0\Bigr\} \cup
-\Bigl\{\frac{X^n}{g^k} \;\Big|\; g \in \op{Irred}(K[X]_{\mr{mon}}),\ k \geq 1,\ 0 \leq n < \deg(g)\Bigr\}
-\label{eq:PolyFracBasis}
+	\Bigl\{
+		X^n
+		\;\Big|\;
+		n \geq 0
+	\Bigr\}
+	\cup
+	\Bigl\{
+		\frac{X^n}{g^k}
+		\;\Big|\;
+		g \in \op{Irred}(K[X]_{\mr{mon}}),\ 
+		k \geq 1,\ 
+		0 \leq n < \deg(g)
+	\Bigr\}
+	\label{eq:PolyFracBasis}
 \end{equation}
 \end{observation}
 
@@ -11084,7 +11113,7 @@ A \cap (S^{-1}\mathfrak{a})
 
 \begin{theorem}
 Пусть \(A\) --- ассоциативное коммутативное унитальное кольцо, а \((S_i)_{i \in I}\) --- семейство мультипликативных подмножеств \(A\).%
-\label{thm:LocCover}
+\seclabel{thm:LocCover}
 Тогда следующие условия эквивалентны:
 \begin{enumerate}[
 	font=\upshape,
@@ -13489,15 +13518,14 @@ A
 \end{proofparts}
 
 
-%\section[Структурная теорема для конечно порождённых модулей над областями главных идеалов][Структурная теорема для кон.\ пор.\ модулей над ОГИ]{Структурная теорема для конечно порождённых модулей над областями главных идеалов}
-\section{Конечные модули над областями главных идеалов}
+\section{Кольца главных идеалов}
 
-%\begin{sectionintro}
-%Этот раздел представляет собой краткий конспект стандартного доказательства и добавлен для полноты.
-%\end{sectionintro}
+\sectiontableofcontents
+
+\subsection{Конечные модули над областями главных идеалов}
 
 \begin{convention}
-В этом разделе все кольца считаются коммутативными, ассоциативными и унитальными.
+В этом подразделе все кольца считаются коммутативными, ассоциативными и унитальными.
 \end{convention}
 
 \begin{definition}[\scshape Унимодулярное семейство]
@@ -13792,6 +13820,99 @@ M \simeq (\bigoplus_{\mathfrak{p} \in \mathcal{P}} \bigoplus_{i = 1}^{N_\mathfra
 \(\mathfrak{b}_i \coloneqq \prod_{\mathfrak{p} \in \mathcal{P} \suchthat N_\mathfrak{p} \geq i} \mathfrak{p}^{n_{\mathfrak{p},i}}\),
 и \(\mathfrak{d}_i \coloneqq 0\) для \(N+1 \leq i \leq N+m\).
 \end{proof}
+
+\subsection{Разложение колец главных идеалов на неразложимые}
+
+\begin{notation}[\scshape Размерность Крулля]
+Пусть \(A\) --- ассоциативное коммутативное унитальное кольцо.
+Тогда в этом разделе через \(\dim(A)\) будет обозначаться размерность Крулля \(A\).
+\end{notation}
+
+\begin{observation}[\scshape О классе колец главных идеалов]
+Класс ассоциативных коммутативных унитальных колец главных идеалов замкнут относительно перехода к конечным произведениям, факторкольцам и локализациям.
+\end{observation}
+
+\begin{lemma}[\scshape О простых в кольцах главных идеалов]
+Пусть \(A\) --- ассоциативное коммутативное унитальное кольцо главных идеалов, а \(\mf{p}, \mf{p}' \subset A\) --- два простых идеала, таких что \(\mf{p}' \varsubsetneq \mf{p}\).%
+\label{lem:PrimesPIR}
+Тогда \(\mf{p}' = \mf{p} \mf{p}'\), или, эквивалентно, существует \(x \in 1 + \mf{p}\), такой что \(x \mf{p}' = 0\).
+\end{lemma}
+
+\begin{proof}
+Пусть \(\mf{p} = (p)\) и \(\mf{p}' = (p')\), где \(p, p' \in A\).
+Тогда, так как \(\mf{p}' \subset \mf{p}\), то \(p' = a p\) для какого-то \(a \in A\). Так как \(p \notin \mf{p}'\), то есть \(p' \nmid p\), то \(p' \mid a\), то есть \(a = b p'\) для какого-то \(b \in A\).
+Отсюда получаем равенство \(p' = a p = b p' p\).
+Осталось положить \(x \coloneqq 1 - b p\).
+\end{proof}
+
+\begin{corollary}[\scshape О решётке простых идеалов кольца главных идеалов]
+Пусть \(A\) --- ассоциативное коммутативное унитальное кольцо главных идеалов,
+а \(\mf{p}, \mf{p}', \mf{p}'' \subset A\) --- простые идеалы, такие что \(\mf{p}' \varsubsetneq \mf{p} \varsupsetneq \mf{p}''\).%
+\label{cor:PrimePosetPIR}
+Тогда \(\mf{p}' = \mf{p}''\).
+В частности, различные минимальные простые идеалы \(A\) комаксимальны
+и \(\dim(A) \leq 1\).
+\end{corollary}
+
+\begin{proof}
+Воспользовавшись леммой~\ref{lem:PrimesPIR} найдем \(x \in 1 + \mf{p}\), такой что \((x) \cdot \mf{p}' = (0) \subset \mf{p}''\).
+Тогда, так как \(x \equiv 1 \not\equiv 0 \pmod{\mf{p}}\), то \((x) \not\subset \mf{p}''\).
+а потому \(\mf{p}' \subset \mf{p}''\).
+По симметрии также \(\mf{p}'' \subset \mf{p}'\).
+\end{proof}
+
+\begin{theorem}[\scshape О локальных артиновых кольцах главных идеалов]
+Пусть \(A\) --- ассоциативное коммутативное унитальное кольцо главных идеалов с простым нильрадикалом.%
+\label{thm:PrimeNilradPIR}
+Тогда если \(A\) не целостно, то \(A\) локально и артиново.
+\end{theorem}
+
+\begin{proof}
+Пусть \(\mf{n}\) --- нильрадикал \(A\).
+Нам нужно доказать, что если идеал \(\mf{n}\) не максимален, то \(A\) целостно.
+Предположим, что \(\mf{n}\) не максимален.
+Пусть \(\mf{m} \subset A\) --- максимальный идеал.
+Тогда \(\mf{n} \varsubsetneq \mf{m}\).
+Согласно лемме~\ref{lem:PrimesPIR} существует \(x \in 1 + \mf{m}\), такой что \(x \mf{n} = 0\).
+Так как \(x \notin \mf{m}\), то образ \(x\) в \(A_{\mf{m}}\) обратим, а потому образ \(\mf{n}\) в \(A_{\mf{m}}\) равен нулю.
+Так как канонический гомоморфизм
+\(A \to \prod_{\mf{m} \in \op{Spm}(A)} A_{\mf{m}}\) инъективен по теореме~\secref{thm:LocCover}, то \(\mf{n} = 0\) и кольцо \(A\) целостно.
+\end{proof}
+
+\begin{theorem}[\scshape Теорема Зариского\namedash{}Самюэля]
+Пусть \(A\) --- ассоциативное коммутативное унитальное кольцо главных идеалов.%
+\label{thm:ZarSamPIR}
+Тогда \(A\) представляется в виде конечного произведения целостных колец и локальных артиновых колец.
+\end{theorem}
+
+\begin{proof}
+Пусть \(\mf{n}\) --- нильрадикал \(A\).
+Так как \(A\) нётерово, то \(\mf{n}\) нильпотентен и является конечным пересечением минимальных простых идеалов в соответствии с разложением на неприводимые компоненты или наблюдением~\secref{obs:NoethSpecAssMin}.
+Пусть \(\mc{P}\) --- конечное множество минимальных простых идеалов \(A\), такое что
+\(\mf{n} = \bigcap_{\mf{p} \in \mc{P}} \mf{p}\),
+а \(n \in \N_1\) --- натуральное число, такое что \(\mf{n}^n = 0\).
+Согласно следствию~\ref{cor:PrimePosetPIR} любые два различных элемента \(\mc{P}\) комаксимальны.
+Воспользовавшись наблюдением~\secref{obs:ComaximalIdealsProd} и китайской теоремой об остатках получаем, что
+\(\mf{n} = \prod_{\mf{p} \in \mc{P}} \mf{p}\)
+и
+\(\mf{n}^n = \prod_{\mf{p} \in \mc{P}} \mf{p}^n = 0\),
+а канонический гомоморфизм
+\(A \xrightarrow{\sim} \prod_{\mf{p} \in \mc{P}} A / \mf{p}^n\)
+биективен.
+Для любого \(\mf{p} \in \mc{P}\) нильрадикал \(A / \mf{p}^n\) совпадает с \(\mf{p} / \mf{p}^n\) и является простым идеалом.
+Осталось воспользоваться теоремой~\ref{thm:PrimeNilradPIR}.
+\end{proof}
+
+\begin{observation}[\scshape Неразложимость локальных или целостных колец]
+Если ассоциативное коммутативное унитальное кольцо локально или целостно,%
+\label{obs:LocIntegRingIndecomp}
+то оно не разлагается в декартово произведение двух нетривиальных колец.
+\end{observation}
+
+\begin{observation}[\scshape Однозначность разложения Зариского\namedash{}Самюэля]
+Воспользовавшись наблюдением~\ref{obs:LocIntegRingIndecomp} получаем, что разложение из теоремы~\ref{thm:ZarSamPIR} является разложением в конечное произведение неразложимых колец.
+Согласно следствию~\secref{cor:UniqAssDecomp} отсюда следует, что оно определено совершенно однозначно.
+\end{observation}
 
 
 \section{Ассоциированные простые идеалы}
