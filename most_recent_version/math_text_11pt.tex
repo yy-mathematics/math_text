@@ -10740,46 +10740,62 @@ K \otimes_{E_0} E_1 \otimes_{E_1} \cdots{} \otimes_{E_{n-1}} E_n
 \end{theorem}
 
 \begin{proof}
-Пусть \(d\) --- ненулевой натуральный делитель \(n\).
-Тогда если существует \(h \in G\), такой что \(\lvert h^{:\Z} \rvert = d\), то, согласно условию,
+Пусть \(C_n\) --- циклическая группа порядка \(n\).
+Для любого \(d \in \N_1\), такого что \(d \mid n\), если существует \(h \in G\),
+такой что \(\lvert h^{:\Z} \rvert = d\), то, согласно условию,
 \(h^{:\Z} = \{g \in G \mid g^d = 1\}\),
 а потому
 \(
-\{g \in G \mid \lvert g^{:\Z} \rvert = d\}
-=
-\{g \in h^{:\Z} \mid \lvert g^{:\Z} \rvert = d\}
-=
-\{x \in \Z/n\Z \mid \lvert \Z x \rvert = d\}
-\).
-Воспользовавшись равенствами
-\[
-\sum_{d \mid n}
-\lvert
-\{g \in G \mid \lvert g^{:\Z} \rvert = d\}
-\rvert
-=
-\lvert G \rvert
-=
-%n
-%=
-\lvert \Z/n\Z \rvert
-=
-\sum_{d \mid n}
-\lvert
-\{x \in \Z/n\Z \mid \lvert \Z x \rvert = d\}
-\rvert
-\]
+	\{g \in G \mid \lvert g^{:\Z} \rvert = d\}
+	=
+	\{g \in h^{:\Z} \mid \lvert g^{:\Z} \rvert = d\}
+\)
+и выполняются равенства~\eqref{eq:GroupBoundTorsCyclicOne}.
+\begin{gather}
+	\lvert
+	\{g \in G \mid \lvert g^{:\Z} \rvert = d\}
+	\rvert
+	=
+	\lvert
+	\{g \in h^{:\Z} \mid \lvert g^{:\Z} \rvert = d\}
+	\rvert
+	=
+	\lvert
+	\{x \in C_n \mid \lvert x^{:\Z} \rvert = d\}
+	\rvert
+	\label{eq:GroupBoundTorsCyclicOne}
+	\displaybreak[0]
+	\\
+	\sum_{d \mid n}
+	\lvert
+	\{g \in G \mid \lvert g^{:\Z} \rvert = d\}
+	\rvert
+	=
+	\lvert G \rvert
+	=
+	n
+	=
+	\lvert C_n \rvert
+	=
+	\sum_{d \mid n}
+	\lvert
+	\{x \in C_n \mid \lvert x^{:\Z} \rvert = d\}
+	\rvert
+	\label{eq:GroupBoundTorsCyclicTwo}
+\end{gather}
+Воспользовавшись равенствами~\eqref{eq:GroupBoundTorsCyclicTwo}
 получаем, что
 \(
-\lvert
-\{g \in G \mid \lvert g^{:\Z} \rvert = d\}
-\rvert
-=
-\lvert
-\{x \in \Z/n\Z \mid \lvert \Z x \rvert = d\}
-\rvert
+	\lvert
+	\{g \in G \mid \lvert g^{:\Z} \rvert = d\}
+	\rvert
+	=
+	\lvert
+	\{x \in C_n \mid \lvert x^{:\Z} \rvert = d\}
+	\rvert
 \)
 для любого \(d \in \N_1\), такого что \(d \mid n\), в частности, для \(d = n\).
+В частности, в \(G\) существует элемент порядка \(n\).
 \end{proof}
 
 \begin{remark}
@@ -11080,7 +11096,8 @@ A \cap (S^{-1}\mathfrak{a})
 \end{proof}
 
 \begin{corollary}%[\scshape Соответствие для простых и примарных идеалов]
-Пусть \(A\) --- ассоциативное коммутативное унитальное кольцо, а \(S \subset A\) --- мультипликативное множество.
+Пусть \(A\) --- ассоциативное коммутативное унитальное кольцо, а \(S \subset A\) --- мультипликативное множество.%
+\seclabel{cor:CommLocPrimePrimaryIdeals}
 Тогда соответствие Галуа между идеалами кольца \(A\) и идеалами кольца \(S^{-1}A\), индуцированное каноническим гомоморфизмом \(A \to S^{-1}A\), индуцирует биекцию между про\-сты\-ми/при\-мар\-ны\-ми идеалами \(A\), дизъюнктными с \(S\), и про\-сты\-ми/при\-мар\-ны\-ми соответственно идеалами \(S^{-1}A\).
 \end{corollary}
 
@@ -13857,6 +13874,11 @@ M \simeq (\bigoplus_{\mathfrak{p} \in \mathcal{P}} \bigoplus_{i = 1}^{N_\mathfra
 Воспользовавшись теоремой~\ref{thm:PrimesPIR} и соответствием между простыми идеалами \(A_{\mf{m}}\) и простыми идеалами \(A\), которые содержатся в \(\mf{m}\), получаем, что \(\mf{p}' = \mf{p}''\) --- противоречие.
 \end{proof}
 
+\begin{remark}
+С учётом следствия~\secref{cor:CommLocPrimePrimaryIdeals}
+из теоремы~\ref{thm:PrimesPIR} сразу следуют все утверждения леммы из доказательства теоремы~33 в книге Зариского и Самюэля~\cite[282]{ZarSamOneRu1963}.
+\end{remark}
+
 \begin{theorem}[\scshape О неприводимых кольцах главных идеалов]
 Пусть \(A\) --- ассоциативное коммутативное унитальное кольцо главных идеалов с простым нильрадикалом.%
 \label{thm:PrimeNilradPIR}
@@ -13889,16 +13911,23 @@ M \simeq (\bigoplus_{\mathfrak{p} \in \mathcal{P}} \bigoplus_{i = 1}^{N_\mathfra
 \(\mf{n} = \bigcap_{\mf{p} \in \mc{P}} \mf{p}\),
 а \(n \in \N_1\) --- натуральное число, такое что \(\mf{n}^n = 0\).
 Согласно следствию~\ref{cor:PrimePosetPIR} любые два различных элемента \(\mc{P}\) комаксимальны.
-Воспользовавшись наблюдением~\secref{obs:ComaximalIdealsProd} и китайской теоремой об остатках получаем, что
+Воспользовавшись наблюдением~\secref{obs:ComaximalIdealsProd} и китайской теоремой об остатках получаем, что выполняется равенство
 \(\mf{n} = \prod_{\mf{p} \in \mc{P}} \mf{p}\)
-и
-\(\mf{n}^n = \prod_{\mf{p} \in \mc{P}} \mf{p}^n = 0\),
-а канонический гомоморфизм
-\(A \xrightarrow{\sim} \prod_{\mf{p} \in \mc{P}} A / \mf{p}^n\)
+и канонический гомоморфизм
+\(
+	A
+	\xrightarrow{\sim}
+	\prod_{\mf{p} \in \mc{P}}
+		A / \mf{p}^n
+\)
 биективен.
 Для любого \(\mf{p} \in \mc{P}\) нильрадикал \(A / \mf{p}^n\) совпадает с \(\mf{p} / \mf{p}^n\) и является простым идеалом.
 Осталось воспользоваться теоремой~\ref{thm:PrimeNilradPIR}.
 \end{proof}
+
+\begin{remark}
+В отличие от доказательства, приведённого здесь, доказательство теоремы~\ref{thm:ZarSamPIR} в книге Зариского и Самюэля~\cite[с.~282, теорема~33]{ZarSamOneRu1963} использует примарное разложение.
+\end{remark}
 
 \begin{observation}[\scshape Неразложимость локальных и неприводимых колец]
 Если ассоциативное коммутативное и унитальное кольцо локально или имеет простой нильрадикал, в частности, целостно,%
@@ -13910,10 +13939,6 @@ M \simeq (\bigoplus_{\mathfrak{p} \in \mathcal{P}} \bigoplus_{i = 1}^{N_\mathfra
 Воспользовавшись наблюдением~\ref{obs:LocIntegRingIndecomp} получаем, что разложение из теоремы~\ref{thm:ZarSamPIR} является разложением в конечное произведение декартово неразложимых колец.
 Согласно следствию~\secref{cor:UniqAssDecomp} отсюда следует, что оно определено совершенно однозначно.
 \end{observation}
-
-\begin{remark}
-В отличие от доказательства, приведённого здесь, доказательство теоремы~\ref{thm:ZarSamPIR} в книге Зариского и Самюэля~\cite[с.~282, теорема~33]{ZarSamOneRu1963} использует примарное разложение.
-\end{remark}
 
 \begin{remark}
 Теорема Хангерфорда~\cite{HungerfordPIR} утверждает, что любое ассоциативное коммутативное унитальное локальное артиново кольцо главных идеалов изоморфно факторкольцу области главных идеалов.
@@ -16735,9 +16760,20 @@ F,
 
 \section{Удвоение Кэли\namedash{}Диксона}
 
+\begin{definition}[\scshape Центр унитального кольца]
+Пусть \(R\) --- унитальное кольцо.
+Тогда \emph{центром} \(R\),
+обозначаемым \(\Zent(R)\),
+называется множество элементов \(a \in R\), таких что операторы \(a*\) и \(*a\)
+%левого и правого умножения на \(a\)
+совпадают и коммутируют с операторами вида \(x*\) и \(*x\), где \(x \in R\).
+\end{definition}
+
 \begin{definition}[\scshape Удвоение Кэли\namedash{}Диксона]
-Пусть \(R\) --- кольцо с инволюцией \(x \mapsto \bar{x} : R \to R^o\), а \(\alpha \in \Zent(R)\) --- центральный элемент \(R\).
-Тогда \emph{удвоением Кэли\namedash{}Диксона} \(R\) относительно \(\alpha\) называется кольцо над \(R\), заданное над \(R\) образующей \(i\) и соотношениями
+Пусть \(R\) --- унитальное кольцо с инволюцией \(x \mapsto \bar{x} : R \to R^o\),
+%а \(\alpha \in \Zent(R)\) --- центральный элемент \(R\).
+а \(\alpha \in \Zent(R)\).
+Тогда \emph{удвоением Кэли\namedash{}Диксона} \(R\) относительно \(\alpha\) называется унитальное кольцо над \(R\), заданное над \(R\) образующей \(i\) и соотношениями
 \(i^2 = \alpha\),
 \(x i = i \bar{x}\),
 \(x(yi) = (yx)i\),
