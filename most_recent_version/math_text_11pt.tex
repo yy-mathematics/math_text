@@ -270,7 +270,7 @@
 \end{convention}
 
 \begin{notation}[\scshape Семейство]
-Символы \((a_i)_{i \in I}\) и \((a_i \mid i \in I)\) обозначают \emph{семейство}, индексированное множеством \(I\), которое теоре\-ти\-ко-мно\-жес\-твен\-но представляет из себя множество упорядоченных пар \((i,a_i)\), по одной для каждого \(i \in I\), то есть график отображения из \(I\), такого что \(i \mapsto a_i\) для всех \(i \in I\).
+Символы \((a_i)_{i \in I}\) и \((a_i \given i \in I)\) обозначают \emph{семейство}, индексированное множеством \(I\), которое теоре\-ти\-ко-мно\-жес\-твен\-но представляет из себя множество упорядоченных пар \((i,a_i)\), по одной для каждого \(i \in I\), то есть график отображения из \(I\), такого что \(i \mapsto a_i\) для всех \(i \in I\).
 Если \((X_i)_{i \in I}\) --- семейство множеств, то элементы \(\prod_{i \in I} X_i\) --- это семейства \((a_i)_{i \in I}\), где \(a_i \in X_i\) для всех \(i \in I\).
 \end{notation}
 
@@ -282,9 +282,9 @@
 Образ подмножества \(X \subset Y\) под действием отображения
 \(f : Y \to Z\)
 иногда будет обозначаться через
-\(\{f(x) \in Z \mid x \in X\}\)
+\(\{f(x) \in Z \given x \in X\}\)
 или
-\(\{f(x) \mid x \in X\}\).
+\(\{f(x) \given x \in X\}\).
 \end{notation}
 
 \begin{notation}[\scshape Образ в экспоненциальном обозначении]
@@ -296,9 +296,9 @@
 или
 \(y \mapsto \t*[^{\lambda}]{y}{} : Y \to Z\)
 будем обозначать через
-\(X^{:\lambda} \coloneqq \{x^\lambda \in Z \mid x \in X\}\)
+\(X^{:\lambda} \coloneqq \{x^\lambda \in Z \given x \in X\}\)
 или
-\(\t*[^{\lambda:}]{X}{} \coloneqq \{\t*[^{\lambda}]{x}{} \in Z \mid x \in X\}\)
+\(\t*[^{\lambda:}]{X}{} \coloneqq \{\t*[^{\lambda}]{x}{} \in Z \given x \in X\}\)
 соответственно.
 \end{notation}
 
@@ -711,7 +711,7 @@ The \((\phantom{x}, \phantom{x})\) operation then turned out to be fundamental i
 
 \begin{proof}
 Пусть
-\(C \coloneqq \{x \in X \mid x \notin \varphi(x)\}\).
+\(C \coloneqq \{x \in X \given x \notin \varphi(x)\}\).
 Тогда если \(c \in X\) и \(\varphi(c) = C\),
 то утверждение <<\(c \in C\)>> эквивалентно утверждению <<\(c \notin C\)>> --- противоречие.
 \end{proof}
@@ -846,7 +846,7 @@ The \((\phantom{x}, \phantom{x})\) operation then turned out to be fundamental i
 
 \begin{proof}
 Предположим, что это не так. Тогда для каждого \(A \in M\), существует \(A' \in M\), такой что \(A\) --- максимальный собственный подординал в \(A'\). Воспользовавшись аксиомой выбора, выберем отображение \(r_U : M \to M\), сопоставляющее каждому \(A \in M\) такой \(A'\).
-Пусть \(L \coloneqq \{A \in M \mid r_A(B) = r_U(B)\ \tn{для всех}\ B \prec A\}\). Тогда, воспользовавшись леммой о сравнении, легко увидеть, что \(\bigcup_{A \in L} A \in L\). Но \(\bigcup_{A \in L} A \prec r_U(\bigcup_{A \in L} A) \in L\) --- противоречие.
+Пусть \(L \coloneqq \{A \in M \given r_A(B) = r_U(B)\ \tn{для всех}\ B \prec A\}\). Тогда, воспользовавшись леммой о сравнении, легко увидеть, что \(\bigcup_{A \in L} A \in L\). Но \(\bigcup_{A \in L} A \prec r_U(\bigcup_{A \in L} A) \in L\) --- противоречие.
 \end{proof}
 
 \begin{observation}[\scshape Принцип максимума Хаусдорфа]
@@ -1049,9 +1049,9 @@ X \to \op{Ded}(X)
 Тогда \(a = 1 + \varepsilon\) и для любого \(n \in \N_0\) в поле \(K\) выполняется неравенство \((1 + \varepsilon)^n \geq 1 + n \varepsilon\),
 а потому,
 так как множество
-\(\{1 + n \varepsilon \in K_{>0} \mid n \in \N_0\}\)
+\(\{1 + n \varepsilon \in K_{>0} \given n \in \N_0\}\)
 не ограничено, то множество
-\(\{(1 + \varepsilon)^n \in K_{>0} \mid n \in \N_0\}\)
+\(\{(1 + \varepsilon)^n \in K_{>0} \given n \in \N_0\}\)
 тоже не ограничено.
 \end{proof}
 
@@ -1067,10 +1067,10 @@ X \to \op{Ded}(X)
 Пусть \(A\) --- абелева группа.
 Тогда для любых подмножеств \(S', S'' \subset A\)
 определим
-\(S' + S'' \coloneqq \{x' + x'' \in A \mid x' \in S',\ x'' \in S''\}\)
+\(S' + S'' \coloneqq \{x' + x'' \in A \given x' \in S',\ x'' \in S''\}\)
 и для любого подмножества \(S \subset A\)
 определим
-\(-S \coloneqq \{-x \in A \mid x \in S\}\).
+\(-S \coloneqq \{-x \in A \given x \in S\}\).
 \end{definition}
 
 \begin{theorem}[\scshape О сложении сечений Дедекинда]
@@ -1721,7 +1721,7 @@ X \to \op{McN}(X)
 не имеющее вид \((X_{\leq x}, X_{\geq x})\), где \(x \in X\).
 Тогда
 %\(X = (\bigcup_{l \in L} X_{<l}) \cup (\bigcup_{r \in R} X_{>r})\)
-\(\{X_{<l} \mid l \in L\} \cup \{X_{>r} \mid r \in R\}\)
+\(\{X_{<l} \given l \in L\} \cup \{X_{>r} \given r \in R\}\)
 --- открытое покрытие \(X\), у которого нет конечного подпокрытия,
 что противоречит компактности \(X\).
 \qedhere
@@ -1770,7 +1770,7 @@ X \to \op{McN}(X)
 множество
 \(
 X \coloneqq
-\{(x, y) \in M \times M \mid \od_{M'}(\varphi(x),\varphi(y)) \geq \varepsilon\}
+\{(x, y) \in M \times M \given \od_{M'}(\varphi(x),\varphi(y)) \geq \varepsilon\}
 =
 ({\od_{M'}} \circ (\varphi \times \varphi))^{-1}([\varepsilon, \infty))
 \)
@@ -1783,7 +1783,7 @@ X \coloneqq
 \begin{observation} \label{obs:SeqLimDist}
 Пусть \(X\) --- метрическое пространство, \((a_i)_{i \in I}\) и \((b_j)_{j \in J}\) --- две сходящиеся последовательности в \(X\). Тогда выполняется равенство
 %\(\od(\lim ((a_i)_{i \in I}), \lim ((b_j)_{j \in J})) = \lim ((\od(a_i, b_j))_{(i,j) \in I \times J})\).
-\(\od(\lim (a_i \mid i \in I), \lim (b_j \mid j \in J)) = \lim (\od(a_i, b_j) \mid (i,j) \in I \times J)\).
+\(\od(\lim (a_i \given i \in I), \lim (b_j \given j \in J)) = \lim (\od(a_i, b_j) \given (i,j) \in I \times J)\).
 %\(\od(\lim_{i \to \infty} (a_i), \lim_{j \to \infty} (b_j)) = \lim_{(i,j) \to \infty} (\od(a_i, b_j))\).
 \end{observation}
 
@@ -1839,7 +1839,7 @@ X \coloneqq
 Тогда \emph{вложением Куратовского} называется изометрическое вложение
 \[
 x \mapsto \od_X(x,-) :
-X \to \{f \in F \mid \od_F(f,\od_X(y,-)) < \infty\ \tn{для всех}\ y \in X\}.
+X \to \{f \in F \given \od_F(f,\od_X(y,-)) < \infty\ \tn{для всех}\ y \in X\}.
 \]
 \end{definition}
 
@@ -2748,7 +2748,7 @@ J_{\infty}
 Пусть \(x \in X\) --- частичный предел \((c_i)_{i \in I}\).
 Тогда
 множество
-\(J \coloneqq \{(U,i) \in \op{Open}(X)^o \times I \mid x, c_i \in U\}\)
+\(J \coloneqq \{(U,i) \in \op{Open}(X)^o \times I \given x, c_i \in U\}\)
 как подмножество предупорядоченного множества \(\op{Open}(X)^o \times I\) является направленным множеством,
 а \((c_i)_{(U,i) \in J}\) является поднаправленностью \((c_i)_{i \in I}\), сходящейся к \(x\).
 \end{proof}
@@ -2814,7 +2814,7 @@ J_{\infty}
 Пусть \(i \mapsto c_i : I \to X\) --- направленность.
 Тогда множество частичных пределов \((c_i)_{i \in I}\) совпадает с
 пересечением всех замкнутых множеств вида
-\(\Cl_X(\{c_i \in X \mid i \in I_{\geq j}\})\), где \(j \in I\).
+\(\Cl_X(\{c_i \in X \given i \in I_{\geq j}\})\), где \(j \in I\).
 Но любое конечное пересечение таких множеств непусто.
 \qedhere
 
@@ -3005,7 +3005,7 @@ J_{\infty}
 
 \begin{remark}
 Пусть \(f : X \to Y\) --- отображение множеств, а \(S \subset X\).
-Тогда \(f_{\exists}(S) = f(S)\), а \(f_{\forall}(S) = \bigcup_{E \in 2^Y \suchthat f^{-1}(E) \subset S} E = \{y \in Y \mid f^{-1}(y) \subset S\}\).
+Тогда \(f_{\exists}(S) = f(S)\), а \(f_{\forall}(S) = \bigcup_{E \in 2^Y \suchthat f^{-1}(E) \subset S} E = \{y \in Y \given f^{-1}(y) \subset S\}\).
 \end{remark}
 
 \begin{observation}
@@ -3198,12 +3198,12 @@ J_{\infty}
 
 \begin{definition}[\scshape Пространство фильтров]
 Пусть \(X\) --- множество.
-Множество всех фильтров на \(X\), которое в этом разделе будет обозначаться \(\mc{F}(X)\), снабжено топологией, заданной базой открытых множеств \((\{F \in \mc{F}(X) \mid S \in F\} \mid S \in 2^X)\).
+Множество всех фильтров на \(X\), которое в этом разделе будет обозначаться \(\mc{F}(X)\), снабжено топологией, заданной базой открытых множеств \((\{F \in \mc{F}(X) \given S \in F\} \given S \in 2^X)\).
 \end{definition}
 
 \begin{observation}
 Пусть \(X\) --- множество.
-Тогда каноническое вложение \(\iota : X \to \mc{F}(X)\), \(x \mapsto \{S \in 2^X \mid x \in S\}\) обладает плотным образом.
+Тогда каноническое вложение \(\iota : X \to \mc{F}(X)\), \(x \mapsto \{S \in 2^X \given x \in S\}\) обладает плотным образом.
 \end{observation}
 
 \begin{definition}[\scshape Предельные точки фильтра]
@@ -3333,7 +3333,7 @@ J_{\infty}
 \end{observation}
 
 \begin{observation}
-Если \((X_i \mid i \in I)\) --- семейство топологических пространств, \(S \subset \prod_{i \in I} X_i\) --- подмножество, а \(a \in \prod_{i \in I} X_i\) --- элемент,%
+Если \((X_i \given i \in I)\) --- семейство топологических пространств, \(S \subset \prod_{i \in I} X_i\) --- подмножество, а \(a \in \prod_{i \in I} X_i\) --- элемент,%
 \label{obs:top_prod_clos}
 то \(a \in \Cl(S)\) тогда и только тогда, когда
 \(\pi^I_F(a) \in \Cl(\pi^I_F(S))\)
@@ -3449,7 +3449,7 @@ Z \times
 
 \begin{definition}[\scshape Спектр кольца]
 \label{def:RingSpectrumTop}
-Для кольца \(R\) его \emph{спектр}, обозначаемый \(\Spec(R)\), --- это множество простых идеалов в \(R\), снабжённое \emph{топологией Зариского}, заданной базой открытых множеств вида \(A_f \coloneqq \{\mathfrak{p} \in \Spec(R) \mid f \notin \mathfrak{p}\}\), где \(f \in R\).
+Для кольца \(R\) его \emph{спектр}, обозначаемый \(\Spec(R)\), --- это множество простых идеалов в \(R\), снабжённое \emph{топологией Зариского}, заданной базой открытых множеств вида \(A_f \coloneqq \{\mathfrak{p} \in \Spec(R) \given f \notin \mathfrak{p}\}\), где \(f \in R\).
 %(множества $A_f$ образуют базу топологии, так как $A_f \cap A_g = A_{fg}$).
 \end{definition}
 
@@ -3468,7 +3468,7 @@ Z \times
 
 \begin{proof}
 Очевидно, что замкнутые подмножества спектра $R$ --- это множества
-$V(\mathfrak{I}) \coloneqq \{\mathfrak{p} \in \Spec(R) \mid \mathfrak{I} \subset \mathfrak{p}\}$, соответствующие идеалам $\mathfrak{I} \subset R$.
+$V(\mathfrak{I}) \coloneqq \{\mathfrak{p} \in \Spec(R) \given \mathfrak{I} \subset \mathfrak{p}\}$, соответствующие идеалам $\mathfrak{I} \subset R$.
 При этом $\bigcap_{i \in I} V(\mathfrak{I}_i) = V(\sum_{i \in I} \mathfrak{I}_i)$, где $(\mathfrak{I}_i)_{i \in I}$ --- произвольное семейство идеалов в $R$, а условие \(V(\mathfrak{I}) = \varnothing\) эквивалентно условию $\mathfrak{I} = R$, где $\mathfrak{I}$ --- идеал в $R$.
 Компактность $\Spec(R)$ эквивалентна следующему утверждению: если $(\mathfrak{I}_i)_{i \in I}$ --- произвольное семейство идеалов в $R$, такое что
 $\bigcap_{i \in I} V(\mathfrak{I}_i) = \varnothing$ то существует конечное подмножество $F \subset I$, такое что
@@ -3869,7 +3869,7 @@ $\mathfrak{p} \in \Spec(\Clop(T))$ имеет общий ноль $x \in T$, т�
 
 \begin{proof}
 Так как \(R_I = \colim_{J \in \Lambda(I)} R_J\) и \(\mc{B}_I = \colim_{J \in \Lambda(I)} \mc{B}_J\), где
-\(\Lambda(I) = \{J \in 2^I \mid \card(J) < \infty\}\),
+\(\Lambda(I) = \{J \in 2^I \given \card(J) < \infty\}\),
 %\(\Lambda(I)\) --- это множество конечных подмножеств \(I\),
 то достаточно доказать теорему для конечного \(I\).
 Если \(I\) конечно, то
@@ -4013,7 +4013,7 @@ Y'' \coloneqq
 а
 \(
 \Gamma \coloneqq
-\{(t,x) \in Y \mid tx=1\}
+\{(t,x) \in Y \given tx=1\}
 \subset Y
 \),
 то образ \(\Gamma\)
@@ -4038,7 +4038,7 @@ Y'' \coloneqq
 где
 \(
 X \coloneqq
-\R \setminus \{\frac{1}{n} \mid n \in \Z \setminus \{0\}\}
+\R \setminus \{\frac{1}{n} \given n \in \Z \setminus \{0\}\}
 %\R \setminus \{\pm 1, \pm \frac{1}{2}, \pm \frac{1}{3}, \dots{}\}
 \),
 не сохраняет пушауты, откуда следует, что он не имеет правого сопряжённого.
@@ -4621,7 +4621,7 @@ D^q \times [0,1]
 \end{theorem}
 
 \begin{proof}
-Множество \(\{(g,x) \in G \times X \mid gx = x\}\), очевидно, биективно и \(\bigsqcup_{g \in G} \{x \in X \mid gx = x\}\), и \(\bigsqcup_{x \in X} \{g \in G \mid gx = x\}\), а второе из этих множеств равномощно \(G\).
+Множество \(\{(g,x) \in G \times X \given gx = x\}\), очевидно, биективно и \(\bigsqcup_{g \in G} \{x \in X \given gx = x\}\), и \(\bigsqcup_{x \in X} \{g \in G \given gx = x\}\), а второе из этих множеств равномощно \(G\).
 \end{proof}
 
 \begin{corollary}[\scshape Теорема Жордана]
@@ -5299,7 +5299,7 @@ a \otimes v \mapsto av :
 \begin{statement}[\scshape Дистрибутивность \(\otimes\)]
 Пусть \(\pi : I \to J\) --- отображение множеств, \(J\) конечно, \((V_i)_{i \in I}\) --- семейство абелевых групп.%
 \label{sta:TensorDistr}
-Пусть \(\op{Sec}(\pi) \coloneqq \{\sigma : J \to I \mid \pi \circ \sigma = \mathrm{Id}_J\}\).
+Пусть \(\op{Sec}(\pi) \coloneqq \{\sigma : J \to I \given \pi \circ \sigma = \mathrm{Id}_J\}\).
 Тогда проекции на слагаемые и вложения слагаемых прямых сумм индуцируют пару взаимно обратных гомоморфизмов:
 \(
 \bigotimes_{j \in J}
@@ -5469,10 +5469,10 @@ a \otimes v \mapsto av :
 следующим образом:
 \begin{align*}
 \sop{HH}^0(R, M) &\coloneqq M^{\mf{h}(R)} =
-\{m \in M \mid rm = mr\ \text{для всех}\ r \in R\},\\
+\{m \in M \given rm = mr\ \text{для всех}\ r \in R\},\\
 \sop{HH}_0(R, M) &\coloneqq \mathrlap{M_{\mf{h}(R)}}\phantom{M^{\mf{h}(R)}} =
-M / (rm = mr \mid r \in R,\ m \in M),
-%M / (\Z\{rm - mr \mid r \in R,\ m \in M\}),
+M / (rm = mr \given r \in R,\ m \in M),
+%M / (\Z\{rm - mr \given r \in R,\ m \in M\}),
 \end{align*}
 где
 факторизация в определении \(\sop{HH}_0(R, M)\) --- это факторизация абелевой группы по соотношениям, а
@@ -5615,7 +5615,7 @@ M / (rm = mr \mid r \in R,\ m \in M),
 Пусть \(I\) --- конечное множество.%
 \label{def:TensorSysCoeff}
 Тогда будем называть \emph{системой коэффициентов} семейство ассоциативных унитальных колец \((R_{i,i'})_{(i,i') \in I^{\times 2} \setminus \Delta}\), такое что \(R_{i,i'} = R_{i',i}^o\) для всех \((i,i') \in I^{\times 2} \setminus \Delta\),
-где \(\Delta \coloneqq \{(i,i) \in I^{\times 2} \mid i \in I\}\) --- диагональ \(I^{\times 2}\).
+где \(\Delta \coloneqq \{(i,i) \in I^{\times 2} \given i \in I\}\) --- диагональ \(I^{\times 2}\).
 \end{definition}
 
 \begin{definition}[\scshape Действие системы коэффициентов]
@@ -6104,7 +6104,7 @@ M / (rm = mr \mid r \in R,\ m \in M),
 %\).
 \(
 S^\mr{sat} \coloneqq
-\{a \in R \mid Ra \cap S \cap aR \neq \varnothing\}
+\{a \in R \given Ra \cap S \cap aR \neq \varnothing\}
 \).
 Множество \(S^\mr{sat}\) мультипликативно. Если \(S = S^\mr{sat}\), то \(S\) называется \emph{насыщенным} или \emph{сатурированным} мультипликативным множеством.
 \end{definition}
@@ -6112,7 +6112,7 @@ S^\mr{sat} \coloneqq
 \begin{observation}
 %Пусть \(R\) --- коммутативный мультипликативный моноид, а \(S \subset R\) --- его подмоноид.
 Пусть \(R\) --- моноид, а \(S \subset \Zent(R)\) --- центральный подмоноид.
-Тогда \(S^\mr{sat} = \{a \in R \mid a/1 \in (S^{-1}R)^\times\}\).
+Тогда \(S^\mr{sat} = \{a \in R \given a/1 \in (S^{-1}R)^\times\}\).
 \end{observation}
 
 \subsection{Аддитивная локализация полукольца}
@@ -6330,7 +6330,7 @@ $.
 
 %\begin{example}
 %Пусть \(M\) --- ненулевой модуль над ассоциативным унитальным кольцом \(R\).
-%Тогда собственный подмодуль \(\{(a,b,c) \in M \oplus M \oplus M \mid a + b + c = 0\} \varsubsetneq M \oplus M \oplus M\) сюръективно проецируется на каждый из трёх подмодулей \(M \oplus M \oplus \{0\}, M \oplus \{0\} \oplus M, \{0\} \oplus M \oplus M \subset M \oplus M \oplus M\)
+%Тогда собственный подмодуль \(\{(a,b,c) \in M \oplus M \oplus M \given a + b + c = 0\} \varsubsetneq M \oplus M \oplus M\) сюръективно проецируется на каждый из трёх подмодулей \(M \oplus M \oplus \{0\}, M \oplus \{0\} \oplus M, \{0\} \oplus M \oplus M \subset M \oplus M \oplus M\)
 %--- китайская теорема об остатках для семейств не работает для модулей.
 %\end{example}
 
@@ -6536,13 +6536,13 @@ cогласно китайской теореме об остатках,
 \begin{equation}
 	\Bigl\{
 		X^n
-		\;\Big|\;
+		\given[\Big|]
 		n \geq 0
 	\Bigr\}
 	\cup
 	\Bigl\{
 		\frac{X^n}{g^k}
-		\;\Big|\;
+		\given[\Big|]
 		g \in \op{Irred}(K[X]_{\mr{mon}}),\ 
 		k \geq 1,\ 
 		0 \leq n < \deg(g)
@@ -6673,7 +6673,7 @@ cогласно китайской теореме об остатках,
 
 \begin{observation}
 В кольце \(A[[t]]\), где
-\(A \coloneqq \Q[X_i \smid i \in \N_1]\),
+\(A \coloneqq \Q[X_i \sgiven i \in \N_1]\),
 выполняются включения~\eqref{eq:WittVectorsPowerSeriesOne}
 и~\eqref{eq:WittVectorsPowerSeriesTwo}.%
 \label{obs:WittVectorsPowerSeries}
@@ -6699,7 +6699,7 @@ cогласно китайской теореме об остатках,
 
 \begin{observation}
 В кольце \(A[[t]]\), где
-\(A \coloneqq \Q[X_i \smid i \in \N_1]\),
+\(A \coloneqq \Q[X_i \sgiven i \in \N_1]\),
 выполняется следующая формула:
 \begin{equation}
 -t {\frac{d}{dt}} \log \prod_{n \geqslant 1} (1 - X_n t^n)
@@ -6716,7 +6716,7 @@ cогласно китайской теореме об остатках,
 
 \begin{observation}[\scshape Формула произведения Витта]
 В кольце \(A[[t]]\), где
-\(A \coloneqq \Q[X_i, Y_i \smid i \in \N_1]\),
+\(A \coloneqq \Q[X_i, Y_i \sgiven i \in \N_1]\),
 выполняется следующая формула:
 \begin{gather}
 	\bigl(
@@ -6802,8 +6802,8 @@ cогласно китайской теореме об остатках,
 \begin{proof}
 Если \(A \in \Ob(\Q\anneau)\),
 то призрачное отображение~\eqref{eq:WittVectGhostQ} биективно
-и отображения \(\cdot\) и \(\star\) задаются формулами~\eqref{eq:WittVectAddPolyForm} и~\eqref{eq:WittVectMultPolyForm} соответственно в кольце \(\Q[X_i, Y_i \smid i \in \N_1][[t]]\),
-где \(S_n, P_n \in \Q[X_i, Y_i \smid 1 \leq i \leq n]\) для любого \(n \in \N_1\).
+и отображения \(\cdot\) и \(\star\) задаются формулами~\eqref{eq:WittVectAddPolyForm} и~\eqref{eq:WittVectMultPolyForm} соответственно в кольце \(\Q[X_i, Y_i \sgiven i \in \N_1][[t]]\),
+где \(S_n, P_n \in \Q[X_i, Y_i \sgiven 1 \leq i \leq n]\) для любого \(n \in \N_1\).
 Полиномиальные тождества, соответствующие аксиомам ассоциативного коммутативного унитального кольца, следуют из того, что \((tA[[t]], +, \odot)\), где \(A \in \Ob(\Q\anneau)\), является ассоциативным коммутативным унитальным кольцом.
 \begin{gather}
 \mf{G}_A : 1 + t A[[t]] \to tA[[t]],\ 
@@ -6816,7 +6816,7 @@ f \mapsto - \frac{t}{f} \frac{df}{dt} = -t \frac{d}{dt} \log (f)
 (1 + \sum_{n \geq 1} Y_n t^n)
 =
 1 + \sum_{n \geq 1}
-S_n(X_i, Y_i \smid 1 \leq i \leq n) t^n
+S_n(X_i, Y_i \sgiven 1 \leq i \leq n) t^n
 \label{eq:WittVectAddPolyForm}
 \displaybreak[0]
 \\
@@ -6825,10 +6825,10 @@ S_n(X_i, Y_i \smid 1 \leq i \leq n) t^n
 (1 + \sum_{n \geq 1} Y_n t^n)
 =
 1 + \sum_{n \geq 1}
-P_n(X_i, Y_i \smid 1 \leq i \leq n) t^n
+P_n(X_i, Y_i \sgiven 1 \leq i \leq n) t^n
 \label{eq:WittVectMultPolyForm}
 \end{gather}
-Единственная вещь, которую нужно проверить --- это то, что многочлены \(S_n\) и \(P_n\), где \(n \in \N_1\), лежат не просто в \(\Q[X_i, Y_i \smid i \in \N_1]\), а в \(\Z[X_i, Y_i \smid i \in \N_1]\),
+Единственная вещь, которую нужно проверить --- это то, что многочлены \(S_n\) и \(P_n\), где \(n \in \N_1\), лежат не просто в \(\Q[X_i, Y_i \sgiven i \in \N_1]\), а в \(\Z[X_i, Y_i \sgiven i \in \N_1]\),
 то есть имеют целые коэффициенты.
 Для многочленов \(S_n\), где \(n \in \N_1\), достаточно заметить, что, как ясно из формулы~\eqref{eq:WittVectGhostQ}, операция~\eqref{eq:WittVectAddPolyForm} --- это обычное умножение рядов.
 Для многочленов \(P_n\), где \(n \in \N_1\),
@@ -6845,7 +6845,7 @@ P_n(X_i, Y_i \smid 1 \leq i \leq n) t^n
 \begin{observation}[\scshape Гомоморфизм \(S\)\=/усечения]
 Пусть
 \(S\) --- подмножество \(\N_1\), такое что
-\(\bigcup_{s \in S} \{n \in \N_1 \mid n\ \tn{делит}\ s\} = S\),
+\(\bigcup_{s \in S} \{n \in \N_1 \given n\ \tn{делит}\ s\} = S\),
 %а \(A\) --- ассоциативное коммутативное унитальное кольцо.
 а \(A \in \Ob(\mr{Ann})\).%
 \label{obs:WittVecTruncHom}
@@ -6863,7 +6863,7 @@ P_n(X_i, Y_i \smid 1 \leq i \leq n) t^n
 \begin{definition}[\scshape \(S\)\=/Усечённые векторы Витта]
 Пусть
 \(S\) --- подмножество \(\N_1\), такое что
-\(\bigcup_{s \in S} \{n \in \N_1 \mid n\ \tn{делит}\ s\} = S\),
+\(\bigcup_{s \in S} \{n \in \N_1 \given n\ \tn{делит}\ s\} = S\),
 %а \(A\) --- ассоциативное коммутативное унитальное кольцо.
 а \(A \in \Ob(\mr{Ann})\).
 Тогда множество \(A^{\times S}\) с кольцевой структурой, описанной в наблюдении~\ref{obs:WittVecTruncHom},
@@ -6881,7 +6881,7 @@ P_n(X_i, Y_i \smid 1 \leq i \leq n) t^n
 Пусть \(n \in \N_1\),
 а \(A \in \Ob(\mr{Ann})\).
 Тогда кольцо \(\mathbb{W}_S(A)\),
-где \(S \coloneqq \{s \in \N_1 \mid s \leq n\}\),
+где \(S \coloneqq \{s \in \N_1 \given s \leq n\}\),
 называется кольцом \emph{\(n\)\=/усечённых векторов Витта} с коэффициентами в \(A\) и обозначается \(\mathbb{W}_n(A)\).
 Если \(p \in \N_1\) --- простое число,
 то кольцо \(\mathbb{W}_S(A)\),
@@ -7037,9 +7037,9 @@ P_n(X_i, Y_i \smid 1 \leq i \leq n) t^n
 \end{gather}
 Коэффициенты~\eqref{eq:WittVectMultStand} лежат в
 \(
-\Z[X_i, Y_i \smid i \in \N_1]
+\Z[X_i, Y_i \sgiven i \in \N_1]
 \subset
-\Q[X_i, Y_i \smid i \in \N_1]
+\Q[X_i, Y_i \sgiven i \in \N_1]
 \).
 Формулу~\eqref{eq:WittVectMultCyclotomic}, коэффициенты которой лежат в \(\Z \subset \Q\), можно получить, расширив коэффициенты до \(\C\):
 отображение
@@ -7047,7 +7047,7 @@ P_n(X_i, Y_i \smid 1 \leq i \leq n) t^n
 	(u, v) \mapsto u v :
 	C_e \times C_r \to C_{[e,r]}
 \),
-где \(C_l \coloneqq \{z \in \C \mid z^l = 1\}\)
+где \(C_l \coloneqq \{z \in \C \given z^l = 1\}\)
 для любого \(l \in \N_1\),
 является сюръективным гомоморфизмом мультипликативных групп.
 Формулу~\eqref{eq:WittVectMultConst}, коэффициенты которой лежат в \(\Z[X_s^{1/s}] \subset \Q[X_s^{1/s}]\), можно получить, расширив коэффициенты до \(\C[X_s^{1/s}]\).
@@ -7421,7 +7421,7 @@ W_{n+1}(\Z/p\Z) \ar{r}{(x_i)_{i=0}^n \mapsto \sum_{i=0}^n p^i x_i^{\tau_{n+1}}} 
 Равенство \(\Zent(\GL_1(R)) = \Zent(R^{\times})\) --- тавтология,
 а если \(\card(I) > 1\), то
 %выполняются равенства
-\(\Zent(\GL_I(R)) = \Zent_{\Mat_I(R)}(\Z\langle x \smid x \in \GL_I(R) \rangle)^{\times} = \Zent_{\Mat_I(R)}(\Z\langle x \smid x \in \Elem_I(R) \rangle)^{\times} = \Zent_{\Mat_I(R)}(\Mat_I(R))^{\times} = \Zent(R)^{\times}\).
+\(\Zent(\GL_I(R)) = \Zent_{\Mat_I(R)}(\Z\langle x \sgiven x \in \GL_I(R) \rangle)^{\times} = \Zent_{\Mat_I(R)}(\Z\langle x \sgiven x \in \Elem_I(R) \rangle)^{\times} = \Zent_{\Mat_I(R)}(\Mat_I(R))^{\times} = \Zent(R)^{\times}\).
 \end{proof}
 
 \begin{remark}
@@ -7458,7 +7458,7 @@ W_{n+1}(\Z/p\Z) \ar{r}{(x_i)_{i=0}^n \mapsto \sum_{i=0}^n p^i x_i^{\tau_{n+1}}} 
 %\end{corollary}
 %
 %\begin{proof}
-%Центр \(\GL_I(R)\) равен \(\op{Z}_{\Mat_I(R)}(\Z\langle x \smid x \in \GL_I(R) \rangle)^{\times} = \op{Z}_{\Mat_I(R)}(\Z\langle x \smid x \in \Elem_I(R) \rangle)^{\times} = \op{Z}_{\Mat_I(R)}(\Mat_I(R))^{\times} = \op{Z}(R)^{\times}\).
+%Центр \(\GL_I(R)\) равен \(\op{Z}_{\Mat_I(R)}(\Z\langle x \sgiven x \in \GL_I(R) \rangle)^{\times} = \op{Z}_{\Mat_I(R)}(\Z\langle x \sgiven x \in \Elem_I(R) \rangle)^{\times} = \op{Z}_{\Mat_I(R)}(\Mat_I(R))^{\times} = \op{Z}(R)^{\times}\).
 %\end{proof}
 
 \begin{observation}
@@ -7930,7 +7930,7 @@ W_{n+1}(\Z/p\Z) \ar{r}{(x_i)_{i=0}^n \mapsto \sum_{i=0}^n p^i x_i^{\tau_{n+1}}} 
 \end{proof}
 
 %\begin{proof}
-%Пусть \(M = \bigoplus_{i \in I} M_i\) --- разложение \(M\) в прямую сумму простых подмодулей, а \(\iota : N \to M\) --- вложение простого подмодуля. Тогда, согласно лемме Шура и описанию гомоморфизмов между прямыми суммами модулей, \(\iota(N) \subset \bigoplus_{\{i \in I \mid M_i \simeq N\}} M_i \subset \bigoplus_{i \in I} M_i\).
+%Пусть \(M = \bigoplus_{i \in I} M_i\) --- разложение \(M\) в прямую сумму простых подмодулей, а \(\iota : N \to M\) --- вложение простого подмодуля. Тогда, согласно лемме Шура и описанию гомоморфизмов между прямыми суммами модулей, \(\iota(N) \subset \bigoplus_{\{i \in I \given M_i \simeq N\}} M_i \subset \bigoplus_{i \in I} M_i\).
 %\end{proof}
 
 \begin{observation}
@@ -8364,7 +8364,7 @@ W_{n+1}(\Z/p\Z) \ar{r}{(x_i)_{i=0}^n \mapsto \sum_{i=0}^n p^i x_i^{\tau_{n+1}}} 
 %\(\Hom_{R^o\module}(\t*[_{f}]{R}{}, \t*[_{g}]{R}{})
 %%\cong \End_{R^o\module}(R)
 %\cong R\),
-%отождествляется с \(\{a \in R \mid a f(s) = g(s) a\ \tn{для всех}\ s \in S\}\).
+%отождествляется с \(\{a \in R \given a f(s) = g(s) a\ \tn{для всех}\ s \in S\}\).
 %В частности,
 %%множество
 %\(
@@ -8373,7 +8373,7 @@ W_{n+1}(\Z/p\Z) \ar{r}{(x_i)_{i=0}^n \mapsto \sum_{i=0}^n p^i x_i^{\tau_{n+1}}} 
 %\cong
 %%отождествляется с
 %%множеством
-%\{a \in R^{\times} \mid a f(s) a^{-1} = g(s)\ \tn{для всех}\ s \in S\}
+%\{a \in R^{\times} \given a f(s) a^{-1} = g(s)\ \tn{для всех}\ s \in S\}
 %\).
 %
 %Осталось заметить, что так как конечномерная \(k\)\=/алгебра \(S \otimes_k R^o\) простая по теореме~\ref{thm:TensProdCentSimpAndSimp}, то все \(S \otimes_k R^o\)\=/модули одинаковой \(k\)\=/размерности изоморфны, а \(\dim_k(\t*[_{f}]{R}{}) = \dim_k(R) = \dim_k(\t*[_{g}]{R}{})\).
@@ -8393,11 +8393,11 @@ W_{n+1}(\Z/p\Z) \ar{r}{(x_i)_{i=0}^n \mapsto \sum_{i=0}^n p^i x_i^{\tau_{n+1}}} 
 \cong \End_{R^o\module}(R)
 \cong R\),
 отождествляется с
-%\(\{a \in R \mid a f(s) = g(s) a\ \tn{для всех}\ s \in S\}\).
+%\(\{a \in R \given a f(s) = g(s) a\ \tn{для всех}\ s \in S\}\).
 %множеством
 \(
 \bigcap_{s \in S}
-\{a \in R \mid a f(s) = g(s) a\}
+\{a \in R \given a f(s) = g(s) a\}
 %\subset R
 \).
 В частности,
@@ -8407,10 +8407,10 @@ W_{n+1}(\Z/p\Z) \ar{r}{(x_i)_{i=0}^n \mapsto \sum_{i=0}^n p^i x_i^{\tau_{n+1}}} 
 \Hom_{S \otimes_k R^o\module^{\times}}(\t*[_{f}]{R}{}, \t*[_{g}]{R}{})\)
 отождествляется с
 %множеством
-%\{a \in R^{\times} \mid a f(s) a^{-1} = g(s)\ \tn{для всех}\ s \in S\}
+%\{a \in R^{\times} \given a f(s) a^{-1} = g(s)\ \tn{для всех}\ s \in S\}
 \(
 \bigcap_{s \in S}
-\{a \in R^{\times} \mid a f(s) a^{-1} = g(s)\}
+\{a \in R^{\times} \given a f(s) a^{-1} = g(s)\}
 %\subset R
 \),
 то есть с множеством элементов \(a \in R^{\times}\), таких что композиция \(f\) и внутреннего автоморфизма
@@ -8596,7 +8596,7 @@ R \to \End_{\Z\module}(M)
 Тогда \emph{аннулятором} \(\mf{a}\) в \(M\), обозначаемым
 \(\Ann_M(\mf{a})\),
 называется \(R\)-под\-мо\-дуль
-\(\{m \in M \mid am = 0\ \textnormal{для всех}\ a \in \mf{a}\}\) модуля \(M\).
+\(\{m \in M \given am = 0\ \textnormal{для всех}\ a \in \mf{a}\}\) модуля \(M\).
 \end{definition}
 
 \begin{lemma}
@@ -9166,7 +9166,7 @@ R
 Так как \([\6 / \6 x, x] = 1\), то
 \([x \6 / \6 x, x] = [x,x] \6 / \6 x + x [\6 / \6 x, x] = x\),
 поэтому \(x\) и \(x \6 / \6 x\) порождают двумерную разрешимую подалгебру Ли в \(\End_{K\textnormal{-}\mathrm{mod}}(A)\).
-Множество \(\{x^n \mid 0 \leq n < p\} \subset A\) --- является собственным базисом для \(x \6 / \6 x\) с попарно различными собственными значениями, но в нём нет собственных векторов для \(x : A \to A\).
+Множество \(\{x^n \given 0 \leq n < p\} \subset A\) --- является собственным базисом для \(x \6 / \6 x\) с попарно различными собственными значениями, но в нём нет собственных векторов для \(x : A \to A\).
 Следовательно, у эндоморфизмов \(x\) и \(x \6 / \6 x\) нет общего собственного вектора.
 \end{example}
 
@@ -9261,7 +9261,7 @@ R / \bigoplus_{i=0}^{\infty} R_i)
 %\),
 %принадлежащий ядру гомоморфизма~\eqref{eq:GradComplFactorHomComm},
 %не равен нулю.
-%%хотя образ \(f(X_i \smid i \in \N_1)\) в \(\Q\) равен нулю.
+%%хотя образ \(f(X_i \sgiven i \in \N_1)\) в \(\Q\) равен нулю.
 %\end{example}
 
 \begin{example}
@@ -9784,7 +9784,7 @@ D(g)
 
 %\begin{definition}
 %Пусть \(K\) --- поле, а \(I\) --- множество.
-%Определим \(K\)\=/линейные отображения \(D, R : K \la X_i \smid i \in I \ra \rrarrow K \la X_i \smid i \in I \ra\) на мономах следующим образом:
+%Определим \(K\)\=/линейные отображения \(D, R : K \la X_i \sgiven i \in I \ra \rrarrow K \la X_i \sgiven i \in I \ra\) на мономах следующим образом:
 %\(D(X_{i_1} \dots{} X_{i_n}) = n X_{i_1} \dots{} X_{i_n}\) для любого отображения \(j \mapsto i_j : \{1, \dots{}, n\} \to I\), где \(n \in \N_0\),
 %\(R(1) = 0\), \(R(X_i) = X_i\) для любого \(i \in I\),
 %\(R(X_{i_1} \dots{} X_{i_n}) = [X_{i_1}, [X_{i_2}, [ \dots{}, [X_{i_{n-1}}, X_{i_n}]] \dots{} ]\) для любого отображения \(j \mapsto i_j : \{1, \dots{}, n\} \to I\), где \(n \in \N_2\).
@@ -9905,7 +9905,7 @@ R(X_1 \cdots{} X_n).
 \begin{proofparts}[Доказательство (из трёх частей)]
 
 \item[Часть (\ref{itm:FriDynSpeWev1})~\({\implies}\)~(\ref{itm:FriDynSpeWev2}).]
-Эта импликация следует из стандартной формулы \([g \otimes 1 + 1 \otimes g, h \otimes 1 + 1 \otimes h] = [g, h] \otimes 1 + 1 \otimes [g, h]\), где \(g, h \in K \la \mc{X} \ra\), --- множество \(\{d \in K \la \mc{X} \ra \mid \delta(d) = d \otimes 1 + 1 \otimes d\}\) является подалгеброй Ли в \(K \la \mc{X} \ra\), которая содержит все элементы \(\mc{X}\).
+Эта импликация следует из стандартной формулы \([g \otimes 1 + 1 \otimes g, h \otimes 1 + 1 \otimes h] = [g, h] \otimes 1 + 1 \otimes [g, h]\), где \(g, h \in K \la \mc{X} \ra\), --- множество \(\{d \in K \la \mc{X} \ra \given \delta(d) = d \otimes 1 + 1 \otimes d\}\) является подалгеброй Ли в \(K \la \mc{X} \ra\), которая содержит все элементы \(\mc{X}\).
 
 \item[Часть (\ref{itm:FriDynSpeWev2})~\({\implies}\)~(\ref{itm:FriDynSpeWev3}).]
 Применяя отображение \(\varepsilon \otimes \Id\) к обеим сторонам равенства \(\delta(f) = f \otimes 1 + 1 \otimes f\) получаем, что \(f = \varepsilon(f) 1 + \varepsilon(1) f = \varepsilon(f) + f\), откуда следует, что \(\varepsilon(f) = 0\).
@@ -10379,7 +10379,7 @@ K^{\times G} \to K[\rtimes G]
 \subsection{Основная теорема теории Галуа}
 
 \begin{notation}[\scshape Инварианты действия]
-Если \(G\) --- группа, действующая на множестве \(X\), то \(X^G \coloneqq \{x \in X \mid g(x)=x\ \tn{для любого}\ g \in G\}\).
+Если \(G\) --- группа, действующая на множестве \(X\), то \(X^G \coloneqq \{x \in X \given g(x)=x\ \tn{для любого}\ g \in G\}\).
 \end{notation}
 
 %\begin{lemma} \label{lem:GalFix}
@@ -10781,7 +10781,7 @@ K \otimes_{E_0} E_1 \otimes_{E_1} \cdots{} \otimes_{E_{n-1}} E_n
 \begin{theorem}
 Пусть \(G\) --- конечная группа порядка \(n\),
 такая что для любого ненулевого натурального делителя \(d\) числа \(n\) выполняется неравенство
-\(\lvert \{g \in G \mid g^d = 1\} \rvert \leq d\).%
+\(\lvert \{g \in G \given g^d = 1\} \rvert \leq d\).%
 \label{thm:GroupBoundTorsCyclic}
 Тогда группа \(G\) циклическая.
 \end{theorem}
@@ -10820,8 +10820,8 @@ K \otimes_{E_0} E_1 \otimes_{E_1} \cdots{} \otimes_{E_{n-1}} E_n
 Если \(k\) конечно, а \(\alpha\) --- образующая группы \(E^{\times}\), то \(E = k[\alpha]\).
 Предположим, что \(k\) бесконечно.
 Так как поле \(E\) сепарабельно, то существует расширение полей \(K/k\), такое что \(\lvert \Hom_{k\ring}(E, K) \rvert = [E : k]\), например, минимальное расширение Галуа поля \(k\), содержащее \(E\), или алгебраическое замыкание \(k\).
-%Так как расширение \(E/k\) конечно, то существует конечное подмножество \(B \subset E\), такое что \(E = k[\beta \smid \beta \in B]\).
-Выберем конечное подмножество \(B \subset E\), такое что \(E = k[\beta \smid \beta \in B]\),
+%Так как расширение \(E/k\) конечно, то существует конечное подмножество \(B \subset E\), такое что \(E = k[\beta \sgiven \beta \in B]\).
+Выберем конечное подмножество \(B \subset E\), такое что \(E = k[\beta \sgiven \beta \in B]\),
 и с помощью теоремы~\secref{thm:noeth} найдём элемент
 \(\alpha \in \sum_{\beta \in B} k \beta\),
 такой что отображение ограничения
@@ -10915,7 +10915,7 @@ K \otimes_{E_0} E_1 \otimes_{E_1} \cdots{} \otimes_{E_{n-1}} E_n
 
 \begin{theorem}
 Пусть \(K\) --- поле, \(k \subset K\) --- его подполе,
-а \((x_i)_{i \in I}\) и \((y_j)_{j \in J}\) --- два конечных семейства элементов \(K\), такие что \(K\) алгебраично над \(k(x_i \smid i \in I)\) и \((y_j)_{j \in J}\) алгебраически независимо над \(k\).
+а \((x_i)_{i \in I}\) и \((y_j)_{j \in J}\) --- два конечных семейства элементов \(K\), такие что \(K\) алгебраично над \(k(x_i \sgiven i \in I)\) и \((y_j)_{j \in J}\) алгебраически независимо над \(k\).
 \label{thm:TranscendenceBasesFundResult1}
 Тогда \(\lv J \rv \leq \lv I \rv\).
 \end{theorem}
@@ -10926,9 +10926,9 @@ K \otimes_{E_0} E_1 \otimes_{E_1} \cdots{} \otimes_{E_{n-1}} E_n
 Пусть \(\lv J \rv > 0\).
 Выберем произвольный \(e \in J\).
 Введём обозначение \(k' \coloneqq k(y_e)\).
-Так как \(y_e\) алгебраичен над \(k(x_i \smid i \in I)\), то между \(y_e\) и \((x_i)_{i \in I}\) существует соотношение \(P \in k[Y_e, X_i \smid i \in I]\), такое что \(\deg_{Y_e}(P) > 0\).
+Так как \(y_e\) алгебраичен над \(k(x_i \sgiven i \in I)\), то между \(y_e\) и \((x_i)_{i \in I}\) существует соотношение \(P \in k[Y_e, X_i \sgiven i \in I]\), такое что \(\deg_{Y_e}(P) > 0\).
 Так как \(y_e\) не алгебраичен над \(k\), то существует индекс \(r \in I\), такой что \(\deg_{X_r}(P) > 0\),
-откуда следует, что \(x_r\) алгебраичен над \(k'(x_i \smid i \in I \setminus \{r\})\), а потому всё поле \(K\) алгебраично над \(k'(x_i \smid i \in I \setminus \{r\})\), и мы можем по индукции применить теорему к семействам \((x_i)_{i \in I \setminus \{r\}}\) и \((y_j)_{j \in J \setminus \{e\}}\) элементов расширения полей \(K / k'\).
+откуда следует, что \(x_r\) алгебраичен над \(k'(x_i \sgiven i \in I \setminus \{r\})\), а потому всё поле \(K\) алгебраично над \(k'(x_i \sgiven i \in I \setminus \{r\})\), и мы можем по индукции применить теорему к семействам \((x_i)_{i \in I \setminus \{r\}}\) и \((y_j)_{j \in J \setminus \{e\}}\) элементов расширения полей \(K / k'\).
 \end{proof}
 
 \begin{definition}[\scshape Базис трансцендентности]
@@ -10938,7 +10938,7 @@ K \otimes_{E_0} E_1 \otimes_{E_1} \cdots{} \otimes_{E_{n-1}} E_n
 
 \begin{observation}
 Пусть \(K\) --- поле, а \(k \subset K\) --- его подполе.
-Тогда базисы трансцендентности \(K\) над \(k\) --- это в точности минимальные подмножества \(S \subset K\), такие что \(K\) алгебраично над \(k(s \smid s \in S)\).
+Тогда базисы трансцендентности \(K\) над \(k\) --- это в точности минимальные подмножества \(S \subset K\), такие что \(K\) алгебраично над \(k(s \sgiven s \in S)\).
 \end{observation}
 
 \begin{theorem}
@@ -10957,12 +10957,12 @@ K \otimes_{E_0} E_1 \otimes_{E_1} \cdots{} \otimes_{E_{n-1}} E_n
 \(I\) и \(J\) --- непустые конечные множества,
 \(
 	A \coloneqq
-	k[X_i, Y_j \mid i \in I, j \in J]
+	k[X_i, Y_j \sgiven i \in I, j \in J]
 		/ (X_i Y_j)_{i \in I, j \in J}
 \),
 а \(x_i\) и \(y_j\), где \(i \in I\) и \(j \in J\), --- это образы \(X_i\) и \(Y_j\) соответственно в \(A\).%
 \label{exa:CardOfMaxAlgIndSetNotUnique}
-Тогда \(\{x_i \mid i \in I\}\) и \(\{y_j \mid j \in J\}\) --- максимальные алгебраически независимые над \(k\) подмножества \(A\).
+Тогда \(\{x_i \given i \in I\}\) и \(\{y_j \given j \in J\}\) --- максимальные алгебраически независимые над \(k\) подмножества \(A\).
 \end{example}
 
 \begin{remark}
@@ -11008,7 +11008,7 @@ K \otimes_{E_0} E_1 \otimes_{E_1} \cdots{} \otimes_{E_{n-1}} E_n
 Пусть \(A\) --- ассоциативное коммутативное унитальное кольцо, \(S \subset A\) --- мультипликативное множество,
 а \(\mf{a} \subset A\) и \(\mf{b} \subset S^{-1}A\) --- идеалы.
 Тогда
-\(S^{-1} \mf{a} = \{a/s \in S^{-1}A \mid a \in \mf{a},\ s \in S\}\),
+\(S^{-1} \mf{a} = \{a/s \in S^{-1}A \given a \in \mf{a},\ s \in S\}\),
 и выполняются следующие равенства:
 \begin{align*}
 S^{-1}(A \cap \mf{b})
@@ -11030,7 +11030,7 @@ A \cap (S^{-1}\mathfrak{a})
 &=
 \Ker(A \to A / \mathfrak{a} \to S^{-1}(A / \mathfrak{a}))
 =
-\{a \in A \mid \exists s \in S : sa \in \mathfrak{a}\}.
+\{a \in A \given \exists s \in S : sa \in \mathfrak{a}\}.
 \end{align*}
 \end{observation}
 
@@ -11039,9 +11039,9 @@ A \cap (S^{-1}\mathfrak{a})
 заданные образующими и соотношениями
 моноиды
 \(L \coloneqq \langle X, Y, Z, W \rangle\),
-\(M \coloneqq \langle X, X^{-1}, Y, Z, W \mid X^{-1} X = X X^{-1} = 1 \rangle\)
+\(M \coloneqq \langle X, X^{-1}, Y, Z, W \given X^{-1} X = X X^{-1} = 1 \rangle\)
 и
-\(N \coloneqq \langle X, X^{-1}, Y, Z \mid X^{-1} X = X X^{-1} = 1 \rangle\).%
+\(N \coloneqq \langle X, X^{-1}, Y, Z \given X^{-1} X = X X^{-1} = 1 \rangle\).%
 \footnote{Элементы этих моноидов описываются с помощью теоремы~\secref{thm:FreeProdMonElem}.}%
 \label{exa:NoncommLocalInject}
 Тогда гомоморфизм моноидов
@@ -11211,7 +11211,7 @@ M \to \prod_{i \in I} M_{S_i}\)
 
 %\begin{proof}
 %Пусть \(r \in \bigcap_{i \in I} A_{S_i}\).
-%Определим идеал знаменателей \(\mf{a} \coloneqq \{a \in A \mid ar \in A\}\).
+%Определим идеал знаменателей \(\mf{a} \coloneqq \{a \in A \given ar \in A\}\).
 %Тогда \(\mf{a} \cap S_i \neq \varnothing\) для любого \(i \in I\),
 %а потому \(\mf{a} \not\subset \mf{p}\) для любого \(\mf{p} \in \Spec(A)\),
 %а потому \(\mf{a} = A\) и \(r \in A\).
@@ -11531,7 +11531,7 @@ M
 \item[Часть 2.]
 Пусть \((b_i)_{i \in I}\) --- конечное семейство образующих \(A\)\=/модуля \(B\), содержащее \(b\),
 а \((c_{i,j,k})_{i,j,k \in I}\) --- семейство элементов \(A\), такое что \(b_i b_j = \sum_{k \in I} c_{i,j,k} b_k\) для всех \(i,j \in I\).
-Тогда кольцо \(A' \coloneqq \Z[c_{i,j,k} \smid i,j,k \in I] \subset A\) нётерово, и \(b\) лежит в конечной \(A'\)\=/алгебре \(\sum_{i \in I} A'b_i \subset B\). По предыдущему рассуждению элемент \(b\) целый над \(A'\), а потому и над \(A\).
+Тогда кольцо \(A' \coloneqq \Z[c_{i,j,k} \sgiven i,j,k \in I] \subset A\) нётерово, и \(b\) лежит в конечной \(A'\)\=/алгебре \(\sum_{i \in I} A'b_i \subset B\). По предыдущему рассуждению элемент \(b\) целый над \(A'\), а потому и над \(A\).
 \qedhere
 
 \end{proofparts}
@@ -11848,9 +11848,9 @@ a_n s^{n-1} %b^0
 Тогда
 %простые идеалы \(\mf{q} \subset B\), такие что \(\mf{q} \cap A \subset \mf{P}\), --- это простые идеалы \(\mf{q} \subset B\), такие что \(\mf{q} \cap S = \varnothing\), где \(S \coloneqq A \setminus \mf{p}\).
 \begin{equation*}
-\{\mf{q} \in \Spec(B) \mid \mf{q} \cap A \subset \mf{P}\}
+\{\mf{q} \in \Spec(B) \given \mf{q} \cap A \subset \mf{P}\}
 =
-\{\mf{q} \in \Spec(B) \mid \mf{q} \cap S = \varnothing\}
+\{\mf{q} \in \Spec(B) \given \mf{q} \cap S = \varnothing\}
 \neq \varnothing,
 \end{equation*}
 где \(S \coloneqq A \setminus \mf{P}\).
@@ -11883,7 +11883,7 @@ a_n s^{n-1} %b^0
 Тогда множество
 \(
 \Int_A(\mf{a}) \coloneqq
-\bigcup_{n = 1}^{\infty} \{a \in A \mid a^n \in \sum_{i = 0}^{n-1} \mf{a} a^i\}
+\bigcup_{n = 1}^{\infty} \{a \in A \given a^n \in \sum_{i = 0}^{n-1} \mf{a} a^i\}
 \)
 называется \emph{целым замыканием} \(\mf{a}\) в \(A\).
 \end{definition}
@@ -11911,13 +11911,13 @@ a_n s^{n-1} %b^0
 Тогда
 множество \(A + \mf{a} X + \mf{a} X^2 + \cdots{} \subset B[X]\) является подкольцом \(B[X]\) и
 выполняются равенства~\eqref{eq:AbstrIdealIntClGraded1} и \eqref{eq:AbstrIdealIntClGraded2}.
-\begin{gather}
-\Int_B(A) = \{b \in B \mid b \in \Int_{B[X]}(A + \mf{a} X + \mf{a} X^2 + \cdots{})\}
-\label{eq:AbstrIdealIntClGraded1}
-\\
-\Int_B(\mf{a}) = \{b \in B \mid bX \in \Int_{B[X]}(A + \mf{a} X + \mf{a} X^2 + \cdots{})\}
-\label{eq:AbstrIdealIntClGraded2}
-\end{gather}
+\begin{align}
+	\Int_B(A) &= \{b \in B \given b \in \Int_{B[X]}(A + \mf{a} X + \mf{a} X^2 + \cdots{})\}
+	\label{eq:AbstrIdealIntClGraded1}
+	\\
+	\Int_B(\mf{a}) &= \{b \in B \given bX \in \Int_{B[X]}(A + \mf{a} X + \mf{a} X^2 + \cdots{})\}
+	\label{eq:AbstrIdealIntClGraded2}
+\end{align}
 \end{observation}
 
 \begin{theorem}
@@ -11975,7 +11975,7 @@ a_n s^{n-1} %b^0
 %Пусть \(B\) --- кольцо,
 %\(\mf{a} \subset B\) --- абстрактный идеал,
 %\(A' \coloneqq \Z + \mf{a}\),
-%\(A'' \coloneqq \{b \in B \mid b \mf{a} \subset \mf{a}\}\),
+%\(A'' \coloneqq \{b \in B \given b \mf{a} \subset \mf{a}\}\),
 %\(\overline{A'} \coloneqq \Int_B(A')\),
 %\(\overline{A''} \coloneqq \Int_B(A'')\).%
 %%\(\mf{a}' \coloneqq \mf{a} \overline{A'}\),
@@ -12020,7 +12020,7 @@ a_n s^{n-1} %b^0
 %%такие что
 %%\(b^n \in \sum_{i \in I} \mf{a} a_i\).
 %%Мы получили, что
-%%\(C \coloneqq A''[b, a_i \smid i \in I]\)
+%%\(C \coloneqq A''[b, a_i \sgiven i \in I]\)
 %%--- конечная \(A''\)\=/алгебра, такая что
 %%\(b^n C \subset \mf{a} C\).
 %%Согласно теореме Гамильтона\namedash{}Кэли, отсюда следует, что \(b^n \in \Int_B(\mf{a})\),
@@ -12204,7 +12204,7 @@ x^n + a_1 a^1 x^{n-1} + \cdots{} + a_n a^n x^0 = 0
 Пусть \(F\) --- поле,
 \(J\) --- конечное множество,
 \((S_i)_{i \in J}\) --- семейство бесконечных подмножеств \(F\),
-а \(P \in F[X_i \smid i \in J] \setminus \{0\}\).%
+а \(P \in F[X_i \sgiven i \in J] \setminus \{0\}\).%
 \seclabel{thm:noeth}
 Тогда существует \(s \in \prod_{i \in J} S_i \subset F^{\times J}\), такой что \(P(s) \neq 0\).
 \end{theorem}
@@ -12212,18 +12212,18 @@ x^n + a_1 a^1 x^{n-1} + \cdots{} + a_n a^n x^0 = 0
 \begin{proof}
 Случай пустого \(J\) тривиален.
 Предположим, что \(J\) не пусто.
-Пусть \(e \in J\). Многочлен \(P\), рассмотренный как многочлен от \(X_e\) с коэффициентами в поле рациональных дробей \(F(X_i \smid i \in J \setminus \{e\})\), имеет конечное число корней. Поэтому существует элемент \(s_e \in S_e\), такой что после подстановки \(X_e = s_e\) в многочлен \(P\) он останется ненулевым, и теорема доказывается индукцией по мощности \(J\).
+Пусть \(e \in J\). Многочлен \(P\), рассмотренный как многочлен от \(X_e\) с коэффициентами в поле рациональных дробей \(F(X_i \sgiven i \in J \setminus \{e\})\), имеет конечное число корней. Поэтому существует элемент \(s_e \in S_e\), такой что после подстановки \(X_e = s_e\) в многочлен \(P\) он останется ненулевым, и теорема доказывается индукцией по мощности \(J\).
 \end{proof}
 
 \begin{remark}
-Если в условиях теоремы~\ref{thm:noeth} взять \(P = \prod_{Q \in \mc{Q}} Q\), где \(\mc{Q} \subset F[X_i \smid i \in J] \setminus \{0\}\) --- конечное подмножество,
+Если в условиях теоремы~\ref{thm:noeth} взять \(P = \prod_{Q \in \mc{Q}} Q\), где \(\mc{Q} \subset F[X_i \sgiven i \in J] \setminus \{0\}\) --- конечное подмножество,
 то получим, что \(Q(s) \neq 0\) для любого \(Q \in \mc{Q}\).
 \end{remark}
 
 \begin{lemma}
-Пусть \(K\) --- ассоциативное коммутативное унитальное кольцо, \(I\) --- конечное множество, а \(f \in K[X_i \smid i \in I]\).%
+Пусть \(K\) --- ассоциативное коммутативное унитальное кольцо, \(I\) --- конечное множество, а \(f \in K[X_i \sgiven i \in I]\).%
 \label{lem:noeth2}
-Тогда для любого \(e \in I\), такого что \(\deg_{X_e}(f) > 0\), существуют автоморфизм \(\varphi \in \Aut_{K\ring}(K[X_i \smid i \in I])\) и элементы \(n \in \N_1\) и \(c \in K \setminus \{0\}\), такие что выполняется равенство
+Тогда для любого \(e \in I\), такого что \(\deg_{X_e}(f) > 0\), существуют автоморфизм \(\varphi \in \Aut_{K\ring}(K[X_i \sgiven i \in I])\) и элементы \(n \in \N_1\) и \(c \in K \setminus \{0\}\), такие что выполняется равенство
 \(
 	\varphi(f) =
 	c X_e^n +
@@ -12237,7 +12237,7 @@ x^n + a_1 a^1 x^{n-1} + \cdots{} + a_n a^n x^0 = 0
 \((m_i)_{i \in J} \in \N_1^{\times J}\)
 определён
 автоморфизм
-\(\varphi \in \Aut_{K\ring}(K[X_i \smid i \in I])\),
+\(\varphi \in \Aut_{K\ring}(K[X_i \sgiven i \in I])\),
 такой что
 \(\varphi(X_e) = X_e\) и
 \(\varphi(X_i) = X_i + X_e^{m_i}\)
@@ -12259,7 +12259,7 @@ x^n + a_1 a^1 x^{n-1} + \cdots{} + a_n a^n x^0 = 0
 \(
 	(n'_e + \sum_{i \in J} n'_i M_i) -
 	(n''_e + \sum_{i \in J} n''_i M_i)
-	\in \Q[M_i \smid i \in J]
+	\in \Q[M_i \sgiven i \in J]
 \)
 не равен нулю.
 \end{proof}
@@ -12271,7 +12271,7 @@ x^n + a_1 a^1 x^{n-1} + \cdots{} + a_n a^n x^0 = 0
 \((\lambda_i)_{i \in J} \in K^{\times J}\)
 определён
 автоморфизм
-\(\varphi \in \Aut_{K\ring}(K[X_i \smid i \in I])\),
+\(\varphi \in \Aut_{K\ring}(K[X_i \sgiven i \in I])\),
 такой что
 \(\varphi(X_e) = X_e\) и
 \(\varphi(X_i) = X_i + \lambda_i X_e\)
@@ -12298,20 +12298,20 @@ x^n + a_1 a^1 x^{n-1} + \cdots{} + a_n a^n x^0 = 0
 
 \begin{proof}
 Пусть \((x_i)_{i \in I}\) --- это конечное семейство образующих \(A\) как \(K\)\=/алгебры.
-Тогда гомоморфизм \(\pi : K[X_i \smid i \in I] \to A\) алгебр над \(K\), такой что \(\pi(X_i) = x_i\) для любого \(i \in I\), сюръективен.
+Тогда гомоморфизм \(\pi : K[X_i \sgiven i \in I] \to A\) алгебр над \(K\), такой что \(\pi(X_i) = x_i\) для любого \(i \in I\), сюръективен.
 Пусть \(0 \neq f \in \Ker(\pi)\).
 Применив лемму~\ref{lem:noeth2}, получаем цепочку гомоморфизмов
 \begin{equation*}
-	K[X_i \smid i \in I \setminus \{e\}]
+	K[X_i \sgiven i \in I \setminus \{e\}]
 	\xlongrightarrow{\bar{\iota}}
-	K[X_i \smid i \in I] / (\varphi(f))
+	K[X_i \sgiven i \in I] / (\varphi(f))
 	\xlongrightarrow[\sim]{\varphi^{-1}}
-	K[X_i \smid i \in I] / (f)
+	K[X_i \sgiven i \in I] / (f)
 	\xlongrightarrow{\bar{\pi}}
 	A,
 \end{equation*}
-где гомоморфизм \(\bar{\pi}\) индуцирован \(\pi\), а гомоморфизм \(\bar{\iota}\) индуцирован очевидным вложением \(\iota : K[X_i \smid i \in I \setminus \{e\}] \to K[X_i \smid i \in I]\).
-Так как кольцо \(K[X_i \smid i \in I] / (\varphi(f))\) конечно над \(K[X_i \smid i \in I \setminus \{e\}]\), то \(A\) --- тоже.
+где гомоморфизм \(\bar{\pi}\) индуцирован \(\pi\), а гомоморфизм \(\bar{\iota}\) индуцирован очевидным вложением \(\iota : K[X_i \sgiven i \in I \setminus \{e\}] \to K[X_i \sgiven i \in I]\).
+Так как кольцо \(K[X_i \sgiven i \in I] / (\varphi(f))\) конечно над \(K[X_i \sgiven i \in I \setminus \{e\}]\), то \(A\) --- тоже.
 Мы получили, что \(K\)\=/алгебра \(A\) конечна над \(K\)\=/алгеброй с меньшим числом образующих. Доказательство завершается по индукции.
 \end{proof}
 
@@ -12433,11 +12433,11 @@ x^n + a_1 a^1 x^{n-1} + \cdots{} + a_n a^n x^0 = 0
 
 %\begin{proof}
 %Пусть \((x_i)_{i \in I}\) --- конечное семейство элементов алгебры \(K\),
-%такое что \(K=k[x_i \smid i \in I]\),
+%такое что \(K=k[x_i \sgiven i \in I]\),
 %а \((x_j)_{j \in J}\), где \(J \subset I\), --- максимальное алгебраически независимое подсемейство семейства \((x_i)_{i \in I}\).
-%Для каждого \(i \in I \setminus J\) пусть \(P_i \in k[x_j \smid j \in J][X_i]\) --- какое-то нетривиальное алгебраическое соотношение между \(x_i\) и \((x_j)_{j \in J}\),
-%а \(f_i \in k[x_j \smid j \in J]\) --- старший по \(X_i\) коэффициент \(P_i\).
-%Тогда поле \(K\) цело над кольцом \(A \coloneqq k[x_j \smid j \in J][f_i^{-1} \smid i \in I \setminus J]\), откуда, по теореме~\ref{thm:hilbert_1}, следует, что \(A = k(x_j \smid j \in J)\), что противоречит теореме~\ref{thm:hilbert_2} при \(J \neq \varnothing\).
+%Для каждого \(i \in I \setminus J\) пусть \(P_i \in k[x_j \sgiven j \in J][X_i]\) --- какое-то нетривиальное алгебраическое соотношение между \(x_i\) и \((x_j)_{j \in J}\),
+%а \(f_i \in k[x_j \sgiven j \in J]\) --- старший по \(X_i\) коэффициент \(P_i\).
+%Тогда поле \(K\) цело над кольцом \(A \coloneqq k[x_j \sgiven j \in J][f_i^{-1} \sgiven i \in I \setminus J]\), откуда, по теореме~\ref{thm:hilbert_1}, следует, что \(A = k(x_j \sgiven j \in J)\), что противоречит теореме~\ref{thm:hilbert_2} при \(J \neq \varnothing\).
 %\end{proof}
 
 %\begin{remark}
@@ -12469,15 +12469,15 @@ x^n + a_1 a^1 x^{n-1} + \cdots{} + a_n a^n x^0 = 0
 
 \item[Часть <<только тогда>>.]
 Сначала заметим, что можно заменить кольцо \(A\) на его образ в \(K\), и считать, что \(A \subset K\).
-Пусть \((x_i)_{i \in I}\) --- конечное семейство элементов алгебры \(K\),
-такое что \(K = A[x_i \smid i \in I]\),
+Пусть \((x_i)_{i \in I}\) --- конечное семейство элементов \(K\),
+такое что \(K = A[x_i \sgiven i \in I]\),
 а \((x_j)_{j \in J}\), где \(J \subset I\), --- максимальное алгебраически независимое над \(A\) подсемейство семейства \((x_i)_{i \in I}\).
-Для каждого индекса \(i \in I \setminus J\) пусть \(P_i \in A[x_j \smid j \in J][X_i]\) --- какое-то нетривиальное алгебраическое соотношение между \(x_i\) и \((x_j)_{j \in J}\),
-а \(f_i \in A[x_j \smid j \in J]\) --- старший по \(X_i\) коэффициент \(P_i\).
-Тогда поле \(K\) цело над кольцом \(A' \coloneqq A[x_j \smid j \in J][f_i^{-1} \smid i \in I \setminus J]\), откуда,
+Для каждого \(i \in I \setminus J\) пусть \(P_i \in A[x_j \sgiven j \in J][X_i]\) --- какое-то нетривиальное алгебраическое соотношение между \(x_i\) и \((x_j)_{j \in J}\),
+а \(f_i \in A[x_j \sgiven j \in J]\) --- старший по \(X_i\) коэффициент \(P_i\).
+Тогда поле \(K\) цело над кольцом \(A' \coloneqq A[x_j \sgiven j \in J][f_i^{-1} \sgiven i \in I \setminus J]\), откуда,
 %по теореме~\ref{thm:hilbert_1},
 по теореме~\secref{thm:IntExtField},
-следует, что \(A' = \Frac(A)(x_j \smid j \in J)\).
+следует, что \(A' = \Frac(A)(x_j \sgiven j \in J)\).
 Так как \(A'\) конечно порождено как \(A\)\=/алгебра,
 то \(A' = \Frac(A)\) согласно теореме~\ref{thm:FieldPolyFracInfGen} и \(\Frac(A) = A\) согласно теореме~\ref{thm:JacRingCharFrac}.
 Мы доказали, что \(K\) --- конечно порождённая целая, то есть конечная, алгебра над \(A\).
@@ -12782,9 +12782,9 @@ x^n + a_1 a^1 x^{n-1} + \cdots{} + a_n a^n x^0 = 0
 \(\prod_{i \in I} p_i = \prod_{j \in J} l_j\).
 Тогда,
 так как каждый элемент
-\(\mc{P} \coloneqq \{p_i \mid i \in I\}\)
+\(\mc{P} \coloneqq \{p_i \given i \in I\}\)
 делит какой-то элемент
-\(\mc{L} \coloneqq \{l_j \mid j \in J\}\),
+\(\mc{L} \coloneqq \{l_j \given j \in J\}\),
 и наоборот,
 то \(\mc{P} = \mc{L}\),
 а потому можно сократить равенство
@@ -12805,9 +12805,9 @@ x^n + a_1 a^1 x^{n-1} + \cdots{} + a_n a^n x^0 = 0
 %а
 %\(\mc{P}'\) и \(\mc{L}'\) --- это множества минимальных элементов
 %множеств
-%\(\mc{P} \coloneqq \{p_i \mid i \in I\}\)
+%\(\mc{P} \coloneqq \{p_i \given i \in I\}\)
 %и
-%\(\mc{L} \coloneqq \{l_j \mid j \in J\}\)
+%\(\mc{L} \coloneqq \{l_j \given j \in J\}\)
 %соответственно.
 %Тогда,
 %так как
@@ -12971,7 +12971,7 @@ x^n + a_1 a^1 x^{n-1} + \cdots{} + a_n a^n x^0 = 0
 \begin{notation}
 Пусть \(A\) --- область целостности, а \(\mf{a}\) --- \(A\)\=/подмодуль \(\Frac(A)\).
 Тогда введём обозначение
-\((A : \mf{a}) \coloneqq \{x \in \Frac(A) \mid x \mf{a} \subset A\}\).
+\((A : \mf{a}) \coloneqq \{x \in \Frac(A) \given x \mf{a} \subset A\}\).
 \end{notation}
 
 \begin{definition}[\scshape Дробный идеал]
@@ -13020,9 +13020,9 @@ x^n + a_1 a^1 x^{n-1} + \cdots{} + a_n a^n x^0 = 0
 Тогда существует конечное множество \(\Phi \subset \mf{a} \times \mf{b}\), такое что
 \(\sum_{(a,b) \in \Phi} Aab = A\).
 Пусть
-\(\Phi_{\mf{a}} \coloneqq \{a \in \mf{a} \mid (\{a\} \times \mf{b}) \cap \Phi \neq \varnothing\}\)
+\(\Phi_{\mf{a}} \coloneqq \{a \in \mf{a} \given (\{a\} \times \mf{b}) \cap \Phi \neq \varnothing\}\)
 и
-\(\Phi_{\mf{b}} \coloneqq \{b \in \mf{b} \mid (\mf{a} \times \{b\}) \cap \Phi \neq \varnothing\}\).
+\(\Phi_{\mf{b}} \coloneqq \{b \in \mf{b} \given (\mf{a} \times \{b\}) \cap \Phi \neq \varnothing\}\).
 Тогда
 \((\sum_{a \in \Phi_{\mf{a}}} Aa) (\sum_{b \in \Phi_{\mf{b}}} Ab) = A = (\sum_{a \in \Phi_{\mf{a}}} Aa) \mf{b} = \mf{a} (\sum_{b \in \Phi_{\mf{b}}} Ab)\),
 а потому \(\mf{a} = \sum_{a \in \Phi_{\mf{a}}} Aa\) и \(\mf{b} = \sum_{b \in \Phi_{\mf{b}}} Ab\)
@@ -13048,9 +13048,9 @@ x^n + a_1 a^1 x^{n-1} + \cdots{} + a_n a^n x^0 = 0
 %Пусть
 %\(\mc{P}'\) и \(\mc{L}'\) --- это множества минимальных элементов
 %множеств
-%\(\mc{P} \coloneqq \{\mf{p}_i \mid i \in I\}\)
+%\(\mc{P} \coloneqq \{\mf{p}_i \given i \in I\}\)
 %и
-%\(\mc{L} \coloneqq \{\mf{l}_j \mid j \in J\}\)
+%\(\mc{L} \coloneqq \{\mf{l}_j \given j \in J\}\)
 %соответственно.
 %Тогда,
 %так как
@@ -13776,9 +13776,9 @@ M \simeq (\bigoplus_{\mathfrak{p} \in \mathcal{P}} \bigoplus_{i = 1}^{N_\mathfra
 \),
 где \(\mathcal{P}\) --- конечное множество ненулевых простых идеалов,
 \(N_\mathfrak{p} \geq 1\) и \(n_{\mathfrak{p},1} \geq n_{\mathfrak{p},2} \geq \cdots \geq n_{\mathfrak{p},N_\mathfrak{p}} \geq 1\) для всех \(\mathfrak{p} \in \mathcal{P}\).
-%Пусть \(M_\mathfrak{p} \coloneqq \{x \in M \mid \exists n \geq 0 : \mathfrak{p}^n x = 0\}\), где \(\mathfrak{p}\) --- простой идеал,
+%Пусть \(M_\mathfrak{p} \coloneqq \{x \in M \given \exists n \geq 0 : \mathfrak{p}^n x = 0\}\), где \(\mathfrak{p}\) --- простой идеал,
 Для любого \(\mf{p} \in \Spec(A) \setminus \{0\}\) пусть
-\(M_{\mf{p}}^{\mr{tor}} \coloneqq \bigcup_{n=0}^{\infty} \{x \in M \mid \mf{p}^n x = 0\}\),
+\(M_{\mf{p}}^{\mr{tor}} \coloneqq \bigcup_{n=0}^{\infty} \{x \in M \given \mf{p}^n x = 0\}\),
 а \(M^{\mr{fr}} \coloneqq M / (\sum_{\mathfrak{p} \in \Spec(A) \setminus \{0\}} M_\mathfrak{p}^{\mr{tor}})\).
 Тогда \(M_\mathfrak{p}^{\mr{tor}} \simeq \bigoplus_{i = 1}^{N_\mathfrak{p}} A/\mathfrak{p}^{n_{\mathfrak{p},i}}\) если \(\mathfrak{p} \in \mathcal{P}\) и \(M_\mathfrak{p}^{\mr{tor}} = 0\)
 если \(\mf{p} \notin \mc{P} \cup \{0\}\),
@@ -13792,7 +13792,7 @@ M \simeq (\bigoplus_{\mathfrak{p} \in \mathcal{P}} \bigoplus_{i = 1}^{N_\mathfra
 \(
 \dim_{A/\mf{p}}(\mf{p}^{n-1}M_\mf{p}^{\mr{tor}} / \mf{p}^n M_\mf{p}^{\mr{tor}})
 =
-\max\{k \in \{1,\dots{},N_\mf{p}\} \mid n_{\mf{p},k} \geq n\}
+\max\{k \in \{1,\dots{},N_\mf{p}\} \given n_{\mf{p},k} \geq n\}
 \)
 для любых
 \(\mathfrak{p} \in \mathcal{P}\) и \(1 \leq n \leq n_{\mathfrak{p},1}\).
@@ -13942,7 +13942,7 @@ M \simeq (\bigoplus_{\mathfrak{p} \in \mathcal{P}} \bigoplus_{i = 1}^{N_\mathfra
 а \(M\) --- \(A\)\=/модуль.
 Тогда
 множество
-\(\Supp_A(M) \coloneqq \{\mf{p} \in \Spec(A) \mid M_{\mf{p}} \neq 0\}\)
+\(\Supp_A(M) \coloneqq \{\mf{p} \in \Spec(A) \given M_{\mf{p}} \neq 0\}\)
 называется \emph{носителем} \(M\) в \(\Spec(A)\).
 \end{definition}
 
@@ -14021,7 +14021,7 @@ S^{-1} \bigcap_{i \in I} \Ann_A (M_i)
 \label{cor:FinGenSuppAnn}
 Тогда
 \(
-\Supp_A(M) = \{\mf{p} \in \Spec(A) \mid \Ann_A(M) \subset \mf{p}\}
+\Supp_A(M) = \{\mf{p} \in \Spec(A) \given \Ann_A(M) \subset \mf{p}\}
 \).
 \end{corollary}
 
@@ -14075,10 +14075,10 @@ A_{\mf{p}} / \Ann_{A}(M)_{\mf{p}}
 \begin{align*}
 \Ass_A(M)
 &\coloneqq
-\{\mf{p} \in \Spec(A) \mid \mf{p} = \Ann_A(m)\ \tn{для какого-то}\ m \in M\} =
+\{\mf{p} \in \Spec(A) \given \mf{p} = \Ann_A(m)\ \tn{для какого-то}\ m \in M\} =
 \\
 &\mathrel{\phantom{\coloneqq}\mathllap{=}}
-\{\mf{p} \in \Spec(A) \mid \tn{\(A\)\=/модуль}\ A / \mf{p}\ \tn{вкладывается в \(M\)}\}.
+\{\mf{p} \in \Spec(A) \given \tn{\(A\)\=/модуль}\ A / \mf{p}\ \tn{вкладывается в \(M\)}\}.
 \end{align*}
 \end{definition}
 
@@ -14096,7 +14096,7 @@ A_{\mf{p}} / \Ann_{A}(M)_{\mf{p}}
 %из идеалов \(A\), имеющих вид
 %\(\Ann_A(m)\), где \(m \in M \setminus \{0\}\),
 элемент множества
-\(\{\Ann_A(m) \mid m \in M \setminus \{0\}\}\),
+\(\{\Ann_A(m) \given m \in M \setminus \{0\}\}\),
 то \(\mf{p} \in \Ass_A(M)\).
 В частности, если \(A\) нётерово, то \(\Ass_A(M) \neq \varnothing\).
 \end{observation}
@@ -14155,7 +14155,7 @@ M_S
 %=
 %A \cap \Ann_A(m)_S
 %=
-%\bigcup_{s \in S} \{a \in A \mid sa \in \Ann_A(m)\}
+%\bigcup_{s \in S} \{a \in A \given sa \in \Ann_A(m)\}
 %=
 %\bigcup_{s \in S} \Ann_A(sm)
 %\).
@@ -14176,7 +14176,7 @@ A \cap \Ann_{A_S}(\frac{m}{1})
 =
 A \cap \Ann_A(m)_S
 =
-\bigcup_{s \in S} \{a \in A \mid sa \in \Ann_A(m)\}
+\bigcup_{s \in S} \{a \in A \given sa \in \Ann_A(m)\}
 =
 \bigcup_{s \in S} \Ann_A(sm)
 \).%
@@ -14186,7 +14186,7 @@ A \cap \Ann_A(m)_S
 %то в семействе
 %\((\Ann_A(sm))_{s \in S}\)
 то в направленном множестве
-\(\{\Ann_A(sm) \mid s \in S\}\)
+\(\{\Ann_A(sm) \given s \in S\}\)
 существует максимальный элемент
 \(\Ann_A(rm)\), где \(r \in S\),
 и тогда
@@ -14241,9 +14241,9 @@ A \cap \Ann_A(m)_S
 \(
 \Supp_A(M)
 =
-\{\mf{q} \in \Spec(A) \mid \Ass_A(M_{\mf{q}}) \neq \varnothing\}
+\{\mf{q} \in \Spec(A) \given \Ass_A(M_{\mf{q}}) \neq \varnothing\}
 =
-\{\mf{q} \in \Spec(A) \mid \Ass_A(M) \cap \Spec(A_{\mf{q}}) \neq \varnothing\}
+\{\mf{q} \in \Spec(A) \given \Ass_A(M) \cap \Spec(A_{\mf{q}}) \neq \varnothing\}
 =
 \bigcup_{\mf{p} \in \Ass_A(M)}
 \Cl_{\Spec(A)}(\{\mf{p}\})
@@ -14414,7 +14414,7 @@ A \cap \Ann_A(m)_S
 \label{def:SemigroupEin}
 Тогда определим groß\-/множество
 %\footnote{<<Ein>> от немецкого <<einheit>>.}
-\[\op{Ein}(\mc{C}) \coloneqq \{e \in \mc{C} \setminus \{0\} \mid ex, xe \in \{0, x\}\ \text{для любого \(x \in \mc{C}\)}\}.\]
+\[\op{Ein}(\mc{C}) \coloneqq \{e \in \mc{C} \setminus \{0\} \given ex, xe \in \{0, x\}\ \text{для любого \(x \in \mc{C}\)}\}.\]
 \end{definition}
 
 \begin{remark}
@@ -15000,7 +15000,7 @@ X(\beta^o_{j,j'}, \Id_i) (x_{i, j})
 %\in
 %\Theta^{-1}(([x_{i(j), j}])_{j \in J})
 %\).
-Пусть \((\gamma_i : i \to e)_{i \in \{i(\sigma) \mid \sigma \in \Ob(J) \sqcup \Ar(J)\}}\), где \(e \in I\), --- коконус над подкатегорией в \(I\), порождённой
+Пусть \((\gamma_i : i \to e)_{i \in \{i(\sigma) \given \sigma \in \Ob(J) \sqcup \Ar(J)\}}\), где \(e \in I\), --- коконус над подкатегорией в \(I\), порождённой
 стрелками \(\alpha_{\beta}\) и \(\alpha'_{\beta}\) для всех \(\beta \in \Ar(J)\).
 Тогда
 \(
@@ -15813,7 +15813,7 @@ e_{k,k} - e_{l,l}
 Пусть \(Q \subset V\) --- произвольное дополнение к \(P^\perp\) в \(V\),
 то есть \(V = P^\perp \oplus Q = P \oplus Q^\perp\).
 Пусть \(T : Q \to Q^\perp\), \(v \mapsto v^T\) --- проекция вдоль \(P\).
-Определим подпространство \(M \coloneqq \{(1/2)(v + v^T) \in V \mid v \in Q\}\).
+Определим подпространство \(M \coloneqq \{(1/2)(v + v^T) \in V \given v \in Q\}\).
 Тогда \(M\), как и \(Q\), является дополнением к \(P^\perp\) в \(V\), потому что для любого \(v \in Q\) соответствующий вектор \((1/2)(v + v^T) \in M\) отличается от вектора \(v\) на вектор из \(P \subset P^\perp\).
 С другой стороны, пространство \(M\) изотропно: для любых векторов \(v,w \in Q\) выполняются равенства
 \(
@@ -15859,7 +15859,7 @@ V'' = P'' \oplus Q'' \oplus L''
 \end{proof}
 
 \begin{notation}[\scshape Ортогонал]
-Если \(V\) --- ортогональное пространство, а \(U \subset V\) --- его подпространство, то ортогонал к \(U\) в \(V\) обозначим через \(\Perp_V(U) \coloneqq \{v \in V \mid \langle v, u \rangle = 0\ \text{для всех}\ u \in U\}\).
+Если \(V\) --- ортогональное пространство, а \(U \subset V\) --- его подпространство, то ортогонал к \(U\) в \(V\) обозначим через \(\Perp_V(U) \coloneqq \{v \in V \given \langle v, u \rangle = 0\ \text{для всех}\ u \in U\}\).
 \end{notation}
 
 %\begin{theorem}[\scshape Теорема Витта]
@@ -16131,7 +16131,7 @@ V = \bigoplus_{i = 1}^n V_i
 \begin{theorem}
 Пусть \(d \in \mathbb{Z}\) --- бесквадратное целое число, а
 \(
-\mathcal{O}_{\mathbb{Q}[\sqrt{d}]} \coloneqq \{a+b\sqrt{d} \in \mathbb{Q}[\sqrt{d}] \mid a,b \in \Q,\ 2a \in \mathbb{Z},\ a^2-{b^2}d \in \mathbb{Z} \}
+\mathcal{O}_{\mathbb{Q}[\sqrt{d}]} \coloneqq \{a+b\sqrt{d} \in \mathbb{Q}[\sqrt{d}] \given a,b \in \Q,\ 2a \in \mathbb{Z},\ a^2-{b^2}d \in \mathbb{Z} \}
 \).
 Тогда если \(d \equiv 2,3 \pmod{4}\), то \(\mathcal{O}_{\mathbb{Q}[\sqrt{d}]} = \mathbb{Z}[\sqrt{d}]\), а если \(d \equiv 1 \pmod{4}\), то \(\mathcal{O}_{\mathbb{Q}[\sqrt{d}]} = \mathbb{Z}[\frac{1+\sqrt{d}}{2}]\).
 \end{theorem}
@@ -16867,7 +16867,7 @@ F,
 
 \begin{observation}
 Пусть \(B \coloneqq A[X]/(P(X))\), где \(A\) --- ассоциативное коммутативное унитальное кольцо, а \(P(X) \in A[X]\) --- унитальный многочлен. Пусть \(x \in B\) --- это образ \(X \in A[X]\).
-Очевидно, что множество \(\{x^i \in B \mid 0 \leq i < \deg(P(X))\}\) является \(A\)-базисом \(B\).
+Очевидно, что множество \(\{x^i \in B \given 0 \leq i < \deg(P(X))\}\) является \(A\)-базисом \(B\).
 Идеал многочленов в \(A[X]\), зануляющих оператор
 \(x : B \to B\), \(f \mapsto xf\),
 равен \((P(X))\), как сразу видно прямо из определения \(B\).
@@ -16958,7 +16958,7 @@ F,
 \end{remark}
 
 \begin{corollary}[\scshape Избегание простых]
-Пусть \(R\) --- ассоциативное унитальное кольцо, \(S \subset R\) --- его подкольцо, а \((\mathfrak{I}_i)_{i \in I}\) --- конечное семейство двусторонних идеалов в \(R\), такое что \(S \subset \bigcup_{i \in I} \mathfrak{I}_i\). Пусть \(I' \coloneqq \{i \in I \mid \text{идеал \(\mathfrak{I}_i\) простой и \(S \not\subset \mathfrak{I}_i\)}\}\). Тогда \(S \subset \bigcup_{i \in I \setminus I'} \mathfrak{I}_i\).
+Пусть \(R\) --- ассоциативное унитальное кольцо, \(S \subset R\) --- его подкольцо, а \((\mathfrak{I}_i)_{i \in I}\) --- конечное семейство двусторонних идеалов в \(R\), такое что \(S \subset \bigcup_{i \in I} \mathfrak{I}_i\). Пусть \(I' \coloneqq \{i \in I \given \text{идеал \(\mathfrak{I}_i\) простой и \(S \not\subset \mathfrak{I}_i\)}\}\). Тогда \(S \subset \bigcup_{i \in I \setminus I'} \mathfrak{I}_i\).
 \end{corollary}
 
 \begin{proof}
@@ -17857,7 +17857,7 @@ C_{\Dom(\theta)},
 \label{eq:ElemBoundHomOne}
 \end{equation*}
 где
-\(Q \circ Q \coloneqq \{\varphi \circ \psi \in \Ar(\mc{S}) \mid \varphi, \psi \in Q,\  \Cod(\psi) = \Dom(\varphi)\}\),
+\(Q \circ Q \coloneqq \{\varphi \circ \psi \in \Ar(\mc{S}) \given \varphi, \psi \in Q,\  \Cod(\psi) = \Dom(\varphi)\}\),
 первая стрелка --- это
 \(
 \bigoplus_{\varphi \in Q \suchthat \Cod(\varphi) = s}
@@ -17870,7 +17870,7 @@ C_{\Dom(\theta)},
 	\{%
 		(\varphi, \psi) \in %
 			Q \t*[^{\mr{Dom}}]{\times}{^{\mr{Cod}}} Q
-		\mid %
+		\given %
 		\Cod(\varphi) = s %
 	\}
 	\xrightarrow{%
@@ -17879,7 +17879,7 @@ C_{\Dom(\theta)},
 		\varphi \circ \psi}
 	\{%
 		\theta \in Q \circ Q %
-		\mid %
+		\given %
 		\Cod(\theta) = s%
 	\}.
 \]
@@ -18013,14 +18013,14 @@ C_s^F
 (s, \varphi) \mapsto \Dom(\varphi) :
 \{
 (s, \varphi) \in \Ob(\mc{S}) \times Q
-\mid
+\given
 r(s) = n,\ 
 \Cod(\varphi) = s
 \}
 \to
 \{
 s \in \Ob(\mc{S})
-\mid
+\given
 r(s) = n - 1
 \}
 \).
@@ -18113,7 +18113,7 @@ n \cdot (1 + \lVert n \rVert + \cdots + {\lVert n \rVert}^{\lfloor \frac{\ln(m)}
 Тогда \emph{кольцом верхних треугольных матриц}
 подрядка \(I\) над \(R\)
 называется кольцо
-\(\op{\widehat{B}}_I(R) \coloneqq \{(x_{i,j})_{i,j \in I} \in \Mat_I(R) \mid x_{i,j} = 0\ \tn{при}\ i > j\} \subset \Mat_I(R)\),
+\(\op{\widehat{B}}_I(R) \coloneqq \{(x_{i,j})_{i,j \in I} \in \Mat_I(R) \given x_{i,j} = 0\ \tn{при}\ i > j\} \subset \Mat_I(R)\),
 а \emph{кольцом нижних треугольных матриц}
 подрядка \(I\) над \(R\)
 --- кольцо
@@ -18147,7 +18147,7 @@ n \cdot (1 + \lVert n \rVert + \cdots + {\lVert n \rVert}^{\lfloor \frac{\ln(m)}
 
 \begin{definition}[\scshape Группа верхних/нижних унитреугольных матриц]
 Пусть \(R\) --- ассоциативное унитальное кольцо, а \(I\) --- конечное линейно упорядоченное множество.
-Тогда \emph{группой верхних унитреугольных матриц} порядка \(I\) над \(R\) называется группа \(\op{U}_I(R) \coloneqq \{((x_{i,j})_{i,j \in I} \in \op{B}_I(R) \mid x_{i,i} = 1\ \tn{для всех}\ i \in I)\}\),
+Тогда \emph{группой верхних унитреугольных матриц} порядка \(I\) над \(R\) называется группа \(\op{U}_I(R) \coloneqq \{((x_{i,j})_{i,j \in I} \in \op{B}_I(R) \given x_{i,i} = 1\ \tn{для всех}\ i \in I)\}\),
 а \emph{группой нижних унитреугольных матриц} порядка \(I\) над \(R\) --- группа \(\op{U}^{-}_I(R) \coloneqq \op{U}_{I^o}(R) \subset \op{B}^{-}_I(R)\).
 \end{definition}
 
@@ -18524,7 +18524,7 @@ n \cdot (1 + \lVert n \rVert + \cdots + {\lVert n \rVert}^{\lfloor \frac{\ln(m)}
 \end{notation}
 
 \begin{lemma}[\scshape Сепарабельность общего характеристического многочлена]
-Пусть \(I\) --- конечное множество, а \(K \coloneqq \Q(X_{i,j} \smid i,j \in I)\).%
+Пусть \(I\) --- конечное множество, а \(K \coloneqq \Q(X_{i,j} \sgiven i,j \in I)\).%
 \label{lem:GenCharPolySep}
 Тогда дискриминант
 характеристического многочлена общей матрицы
@@ -18555,7 +18555,7 @@ K[T]
 
 %\begin{observation}[\scshape Сепарабельность универсального характеристического многочлена]
 %Пусть \(I\) --- конечное множество,
-%а \(A \coloneqq \Z[X_{i,j} \smid i,j \in I]\).
+%а \(A \coloneqq \Z[X_{i,j} \sgiven i,j \in I]\).
 %Тогда характеристический многочлен
 %\(P(T) \in A[T]\) универсальной матрицы
 %\((X_{i,j})_{i,j \in I} \in \Mat_I(A)\)
@@ -18583,21 +18583,21 @@ K[T]
 Пусть
 \((\varphi_A : \Mat_I(A)^{\mr{mult}} \to A^{\mr{mult}})_{A \in \mr{CRng}}\)
 --- естественое преобразование.
-Так как для любого кольца \(A \in \Ob(\mr{CRng})\) и любой матрицы \((a_{i,j})_{i,j \in I} \in \Mat_I(A)\) существует единственный гомоморфизм колец \(\Z[X_{i,j} \smid i,j \in I] \to A\), переводящий \((X_{i,j})_{i,j \in I}\) в \((a_{i,j})_{i,j \in I}\), то
+Так как для любого кольца \(A \in \Ob(\mr{CRng})\) и любой матрицы \((a_{i,j})_{i,j \in I} \in \Mat_I(A)\) существует единственный гомоморфизм колец \(\Z[X_{i,j} \sgiven i,j \in I] \to A\), переводящий \((X_{i,j})_{i,j \in I}\) в \((a_{i,j})_{i,j \in I}\), то
 естественное преобразование \((\varphi_A)_{A \in \mr{CRing}}\) однозначно задаётся многочленом
 \begin{equation*}
-P(X_{i,j} \smid i,j \in I) \coloneqq \varphi_{\Z[X_{i,j} \mid i,j \in I]}((X_{i,j})_{i,j \in I}) \in \Z[X_{i,j} \smid i,j \in I],
+P(X_{i,j} \sgiven i,j \in I) \coloneqq \varphi_{\Z[X_{i,j} \sgiven i,j \in I]}((X_{i,j})_{i,j \in I}) \in \Z[X_{i,j} \sgiven i,j \in I],
 \end{equation*}
 который удовлетворяет свойствам
 \begin{gather}
-P(\delta_{i,j} \smid i,j \in I) = 1,\ \tn{где \(\delta_{i,j}\) --- это дельта Кронекера},
+P(\delta_{i,j} \sgiven i,j \in I) = 1,\ \tn{где \(\delta_{i,j}\) --- это дельта Кронекера},
 \label{eq:DetNatPolyOne}
 \\
 \textstyle
-P(\sum_{k \in I} X'_{i,k} X''_{k,j} \smid i,j \in I) = P(X'_{i,j} \smid i,j \in I) \cdot P(X''_{i,j} \smid i,j \in I),
+P(\sum_{k \in I} X'_{i,k} X''_{k,j} \sgiven i,j \in I) = P(X'_{i,j} \sgiven i,j \in I) \cdot P(X''_{i,j} \sgiven i,j \in I),
 \label{eq:DetNatPolyTwo}
 \end{gather}
-где~\eqref{eq:DetNatPolyOne} --- это равенство в \(\Z\), а~\eqref{eq:DetNatPolyTwo} --- это равенство в \(\Z[X'_{i,j}, X''_{i,j} \smid i,j \in I]\).
+где~\eqref{eq:DetNatPolyOne} --- это равенство в \(\Z\), а~\eqref{eq:DetNatPolyTwo} --- это равенство в \(\Z[X'_{i,j}, X''_{i,j} \sgiven i,j \in I]\).
 
 \item[Часть 2.]
 Случай \(I = \varnothing\) тривиален.
@@ -18640,7 +18640,7 @@ a e_{s,s} + \sum_{i \in I \setminus \{s\}} e_{i,i}
 
 \item[Часть 4.]
 Осталось заметить, что, согласно лемме~\ref{lem:GenCharPolySep} и наблюдению~\ref{obs:SemisimpOperDecomp},
-если \(K\) --- это поле разложения над \(\Q(X_{i,j} \smid i,j \in I)\) характеристического многочлена общей матрицы \((X_{i,j})_{i,j \in I}\),
+если \(K\) --- это поле разложения над \(\Q(X_{i,j} \sgiven i,j \in I)\) характеристического многочлена общей матрицы \((X_{i,j})_{i,j \in I}\),
 то матрица \((X_{i,j})_{i,j \in I}\) диагонализуема как матрица с коэффициентами в \(K\).
 \qedhere
 
@@ -18670,7 +18670,7 @@ a e_{s,s} + \sum_{i \in I \setminus \{s\}} e_{i,i}
 \begin{observation}[\scshape Характеристический многочлен мономиальной матрицы]
 Пусть \(n \in \N_1\) --- натуральное число,
 \(I \coloneqq \Z/n\Z\) --- циклическая группа порядка \(n\),
-а \(x \coloneqq \sum_{i \in I} X_i e_{i+1, i} \in \Mat_I(\Z[X_i \smid i \in I])\) --- общая мономиальная матрица, соответствующая циклической перестановке.%
+а \(x \coloneqq \sum_{i \in I} X_i e_{i+1, i} \in \Mat_I(\Z[X_i \sgiven i \in I])\) --- общая мономиальная матрица, соответствующая циклической перестановке.%
 \label{obs:MonMatrixCharPoly}
 Тогда характеристический многочлен \(x\) равен
 \(T^n - \prod_{i \in I} X_i\).
@@ -18687,7 +18687,7 @@ a e_{s,s} + \sum_{i \in I \setminus \{s\}} e_{i,i}
 \op{sgn}(\sigma)
 \prod_{i \in I} X_{i, \sigma(i)}
 \in
-\Z[X_{i,j} \smid i,j \in I]%
+\Z[X_{i,j} \sgiven i,j \in I]%
 \label{eq:GenDetPoly}
 \end{equation}
 \end{theorem}
@@ -18698,22 +18698,22 @@ a e_{s,s} + \sum_{i \in I \setminus \{s\}} e_{i,i}
 является однородным степени \(1\),
 во-первых,
 по множеству переменных
-\(\{X_{i,j} \mid j \in I\}\)
+\(\{X_{i,j} \given j \in I\}\)
 и по каждой из них,
 во-вторых,
 по множеству переменных
-\(\{X_{j,i} \mid j \in I\}\)
+\(\{X_{j,i} \given j \in I\}\)
 и по каждой из них,
 а потому
 для любого индекса \(i \in I\)
 все делители~\eqref{eq:GenDetPoly} являются однородными степени \(1\) или \(0\),
 во-первых,
 по множеству переменных
-\(\{X_{i,j} \mid j \in I\}\)
+\(\{X_{i,j} \given j \in I\}\)
 и по каждой из них,
 во-вторых,
 по множеству переменных
-\(\{X_{j,i} \mid j \in I\}\)
+\(\{X_{j,i} \given j \in I\}\)
 и по каждой из них.
 Отсюда сразу выводится утверждение теоремы.
 \end{proof}
@@ -18724,7 +18724,7 @@ a e_{s,s} + \sum_{i \in I \setminus \{s\}} e_{i,i}
 и предположим, что \(I = \Z/n\Z\).
 Пусть
 \(
-\varphi : \Z[X_{i,j} \smid i,j \in I] \to \Z[T, X_i \smid i \in I]
+\varphi : \Z[X_{i,j} \sgiven i,j \in I] \to \Z[T, X_i \sgiven i \in I]
 \)
 --- это гомоморфизм колец, переводящий матрицу
 \((X_{i,j})_{i,j \in I}\)
@@ -19059,7 +19059,7 @@ a e_{s,s} + \sum_{i \in I \setminus \{s\}} e_{i,i}
 
 \begin{observation}
 Пусть \(\mc{S}\) --- подмножество множества \(\op{Open}(T)\), где \(T\) --- топологическое пространство.
-Тогда полная подкатегория в \(\op{Open}(T)\), заданная множеством объектов \(\{U \cap V \in \op{Open}(T) \mid U,V \in \mc{S}\}\), финальна в замкнутой влево подкатегории в \(\op{Open}(T)\), порождённой \(\mc{S}\).
+Тогда полная подкатегория в \(\op{Open}(T)\), заданная множеством объектов \(\{U \cap V \in \op{Open}(T) \given U,V \in \mc{S}\}\), финальна в замкнутой влево подкатегории в \(\op{Open}(T)\), порождённой \(\mc{S}\).
 \end{observation}
 
 
@@ -19996,7 +19996,7 @@ E_{\infty}^k
 %\sum_{n=1}^{\infty} \sum_{k=0}^n
 %\Q \cdot X_n^k / k!
 %\subset
-%\Q[X_i \smid i \in \N_1]
+%\Q[X_i \sgiven i \in \N_1]
 %%\Q[X_1, X_2, \dots{}]
 %\)
 %как \(\Q\)\=/модуль,
@@ -20023,7 +20023,7 @@ E_{\infty}^k
 %\sum_{n=1}^{\infty} \sum_{k=0}^n
 %\Z \cdot X_n^k / k!
 %\subset
-%\Q[X_i \smid i \in \N_1]
+%\Q[X_i \sgiven i \in \N_1]
 %%\Q[X_1, X_2, \dots{}]
 %\),
 %%\(\varphi : V \to V\),
@@ -20049,7 +20049,7 @@ V_{\Z}  \coloneqq
 \sum_{n=1}^{\infty} \sum_{k=0}^n
 \Z \cdot X_n^k / k!
 \subset
-\Q[X_n \smid n \in \N_1]
+\Q[X_n \sgiven n \in \N_1]
 \)
 и
 \(\varphi_{\Z} : V_{\Z} \to V_{\Z}\),
@@ -20291,7 +20291,7 @@ E \mapsto
 \begin{equation*}
 \Car(\mu^*) \coloneqq
 \bigcap_{S \in \mc{A}}
-\{A \in \mc{A} \mid \mu^*(S) = \mu^*(S \wedge A) + \mu^*(S \wedge \neg A)\}.
+\{A \in \mc{A} \given \mu^*(S) = \mu^*(S \wedge A) + \mu^*(S \wedge \neg A)\}.
 \end{equation*}
 \end{definition}
 
@@ -20343,7 +20343,7 @@ E \mapsto
 \begin{equation*}
 \Car(\mu^*) =
 \bigcap_{S \in \mc{S}}
-\{A \in \mc{A} \mid \mu^*(S) = \mu^*(S \wedge A) + \mu^*(S \wedge \neg A)\}.
+\{A \in \mc{A} \given \mu^*(S) = \mu^*(S \wedge A) + \mu^*(S \wedge \neg A)\}.
 \end{equation*}
 \end{observation}
 
@@ -20699,7 +20699,7 @@ V \to \Coker(\Sigma_{C_p} : (V^{\otimes [p]_\Lambda})_{C_p} \to (V^{\otimes [p]_
 %называется \emph{раздутием} \(\R^n\) в точке \(0 \in \R^n\).
 Определим \emph{раздутие} \(\R^n\) в точке \(0 \in \R^n\), где \(n \in \N_1\),
 как множество
-\(\mc{M}^n \coloneqq \{(x,l) \in \R^n \times \op{Gr}(1,\R^n) \mid x \in l\}\) с индуцированной топологией,
+\(\mc{M}^n \coloneqq \{(x,l) \in \R^n \times \op{Gr}(1,\R^n) \given x \in l\}\) с индуцированной топологией,
 где
 \(\op{Gr}(1,\R^n)\) --- это грассманиан прямых в \(\R^n\), проходящих через \(0 \in \R^n\).
 Отображение
@@ -20833,7 +20833,7 @@ V \to \Coker(\Sigma_{C_p} : (V^{\otimes [p]_\Lambda})_{C_p} \to (V^{\otimes [p]_
 Введём обозначение
 \(\psi \coloneqq \psi_1 \bartimes \psi_2 : Y \to Z \times Z\).
 Тогда, так как \(Z\) хаусдорфово, то диагональ \(\Delta \subset Z \times Z\) замкнута,
-а потому множество \(\psi^{-1}(\Delta) = \{y \in Y \mid \psi_1(y) = \psi_2(y)\}\) тоже замкнуто.
+а потому множество \(\psi^{-1}(\Delta) = \{y \in Y \given \psi_1(y) = \psi_2(y)\}\) тоже замкнуто.
 Поэтому из включения \(\varphi(X) \subset \psi^{-1}(\Delta)\) следует, что \(X' = Y \subset \psi^{-1}(\Delta)\), то есть \(\psi_1 = \psi_2\).
 
 \item[Часть <<только тогда>>.]

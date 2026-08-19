@@ -333,11 +333,19 @@ labelsep=period,]%
 \newcommand{\la}{\langle}
 \newcommand{\ra}{\rangle}
 
-\newcommand{\smid}{\,|\,}
-
 \newcommand{\rusquotedleft}{\quotedblbase}
 \newcommand{\rusquotedright}{\textquotedblleft}
 \newcommand{\rusquoted}[1]{\rusquotedleft{}#1\rusquotedright{}}
+
+%-------------------
+
+% Разделители для множеств и семейств
+
+\newcommand{\given}[1][|]%
+{\mathclose{}\nonscript\;#1\allowbreak\nonscript\;\mathopen{}}
+
+\newcommand{\sgiven}[1][|]%
+{\mathclose{}\nonscript\,#1\linebreak[0]\nonscript\,\mathopen{}}
 
 %-------------------
 
