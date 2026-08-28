@@ -6249,129 +6249,137 @@ S^\mr{sat} \coloneqq
 %\end{observation}
 
 
-\section{Китайская теорема об остатках и её приложения}
+\section{Китайская теорема об остатках}
 
 \sectiontableofcontents
 
-\subsection{Китайская теорема об остатках}
+\subsection{Китайская теорема об остатках для унитальных колец}
 
-\begin{lemma}
-\label{lem:gen_chi_rem}
-Пусть \(R\) --- ассоциативное унитальное кольцо, \(\mathfrak{I}, \mathfrak{J} \subset R\) --- двусторонние идеалы.
-Канонический гомоморфизм \(R \to R/\mathfrak{I} \times R/\mathfrak{J}\) сюръективен тогда и только тогда, когда \(\mathfrak{I} + \mathfrak{J} = R\).
-\end{lemma}
+\begin{subsectionintro}
+В этом подразделе мы опишем разложения унитальных колец в конечные произведения унитальных колец в терминах ядер проекций на сомножители.
+\end{subsectionintro}
 
-\begin{proof}
-%Из теоремы о факторквадрате суммы-пе\-ре\-се\-че\-ния получаем короткую точную последовательность абелевых групп:
-Следующий короткий комплекс абелевых групп
-\begin{equation*}
-\shorthandoff{"}%
-\begin{tikzcd}[ampersand replacement = \amprep]
-R / (\mathfrak{I} \cap \mathfrak{J})
-\arrow[r, hookrightarrow, "{x + \mathfrak{I} \cap \mathfrak{J} \mapsto (x + \mathfrak{I}, x + \mathfrak{J})}"]
-\amprep[4.8em] 
-R/\mathfrak{I} \oplus R/\mathfrak{J}
-\arrow[r, twoheadrightarrow, "{(x + \mathfrak{I}, y + \mathfrak{J}) \mapsto x - y + (\mathfrak{I} + \mathfrak{J})}"]
-\amprep[6.8em] 
-R / (\mathfrak{I} + \mathfrak{J})
-\end{tikzcd}
-\shorthandon{"}%
-\end{equation*}
-точен согласно теореме о факторквадрате сум\-мы-пе\-ре\-се\-че\-ния (теорема~\secref{thm:sum-int-square}), то есть по универсальному свойству факторизации.
-\end{proof}
+%\begin{notation}[\scshape Свободная магма]
+%Для любого семейства переменных \((X_i)_{i \in I}\)
+%через \(\mr{Mag}(X_i \sgiven i \in I)\) будем обозначать свободную магму, свободно порождённую этим семейством переменных.
+%\end{notation}
 
-\begin{remark}
-Идеалы \(\mathfrak{I}, \mathfrak{J} \subset R\), такие что \(\mathfrak{I} + \mathfrak{J} = R\), называются \emph{взаимно простыми}, или \emph{копростыми}, или \emph{комаксимальными}.
-\end{remark}
-
-\begin{theorem}
-Пусть $R$ --- ассоциативное унитальное кольцо,
-$(\mathfrak{I}_i)_{i \in I}$ --- семейство двусторонних идеалов $R$,
-$\card(I) < \infty$.
-Тогда следующие условия эквивалентны:
-\begin{enumerate*}[label={\textup{(\roman*)}}]
-	\item
-	Если $i,j \in I$, $i \neq j$, то канонический гомоморфизм $R \to R/\mathfrak{I}_i \times R/\mathfrak{I}_j$ сюръективен;
-%	Для любых $i,j \in I$, таких что $i \neq j$, канонический гомоморфизм $R \to R/\mathfrak{I}_i \times R/\mathfrak{I}_j$ сюръективен.
-	\item Канонический гомоморфизм $R \to \prod_{i \in I} R/\mathfrak{I}_i$ сюръективен.
-\end{enumerate*}
-\label{thm:surj_for_fam_of_ideals}
-\end{theorem}
-
-\begin{proof}
-%Очевидно, что второе условие влечёт первое.
-Очевидно, что (ii) $\implies$ (i).
-Докажем обратное.
-Рассмотрим $N \coloneqq \Img(R \to \prod_{i \in I} R/\mathfrak{I}_i)$. Для любых $i,j \in I$, $i \neq j$ мы можем найти $a_{i,j} \in N$, такой что $i$\=/ая координата $a_{i,j}$ равна $1$, а $j$\=/ая --- $0$. Тогда $a_i \coloneqq \prod_{j \in I \setminus \{i\}} a_{i,j} \in N$ (произведение в произвольном порядке) имеет $i$\=/ую координату $1$ и остальные координаты $0$. Такие $a_i$ порождают $\prod_{i \in I} R/\mathfrak{I}_i$ как $R$\=/модуль, поэтому $N = \prod_{i \in I} R/\mathfrak{I}_i$.
-\end{proof}
-
-\begin{corollary}
-В предположениях%
-\label{cor:ChiRemTheoremSurj}
-теоремы \ref{thm:surj_for_fam_of_ideals} следующие условия эквивалентны:
-\begin{enumerate*}[label={\textup{(\roman*)}}]
-    \item Если $i,j \in I$, $i \neq j$, то $\mathfrak{I}_i + \mathfrak{I}_j = R$;
-    \item
-%    $R / \bigcap_{i \in I} \mathfrak{I}_i \cong \prod_{i \in I} R / \mathfrak{I}_i$ как $R$-алгебры.
-	\(R\)-кольца \(R / \bigcap_{i \in I} \mathfrak{I}_i \) и \(\prod_{i \in I} R / \mathfrak{I}_i\) изоморфны.
-\end{enumerate*}
-\end{corollary}
-
-\begin{proof}
-Условие (ii) эквивалентно сюръективности канонического гомоморфизма $R \to \prod_{i \in I} R/\mathfrak{I}_i$, что, по теореме \ref{thm:surj_for_fam_of_ideals}, эквивалентно сюръективности гомоморфизма $R \to R/\mathfrak{I}_i \times R/\mathfrak{I}_j$ для любых $i,j \in I$, $i \neq j$, что, по лемме \ref{lem:gen_chi_rem}, эквивалентно условию (i).
-\end{proof}
-
-\begin{definition}
-Пусть $(\mathfrak{I}_i)_{i \in I}$ --- это семейство подмножеств ассоциативного кольца, где
-$\card(I) = n < \infty$.
-\emph{Симметрическое произведение} $\prod^{\mr{sym}}_{i \in I} \mathfrak{I}_i$ --- это сумма произведений
-$\mathfrak{I}_{\sigma(1)} \mathfrak{I}_{\sigma(2)} \dots \mathfrak{I}_{\sigma(n)}$
-по всем биекциям
-$\sigma : \{1, 2, \dots, n\} \xrightarrow{\sim} I$,
-то есть
-%\(
-%\prod^{\mr{sym}}_{i \in I} \mathfrak{I}_i
-%\coloneqq
-%\sum_{\sigma : \{1, 2, \dots, n\} \xrightarrow{\sim} S}
-%\mathfrak{I}_{\sigma(1)} \mathfrak{I}_{\sigma(2)} \dots \mathfrak{I}_{\sigma(n)}. 
-%\)
-\(
-\prod^{\mr{sym}}_{i \in I} \mathfrak{I}_i
-\coloneqq
-\sum_{\sigma : \{1, \dots{}, n\} \xrightarrow{\sim} S}
-\mathfrak{I}_{\sigma(1)} \dots \mathfrak{I}_{\sigma(n)}
-\).
+\begin{definition}[\scshape Комаксимальные идеалы]
+Пусть \(R\) --- кольцо, а \(\mf{I}, \mf{J} \subset R\) --- двусторонние идеалы.
+Тогда если \(\mf{I} + \mf{J} = R\), то \(\mf{I}\) и \(\mf{J}\) называются \emph{комаксимальными}, или \emph{копростыми}, или \emph{взаимно простыми}.
 \end{definition}
 
-\begin{theorem}
-Пусть $R$ --- ассоциативное унитальное кольцо,
-$(\mathfrak{I}_i)_{i \in I}$ --- семейство двусторонних идеалов $R$,
-$\card(I) < \infty$, причём $\mathfrak{I}_i + \mathfrak{I}_j = R$ при $i,j \in I$, $i \neq j$.%
-\label{thm:ChiRemTheoremProd}
-Тогда $\prod^{\mr{sym}}_{i \in I} \mathfrak{I}_i = \bigcap_{i \in I} \mathfrak{I}_i$.
+\begin{observation}
+Пусть \(V\) --- абелева группа,
+а \(V_0\) и \(V_1\) --- её подгруппы.
+Тогда,
+согласно наблюдению~\secref{obs:CartSquareTotCompl} и теореме~\secref{thm:sum-int-square},
+коядро канонического гомоморфизма
+\(V / (V_0 \cap V_1) \to (V / V_0) \times (V / V_1)\)
+отождествляется с \(V / (V_0 + V_1)\).%
+\label{obs:ModuleBinCRT}
+В частности, сюръективность этого гомоморфизма эквивалентна условию \(V_0 + V_1 = V\),
+в чём можно убедиться и непосредственно.
+\end{observation}
+
+\begin{observation}
+Пусть \(R\) --- кольцо,
+такое что \(R = RR\),
+например, унитальное,
+\(\mf{I} \subset R\) --- двусторонний идеал,
+а \(\mf{J}_1, \mf{J}_2 \subset R\) --- аддитивные подгруппы,
+такие что \(\mf{I} + \mf{J}_1 = R\) и \(\mf{I} + \mf{J}_2 = R\).%
+\seclabel{obs:ComaximalIdealsProd}
+Тогда \(R = RR = (\mf{I} + \mf{J}_1)(\mf{I} + \mf{J}_2) \subset \mf{I} + \mf{J}_1 \mf{J}_2 \subset R\),
+а потому \(\mf{I} + \mf{J}_1 \mf{J}_2 = R\).
+\end{observation}
+
+\begin{theorem}[\scshape Китайская теорема об остатках]
+Пусть \(R\) --- унитальное кольцо,
+а \((\mf{I}_i)_{i=1}^n\), где \(n \in \N_1\), --- семейство попарно комаксимальных двусторонних идеалов \(R\).
+Для любых аддитивных подгрупп \(A, B \subset R\) положим \(A \circ B \coloneqq AB + BA\).
+Тогда каноническая сюръекция \(\alpha\) и каноническая инъекция \(\beta\) из диаграммы~\eqref{eq:UnitalCRT} биективны.
+\begin{gather}
+	\frac{R}{%
+	( \cdots ((%
+	\mf{I}_1
+	\circ \mf{I}_2)
+	\circ \mf{I}_3)
+	\cdots
+	\circ \mf{I}_n)}
+	\xlongrightarrow[\sim]{\alpha}
+	\frac{R}{\mf{I}_1 \cap \cdots \cap \mf{I}_n}
+	\xlongrightarrow[\sim]{\beta}
+	\frac{R}{\mf{I}_1}
+	\times \cdots \times
+	\frac{R}{\mf{I}_n}
+	\label{eq:UnitalCRT}
+\end{gather}
 \end{theorem}
 
 \begin{proof}
-Равенство $\prod_{(i,j) \in (I \times I) \setminus \Delta} (\mathfrak{I}_i + \mathfrak{I}_j) = R$ (произведение в произвольном порядке) получается перемножением равенств $\mathfrak{I}_i + \mathfrak{I}_j = R$.
-Если раскрыть скобки в этом произведении, то в каждый моном не войдёт максимум один из $\mathfrak{I}_i$ (два идеала $\mathfrak{I}_i$ и $\mathfrak{I}_j$ не могут не войти, так как нам нужно забрать что-то из скобки $(\mathfrak{I}_i + \mathfrak{I}_j)$).
-Отсюда получаем:
-$
-\bigcap_{i \in I} \mathfrak{I}_i
+Случай \(n = 1\) тривиален.
+Рассмотрим случай \(n = 2\).
+Сюръективность \(\beta\) следует из наблюдения~\ref{obs:ModuleBinCRT}.
+Инъективность~\(\alpha\) следует из цепочки равенств и включений
+\(
+\mf{I}_1 \cap \mf{I}_2
 =
-(\bigcap_{i \in I} \mathfrak{I}_i)
-\prod_{(i,j) \in (I \times I) \setminus \Delta} (\mathfrak{I}_i + \mathfrak{I}_j)
+R \cdot (\mf{I}_1 \cap \mf{I}_2)
+=
+(\mf{I}_1 + \mf{I}_2)
+\cdot
+(\mf{I}_1 \cap \mf{I}_2)
+=
+\mf{I}_1 \cdot (\mf{I}_1 \cap \mf{I}_2)
++
+\mf{I}_2 \cdot (\mf{I}_1 \cap \mf{I}_2)
 \subset
-\prod^{\mr{sym}}_{i \in I} \mathfrak{I}_i
-\subset
-\bigcap_{i \in I} \mathfrak{I}_i
-$.
+\mf{I}_1 \cdot \mf{I}_2 + \mf{I}_2 \cdot \mf{I}_1 
+%\subset
+%\mf{I}_1 \cap \mf{I}_2
+\).
+Случай \(n \geq 3\) следует по индукции из рассмотренного случая \(n = 2\) и наблюдения~\ref{obs:ComaximalIdealsProd}:
+\begin{gather*}
+\frac{R}{\mf{I}_1}
+\times
+\frac{R}{\mf{I}_2}
+\times
+\frac{R}{\mf{I}_3}
+\times
+\cdots
+\times
+\frac{R}{\mf{I}_n}
+\cong
+\frac{R}{(\mf{I}_1 \circ \mf{I}_2)}
+\times
+\frac{R}{\mf{I}_3}
+\times
+\cdots
+\times
+\frac{R}{\mf{I}_n}
+\cong
+\displaybreak[0]
+\\
+\cong
+\frac{R}{((\mf{I}_1 \circ \mf{I}_2) \circ \mf{I}_3)}
+\times
+\cdots
+\times
+\frac{R}{\mf{I}_n}
+\cong
+\cdots
+\cong
+\frac{R}{%
+( \cdots ((%
+\mf{I}_1
+\circ \mf{I}_2)
+\circ \mf{I}_3)
+\cdots
+\circ \mf{I}_n)}.
+\qedhere
+\end{gather*}
 \end{proof}
-
-%\begin{remark}
-%Следствие~\ref{cor:ChiRemTheoremSurj}
-%и теорема~\ref{thm:ChiRemTheoremProd}
-%вместе называются китайской теоремой об остатках.
-%\end{remark}
 
 %\begin{example}
 %Пусть \(M\) --- ненулевой модуль над ассоциативным унитальным кольцом \(R\).
@@ -6389,16 +6397,6 @@ $.
 на \(B\) сюръективно
 --- китайская теорема об остатках для семейств не работает для модулей.
 \end{example}
-
-\begin{observation}
-Пусть \(R\) --- ассоциативное унитальное кольцо,
-\(\mf{I} \subset R\) --- двусторонний идеал,
-а \(\mf{J}_1, \mf{J}_2 \subset R\) --- аддитивные подгруппы,
-такие что \(\mf{I} + \mf{J}_1 = R\) и \(\mf{I} + \mf{J}_2 = R\).%
-\seclabel{obs:ComaximalIdealsProd}
-Тогда \(R = (\mf{I} + \mf{J}_1)(\mf{I} + \mf{J}_2) \subset \mf{I} + \mf{J}_1 \mf{J}_2 \subset R\),
-а потому выполняется равенство \(\mf{I} + \mf{J}_1 \mf{J}_2 = R\).
-\end{observation}
 
 \subsection{Разложение на простейшие дроби}
 
@@ -10195,11 +10193,14 @@ R(X_1 \cdots{} X_n).
 \end{proof}
 
 \begin{observation}
-В обозначениях теоремы~\ref{thm:FourLemma} инъективность \(\rho\) эквивалентна точности \eqref{eq:FourLemmaCom} в \(A\), а сюръективность \(\rho'\) --- точности \eqref{eq:FourLemmaCom} в \(D\).
+В обозначениях теоремы~\ref{thm:FourLemma} инъективность \(\rho\) эквивалентна точности~\eqref{eq:FourLemmaCom} в \(A\),
+а сюръективность \(\rho'\) --- точности~\eqref{eq:FourLemmaCom} в \(D\).
 \end{observation}
 
 \begin{observation}
-В обозначениях теоремы~\ref{thm:FourLemma} де\-кар\-то\-вость/ко\-де\-кар\-то\-вость квадрата \eqref{eq:FourLemmaSq} эквивалентны точности слева/справа соответственно его тотального комплекса \eqref{eq:FourLemmaCom}.
+В обозначениях теоремы~\ref{thm:FourLemma} де\-кар\-то\-вость/ко\-де\-кар\-то\-вость квадрата~\eqref{eq:FourLemmaSq} эквивалентны%
+\seclabel{obs:CartSquareTotCompl}
+точности слева/справа соответственно его тотального комплекса~\eqref{eq:FourLemmaCom}.
 \end{observation}
 
 
@@ -12621,80 +12622,80 @@ x^n + a_1 a^1 x^{n-1} + \cdots{} + a_n a^n x^0 = 0
 
 \section{Лемма Накаямы для коммутативных колец}
 
-\begin{convention}[\scshape Кольцо]
-В этом разделе все кольца считаются ассоциативными, коммутативными и унитальными.
-\end{convention}
-
-\begin{theorem}[\scshape Коммутативная лемма Накаямы I]
-Пусть \(M\) --- ненулевой конечно порождённый модуль над
-%ассоциативным коммутативным унитальным
-кольцом \(A\), а \(\mf{J}\) --- радикал Джекобсона \(A\).%
-\label{thm:LemmaNAKComm}
-Тогда \(\mf{J}M \neq M\).
-\end{theorem}
-
-\begin{proof}[Первое доказательство]
-Частный случай теоремы~\secref{thm:LemmaNAK}.
-\end{proof}
-
-\begin{proof}[Второе доказательство]
-Если в условиях теоремы~\ref{thm:LemmaNAKCommAlt} взять в качестве \(\mf{a}\) радикал Джекобсона кольца \(A\), то элемент \(x\) будет обратимым, и из равенства \(xM = 0\) будет следовать равенство \(M = 0\).
-\end{proof}
-
-\begin{theorem}[\scshape Коммутативная лемма Накаямы II]
+\begin{theorem}[\scshape Коммутативная лемма Накаямы]
 Пусть \(M\) --- конечно порождённый модуль над
-%ассоциативным коммутативным унитальным
-кольцом \(A\), а \(\mf{a}\) --- идеал в \(A\), такой что \(\mf{a}M = M\).%
-\label{thm:LemmaNAKCommAlt}
-Тогда существует \(x \in 1 + \mf{a}\), такой что \(xM = 0\).
+ассоциативным коммутативным унитальным
+кольцом \(A\).%
+\label{thm:LemmaNAKComm}
+Тогда выполняются следующие утверждения:
+\begin{enumerate}[
+	font=\upshape,
+	label=\asbuk*),
+	ref=\asbuk*,
+	]
+	
+	\item \label{itm:LemmaNAKComm1}
+	Если \(\mf{J}M = \mf{J}\),
+	где \(\mf{J}\) --- радикал Джекобсона \(A\),
+	то \(M = 0\);
+	
+	\item \label{itm:LemmaNAKComm2}
+	Если \(\mf{a}\) --- идеал \(A\),
+	такой что \(\mf{a}M = M\),
+	то существует элемент \(x \in 1 + \mf{a}\),
+	такой что \(xM = 0\).
+
+\end{enumerate}
 \end{theorem}
 
-\begin{proof}[Первое доказательство]
+\begin{proofparts}[Доказательство (из четырёх частей)]
+
+\item[Доказательство (\ref{itm:LemmaNAKComm1}).]
+Частный случай теоремы~\secref{thm:LemmaNAK}, верной для любых ассоциативных унитальных колец.
+
+\item[Доказательство (\ref{itm:LemmaNAKComm2}).]
 Выбрав произвольное конечное семейство образующих \(M\),
 эндоморфизм \(\Id_M\) можно записать матрицей с элементами в \(\mf{a}\).
 Осталось применить к нему теорему Гамильтона\namedash{}Кэли.
-\end{proof}
 
-\begin{proof}[Второе доказательство]
+\item[Импликация (\ref{itm:LemmaNAKComm1})\(\implies\)(\ref{itm:LemmaNAKComm2}).]
 Пусть \(S \coloneqq 1 + \mf{a} \subset A\).
 Тогда идеал \(\mf{a}_S = \mf{a} A_S\) 
 кольца \(A_S\)
 содержится в его радикале Джекобсона, и выполняется равенство \(\mf{a}_S M_S = M_S\), а потому \(M_S = 0\)
-согласно теореме~\ref{thm:LemmaNAKComm},
+согласно утверждению~(\ref{itm:LemmaNAKComm1}),
+применённому к \(A_S\)\=/модулю \(M_S\),
 что в предположении конечной порождённости \(M\) эквивалентно существованию \(x \in S\), такого что \(xM = 0\).
-\end{proof}
 
-\begin{remark}
-%Если в условиях теоремы~\ref{thm:LemmaNAKCommAlt} взять в качестве \(\mf{a}\) радикал Джекобсона кольца \(A\), то элемент \(x\) будет обратимым, и из равенства \(xM = 0\) будет следовать равенство \(M = 0\).
-%Таким образом,
-Теорему~\ref{thm:LemmaNAKCommAlt} можно воспринимать как эквивалентную переформулировку
-%леммы Накаямы для коммутативных колец.
-теоремы~\ref{thm:LemmaNAKComm}.
-\end{remark}
+\item[Импликация (\ref{itm:LemmaNAKComm2})\(\implies\)(\ref{itm:LemmaNAKComm1}).]
+Если в условиях утверждения~(\ref{itm:LemmaNAKComm2}) взять в качестве \(\mf{a}\) радикал Джекобсона кольца \(A\), то элемент \(x\) будет обратимым, и из равенства \(xM = 0\) будет следовать равенство \(M = 0\).
+\qedhere
+
+\end{proofparts}
 
 \begin{corollary}[\scshape Теорема Васконселоса]
 Пусть \(M\) --- конечно порождённый модуль над
-%ассоциативным коммутативным унитальным
+ассоциативным коммутативным унитальным
 кольцом \(A\).%
 \label{cor:SurjInjVasconcelos}
-Тогда любой сюръективный \(A\)\=/эндоморфизм \(\varphi: M \to M\) является изоморфизмом.
+Тогда любой сюръективный эндоморфизм \(\varphi: M \to M\) является изоморфизмом.
 \end{corollary}
 
 \begin{proof}
 Эндоморфизм \(\varphi\) задаёт на \(M\) структуру \(A[X]\)\=/модуля, такого что \(XM = M\).
-Тогда, по теореме~\ref{thm:LemmaNAKCommAlt}, существует \(P(X) \in A[X]\), такой что \((1-P(X)X)M = 0\), то есть \(\Id_M = P(\varphi) \circ \varphi = \varphi \circ P(\varphi)\).
+Тогда, по теореме~\ref{thm:LemmaNAKComm}, существует \(P(X) \in A[X]\), такой что \((1-P(X)X)M = 0\), то есть \(\Id_M = P(\varphi) \circ \varphi = \varphi \circ P(\varphi)\).
 \end{proof}
 
 \begin{corollary}
 Пусть \(A\) --- ненулевое
-%коммутативное ассоциативное унитальное
+ассоциативное коммутативное унитальное
 кольцо,
-\(n,m \in \N_0\),
-а \(\varphi : A^{n} \to A^{m}\) --- сюръективный гомоморфизм \(A\)\=/модулей. Тогда \(n \geq m\).
+\(n,m \in \N_0\) --- натуральные числа,
+а \(\varphi : A^n \to A^m\) --- сюръективный гомоморфизм \(A\)\=/модулей. Тогда \(n \geq m\).
 \end{corollary}
 
 \begin{proof}
-Пусть \(n < m\). Тогда композиция \(\varphi\) и координатной проекции \((a_i)_{i=1}^m \mapsto (a_i)_{i=1}^n : A^{m} \to A^{n}\) является не биективным, но сюръективным эндоморфизмом \(A^{n}\), что противоречит следствию~\ref{cor:SurjInjVasconcelos}.
+Пусть \(n < m\). Тогда композиция \(\varphi\) и координатной проекции \((a_i)_{i=1}^m \mapsto (a_i)_{i=1}^n : A^m \to A^n\) является не биективным, но сюръективным эндоморфизмом \(A^n\), что противоречит следствию~\ref{cor:SurjInjVasconcelos}.
 \end{proof}
 
 
