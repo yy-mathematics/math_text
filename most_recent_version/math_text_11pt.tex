@@ -6388,15 +6388,21 @@ R \cdot (\mf{I}_1 \cap \mf{I}_2)
 %\end{example}
 
 \begin{example}
-Пусть \(A\) --- ненулевая абелева группа,
-\(I\) --- трёхэлементное множество,
-а \(B \varsubsetneq A^{\oplus I}\) --- ядро отображения суммирования
-\(A^{\oplus I} \to A\).
-Тогда для любого двухэлементного подмножества \(J \subset I\) ограничение канонической проекции
-\(A^{\oplus I} \to A^{\oplus J}\)
-на \(B\) сюръективно
---- китайская теорема об остатках для семейств не работает для модулей.
+Пусть \(A\) --- ненулевая абелева группа.
+Определим подгруппу
+\(B \coloneqq \{(a_1, a_2, a_3) \in A \oplus A \oplus A \given a_1 + a_2 + a_3 = 0\}\)
+в \(A^{\oplus 3}\)
+и её подгруппы
+\(B_1 \coloneqq B \cap (\{0\} \oplus A \oplus A)\),
+\(B_2 \coloneqq B \cap (A \oplus \{0\} \oplus A)\)
+и
+\(B_3 \coloneqq B \cap (A \oplus A \oplus \{0\})\).
+Тогда \(B_2 + B_3 = B_1 + B_3 = B_1 + B_2 = B\),
+но канонический гомоморфизм
+\(B / (B_1 \cap B_2 \cap B_3) \to (B / B_1) \times (B / B_2) \times (B / B_3)\)
+не сюръективен.
 \end{example}
+
 
 \subsection{Разложение на простейшие дроби}
 
@@ -7078,24 +7084,29 @@ P_n(X_i, Y_i \sgiven 1 \leq i \leq n) t^n
 	(1 - X_s t^s) = (1 - X_s^{1/s} t) \star (1 - t^s)
 	\label{eq:WittVectMultConst}
 \end{gather}
+Для любого \(n \in \N_1\) пусть \(\zeta_n \coloneqq \exp(2 \pi i / n) \in \C\)
+--- первообразный корень \(n\)\=/ой степени из \(1\),
+а \(\langle \zeta_n \rangle \coloneqq \zeta_n^{:\Z} = \{\zeta_n^0, \zeta_n^1, \ldots, \zeta_n^{n-1}\}\).
 Коэффициенты~\eqref{eq:WittVectMultStand} лежат в
 \(
 \Z[X_i, Y_i \sgiven i \in \N_1]
 \subset
 \Q[X_i, Y_i \sgiven i \in \N_1]
 \).
-Формулу~\eqref{eq:WittVectMultCyclotomic}, коэффициенты которой лежат в \(\Z \subset \Q\), можно получить, расширив коэффициенты до \(\C\):
+Формулу~\eqref{eq:WittVectMultCyclotomic}, коэффициенты которой лежат в \(\Z \subset \Q\), можно получить, расширив коэффициенты до \(\Q[\zeta_e, \zeta_r] = \Q[\zeta_{[e,r]}]\):
 отображение
 \(
-	(u, v) \mapsto u v :
-	C_e \times C_r \to C_{[e,r]}
-\),
-где \(C_l \coloneqq \{z \in \C \given z^l = 1\}\)
-для любого \(l \in \N_1\),
-является сюръективным гомоморфизмом мультипликативных групп.
-Формулу~\eqref{eq:WittVectMultConst}, коэффициенты которой лежат в \(\Z[X_s^{1/s}] \subset \Q[X_s^{1/s}]\), можно получить, расширив коэффициенты до \(\C[X_s^{1/s}]\).
-Коэффициенты~\eqref{eq:WittVectMultBasis} лежат в \(\Z[X_e, Y_r] \subset \Q[X_e, Y_r]\),
-а предоставленный там же вывод использует расширение коэффициентов до \(\Z[X_e^{1/e}, Y_r^{1/r}] \subset \Q[X_e^{1/e}, Y_r^{1/r}]\).
+	(z, w) \mapsto z \cdot w :
+	\langle \zeta_e \rangle
+	\times
+	\langle \zeta_r \rangle
+	\to
+	\langle \zeta_{[e,r]} \rangle
+\)
+является сюръективным гомоморфизмом мультипликативных групп, в частности, все его слои равномощны.
+Формулу~\eqref{eq:WittVectMultConst}, коэффициенты которой лежат в \(\Z[X_s^{s^{-1}}] \subset \Q[X_s^{s^{-1}}]\), можно получить, расширив коэффициенты до \(\Q[\zeta_s](X_s^{s^{-1}})\).
+Коэффициенты первой и последней части~\eqref{eq:WittVectMultBasis} лежат в \(\Z[X_e, Y_r] \subset \Q[X_e, Y_r]\),
+а предоставленный там же вывод использует расширение коэффициентов до \(\Z[X_e^{e^{-1}}, Y_r^{r^{-1}}] \subset \Q[X_e^{e^{-1}}, Y_r^{r^{-1}}]\).
 \qedhere
 
 \end{proofparts}
