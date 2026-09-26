@@ -496,11 +496,9 @@ labelsep=period,]%
 \renewcommand{\geq}{\geqslant}
 \renewcommand{\leq}{\leqslant}
 
-\newcommand{\from}{\mathrel{\reflectbox{\(\to\)}}}
-\newcommand{\mapsfrom}{\mathrel{\reflectbox{\(\mapsto\)}}}
-
 \renewcommand{\t}{\tensor}
 
+% Категории модулей и тому подобное
 \newcommand{\module}{\textnormal{-}\mathrm{mod}}
 \newcommand{\ring}{\textnormal{-}\mathrm{ring}}
 %\newcommand{\rin}{\textnormal{-}\mathrm{rin}}
@@ -529,6 +527,14 @@ labelsep=period,]%
 \newcommand{\llangle}{\langle\mkern-2mu\langle}
 \newcommand{\rrangle}{\rangle\mkern-2mu\rangle}
 \newcommand{\llrrangle}[1]{\llangle #1 \rrangle}
+
+% Стрелки \to и \mapsto в обратную сторону
+\newcommand{\from}{\mathrel{\reflectbox{\(\to\)}}}
+\newcommand{\mapsfrom}{\mathrel{\reflectbox{\(\mapsto\)}}}
+
+% Стрелки для пределов
+\newcommand{\tolim}{\to}
+\newcommand{\fromlim}{\from}
 
 %-------------------
 

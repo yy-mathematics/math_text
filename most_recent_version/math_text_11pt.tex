@@ -1948,7 +1948,14 @@ X \to \{f \in F \given \od_F(f,\od_X(y,-)) < \infty\ \tn{для всех}\ y \in
 \((s_n)_{n=0}^\infty\)
 сходится, то она является последовательностью Коши, откуда следует, что последовательность \((\varphi^{\circ n}(x))_{n = 0}^\infty\) является последовательностью Коши, и, как следствие, сходится.
 Предел и будет фиксированной точкой, так как из непрерывности \(\varphi\) следует, что
-\(\varphi(\lim_{n \to \infty} \varphi^{\circ n}(x)) = \lim_{n \to \infty} \varphi(\varphi^{\circ n}(x)) = \lim_{n \to \infty} \varphi^{\circ n}(x)\).
+\(
+	\varphi(\lim_{n \tolim \infty}
+		\varphi^{\circ n}(x)) =
+	\lim_{n \tolim \infty}
+		\varphi(\varphi^{\circ n}(x)) =
+	\lim_{n \tolim \infty}
+		\varphi^{\circ n}(x)
+\).
 \end{proof}
 
 
@@ -2182,7 +2189,7 @@ X \to \{f \in F \given \od_F(f,\od_X(y,-)) < \infty\ \tn{для всех}\ y \in
 Тогда
 \(
 \6_2 \6_1 f(0) =
-\lim_{x_1,x_2 \to 0} (g(x_1,x_2)/(x_1 x_2))
+\lim_{x_1,x_2 \tolim 0} (g(x_1,x_2)/(x_1 x_2))
 \).
 \end{theorem}
 
@@ -2200,7 +2207,7 @@ X \to \{f \in F \given \od_F(f,\od_X(y,-)) < \infty\ \tn{для всех}\ y \in
 устремив \(x_1\) и \(x_2\) к нулю, получаем, что
 \(
 \6_2 \6_1 f (0) =
-\lim_{x_1,x_2 \to 0} (g(x_1,x_2)/(x_1 x_2))
+\lim_{x_1,x_2 \tolim 0} (g(x_1,x_2)/(x_1 x_2))
 \).
 \end{proof}
 
@@ -2394,7 +2401,7 @@ f^{(0)}(t)
 \begin{remark}
 По формуле~\eqref{eq:HadLemForOne} сразу вычисляется предел
 \begin{equation*}
-\lim_{t \to 0} g^{(r-1)}(t) =
+\lim_{t \tolim 0} g^{(r-1)}(t) =
 \frac{1}{r}
 \sum_{i=1}^{r}
 (-1)^{i-1}
@@ -2407,7 +2414,7 @@ f^{(r)}(0) =
 \begin{remark}
 По формуле~\eqref{eq:HadLemForTwo} сразу вычисляется предел
 \begin{multline*}
-\lim_{t \to 0}
+\lim_{t \tolim 0}
 \frac{g^{(r-1)}(t) - \tfrac{1}{r} f^{(r)}(0)}{t} =
 \frac{1}{r(r+1)}
 \sum_{i=1}^{r}
@@ -4803,10 +4810,9 @@ g \mapsto g|_{X'} :
 \begin{definition}[\scshape Множество отображений, разделяющее точки]
 Пусть \(X\) и \(Y\) --- множества,
 а \(A \subset \Hom_{\mr{Sets}}(X, Y)\).
-Тогда \(A\) называется множеством отображений, \emph{разделяющим точки}, если
-отображение
+Тогда \(A\) называется \emph{разделяющим точки}, если
 \(x \mapsto (f(x))_{f \in A} : X \to Y^{\times A}\)
-инъективно.
+--- инъекция.
 \end{definition}
 
 %\begin{definition}[\scshape Кусочно-линейная функция на отрезке]
@@ -4915,7 +4921,7 @@ g \mapsto g|_{X'} :
 для любых \(x \in [0,1]\) и \(n \in \N_0\),
 и
 \(
-	\lim_{n \to \infty}
+	\lim_{n \tolim \infty}
 	\sup_{x \in [0,1]}
 	\lvert \sqrt{x} - P_n(x) \rvert
 	= 0
@@ -4963,7 +4969,7 @@ g \mapsto g|_{X'} :
 \label{cor:AbsValIntPolyApprox}
 Тогда выполняется равенство
 \(
-	\lim_{n \to \infty}
+	\lim_{n \tolim \infty}
 	\sup_{x \in [-1,1]}
 	\bigl\lvert \lvert x \rvert - Q_n(x) \bigr\rvert
 	= 0
@@ -5037,7 +5043,7 @@ g \mapsto g|_{X'} :
 следует, что достаточно доказать, что если \(f \in A\),
 то \(\lvert f \rvert \in A\).
 Без ограничения общности можно предположить,
-что \(\lVert f \rVert_{\infty} = 1\).
+что \(\lVert f \rVert_{\infty} \leq 1\).
 Пусть
 \(Q_0, Q_1, Q_2, \ldots{} \in \R[X]\)
 такие же, как в следствии~\ref{cor:AbsValIntPolyApprox}.
@@ -5049,7 +5055,8 @@ g \mapsto g|_{X'} :
 
 \begin{theorem}[\scshape Теорема Стоуна\namedash{}Вейерштрасса]
 Пусть \(X\) --- компактное топологическое пространство,
-а \(A\) --- замкнутая унитальная подалгебра вещественной банаховой алгебры \(C_b(X, \R)\) с нормой \(\lVert - \rVert_{\infty}\), разделяющая точки.
+а \(A\) --- замкнутая унитальная подалгебра вещественной банаховой алгебры \(C_b(X, \R)\) с нормой \(\lVert - \rVert_{\infty}\), разделяющая точки.%
+\label{thm:Stone-Weierstrass}
 Тогда \(A = C_b(X, \R)\).
 \end{theorem}
 
@@ -5117,6 +5124,19 @@ g \mapsto g|_{X'} :
 \qedhere
 
 \end{proofparts}
+
+\begin{remark}
+Я узнал предложенное доказательство теоремы~\ref{thm:Stone-Weierstrass} (теоремы Стоуна\namedash{}Вейерштрасса) из раздела~A.6.3 текста~\cite[178]{Mueger_FA-notes}
+и ответа~\cite{mo445373}
+на <<\href{https://mathoverflow.net/}{\textenglish{MathOverflow}}>>.
+\end{remark}
+
+\begin{corollary}[\scshape Теорема Вейерштрасса об аппроксимации]
+Полиномиальные функции из \([0,1]\) в \(\R\) образуют плотную подалгебру%
+\label{thm:ClassicalWeierstrassApprox}
+в вещественной банаховой алгебре
+\(C_b([0,1], \R)\) с нормой \(\lVert - \rVert_{\infty}\).
+\end{corollary}
 
 
 
@@ -18744,20 +18764,19 @@ m = a_0 + a_1 n + \cdots + a_{\lfloor \frac{\ln(m)}{\ln(n)} \rfloor} n^{\lfloor 
 \leq
 n \cdot (1 + \lVert n \rVert + \cdots + {\lVert n \rVert}^{\lfloor \frac{\ln(m)}{\ln(n)} \rfloor}).
 \end{gather*}
-Подставив вместо \(m\) элемент \(m^t\), где \(t \in \N_1\), возведя в степень \(1/t\) и устремив \(t\) к \(+\infty\), получаем:
+Подставив вместо \(m\) элемент \(m^t\), где \(t \in \N_1\), возведя в степень \(1/t\) и устремив \(t\) к \(\infty\), получаем:
 \begin{equation} \label{eq:BoundOstrowski}
 \begin{gathered}
 \lVert m \rVert
 \leq
-\lim_{t \to +\infty}%
+\lim_{t \tolim \infty}%
 (1 + \lVert n \rVert + \cdots + {\lVert n \rVert}^{\lfloor t \cdot \frac{\ln(m)}{\ln(n)} \rfloor})^{\frac{1}{t}}
 =_{\tn{при } \lVert n \rVert \neq 1} \\
-%=_{\tn{при } \lVert n \rVert \neq 1}
-=
-\lim_{t \to +\infty}%
+=_{\tn{при } \lVert n \rVert \neq 1}
+\lim_{t \tolim \infty}%
 \biggl(\frac{\lVert n \rVert^{\lfloor t \cdot \frac{\ln(m)}{\ln(n)} \rfloor + 1} - 1}{\lVert n \rVert - 1}\biggr)^{\frac{1}{t}}
 =
-\lim_{t \to +\infty}%
+\lim_{t \tolim \infty}%
 \biggl(\frac{\lVert n \rVert^{t \cdot \frac{\ln(m)}{\ln(n)} + 1 \pm 1} - 1}{\lVert n \rVert - 1}\biggr)^{\frac{1}{t}}.
 \end{gathered}
 \end{equation}
@@ -21428,16 +21447,24 @@ V \to \Coker(\Sigma_{C_p} : (V^{\otimes [p]_\Lambda})_{C_p} \to (V^{\otimes [p]_
 Доказательства сходимости ряда
 \(\sum_{n=0}^\infty \frac{1}{n!} x^n\)
 и равенства
-\(\lim_{m \to \infty} (1 + \frac{x}{m})^m = \sum_{n=0}^\infty \frac{1}{n!} x^n\)
+\(\lim_{m \tolim \infty} (1 + \frac{x}{m})^m = \sum_{n=0}^\infty \frac{1}{n!} x^n\)
 довольно простые.
+\begin{enumerate}[
+	font=\upshape,
+	label=\asbuk*),
+	ref=\asbuk*,
+	]
 
-Абсолютная сходимость ряда \(\sum_{n=0}^\infty \frac{1}{n!} x^n\) доказывается через банальное сравнение с геометрической прогрессией,
+\item
+Абсолютная сходимость ряда \(\sum_{n=0}^\infty \frac{1}{n!} x^n\) доказывается через банальное сравнение с геометрической прогрессией:
 %так как при ограниченном \(x\) число \(|\frac{x^n}{n!} / \frac{x^{n-1}}{(n-1)!}| = \frac{1}{n} |x|\) стремится к \(0\) когда \(n\) стремится к \(\infty\).
-так как \(\lvert \frac{x^n}{n!} \rvert \leq \lvert \frac{x^{n-1}}{(n-1)!} \rvert \lvert \frac{x}{n} \rvert\), а при ограниченном \(x\) число \(\lvert \frac{x}{n} \rvert\) стремится к \(0\) когда \(n\) стремится к \(\infty\).
+достаточно заметить, что \(\lvert \frac{x^n}{n!} \rvert \leq \lvert \frac{x^{n-1}}{(n-1)!} \rvert \lvert \frac{x}{n} \rvert\) и при ограниченном \(x\) число \(\lvert \frac{x}{n} \rvert\) стремится к \(0\) когда \(n\) стремится к \(\infty\).
 
+\item
 По биному Ньютона
 \((1 + \frac{x}{m})^m = \sum_{n=0}^\infty \frac{m(m-1)\cdots{}(m-(n-1))}{m^n} \frac{1}{n!} x^n\).
-Коэффициенты этих рядов по модулю не больше соответствующих коэффициентов абсолютно сходящегося ряда \(\sum_{n=0}^\infty \frac{1}{n!} x^n\) и стремятся к ним когда \(m\) стремится к \(\infty\), откуда и следует, что \(\lim_{m \to \infty} (1 + \frac{x}{m})^m = \sum_{n=0}^\infty \frac{1}{n!} x^n\).
+Коэффициенты этих рядов по модулю не больше соответствующих коэффициентов абсолютно сходящегося ряда \(\sum_{n=0}^\infty \frac{1}{n!} x^n\) и стремятся к ним когда \(m\) стремится к \(\infty\), откуда и следует, что выполняется равенство \(\lim_{m \tolim \infty} (1 + \frac{x}{m})^m = \sum_{n=0}^\infty \frac{1}{n!} x^n\).
+\end{enumerate}
 \end{observation}
 
 
