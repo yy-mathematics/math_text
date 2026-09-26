@@ -4484,9 +4484,11 @@ D^q \times [0,1]
 \end{proof}
 
 
-\section{Лемма Урысона и теорема Титце о продолжении}
+\section{Теорема Титце\namedash{}Урысона о продолжении}
 
-\subsection{Лемма Урысона}
+\begin{notation}[\scshape Непрерывные ограниченные функции]
+Для любого топологического пространства \(X\) обозначим через \(C_b(X, \R)\) множество непрерывных ограниченных функций из \(X\) в \(\R\).
+\end{notation}
 
 \begin{definition}[\scshape Нормальное пространство]
 Топологическое пространство \(X\),
@@ -4678,12 +4680,6 @@ D^q \times [0,1]
 В предложенном доказательстве теоремы~\ref{the:UrysohnLemma} (леммы Урысона) неявно используется аксиома зависимого выбора (англ.\ \textenglish{axiom of dependent choice}, часто обозначается через \textenglish{\sffamily DC}).
 \end{remark}
 
-\subsection{Теорема Титце о продолжении}
-
-\begin{notation}[\scshape Непрерывные ограниченные функции]
-Для любого топологического пространства \(X\) обозначим через \(C_b(X, \R)\) пространство непрерывных ограниченных функций из \(X\) в \(\R\).
-\end{notation}
-
 \begin{lemma}
 Пусть \((V, \lVert - \rVert_V)\) --- вещественное банахово пространство,
 \((W, \lVert - \rVert_W)\) --- вещественное нормированное пространство,
@@ -4707,6 +4703,18 @@ D^q \times [0,1]
 такие что \(w_0 \coloneqq w\) и
 \(w_n = T(v_n) + r w_{n+1}\)
 для любого \(n \in \N_0\).
+Тогда
+\(w = \sum_{i=0}^{\infty} r^i T(v_i)\),
+так как
+для любого \(n \in \N_0\)
+выполняется неравенство
+\(
+	\lVert w - \sum_{i=0}^n r^i T(v_i) \rVert_W
+	=
+	\lVert r^{n+1} w_{n+1} \rVert_W
+	\leq
+	r^{n+1}
+\).
 Из неравенства
 \(
 	\sum_{i=0}^{\infty} \lVert r^i v_i \rVert_V
@@ -4717,39 +4725,31 @@ D^q \times [0,1]
 	=
 	(1 - r)^{-1}
 \)
-и полноты пространства \(V\) следует, что существует
+и полноты пространства \(V\) следует, что существует вектор
 \(v \in (1 - r)^{-1} \cdot B_V\),
 такой что \(v = \sum_{i=0}^{\infty} r^i v_i\).
-Тогда \(T(v) = \sum_{i=0}^{\infty} r^i T(v_i) = w\),
-так как \(T\) непрерывно, а
-\(
-	\lVert w - \sum_{i=0}^n r^i T(v_i) \rVert_W
-	=
-	\lVert r^{n+1} w_{n+1} \rVert_W
-	\leq
-	r^{n+1}
-\)
-для любого \(n \in \N_0\).
+Так как \(T\) непрерывен, то
+\(T(v) = \sum_{i=0}^{\infty} r^i T(v_i) = w\).
 \end{proof}
 
-\begin{theorem}[\scshape Теорема Титце о продолжении]
+\begin{theorem}[\scshape Теорема Титце\namedash{}Урысона о продолжении]
 Пусть \(X\) --- нормальное топологическое пространство,
 \(X' \subset X\) --- замкнутое подмножество,
-а \(f' : X' \to [0,1]\) --- непрерывное отображение.%
+а \(f' : X' \to [0,1]\) --- непрерывная функция.%
 \label{thm:TietzeExtension}
-Тогда существует непрерывное отображение
+Тогда существует непрерывная функция
 \(f : X \to [0,1]\),
-такое что \(f|_{X'} = f'\).
+такая что \(f|_{X'} = f'\).
 \end{theorem}
 
 \begin{proof}
 Сначала переформулируем теорему следующим образом:
 если \(X\) --- нормальное топологическое пространство,
 а \(X'\) --- его замкнутое подмножество,
-то для любого \(f' \in C_b(X', \R)\),
-такого что \(\lVert f' \rVert_{\infty} \leq 1\),
+то для любой \(f' \in C_b(X', \R)\),
+такой что \(\lVert f' \rVert_{\infty} \leq 1\),
 существует \(f \in C_b(X, \R)\),
-такое что \(\lVert f \rVert_{\infty} \leq 1\)
+такая что \(\lVert f \rVert_{\infty} \leq 1\)
 и \(f|_{X'} = f'\).
 
 Пусть
@@ -4758,7 +4758,7 @@ D^q \times [0,1]
 \(X_1 \coloneqq f'^{-1}([\frac{1}{3}, 1])\).
 Тогда, согласно теореме~\ref{the:UrysohnLemma} (лемме Урысона), существует
 \(f_0 \in C_b(X, \R)\),
-такое что
+такая что
 выполняются включения
 \(f_0(X) \subset [-\frac{1}{3}, \frac{1}{3}]\),
 \(X_0 \subset f_0^{-1}(-\frac{1}{3})\)
@@ -4778,16 +4778,345 @@ g \mapsto g|_{X'} :
 \end{proof}
 
 \begin{remark}
-Мы вывели теорему~\ref{thm:TietzeExtension} (Теоремe Титце о продолжении) из теоремы~\ref{the:UrysohnLemma} (леммы Урысона).
-В свою очередь, лемму Урысона можно вывести из теоремы Титце о продолжении:
+Мы вывели теорему~\ref{thm:TietzeExtension} (теорему Титце\namedash{}Урысона о продолжении) из теоремы~\ref{the:UrysohnLemma} (леммы Урысона).
+В свою очередь, теорему~\ref{the:UrysohnLemma} можно вывести из теоремы~\ref{thm:TietzeExtension}:
 в обозначениях теоремы~\ref{the:UrysohnLemma}
 достаточно взять в качестве \(f\) непрерывное продолжение на \(X\) функции \(f' : X' \coloneqq X_0 \sqcup X_1 \to [0,1]\),
-такой что \(X_0 \subset f'^{-1}(0)\) и \(X_1 \subset f'^{-1}(1)\).
+такой что \(X_0 = f'^{-1}(0)\) и \(X_1 = f'^{-1}(1)\).
 \end{remark}
 
 \begin{remark}
-Изложение теоремы Титце о продолжении через лемму~\ref{lem:BanachApproxGeom} было позаимствовано из раздела~A.6.1 текста~\cite[175]{Mueger_FA-notes}.
+Изложение теоремы Титце\namedash{}Урысона о продолжении через лемму~\ref{lem:BanachApproxGeom} было позаимствовано из раздела~A.6.1 текста~\cite[175]{Mueger_FA-notes}.
 \end{remark}
+
+
+\section{Теорема Стоуна\namedash{}Вейерштрасса}
+
+\begin{notation}[\scshape Непрерывные ограниченные функции]
+Для любого топологического пространства \(X\) обозначим через \(C_b(X, \R)\) множество непрерывных ограниченных функций из \(X\) в \(\R\).
+\end{notation}
+
+%\begin{notation}[\scshape Множество непрерывных отображений]
+%Для любых топологических пространств \(X\) и \(Y\) обозначим через \(C(X, Y)\) множество непрерывных отображений из \(X\) в \(Y\).
+%\end{notation}
+
+\begin{definition}[\scshape Множество отображений, разделяющее точки]
+Пусть \(X\) и \(Y\) --- множества,
+а \(A \subset \Hom_{\mr{Sets}}(X, Y)\).
+Тогда \(A\) называется множеством отображений, \emph{разделяющим точки}, если
+отображение
+\(x \mapsto (f(x))_{f \in A} : X \to Y^{\times A}\)
+инъективно.
+\end{definition}
+
+%\begin{definition}[\scshape Кусочно-линейная функция на отрезке]
+%Пусть \(a_{\mr{min}}, a_{\mr{max}} \in \R\) --- вещественные числа,
+%такие что \(a_{\mr{min}} < a_{\mr{max}}\),
+%а \(f : [a_{\mr{min}}, a_{\mr{max}}] \to \R\)
+%--- функция.%
+%\label{def:PieceLinFunInt}
+%Тогда \(f\) называется \emph{кусочно-линейной},
+%если существует семейство точек
+%\(
+%	a_0 = a_{\mr{min}} < a_1 <
+%	\cdots{}
+%	< a_{n-1} < a_n = a_{\mr{max}}
+%\),
+%где \(n \in \N_1\),
+%такое что для любого \(i\) от \(1\) до \(n\)
+%и для любого \(x \in [a_{i-1}, a_i]\)
+%выполняется равенство
+%\(
+%	f(x) =
+%	f(a_i) \frac{x - a_{i-1}}{a_i - a_{i-1}} 
+%	+
+%	f(a_{i-1}) \frac{x - a_i}{a_{i-1} - a_i}
+%\).
+%\end{definition}
+
+%\begin{observation}[\scshape Модуль, максимум и минимум]
+%Пусть \(X\) --- множество,
+%а \(f, g : X \rrarrow \R\) --- две функции.%
+%\label{obs:MinMaxAbsVal}
+%Тогда выполняются равенства
+%\begin{equation*}
+%\max(f, g) = (f + g + \lvert f - g \rvert)/2
+%\quad\tn{и}\quad 
+%\min(f, g) = (f + g - \lvert f - g \rvert)/2.
+%\end{equation*}
+%\end{observation}
+
+%\begin{theorem}
+%Пусть \(f : [0,1] \to \R\) --- непрерывная кусочно-линейная функция.%
+%\label{thm:PieceLinFunIntAbsVal}
+%Тогда \(f\) представляется в виде
+%конечного максимума конечных минимумов
+%функций вида
+%\(x \mapsto ax + b : [0,1] \to \R\),
+%где \(a, b \in \R\).
+%\end{theorem}
+
+%\begin{proof}
+%Согласно определению~\ref{def:PieceLinFunInt}
+%существует семейство точек
+%\(a_0 = 0 < a_1 < \cdots{} < a_{n-1} < a_n = 1\),
+%где \(n \in \N_1\),
+%такое что для любого \(i\) от \(1\) до \(n\)
+%и для любого \(x \in [a_{i-1}, a_i]\)
+%выполняется равенство
+%\(f(x) = f_i(x)\),
+%где \(f_i\) задаётся формулой~\eqref{eq:PieceLinFunIntAbsValOne}.
+%\begin{gather}
+%	f_i : [0,1] \to \R,\ 
+%	x \mapsto
+%	f(a_i) \frac{x - a_{i-1}}{a_i - a_{i-1}} 
+%	+
+%	f(a_{i-1}) \frac{x - a_i}{a_{i-1} - a_i}
+%	\label{eq:PieceLinFunIntAbsValOne}
+%	\displaybreak[0]
+%	\\
+%		k \coloneqq
+%	\max\nolimits_{i=1}^n
+%	\biggl\lvert
+%		\frac%
+%			{f(a_i) - f(a_{i-1})}%
+%			{a_i - a_{i-1}}
+%	\biggr\rvert
+%	\label{eq:PieceLinFunIntAbsValTwo}
+%	\displaybreak[0]
+%	\\
+%	f(x) = 
+%	\max\nolimits_{i=1}^n
+%	\min\bigl(%
+%		k(x - a_{i-1}) + f(a_{i-1}),
+%		f_i(x),
+%		k(a_i - x) + f(a_i)
+%	\bigr)
+%	\label{eq:PieceLinFunIntAbsValThree}
+%\end{gather}
+%Тогда для любого \(x \in [0,1]\) выполняется равенство~\eqref{eq:PieceLinFunIntAbsValThree},
+%где используются обозначения~\eqref{eq:PieceLinFunIntAbsValOne} и~\eqref{eq:PieceLinFunIntAbsValTwo}.
+%\end{proof}
+
+\begin{theorem}
+Определим по индукции последовательность многочленов
+\(P_0, P_1, P_2, \ldots{} \in \R[X]\)
+следующим образом:
+\(P_0(X) \coloneqq 0\)
+и
+\(
+	P_{n+1}(X) \coloneqq
+	P_n(X) + \frac{1}{2} (X - P_n(X)^2)
+\)
+для любого \(n \in \N_0\).%
+\label{thm:SqrtIntPolyApprox}
+Тогда
+\(P_n(x) \leq P_{n+1}(x)\)
+для любых \(x \in [0,1]\) и \(n \in \N_0\),
+и
+\(
+	\lim_{n \to \infty}
+	\sup_{x \in [0,1]}
+	\lvert \sqrt{x} - P_n(x) \rvert
+	= 0
+\).
+\end{theorem}
+
+\begin{proof}
+Для любых \(x \in [0,1]\) и \(n \in \N_0\) выполняется равенство
+\(
+	\sqrt{x} - P_{n+1}(x)
+%	=
+%	\sqrt{x} - P_n(x) -
+%		\frac{1}{2} (\sqrt{x}^2 - P_n(x)^2)
+	=
+	(\sqrt{x} - P_n(x))
+		(1 - \frac{1}{2}(\sqrt{x} + P_n(x)))
+\).
+Отсюда по индукции следует, что
+для любых \(x \in [0,1]\) и \(n \in \N_0\)
+выполняются неравенства
+\(P_n(x) \leq P_{n+1}(x)\)
+и
+\(
+	\sqrt{x} - P_{n+1}(x)
+	\leq
+	\sqrt{x}  (1 - \frac{1}{2} \sqrt{x})^n
+	\leq
+	\min(\sqrt{x}, (1 - \frac{1}{2} \sqrt{x})^n)
+\).
+Осталось заметить, что для любых
+\(\varepsilon \in (0,1]\)
+и \(x \in [0,1]\)
+либо \(\sqrt{x} \leq \varepsilon\),
+либо
+\((1 - \frac{1}{2} \sqrt{x})^n \leq \varepsilon\)
+для любого достаточно большого \(n \in \N_0\).
+\end{proof}
+
+\begin{corollary}
+Пусть
+\(P_0, P_1, P_2, \ldots{} \in \R[X]\)
+такие же, как в теореме~\ref{thm:SqrtIntPolyApprox},
+а \(Q_n(X) \coloneqq P_n(X^2)\)
+для каждого \(n \in \N_0\).%
+\label{cor:AbsValIntPolyApprox}
+Тогда выполняется равенство
+\(
+	\lim_{n \to \infty}
+	\sup_{x \in [-1,1]}
+	\bigl\lvert \lvert x \rvert - Q_n(x) \bigr\rvert
+	= 0
+\),
+так как \(\lvert x \rvert = \sqrt{x^2}\)
+для \(x \in \R\).
+Более того,
+\(Q_0(x) = 0\)
+и
+\(Q_n(x) \leq Q_{n+1}(x)\)
+для любых \(x \in [-1,1]\) и \(n \in \N_0\).
+\end{corollary}
+
+%\begin{theorem}[\scshape Теорема Вейерштрасса об аппроксимации]
+%Полиномиальные функции из \([0,1]\) в \(\R\) образуют плотную подалгебру в вещественной банаховой алгебре
+%\((C([0,1], \R), \lVert - \rVert_{\infty})\).
+%\end{theorem}
+%
+%\begin{proof}
+%Пусть \(A\) --- \(\R\)\=/алгебра полиномиальных функций из \([0,1]\) в \(\R\),
+%а \(\overline{A}\) --- её замыкание в
+%\((C([0,1], \R), \lVert - \rVert_{\infty})\).
+%
+%Докажем, что если \(f \in \overline{A}\), то \(\lvert f \rvert \in \overline{A}\).
+%Так как пространство \([0,1]\) компактно, то \(f\) ограничена, и можно предположить,
+%что \(\lVert f \rVert_{\infty} = 1\).
+%Пусть
+%\(Q_0, Q_1, Q_2, \ldots{} \in \R[X]\)
+%такие же, как в следствии~\ref{cor:AbsValIntPolyApprox}.
+%Тогда последовательность функций
+%\((Q_n(f))_{n=0}^{\infty}\) равномерно сходится к
+%функции \(\lvert f \rvert\) согласно следствию~\ref{cor:AbsValIntPolyApprox},
+%а потому \(\lvert f \rvert \in \overline{A}\).
+%
+%Мы получили, что для любых \(f, g \in \overline{A}\) выполняются включения
+%\(
+%	\max(f, g) =
+%		\frac{1}{2} (f + g + \lvert f - g \rvert),
+%	\min(f, g) =
+%		\frac{1}{2} (f + g - \lvert f - g \rvert)
+%	\in \overline{A}
+%\).
+%Поэтому, согласно теореме~\ref{thm:PieceLinFunIntAbsVal},
+%множество \(\overline{A}\) содержит все непрерывные кусочно-линейные функции из \([0,1]\) в \(\R\).
+%
+%Осталось заметить, что непрерывные кусочно-линейные функции из \([0,1]\) в \(\R\) плотны в
+%\((C([0,1], \R), \lVert - \rVert_{\infty})\),
+%так как каждая непрерывная функция из \([0,1]\) в \(\R\) равномерно непрерывна.
+%\end{proof}
+
+\begin{theorem}[\scshape Об аппроксимации минимумов и максимумов функций]
+Пусть \(X\) --- топологическое пространство,
+а \(A\) --- замкнутая унитальная подалгебра вещественной банаховой алгебры
+\(C_b(X, \R)\) с нормой \(\lVert - \rVert_{\infty}\).%
+\label{the:ClosedAlgFunMinMax}
+Тогда если \(f_0, f_1 \in A\), то
+\(\max(f_0, f_1), \min(f_0, f_1) \in A\).
+\end{theorem}
+
+\begin{proof}
+Из равенств
+\(
+	\max(f_0, f_1) =
+		\frac{1}{2} (f_0 + f_1 + \lvert f_0 - f_1 \rvert),
+\)
+и
+\(
+	\min(f_0, f_1) =
+		\frac{1}{2} (f_0 + f_1 - \lvert f_0 - f_1 \rvert)
+\)
+следует, что достаточно доказать, что если \(f \in A\),
+то \(\lvert f \rvert \in A\).
+Без ограничения общности можно предположить,
+что \(\lVert f \rVert_{\infty} = 1\).
+Пусть
+\(Q_0, Q_1, Q_2, \ldots{} \in \R[X]\)
+такие же, как в следствии~\ref{cor:AbsValIntPolyApprox}.
+Тогда последовательность функций
+\((Q_n(f))_{n=0}^{\infty}\) равномерно сходится к
+функции \(\lvert f \rvert\) согласно следствию~\ref{cor:AbsValIntPolyApprox},
+а потому \(\lvert f \rvert \in A\).
+\end{proof}
+
+\begin{theorem}[\scshape Теорема Стоуна\namedash{}Вейерштрасса]
+Пусть \(X\) --- компактное топологическое пространство,
+а \(A\) --- замкнутая унитальная подалгебра вещественной банаховой алгебры \(C_b(X, \R)\) с нормой \(\lVert - \rVert_{\infty}\), разделяющая точки.
+Тогда \(A = C_b(X, \R)\).
+\end{theorem}
+
+\begin{proofparts}[Доказательство (из пяти частей)]
+
+\item[Часть 1.]
+Пусть \(f \in C_b(X, \R)\),
+а \(\varepsilon \in \R_{>0}\).
+Нам нужно доказать, что существует \(g \in A\), такая что
+\(\lVert f - g \rVert_{\infty} \leq \varepsilon\).
+Для этого мы будем пользоваться теоремой~\ref{the:ClosedAlgFunMinMax},
+согласно которой \(A\) содержит конечные максимумы и минимумы своих элементов.
+
+\item[Часть 2.]
+Пусть \(x \in X\).
+Тогда обозначим через \(\mc{U}_x\) множество пар
+\((U, g)\),
+таких что \(U \subset X\) --- открытая окрестность \(x\),
+а \(g \in A\) --- функция, такая что
+%\(\lVert f|_U - g|_U \rVert_{\infty} < \varepsilon\).
+\(f(u) - \varepsilon < g(u) < f(u) + \varepsilon\)
+для любого \(u \in U\).
+Обозначим через \(\mc{V}_x\) множество пар
+\((U, g) \in \mc{U}_x\),
+таких что \(g(y) < f(y) + \varepsilon\)
+для любого \(y \in X\).
+
+\item[Часть 3.]
+Докажем теперь, что для любого \(x \in X\) семейство
+\((U)_{(U, g) \in \mc{U}_x}\)
+является покрытием \(X\).
+Пусть \(y \in X\).
+Тогда, так как \(A\) разделяет точки,
+то существует \(g \in A\),
+такая что \(g(x) = f(x)\) и \(g(y) = f(y)\).
+Возьмём
+\(U \coloneqq \{u \in X \given f(u) - \varepsilon < g(u) < f(u) + \varepsilon\}\).
+Тогда \(y \in U\) и \((U, g) \in \mc{U}_x\).
+
+\item[Часть 4.]
+Докажем теперь, что для любого \(x \in X\) множество \(\mc{V}_x\) не пусто.
+Так как \(X\) компактно,
+а \((U)_{(U, g) \in \mc{U}_x}\)
+является открытым покрытием \(X\),
+то существует конечное семейство
+\((U_i, g_i)_{i \in I}\)
+элементов \(\mc{U}_x\),
+такое что \(X = \bigcup_{i \in I} U_i\).
+Тогда
+\(
+	(\bigcap_{i \in I} U_i, \min_{i \in I} g_i)
+	\in \mc{V}_x
+\).
+
+\item[Часть 5.]
+Пусть \(\mc{V} \coloneqq \bigcup_{x \in X} \mc{V}_x\).
+Мы доказали, что \((U)_{(U, g) \in \mc{V}}\) является открытым покрытием \(X\).
+Так как \(X\) компактно, то существует конечное семейство
+\((U_j, g_j)_{j \in J}\)
+элементов \(\mc{V}\),
+такое что \(X = \bigcup_{j \in J} U_j\).
+Тогда
+если взять \(g \coloneqq \max_{j \in J} (g_j) \in A\),
+то \(\lVert f - g \rVert_{\infty} \leq \varepsilon\).
+\qedhere
+
+\end{proofparts}
 
 
 
@@ -6030,6 +6359,157 @@ M / (rm = mr \given r \in R,\ m \in M),
 \begin{remark}
 Определения~\ref{def:TensorSysCoeff}, \ref{def:TensorSysCoeffAct}, \ref{def:TensorGenProdCoeff} и утверждение~\ref{sta:TensorCoeffAss} добавлены с иллюстративными целями, чтобы показать, что определение тензорного произведения не зависит от порядка на множестве индексов.
 \end{remark}
+
+\subsection{Теорема Эйленберга\namedash{}Уоттса}
+
+%\begin{convention}
+%Пусть \(R\text{-}\mathrm{Ab}\) ---
+%категория (левых) \(R\)-мо\-ду\-лей,
+%\(R\text{-}\mathrm{Ab}\text{-}S\) ---
+%\((R,S)\)-би\-мо\-ду\-лей,
+%\(\op{Fun}_{rng}(\mathcal{A},\mathcal{B})\) ---
+%функторов \(\mathcal{A} \to \mathcal{B}\) кольцоидов.
+%\end{convention}
+
+%\begin{convention}
+%Категория левых \(R\)-мо\-ду\-лей
+%обозначается \(R\text{-}\mathrm{Ab}\),
+%\((R,S)\)-би\-мо\-ду\-лей ---
+%\(R\text{-}\mathrm{Ab}\text{-}S\),
+%функторов \(\mathcal{A} \to \mathcal{B}\) кольцоидов ---
+%\(\op{Fun}_{rng}(\mathcal{A},\mathcal{B})\).
+%\end{convention}
+
+%\begin{observation}
+%\label{obs:colim_iso}
+%Пусть \(E,E' : \mathcal{C} \to \mathcal{E}\) --- пара функторов, сохраняющих копредел функтора \(H : I \to \mathcal{C}\), а \(\omega = (\omega(C))_{C \in \Ob(\mathcal{C})} : E \Rightarrow E'\) --- естественное преобразование.
+%Тогда если для каждого \(i \in \Ob(I)\) морфизм \((\omega H)(i) = \omega(H(i))\) является изоморфизмом, то \(\omega(\colim(H))\) --- тоже.
+%\end{observation}
+
+\begin{observation}[\scshape (Ко)ядро как (ко)предел]
+Пусть \(f : U \to V\) --- морфизм в аддитивной категории.
+Тогда \(\Coker(f)\) по определению отождествляется с \(0 \sqcup_U^f V\), а \(\Ker(f)\) --- с \(0 \times_V^f U\), где \(0\) --- нулевой объект.
+\end{observation}
+
+%\begin{theorem}[\scshape Теорема Эйленберга-Уоттса]
+%Пусть \(R\) и \(S\) --- ассоциативные унитальные кольца.
+%Тогда между функторами
+%\[
+%\begin{tikzcd}[column sep = small, cramped]
+%\tensor[_S]{M}{_R}
+%\mapsto
+%\tensor[_S]{M}{_R} \otimes_R (-)
+%:
+%S\text{-}\mathrm{Ab}\text{-}R
+%	\arrow[shift left]{r}{} &
+%\op{Fun}_{rng} (R\text{-}\mathrm{Ab}, S\text{-}\mathrm{Ab})
+%:
+%\tensor[_S]{F}{}(\tensor[_R]{R}{_R})
+%\mapsfrom
+%F,
+%	\arrow[shift left]{l}{}
+%\end{tikzcd}
+%\]
+%где правое действие \(R\) на \(F(R)\) по функториальности индуцировано правым действием \(R\) на себе,
+%существует сопряжение, заданное единицей \(\eta\) --- изоморфизмом унитальности --- и коединицей \(\varepsilon\):
+%\[
+%\eta(M) :
+%\tensor[_S]{M}{_R}
+%\xrightarrow{\sim}
+%\tensor[_S]{M}{_R} \otimes_R \tensor[_R]{R}{_R},
+%\quad
+%(\varepsilon(F))(V) :
+%\tensor[_S]{F}{}(\tensor[_R]{R}{_R})
+%\otimes_R
+%\tensor[_R]{V}{}
+%\to
+%\tensor[_S]{F}{}(\tensor[_R]{V}{}),
+%\]
+%где \(\varepsilon\) по \(\otimes\)-\(\Hom\) сопряжению индуцировано композицией изоморфизма унитальности и действия \(F\) на \(\Hom\)-ах:
+%\[
+%\tensor[_R]{V}{}
+%\xrightarrow{\sim}
+%\tensor[_R]{{\Hom_R}}{}(\tensor[_R]{R}{_R}, \tensor[_R]{V}{})
+%\xrightarrow{f \smapsto F(f)}
+%\tensor[_R]{{\Hom_S}}{}(\tensor[_S]{F}{}(\tensor[_R]{R}{_R}), \tensor[_S]{F}{}(\tensor[_R]{V}{})).
+%\]
+%Если функтор \(F\) сохраняет малые прямые суммы и сохраняет коядра, то есть сохраняет малые копределы, то
+%\(\varepsilon(F)\) --- это изоморфизм.
+%\end{theorem}
+
+\begin{theorem}[\scshape Теорема Эйленберга\namedash{}Уоттса]
+Пусть \(R\) и \(S\) --- ассоциативные унитальные кольца,
+\(\mc{M}(S,R) \coloneqq (S \otimes_{\Z} R^o)\module\),
+а \(\mc{F}(S,R) \coloneqq \op{Fun}_{\mr{Rngd}}(R\module, S\module)\).
+Тогда определена сопряжённая пара
+\begin{gather*}
+%\begin{tikzcd}[
+%	ampersand replacement=\&,
+%	column sep = small,
+%	nodes={inner xsep=1ex},
+%%	nodes={inner ysep=0ex},
+%	cramped,
+%	]
+%\tensor[_S]{M}{_R}
+%\mapsto
+%\tensor[_S]{M}{_R} \otimes_R (-)
+%:
+%S\text{-}\mathrm{Ab}\text{-}R
+%	\arrow[shift left]{r}{} \&
+%\op{Fun}_{rng} (R\text{-}\mathrm{Ab}, S\text{-}\mathrm{Ab})
+%:
+%\tensor[_S]{F}{}(\tensor[_R]{R}{_R})
+%\mapsfrom
+%F,
+%	\arrow[shift left]{l}{}
+%\end{tikzcd}
+\tensor[_S]{M}{_R}
+\mapsto
+\tensor[_S]{M}{_R} \otimes_R (-)
+:
+\mc{M}(S,R) \rlarrow \mc{F}(S,R)
+:
+\tensor[_S]{F}{}(\tensor[_R]{R}{_R})
+\mapsfrom
+F,
+\\
+\eta(M) :
+\tensor[_S]{M}{_R}
+\xrightarrow{\sim}
+\tensor[_S]{M}{_R} \otimes_R \tensor[_R]{R}{_R},
+\;
+(\varepsilon(F))(V) :
+\tensor[_S]{F}{}(\tensor[_R]{R}{_R})
+\otimes_R
+\tensor[_R]{V}{}
+\to
+\tensor[_S]{F}{}(\tensor[_R]{V}{}),
+\end{gather*}
+где правое действие \(R\) на \(F(R)\) по функториальности индуцировано правым действием \(R\) на себе, единица \(\eta\) --- это изоморфизм унитальности, а коединица \(\varepsilon\) по \(\otimes\)-\(\Hom\) сопряжению индуцирована композицией изоморфизма унитальности и действия \(F\) на \(\Hom\)-ах:
+\[
+\tensor[_R]{V}{}
+\xrightarrow{\sim}
+\tensor[_R]{{\Hom_R}}{}(\tensor[_R]{R}{_R}, \tensor[_R]{V}{})
+\xrightarrow{f \mapsto F(f)}
+\tensor[_R]{{\Hom_S}}{}(\tensor[_S]{F}{}(\tensor[_R]{R}{_R}), \tensor[_S]{F}{}(\tensor[_R]{V}{})).
+\]
+Если функтор \(F\) сохраняет малые прямые суммы и сохраняет коядра, то есть сохраняет малые копределы, то
+\(\varepsilon(F)\) --- это изоморфизм.
+\end{theorem}
+
+\begin{proofparts}[Доказательство (из трёх частей)]
+
+\item[Часть 1.]
+Заметим, что гомоморфизм \((\varepsilon(F))(R) : F(R) \otimes_R R \to F(R)\) --- это просто изоморфизм унитальности.
+
+\item[Часть 2.]
+Если функтор \(F\) сохраняет малые прямые суммы, то из части~1 этого доказательства следует, что \(\varepsilon(F)\) является изоморфизмом и для малых прямых сумм копий \(R\), то есть для свободных модулей.
+
+\item[Часть 3.]
+Если функтор \(F\) сохраняет ещё и коядра, то из части~2 этого доказательства следует, что \(\varepsilon(F)\) является изоморфизмом и для коядер гомоморфизмов свободных модулей, то есть для всех модулей.
+\qedhere
+
+\end{proofparts}
 
 
 \section{Коммутативная локализация}
@@ -16954,158 +17434,6 @@ L \otimes_K L
 \(v \mapsto x(v) : \Image(y) \rlarrow \Image(x) : y(u) \mapsfrom u\).
 
 Если \(V\) и \(U\) --- это векторные пространства над \(\R\) или \(\C\) с невырожденными скалярными произведениями, то \(x\) однозначно определяет \(y\), для которого описанные разложения ортогональны. Такой \(y\) называется <<обратным Мура\namedash{}Пенроуза>> к линейному преобразованию \(x\).
-
-
-\section{Теорема Эйленберга\namedash{}Уоттса}
-
-%\begin{convention}
-%Пусть \(R\text{-}\mathrm{Ab}\) ---
-%категория (левых) \(R\)-мо\-ду\-лей,
-%\(R\text{-}\mathrm{Ab}\text{-}S\) ---
-%\((R,S)\)-би\-мо\-ду\-лей,
-%\(\op{Fun}_{rng}(\mathcal{A},\mathcal{B})\) ---
-%функторов \(\mathcal{A} \to \mathcal{B}\) кольцоидов.
-%\end{convention}
-
-%\begin{convention}
-%Категория левых \(R\)-мо\-ду\-лей
-%обозначается \(R\text{-}\mathrm{Ab}\),
-%\((R,S)\)-би\-мо\-ду\-лей ---
-%\(R\text{-}\mathrm{Ab}\text{-}S\),
-%функторов \(\mathcal{A} \to \mathcal{B}\) кольцоидов ---
-%\(\op{Fun}_{rng}(\mathcal{A},\mathcal{B})\).
-%\end{convention}
-
-%\begin{observation}
-%\label{obs:colim_iso}
-%Пусть \(E,E' : \mathcal{C} \to \mathcal{E}\) --- пара функторов, сохраняющих копредел функтора \(H : I \to \mathcal{C}\), а \(\omega = (\omega(C))_{C \in \Ob(\mathcal{C})} : E \Rightarrow E'\) --- естественное преобразование.
-%Тогда если для каждого \(i \in \Ob(I)\) морфизм \((\omega H)(i) = \omega(H(i))\) является изоморфизмом, то \(\omega(\colim(H))\) --- тоже.
-%\end{observation}
-
-\begin{observation}[\scshape (Ко)ядро как (ко)предел]
-Пусть \(f : U \to V\) --- морфизм в аддитивной категории.
-Тогда \(\Coker(f)\) по определению отождествляется с \(0 \sqcup_U^f V\), а \(\Ker(f)\) --- с \(0 \times_V^f U\), где \(0\) --- нулевой объект.
-\end{observation}
-
-%\begin{theorem}[\scshape Теорема Эйленберга-Уоттса]
-%Пусть \(R\) и \(S\) --- ассоциативные унитальные кольца.
-%Тогда между функторами
-%\[
-%\begin{tikzcd}[column sep = small, cramped]
-%\tensor[_S]{M}{_R}
-%\mapsto
-%\tensor[_S]{M}{_R} \otimes_R (-)
-%:
-%S\text{-}\mathrm{Ab}\text{-}R
-%	\arrow[shift left]{r}{} &
-%\op{Fun}_{rng} (R\text{-}\mathrm{Ab}, S\text{-}\mathrm{Ab})
-%:
-%\tensor[_S]{F}{}(\tensor[_R]{R}{_R})
-%\mapsfrom
-%F,
-%	\arrow[shift left]{l}{}
-%\end{tikzcd}
-%\]
-%где правое действие \(R\) на \(F(R)\) по функториальности индуцировано правым действием \(R\) на себе,
-%существует сопряжение, заданное единицей \(\eta\) --- изоморфизмом унитальности --- и коединицей \(\varepsilon\):
-%\[
-%\eta(M) :
-%\tensor[_S]{M}{_R}
-%\xrightarrow{\sim}
-%\tensor[_S]{M}{_R} \otimes_R \tensor[_R]{R}{_R},
-%\quad
-%(\varepsilon(F))(V) :
-%\tensor[_S]{F}{}(\tensor[_R]{R}{_R})
-%\otimes_R
-%\tensor[_R]{V}{}
-%\to
-%\tensor[_S]{F}{}(\tensor[_R]{V}{}),
-%\]
-%где \(\varepsilon\) по \(\otimes\)-\(\Hom\) сопряжению индуцировано композицией изоморфизма унитальности и действия \(F\) на \(\Hom\)-ах:
-%\[
-%\tensor[_R]{V}{}
-%\xrightarrow{\sim}
-%\tensor[_R]{{\Hom_R}}{}(\tensor[_R]{R}{_R}, \tensor[_R]{V}{})
-%\xrightarrow{f \smapsto F(f)}
-%\tensor[_R]{{\Hom_S}}{}(\tensor[_S]{F}{}(\tensor[_R]{R}{_R}), \tensor[_S]{F}{}(\tensor[_R]{V}{})).
-%\]
-%Если функтор \(F\) сохраняет малые прямые суммы и сохраняет коядра, то есть сохраняет малые копределы, то
-%\(\varepsilon(F)\) --- это изоморфизм.
-%\end{theorem}
-
-\begin{theorem}[\scshape Теорема Эйленберга\namedash{}Уоттса]
-Пусть \(R\) и \(S\) --- ассоциативные унитальные кольца,
-\(\mc{M}(S,R) \coloneqq (S \otimes_{\Z} R^o)\module\),
-а \(\mc{F}(S,R) \coloneqq \op{Fun}_{\mr{Rngd}}(R\module, S\module)\).
-Тогда определена сопряжённая пара
-\begin{gather*}
-%\begin{tikzcd}[
-%	ampersand replacement=\&,
-%	column sep = small,
-%	nodes={inner xsep=1ex},
-%%	nodes={inner ysep=0ex},
-%	cramped,
-%	]
-%\tensor[_S]{M}{_R}
-%\mapsto
-%\tensor[_S]{M}{_R} \otimes_R (-)
-%:
-%S\text{-}\mathrm{Ab}\text{-}R
-%	\arrow[shift left]{r}{} \&
-%\op{Fun}_{rng} (R\text{-}\mathrm{Ab}, S\text{-}\mathrm{Ab})
-%:
-%\tensor[_S]{F}{}(\tensor[_R]{R}{_R})
-%\mapsfrom
-%F,
-%	\arrow[shift left]{l}{}
-%\end{tikzcd}
-\tensor[_S]{M}{_R}
-\mapsto
-\tensor[_S]{M}{_R} \otimes_R (-)
-:
-\mc{M}(S,R) \rlarrow \mc{F}(S,R)
-:
-\tensor[_S]{F}{}(\tensor[_R]{R}{_R})
-\mapsfrom
-F,
-\\
-\eta(M) :
-\tensor[_S]{M}{_R}
-\xrightarrow{\sim}
-\tensor[_S]{M}{_R} \otimes_R \tensor[_R]{R}{_R},
-\;
-(\varepsilon(F))(V) :
-\tensor[_S]{F}{}(\tensor[_R]{R}{_R})
-\otimes_R
-\tensor[_R]{V}{}
-\to
-\tensor[_S]{F}{}(\tensor[_R]{V}{}),
-\end{gather*}
-где правое действие \(R\) на \(F(R)\) по функториальности индуцировано правым действием \(R\) на себе, единица \(\eta\) --- это изоморфизм унитальности, а коединица \(\varepsilon\) по \(\otimes\)-\(\Hom\) сопряжению индуцирована композицией изоморфизма унитальности и действия \(F\) на \(\Hom\)-ах:
-\[
-\tensor[_R]{V}{}
-\xrightarrow{\sim}
-\tensor[_R]{{\Hom_R}}{}(\tensor[_R]{R}{_R}, \tensor[_R]{V}{})
-\xrightarrow{f \mapsto F(f)}
-\tensor[_R]{{\Hom_S}}{}(\tensor[_S]{F}{}(\tensor[_R]{R}{_R}), \tensor[_S]{F}{}(\tensor[_R]{V}{})).
-\]
-Если функтор \(F\) сохраняет малые прямые суммы и сохраняет коядра, то есть сохраняет малые копределы, то
-\(\varepsilon(F)\) --- это изоморфизм.
-\end{theorem}
-
-\begin{proofparts}[Доказательство (из трёх частей)]
-
-\item[Часть 1.]
-Заметим, что гомоморфизм \((\varepsilon(F))(R) : F(R) \otimes_R R \to F(R)\) --- это просто изоморфизм унитальности.
-
-\item[Часть 2.]
-Если функтор \(F\) сохраняет малые прямые суммы, то из части~1 этого доказательства следует, что \(\varepsilon(F)\) является изоморфизмом и для малых прямых сумм копий \(R\), то есть для свободных модулей.
-
-\item[Часть 3.]
-Если функтор \(F\) сохраняет ещё и коядра, то из части~2 этого доказательства следует, что \(\varepsilon(F)\) является изоморфизмом и для коядер гомоморфизмов свободных модулей, то есть для всех модулей.
-\qedhere
-
-\end{proofparts}
 
 
 \section{Удвоение Кэли\namedash{}Диксона}
