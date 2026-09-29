@@ -4799,21 +4799,13 @@ g \mapsto g|_{X'} :
 
 \section{Теорема Стоуна\namedash{}Вейерштрасса}
 
-\begin{notation}[\scshape Непрерывные ограниченные функции]
-Для любого топологического пространства \(X\) обозначим через \(C_b(X, \R)\) множество непрерывных ограниченных функций из \(X\) в \(\R\).
-\end{notation}
+\sectiontableofcontents
 
-%\begin{notation}[\scshape Множество непрерывных отображений]
-%Для любых топологических пространств \(X\) и \(Y\) обозначим через \(C(X, Y)\) множество непрерывных отображений из \(X\) в \(Y\).
-%\end{notation}
-
-\begin{definition}[\scshape Множество отображений, разделяющее точки]
-Пусть \(X\) и \(Y\) --- множества,
-а \(A \subset \Hom_{\mr{Sets}}(X, Y)\).
-Тогда \(A\) называется \emph{разделяющим точки}, если
-\(x \mapsto (f(x))_{f \in A} : X \to Y^{\times A}\)
---- инъекция.
-\end{definition}
+\subsection{Полиномиальные аппроксимации к %
+\texorpdfstring%
+{\(\WTbm{x \mapsto \lvert x \rvert}\) на \(\WTbm{[-1,1]}\)}%
+{функции модуля на отрезке [-1,1]}
+}
 
 %\begin{definition}[\scshape Кусочно-линейная функция на отрезке]
 %Пусть \(a_{\mr{min}}, a_{\mr{max}} \in \R\) --- вещественные числа,
@@ -4960,28 +4952,253 @@ g \mapsto g|_{X'} :
 для любого достаточно большого \(n \in \N_0\).
 \end{proof}
 
-\begin{corollary}
+\begin{theorem}[\scshape О сходимости биномиального ряда на {\([-1,1]\)}]
+Пусть \(\alpha \in \R_{\geq 0}\),
+а
+\(
+	P_s(X) \coloneqq
+	\sum_{k=0}^s
+	\frac{%
+		\alpha
+		(\alpha - 1)
+		(\alpha - 2)
+		\cdots
+		(\alpha - (k - 1))}%
+	{k!} X^k
+	\in \R[X]
+\),
+где \(s \in \N_0\).%
+\label{thm:RootTaylorApprox}
+Тогда последовательность функций
+\((x \mapsto P_s(x) : [-1,1] \to \R)_{s=0}^{\infty}\)
+равномерно сходится к функции
+\(x \mapsto (1 + x)^{\alpha} : [-1,1] \to \R\).
+\end{theorem}
+
+\begin{proofparts}[Доказательство (из трёх частей)]
+
+\item[Часть 1.]
+Чтобы доказать равномерную сходимость последовательности функций
+\((x \mapsto P_s(x) : [-1,1] \to \R)_{s=0}^{\infty}\)
+необходимо и достаточно доказать сходимость ряда
+\begin{equation*}
+	\sum_{k=0}^{\infty}
+	\Bigl\lvert
+		\frac{%
+			\alpha
+			(\alpha - 1)
+			(\alpha - 2)
+			\cdots
+			(\alpha - (k - 1))}%
+		{k!}
+	\Bigr\rvert.
+\end{equation*}
+Более того, без ограничения общности можно предположить, что \(\alpha\) имеет вид \(1/n\),
+где \(n \in \Z_{\geq 2}\).
+
+\item[Часть 2.]
+Домножим числитель и знаменатель \(k\)\=/ого члена ряда на \(n^k\):
+\begin{gather}
+	\biggl\lvert
+		\frac{%
+		\frac{1}{n} (\frac{1}{n} -1) (\frac{1}{n} - 2)
+		\cdots (\frac{1}{n} - (k - 1))}%
+		{1 \cdot{} 2 \cdot{} \cdots{}
+			\cdot{} (k - 1) \cdot{} k}
+	\biggr\rvert
+	=
+	\nonumber
+	\displaybreak[0]
+	\\
+	=
+	\biggl(
+		\frac{n - 1}{n} \cdot{}
+		\frac{2n - 1}{2n} \cdot{}
+		\cdots{} \cdot{}
+		\frac{(k - 1)n - 1}{(k - 1)n}
+	\biggr) \cdot
+	\frac{1}{kn}.
+	\label{eq:RootTaylorApproxOne}
+\end{gather}
+Теперь заметим, что для любого \(m\) от \(1\) до \(k-1\) выполняется следующее неравенство:
+\begin{gather}
+	\biggl(\frac{mn - 1}{mn}\biggr)^n
+	=
+	\underbrace{%
+	\frac{mn - 1}{mn} \cdot{}
+	\frac{mn - 1}{mn} \cdot{}
+	\frac{mn - 1}{mn} \cdot{}
+	\cdots{} \cdot{}
+	\frac{mn - 1}{mn}%
+	}_{n}
+	\leq
+	\nonumber
+	\displaybreak[0]
+	\\
+	\leq
+	\frac{mn - 1}{\cancel{mn}} \cdot{}
+	\frac{\cancel{mn}}{\cancel{mn + 1}} \cdot{}
+	\frac{\cancel{mn + 1}}{\cancel{mn + 2}} \cdot{}
+	\cdots{} \cdot{}
+	\frac{\cancel{(m + 1)n - 2}}{(m + 1)n - 1}
+	=
+	\frac{mn - 1}{(m + 1)n - 1}.
+	\label{eq:RootTaylorApproxTwo}
+\end{gather}
+После этого возьмём выражение, которое в формуле~\eqref{eq:RootTaylorApproxOne} взято в большие скобки, возведём его в \(n\)\=/ую степень и используем неравенства~\eqref{eq:RootTaylorApproxTwo}:
+\begin{gather}
+	\biggl(
+		\frac{n - 1}{n} \cdot{}
+		\frac{2n - 1}{2n} \cdot{}
+		\cdots{} \cdot{}
+		\frac{(k - 1)n - 1}{(k - 1)n}
+	\biggr)^n
+	=
+	\nonumber
+	\displaybreak[0]
+	\\
+	=
+	\biggl(\frac{n - 1}{n}\biggr)^n 
+	\biggl(\frac{2n - 1}{2n}\biggr)^n 
+	\cdots{} 
+	\biggl(\frac{(k - 1)n - 1}{(k - 1)n}\biggr)^n
+	\leq
+	\nonumber
+	\displaybreak[0]
+	\\
+	\leq
+	\frac{n - 1}{\cancel{2n - 1}} \cdot{}
+	\frac{\cancel{2n - 1}}{\cancel{3n - 1}} \cdot{}
+	\cdots{} \cdot{}
+	\frac{\cancel{(k - 1)n - 1}}{kn - 1}
+	=
+	\frac{n - 1}{kn - 1}
+	\leq
+	\frac{n}{kn}
+	\leq
+	\frac{1}{k}.
+	\label{eq:RootTaylorApproxThree}
+\end{gather}
+Возведём неравенство~\eqref{eq:RootTaylorApproxThree} в степень \(1/n\) и применим его к формуле~\eqref{eq:RootTaylorApproxOne}:
+\begin{equation*}
+	\biggl\lvert
+		\frac{%
+		\frac{1}{n} (\frac{1}{n} -1) (\frac{1}{n} - 2)
+		\cdots (\frac{1}{n} - (k - 1))}%
+		{1 \cdot{} 2 \cdot{} \cdots{}
+			\cdot{} (k - 1) \cdot{} k}
+	\biggr\rvert
+	\leq
+	\frac{1}{k^{1/n}}
+	\cdot
+	\frac{1}{kn}
+	\leq
+	\frac{1}{k^{1 + 1/n}}.
+\end{equation*}
+Осталось заметить, что ряд
+\(\sum_{k=1}^{\infty} k^{-(1 + 1/n)}\)
+сходится по интегральному критерию сходимости.
+
+\item[Часть 3.]
+Последовательность
+\(P_0(x), P_1(x), P_2(x), \ldots{}\)
+--- это последовательность частичных сумм cледующего ряда, который является рядом Тейлора функции \((1 + x)^{\alpha}\) в нуле и называется биномиальным рядом:
+\begin{equation*}
+	P(x) \coloneqq
+	\sum_{k=0}^{\infty}
+	\frac{%
+		\alpha
+		(\alpha - 1)
+		(\alpha - 2)
+		\cdots
+		(\alpha - (k - 1))}%
+	{k!} x^k.
+\end{equation*}
+Сумма ряда \(P(x)\)
+в его круге сходимости \(\lvert x \rvert < 1\) является аналитической функцией, удовлетворяющей обыкновенному дифференциальному уравнению
+\((1 + x) P'(x) = \alpha P(x)\)
+с начальным условием \(P(0) = 1\).
+Поэтому
+\(P(x) = (1 + x)^{\alpha}\)
+при
+\(\lvert x \rvert < 1\).
+Так как функция
+\(x \mapsto (1 + x)^{\alpha} : [-1,1] \to \R\)
+непрерывна и равномерный предел непрерывных функций непрерывен, то \(P(x)\)
+сходится к \((1 + x)^{\alpha}\) и при \(x = \pm 1\).
+\qedhere
+
+\end{proofparts}
+
+\begin{observation}
 Пусть
-\(P_0, P_1, P_2, \ldots{} \in \R[X]\)
-такие же, как в теореме~\ref{thm:SqrtIntPolyApprox},
-а \(Q_n(X) \coloneqq P_n(X^2)\)
-для каждого \(n \in \N_0\).%
+\(P_0, P_1, P_2, \ldots{}\)
+--- последовательность элементов \(\R[X]\),
+такая что
+\(
+	\lim_{n \tolim \infty}
+	\sup_{x \in [0,1]}
+	\lvert \sqrt{x} - P_n(x) \rvert
+	= 0
+\),
+например, последовательность
+\((P_s(X - 1))_{s=0}^{\infty}\)
+из теоремы~\ref{thm:RootTaylorApprox}
+при \(\alpha = 1/2\)
+или последовательность
+\((P_n(X))_{n=0}^{\infty}\)
+из теоремы~\ref{thm:SqrtIntPolyApprox}.
+Пусть \(Q_n(X) \coloneqq P_n(X^2)\),
+где \(n \in \N_0\).
+Тогда
+\(
+	\lim_{n \tolim \infty}
+	\sup_{x \in [-1,1]}
+	\bigl\lvert
+		\lvert x \rvert - Q_n(x)
+	\bigr\rvert
+	= 0
+\),
+так как \(\lvert x \rvert = \sqrt{x^2}\)
+для \(x \in \R\).
+\end{observation}
+
+\begin{corollary}
+Существует последовательность
+\((Q_n(X))_{n=0}^{\infty}\)
+элементов \(\R[X]\),
 \label{cor:AbsValIntPolyApprox}
-Тогда выполняется равенство
+такая что
 \(
 	\lim_{n \tolim \infty}
 	\sup_{x \in [-1,1]}
 	\bigl\lvert \lvert x \rvert - Q_n(x) \bigr\rvert
 	= 0
-\),
-так как \(\lvert x \rvert = \sqrt{x^2}\)
-для \(x \in \R\).
-Более того,
-\(Q_0(x) = 0\)
-и
-\(Q_n(x) \leq Q_{n+1}(x)\)
-для любых \(x \in [-1,1]\) и \(n \in \N_0\).
+\).
 \end{corollary}
+
+%\begin{corollary}
+%Пусть
+%\(P_0, P_1, P_2, \ldots{} \in \R[X]\)
+%такие же, как в теореме~\ref{thm:SqrtIntPolyApprox},
+%а \(Q_n(X) \coloneqq P_n(X^2)\)
+%для каждого \(n \in \N_0\).%
+%\label{cor:AbsValIntPolyApprox}
+%Тогда выполняется равенство
+%\(
+%	\lim_{n \tolim \infty}
+%	\sup_{x \in [-1,1]}
+%	\bigl\lvert \lvert x \rvert - Q_n(x) \bigr\rvert
+%	= 0
+%\),
+%так как \(\lvert x \rvert = \sqrt{x^2}\)
+%для \(x \in \R\).
+%Более того,
+%\(Q_0(x) = 0\)
+%и
+%\(Q_n(x) \leq Q_{n+1}(x)\)
+%для любых \(x \in [-1,1]\) и \(n \in \N_0\).
+%\end{corollary}
 
 %\begin{theorem}[\scshape Теорема Вейерштрасса об аппроксимации]
 %Полиномиальные функции из \([0,1]\) в \(\R\) образуют плотную подалгебру в вещественной банаховой алгебре
@@ -5020,6 +5237,24 @@ g \mapsto g|_{X'} :
 %так как каждая непрерывная функция из \([0,1]\) в \(\R\) равномерно непрерывна.
 %\end{proof}
 
+\subsection{Общая теорема Стоуна\namedash{}Вейерштрасса об аппроксимации}
+
+\begin{notation}[\scshape Непрерывные ограниченные функции]
+Для любого топологического пространства \(X\) обозначим через \(C_b(X, \R)\) множество непрерывных ограниченных функций из \(X\) в \(\R\).
+\end{notation}
+
+%\begin{notation}[\scshape Множество непрерывных отображений]
+%Для любых топологических пространств \(X\) и \(Y\) обозначим через \(C(X, Y)\) множество непрерывных отображений из \(X\) в \(Y\).
+%\end{notation}
+
+\begin{definition}[\scshape Множество отображений, разделяющее точки]
+Пусть \(X\) и \(Y\) --- множества,
+а \(A \subset \Hom_{\mr{Sets}}(X, Y)\).
+Тогда \(A\) называется \emph{разделяющим точки}, если
+\(x \mapsto (f(x))_{f \in A} : X \to Y^{\times A}\)
+--- инъекция.
+\end{definition}
+
 \begin{theorem}[\scshape Об аппроксимации минимумов и максимумов функций]
 Пусть \(X\) --- топологическое пространство,
 а \(A\) --- замкнутая унитальная подалгебра вещественной банаховой алгебры
@@ -5033,23 +5268,19 @@ g \mapsto g|_{X'} :
 Из равенств
 \(
 	\max(f_0, f_1) =
-		\frac{1}{2} (f_0 + f_1 + \lvert f_0 - f_1 \rvert),
-\)
-и
-\(
-	\min(f_0, f_1) =
-		\frac{1}{2} (f_0 + f_1 - \lvert f_0 - f_1 \rvert)
+	\frac{1}{2} (f_0 + f_1 + \lvert f_0 - f_1 \rvert) =
+	-\min(-f_0, -f_1)
 \)
 следует, что достаточно доказать, что если \(f \in A\),
 то \(\lvert f \rvert \in A\).
 Без ограничения общности можно предположить,
-что \(\lVert f \rVert_{\infty} \leq 1\).
+что выполняется неравенство \(\lVert f \rVert_{\infty} \leq 1\).
 Пусть
 \(Q_0, Q_1, Q_2, \ldots{} \in \R[X]\)
 такие же, как в следствии~\ref{cor:AbsValIntPolyApprox}.
 Тогда последовательность функций
 \((Q_n(f))_{n=0}^{\infty}\) равномерно сходится к
-функции \(\lvert f \rvert\) согласно следствию~\ref{cor:AbsValIntPolyApprox},
+функции \(\lvert f \rvert\),
 а потому \(\lvert f \rvert \in A\).
 \end{proof}
 
@@ -5079,7 +5310,7 @@ g \mapsto g|_{X'} :
 %\(\lVert f|_U - g|_U \rVert_{\infty} < \varepsilon\).
 \(f(u) - \varepsilon < g(u) < f(u) + \varepsilon\)
 для любого \(u \in U\).
-Обозначим через \(\mc{V}_x\) множество пар
+Обозначим через \(\mc{U}'_x\) множество пар
 \((U, g) \in \mc{U}_x\),
 таких что \(g(y) < f(y) + \varepsilon\)
 для любого \(y \in X\).
@@ -5094,10 +5325,11 @@ g \mapsto g|_{X'} :
 такая что \(g(x) = f(x)\) и \(g(y) = f(y)\).
 Возьмём
 \(U \coloneqq \{u \in X \given f(u) - \varepsilon < g(u) < f(u) + \varepsilon\}\).
-Тогда \(y \in U\) и \((U, g) \in \mc{U}_x\).
+Тогда \((U, g) \in \mc{U}_x\) и \(y \in U\).
 
 \item[Часть 4.]
-Докажем теперь, что для любого \(x \in X\) множество \(\mc{V}_x\) не пусто.
+Докажем теперь, что для любого \(x \in X\)
+множество \(\mc{U}'_x\) не пусто.
 Так как \(X\) компактно,
 а \((U)_{(U, g) \in \mc{U}_x}\)
 является открытым покрытием \(X\),
@@ -5108,18 +5340,18 @@ g \mapsto g|_{X'} :
 Тогда
 \(
 	(\bigcap_{i \in I} U_i, \min_{i \in I} g_i)
-	\in \mc{V}_x
+	\in \mc{U}'_x
 \).
 
 \item[Часть 5.]
-Пусть \(\mc{V} \coloneqq \bigcup_{x \in X} \mc{V}_x\).
-Мы доказали, что \((U)_{(U, g) \in \mc{V}}\) является открытым покрытием \(X\).
+Пусть \(\mc{U}' \coloneqq \bigcup_{x \in X} \mc{U}'_x\).
+Мы доказали, что \((U)_{(U, g) \in \mc{U}'}\) является открытым покрытием \(X\).
 Так как \(X\) компактно, то существует конечное семейство
 \((U_j, g_j)_{j \in J}\)
-элементов \(\mc{V}\),
+элементов \(\mc{U}'\),
 такое что \(X = \bigcup_{j \in J} U_j\).
 Тогда
-если взять \(g \coloneqq \max_{j \in J} (g_j) \in A\),
+если взять \(g \coloneqq \max_{j \in J} g_j \in A\),
 то \(\lVert f - g \rVert_{\infty} \leq \varepsilon\).
 \qedhere
 
