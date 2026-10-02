@@ -4807,6 +4807,26 @@ g \mapsto g|_{X'} :
 {функции модуля на отрезке [-1,1]}
 }
 
+\begin{definition}[\scshape Обобщённый биномиальный коэффициент \(\binom{\alpha}{k}\)]
+Пусть \(R\) --- ассоциативная унитальная \(\Q\)\=/алгебра,
+\(\alpha \in R\) --- её элемент,
+а \(k \in \N_0\) --- натуральное число.
+Тогда элемент
+\begin{equation*}
+	\binom{\alpha}{k}
+	\coloneqq
+	\frac{%
+		\alpha
+		(\alpha - 1)
+		(\alpha - 2)
+		\cdots
+		(\alpha - (k - 1))}%
+	{k!}
+	\in R
+\end{equation*}
+называется \emph{обобщённым биномиальным коэффициентом} из \(\alpha\) по \(k\).
+\end{definition}
+
 %\begin{definition}[\scshape Кусочно-линейная функция на отрезке]
 %Пусть \(a_{\mr{min}}, a_{\mr{max}} \in \R\) --- вещественные числа,
 %такие что \(a_{\mr{min}} < a_{\mr{max}}\),
@@ -4896,62 +4916,6 @@ g \mapsto g|_{X'} :
 %где используются обозначения~\eqref{eq:PieceLinFunIntAbsValOne} и~\eqref{eq:PieceLinFunIntAbsValTwo}.
 %\end{proof}
 
-\begin{theorem}
-Определим по индукции последовательность многочленов
-\(P_0, P_1, P_2, \ldots{} \in \R[X]\)
-следующим образом:
-\(P_0(X) \coloneqq 0\)
-и
-\(
-	P_{n+1}(X) \coloneqq
-	P_n(X) + \frac{1}{2} (X - P_n(X)^2)
-\)
-для любого \(n \in \N_0\).%
-\label{thm:SqrtIntPolyApprox}
-Тогда
-\(P_n(x) \leq P_{n+1}(x)\)
-для любых \(x \in [0,1]\) и \(n \in \N_0\),
-и
-\(
-	\lim_{n \tolim \infty}
-	\sup_{x \in [0,1]}
-	\lvert \sqrt{x} - P_n(x) \rvert
-	= 0
-\).
-\end{theorem}
-
-\begin{proof}
-Для любых \(x \in [0,1]\) и \(n \in \N_0\) выполняется равенство
-\(
-	\sqrt{x} - P_{n+1}(x)
-%	=
-%	\sqrt{x} - P_n(x) -
-%		\frac{1}{2} (\sqrt{x}^2 - P_n(x)^2)
-	=
-	(\sqrt{x} - P_n(x))
-		(1 - \frac{1}{2}(\sqrt{x} + P_n(x)))
-\).
-Отсюда по индукции следует, что
-для любых \(x \in [0,1]\) и \(n \in \N_0\)
-выполняются неравенства
-\(P_n(x) \leq P_{n+1}(x)\)
-и
-\(
-	\sqrt{x} - P_{n+1}(x)
-	\leq
-	\sqrt{x}  (1 - \frac{1}{2} \sqrt{x})^n
-	\leq
-	\min(\sqrt{x}, (1 - \frac{1}{2} \sqrt{x})^n)
-\).
-Осталось заметить, что для любых
-\(\varepsilon \in (0,1]\)
-и \(x \in [0,1]\)
-либо \(\sqrt{x} \leq \varepsilon\),
-либо
-\((1 - \frac{1}{2} \sqrt{x})^n \leq \varepsilon\)
-для любого достаточно большого \(n \in \N_0\).
-\end{proof}
-
 \begin{observation}
 Для любых \(a, p \in \R_{\geq 0}\)
 выполняется следующее неравенство:
@@ -4973,51 +4937,44 @@ g \mapsto g|_{X'} :
 \end{observation}
 
 \begin{theorem}[\scshape О сходимости вещественного биномиального ряда]
-Пусть \(\alpha \in \R_{\geq 0}\),
+Пусть \(\alpha \in \R_{\geq 0} \setminus \N_0\),
 а
 \(
 	P_s(X) \coloneqq
-	\sum_{k=0}^s
-	\frac{%
-		\alpha
-		(\alpha - 1)
-		(\alpha - 2)
-		\cdots
-		(\alpha - (k - 1))}%
-	{k!} X^k
+	\sum_{k=0}^s \binom{\alpha}{k} X^k
 	\in \R[X]
 \),
 где \(s \in \N_0\).%
 \label{thm:RootTaylorApprox}
-Тогда последовательность
+Тогда последовательность функций
 \((x \mapsto P_s(x) : [-1,1] \to \R)_{s=0}^{\infty}\)
 равномерно сходится к функции
 \(x \mapsto (1 + x)^{\alpha} : [-1,1] \to \R\).
-Если \(x \in \R \setminus [-1,1]\),
+Если же \(x \in \R \setminus [-1,1]\),
 то последовательность \((P_s(x))_{s=0}^{\infty}\) расходится.
 \end{theorem}
 
 \begin{proofparts}[Доказательство (из двух частей)]
 
 \item[Часть 1.]
-Введём обозначение
-\(
-	\binom{\alpha}{k} \coloneqq
-	\frac{%
-		\alpha
-		(\alpha - 1)
-		(\alpha - 2)
-		\cdots
-		(\alpha - (k - 1))}%
-	{k!}
-\),
-где \(k \in \N_0\).
+%Введём обозначение
+%\(
+%	\binom{\alpha}{k} \coloneqq
+%	\frac{%
+%		\alpha
+%		(\alpha - 1)
+%		(\alpha - 2)
+%		\cdots
+%		(\alpha - (k - 1))}%
+%	{k!}
+%\),
+%где \(k \in \N_0\).
+%Случай \(\alpha \in \N_0\) тривиален, поэтому без ограничения общности можно предположить, что \(\alpha \notin \N_0\).
 Чтобы доказать равномерную сходимость последовательности функций
 \((x \mapsto P_s(x) : [-1,1] \to \R)_{s=0}^{\infty}\)
 необходимо и достаточно доказать сходимость ряда
 \(\sum_{k=0}^{\infty} \lvert \binom{\alpha}{k} \rvert\).
-Случай \(\alpha \in \N_0\) тривиален, поэтому без ограничения общности можно предположить, что \(\alpha \notin \N_0\).
-Тогда для любого \(k \in \N_1\),
+Чтобы сделать это заметим, что для любого \(k \in \N_1\),
 такого что \(k > \alpha + 1\),
 выполняется следующее неравенство:
 \(
@@ -5188,6 +5145,62 @@ g \mapsto g|_{X'} :
 \qedhere
 
 \end{proofparts}
+
+\begin{theorem}
+Определим по индукции последовательность многочленов
+\(P_0, P_1, P_2, \ldots{} \in \R[X]\)
+следующим образом:
+\(P_0(X) \coloneqq 0\)
+и
+\(
+	P_{n+1}(X) \coloneqq
+	P_n(X) + \frac{1}{2} (X - P_n(X)^2)
+\)
+для любого \(n \in \N_0\).%
+\label{thm:SqrtIntPolyApprox}
+Тогда
+\(P_n(x) \leq P_{n+1}(x)\)
+для любых \(x \in [0,1]\) и \(n \in \N_0\),
+и
+\(
+	\lim_{n \tolim \infty}
+	\sup_{x \in [0,1]}
+	\lvert \sqrt{x} - P_n(x) \rvert
+	= 0
+\).
+\end{theorem}
+
+\begin{proof}
+Для любых \(x \in [0,1]\) и \(n \in \N_0\) выполняется равенство
+\(
+	\sqrt{x} - P_{n+1}(x)
+%	=
+%	\sqrt{x} - P_n(x) -
+%		\frac{1}{2} (\sqrt{x}^2 - P_n(x)^2)
+	=
+	(\sqrt{x} - P_n(x))
+		(1 - \frac{1}{2}(\sqrt{x} + P_n(x)))
+\).
+Отсюда по индукции следует, что
+для любых \(x \in [0,1]\) и \(n \in \N_0\)
+выполняются неравенства
+\(P_n(x) \leq P_{n+1}(x)\)
+и
+\(
+	\sqrt{x} - P_{n+1}(x)
+	\leq
+	\sqrt{x}  (1 - \frac{1}{2} \sqrt{x})^n
+	\leq
+	\min(\sqrt{x}, (1 - \frac{1}{2} \sqrt{x})^n)
+\).
+Осталось заметить, что для любых
+\(\varepsilon \in (0,1]\)
+и \(x \in [0,1]\)
+либо \(\sqrt{x} \leq \varepsilon\),
+либо
+\((1 - \frac{1}{2} \sqrt{x})^n \leq \varepsilon\)
+для любого достаточно большого \(n \in \N_0\).
+\end{proof}
 
 \begin{observation}
 Пусть
