@@ -2018,7 +2018,7 @@ X \to \{f \in F \given \od_F(f,\od_X(y,-)) < \infty\ \tn{для всех}\ y \in
 
 \begin{theorem}[\scshape Теорема Лагранжа о среднем]
 Пусть \(f : [0,1] \to \R\) --- непрерывная функция, дифференцируемая на интервале \((0,1)\).%
-\label{thm:LagrangeMean}
+\seclabel{thm:LagrangeMean}
 Тогда существует точка \(x \in (0,1)\), такая что \(f'(x) = f(1) - f(0)\).
 \end{theorem}
 
@@ -4952,7 +4952,27 @@ g \mapsto g|_{X'} :
 для любого достаточно большого \(n \in \N_0\).
 \end{proof}
 
-\begin{theorem}[\scshape О сходимости биномиального ряда на {\([-1,1]\)}]
+\begin{observation}
+Для любых \(a, p \in \R_{\geq 0}\)
+выполняется следующее неравенство:
+\((1 + a)^{-p} \geq 1 - p a\).%
+\label{obs:PowerIncrementIneq}
+Если \(a = 0\), то оно тривиально, если \(a > 0\),
+то оно следует из теоремы Лагранжа о среднем (теоремы~\secref{thm:LagrangeMean}):
+\(
+	(1 + a)^{-p}
+	\geq
+	(1 + x)^{-p}|_{x=0}
+	+
+	a \cdot
+	\inf_{\xi \in (0, a)}
+		((\frac{d}{dx}(1 + x)^{-p})|_{x = \xi})
+	=
+	1 - p a
+\).
+\end{observation}
+
+\begin{theorem}[\scshape О сходимости вещественного биномиального ряда]
 Пусть \(\alpha \in \R_{\geq 0}\),
 а
 \(
@@ -4969,162 +4989,201 @@ g \mapsto g|_{X'} :
 \),
 где \(s \in \N_0\).%
 \label{thm:RootTaylorApprox}
-Тогда последовательность функций
+Тогда последовательность
 \((x \mapsto P_s(x) : [-1,1] \to \R)_{s=0}^{\infty}\)
 равномерно сходится к функции
 \(x \mapsto (1 + x)^{\alpha} : [-1,1] \to \R\).
+Если \(x \in \R \setminus [-1,1]\),
+то последовательность \((P_s(x))_{s=0}^{\infty}\) расходится.
 \end{theorem}
 
-\begin{proofparts}[Доказательство (из трёх частей)]
+\begin{proofparts}[Доказательство (из двух частей)]
 
 \item[Часть 1.]
-Чтобы доказать равномерную сходимость последовательности функций
-\((x \mapsto P_s(x) : [-1,1] \to \R)_{s=0}^{\infty}\)
-необходимо и достаточно доказать сходимость ряда
-\begin{equation*}
-	\sum_{k=0}^{\infty}
-	\Bigl\lvert
-		\frac{%
-			\alpha
-			(\alpha - 1)
-			(\alpha - 2)
-			\cdots
-			(\alpha - (k - 1))}%
-		{k!}
-	\Bigr\rvert.
-\end{equation*}
-Более того, без ограничения общности можно предположить, что \(\alpha\) имеет вид \(1/n\),
-где \(n \in \Z_{\geq 2}\).
-
-\item[Часть 2.]
-Домножим числитель и знаменатель \(k\)\=/ого члена ряда на \(n^k\):
-\begin{gather}
-	\biggl\lvert
-		\frac{%
-		\frac{1}{n} (\frac{1}{n} -1) (\frac{1}{n} - 2)
-		\cdots (\frac{1}{n} - (k - 1))}%
-		{1 \cdot{} 2 \cdot{} \cdots{}
-			\cdot{} (k - 1) \cdot{} k}
-	\biggr\rvert
-	=
-	\nonumber
-	\displaybreak[0]
-	\\
-	=
-	\biggl(
-		\frac{n - 1}{n} \cdot{}
-		\frac{2n - 1}{2n} \cdot{}
-		\cdots{} \cdot{}
-		\frac{(k - 1)n - 1}{(k - 1)n}
-	\biggr) \cdot
-	\frac{1}{kn}.
-	\label{eq:RootTaylorApproxOne}
-\end{gather}
-Теперь заметим, что для любого \(m\) от \(1\) до \(k-1\) выполняется следующее неравенство:
-\begin{gather}
-	\biggl(\frac{mn - 1}{mn}\biggr)^n
-	=
-	\underbrace{%
-	\frac{mn - 1}{mn} \cdot{}
-	\frac{mn - 1}{mn} \cdot{}
-	\frac{mn - 1}{mn} \cdot{}
-	\cdots{} \cdot{}
-	\frac{mn - 1}{mn}%
-	}_{n}
-	\leq
-	\nonumber
-	\displaybreak[0]
-	\\
-	\leq
-	\frac{mn - 1}{\cancel{mn}} \cdot{}
-	\frac{\cancel{mn}}{\cancel{mn + 1}} \cdot{}
-	\frac{\cancel{mn + 1}}{\cancel{mn + 2}} \cdot{}
-	\cdots{} \cdot{}
-	\frac{\cancel{(m + 1)n - 2}}{(m + 1)n - 1}
-	=
-	\frac{mn - 1}{(m + 1)n - 1}.
-	\label{eq:RootTaylorApproxTwo}
-\end{gather}
-После этого возьмём выражение, которое в формуле~\eqref{eq:RootTaylorApproxOne} взято в большие скобки, возведём его в \(n\)\=/ую степень и используем неравенства~\eqref{eq:RootTaylorApproxTwo}:
-\begin{gather}
-	\biggl(
-		\frac{n - 1}{n} \cdot{}
-		\frac{2n - 1}{2n} \cdot{}
-		\cdots{} \cdot{}
-		\frac{(k - 1)n - 1}{(k - 1)n}
-	\biggr)^n
-	=
-	\nonumber
-	\displaybreak[0]
-	\\
-	=
-	\biggl(\frac{n - 1}{n}\biggr)^n 
-	\biggl(\frac{2n - 1}{2n}\biggr)^n 
-	\cdots{} 
-	\biggl(\frac{(k - 1)n - 1}{(k - 1)n}\biggr)^n
-	\leq
-	\nonumber
-	\displaybreak[0]
-	\\
-	\leq
-	\frac{n - 1}{\cancel{2n - 1}} \cdot{}
-	\frac{\cancel{2n - 1}}{\cancel{3n - 1}} \cdot{}
-	\cdots{} \cdot{}
-	\frac{\cancel{(k - 1)n - 1}}{kn - 1}
-	=
-	\frac{n - 1}{kn - 1}
-	\leq
-	\frac{n}{kn}
-	\leq
-	\frac{1}{k}.
-	\label{eq:RootTaylorApproxThree}
-\end{gather}
-Возведём неравенство~\eqref{eq:RootTaylorApproxThree} в степень \(1/n\) и применим его к формуле~\eqref{eq:RootTaylorApproxOne}:
-\begin{equation*}
-	\biggl\lvert
-		\frac{%
-		\frac{1}{n} (\frac{1}{n} -1) (\frac{1}{n} - 2)
-		\cdots (\frac{1}{n} - (k - 1))}%
-		{1 \cdot{} 2 \cdot{} \cdots{}
-			\cdot{} (k - 1) \cdot{} k}
-	\biggr\rvert
-	\leq
-	\frac{1}{k^{1/n}}
-	\cdot
-	\frac{1}{kn}
-	\leq
-	\frac{1}{k^{1 + 1/n}}.
-\end{equation*}
-Осталось заметить, что ряд
-\(\sum_{k=1}^{\infty} k^{-(1 + 1/n)}\)
-сходится по интегральному критерию сходимости.
-
-\item[Часть 3.]
-Последовательность
-\(P_0(x), P_1(x), P_2(x), \ldots{}\)
---- это последовательность частичных сумм cледующего ряда, который является рядом Тейлора функции \((1 + x)^{\alpha}\) в нуле и называется биномиальным рядом:
-\begin{equation*}
-	P(x) \coloneqq
-	\sum_{k=0}^{\infty}
+Введём обозначение
+\(
+	\binom{\alpha}{k} \coloneqq
 	\frac{%
 		\alpha
 		(\alpha - 1)
 		(\alpha - 2)
 		\cdots
 		(\alpha - (k - 1))}%
-	{k!} x^k.
-\end{equation*}
-Сумма ряда \(P(x)\)
-в его круге сходимости \(\lvert x \rvert < 1\) является аналитической функцией, удовлетворяющей обыкновенному дифференциальному уравнению
+	{k!}
+\),
+где \(k \in \N_0\).
+Чтобы доказать равномерную сходимость последовательности функций
+\((x \mapsto P_s(x) : [-1,1] \to \R)_{s=0}^{\infty}\)
+необходимо и достаточно доказать сходимость ряда
+\(\sum_{k=0}^{\infty} \lvert \binom{\alpha}{k} \rvert\).
+Случай \(\alpha \in \N_0\) тривиален, поэтому без ограничения общности можно предположить, что \(\alpha \notin \N_0\).
+Тогда для любого \(k \in \N_1\),
+такого что \(k > \alpha + 1\),
+выполняется следующее неравенство:
+\(
+	\lvert \binom{\alpha}{k} \rvert
+		/ \lvert \binom{\alpha}{k - 1} \rvert
+	=
+	1 - \frac{1 + \alpha}{k}
+	\leq
+	(1 + \frac{1}{k})^{-(1 + \alpha)}
+	=
+	(k + 1)^{-(1 + \alpha)} / k^{-(1 + \alpha)}
+\).
+Отсюда по индукции следует, что существует константа
+\(C \in \R_{>0}\), такая что
+\(
+	\lvert \binom{\alpha}{k} \rvert
+	\leq
+	C / (k + 1)^{1 + \alpha}
+\)
+для любого \(k \in \N_0\).
+Осталось заметить, что ряд
+\(\sum_{k=1}^{\infty} 1 / k^{1 + \alpha}\)
+сходится по интегральному критерию сходимости.
+
+%\item[Часть 1.]
+%Чтобы доказать равномерную сходимость последовательности функций
+%\((x \mapsto P_s(x) : [-1,1] \to \R)_{s=0}^{\infty}\)
+%необходимо и достаточно доказать сходимость ряда
+%\begin{equation*}
+%	\sum_{k=0}^{\infty}
+%	\Bigl\lvert
+%		\frac{%
+%			\alpha
+%			(\alpha - 1)
+%			(\alpha - 2)
+%			\cdots
+%			(\alpha - (k - 1))}%
+%		{k!}
+%	\Bigr\rvert.
+%\end{equation*}
+%Более того, без ограничения общности можно предположить, что \(\alpha\) имеет вид \(1/n\),
+%где \(n \in \Z_{\geq 2}\).
+%
+%\item[Часть 2.]
+%Домножим числитель и знаменатель \(k\)\=/ого члена ряда на \(n^k\):
+%\begin{gather}
+%	\biggl\lvert
+%		\frac{%
+%		\frac{1}{n} (\frac{1}{n} -1) (\frac{1}{n} - 2)
+%		\cdots (\frac{1}{n} - (k - 1))}%
+%		{1 \cdot{} 2 \cdot{} \cdots{}
+%			\cdot{} (k - 1) \cdot{} k}
+%	\biggr\rvert
+%	=
+%	\nonumber
+%	\displaybreak[0]
+%	\\
+%	=
+%	\biggl(
+%		\frac{n - 1}{n} \cdot{}
+%		\frac{2n - 1}{2n} \cdot{}
+%		\cdots{} \cdot{}
+%		\frac{(k - 1)n - 1}{(k - 1)n}
+%	\biggr) \cdot
+%	\frac{1}{kn}.
+%	\label{eq:RootTaylorApproxOne}
+%\end{gather}
+%Теперь заметим, что для любого \(m\) от \(1\) до \(k-1\) выполняется следующее неравенство:
+%\begin{gather}
+%	\biggl(\frac{mn - 1}{mn}\biggr)^n
+%	=
+%	\underbrace{%
+%	\frac{mn - 1}{mn} \cdot{}
+%	\frac{mn - 1}{mn} \cdot{}
+%	\frac{mn - 1}{mn} \cdot{}
+%	\cdots{} \cdot{}
+%	\frac{mn - 1}{mn}%
+%	}_{n}
+%	\leq
+%	\nonumber
+%	\displaybreak[0]
+%	\\
+%	\leq
+%	\frac{mn - 1}{\cancel{mn}} \cdot{}
+%	\frac{\cancel{mn}}{\cancel{mn + 1}} \cdot{}
+%	\frac{\cancel{mn + 1}}{\cancel{mn + 2}} \cdot{}
+%	\cdots{} \cdot{}
+%	\frac{\cancel{(m + 1)n - 2}}{(m + 1)n - 1}
+%	=
+%	\frac{mn - 1}{(m + 1)n - 1}.
+%	\label{eq:RootTaylorApproxTwo}
+%\end{gather}
+%После этого возьмём выражение, которое в формуле~\eqref{eq:RootTaylorApproxOne} взято в большие скобки, возведём его в \(n\)\=/ую степень и используем неравенства~\eqref{eq:RootTaylorApproxTwo}:
+%\begin{gather}
+%	\biggl(
+%		\frac{n - 1}{n} \cdot{}
+%		\frac{2n - 1}{2n} \cdot{}
+%		\cdots{} \cdot{}
+%		\frac{(k - 1)n - 1}{(k - 1)n}
+%	\biggr)^n
+%	=
+%	\nonumber
+%	\displaybreak[0]
+%	\\
+%	=
+%	\biggl(\frac{n - 1}{n}\biggr)^n 
+%	\biggl(\frac{2n - 1}{2n}\biggr)^n 
+%	\cdots{} 
+%	\biggl(\frac{(k - 1)n - 1}{(k - 1)n}\biggr)^n
+%	\leq
+%	\nonumber
+%	\displaybreak[0]
+%	\\
+%	\leq
+%	\frac{n - 1}{\cancel{2n - 1}} \cdot{}
+%	\frac{\cancel{2n - 1}}{\cancel{3n - 1}} \cdot{}
+%	\cdots{} \cdot{}
+%	\frac{\cancel{(k - 1)n - 1}}{kn - 1}
+%	=
+%	\frac{n - 1}{kn - 1}
+%	\leq
+%	\frac{n}{kn}
+%	\leq
+%	\frac{1}{k}.
+%	\label{eq:RootTaylorApproxThree}
+%\end{gather}
+%Возведём неравенство~\eqref{eq:RootTaylorApproxThree} в степень \(1/n\) и применим его к формуле~\eqref{eq:RootTaylorApproxOne}:
+%\begin{equation*}
+%	\biggl\lvert
+%		\frac{%
+%		\frac{1}{n} (\frac{1}{n} -1) (\frac{1}{n} - 2)
+%		\cdots (\frac{1}{n} - (k - 1))}%
+%		{1 \cdot{} 2 \cdot{} \cdots{}
+%			\cdot{} (k - 1) \cdot{} k}
+%	\biggr\rvert
+%	\leq
+%	\frac{1}{k^{1/n}}
+%	\cdot
+%	\frac{1}{kn}
+%	\leq
+%	\frac{1}{k^{1 + 1/n}}.
+%\end{equation*}
+%Осталось заметить, что ряд
+%\(\sum_{k=1}^{\infty} k^{-(1 + 1/n)}\)
+%сходится по интегральному критерию сходимости.
+
+\item[Часть 2.]
+Последовательность
+\(P_0(x), P_1(x), P_2(x), \ldots{}\)
+--- это последовательность частичных сумм ряда
+\(
+	P(x) \coloneqq
+	\sum_{k=0}^{\infty}
+		\binom{\alpha}{k} x^k
+\),
+который является рядом Тейлора функции \((1 + x)^{\alpha}\) в нуле и называется биномиальным рядом.
+Радиус сходимости \(P(x)\), очевидно, равен \(1\).
+Сумма \(P(x)\) в его круге сходимости \(\lvert x \rvert < 1\) является аналитической функцией, удовлетворяющей обыкновенному дифференциальному уравнению
 \((1 + x) P'(x) = \alpha P(x)\)
 с начальным условием \(P(0) = 1\).
 Поэтому
 \(P(x) = (1 + x)^{\alpha}\)
-при
-\(\lvert x \rvert < 1\).
+при \(\lvert x \rvert < 1\).
 Так как функция
 \(x \mapsto (1 + x)^{\alpha} : [-1,1] \to \R\)
-непрерывна и равномерный предел непрерывных функций непрерывен, то \(P(x)\)
+непрерывна и равномерный предел последовательности непрерывных функций непрерывен, то \(P(x)\)
 сходится к \((1 + x)^{\alpha}\) и при \(x = \pm 1\).
 \qedhere
 
@@ -5278,8 +5337,9 @@ g \mapsto g|_{X'} :
 Пусть
 \(Q_0, Q_1, Q_2, \ldots{} \in \R[X]\)
 такие же, как в следствии~\ref{cor:AbsValIntPolyApprox}.
-Тогда последовательность функций
-\((Q_n(f))_{n=0}^{\infty}\) равномерно сходится к
+Тогда последовательность
+\((Q_n(f))_{n=0}^{\infty}\)
+элементов \(A\) равномерно сходится к
 функции \(\lvert f \rvert\),
 а потому \(\lvert f \rvert \in A\).
 \end{proof}
