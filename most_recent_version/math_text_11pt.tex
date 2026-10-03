@@ -4936,9 +4936,9 @@ g \mapsto g|_{X'} :
 \).
 \end{observation}
 
-\begin{theorem}[\scshape О сходимости вещественного биномиального ряда]
-Пусть \(\alpha \in \R_{\geq 0} \setminus \N_0\),
-а
+\begin{theorem}[\scshape О сходимости вещественного биномиального ряда положительной степени]
+Пусть \(\alpha \in \R_{\geq 0} \setminus \N_0\).
+Положим
 \(
 	P_s(X) \coloneqq
 	\sum_{k=0}^s \binom{\alpha}{k} X^k
@@ -4948,10 +4948,10 @@ g \mapsto g|_{X'} :
 \label{thm:RootTaylorApprox}
 Тогда последовательность функций
 \((x \mapsto P_s(x) : [-1,1] \to \R)_{s=0}^{\infty}\)
-равномерно сходится к функции
+равномерно сходится к
 \(x \mapsto (1 + x)^{\alpha} : [-1,1] \to \R\).
 Если же \(x \in \R \setminus [-1,1]\),
-то последовательность \((P_s(x))_{s=0}^{\infty}\) расходится.
+то \((P_s(x))_{s=0}^{\infty}\) расходится.
 \end{theorem}
 
 \begin{proofparts}[Доказательство (из двух частей)]
@@ -5146,15 +5146,71 @@ g \mapsto g|_{X'} :
 
 \end{proofparts}
 
-\begin{theorem}
-Определим по индукции последовательность многочленов
+%\begin{theorem}
+%Определим по индукции последовательность многочленов
+%\(P_0, P_1, P_2, \ldots{} \in \R[X]\)
+%следующим образом:
+%\(P_0(X) \coloneqq 0\)
+%и
+%\(
+%	P_{n+1}(X) \coloneqq
+%	P_n(X) + \frac{1}{2} (X - P_n(X)^2)
+%\)
+%для любого \(n \in \N_0\).%
+%\label{thm:SqrtIntPolyApprox}
+%Тогда
+%\(P_n(x) \leq P_{n+1}(x)\)
+%для любых \(x \in [0,1]\) и \(n \in \N_0\),
+%и
+%\(
+%	\lim_{n \tolim \infty}
+%	\sup_{x \in [0,1]}
+%	\lvert \sqrt{x} - P_n(x) \rvert
+%	= 0
+%\).
+%\end{theorem}
+
+%\begin{proof}
+%Для любых \(x \in [0,1]\) и \(n \in \N_0\) выполняется равенство
+%\(
+%	\sqrt{x} - P_{n+1}(x)
+%%	=
+%%	\sqrt{x} - P_n(x) -
+%%		\frac{1}{2} (\sqrt{x}^2 - P_n(x)^2)
+%	=
+%	(\sqrt{x} - P_n(x))
+%		(1 - \frac{1}{2}(\sqrt{x} + P_n(x)))
+%\).
+%Отсюда по индукции следует, что
+%для любых \(x \in [0,1]\) и \(n \in \N_0\)
+%выполняются неравенства
+%\(P_n(x) \leq P_{n+1}(x)\)
+%и
+%\(
+%	\sqrt{x} - P_{n+1}(x)
+%	\leq
+%	\sqrt{x}  (1 - \frac{1}{2} \sqrt{x})^n
+%	\leq
+%	\min(\sqrt{x}, (1 - \frac{1}{2} \sqrt{x})^n)
+%\).
+%Осталось заметить, что для любых
+%\(\varepsilon \in (0,1]\)
+%и \(x \in [0,1]\)
+%либо \(\sqrt{x} \leq \varepsilon\),
+%либо
+%\((1 - \frac{1}{2} \sqrt{x})^n \leq \varepsilon\)
+%для любого достаточно большого \(n \in \N_0\).
+%\end{proof}
+
+\begin{theorem}[\scshape Аппроксимация Бурбаки квадратного корня]
+Определим последовательность
 \(P_0, P_1, P_2, \ldots{} \in \R[X]\)
-следующим образом:
-\(P_0(X) \coloneqq 0\)
+по индукции:
+\(P_0 \coloneqq 0\)
 и
 \(
-	P_{n+1}(X) \coloneqq
-	P_n(X) + \frac{1}{2} (X - P_n(X)^2)
+	P_{n+1} \coloneqq
+	P_n + \frac{1}{2} (X - P_n^2)
 \)
 для любого \(n \in \N_0\).%
 \label{thm:SqrtIntPolyApprox}
@@ -5172,27 +5228,28 @@ g \mapsto g|_{X'} :
 
 \begin{proof}
 Для любых \(x \in [0,1]\) и \(n \in \N_0\) выполняется равенство
-\(
+\begin{align*}
 	\sqrt{x} - P_{n+1}(x)
-%	=
-%	\sqrt{x} - P_n(x) -
-%		\frac{1}{2} (\sqrt{x}^2 - P_n(x)^2)
-	=
-	(\sqrt{x} - P_n(x))
-		(1 - \frac{1}{2}(\sqrt{x} + P_n(x)))
-\).
+	&=
+	\sqrt{x} - P_n(x) -
+		\tfrac{1}{2} (\sqrt{x}^2 - P_n(x)^2) =
+	\\
+	&=
+	(\sqrt{x} - P_n(x)) \cdot{}
+		(1 - \tfrac{1}{2}(\sqrt{x} + P_n(x))).
+\end{align*}
 Отсюда по индукции следует, что
 для любых \(x \in [0,1]\) и \(n \in \N_0\)
-выполняются неравенства
+выполняется неравенство
 \(P_n(x) \leq P_{n+1}(x)\)
-и
-\(
+и выполняются неравенства
+\begin{equation*}
 	\sqrt{x} - P_{n+1}(x)
 	\leq
-	\sqrt{x}  (1 - \frac{1}{2} \sqrt{x})^n
+	\sqrt{x} \cdot{} (1 - \tfrac{1}{2} \sqrt{x})^n
 	\leq
-	\min(\sqrt{x}, (1 - \frac{1}{2} \sqrt{x})^n)
-\).
+	\min(\sqrt{x}, (1 - \tfrac{1}{2} \sqrt{x})^n).
+\end{equation*}
 Осталось заметить, что для любых
 \(\varepsilon \in (0,1]\)
 и \(x \in [0,1]\)
@@ -5201,6 +5258,10 @@ g \mapsto g|_{X'} :
 \((1 - \frac{1}{2} \sqrt{x})^n \leq \varepsilon\)
 для любого достаточно большого \(n \in \N_0\).
 \end{proof}
+
+\begin{remark}
+А.~Пинкус в статье~\cite[30]{PinkusWeierstrass} при описании последовательности \((P_n(X))_{n=0}^{\infty}\) из теоремы~\ref{thm:SqrtIntPolyApprox} ссылается на Бурбаки и не даёт более ранних ссылок.
+\end{remark}
 
 \begin{observation}
 Пусть
@@ -5234,6 +5295,18 @@ g \mapsto g|_{X'} :
 так как \(\lvert x \rvert = \sqrt{x^2}\)
 для \(x \in \R\).
 \end{observation}
+
+\begin{remark}
+В действительности с целью построения полиномиальных приближений к
+\(f : [-1, 0] \to \R\), \(x \mapsto \sqrt{1 + x}\)
+мы могли бы обойти разбор случая \(\lvert x \rvert = 1\) из теоремы~\ref{thm:RootTaylorApprox}, равномерно приближая \(f\) функциями вида
+\(
+	x \mapsto \sqrt{1 + (1 - \varepsilon)x} :
+	[-1, 0] \to \R
+\),
+где \(\varepsilon \in (0,1]\),
+см.~\cite[29--30]{PinkusWeierstrass}.
+\end{remark}
 
 \begin{corollary}
 Существует последовательность
@@ -5431,8 +5504,9 @@ g \mapsto g|_{X'} :
 \end{proofparts}
 
 \begin{remark}
-Я узнал предложенное доказательство теоремы~\ref{thm:Stone-Weierstrass} (теоремы Стоуна\namedash{}Вейерштрасса) из раздела~A.6.3 текста~\cite[178]{Mueger_FA-notes}
-и ответа~\cite{mo445373}
+Я узнал приведённый способ изложения доказательства теоремы~\ref{thm:Stone-Weierstrass} (теоремы Стоуна\namedash{}Вейерштрасса),
+избегающий существенного использования аксиомы выбора,
+из ответа~\cite{mo445373}
 на <<\href{https://mathoverflow.net/}{\textenglish{MathOverflow}}>>.
 \end{remark}
 
