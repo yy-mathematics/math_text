@@ -734,18 +734,32 @@ The \((\phantom{x}, \phantom{x})\) operation then turned out to be fundamental i
 По теореме Кантора множество вещественных чисел из интервала \([0,1]\), у которых существует троичное разложение, в котором не участвует цифра \(1\), биективное \(2^{\N_1}\) и называемое \emph{множеством Кантора}, несчётно. Как следствие, множество вещественных чисел несчётно.
 \end{observation}
 
+%\begin{observation}[\scshape Теорема Ловера о фиксированной точке]
+%Пусть \(X\) и \(S\) --- множества,
+%а \(\varphi : X \times X \to S\)
+%и \(\tau : S \to S\) --- отображения.%
+%\label{obs:LawvereFixedPoint}
+%Тогда если сквозное отображение
+%\(\tau \circ \varphi \circ \delta : X \to X \times X \to S \to S\),
+%где \(\delta \coloneqq \Id_X \bartimes \Id_X\) --- диагональное отображение,
+%представляется в виде
+%\(y \mapsto \varphi(x,y) : X \to S\)
+%для какого-то \(x \in X\),
+%то \(\tau(\varphi(x,x)) = \varphi(x,x)\).
+%\end{observation}
+
 \begin{observation}[\scshape Теорема Ловера о фиксированной точке]
 Пусть \(X\) и \(S\) --- множества,
-а \(\varphi : X \times X \to S\)
-и \(\tau : S \to S\) --- отображения.%
+\(\varphi : X \times X \to S\)
+и \(\tau : S \to S\) --- отображения,
+а \(y\) --- элемент \(X\).%
 \label{obs:LawvereFixedPoint}
-Тогда если сквозное отображение
-\(\tau \circ \varphi \circ \delta : X \to X \times X \to S \to S\),
-где \(\delta \coloneqq \Id_X \bartimes \Id_X\) --- диагональное отображение,
-представляется в виде
-\(y \mapsto \varphi(x,y) : X \to S\)
-для какого-то \(x \in X\),
-то \(\tau(\varphi(x,x)) = \varphi(x,x)\).
+Тогда если посткомпозиция с \(\tau\)
+переводит диагональное отображение
+\(x \mapsto \varphi(x,x) : X \to X \times X \to S\)
+в парциальное отображение
+\(x \mapsto \varphi(y,x) : X \to S\),
+то \(\tau\) фиксирует точку \(\varphi(y,y) \in S\).
 \end{observation}
 
 \begin{remark}
@@ -5226,30 +5240,29 @@ g \mapsto g|_{X'} :
 \).
 \end{theorem}
 
-\begin{proof}
-Для любых \(x \in [0,1]\) и \(n \in \N_0\) выполняется равенство
-\begin{align*}
+\begin{proof}[Первое доказательство]
+Для любых \(x \in [0,1]\) и \(n \in \N_0\) выполняется следующее равенство:
+\(
 	\sqrt{x} - P_{n+1}(x)
-	&=
+	=
 	\sqrt{x} - P_n(x) -
-		\tfrac{1}{2} (\sqrt{x}^2 - P_n(x)^2) =
-	\\
-	&=
+		\tfrac{1}{2} (\sqrt{x}^2 - P_n(x)^2)
+	=
 	(\sqrt{x} - P_n(x)) \cdot{}
-		(1 - \tfrac{1}{2}(\sqrt{x} + P_n(x))).
-\end{align*}
+		(1 - \tfrac{1}{2}(\sqrt{x} + P_n(x)))
+\).
 Отсюда по индукции следует, что
 для любых \(x \in [0,1]\) и \(n \in \N_0\)
-выполняется неравенство
+выполняются неравенства
 \(P_n(x) \leq P_{n+1}(x)\)
-и выполняются неравенства
-\begin{equation*}
+и
+\(
 	\sqrt{x} - P_{n+1}(x)
 	\leq
 	\sqrt{x} \cdot{} (1 - \tfrac{1}{2} \sqrt{x})^n
 	\leq
-	\min(\sqrt{x}, (1 - \tfrac{1}{2} \sqrt{x})^n).
-\end{equation*}
+	\min(\sqrt{x}, (1 - \tfrac{1}{2} \sqrt{x})^n)
+\).
 Осталось заметить, что для любых
 \(\varepsilon \in (0,1]\)
 и \(x \in [0,1]\)
@@ -5257,6 +5270,18 @@ g \mapsto g|_{X'} :
 либо
 \((1 - \frac{1}{2} \sqrt{x})^n \leq \varepsilon\)
 для любого достаточно большого \(n \in \N_0\).
+\end{proof}
+
+\begin{proof}[Второе доказательство]
+Для любого \(x \in \R\) определим отображение
+\(f_x : \R \to \R\),
+\(t \mapsto t + \frac{1}{2} (x - t^2)\).
+Тогда \(f'_x(t) = 1 - t\), фиксированными точками \(f_x\) являются решения уравнения \(t^2 = x\)
+и для любого \(n \in \N_0\) выполняется равенство
+\(P_n(x) = f_x^{\circ n}(0)\).
+Осталось заметить, что \(f_x(0) = x / 2\) и для любого
+\(x \in [0,1]\) отображение \(f_x\) является монотонно неубывающим на \([0, \sqrt{x}]\) и \((1 - x/2)\)\=/липшицевым на \([x/2, \sqrt{x}]\)
+согласно теореме Лагранжа о среднем (теореме~\secref{thm:LagrangeMean}).
 \end{proof}
 
 \begin{remark}
@@ -5298,11 +5323,11 @@ g \mapsto g|_{X'} :
 
 \begin{remark}
 В действительности с целью построения полиномиальных приближений к
-\(f : [-1, 0] \to \R\), \(x \mapsto \sqrt{1 + x}\)
+\(f : [-1, 1] \to \R\), \(x \mapsto \sqrt{1 + x}\)
 мы могли бы обойти разбор случая \(\lvert x \rvert = 1\) из теоремы~\ref{thm:RootTaylorApprox}, равномерно приближая \(f\) функциями вида
 \(
 	x \mapsto \sqrt{1 + (1 - \varepsilon)x} :
-	[-1, 0] \to \R
+	[-1, 1] \to \R
 \),
 где \(\varepsilon \in (0,1]\),
 см.~\cite[29--30]{PinkusWeierstrass}.
