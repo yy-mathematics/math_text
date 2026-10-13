@@ -4811,738 +4811,6 @@ g \mapsto g|_{X'} :
 \end{remark}
 
 
-\section{Теорема Стоуна\namedash{}Вейерштрасса}
-
-\sectiontableofcontents
-
-\subsection{Полиномиальные аппроксимации к %
-\texorpdfstring%
-{\(\WTbm{x \mapsto \lvert x \rvert}\) на \(\WTbm{[-1,1]}\)}%
-{функции модуля на отрезке [-1,1]}
-}
-
-\begin{definition}[\scshape Обобщённый биномиальный коэффициент \(\binom{\alpha}{k}\)]
-Пусть \(R\) --- ассоциативная унитальная \(\Q\)\=/алгебра,
-\(\alpha \in R\) --- её элемент,
-а \(k \in \N_0\) --- натуральное число.
-Тогда элемент
-\begin{equation*}
-	\binom{\alpha}{k}
-	\coloneqq
-	\frac{%
-		\alpha
-		(\alpha - 1)
-		(\alpha - 2)
-		\cdots
-		(\alpha - (k - 1))}%
-	{k!}
-	\in R
-\end{equation*}
-называется \emph{обобщённым биномиальным коэффициентом} из \(\alpha\) по \(k\).
-\end{definition}
-
-%\begin{definition}[\scshape Кусочно-линейная функция на отрезке]
-%Пусть \(a_{\mr{min}}, a_{\mr{max}} \in \R\) --- вещественные числа,
-%такие что \(a_{\mr{min}} < a_{\mr{max}}\),
-%а \(f : [a_{\mr{min}}, a_{\mr{max}}] \to \R\)
-%--- функция.%
-%\label{def:PieceLinFunInt}
-%Тогда \(f\) называется \emph{кусочно-линейной},
-%если существует семейство точек
-%\(
-%	a_0 = a_{\mr{min}} < a_1 <
-%	\cdots{}
-%	< a_{n-1} < a_n = a_{\mr{max}}
-%\),
-%где \(n \in \N_1\),
-%такое что для любого \(i\) от \(1\) до \(n\)
-%и для любого \(x \in [a_{i-1}, a_i]\)
-%выполняется равенство
-%\(
-%	f(x) =
-%	f(a_i) \frac{x - a_{i-1}}{a_i - a_{i-1}} 
-%	+
-%	f(a_{i-1}) \frac{x - a_i}{a_{i-1} - a_i}
-%\).
-%\end{definition}
-
-%\begin{observation}[\scshape Модуль, максимум и минимум]
-%Пусть \(X\) --- множество,
-%а \(f, g : X \rrarrow \R\) --- две функции.%
-%\label{obs:MinMaxAbsVal}
-%Тогда выполняются равенства
-%\begin{equation*}
-%\max(f, g) = (f + g + \lvert f - g \rvert)/2
-%\quad\tn{и}\quad 
-%\min(f, g) = (f + g - \lvert f - g \rvert)/2.
-%\end{equation*}
-%\end{observation}
-
-%\begin{theorem}
-%Пусть \(f : [0,1] \to \R\) --- непрерывная кусочно-линейная функция.%
-%\label{thm:PieceLinFunIntAbsVal}
-%Тогда \(f\) представляется в виде
-%конечного максимума конечных минимумов
-%функций вида
-%\(x \mapsto ax + b : [0,1] \to \R\),
-%где \(a, b \in \R\).
-%\end{theorem}
-
-%\begin{proof}
-%Согласно определению~\ref{def:PieceLinFunInt}
-%существует семейство точек
-%\(a_0 = 0 < a_1 < \cdots{} < a_{n-1} < a_n = 1\),
-%где \(n \in \N_1\),
-%такое что для любого \(i\) от \(1\) до \(n\)
-%и для любого \(x \in [a_{i-1}, a_i]\)
-%выполняется равенство
-%\(f(x) = f_i(x)\),
-%где \(f_i\) задаётся формулой~\eqref{eq:PieceLinFunIntAbsValOne}.
-%\begin{gather}
-%	f_i : [0,1] \to \R,\ 
-%	x \mapsto
-%	f(a_i) \frac{x - a_{i-1}}{a_i - a_{i-1}} 
-%	+
-%	f(a_{i-1}) \frac{x - a_i}{a_{i-1} - a_i}
-%	\label{eq:PieceLinFunIntAbsValOne}
-%	\displaybreak[0]
-%	\\
-%		k \coloneqq
-%	\max\nolimits_{i=1}^n
-%	\biggl\lvert
-%		\frac%
-%			{f(a_i) - f(a_{i-1})}%
-%			{a_i - a_{i-1}}
-%	\biggr\rvert
-%	\label{eq:PieceLinFunIntAbsValTwo}
-%	\displaybreak[0]
-%	\\
-%	f(x) = 
-%	\max\nolimits_{i=1}^n
-%	\min\bigl(%
-%		k(x - a_{i-1}) + f(a_{i-1}),
-%		f_i(x),
-%		k(a_i - x) + f(a_i)
-%	\bigr)
-%	\label{eq:PieceLinFunIntAbsValThree}
-%\end{gather}
-%Тогда для любого \(x \in [0,1]\) выполняется равенство~\eqref{eq:PieceLinFunIntAbsValThree},
-%где используются обозначения~\eqref{eq:PieceLinFunIntAbsValOne} и~\eqref{eq:PieceLinFunIntAbsValTwo}.
-%\end{proof}
-
-\begin{observation}
-Для любых \(a, p \in \R_{\geq 0}\)
-выполняется следующее неравенство:
-\((1 + a)^{-p} \geq 1 - p a\).%
-\label{obs:PowerIncrementIneq}
-Если \(a = 0\), то оно тривиально, если \(a > 0\),
-то оно следует из теоремы Лагранжа о среднем (теоремы~\secref{thm:LagrangeMean}):
-\(
-	(1 + a)^{-p}
-	\geq
-	(1 + x)^{-p}|_{x=0}
-	+
-	a \cdot
-	\inf_{\xi \in (0, a)}
-		((\frac{d}{dx}(1 + x)^{-p})|_{x = \xi})
-	=
-	1 - p a
-\).
-\end{observation}
-
-\begin{theorem}[\scshape О сходимости вещественного биномиального ряда положительной степени]
-Пусть \(\alpha \in \R_{\geq 0} \setminus \N_0\).
-Положим
-\(
-	P_s(X) \coloneqq
-	\sum_{k=0}^s \binom{\alpha}{k} X^k
-	\in \R[X]
-\),
-где \(s \in \N_0\).%
-\label{thm:RootTaylorApprox}
-Тогда последовательность функций
-\((x \mapsto P_s(x) : [-1,1] \to \R)_{s=0}^{\infty}\)
-равномерно сходится к
-\(x \mapsto (1 + x)^{\alpha} : [-1,1] \to \R\).
-Если же \(x \in \R \setminus [-1,1]\),
-то \((P_s(x))_{s=0}^{\infty}\) расходится.
-\end{theorem}
-
-\begin{proofparts}[Доказательство (из двух частей)]
-
-\item[Часть 1.]
-%Введём обозначение
-%\(
-%	\binom{\alpha}{k} \coloneqq
-%	\frac{%
-%		\alpha
-%		(\alpha - 1)
-%		(\alpha - 2)
-%		\cdots
-%		(\alpha - (k - 1))}%
-%	{k!}
-%\),
-%где \(k \in \N_0\).
-%Случай \(\alpha \in \N_0\) тривиален, поэтому без ограничения общности можно предположить, что \(\alpha \notin \N_0\).
-Чтобы доказать равномерную сходимость последовательности функций
-\((x \mapsto P_s(x) : [-1,1] \to \R)_{s=0}^{\infty}\)
-необходимо и достаточно доказать сходимость ряда
-\(\sum_{k=0}^{\infty} \lvert \binom{\alpha}{k} \rvert\).
-Чтобы сделать это заметим, что для любого \(k \in \N_1\),
-такого что \(k > \alpha + 1\),
-выполняется следующее неравенство:
-\(
-	\lvert \binom{\alpha}{k} \rvert
-		/ \lvert \binom{\alpha}{k - 1} \rvert
-	=
-	1 - \frac{1 + \alpha}{k}
-	\leq
-	(1 + \frac{1}{k})^{-(1 + \alpha)}
-	=
-	(k + 1)^{-(1 + \alpha)} / k^{-(1 + \alpha)}
-\).
-Отсюда по индукции следует, что существует константа
-\(C \in \R_{>0}\), такая что
-\(
-	\lvert \binom{\alpha}{k} \rvert
-	\leq
-	C / (k + 1)^{1 + \alpha}
-\)
-для любого \(k \in \N_0\).
-Осталось заметить, что ряд
-\(\sum_{k=1}^{\infty} 1 / k^{1 + \alpha}\)
-сходится по интегральному критерию сходимости.
-
-%\item[Часть 1.]
-%Чтобы доказать равномерную сходимость последовательности функций
-%\((x \mapsto P_s(x) : [-1,1] \to \R)_{s=0}^{\infty}\)
-%необходимо и достаточно доказать сходимость ряда
-%\begin{equation*}
-%	\sum_{k=0}^{\infty}
-%	\Bigl\lvert
-%		\frac{%
-%			\alpha
-%			(\alpha - 1)
-%			(\alpha - 2)
-%			\cdots
-%			(\alpha - (k - 1))}%
-%		{k!}
-%	\Bigr\rvert.
-%\end{equation*}
-%Более того, без ограничения общности можно предположить, что \(\alpha\) имеет вид \(1/n\),
-%где \(n \in \Z_{\geq 2}\).
-%
-%\item[Часть 2.]
-%Домножим числитель и знаменатель \(k\)\=/ого члена ряда на \(n^k\):
-%\begin{gather}
-%	\biggl\lvert
-%		\frac{%
-%		\frac{1}{n} (\frac{1}{n} -1) (\frac{1}{n} - 2)
-%		\cdots (\frac{1}{n} - (k - 1))}%
-%		{1 \cdot{} 2 \cdot{} \cdots{}
-%			\cdot{} (k - 1) \cdot{} k}
-%	\biggr\rvert
-%	=
-%	\nonumber
-%	\displaybreak[0]
-%	\\
-%	=
-%	\biggl(
-%		\frac{n - 1}{n} \cdot{}
-%		\frac{2n - 1}{2n} \cdot{}
-%		\cdots{} \cdot{}
-%		\frac{(k - 1)n - 1}{(k - 1)n}
-%	\biggr) \cdot
-%	\frac{1}{kn}.
-%	\label{eq:RootTaylorApproxOne}
-%\end{gather}
-%Теперь заметим, что для любого \(m\) от \(1\) до \(k-1\) выполняется следующее неравенство:
-%\begin{gather}
-%	\biggl(\frac{mn - 1}{mn}\biggr)^n
-%	=
-%	\underbrace{%
-%	\frac{mn - 1}{mn} \cdot{}
-%	\frac{mn - 1}{mn} \cdot{}
-%	\frac{mn - 1}{mn} \cdot{}
-%	\cdots{} \cdot{}
-%	\frac{mn - 1}{mn}%
-%	}_{n}
-%	\leq
-%	\nonumber
-%	\displaybreak[0]
-%	\\
-%	\leq
-%	\frac{mn - 1}{\cancel{mn}} \cdot{}
-%	\frac{\cancel{mn}}{\cancel{mn + 1}} \cdot{}
-%	\frac{\cancel{mn + 1}}{\cancel{mn + 2}} \cdot{}
-%	\cdots{} \cdot{}
-%	\frac{\cancel{(m + 1)n - 2}}{(m + 1)n - 1}
-%	=
-%	\frac{mn - 1}{(m + 1)n - 1}.
-%	\label{eq:RootTaylorApproxTwo}
-%\end{gather}
-%После этого возьмём выражение, которое в формуле~\eqref{eq:RootTaylorApproxOne} взято в большие скобки, возведём его в \(n\)\=/ую степень и используем неравенства~\eqref{eq:RootTaylorApproxTwo}:
-%\begin{gather}
-%	\biggl(
-%		\frac{n - 1}{n} \cdot{}
-%		\frac{2n - 1}{2n} \cdot{}
-%		\cdots{} \cdot{}
-%		\frac{(k - 1)n - 1}{(k - 1)n}
-%	\biggr)^n
-%	=
-%	\nonumber
-%	\displaybreak[0]
-%	\\
-%	=
-%	\biggl(\frac{n - 1}{n}\biggr)^n 
-%	\biggl(\frac{2n - 1}{2n}\biggr)^n 
-%	\cdots{} 
-%	\biggl(\frac{(k - 1)n - 1}{(k - 1)n}\biggr)^n
-%	\leq
-%	\nonumber
-%	\displaybreak[0]
-%	\\
-%	\leq
-%	\frac{n - 1}{\cancel{2n - 1}} \cdot{}
-%	\frac{\cancel{2n - 1}}{\cancel{3n - 1}} \cdot{}
-%	\cdots{} \cdot{}
-%	\frac{\cancel{(k - 1)n - 1}}{kn - 1}
-%	=
-%	\frac{n - 1}{kn - 1}
-%	\leq
-%	\frac{n}{kn}
-%	\leq
-%	\frac{1}{k}.
-%	\label{eq:RootTaylorApproxThree}
-%\end{gather}
-%Возведём неравенство~\eqref{eq:RootTaylorApproxThree} в степень \(1/n\) и применим его к формуле~\eqref{eq:RootTaylorApproxOne}:
-%\begin{equation*}
-%	\biggl\lvert
-%		\frac{%
-%		\frac{1}{n} (\frac{1}{n} -1) (\frac{1}{n} - 2)
-%		\cdots (\frac{1}{n} - (k - 1))}%
-%		{1 \cdot{} 2 \cdot{} \cdots{}
-%			\cdot{} (k - 1) \cdot{} k}
-%	\biggr\rvert
-%	\leq
-%	\frac{1}{k^{1/n}}
-%	\cdot
-%	\frac{1}{kn}
-%	\leq
-%	\frac{1}{k^{1 + 1/n}}.
-%\end{equation*}
-%Осталось заметить, что ряд
-%\(\sum_{k=1}^{\infty} k^{-(1 + 1/n)}\)
-%сходится по интегральному критерию сходимости.
-
-\item[Часть 2.]
-Последовательность
-\(P_0(x), P_1(x), P_2(x), \ldots{}\)
---- это последовательность частичных сумм ряда
-\(
-	P(x) \coloneqq
-	\sum_{k=0}^{\infty}
-		\binom{\alpha}{k} x^k
-\),
-который является рядом Тейлора функции \((1 + x)^{\alpha}\) в нуле и называется биномиальным рядом.
-Радиус сходимости \(P(x)\), очевидно, равен \(1\).
-Сумма \(P(x)\) в его круге сходимости \(\lvert x \rvert < 1\) является аналитической функцией, удовлетворяющей обыкновенному дифференциальному уравнению
-\((1 + x) P'(x) = \alpha P(x)\)
-с начальным условием \(P(0) = 1\).
-Поэтому
-\(P(x) = (1 + x)^{\alpha}\)
-при \(\lvert x \rvert < 1\).
-Так как функция
-\(x \mapsto (1 + x)^{\alpha} : [-1,1] \to \R\)
-непрерывна и равномерный предел последовательности непрерывных функций непрерывен, то \(P(x)\)
-сходится к \((1 + x)^{\alpha}\) и при \(x = \pm 1\).
-\qedhere
-
-\end{proofparts}
-
-%\begin{theorem}
-%Определим по индукции последовательность многочленов
-%\(P_0, P_1, P_2, \ldots{} \in \R[X]\)
-%следующим образом:
-%\(P_0(X) \coloneqq 0\)
-%и
-%\(
-%	P_{n+1}(X) \coloneqq
-%	P_n(X) + \frac{1}{2} (X - P_n(X)^2)
-%\)
-%для любого \(n \in \N_0\).%
-%\label{thm:SqrtIntPolyApprox}
-%Тогда
-%\(P_n(x) \leq P_{n+1}(x)\)
-%для любых \(x \in [0,1]\) и \(n \in \N_0\),
-%и
-%\(
-%	\lim_{n \tolim \infty}
-%	\sup_{x \in [0,1]}
-%	\lvert \sqrt{x} - P_n(x) \rvert
-%	= 0
-%\).
-%\end{theorem}
-
-%\begin{proof}
-%Для любых \(x \in [0,1]\) и \(n \in \N_0\) выполняется равенство
-%\(
-%	\sqrt{x} - P_{n+1}(x)
-%%	=
-%%	\sqrt{x} - P_n(x) -
-%%		\frac{1}{2} (\sqrt{x}^2 - P_n(x)^2)
-%	=
-%	(\sqrt{x} - P_n(x))
-%		(1 - \frac{1}{2}(\sqrt{x} + P_n(x)))
-%\).
-%Отсюда по индукции следует, что
-%для любых \(x \in [0,1]\) и \(n \in \N_0\)
-%выполняются неравенства
-%\(P_n(x) \leq P_{n+1}(x)\)
-%и
-%\(
-%	\sqrt{x} - P_{n+1}(x)
-%	\leq
-%	\sqrt{x}  (1 - \frac{1}{2} \sqrt{x})^n
-%	\leq
-%	\min(\sqrt{x}, (1 - \frac{1}{2} \sqrt{x})^n)
-%\).
-%Осталось заметить, что для любых
-%\(\varepsilon \in (0,1]\)
-%и \(x \in [0,1]\)
-%либо \(\sqrt{x} \leq \varepsilon\),
-%либо
-%\((1 - \frac{1}{2} \sqrt{x})^n \leq \varepsilon\)
-%для любого достаточно большого \(n \in \N_0\).
-%\end{proof}
-
-\begin{theorem}[\scshape Аппроксимация Бурбаки квадратного корня]
-Определим последовательность
-\(P_0, P_1, P_2, \ldots{} \in \R[X]\)
-по индукции:
-\(P_0 \coloneqq 0\)
-и
-\(
-	P_{n+1} \coloneqq
-	P_n + \frac{1}{2} (X - P_n^2)
-\)
-для любого \(n \in \N_0\).%
-\label{thm:SqrtIntPolyApprox}
-Тогда
-\(P_n(x) \leq P_{n+1}(x)\)
-для любых \(x \in [0,1]\) и \(n \in \N_0\),
-и
-\(
-	\lim_{n \tolim \infty}
-	\sup_{x \in [0,1]}
-	\lvert \sqrt{x} - P_n(x) \rvert
-	= 0
-\).
-\end{theorem}
-
-\begin{proof}[Первое доказательство]
-Для любых \(x \in [0,1]\) и \(n \in \N_0\) выполняется следующее равенство:
-\(
-	\sqrt{x} - P_{n+1}(x)
-	=
-	\sqrt{x} - P_n(x) -
-		\tfrac{1}{2} (\sqrt{x}^2 - P_n(x)^2)
-	=
-	(\sqrt{x} - P_n(x)) \cdot{}
-		(1 - \tfrac{1}{2}(\sqrt{x} + P_n(x)))
-\).
-Отсюда по индукции следует, что
-для любых \(x \in [0,1]\) и \(n \in \N_0\)
-выполняются неравенства
-\(P_n(x) \leq P_{n+1}(x)\)
-и
-\(
-	\sqrt{x} - P_{n+1}(x)
-	\leq
-	\sqrt{x} \cdot{} (1 - \tfrac{1}{2} \sqrt{x})^n
-	\leq
-	\min(\sqrt{x}, (1 - \tfrac{1}{2} \sqrt{x})^n)
-\).
-Осталось заметить, что для любых
-\(\varepsilon \in (0,1]\)
-и \(x \in [0,1]\)
-либо \(\sqrt{x} \leq \varepsilon\),
-либо
-\((1 - \frac{1}{2} \sqrt{x})^n \leq \varepsilon\)
-для любого достаточно большого \(n \in \N_0\).
-\end{proof}
-
-\begin{proof}[Второе доказательство]
-Для любого \(x \in \R\) определим отображение
-\(f_x : \R \to \R\),
-\(t \mapsto t + \frac{1}{2} (x - t^2)\).
-Тогда \(f'_x(t) = 1 - t\), фиксированными точками \(f_x\) являются решения уравнения \(t^2 = x\)
-и для любого \(n \in \N_0\) выполняется равенство
-\(P_n(x) = f_x^{\circ n}(0)\).
-Осталось заметить, что \(f_x(0) = x / 2\) и для любого
-\(x \in [0,1]\) отображение \(f_x\) является монотонно неубывающим на \([0, \sqrt{x}]\) и \((1 - x/2)\)\=/липшицевым на \([x/2, \sqrt{x}]\)
-согласно теореме Лагранжа о среднем (теореме~\secref{thm:LagrangeMean}).
-\end{proof}
-
-\begin{remark}
-А.~Пинкус в статье~\cite[30]{PinkusWeierstrass} при описании последовательности \((P_n(X))_{n=0}^{\infty}\) из теоремы~\ref{thm:SqrtIntPolyApprox} ссылается на Бурбаки и не даёт более ранних ссылок.
-\end{remark}
-
-\begin{observation}
-Пусть
-\(P_0, P_1, P_2, \ldots{}\)
---- последовательность элементов \(\R[X]\),
-такая что
-\(
-	\lim_{n \tolim \infty}
-	\sup_{x \in [0,1]}
-	\lvert \sqrt{x} - P_n(x) \rvert
-	= 0
-\),
-например, последовательность
-\((P_s(X - 1))_{s=0}^{\infty}\)
-из теоремы~\ref{thm:RootTaylorApprox}
-при \(\alpha = 1/2\)
-или последовательность
-\((P_n(X))_{n=0}^{\infty}\)
-из теоремы~\ref{thm:SqrtIntPolyApprox}.
-Пусть \(Q_n(X) \coloneqq P_n(X^2)\),
-где \(n \in \N_0\).
-Тогда
-\(
-	\lim_{n \tolim \infty}
-	\sup_{x \in [-1,1]}
-	\bigl\lvert
-		\lvert x \rvert - Q_n(x)
-	\bigr\rvert
-	= 0
-\),
-так как \(\lvert x \rvert = \sqrt{x^2}\)
-для \(x \in \R\).
-\end{observation}
-
-\begin{remark}
-В действительности с целью построения полиномиальных приближений к
-\(f : [-1, 1] \to \R\), \(x \mapsto \sqrt{1 + x}\)
-мы могли бы обойти разбор случая \(\lvert x \rvert = 1\) из теоремы~\ref{thm:RootTaylorApprox}, равномерно приближая \(f\) функциями вида
-\(
-	x \mapsto \sqrt{1 + (1 - \varepsilon)x} :
-	[-1, 1] \to \R
-\),
-где \(\varepsilon \in (0,1]\),
-см.~\cite[29--30]{PinkusWeierstrass}.
-\end{remark}
-
-\begin{corollary}
-Существует последовательность
-\((Q_n(X))_{n=0}^{\infty}\)
-элементов \(\R[X]\),
-\label{cor:AbsValIntPolyApprox}
-такая что
-\(
-	\lim_{n \tolim \infty}
-	\sup_{x \in [-1,1]}
-	\bigl\lvert \lvert x \rvert - Q_n(x) \bigr\rvert
-	= 0
-\).
-\end{corollary}
-
-%\begin{corollary}
-%Пусть
-%\(P_0, P_1, P_2, \ldots{} \in \R[X]\)
-%такие же, как в теореме~\ref{thm:SqrtIntPolyApprox},
-%а \(Q_n(X) \coloneqq P_n(X^2)\)
-%для каждого \(n \in \N_0\).%
-%\label{cor:AbsValIntPolyApprox}
-%Тогда выполняется равенство
-%\(
-%	\lim_{n \tolim \infty}
-%	\sup_{x \in [-1,1]}
-%	\bigl\lvert \lvert x \rvert - Q_n(x) \bigr\rvert
-%	= 0
-%\),
-%так как \(\lvert x \rvert = \sqrt{x^2}\)
-%для \(x \in \R\).
-%Более того,
-%\(Q_0(x) = 0\)
-%и
-%\(Q_n(x) \leq Q_{n+1}(x)\)
-%для любых \(x \in [-1,1]\) и \(n \in \N_0\).
-%\end{corollary}
-
-%\begin{theorem}[\scshape Теорема Вейерштрасса об аппроксимации]
-%Полиномиальные функции из \([0,1]\) в \(\R\) образуют плотную подалгебру в вещественной банаховой алгебре
-%\((C([0,1], \R), \lVert - \rVert_{\infty})\).
-%\end{theorem}
-%
-%\begin{proof}
-%Пусть \(A\) --- \(\R\)\=/алгебра полиномиальных функций из \([0,1]\) в \(\R\),
-%а \(\overline{A}\) --- её замыкание в
-%\((C([0,1], \R), \lVert - \rVert_{\infty})\).
-%
-%Докажем, что если \(f \in \overline{A}\), то \(\lvert f \rvert \in \overline{A}\).
-%Так как пространство \([0,1]\) компактно, то \(f\) ограничена, и можно предположить,
-%что \(\lVert f \rVert_{\infty} = 1\).
-%Пусть
-%\(Q_0, Q_1, Q_2, \ldots{} \in \R[X]\)
-%такие же, как в следствии~\ref{cor:AbsValIntPolyApprox}.
-%Тогда последовательность функций
-%\((Q_n(f))_{n=0}^{\infty}\) равномерно сходится к
-%функции \(\lvert f \rvert\) согласно следствию~\ref{cor:AbsValIntPolyApprox},
-%а потому \(\lvert f \rvert \in \overline{A}\).
-%
-%Мы получили, что для любых \(f, g \in \overline{A}\) выполняются включения
-%\(
-%	\max(f, g) =
-%		\frac{1}{2} (f + g + \lvert f - g \rvert),
-%	\min(f, g) =
-%		\frac{1}{2} (f + g - \lvert f - g \rvert)
-%	\in \overline{A}
-%\).
-%Поэтому, согласно теореме~\ref{thm:PieceLinFunIntAbsVal},
-%множество \(\overline{A}\) содержит все непрерывные кусочно-линейные функции из \([0,1]\) в \(\R\).
-%
-%Осталось заметить, что непрерывные кусочно-линейные функции из \([0,1]\) в \(\R\) плотны в
-%\((C([0,1], \R), \lVert - \rVert_{\infty})\),
-%так как каждая непрерывная функция из \([0,1]\) в \(\R\) равномерно непрерывна.
-%\end{proof}
-
-\subsection{Общая теорема Стоуна\namedash{}Вейерштрасса об аппроксимации}
-
-\begin{notation}[\scshape Непрерывные ограниченные функции]
-Для любого топологического пространства \(X\) обозначим через \(C_b(X, \R)\) множество непрерывных ограниченных функций из \(X\) в \(\R\).
-\end{notation}
-
-%\begin{notation}[\scshape Множество непрерывных отображений]
-%Для любых топологических пространств \(X\) и \(Y\) обозначим через \(C(X, Y)\) множество непрерывных отображений из \(X\) в \(Y\).
-%\end{notation}
-
-\begin{definition}[\scshape Множество отображений, разделяющее точки]
-Пусть \(X\) и \(Y\) --- множества,
-а \(A \subset \Hom_{\mr{Sets}}(X, Y)\).
-Тогда \(A\) называется \emph{разделяющим точки}, если
-\(x \mapsto (f(x))_{f \in A} : X \to Y^{\times A}\)
---- инъекция.
-\end{definition}
-
-\begin{theorem}[\scshape Об аппроксимации минимумов и максимумов функций]
-Пусть \(X\) --- топологическое пространство,
-а \(A\) --- замкнутая унитальная подалгебра вещественной банаховой алгебры
-\(C_b(X, \R)\) с нормой \(\lVert - \rVert_{\infty}\).%
-\label{the:ClosedAlgFunMinMax}
-Тогда если \(f_0, f_1 \in A\), то
-\(\max(f_0, f_1), \min(f_0, f_1) \in A\).
-\end{theorem}
-
-\begin{proof}
-Из равенств
-\(
-	\max(f_0, f_1) =
-	\frac{1}{2} (f_0 + f_1 + \lvert f_0 - f_1 \rvert) =
-	-\min(-f_0, -f_1)
-\)
-следует, что достаточно доказать, что если \(f \in A\),
-то \(\lvert f \rvert \in A\).
-Без ограничения общности можно предположить,
-что выполняется неравенство \(\lVert f \rVert_{\infty} \leq 1\).
-Пусть
-\(Q_0, Q_1, Q_2, \ldots{} \in \R[X]\)
-такие же, как в следствии~\ref{cor:AbsValIntPolyApprox}.
-Тогда последовательность
-\((Q_n(f))_{n=0}^{\infty}\)
-элементов \(A\) равномерно сходится к
-функции \(\lvert f \rvert\),
-а потому \(\lvert f \rvert \in A\).
-\end{proof}
-
-\begin{theorem}[\scshape Теорема Стоуна\namedash{}Вейерштрасса]
-Пусть \(X\) --- компактное топологическое пространство,
-а \(A\) --- замкнутая унитальная подалгебра вещественной банаховой алгебры \(C_b(X, \R)\) с нормой \(\lVert - \rVert_{\infty}\), разделяющая точки.%
-\label{thm:Stone-Weierstrass}
-Тогда \(A = C_b(X, \R)\).
-\end{theorem}
-
-\begin{proofparts}[Доказательство (из пяти частей)]
-
-\item[Часть 1.]
-Пусть \(f \in C_b(X, \R)\),
-а \(\varepsilon \in \R_{>0}\).
-Нам нужно доказать, что существует \(g \in A\), такая что
-\(\lVert f - g \rVert_{\infty} \leq \varepsilon\).
-Для этого мы будем пользоваться теоремой~\ref{the:ClosedAlgFunMinMax},
-согласно которой \(A\) содержит конечные максимумы и минимумы своих элементов.
-
-\item[Часть 2.]
-Пусть \(x \in X\).
-Тогда обозначим через \(\mc{U}_x\) множество пар
-\((U, g)\),
-таких что \(U \subset X\) --- открытая окрестность \(x\),
-а \(g \in A\) --- функция, такая что
-%\(\lVert f|_U - g|_U \rVert_{\infty} < \varepsilon\).
-\(f(u) - \varepsilon < g(u) < f(u) + \varepsilon\)
-для любого \(u \in U\).
-Обозначим через \(\mc{U}'_x\) множество пар
-\((U, g) \in \mc{U}_x\),
-таких что \(g(y) < f(y) + \varepsilon\)
-для любого \(y \in X\).
-
-\item[Часть 3.]
-Докажем теперь, что для любого \(x \in X\) семейство
-\((U)_{(U, g) \in \mc{U}_x}\)
-является покрытием \(X\).
-Пусть \(y \in X\).
-Тогда, так как \(A\) разделяет точки,
-то существует \(g \in A\),
-такая что \(g(x) = f(x)\) и \(g(y) = f(y)\).
-Возьмём
-\(U \coloneqq \{u \in X \given f(u) - \varepsilon < g(u) < f(u) + \varepsilon\}\).
-Тогда \((U, g) \in \mc{U}_x\) и \(y \in U\).
-
-\item[Часть 4.]
-Докажем теперь, что для любого \(x \in X\)
-множество \(\mc{U}'_x\) не пусто.
-Так как \(X\) компактно,
-а \((U)_{(U, g) \in \mc{U}_x}\)
-является открытым покрытием \(X\),
-то существует конечное семейство
-\((U_i, g_i)_{i \in I}\)
-элементов \(\mc{U}_x\),
-такое что \(X = \bigcup_{i \in I} U_i\).
-Тогда
-\(
-	(\bigcap_{i \in I} U_i, \min_{i \in I} g_i)
-	\in \mc{U}'_x
-\).
-
-\item[Часть 5.]
-Пусть \(\mc{U}' \coloneqq \bigcup_{x \in X} \mc{U}'_x\).
-Мы доказали, что \((U)_{(U, g) \in \mc{U}'}\) является открытым покрытием \(X\).
-Так как \(X\) компактно, то существует конечное семейство
-\((U_j, g_j)_{j \in J}\)
-элементов \(\mc{U}'\),
-такое что \(X = \bigcup_{j \in J} U_j\).
-Тогда
-если взять \(g \coloneqq \max_{j \in J} g_j \in A\),
-то \(\lVert f - g \rVert_{\infty} \leq \varepsilon\).
-\qedhere
-
-\end{proofparts}
-
-\begin{remark}
-Я узнал приведённый способ изложения доказательства теоремы~\ref{thm:Stone-Weierstrass} (теоремы Стоуна\namedash{}Вейерштрасса),
-избегающий существенного использования аксиомы выбора,
-из ответа~\cite{mo445373}
-на <<\href{https://mathoverflow.net/}{\textenglish{MathOverflow}}>>.
-\end{remark}
-
-\begin{corollary}[\scshape Теорема Вейерштрасса об аппроксимации]
-Полиномиальные функции из \([0,1]\) в \(\R\) образуют плотную подалгебру%
-\label{thm:ClassicalWeierstrassApprox}
-в вещественной банаховой алгебре
-\(C_b([0,1], \R)\) с нормой \(\lVert - \rVert_{\infty}\).
-\end{corollary}
-
-
 
 \chapter{Группы перестановок}
 
@@ -21503,13 +20771,13 @@ E \mapsto
 
 \begin{theorem}[\scshape Неравенство Минковского]
 Пусть \(X\) --- множество,
-\(f, g : X \rrarrow \C\) --- два отображения,
+\(f, g : X \rrarrow \C\) --- отображения,
 а \(p \in [1, \infty]\).
 Тогда
-\begin{equation}
-\lV f + g \rV_p \leq \lV f \rV_p + \lV g \rV_p.
-\label{eq:l_p-normTriangle}
-\end{equation}
+\(
+\lV f + g \rV_p \leq \lV f \rV_p + \lV g \rV_p
+%\label{eq:l_p-normTriangle}
+\).
 \end{theorem}
 
 \begin{proof}
@@ -21569,6 +20837,992 @@ E \mapsto
 \qedhere
 \end{gather*}
 \end{proof}
+
+
+\section{Теорема Стоуна\namedash{}Вейерштрасса}
+
+\sectiontableofcontents
+
+\subsection{Полиномиальные аппроксимации к %
+\texorpdfstring%
+{\(\WTbm{x \mapsto \lvert x \rvert}\) на \(\WTbm{[-1,1]}\)}%
+{функции модуля на отрезке [-1,1]}
+}
+
+\begin{definition}[\scshape Обобщённый биномиальный коэффициент \(\binom{\alpha}{k}\)]
+Пусть \(R\) --- ассоциативная унитальная \(\Q\)\=/алгебра,
+\(\alpha \in R\) --- её элемент,
+а \(k \in \N_0\) --- натуральное число.
+Тогда элемент
+\begin{equation*}
+	\binom{\alpha}{k}
+	\coloneqq
+	\frac{%
+		\alpha
+		(\alpha - 1)
+		(\alpha - 2)
+		\cdots
+		(\alpha - (k - 1))}%
+	{k!}
+	\in R
+\end{equation*}
+называется \emph{обобщённым биномиальным коэффициентом} из \(\alpha\) по \(k\).
+\end{definition}
+
+%\begin{definition}[\scshape Кусочно-линейная функция на отрезке]
+%Пусть \(a_{\mr{min}}, a_{\mr{max}} \in \R\) --- вещественные числа,
+%такие что \(a_{\mr{min}} < a_{\mr{max}}\),
+%а \(f : [a_{\mr{min}}, a_{\mr{max}}] \to \R\)
+%--- функция.%
+%\label{def:PieceLinFunInt}
+%Тогда \(f\) называется \emph{кусочно-линейной},
+%если существует семейство точек
+%\(
+%	a_0 = a_{\mr{min}} < a_1 <
+%	\cdots{}
+%	< a_{n-1} < a_n = a_{\mr{max}}
+%\),
+%где \(n \in \N_1\),
+%такое что для любого \(i\) от \(1\) до \(n\)
+%и для любого \(x \in [a_{i-1}, a_i]\)
+%выполняется равенство
+%\(
+%	f(x) =
+%	f(a_i) \frac{x - a_{i-1}}{a_i - a_{i-1}} 
+%	+
+%	f(a_{i-1}) \frac{x - a_i}{a_{i-1} - a_i}
+%\).
+%\end{definition}
+
+%\begin{observation}[\scshape Модуль, максимум и минимум]
+%Пусть \(X\) --- множество,
+%а \(f, g : X \rrarrow \R\) --- две функции.%
+%\label{obs:MinMaxAbsVal}
+%Тогда выполняются равенства
+%\begin{equation*}
+%\max(f, g) = (f + g + \lvert f - g \rvert)/2
+%\quad\tn{и}\quad 
+%\min(f, g) = (f + g - \lvert f - g \rvert)/2.
+%\end{equation*}
+%\end{observation}
+
+%\begin{theorem}
+%Пусть \(f : [0,1] \to \R\) --- непрерывная кусочно-линейная функция.%
+%\label{thm:PieceLinFunIntAbsVal}
+%Тогда \(f\) представляется в виде
+%конечного максимума конечных минимумов
+%функций вида
+%\(x \mapsto ax + b : [0,1] \to \R\),
+%где \(a, b \in \R\).
+%\end{theorem}
+
+%\begin{proof}
+%Согласно определению~\ref{def:PieceLinFunInt}
+%существует семейство точек
+%\(a_0 = 0 < a_1 < \cdots{} < a_{n-1} < a_n = 1\),
+%где \(n \in \N_1\),
+%такое что для любого \(i\) от \(1\) до \(n\)
+%и для любого \(x \in [a_{i-1}, a_i]\)
+%выполняется равенство
+%\(f(x) = f_i(x)\),
+%где \(f_i\) задаётся формулой~\eqref{eq:PieceLinFunIntAbsValOne}.
+%\begin{gather}
+%	f_i : [0,1] \to \R,\ 
+%	x \mapsto
+%	f(a_i) \frac{x - a_{i-1}}{a_i - a_{i-1}} 
+%	+
+%	f(a_{i-1}) \frac{x - a_i}{a_{i-1} - a_i}
+%	\label{eq:PieceLinFunIntAbsValOne}
+%	\displaybreak[0]
+%	\\
+%		k \coloneqq
+%	\max\nolimits_{i=1}^n
+%	\biggl\lvert
+%		\frac%
+%			{f(a_i) - f(a_{i-1})}%
+%			{a_i - a_{i-1}}
+%	\biggr\rvert
+%	\label{eq:PieceLinFunIntAbsValTwo}
+%	\displaybreak[0]
+%	\\
+%	f(x) = 
+%	\max\nolimits_{i=1}^n
+%	\min\bigl(%
+%		k(x - a_{i-1}) + f(a_{i-1}),
+%		f_i(x),
+%		k(a_i - x) + f(a_i)
+%	\bigr)
+%	\label{eq:PieceLinFunIntAbsValThree}
+%\end{gather}
+%Тогда для любого \(x \in [0,1]\) выполняется равенство~\eqref{eq:PieceLinFunIntAbsValThree},
+%где используются обозначения~\eqref{eq:PieceLinFunIntAbsValOne} и~\eqref{eq:PieceLinFunIntAbsValTwo}.
+%\end{proof}
+
+\begin{observation}
+Для любых \(a, p \in \R_{\geq 0}\)
+выполняется следующее неравенство:
+\((1 + a)^{-p} \geq 1 - p a\).%
+\label{obs:PowerIncrementIneq}
+Если \(a = 0\), то оно тривиально, если \(a > 0\),
+то оно следует из теоремы Лагранжа о среднем (теоремы~\secref{thm:LagrangeMean}):
+\(
+	(1 + a)^{-p}
+	\geq
+	(1 + x)^{-p}|_{x=0}
+	+
+	a \cdot
+	\inf_{\xi \in (0, a)}
+		((\frac{d}{dx}(1 + x)^{-p})|_{x = \xi})
+	=
+	1 - p a
+\).
+\end{observation}
+
+\begin{theorem}[\scshape О сходимости вещественного биномиального ряда положительной степени]
+Пусть \(\alpha \in \R_{\geq 0} \setminus \N_0\).
+Положим
+\(
+	P_s(X) \coloneqq
+	\sum_{k=0}^s \binom{\alpha}{k} X^k
+	\in \R[X]
+\),
+где \(s \in \N_0\).%
+\label{thm:RootTaylorApprox}
+Тогда последовательность функций
+\((x \mapsto P_s(x) : [-1,1] \to \R)_{s=0}^{\infty}\)
+равномерно сходится к
+\(x \mapsto (1 + x)^{\alpha} : [-1,1] \to \R\).
+Если же \(x \in \R \setminus [-1,1]\),
+то \((P_s(x))_{s=0}^{\infty}\) расходится.
+\end{theorem}
+
+\begin{proofparts}[Доказательство (из двух частей)]
+
+\item[Часть 1.]
+%Введём обозначение
+%\(
+%	\binom{\alpha}{k} \coloneqq
+%	\frac{%
+%		\alpha
+%		(\alpha - 1)
+%		(\alpha - 2)
+%		\cdots
+%		(\alpha - (k - 1))}%
+%	{k!}
+%\),
+%где \(k \in \N_0\).
+%Случай \(\alpha \in \N_0\) тривиален, поэтому без ограничения общности можно предположить, что \(\alpha \notin \N_0\).
+Чтобы доказать равномерную сходимость последовательности функций
+\((x \mapsto P_s(x) : [-1,1] \to \R)_{s=0}^{\infty}\)
+необходимо и достаточно доказать сходимость ряда
+\(\sum_{k=0}^{\infty} \lvert \binom{\alpha}{k} \rvert\).
+Чтобы сделать это заметим, что для любого \(k \in \N_1\),
+такого что \(k > \alpha + 1\),
+выполняется следующее неравенство:
+\(
+	\lvert \binom{\alpha}{k} \rvert
+		/ \lvert \binom{\alpha}{k - 1} \rvert
+	=
+	1 - \frac{1 + \alpha}{k}
+	\leq
+	(1 + \frac{1}{k})^{-(1 + \alpha)}
+	=
+	(k + 1)^{-(1 + \alpha)} / k^{-(1 + \alpha)}
+\).
+Отсюда по индукции следует, что существует константа
+\(C \in \R_{>0}\), такая что
+\(
+	\lvert \binom{\alpha}{k} \rvert
+	\leq
+	C / (k + 1)^{1 + \alpha}
+\)
+для любого \(k \in \N_0\).
+Осталось заметить, что ряд
+\(\sum_{k=1}^{\infty} 1 / k^{1 + \alpha}\)
+сходится по интегральному критерию сходимости.
+
+%\item[Часть 1.]
+%Чтобы доказать равномерную сходимость последовательности функций
+%\((x \mapsto P_s(x) : [-1,1] \to \R)_{s=0}^{\infty}\)
+%необходимо и достаточно доказать сходимость ряда
+%\begin{equation*}
+%	\sum_{k=0}^{\infty}
+%	\Bigl\lvert
+%		\frac{%
+%			\alpha
+%			(\alpha - 1)
+%			(\alpha - 2)
+%			\cdots
+%			(\alpha - (k - 1))}%
+%		{k!}
+%	\Bigr\rvert.
+%\end{equation*}
+%Более того, без ограничения общности можно предположить, что \(\alpha\) имеет вид \(1/n\),
+%где \(n \in \Z_{\geq 2}\).
+%
+%\item[Часть 2.]
+%Домножим числитель и знаменатель \(k\)\=/ого члена ряда на \(n^k\):
+%\begin{gather}
+%	\biggl\lvert
+%		\frac{%
+%		\frac{1}{n} (\frac{1}{n} -1) (\frac{1}{n} - 2)
+%		\cdots (\frac{1}{n} - (k - 1))}%
+%		{1 \cdot{} 2 \cdot{} \cdots{}
+%			\cdot{} (k - 1) \cdot{} k}
+%	\biggr\rvert
+%	=
+%	\nonumber
+%	\displaybreak[0]
+%	\\
+%	=
+%	\biggl(
+%		\frac{n - 1}{n} \cdot{}
+%		\frac{2n - 1}{2n} \cdot{}
+%		\cdots{} \cdot{}
+%		\frac{(k - 1)n - 1}{(k - 1)n}
+%	\biggr) \cdot
+%	\frac{1}{kn}.
+%	\label{eq:RootTaylorApproxOne}
+%\end{gather}
+%Теперь заметим, что для любого \(m\) от \(1\) до \(k-1\) выполняется следующее неравенство:
+%\begin{gather}
+%	\biggl(\frac{mn - 1}{mn}\biggr)^n
+%	=
+%	\underbrace{%
+%	\frac{mn - 1}{mn} \cdot{}
+%	\frac{mn - 1}{mn} \cdot{}
+%	\frac{mn - 1}{mn} \cdot{}
+%	\cdots{} \cdot{}
+%	\frac{mn - 1}{mn}%
+%	}_{n}
+%	\leq
+%	\nonumber
+%	\displaybreak[0]
+%	\\
+%	\leq
+%	\frac{mn - 1}{\cancel{mn}} \cdot{}
+%	\frac{\cancel{mn}}{\cancel{mn + 1}} \cdot{}
+%	\frac{\cancel{mn + 1}}{\cancel{mn + 2}} \cdot{}
+%	\cdots{} \cdot{}
+%	\frac{\cancel{(m + 1)n - 2}}{(m + 1)n - 1}
+%	=
+%	\frac{mn - 1}{(m + 1)n - 1}.
+%	\label{eq:RootTaylorApproxTwo}
+%\end{gather}
+%После этого возьмём выражение, которое в формуле~\eqref{eq:RootTaylorApproxOne} взято в большие скобки, возведём его в \(n\)\=/ую степень и используем неравенства~\eqref{eq:RootTaylorApproxTwo}:
+%\begin{gather}
+%	\biggl(
+%		\frac{n - 1}{n} \cdot{}
+%		\frac{2n - 1}{2n} \cdot{}
+%		\cdots{} \cdot{}
+%		\frac{(k - 1)n - 1}{(k - 1)n}
+%	\biggr)^n
+%	=
+%	\nonumber
+%	\displaybreak[0]
+%	\\
+%	=
+%	\biggl(\frac{n - 1}{n}\biggr)^n 
+%	\biggl(\frac{2n - 1}{2n}\biggr)^n 
+%	\cdots{} 
+%	\biggl(\frac{(k - 1)n - 1}{(k - 1)n}\biggr)^n
+%	\leq
+%	\nonumber
+%	\displaybreak[0]
+%	\\
+%	\leq
+%	\frac{n - 1}{\cancel{2n - 1}} \cdot{}
+%	\frac{\cancel{2n - 1}}{\cancel{3n - 1}} \cdot{}
+%	\cdots{} \cdot{}
+%	\frac{\cancel{(k - 1)n - 1}}{kn - 1}
+%	=
+%	\frac{n - 1}{kn - 1}
+%	\leq
+%	\frac{n}{kn}
+%	\leq
+%	\frac{1}{k}.
+%	\label{eq:RootTaylorApproxThree}
+%\end{gather}
+%Возведём неравенство~\eqref{eq:RootTaylorApproxThree} в степень \(1/n\) и применим его к формуле~\eqref{eq:RootTaylorApproxOne}:
+%\begin{equation*}
+%	\biggl\lvert
+%		\frac{%
+%		\frac{1}{n} (\frac{1}{n} -1) (\frac{1}{n} - 2)
+%		\cdots (\frac{1}{n} - (k - 1))}%
+%		{1 \cdot{} 2 \cdot{} \cdots{}
+%			\cdot{} (k - 1) \cdot{} k}
+%	\biggr\rvert
+%	\leq
+%	\frac{1}{k^{1/n}}
+%	\cdot
+%	\frac{1}{kn}
+%	\leq
+%	\frac{1}{k^{1 + 1/n}}.
+%\end{equation*}
+%Осталось заметить, что ряд
+%\(\sum_{k=1}^{\infty} k^{-(1 + 1/n)}\)
+%сходится по интегральному критерию сходимости.
+
+\item[Часть 2.]
+Последовательность
+\(P_0(x), P_1(x), P_2(x), \ldots{}\)
+--- это последовательность частичных сумм ряда
+\(
+	P(x) \coloneqq
+	\sum_{k=0}^{\infty}
+		\binom{\alpha}{k} x^k
+\),
+который является рядом Тейлора функции \((1 + x)^{\alpha}\) в нуле и называется биномиальным рядом.
+Радиус сходимости \(P(x)\), очевидно, равен \(1\).
+Сумма \(P(x)\) в его круге сходимости \(\lvert x \rvert < 1\) является аналитической функцией, удовлетворяющей обыкновенному дифференциальному уравнению
+\((1 + x) P'(x) = \alpha P(x)\)
+с начальным условием \(P(0) = 1\).
+Поэтому
+\(P(x) = (1 + x)^{\alpha}\)
+при \(\lvert x \rvert < 1\).
+Так как функция
+\(x \mapsto (1 + x)^{\alpha} : [-1,1] \to \R\)
+непрерывна и равномерный предел последовательности непрерывных функций непрерывен, то \(P(x)\)
+сходится к \((1 + x)^{\alpha}\) и при \(x = \pm 1\).
+\qedhere
+
+\end{proofparts}
+
+%\begin{theorem}
+%Определим по индукции последовательность многочленов
+%\(P_0, P_1, P_2, \ldots{} \in \R[X]\)
+%следующим образом:
+%\(P_0(X) \coloneqq 0\)
+%и
+%\(
+%	P_{n+1}(X) \coloneqq
+%	P_n(X) + \frac{1}{2} (X - P_n(X)^2)
+%\)
+%для любого \(n \in \N_0\).%
+%\label{thm:SqrtIntPolyApprox}
+%Тогда
+%\(P_n(x) \leq P_{n+1}(x)\)
+%для любых \(x \in [0,1]\) и \(n \in \N_0\),
+%и
+%\(
+%	\lim_{n \tolim \infty}
+%	\sup_{x \in [0,1]}
+%	\lvert \sqrt{x} - P_n(x) \rvert
+%	= 0
+%\).
+%\end{theorem}
+
+%\begin{proof}
+%Для любых \(x \in [0,1]\) и \(n \in \N_0\) выполняется равенство
+%\(
+%	\sqrt{x} - P_{n+1}(x)
+%%	=
+%%	\sqrt{x} - P_n(x) -
+%%		\frac{1}{2} (\sqrt{x}^2 - P_n(x)^2)
+%	=
+%	(\sqrt{x} - P_n(x))
+%		(1 - \frac{1}{2}(\sqrt{x} + P_n(x)))
+%\).
+%Отсюда по индукции следует, что
+%для любых \(x \in [0,1]\) и \(n \in \N_0\)
+%выполняются неравенства
+%\(P_n(x) \leq P_{n+1}(x)\)
+%и
+%\(
+%	\sqrt{x} - P_{n+1}(x)
+%	\leq
+%	\sqrt{x}  (1 - \frac{1}{2} \sqrt{x})^n
+%	\leq
+%	\min(\sqrt{x}, (1 - \frac{1}{2} \sqrt{x})^n)
+%\).
+%Осталось заметить, что для любых
+%\(\varepsilon \in (0,1]\)
+%и \(x \in [0,1]\)
+%либо \(\sqrt{x} \leq \varepsilon\),
+%либо
+%\((1 - \frac{1}{2} \sqrt{x})^n \leq \varepsilon\)
+%для любого достаточно большого \(n \in \N_0\).
+%\end{proof}
+
+\begin{theorem}[\scshape Аппроксимация Бурбаки квадратного корня]
+Определим последовательность
+\(P_0, P_1, P_2, \ldots{} \in \R[X]\)
+по индукции:
+\(P_0 \coloneqq 0\)
+и
+\(
+	P_{n+1} \coloneqq
+	P_n + \frac{1}{2} (X - P_n^2)
+\)
+для любого \(n \in \N_0\).%
+\label{thm:SqrtIntPolyApprox}
+Тогда
+\(P_n(x) \leq P_{n+1}(x)\)
+для любых \(x \in [0,1]\) и \(n \in \N_0\),
+и
+\(
+	\lim_{n \tolim \infty}
+	\sup_{x \in [0,1]}
+	\lvert \sqrt{x} - P_n(x) \rvert
+	= 0
+\).
+\end{theorem}
+
+\begin{proof}[Первое доказательство]
+Для любых \(x \in [0,1]\) и \(n \in \N_0\) выполняется следующее равенство:
+\(
+	\sqrt{x} - P_{n+1}(x)
+	=
+	\sqrt{x} - P_n(x) -
+		\tfrac{1}{2} (\sqrt{x}^2 - P_n(x)^2)
+	=
+	(\sqrt{x} - P_n(x)) \cdot{}
+		(1 - \tfrac{1}{2}(\sqrt{x} + P_n(x)))
+\).
+Отсюда по индукции следует, что
+для любых \(x \in [0,1]\) и \(n \in \N_0\)
+выполняются неравенства
+\(P_n(x) \leq P_{n+1}(x)\)
+и
+\(
+	\sqrt{x} - P_{n+1}(x)
+	\leq
+	\sqrt{x} \cdot{} (1 - \tfrac{1}{2} \sqrt{x})^n
+	\leq
+	\min(\sqrt{x}, (1 - \tfrac{1}{2} \sqrt{x})^n)
+\).
+Осталось заметить, что для любых
+\(\varepsilon \in (0,1]\)
+и \(x \in [0,1]\)
+либо \(\sqrt{x} \leq \varepsilon\),
+либо
+\((1 - \frac{1}{2} \sqrt{x})^n \leq \varepsilon\)
+для любого достаточно большого \(n \in \N_0\).
+\end{proof}
+
+\begin{proof}[Второе доказательство]
+Для любого \(x \in \R\) определим отображение
+\(f_x : \R \to \R\),
+\(t \mapsto t + \frac{1}{2} (x - t^2)\).
+Тогда \(f'_x(t) = 1 - t\), фиксированными точками \(f_x\) являются решения уравнения \(t^2 = x\)
+и для любого \(n \in \N_0\) выполняется равенство
+\(P_n(x) = f_x^{\circ n}(0)\).
+Осталось заметить, что \(f_x(0) = x / 2\) и для любого
+\(x \in [0,1]\) отображение \(f_x\) является монотонно неубывающим на \([0, \sqrt{x}]\) и \((1 - x/2)\)\=/липшицевым на \([x/2, \sqrt{x}]\)
+согласно теореме Лагранжа о среднем (теореме~\secref{thm:LagrangeMean}).
+\end{proof}
+
+\begin{remark}
+А.~Пинкус в статье~\cite[30]{PinkusWeierstrass} при описании последовательности \((P_n(X))_{n=0}^{\infty}\) из теоремы~\ref{thm:SqrtIntPolyApprox} ссылается на Бурбаки и не даёт более ранних ссылок.
+\end{remark}
+
+\begin{observation}
+Пусть
+\(P_0, P_1, P_2, \ldots{}\)
+--- последовательность элементов \(\R[X]\),
+такая что
+\(
+	\lim_{n \tolim \infty}
+	\sup_{x \in [0,1]}
+	\lvert \sqrt{x} - P_n(x) \rvert
+	= 0
+\),
+например, последовательность
+\((P_s(X - 1))_{s=0}^{\infty}\)
+из теоремы~\ref{thm:RootTaylorApprox}
+при \(\alpha = 1/2\)
+или последовательность
+\((P_n(X))_{n=0}^{\infty}\)
+из теоремы~\ref{thm:SqrtIntPolyApprox}.
+Пусть \(Q_n(X) \coloneqq P_n(X^2)\),
+где \(n \in \N_0\).
+Тогда
+\(
+	\lim_{n \tolim \infty}
+	\sup_{x \in [-1,1]}
+	\bigl\lvert
+		\lvert x \rvert - Q_n(x)
+	\bigr\rvert
+	= 0
+\),
+так как \(\lvert x \rvert = \sqrt{x^2}\)
+для \(x \in \R\).
+\end{observation}
+
+\begin{remark}
+В действительности с целью построения полиномиальных приближений к
+\(f : [-1, 1] \to \R\), \(x \mapsto \sqrt{1 + x}\)
+мы могли бы обойти разбор случая \(\lvert x \rvert = 1\) из теоремы~\ref{thm:RootTaylorApprox}, равномерно приближая \(f\) функциями вида
+\(
+	x \mapsto \sqrt{1 + (1 - \varepsilon)x} :
+	[-1, 1] \to \R
+\),
+где \(\varepsilon \in (0,1]\),
+см.~\cite[29--30]{PinkusWeierstrass}.
+\end{remark}
+
+\begin{corollary}
+Существует последовательность
+\((Q_n(X))_{n=0}^{\infty}\)
+элементов \(\R[X]\),
+\label{cor:AbsValIntPolyApprox}
+такая что
+\(
+	\lim_{n \tolim \infty}
+	\sup_{x \in [-1,1]}
+	\bigl\lvert \lvert x \rvert - Q_n(x) \bigr\rvert
+	= 0
+\).
+\end{corollary}
+
+%\begin{corollary}
+%Пусть
+%\(P_0, P_1, P_2, \ldots{} \in \R[X]\)
+%такие же, как в теореме~\ref{thm:SqrtIntPolyApprox},
+%а \(Q_n(X) \coloneqq P_n(X^2)\)
+%для каждого \(n \in \N_0\).%
+%\label{cor:AbsValIntPolyApprox}
+%Тогда выполняется равенство
+%\(
+%	\lim_{n \tolim \infty}
+%	\sup_{x \in [-1,1]}
+%	\bigl\lvert \lvert x \rvert - Q_n(x) \bigr\rvert
+%	= 0
+%\),
+%так как \(\lvert x \rvert = \sqrt{x^2}\)
+%для \(x \in \R\).
+%Более того,
+%\(Q_0(x) = 0\)
+%и
+%\(Q_n(x) \leq Q_{n+1}(x)\)
+%для любых \(x \in [-1,1]\) и \(n \in \N_0\).
+%\end{corollary}
+
+%\begin{theorem}[\scshape Теорема Вейерштрасса об аппроксимации]
+%Полиномиальные функции из \([0,1]\) в \(\R\) образуют плотную подалгебру в вещественной банаховой алгебре
+%\((C([0,1], \R), \lVert - \rVert_{\infty})\).
+%\end{theorem}
+%
+%\begin{proof}
+%Пусть \(A\) --- \(\R\)\=/алгебра полиномиальных функций из \([0,1]\) в \(\R\),
+%а \(\overline{A}\) --- её замыкание в
+%\((C([0,1], \R), \lVert - \rVert_{\infty})\).
+%
+%Докажем, что если \(f \in \overline{A}\), то \(\lvert f \rvert \in \overline{A}\).
+%Так как пространство \([0,1]\) компактно, то \(f\) ограничена, и можно предположить,
+%что \(\lVert f \rVert_{\infty} = 1\).
+%Пусть
+%\(Q_0, Q_1, Q_2, \ldots{} \in \R[X]\)
+%такие же, как в следствии~\ref{cor:AbsValIntPolyApprox}.
+%Тогда последовательность функций
+%\((Q_n(f))_{n=0}^{\infty}\) равномерно сходится к
+%функции \(\lvert f \rvert\) согласно следствию~\ref{cor:AbsValIntPolyApprox},
+%а потому \(\lvert f \rvert \in \overline{A}\).
+%
+%Мы получили, что для любых \(f, g \in \overline{A}\) выполняются включения
+%\(
+%	\max(f, g) =
+%		\frac{1}{2} (f + g + \lvert f - g \rvert),
+%	\min(f, g) =
+%		\frac{1}{2} (f + g - \lvert f - g \rvert)
+%	\in \overline{A}
+%\).
+%Поэтому, согласно теореме~\ref{thm:PieceLinFunIntAbsVal},
+%множество \(\overline{A}\) содержит все непрерывные кусочно-линейные функции из \([0,1]\) в \(\R\).
+%
+%Осталось заметить, что непрерывные кусочно-линейные функции из \([0,1]\) в \(\R\) плотны в
+%\((C([0,1], \R), \lVert - \rVert_{\infty})\),
+%так как каждая непрерывная функция из \([0,1]\) в \(\R\) равномерно непрерывна.
+%\end{proof}
+
+\subsection{Общая теорема Стоуна\namedash{}Вейерштрасса об аппроксимации}
+
+\begin{notation}[\scshape Непрерывные ограниченные функции]
+Для любого топологического пространства \(X\) обозначим через \(C_b(X, \R)\) множество непрерывных ограниченных функций из \(X\) в \(\R\).
+\end{notation}
+
+%\begin{notation}[\scshape Множество непрерывных отображений]
+%Для любых топологических пространств \(X\) и \(Y\) обозначим через \(C(X, Y)\) множество непрерывных отображений из \(X\) в \(Y\).
+%\end{notation}
+
+\begin{definition}[\scshape Множество отображений, разделяющее точки]
+Пусть \(X\) и \(Y\) --- множества,
+а \(A \subset \Hom_{\mr{Sets}}(X, Y)\).
+Тогда \(A\) называется \emph{разделяющим точки}, если
+\(x \mapsto (f(x))_{f \in A} : X \to Y^{\times A}\)
+--- инъекция.
+\end{definition}
+
+\begin{theorem}[\scshape Об аппроксимации минимумов и максимумов функций]
+Пусть \(X\) --- топологическое пространство,
+а \(A\) --- замкнутая унитальная подалгебра вещественной банаховой алгебры
+\(C_b(X, \R)\) с нормой \(\lVert - \rVert_{\infty}\).%
+\label{the:ClosedAlgFunMinMax}
+Тогда если \(f_0, f_1 \in A\), то
+\(\max(f_0, f_1), \min(f_0, f_1) \in A\).
+\end{theorem}
+
+\begin{proof}
+Из равенств
+\(
+	\max(f_0, f_1) =
+	\frac{1}{2} (f_0 + f_1 + \lvert f_0 - f_1 \rvert) =
+	-\min(-f_0, -f_1)
+\)
+следует, что достаточно доказать, что если \(f \in A\),
+то \(\lvert f \rvert \in A\).
+Без ограничения общности можно предположить,
+что выполняется неравенство \(\lVert f \rVert_{\infty} \leq 1\).
+Пусть
+\(Q_0, Q_1, Q_2, \ldots{} \in \R[X]\)
+такие же, как в следствии~\ref{cor:AbsValIntPolyApprox}.
+Тогда последовательность
+\((Q_n(f))_{n=0}^{\infty}\)
+элементов \(A\) равномерно сходится к
+функции \(\lvert f \rvert\),
+а потому \(\lvert f \rvert \in A\).
+\end{proof}
+
+\begin{theorem}[\scshape Теорема Стоуна\namedash{}Вейерштрасса]
+Пусть \(X\) --- компактное топологическое пространство,
+а \(A\) --- замкнутая унитальная подалгебра вещественной банаховой алгебры \(C_b(X, \R)\) с нормой \(\lVert - \rVert_{\infty}\), разделяющая точки.%
+\label{thm:Stone-Weierstrass}
+Тогда \(A = C_b(X, \R)\).
+\end{theorem}
+
+\begin{proofparts}[Доказательство (из пяти частей)]
+
+\item[Часть 1.]
+Пусть \(f \in C_b(X, \R)\),
+а \(\varepsilon \in \R_{>0}\).
+Нам нужно доказать, что существует \(g \in A\), такая что
+\(\lVert f - g \rVert_{\infty} \leq \varepsilon\).
+Для этого мы будем пользоваться теоремой~\ref{the:ClosedAlgFunMinMax},
+согласно которой \(A\) содержит конечные максимумы и минимумы своих элементов.
+
+\item[Часть 2.]
+Пусть \(x \in X\).
+Тогда обозначим через \(\mc{U}_x\) множество пар
+\((U, g)\),
+таких что \(U \subset X\) --- открытая окрестность \(x\),
+а \(g \in A\) --- функция, такая что
+%\(\lVert f|_U - g|_U \rVert_{\infty} < \varepsilon\).
+\(f(u) - \varepsilon < g(u) < f(u) + \varepsilon\)
+для любого \(u \in U\).
+Обозначим через \(\mc{U}'_x\) множество пар
+\((U, g) \in \mc{U}_x\),
+таких что \(g(y) < f(y) + \varepsilon\)
+для любого \(y \in X\).
+
+\item[Часть 3.]
+Докажем теперь, что для любого \(x \in X\) семейство
+\((U)_{(U, g) \in \mc{U}_x}\)
+является покрытием \(X\).
+Пусть \(y \in X\).
+Тогда, так как \(A\) разделяет точки,
+то существует \(g \in A\),
+такая что \(g(x) = f(x)\) и \(g(y) = f(y)\).
+Возьмём
+\(U \coloneqq \{u \in X \given f(u) - \varepsilon < g(u) < f(u) + \varepsilon\}\).
+Тогда \((U, g) \in \mc{U}_x\) и \(y \in U\).
+
+\item[Часть 4.]
+Докажем теперь, что для любого \(x \in X\)
+множество \(\mc{U}'_x\) не пусто.
+Так как \(X\) компактно,
+а \((U)_{(U, g) \in \mc{U}_x}\)
+является открытым покрытием \(X\),
+то существует конечное семейство
+\((U_i, g_i)_{i \in I}\)
+элементов \(\mc{U}_x\),
+такое что \(X = \bigcup_{i \in I} U_i\).
+Тогда
+\(
+	(\bigcap_{i \in I} U_i, \min_{i \in I} g_i)
+	\in \mc{U}'_x
+\).
+
+\item[Часть 5.]
+Пусть \(\mc{U}' \coloneqq \bigcup_{x \in X} \mc{U}'_x\).
+Мы доказали, что \((U)_{(U, g) \in \mc{U}'}\) является открытым покрытием \(X\).
+Так как \(X\) компактно, то существует конечное семейство
+\((U_j, g_j)_{j \in J}\)
+элементов \(\mc{U}'\),
+такое что \(X = \bigcup_{j \in J} U_j\).
+Тогда
+если взять \(g \coloneqq \max_{j \in J} g_j \in A\),
+то \(\lVert f - g \rVert_{\infty} \leq \varepsilon\).
+\qedhere
+
+\end{proofparts}
+
+\begin{remark}
+Я узнал приведённый способ изложения доказательства теоремы~\ref{thm:Stone-Weierstrass} (теоремы Стоуна\namedash{}Вейерштрасса),
+избегающий существенного использования аксиомы выбора,
+из ответа~\cite{mo445373}
+на <<\href{https://mathoverflow.net/}{\textenglish{MathOverflow}}>>.
+\end{remark}
+
+\begin{corollary}[\scshape Теорема Вейерштрасса об аппроксимации]
+Полиномиальные функции из \([0,1]\) в \(\R\) образуют плотную подалгебру%
+\label{thm:ClassicalWeierstrassApprox}
+в вещественной банаховой алгебре
+\(C_b([0,1], \R)\) с нормой \(\lVert - \rVert_{\infty}\).
+\end{corollary}
+
+
+\section%
+[Композиционное обращение степенных рядов]%
+{Композиционное обращение формальных степенных рядов}
+
+\sectiontableofcontents
+
+\subsection{Две интерпретации чисел Каталана}
+
+\begin{convention}[\scshape Укоренённые деревья]
+В этом разделе все укоренённые деревья считаются конечными.
+\end{convention}
+
+\begin{definition}[\scshape Слово Дика]
+Пусть \(n \in \N_0\).
+Тогда \emph{словом Дика} длины \(2n\) называется последовательность,
+составленная из \(n\) символов \(X\) и \(n\) символов \(Y\),
+такая что в каждом начальном сегменте этой последовательности количество \(Y\)\=/ов не превосходит количества \(X\)\=/ов.
+\end{definition}
+
+\begin{example}
+Вот список всех слов Дика длины \(2\), \(4\) и \(6\),
+где символ \(X\) заменён на открывающую скобку,
+а символ \(Y\) --- на закрывающую скобку:
+\(()\), \((())\), \(()()\), \(((()))\), \(()(())\), \(()()()\), \((())()\), \((()())\).
+\end{example}
+
+\begin{remark}
+Для любого \(n \in \N_0\) количество слов Дика длины \(2n\) называется \(n\)\=/ым числом Каталана.
+\end{remark}
+
+\begin{definition}[\scshape Линейно упорядоченное укоренённое дерево]
+Пусть \(n \in \N_1\).
+Тогда укоренённое дерево с \(n\) вершинами, в котором множество детей каждой вершины линейно упорядочено, называется \emph{линейно упорядоченным укоренённым деревом} с \(n\) вершинами.
+\end{definition}
+
+\begin{observation}[\scshape Линейный порядок на вершинах линейно упорядоченного укоренённого дерева]
+На множестве вершин линейно упорядоченного укоренённого дерева существует единственный линейный порядок,%
+\label{obs:LinOrdRootTreeLinOrd}
+согласованный с линейным порядком на множестве детей каждой вершины, такой что дети больше своих родителей и каждый ребёнок большей вершины больше каждого ребёнка меньшей вершины.
+%отображение, сопоставляющее не корневой вершине её родителя, является монотонным.
+\end{observation}
+
+\begin{remark}
+При стандартном способе изображения линейно упорядоченного укоренённого дерева на плоскости линейный порядок из наблюдения~\ref{obs:LinOrdRootTreeLinOrd} является порядком <<сверху вниз, слева направо>>.
+\end{remark}
+
+\begin{theorem}[\scshape Линейно упорядоченные укоренённые деревья и слова Дика]
+Пусть \(n \in \N_0\).%
+\label{the:LinOrdRootTreeDyckWords}
+%Тогда множество укоренённых деревьев с \(n + 1\) вершинами,
+%в которых множество детей каждой вершины линейно упорядочено,
+Тогда множество классов изоморфизма линейно упорядоченных укоренённых деревьев с \(n + 1\) вершинами
+биективно множеству слов Дика длины \(2n\).
+\end{theorem}
+
+\begin{proof}
+Рассмотрим линейно упорядоченное укоренённое дерево с \(n + 1\) вершинами вместе с линейным порядком из наблюдения~\ref{obs:LinOrdRootTreeLinOrd} на множестве его вершин.
+Изобразим все не корневые вершины дерева в виде кружочков, расположенных в строчку слева направо в порядке возрастания.
+Для каждой не корневой вершины дерева добавим к рисунку вертикальную перегородку, отделяющую детей данной вершины и последующих вершин от детей предыдущих вершин.
+Заменив каждый кружочек на букву \(X\), а каждую перегородку --- на \(Y\), получаем слово Дика длины \(2n\).
+Эта процедура и описывает искомую биекцию.
+\end{proof}
+
+\begin{remark}
+Метод <<шаров и перегородок>> (англ.~<<\textenglish{stars and bars}>> --- <<звёздочки и чёрточки>>) --- это один из стандартных методов визуализации в комбинаторике, см.~\cite{wiki_Stars_and_bars}.
+\end{remark}
+
+\subsection{О радиусе сходимости композиционно обратного ряда}
+
+\begin{observation}[\scshape Формула для композиционно обратного ряда]
+Определим формальные степенные ряды
+\(f(X)\) и \(g(X)\)
+равенствами~\eqref{eq:FormPowSerCompInvPolyOne} и~\eqref{eq:FormPowSerCompInvPolyTwo},
+где многочлены
+\(
+	P_n \in \Z[Y_2, Y_3, \ldots{}, Y_n]
+	\subset \Z[Y_2, Y_3, Y_4, \ldots{}]
+\)
+для \(n \in \N_1\)
+по индукции определяются%
+\label{obs:FormPowSerCompInvPoly}
+равенствами~\eqref{eq:FormPowSerCompInvPolyThree}.
+\begin{alignat}{7}
+	& f(X)
+	&& \coloneqq \phantom{P_1} X
+	&& - \phantom{P_2}\mathllap{Y_2} X^2
+	&& - \phantom{P_3}\mathllap{Y_3} X^3
+	&& - \phantom{P_4}\mathllap{Y_4} X^4
+	&& - \cdots{}
+	&& \in \Z[Y_2, Y_3, Y_4, \ldots{}][[X]]
+	\label{eq:FormPowSerCompInvPolyOne}
+	\\
+	& \phantom{f(X)}\mathllap{g(X)}
+	&& \coloneqq P_1 X
+	&& + P_2 X^2
+	&& + P_3 X^3
+	&& + P_4 X^4
+	&& + \cdots{}
+	&& \in \Z[Y_2, Y_3, Y_4, \ldots{}][[X]]
+	\label{eq:FormPowSerCompInvPolyTwo}
+\end{alignat}
+\begin{equation}
+	P_1 \coloneqq 1
+	\quad\tn{и}\quad
+	P_n \coloneqq
+	\sum_{k \geq 2}
+	(
+		Y_k \cdot{}
+		\sum_{\mathclap{\substack{%
+			n_1, \ldots{}, n_k \geq 1 \\
+			n_1 + \cdots{} + n_k = n}}}
+		P_{n_1} \cdots{} P_{n_k}
+	)
+	\quad \tn{при}\ n \geq 2
+	\label{eq:FormPowSerCompInvPolyThree}
+\end{equation}
+Тогда непосредственной подстановкой проверяется,
+что \(f(g(X)) = X\),
+то есть \(g(X)\) является композиционно обратным \(f(X)\) рядом.
+\end{observation}
+
+\begin{theorem}[\scshape О радиусе сходимости композиционно обратного ряда]
+Пусть \(\mathbb{F} \in \{\R, \C\}\),
+а \(f(X), g(X) \in X \cdot \mathbb{F}[[X]]\)
+--- два формальных ряда, таких что \(f(g(X)) = X\).%
+\label{thm:FormPowSerCompInvConv}
+Тогда если радиус сходимости \(f(X)\) положителен,
+то радиус сходимости \(g(X)\) тоже положителен.
+\end{theorem}
+
+\begin{proofparts}[Доказательство (из трёх частей)]
+
+\item[Часть 1.]
+Пусть
+\(f(X) = a_1 X - \sum_{n=2}^{\infty} a_n X^n\)
+и
+\(g(X) = \sum_{n=1}^{\infty} b_n X^n\),
+где \(a_n, b_n \in \mathbb{F}\) для любого \(n \in \N_1\).
+Тогда из равенства \(f(g(X)) = X\) следует равенство \(a_1 b_1 = 1\). Заменив \(f(X)\) на \(f(b_1 X)\), а \(g(X)\) --- на \(a_1 g(X)\), без ограничения общности можно предположить, что \(a_1 = b_1 = 1\).
+
+Так как радиус сходимости \(f(X)\) положителен,
+то существует число \(r \in \R_{>0}\),
+такое что
+\(\lvert a_n \rvert \leq r^{n-1}\)
+для всех \(n \in \N_1\).
+Пусть многочлены
+\(P_n \in \Z[Y_2, Y_3, \ldots{}, Y_n]\),
+где \(n \in \N_1\),
+такие же, как в наблюдении~\ref{obs:FormPowSerCompInvPoly}.
+Тогда для любого \(n \in \N_1\)
+все ненулевые коэффициенты \(P_n\) положительны, а потому
+выполняются неравенства
+\begin{equation*}
+	\lvert b_n \rvert
+	=
+	\lvert P_n(a_2, a_3, \ldots{}, a_n) \rvert
+	\leq
+	P_n(%
+		\lvert a_2 \rvert,
+		\lvert a_3 \rvert,
+		\ldots{},
+		\lvert a_n \rvert)
+	\leq
+	P_n(r, r^2, \ldots{}, r^{n-1}).
+\end{equation*}
+%Поэтому нам достаточно доказать положительность радиуса сходимости ряда
+%\(
+%	\sum_{n=1}^{\infty}
+%		P_n(r, r^2, \ldots{}, r^{n-1}) X^n
+%\),
+%формально композиционно обратного ряду
+%\(X - \sum_{n=2}^{\infty} r^{n-1} X^n\).
+Поэтому без ограничения общности можно предположить,
+что для любого \(n \in \N_1\) выполняется равенство
+\(a_n = r^{n-1}\),
+то есть заменить
+\(f(X)\) на
+\(X - \sum_{n=2}^{\infty} r^{n-1} X^n\),
+а \(g(X)\) --- на
+\(
+	\sum_{n=1}^{\infty}
+		P_n(r, r^2, \ldots{}, r^{n-1}) X^n
+\).
+
+Заменив \(f(X)\) на \(r f(X/r)\), а \(g(X)\) --- на \(r g(X/r)\), без ограничения общности можно предположить,
+что выполняется равенство
+\begin{equation*}
+	f(X)
+	= X - X^2 - X^3 - X^4 - \cdots{}
+	= X - \frac{X^2}{1 - X}.
+\end{equation*}
+
+\item[Часть 2.]
+Из уравнения~\eqref{eq:FormPowSerCompInvConvOne} и условия \(g(0) = 0\) по формуле дискриминанта получаем равенство~\eqref{eq:FormPowSerCompInvConvTwo},
+где квадратный корень понимается в смысле биномиального ряда~\eqref{eq:FormPowSerCompInvConvThree}.
+\begin{gather}
+	f(g(X)) = g(X) - \frac{g(X)^2}{1 - g(X)} = X
+	\label{eq:FormPowSerCompInvConvOne}
+	\displaybreak[0]
+	\\
+	g(X)
+	= \frac{1}{4}
+		((1 + X) - \sqrt{(1 + X)^2 - 8X})
+	\label{eq:FormPowSerCompInvConvTwo}
+	\displaybreak[0]
+	\\
+	\sqrt{1 + T} =
+	\sum_{n=0}^{\infty}
+		\binom{\frac{1}{2}}{n} T^n =
+	\sum_{n=0}^{\infty}
+		\frac{%
+		\frac{1}{2}
+		(\frac{1}{2} - 1)
+		(\frac{1}{2} - 2)
+		\cdots
+		(\frac{1}{2} - (n - 1))}%
+	{n!} T^n
+	\label{eq:FormPowSerCompInvConvThree}
+\end{gather}
+Положительность радиуса сходимости \(g(X)\) следует из равенства~\eqref{eq:FormPowSerCompInvConvTwo},
+так как радиус сходимости биномиального ряда~\eqref{eq:FormPowSerCompInvConvThree} положителен.
+
+\item[Часть 3.]
+В качестве альтернативы рассуждению из части~2 этого доказательства можно использовать следующее комбинаторное рассуждение.
+Воспользовавшись рекурсивной формулой из наблюдения~\ref{obs:FormPowSerCompInvPoly} легко увидеть, что для любого \(n \in \N_1\) коэффициент \(b_n\) равен количеству классов изоморфизма линейно упорядоченных укоренённых деревьев с \(n\) листьями,
+в которых нет вершин с ровно одним ребёнком.
+
+Пусть \(T\) является таким деревом.
+Количество вершин \(T\), являющихся родителями листьев, не превосходит \(n/2\).
+Количество вершин \(T\), являющихся родителями родителей листьев, не превосходит \(n/4\).
+Продолжая таким образом, получаем, что количество вершин \(T\) не превосходит \(n + n/2 + n/4 + \cdots{} = 2n\).
+Осталось воспользоваться теоремой~\ref{the:LinOrdRootTreeDyckWords},
+чтобы получить оценку
+\(
+	b_n
+	\leq \binom{4n - 2}{2n - 1}
+	\leq 2^{4n - 2}
+\),
+где \(n \in \N_1\).
+\qedhere
+
+\end{proofparts}
+
+%\begin{remark}
+%Формальный ряд~\eqref{eq:FormPowSerCompInvConvTwo} является производящей функцией последовательности чисел Шрёдера\namedash{}Гиппарха.
+%\end{remark}
+
+\begin{remark}
+Коэффициенты степенного ряда~\eqref{eq:FormPowSerCompInvConvTwo} 
+называются числами Шрёдера\namedash{}Гиппарха,
+а сам ряд, соответственно, является производящей функцией последовательности чисел Шрёдера\namedash{}Гиппарха.
+\end{remark}
 
 
 
